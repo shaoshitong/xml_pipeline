@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T22:37:06.249101+00:00",
+  "at_utc": "2026-11-02T22:48:22.164251+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -4649,6 +4649,12 @@
       "mtime_ns": 1793657988556253971
     },
     {
+      "file": "conversion/scripts/diagnose_source_css_geometry_v1.py",
+      "sha256": "6a0b95f3294e3ec076f9e6b3d6f11c872f9fb33b0b8f34fc2044e109a96faa3b",
+      "bytes": 3140,
+      "mtime_ns": 1793659420087470142
+    },
+    {
       "file": "conversion/scripts/diagnose_text_clip_pixels.py",
       "sha256": "705798a9989fe7f487e94820cd5a8af9039327938a283be6d73a852adcd6662f",
       "bytes": 1601,
@@ -8677,6 +8683,12 @@
       "sha256": "61b354a70cea73c9ff3005fde02d3253cc8fd1949445384d9e92fcd1a291781e",
       "bytes": 5985,
       "mtime_ns": 1793654894373438711
+    },
+    {
+      "file": "conversion/scripts/review_fixed_compound_linear_pairs_v1.py",
+      "sha256": "f90acdbed78d1f7b178909b4dc000a89ee020bb97381a9e999ad234b0bfa30a7",
+      "bytes": 5974,
+      "mtime_ns": 1793659384483629750
     },
     {
       "file": "conversion/scripts/review_harness_v2.py",
@@ -13746,6 +13758,18 @@
       "mtime_ns": 1793658810051070807
     },
     {
+      "file": "operations/COMPOUND_LINEAR_FINAL_TIMING.json",
+      "sha256": "63d03d478d674e1b934614dbda67efa47a915f7a8c3f52a8b35aea4b8d2eb2e9",
+      "bytes": 2187,
+      "mtime_ns": 1793659558979782125
+    },
+    {
+      "file": "operations/COMPOUND_LINEAR_FINAL_VERIFICATION.json",
+      "sha256": "a639c2d58c8304b4fe5019e97118bd1833c0bb02fe1d5ede9a5a08de2f030c2d",
+      "bytes": 2929,
+      "mtime_ns": 1793659652903629424
+    },
+    {
       "file": "operations/COMPOUND_LINEAR_FULL8_QA28.json",
       "sha256": "1d7c7de8b908ed6901a76fb449b24095e514858df8dc9c3746fdc7a2228c819f",
       "bytes": 3662,
@@ -13800,6 +13824,12 @@
       "mtime_ns": 1793658918626227051
     },
     {
+      "file": "operations/COMPOUND_LINEAR_UNSEEN_PUBLICATION.json",
+      "sha256": "d8b5a4b26109baeea832154ce9406fb4af389850e2baea80791cd3dd4a3130ec",
+      "bytes": 3091,
+      "mtime_ns": 1793659491386831355
+    },
+    {
       "file": "operations/COMPOUND_LINEAR_VALIDATION_LAUNCH.json",
       "sha256": "9323753fdc67ea3be478b13adfcde0ebbc2e38d77614ea3dfa96467b7c4a3201",
       "bytes": 414,
@@ -13813,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "97c0b9bd7d26b0ffdf9f9fe1d373f802f6462e90cdbf98d3a68aaf4c2c4f1a35",
-      "bytes": 5626,
-      "mtime_ns": 1793659090224016351
+      "sha256": "6c32431e76350d75db6c9eecb8fdc0f5450085bdfe2cbb084b1c61401cfc9342",
+      "bytes": 4421,
+      "mtime_ns": 1793659702165564027
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -13906,6 +13936,12 @@
       "sha256": "b5a0f73b6faaa853c01b043b927377d96717dc7a21ae88b988842c9b3dac9aa2",
       "bytes": 36667,
       "mtime_ns": 1793657569831517372
+    },
+    {
+      "file": "operations/SOURCE_CSS_GEOMETRY_DIAGNOSIS.json",
+      "sha256": "b490a8f2407a291d4ff27b0cf2be38ec8ec1840cd9a7879fc5694ac6965b4d3b",
+      "bytes": 3903,
+      "mtime_ns": 1793659421457756430
     },
     {
       "file": "operations/source_attempts/source_compound_linear_admission_v1.syntax_failed.py.txt",
@@ -14698,173 +14734,18 @@
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
   "incremental_remote_verification": {
-    "at_utc": "2026-11-02T22:37:06.249101+00:00",
+    "at_utc": "2026-11-02T22:48:22.164251+00:00",
     "matched": true,
     "files": {
-      "svg_source_compound_linear_paths_v1.py": {
-        "sha256": "55ebb3125bd30bf41a6cac6efc11e635ee792aeb46ae2bc8acd225ab66674b83",
-        "bytes": 7576,
-        "mtime_ns": 1793658196351982697
+      "review_fixed_compound_linear_pairs_v1.py": {
+        "sha256": "f90acdbed78d1f7b178909b4dc000a89ee020bb97381a9e999ad234b0bfa30a7",
+        "bytes": 5974,
+        "mtime_ns": 1793659384483629750
       },
-      "compiler_svg_scene_backend_v16.py": {
-        "sha256": "76ee7000b4b298b222f539b7346ebdef30adc4633a534164ca137de47ac3798a",
-        "bytes": 18578,
-        "mtime_ns": 1793658196403982595
-      },
-      "compiler_svg_explicit_coordinates_v8.py": {
-        "sha256": "10170f6c0ffe2e5e9743a6ca471dc27b576819250a8029fa0ad9cb158fc7b893",
-        "bytes": 8103,
-        "mtime_ns": 1793658196451982501
-      },
-      "compiler_svg_explicit_coordinates_v8.js": {
-        "sha256": "e5f562e6688a1b7c052d2b34da3514f4d96c3a36755040b9018f2da9da3bf370",
-        "bytes": 12260,
-        "mtime_ns": 1793658196503982399
-      },
-      "compiler_svg_scene_frontend_v21.py": {
-        "sha256": "0e1b18b405b2ec305c79420bb5f57333ae9edda27d671e6f78748b819538acd6",
-        "bytes": 55718,
-        "mtime_ns": 1793658196571982266
-      },
-      "compiler_svg_general_guard_v17.py": {
-        "sha256": "e0f9a029bec949a10fe05f832a27acee363408dc3934d68ec4360d724b2392d2",
-        "bytes": 8624,
-        "mtime_ns": 1793658196619982173
-      },
-      "compiler_svg_general_quality_adapter_v23.py": {
-        "sha256": "1bbfd1cf0a8cf86d237c14326031651ff5c3339003319cac3e98de9d399214cd",
-        "bytes": 3795,
-        "mtime_ns": 1793658196667982078
-      },
-      "compiler_svg_scene_quality_ro_v27.py": {
-        "sha256": "1774fefebcbc96d8fcc6d296312afe396d9d514e1b87f13cac4a74d38cbbdd9e",
-        "bytes": 13833,
-        "mtime_ns": 1793658196723981968
-      },
-      "svg_rotated_source_visual_scope_v4.py": {
-        "sha256": "988995aa84444922e2f2f04928c1e72dcf68400357d8a1c66ba5accc65ba0083",
-        "bytes": 4523,
-        "mtime_ns": 1793658196771981874
-      },
-      "svg_compound_linear_normal_dev_v1.py": {
-        "sha256": "801082045c150c066404d5b49bd5c888fa0fcda249948b9b7229bd143e5cf24d",
-        "bytes": 4716,
-        "mtime_ns": 1793658196847981726
-      },
-      "svg_compound_linear_quality_contract_v1.py": {
-        "sha256": "5d159e4ea2748d5557478f29a931ad9cab35ee5ec05ed49c81f0a62535d23663",
-        "bytes": 9925,
-        "mtime_ns": 1793658196899981624
-      },
-      "launch_compound_linear_normal_v1.py": {
-        "sha256": "6d3cc5b2f23f1097154e8ebdec688ee806f87975fd9c0e8baf4476dd421fda5f",
-        "bytes": 2805,
-        "mtime_ns": 1793659025417191914
-      },
-      "svg_leaf_opacity_proof_v2.py": {
-        "sha256": "47d98fd0100e223f35291b64ee1417a86a4159c333d65673979ee11ba41cf2c6",
-        "bytes": 2968,
-        "mtime_ns": 1793658302495746237
-      },
-      "compiler_svg_general_quality_adapter_v24.py": {
-        "sha256": "10da19de137fcf15051ff85e324323bf2fe5f7d0a7c2c506035f743743349d44",
-        "bytes": 3814,
-        "mtime_ns": 1793658302575746038
-      },
-      "compiler_svg_scene_quality_ro_v28.py": {
-        "sha256": "28d0114e34cf29fbf8495cd9ff57ec72dc75f0c56340f0559e6047d5676b247c",
-        "bytes": 13852,
-        "mtime_ns": 1793658302627745910
-      },
-      "svg_compound_linear_quality_contract_v2.py": {
-        "sha256": "f891369c0510e0342c66ac9a79024d8631c4ce290301588af82bae3f8db75bb1",
-        "bytes": 9925,
-        "mtime_ns": 1793658302699745731
-      },
-      "review_compound_linear_candidate_v1.py": {
-        "sha256": "10749c5fc780f27d44ef247aead7f9fa6474e528990e6d712dffcc8dd30d0b4c",
-        "bytes": 2654,
-        "mtime_ns": 1793658302763745572
-      },
-      "source_compound_linear_admission_v2.py": {
-        "sha256": "a180958be4b383e7c144199a06b1bf1920f50f4e0e953b7a106e4e6ae764a254",
-        "bytes": 6442,
-        "mtime_ns": 1793658389471514678
-      },
-      "review_compound_linear_qualified_v1.py": {
-        "sha256": "4573ccef4c6cbd5f27506793174592c9a4be25915b255a558a816f47fb26a102",
-        "bytes": 5901,
-        "mtime_ns": 1793658405219469581
-      },
-      "preserve_compound_linear_normal_history_v1.py": {
-        "sha256": "b9eb330b1402880eb40ee7054afd13b4ef6ab1533c373d38c8ca61e564dd2e17",
-        "bytes": 2435,
-        "mtime_ns": 1793658405263469454
-      },
-      "svg_compound_linear_quality_control_v1.py": {
-        "sha256": "82833278e0cb7ea595af6c11acfc71c995525298ff9f1efb810f3dd6656d73e1",
-        "bytes": 8002,
-        "mtime_ns": 1793658490567210210
-      },
-      "freeze_compound_linear_population_v1.py": {
-        "sha256": "fe70fec16ddb765ad93b1f569a6f9984c46673789946376536a25ff8b904d6bd",
-        "bytes": 4130,
-        "mtime_ns": 1793658582330906447
-      },
-      "close_compound_linear_controls_v1.py": {
-        "sha256": "3185700def145ef7814c75f54f74ac14df8c214b3fcdba4017825ec00753fecc",
-        "bytes": 3447,
-        "mtime_ns": 1793658789146147836
-      },
-      "svg_analytic_source_contract_v7.py": {
-        "sha256": "110c1230ff8d8cf61de7efc2810ef230ae310bcc31977fe8d88661e170796374",
-        "bytes": 5617,
-        "mtime_ns": 1793658872901817886
-      },
-      "svg_analytic_cohort_refresh_v7.py": {
-        "sha256": "2a321d80180864b445a01cae935224f94d0e82ec89aa8baa8df7e76175a269b0",
-        "bytes": 3678,
-        "mtime_ns": 1793658872953817678
-      },
-      "svg_analytic_iteration_batch_v7.py": {
-        "sha256": "e41a985e3598d163b4666bb38647bf3e24baebc4ef12dbe30746e99d3775cf35",
-        "bytes": 29127,
-        "mtime_ns": 1793658873053817277
-      },
-      "svg_analytic_iteration_case_v7.py": {
-        "sha256": "d20399a052a4489f9702dae49edaad2336ee684b286137ea487f0d99ee96c70e",
-        "bytes": 16868,
-        "mtime_ns": 1793658873113817037
-      },
-      "svg_analytic_iteration_program_v7.py": {
-        "sha256": "7cfa7e8ab844e22acb8ff6e6987f11bc878be60334d7790a5034b2cd6285abab",
-        "bytes": 35647,
-        "mtime_ns": 1793658873181816764
-      },
-      "svg_analytic_iteration_pool_v8.py": {
-        "sha256": "0417de7ca98edcd4ca09f73a10143c0ed962d6167bfb22aca3c1531de189e552",
-        "bytes": 28620,
-        "mtime_ns": 1793658873245816509
-      },
-      "svg_analytic_iteration_chain_v8.py": {
-        "sha256": "8ee3f41b2a77f126f851adfc49a098e7cee139494795788a64d2b91056192ea5",
-        "bytes": 16700,
-        "mtime_ns": 1793658873297816300
-      },
-      "svg_analytic_iteration_controls_v8.py": {
-        "sha256": "021e749ccea8b08a50fc533fefe66ddb9747d0ca5a0711941689d70855f2a53c",
-        "bytes": 155,
-        "mtime_ns": 1793658873345816108
-      },
-      "derive_compound_linear_source_pool_v1.py": {
-        "sha256": "60409e42c796523ee91f4f2ec31f7ff5966c4cc511f673bae9dd94a1d5a698ba",
-        "bytes": 5954,
-        "mtime_ns": 1793658915189647312
-      },
-      "launch_compound_linear_validation_v1.py": {
-        "sha256": "31a5444824c9eed785f0bff6c58e497463b84f470057378d6e1c762873507d39",
-        "bytes": 2418,
-        "mtime_ns": 1793658970361421200
+      "diagnose_source_css_geometry_v1.py": {
+        "sha256": "6a0b95f3294e3ec076f9e6b3d6f11c872f9fb33b0b8f34fc2044e109a96faa3b",
+        "bytes": 3140,
+        "mtime_ns": 1793659420087470142
       }
     }
   }

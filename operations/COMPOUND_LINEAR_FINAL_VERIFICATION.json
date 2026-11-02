@@ -1,0 +1,77 @@
+{
+  "at_utc": "2026-11-02T22:46:00.839001+00:00",
+  "main": {
+    "bytes": 4433473,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T224451450839Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 964,
+    "sha256": "3e62182fcc5476400ec31c3c1ec9f05fb5077c5da649b6a3e44e620492cf1ddb"
+  },
+  "new_pair_assets_verified": 5,
+  "normal_attempts_preserved": 5,
+  "normal_duplicate_ids": 0,
+  "review_registry": {
+    "held": 26,
+    "published": 62
+  },
+  "gate": {
+    "approved_units": [],
+    "controls_passed": true,
+    "goal_complete": false,
+    "implementation_identity_sha256": "e32084d7008dcc2d082d5dddac80833c18eaf9c731882c06c79fcdd94ee153f5",
+    "infrastructure_errors": 0,
+    "model_calls": 0,
+    "preserved_prior_SOURCE_candidate_attempts": 1,
+    "preserved_qualified_assets_verified": 2445,
+    "protocol_sha256": "c9882314bb0a998910a31c2cf5c07745e8e57a0a1d2c2a19ba36af2cc47dfec4",
+    "units": {
+      "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17": {
+        "B_qualified": 0,
+        "C_qualified": 3,
+        "full_qualified_rate": 0.75,
+        "new_qualified": 3,
+        "passed": false,
+        "positive_regressions": 0,
+        "samples": 4
+      }
+    }
+  },
+  "summary": {
+    "gate": {
+      "approved_units": [],
+      "controls_passed": true,
+      "goal_complete": false,
+      "implementation_identity_sha256": "e32084d7008dcc2d082d5dddac80833c18eaf9c731882c06c79fcdd94ee153f5",
+      "infrastructure_errors": 0,
+      "model_calls": 0,
+      "preserved_prior_SOURCE_candidate_attempts": 1,
+      "preserved_qualified_assets_verified": 2445,
+      "protocol_sha256": "c9882314bb0a998910a31c2cf5c07745e8e57a0a1d2c2a19ba36af2cc47dfec4",
+      "units": {
+        "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17": {
+          "B_qualified": 0,
+          "C_qualified": 3,
+          "full_qualified_rate": 0.75,
+          "new_qualified": 3,
+          "passed": false,
+          "positive_regressions": 0,
+          "samples": 4
+        }
+      }
+    },
+    "global_census_owned_by_root": true,
+    "goal_complete": false,
+    "mass": null,
+    "model_calls": 0,
+    "next_action": "Repair the largest reported source/compiler failure family with finite consumed development cases, retain all quality gates, then audit and reserve a fresh cohort before the next whole-applicable-population pass.",
+    "next_repair": {
+      "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10/next_repair.json",
+      "sha256": "6dfb806ab94483937dc9a0e92f5111568df0753d0d42ccc97e4388d8db8dac49"
+    },
+    "round_attempted": 4,
+    "round_qualified": 3,
+    "stage": "round_complete_next_repair_required"
+  },
+  "program_terminal": true,
+  "model_calls": 0,
+  "goal_complete": false
+}

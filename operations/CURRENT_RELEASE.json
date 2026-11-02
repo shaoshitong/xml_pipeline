@@ -1,26 +1,83 @@
 {
-  "at_utc": "2026-11-02T22:38:10.222297+00:00",
+  "at_utc": "2026-11-02T22:48:22.164251+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T221846148550Z_review_batch_v8/paired_priority_complex.jsonl",
-    "sha256": "43a26c11446a5694f648ad023be5a6aff03b2716d5581f16258de08b6616632e",
-    "bytes": 4430410,
-    "rows": 963
+    "bytes": 4433473,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T224451450839Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 964,
+    "sha256": "3e62182fcc5476400ec31c3c1ec9f05fb5077c5da649b6a3e44e620492cf1ddb"
   },
-  "last_completed_run": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
-  "mass_counts": {
-    "abandoned": 651,
-    "qualified": 83
+  "strict_main_rows": 964,
+  "previous_goal_turn": "progress: compound path support, 56 additional source-admitted inputs, actual fresh validation, one research-value pair published, CSS geometry bug measured",
+  "last_program": {
+    "run": "svg_complex_compound_linear_cached_unseen_20261102_v10",
+    "terminal": true,
+    "normal_attempts_current_core": 5,
+    "source_core_key": "15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241",
+    "source_frontend": "compiler_svg_scene_frontend_v21",
+    "generation": "compiler_svg_general_guard_v17",
+    "backend": "compiler_svg_scene_backend_v16",
+    "QA": "compiler_svg_scene_quality_ro_v28",
+    "QA_adapter": "compiler_svg_general_quality_adapter_v24",
+    "coordinates": "compiler_svg_explicit_coordinates_v8.py/.js",
+    "B_qualified": 0,
+    "C_qualified": 3,
+    "samples": 4,
+    "release_adopted": false,
+    "mass": null,
+    "gate": {
+      "approved_units": [],
+      "controls_passed": true,
+      "goal_complete": false,
+      "implementation_identity_sha256": "e32084d7008dcc2d082d5dddac80833c18eaf9c731882c06c79fcdd94ee153f5",
+      "infrastructure_errors": 0,
+      "model_calls": 0,
+      "preserved_prior_SOURCE_candidate_attempts": 1,
+      "preserved_qualified_assets_verified": 2445,
+      "protocol_sha256": "c9882314bb0a998910a31c2cf5c07745e8e57a0a1d2c2a19ba36af2cc47dfec4",
+      "units": {
+        "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17": {
+          "B_qualified": 0,
+          "C_qualified": 3,
+          "full_qualified_rate": 0.75,
+          "new_qualified": 3,
+          "passed": false,
+          "positive_regressions": 0,
+          "samples": 4
+        }
+      }
+    },
+    "next_repair": {
+      "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10/next_repair.json",
+      "sha256": "6dfb806ab94483937dc9a0e92f5111568df0753d0d42ccc97e4388d8db8dac49"
+    }
   },
-  "mass_content_decisions": {
-    "published": 60,
-    "held": 23
+  "source_admission": {
+    "total_targets": 2365,
+    "admitted": 841,
+    "unsupported": 1507,
+    "retained_errors": 17,
+    "recomputed": 1097,
+    "newly_admitted": 56,
+    "previous785_preserved": true,
+    "root": "/backup/shaoshitong/img2code_20261029/conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e"
+  },
+  "review_registry": {
+    "held": 26,
+    "published": 62
   },
   "pending_reviews": 0,
-  "publication_audit": "operations/BACKGROUND_FINAL_PUBLICATION_AUDIT.json",
-  "timing": "operations/BACKGROUND_FINAL_TIMING.json",
-  "current_frozen_core": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086",
-  "DaTikZ_development": {
+  "next_generic_repair": {
+    "problem": "Source observer reads geometry attributes only; CSS-controlled rectangle width/height are recorded as zero despite measured source CSS/getBBox=30x30, creating native 0.01x0.01 rectangles.",
+    "development_case": "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95",
+    "diagnosis": "operations/SOURCE_CSS_GEOMETRY_DIAGNOSIS.json",
+    "source_extractor": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_dom_source_scene_v5.js",
+    "next_step": "Create a new immutable source-observer/compiler version that records actual resolved SVG geometry. Preserve original SVG/reference bytes. Validate actual source dimensions and rejected/positive controls before one new-core development normal. All four v10 families are now consumed and cannot be relabeled unseen; audit new source coverage for fresh independent validation before any next mass pass.",
+    "do_not_relax_pixel_thresholds": true
+  },
+  "no_subagents": true,
+  "network_configuration": "Do not touch: Claude/Codex/Chrome VPS and HKUST-only userspace EasyConnect SSH route remain outside this task.",
+  "deferred_DaTikZ": {
     "qualification_claimed": false,
     "new_normal_calls": 0,
     "new_QA_calls": 0,
@@ -28,94 +85,5 @@
     "current_failure": "Executed node center/source PDF glyph group not unique: Gene_expression_data",
     "next_step": "Inspect saved source node paint before any new candidate generation; do not relax matching or repeat consumed normal attempts."
   },
-  "next_action": "Follow the existing birth-identified runtime preflight and validation launcher; do not restart. The launcher reserves all fresh families transactionally, runs fixed B/C, and automatically launches the entire eligible population only if the frozen gate passes. Review resulting scientific content separately from technical qualification.",
-  "no_subagents": true,
-  "current_development_core": {
-    "schema": "frozen_source_core_identity_v3",
-    "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17",
-    "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17:6775ed49e22530d968a3",
-    "key": "15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241"
-  },
-  "development_full8_positive": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
-  "development_normal_calls": 1,
-  "development_normal_elapsed_seconds": 105.7845745049417,
-  "development_24_source_structural_passed": 8,
-  "development_release_adopted": false,
-  "unseen_current_source_eligible_families": 4,
-  "unseen_raw_source_families": 212,
-  "development_once_history": {
-    "catalog": {
-      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_compound_linear_20261102_v12.json",
-      "sha256": "cacbbcbaf8216ffaf21d1a26c4233dde24d8b8b6c542887d76a1e7d306099566"
-    },
-    "normal_receipts": {
-      "file": "conversion/source_core_manual_compound_linear_catalog_v1/e9543e9652004303b01bd7d1e4a5fbd1/normal_receipts.json",
-      "sha256": "dfd2c63d02912358c86a876c9aa0e4eae729637c7c5740b36ab175e936e24028"
-    },
-    "preserved_normal_count": 1,
-    "same_source_core_reexecution_blocked": true,
-    "parent_catalog_unchanged": true,
-    "new_normal_calls": 0,
-    "QA_calls": 0,
-    "model_calls": 0
-  },
-  "development_positive_held_for_scientific_value": true,
-  "source_semantically_admitted": 841,
-  "source_admission_increment": 56,
-  "source_admission_regressions": 0,
-  "validation_launch": {
-    "pid": 2854759,
-    "birth_ticks": "1145069302",
-    "work": "/backup/shaoshitong/img2code_20261029/conversion/compound_linear_validation_launch_v1/46d9cebb3acd43bd923848a9d211378f",
-    "log": "/backup/shaoshitong/img2code_20261029/conversion/compound_linear_validation_launch_v1/46d9cebb3acd43bd923848a9d211378f.log",
-    "run_id": "svg_complex_compound_linear_cached_unseen_20261102_v10",
-    "goal_complete": false
-  },
-  "validation_rule": "Exhaustive shortage cohort of four: require 4/4 full8 and four incremental qualifications, zero regressions, zero infrastructure errors; gate and selection must be frozen before any unseen conversion.",
-  "validation_program": {
-    "pid": 2861776,
-    "start_ticks": 1145076502,
-    "argv": [
-      "/home/shaoshitong/anaconda3/bin/python",
-      "-B",
-      "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v7.py",
-      "supervise",
-      "--program-dir",
-      "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10",
-      "--workers",
-      "12",
-      "--case-timeout",
-      "900",
-      "--nonce",
-      "71a2f52d2d424802a103647849a409dd"
-    ],
-    "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10",
-    "finite": true,
-    "watch": false,
-    "goal_complete": false
-  },
-  "runtime_controls": {
-    "proof": {
-      "file": "release/compiler_iterations/controls/svg_compound_linear_runtime_controls_20261102_v1/proof.json",
-      "sha256": "ccd49f85e649600d598ef548e7b5723774886af2f31ef7cb1e6b96c8513313be"
-    },
-    "normal_source_conversion_calls": 0,
-    "consumed_normal_prevented_then_next_full_positive": true,
-    "canonical_original_jobs_unchanged": true,
-    "same_core_normal_history_unchanged": true,
-    "cases": [
-      {
-        "id": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
-        "status": "abandoned",
-        "attempts": 1,
-        "frontend": null
-      },
-      {
-        "id": "6d0691ae2de8fed7e8b094b23cfa77477121d279a398d4dc5a659f9f6d35ff17",
-        "status": "qualified",
-        "attempts": 1,
-        "frontend": null
-      }
-    ]
-  }
+  "source_publication_receipt": "outputs/github-source-publication-20261102.json"
 }
