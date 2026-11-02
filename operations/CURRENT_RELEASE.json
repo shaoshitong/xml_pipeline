@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:47:30.947057+00:00",
+  "at_utc": "2026-11-02T18:57:18.672914+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
   "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
@@ -23,7 +23,7 @@
     "chain_source": "svg_analytic_iteration_chain_v3.py",
     "pool_source": "svg_analytic_iteration_pool_v3.py"
   },
-  "observed_state": "Old unseen B/C complete: 13/100 new qualified, no mass release. New use-instance core normal passes full eight and controls close; next finite preflight/full-scope audit launched.",
+  "observed_state": "Priority complex-source dispatch active; 100 independent sources selected among 2365 applicable complex targets. Full 26754-SVG/131904 all-format source audit retained.",
   "source_scope": 26754,
   "all_format_provenance_scope": 131904,
   "validation_samples_per_phase": 100,
@@ -234,5 +234,50 @@
     "stdout": "{\"proof\": {\"file\": \"release/compiler_iterations/controls/svg_actual_shadow_layout_20261102_v12/proof.json\", \"sha256\": \"d28b52a19223b1741baac78dd3c542a0cbd2aad479f214a08fa36487025de377\"}, \"catalog\": {\"file\": \"release/compiler_iterations/source_core_attempts/manual_catalog_svg_actual_shadow_layout_20261102_v6.json\", \"sha256\": \"4e2a76b0bdafef205fc2c717d9a30ebfc225b8ce3f0d27b003a0d1bcded5ca3b\"}, \"source_core\": {\"schema\": \"frozen_source_core_identity_v3\", \"unit\": \"general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8\", \"policy\": \"general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8:a5e04b00856e65657213\", \"key\": \"a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733\"}, \"positive_cases\": 2, \"negative_cases\": 2, \"new_normal_calls\": 0, \"new_QA_calls\": 0}\n",
     "stderr": ""
   },
-  "next_workers": 12
+  "next_workers": 12,
+  "current_run": "svg_complex_actual_shadow_unseen100_20261102_v6",
+  "current_program_handle": {
+    "pid": 3901192,
+    "start_ticks": 1143751068,
+    "path": "release/compiler_iterations/programs/svg_complex_actual_shadow_unseen100_20261102_v6"
+  },
+  "complex_queue_policy": {
+    "pool": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/source_pools/svg_complex_actual_shadow_unseen100_20261102_v6",
+    "run_id": "svg_complex_actual_shadow_unseen100_20261102_v6",
+    "policy": {
+      "schema": "priority_complex_source_queue_policy_v1",
+      "user_scope": "Complex scientific diagrams, posters and scientific visualizations; simple sources remain in the complete audit but are not dispatched in this priority round.",
+      "source_only_filters_predate_current_QA": true,
+      "inputs": {
+        "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/priority_sources/index.jsonl": "bd930fcdd3923563a9a03cc9a6529d1fce160539235ca4ccdadf0be2db545aa2",
+        "/backup/shaoshitong/img2code_20261029/clean/priority_svg_dense_source_screen_v2/new_complex_candidates.jsonl": "fa412b7046cbf5b04d110c6da07e73248f3e9ccbf97e42363aa5af11b361f6a3"
+      },
+      "frozen_complex_or_dense_targets": 5672,
+      "all_applicable_source_population": 10104,
+      "applicable_complex_target_population": 2365,
+      "deferred_other_sources": 7739,
+      "source_scope": 26754,
+      "all_format_provenance_scope": 131904,
+      "quality_thresholds_changed": false,
+      "source_family_seal_and_anti_leakage_unchanged": true,
+      "full_scope_parent_summary": {
+        "file": "release/compiler_iterations/source_pools/svg_actual_shadow_unseen100_20261102_v4/summary.json",
+        "sha256": "ac5eab8effc89c359657ff309696b5af634b65425009759e5d1116526cffa94b"
+      },
+      "goal_complete": false
+    },
+    "selected": 100,
+    "eligible_observed_families": 539
+  },
+  "value_review": {
+    "exit": 0,
+    "stdout": "{\"at_utc\": \"2026-11-02T18:52:15.491939+00:00\", \"full8_pairs\": 14, \"strict_main_additions\": 0, \"value_states\": {\"simple_source_deprioritized\": 5, \"simple_repetitive_network\": 1, \"value_review_pending\": 6, \"hold_label_occlusion\": 2}, \"full_scope_svg_source_states\": {\"structure_review\": 19028, \"simple_deprioritized\": 1838, \"complex_candidate\": 63}, \"frozen_complex_or_dense_source_targets\": 5672, \"qualified_pair_ids_in_frozen_source_targets\": 1, \"not_all_full8_pairs_are_complex\": true, \"new_normal_conversions\": 0, \"new_QA_calls\": 0, \"new_model_calls\": 0, \"main_pointer_changed\": false, \"producer\": {\"file\": \"conversion/scripts/review_new_full8_pairs_v1.py\", \"sha256\": \"9cde7d0b2c74e2880bcb8e6c3dc5773fff77598a3c84c211d1d930875560e0b7\", \"bytes\": 6078}, \"pairs\": {\"file\": \"clean/complexity_curation_20261102T054553Z_v1/value_reviews/new_full8_20261102T185215491146Z/reviewed_pairs.jsonl\", \"sha256\": \"4a4e4a12c2b47661cac98fe0a3064d7bd57bc9620fb280334a498c0abfccffbb\", \"bytes\": 54776}}\n",
+    "stderr": ""
+  },
+  "previous_broad_dispatch_intervention": {
+    "exit": 0,
+    "stdout": "{\"at_utc\": \"2026-11-02T18:53:54.367054+00:00\", \"action\": \"cooperative_stop_new_dispatch_only\", \"object\": \"svg_actual_shadow_unseen100_20261102_v4\", \"scope\": \"This broad SVG validation dispatch; active workers finish. Existing artifacts and source-core normal history are preserved. Goal and arxiv pipelines remain active.\", \"effective_user_instruction\": \"\\u7b5b\\u9009\\u6709\\u4ef7\\u503c\\u7684\\u590d\\u6742\\u79d1\\u7814\\u56fe\\uff1b\\u6392\\u9664\\u7b80\\u5355\\u793a\\u610f\\u56fe\\u3001\\u7f51\\u9875\\u548c\\u6b8b\\u7f3a\\u6570\\u636e\\uff1b\\u6301\\u7eed\\u5173\\u6ce8\\u7b97\\u6cd5\\u53ca\\u6d41\\u6c34\\u7ebf\\u6548\\u7387\\u3002\", \"original_goal_created_at_unix\": 1793631071, \"reason\": \"Full-eight outputs value audit found only 1 of 14 in frozen complex/dense targets. The fixed source preselection predates these QA outcomes. Reuse complete full-scope source audit and seal, then validate complex targets only without weakening any gate.\", \"prior_stop_instruction_used\": false, \"new_run_scope\": \"All preselected complex/dense source targets applicable to the same compiler; full source-family and provenance audit preserved.\", \"B_before\": {\"abandoned\": 43, \"queued\": 46, \"running\": 11}, \"C_before\": {\"queued\": 100}, \"controller_owner\": {\"at\": \"2026-11-02T18:52:47.348840+00:00\", \"case_timeout_seconds\": 900.0, \"execution_protocol\": \"generation_flock_v1\", \"freeze_sha256\": \"b4eb1f7f8720fc1382f1a7c560a43200d2a948199d71e1eae89e52c622844b7f\", \"generation\": \"03b27c9d19f04b539594c1319964175f\", \"mode\": \"validation\", \"model_calls\": 0, \"pid\": 3862226, \"start_ticks\": 1143728857, \"watch\": false, \"workers\": 12}}\n",
+    "stderr": ""
+  },
+  "broad_round_new_normal_conversion_calls_before_retarget": 0
 }
