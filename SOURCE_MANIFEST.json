@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:11:08.333066+00:00",
+  "at_utc": "2026-11-02T18:19:04.463187+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -2547,7 +2547,7 @@
     {
       "file": "conversion/scripts/compiler_svg_general_guard_v4.py",
       "sha256": "75a8474ec5006cb8cc23f92ad6e107d2ef924c721c0ad7be5612c3afd72394d4",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/compiler_svg_general_iteration_batch_v1.py",
@@ -2612,7 +2612,7 @@
     {
       "file": "conversion/scripts/compiler_svg_general_quality_adapter_v5.py",
       "sha256": "2e677a1e00c020f98d0c030b6fa051ffc311da4857dbb997b52e54c084961046",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/compiler_svg_general_unseen_pool_v1.py",
@@ -2761,7 +2761,7 @@
     {
       "file": "conversion/scripts/compiler_svg_scene_backend_v7.py",
       "sha256": "fcf20981f3d12a036843c04f2f49ae60ed062b47700fc445f474fc0647857159",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/compiler_svg_scene_development_v1.py",
@@ -2838,7 +2838,7 @@
     {
       "file": "conversion/scripts/compiler_svg_scene_frontend_v8.py",
       "sha256": "32d268a9a0bbf30a3d767fa5b5a5b08ba6e9c5109240d39b6ff280c012570ea8",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v1.py",
@@ -2891,7 +2891,7 @@
     {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v9.py",
       "sha256": "2cdf5452ebbc9cbbbdb34febfa2cb5aceda2d683b79737eaf1dd2d8d710f5ff2",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/compiler_svg_source_image_backend_v1.py",
@@ -6538,7 +6538,7 @@
     {
       "file": "conversion/scripts/probe_svg_source_group_nesting_v1.py",
       "sha256": "bfedb7f16ebe43344c5e3f60d809621daf202605d34e87071f2fe8f25efe6e56",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/processing_outcomes_v2.py",
@@ -7011,7 +7011,7 @@
     {
       "file": "conversion/scripts/svg_analytic_iteration_controls_v2.py",
       "sha256": "9417f2dac52c829c6bac906c55a724fe3c97760596802b36b1a1eaad70eb6491",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/svg_analytic_source_case_dev_v1.py",
@@ -7256,12 +7256,12 @@
     {
       "file": "conversion/scripts/svg_nested_groups_normal_dev_v1.py",
       "sha256": "cda9a23090dbffffb7170462b10dc9d2e3ba6636e0ef86f81c17024ceb8b3069",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/svg_nested_groups_quality_control_v1.py",
       "sha256": "dbfdeca18e0c0a1c0b6af3c9bf8e52eb0c4e994f2af8575e217d52a0dd4bccec",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/svg_nonconformal_paint_raster_review_v1.py",
@@ -7368,7 +7368,7 @@
     {
       "file": "conversion/scripts/svg_source_group_nesting_v1.py",
       "sha256": "2bc474e0c89376c3a8205e0bb154c3d1a154713551331a2c525b31ad79e9f119",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/svg_source_native_paint_overlap_probe_v1.js",
@@ -9575,7 +9575,7 @@
     {
       "file": "conversion/scripts/test_svg_source_group_nesting_v1.py",
       "sha256": "275fe723df1fa19c7ce57b8ea74c1d714c68aa5d9d3ba4ede9cde05cca8e85e8",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/test_tex_dependency_v2.py",
@@ -11248,32 +11248,72 @@
     {
       "file": "conversion/scripts/close_svg_nested_controls_v1.py",
       "sha256": "b37d8454bf2fd4041d4b6b13f345a9d4dff677cc6dd2beaf0f7227d650e46d74",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/strict_native_canvas_evidence_v1.py",
       "sha256": "071ee6ddb2cac3a16fa56b9e3af80e7dfad4a3865bd15488dd2d3774862e44fe",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/test_strict_native_canvas_evidence_v1.py",
       "sha256": "61223f68e4fadbd696d74f27399362efd51537c8036acc09bdb044cbeba94952",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_controls_v3.py",
       "sha256": "81e4ba16f27b34186e209b87df64619443d24f11ef9de1b44f324553001193bf",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/test_catalog_refresh_v3.py",
       "sha256": "1d4b519cfbd9e0dfba98cc05a78ec8aec846f9ab9551ca3373eb7efc1d32ae0b",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
     },
     {
       "file": "conversion/scripts/research_catalog_refresh_v3.py",
       "sha256": "1dc676579a20b70feca0c2dbaf02c77596db455daf50db6c691a2e8d9eeee9d8",
-      "basis": "current session fix or test source"
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_case_v2.py",
+      "sha256": "c5e72fb198d836e8e05c53bdf8f396562d29d4c67423b3e22cc24c5c50f1c994",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_pool_v2.py",
+      "sha256": "242b91d700c595aa41fbc888f2dc07c0713c1ba27e4ad3db8e281a756bf3bfe8",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_batch_v2.py",
+      "sha256": "a9140904871376141813a33c771e679c5b99d38dff19af818fa15015a188553d",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_program_v2.py",
+      "sha256": "06b668dae19f8bf6317c7cf3932a2754f0c8809680632b7e83eb67857ac02ae0",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_chain_v2.py",
+      "sha256": "74b1f1343420edf2e125aecec55b33f9fcdf50f4d34c3682e025b7da1afe7b33",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_source_contract_v2.py",
+      "sha256": "dd485730aa8f209ed9da6ace774b3e13e26951becdfb16400a7a0bc0e911e445",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_cohort_refresh_v2.py",
+      "sha256": "f04295fdc39718ba4a7e9b26a698d8eea79930252ae1501afddc4f4ba2abd365",
+      "basis": "current versioned orchestration, generic repair or tests"
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_private_QA_lease_v1.py",
+      "sha256": "da70df0886700805a3ab0284b90039b43b4d4eea34e5e9bf7089303ad6e1273d",
+      "basis": "current versioned orchestration, generic repair or tests"
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded."

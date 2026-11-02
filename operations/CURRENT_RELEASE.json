@@ -1,0 +1,52 @@
+{
+  "at_utc": "2026-11-02T18:19:04.468180+00:00",
+  "host": "hkust3",
+  "root": "/backup/shaoshitong/img2code_20261029",
+  "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
+  "source_frontend": "compiler_svg_scene_frontend_v8",
+  "generation_plugin": "compiler_svg_general_guard_v4",
+  "QA": "compiler_svg_scene_quality_ro_v9",
+  "strict_native_canvas_contract": "svg_analytic_iteration_controls_v3",
+  "controls_proof": {
+    "file": "release/compiler_iterations/controls/svg_source_nested_groups_20261102_v1/proof.json",
+    "sha256": "64e4cdf4d3f91cc752e23105ce22c0518a971e0547423b4ba769475afe52fb9e"
+  },
+  "runtime_dispatch_proof": {
+    "file": "release/compiler_iterations/controls/svg_nested_groups_runtime_controls_20261102_v2/proof.json",
+    "sha256": "29ffd446f17b7ba7ede7ba21a2aceb8ee86bd2fdd44b6ca6d09d0e5d135180bd"
+  },
+  "frozen_once_catalog": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_nested_groups_20261102_v4.json",
+  "fixed_chain_handle": {
+    "at_utc": "2026-11-02T18:17:03.231837+00:00",
+    "pid": 3504717,
+    "birth_ticks": 1143514517,
+    "run": "/backup/shaoshitong/img2code_20261029/conversion/svg_nested_fixed_chain_launch_v2/185dd4b6985d4befa3503ef4707f5a71",
+    "preflight_log": "/backup/shaoshitong/img2code_20261029/conversion/svg_nested_fixed_chain_launch_v2/185dd4b6985d4befa3503ef4707f5a71/preflight.log",
+    "chain_root": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/chains/svg_nested_groups_unseen100_20261102_v2",
+    "previous_failed_wrapper": "/backup/shaoshitong/img2code_20261029/conversion/svg_nested_fixed_chain_launch_v2/95a356aacd6642a3a5d3439ffca5b5a3",
+    "repair": "deployed_missing_private_QA_dependency_before_any_dispatch",
+    "normal_source_conversions_repeated": false
+  },
+  "observed_state": "real runtime preflight passed; source audit launch in progress, inspect its current handle",
+  "source_scope": 26754,
+  "all_format_provenance_scope": 131904,
+  "validation_samples_per_phase": 100,
+  "release_gate": {
+    "minimum_qualified_fraction": 0.2,
+    "minimum_new_qualified": 5,
+    "maximum_regressions": 0,
+    "maximum_infrastructure_failures": 0,
+    "maximum_negative_false_acceptances": 0
+  },
+  "normal_core_source_conversions_before_unseen": 1,
+  "normal_reexecution_for_same_source_core_allowed": false,
+  "known_qualified_primary_complex_pairs": 880,
+  "new_normal_pair_value_status": "2a6f passes full QA; frozen source screen says structure_review; not yet counted in strict primary set",
+  "local_tests": {
+    "catalogue_integration": 9,
+    "group_geometry_and_actual_canvas_contract": 6
+  },
+  "catalogue_current_pointer": "clean/research_pairs_catalog/current.json",
+  "data_and_runtime_packages_in_git": false,
+  "goal_complete": false
+}
