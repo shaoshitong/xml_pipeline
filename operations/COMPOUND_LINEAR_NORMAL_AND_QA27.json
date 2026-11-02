@@ -1,0 +1,93 @@
+{
+  "birth_live": false,
+  "age_seconds": 43.9,
+  "summary": {
+    "id": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
+    "normal_frontend_calls": 1,
+    "claim": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v21/normal_once/15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241/00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75.json",
+    "source_core": {
+      "schema": "frozen_source_core_identity_v3",
+      "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17",
+      "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17:6775ed49e22530d968a3",
+      "key": "15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241"
+    },
+    "configuration_policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17:6775ed49e22530d968a3",
+    "source": {
+      "source": "QijiaHe--VFIG-Data",
+      "source_repo": "QijiaHe--VFIG-Data",
+      "source_file": "VFIG-Data-Complex-Diagrams/train-00004-of-00007.parquet",
+      "source_row": 8237,
+      "source_svg_sha256": "7f2b15c613bb20bb3b5abc0c8b1266fc2f4c976765c4fbbb53c34abc86a34b83",
+      "image_provenance": "rendered_from_source_svg",
+      "pairing": "derived_from_source_svg",
+      "category": "scientific_diagram",
+      "code_format": "svg",
+      "format": "svg",
+      "code_provenance": "dataset_svg",
+      "gold_code_provenance": "dataset_svg",
+      "image_key": "image",
+      "code_key": "code",
+      "structurally_complete": true,
+      "code_execution_checked": false,
+      "code_sha256": "7f2b15c613bb20bb3b5abc0c8b1266fc2f4c976765c4fbbb53c34abc86a34b83",
+      "render_backend": "cairosvg",
+      "width": 800,
+      "height": 800,
+      "semantic_basis": "framework_text_and_connectors",
+      "raster_image_elements": 0,
+      "native_xml_selected_as_code": false,
+      "native_xml_auxiliary_issue": null,
+      "native_xml_decompressed": false,
+      "embedded_xml_sha256": null,
+      "structure": {
+        "native_vertices": 0,
+        "native_edges": 0,
+        "text_elements": 25,
+        "labeled_native_cells": 0
+      },
+      "image_sha256": "d55fcb8fc4750c3f93ce029d5944a498d65b54f51cd08b1f5302ecdae87fab03",
+      "render_seconds": 0.29759970493614674,
+      "derived_file": "clean/QijiaHe--VFIG-Data/pairs-00040.parquet",
+      "derived_row": 40,
+      "clean_file": "clean/QijiaHe--VFIG-Data/pairs-00040.parquet",
+      "clean_row": 40,
+      "catalog_kind": "derived",
+      "pair_sha256": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
+      "alignment_verification": "rendered_from_selected_code",
+      "source_manifest": "manifests/derived.QijiaHe--VFIG-Data.jsonl",
+      "source_manifest_line": 15699
+    },
+    "model_calls": 0,
+    "goal_complete": false,
+    "conversion_ok": true,
+    "conversion_reason": "native_candidate_pending_full_quality",
+    "candidate_file": "/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v21/00/00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75/2cc9e83603a04aa4933e5d71e469d5cc/record.json",
+    "quality_ok": false,
+    "quality_failures": [
+      {
+        "type": "ValueError",
+        "reason": "source_profile_failed"
+      }
+    ],
+    "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/SVG_compound_linear_v21_00b0765bef_57b6c011e31049f7ba38b783e94067b6/report.json",
+    "checks": [
+      "structure",
+      "resources",
+      "render",
+      "source"
+    ],
+    "canonical_owner_guard": {
+      "policy": "readonly_canonical_owner_v1",
+      "worker_pid": null,
+      "decision": "no_claim",
+      "canonical_mutations": 0,
+      "canonical_raw_row_sha256": "5260c15eef9c4d6ae31a9f434e72d3e1ed22453e0b494adcd879100bc96a18ff"
+    },
+    "canonical_unchanged": true
+  },
+  "timing": {
+    "elapsed_seconds": 43.06946994923055,
+    "exit_code": 0
+  },
+  "log": "h_guard_v17:6775ed49e22530d968a3\", \"key\": \"15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241\"}, \"configuration_policy\": \"general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17:6775ed49e22530d968a3\", \"model_calls\": 0, \"goal_complete\": false, \"conversion_ok\": true, \"conversion_reason\": \"native_candidate_pending_full_quality\", \"candidate_file\": \"/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v21/00/00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75/2cc9e83603a04aa4933e5d71e469d5cc/record.json\", \"quality_ok\": false, \"quality_failures\": [{\"type\": \"ValueError\", \"reason\": \"source_profile_failed\"}], \"quality_report\": \"/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/SVG_compound_linear_v21_00b0765bef_57b6c011e31049f7ba38b783e94067b6/report.json\", \"checks\": [\"structure\", \"resources\", \"render\", \"source\"], \"canonical_owner_guard\": {\"policy\": \"readonly_canonical_owner_v1\", \"worker_pid\": null, \"decision\": \"no_claim\", \"canonical_mutations\": 0, \"canonical_raw_row_sha256\": \"5260c15eef9c4d6ae31a9f434e72d3e1ed22453e0b494adcd879100bc96a18ff\"}, \"canonical_unchanged\": true}\n"
+}

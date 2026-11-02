@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T22:19:49.994484+00:00",
+  "at_utc": "2026-11-02T22:38:10.222297+00:00",
   "goal_complete": false,
   "authoritative_main": {
     "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T221846148550Z_review_batch_v8/paired_priority_complex.jsonl",
@@ -28,29 +28,29 @@
     "current_failure": "Executed node center/source PDF glyph group not unique: Gene_expression_data",
     "next_step": "Inspect saved source node paint before any new candidate generation; do not relax matching or repeat consumed normal attempts."
   },
-  "next_action": "Expand generic source representation for currently unsupported but independent complex source families before reserving a fresh validation cohort. Preserve the 24 consumed development cases and one completed core20 normal; do not rerun them. Inspect multiple-open-subpath paths and source renderer failures without adding whole-image wrappers or relaxing gates.",
+  "next_action": "Follow the existing birth-identified runtime preflight and validation launcher; do not restart. The launcher reserves all fresh families transactionally, runs fixed B/C, and automatically launches the entire eligible population only if the frozen gate passes. Review resulting scientific content separately from technical qualification.",
   "no_subagents": true,
   "current_development_core": {
     "schema": "frozen_source_core_identity_v3",
-    "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_stroke_outline_crossing_support_guard_v16",
-    "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_stroke_outline_crossing_support_guard_v16:9dff5e4f811e1758b9e2",
-    "key": "d7e72c3f2de42210de9947dc2d384eee9d14f05fba1b2461c6b7349c1620d148"
+    "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17",
+    "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17:6775ed49e22530d968a3",
+    "key": "15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241"
   },
-  "development_full8_positive": "6d0691ae2de8fed7e8b094b23cfa77477121d279a398d4dc5a659f9f6d35ff17",
+  "development_full8_positive": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
   "development_normal_calls": 1,
   "development_normal_elapsed_seconds": 105.7845745049417,
   "development_24_source_structural_passed": 8,
   "development_release_adopted": false,
-  "unseen_current_source_eligible_families": 0,
+  "unseen_current_source_eligible_families": 4,
   "unseen_raw_source_families": 212,
   "development_once_history": {
     "catalog": {
-      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_outline_crossing_20261102_v11.json",
-      "sha256": "3f3ce5e70e22a4a6702cefdb60b037cbd151de7945e273fd6bfd0aeeaa3505e0"
+      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_compound_linear_20261102_v12.json",
+      "sha256": "cacbbcbaf8216ffaf21d1a26c4233dde24d8b8b6c542887d76a1e7d306099566"
     },
     "normal_receipts": {
-      "file": "conversion/source_core_manual_outline_crossing_catalog_v1/0c5aade83dd94a33949a5b9386ff7131/normal_receipts.json",
-      "sha256": "c92b64952e522eb0968ebb51a6a7e2974cf5a9017d5bf2cce4124a600a5db9ef"
+      "file": "conversion/source_core_manual_compound_linear_catalog_v1/e9543e9652004303b01bd7d1e4a5fbd1/normal_receipts.json",
+      "sha256": "dfd2c63d02912358c86a876c9aa0e4eae729637c7c5740b36ab175e936e24028"
     },
     "preserved_normal_count": 1,
     "same_source_core_reexecution_blocked": true,
@@ -58,5 +58,64 @@
     "new_normal_calls": 0,
     "QA_calls": 0,
     "model_calls": 0
+  },
+  "development_positive_held_for_scientific_value": true,
+  "source_semantically_admitted": 841,
+  "source_admission_increment": 56,
+  "source_admission_regressions": 0,
+  "validation_launch": {
+    "pid": 2854759,
+    "birth_ticks": "1145069302",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/compound_linear_validation_launch_v1/46d9cebb3acd43bd923848a9d211378f",
+    "log": "/backup/shaoshitong/img2code_20261029/conversion/compound_linear_validation_launch_v1/46d9cebb3acd43bd923848a9d211378f.log",
+    "run_id": "svg_complex_compound_linear_cached_unseen_20261102_v10",
+    "goal_complete": false
+  },
+  "validation_rule": "Exhaustive shortage cohort of four: require 4/4 full8 and four incremental qualifications, zero regressions, zero infrastructure errors; gate and selection must be frozen before any unseen conversion.",
+  "validation_program": {
+    "pid": 2861776,
+    "start_ticks": 1145076502,
+    "argv": [
+      "/home/shaoshitong/anaconda3/bin/python",
+      "-B",
+      "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v7.py",
+      "supervise",
+      "--program-dir",
+      "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10",
+      "--workers",
+      "12",
+      "--case-timeout",
+      "900",
+      "--nonce",
+      "71a2f52d2d424802a103647849a409dd"
+    ],
+    "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10",
+    "finite": true,
+    "watch": false,
+    "goal_complete": false
+  },
+  "runtime_controls": {
+    "proof": {
+      "file": "release/compiler_iterations/controls/svg_compound_linear_runtime_controls_20261102_v1/proof.json",
+      "sha256": "ccd49f85e649600d598ef548e7b5723774886af2f31ef7cb1e6b96c8513313be"
+    },
+    "normal_source_conversion_calls": 0,
+    "consumed_normal_prevented_then_next_full_positive": true,
+    "canonical_original_jobs_unchanged": true,
+    "same_core_normal_history_unchanged": true,
+    "cases": [
+      {
+        "id": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
+        "status": "abandoned",
+        "attempts": 1,
+        "frontend": null
+      },
+      {
+        "id": "6d0691ae2de8fed7e8b094b23cfa77477121d279a398d4dc5a659f9f6d35ff17",
+        "status": "qualified",
+        "attempts": 1,
+        "frontend": null
+      }
+    ]
   }
 }

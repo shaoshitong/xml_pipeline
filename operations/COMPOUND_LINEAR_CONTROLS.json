@@ -1,0 +1,16 @@
+{
+  "proof": {
+    "file": "release/compiler_iterations/controls/svg_compound_linear_20261102_v1/proof.json",
+    "sha256": "e792d4de28ac16f42fd8fb28ace70543675aa13b1b0f867349a4b632fdfeb473"
+  },
+  "positive_cases": 2,
+  "negative_cases": 3,
+  "source_core": {
+    "schema": "frozen_source_core_identity_v3",
+    "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17",
+    "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17:6775ed49e22530d968a3",
+    "key": "15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241"
+  },
+  "new_normal_calls": 0,
+  "new_QA_calls": 0
+}

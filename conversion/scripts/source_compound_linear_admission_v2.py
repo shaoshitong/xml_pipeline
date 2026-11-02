@@ -1,0 +1,66 @@
+"""Finite source-only re-admission; no candidate/QA outcome is read.
+
+Recompute the prior admitted sources and both affected source-rejection classes.
+All 2365 original targets and every other old rejection remain in the census.
+"""
+from pathlib import Path
+import argparse,collections,concurrent.futures,datetime,hashlib,inspect,json,multiprocessing,os,sys,time
+R=Path('/backup/shaoshitong/img2code_20261029');S=R/'conversion/scripts';sys.path.insert(0,str(S))
+PARENT=R/'conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea'
+
+def sha(b):return hashlib.sha256(b).hexdigest()
+def raw(v):return(json.dumps(v,sort_keys=True,indent=2)+'\n').encode()
+def read(p):return json.loads(p.read_bytes())
+def rows(p):return[json.loads(line)for line in p.read_bytes().splitlines()if line]
+def asset(p):return dict(file=str(p.relative_to(R)),sha256=sha(p.read_bytes()))
+def atomic(p,value):
+    tmp=p.with_suffix(p.suffix+'.tmp');tmp.write_bytes(raw(value));os.replace(tmp,p)
+
+def leaf_alpha_source_supported(obj,dom):
+    st=obj.get('style',{});css=obj.get('sceneComputedCss',{});refs=obj.get('sceneAncestry',[]);anc=dom['sceneMetadata']['ancestors']
+    return obj.get('type')=='shape'and obj.get('tag')in('rect','circle','ellipse','polygon')and st.get('fill')!='none'and st.get('stroke')=='none'and not obj.get('sceneUseContexts')and not obj.get('sceneMarkerContexts')and bool(refs)and all(float(anc[r]['opacity'])==1 for r in refs[:-1])and 0<float(st.get('opacity',1))<1 and abs(float(anc[refs[-1]]['opacity'])-float(st['opacity']))<1e-8 and css.get('mixBlendMode')=='normal'and css.get('isolation')=='auto'and all(css.get(k)=='none'for k in('filter','clipPath','maskImage'))
+
+def task(prior):return _CASE(prior)
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--work',type=Path,required=True);args=parser.parse_args();root=args.work.resolve()
+    assert root.is_relative_to(R/'conversion/source_compound_linear_admission_v2');root.mkdir(parents=True,exist_ok=False)
+    import svg_source_cached_admission_v1 as old_case
+    import compiler_svg_scene_frontend_v15 as old
+    import compiler_svg_scene_frontend_v21 as current
+    import compiler_svg_general_guard_v17 as core
+    prior_summary=read(PARENT/'summary.json');assert prior_summary['finished']and prior_summary['total']==prior_summary['completed']==2365
+    for ref in prior_summary['files'].values():assert sha((R/ref['file']).read_bytes())==ref['sha256']
+    allowed={'configuration','_apply_offsets','_semantics','structure_checks','convert','validate_source','audit_editing','_marker_contours'}
+    changed=[name for name,fn in vars(old).items()if inspect.isfunction(fn)and fn.__module__==old.__name__ and inspect.getsource(fn)!=inspect.getsource(getattr(current,name))]
+    assert set(changed)<=allowed,changed
+    for name in ['CHROME','PYTHON','SOURCE_RUNTIME','SOURCE_PACKAGES','_CAIRO','_RUN_ROWS_JS']:assert getattr(old,name)==getattr(current,name),name
+    source=inspect.getsource(old_case.case).replace('compiler_svg_general_guard_v14 as core','compiler_svg_general_guard_v17 as core').replace('    from svg_source_semantic_admission_audit_v1 import leaf_alpha_source_supported\n','')
+    source=source.replace('features=core.source_features(dom,size)',"try:features=core.source_features(dom,size)\n        except ValueError as unsupported:features=dict(failures=[dict(reason=str(unsupported))])")
+    namespace=dict(vars(old_case));namespace['leaf_alpha_source_supported']=leaf_alpha_source_supported;exec(compile(source,str(Path(__file__).resolve())+'::source_case','exec'),namespace)
+    global _CASE
+    _CASE=namespace['case']
+    all_rows=[row for status in ['admitted','unsupported','error']for row in rows(PARENT/(status+'.jsonl'))];assert len(all_rows)==2365
+    affected={'source_open_path_has_multiple_subpaths','source_element_or_ancestor_opacity_requires_compositing_frontend'}
+    candidates=[r for r in all_rows if r['status']=='admitted'or r.get('reason')in affected];ids={r['id']for r in candidates}
+    retained=[dict(r,current_source_semantics_recomputed=False,retained_prior_source_decision=True,retained_prior_admission_summary=asset(PARENT/'summary.json'))for r in all_rows if r['id']not in ids]
+    cfg=core.configuration();(root/'configuration.json').write_bytes(raw(cfg));(root/'input.jsonl').write_bytes((PARENT/'input.jsonl').read_bytes())
+    producer=asset(Path(__file__).resolve());plan=dict(configuration=cfg,producer=producer,parent_summary=asset(PARENT/'summary.json'),input_sha256=sha((root/'input.jsonl').read_bytes()),source_targets=2365,recomputed_targets=len(candidates),retained_targets=len(retained),affected_source_reasons=sorted(affected),unchanged_source_observer=True,changed_functions=changed,candidate_outcomes_used=False,normal_calls=0,QA_calls=0)
+    (root/'plan.json').write_bytes(raw(plan));owner=dict(pid=os.getpid(),birth_ticks=Path('/proc/self/stat').read_text().rsplit(') ',1)[1].split()[19]);(root/'owner.json').write_bytes(raw(owner))
+    results=list(retained);started=time.monotonic()
+    def summary(finished):
+        value=dict(at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),root=str(root),total=2365,completed=len(results),recomputed_completed=len(results)-len(retained),recomputed_total=len(candidates),counts=dict(collections.Counter(r['status']for r in results)),finished=finished,elapsed_seconds=time.monotonic()-started,normal_calls=0,candidate_emissions=0,QA_calls=0,model_calls=0,goal_complete=False)
+        atomic(root/'summary.json',value);return value
+    summary(False)
+    with concurrent.futures.ProcessPoolExecutor(max_workers=12,mp_context=multiprocessing.get_context('fork'))as pool:
+        futures=[pool.submit(task,r)for r in candidates]
+        with(root/'recomputed.jsonl').open('w')as stream:
+            for future in concurrent.futures.as_completed(futures):
+                value=future.result();value['source_only_semantic_admission']=True;results.append(value);stream.write(json.dumps(value)+'\n');stream.flush();summary(False)
+    assert core.configuration()==cfg
+    final=summary(True);final['files']={}
+    for status in ['admitted','unsupported','error']:
+        p=root/(status+'.jsonl');p.write_text(''.join(json.dumps(r,sort_keys=True)+'\n'for r in results if r['status']==status));p.chmod(0o444);final['files'][p.name]=asset(p)
+    atomic(root/'summary.json',final);print(json.dumps(final))
+
+if __name__=='__main__':main()

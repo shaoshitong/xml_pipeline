@@ -1,0 +1,42 @@
+{
+  "review": {
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_79319cac6e6544bbabd4b9190010aa6a",
+    "pairs": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_79319cac6e6544bbabd4b9190010aa6a/reviewed_pairs.jsonl",
+      "sha256": "782d1b7d6652e72c823e02a2a1fccf6f2273d3c4bcb0e60e805b6a91290645a3",
+      "bytes": 5293
+    },
+    "occlusion": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_compound_linear_v21_0f1912a3e324440c9e34dfcf7506fdd2/source_text_occlusion_reviews.jsonl",
+      "sha256": "362aa1bd3eff25644f585dc7f34dcd661022f3223f3b4f05a7655f01af8d74f5",
+      "bytes": 353
+    },
+    "input_summary": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_compound_linear_v21_0f1912a3e324440c9e34dfcf7506fdd2/summary.json",
+      "sha256": "b1ddafdebce92b0153e9d5ca2a33688763f78fafa1fb541652483ee087c31158",
+      "bytes": 1531
+    },
+    "decisions": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_79319cac6e6544bbabd4b9190010aa6a/decisions.json",
+      "sha256": "c1cdcab293862009bb28ba2303e88cc6f9d43aa2ec0fcfee46cca0d5fd2e1d26",
+      "bytes": 472
+    },
+    "approved_ids": [],
+    "held_ids": [
+      "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75"
+    ],
+    "actual_native_PNG_inspected_ids": [
+      "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75"
+    ],
+    "technical_qualifications_unchanged": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "model_calls": 0
+  },
+  "publication": {
+    "before": 963,
+    "after": 963,
+    "added_ids": [],
+    "already_published": true
+  }
+}

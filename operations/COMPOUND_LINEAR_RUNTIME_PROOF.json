@@ -1,0 +1,24 @@
+{
+  "proof": {
+    "file": "release/compiler_iterations/controls/svg_compound_linear_runtime_controls_20261102_v1/proof.json",
+    "sha256": "ccd49f85e649600d598ef548e7b5723774886af2f31ef7cb1e6b96c8513313be"
+  },
+  "normal_source_conversion_calls": 0,
+  "consumed_normal_prevented_then_next_full_positive": true,
+  "canonical_original_jobs_unchanged": true,
+  "same_core_normal_history_unchanged": true,
+  "cases": [
+    {
+      "id": "00b0765befc554f4141ec707b19b2d7fbd60fffd0b2b9b7d64252840e6a5ee75",
+      "status": "abandoned",
+      "attempts": 1,
+      "frontend": null
+    },
+    {
+      "id": "6d0691ae2de8fed7e8b094b23cfa77477121d279a398d4dc5a659f9f6d35ff17",
+      "status": "qualified",
+      "attempts": 1,
+      "frontend": null
+    }
+  ]
+}

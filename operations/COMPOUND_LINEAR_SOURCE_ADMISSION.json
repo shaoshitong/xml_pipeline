@@ -1,0 +1,38 @@
+{
+  "live": false,
+  "summary": {
+    "QA_calls": 0,
+    "at_utc": "2026-11-02T22:27:46.624686+00:00",
+    "candidate_emissions": 0,
+    "completed": 2365,
+    "counts": {
+      "admitted": 841,
+      "error": 17,
+      "unsupported": 1507
+    },
+    "elapsed_seconds": 75.70242412388325,
+    "files": {
+      "admitted.jsonl": {
+        "file": "conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e/admitted.jsonl",
+        "sha256": "be74ef3198a3e6b69408606ae195cae61e96e1d97ebb1c974dbf8bd7684464ab"
+      },
+      "error.jsonl": {
+        "file": "conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e/error.jsonl",
+        "sha256": "dfc8dd3818be729046bf14c13a1cf66953b968f34720d3321b75f1b5a7fc624e"
+      },
+      "unsupported.jsonl": {
+        "file": "conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e/unsupported.jsonl",
+        "sha256": "f7c4f88c90d3ce81154f90673cd818248b7433f2fa2ab8f203afb7f5571481d5"
+      }
+    },
+    "finished": true,
+    "goal_complete": false,
+    "model_calls": 0,
+    "normal_calls": 0,
+    "recomputed_completed": 1097,
+    "recomputed_total": 1097,
+    "root": "/backup/shaoshitong/img2code_20261029/conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e",
+    "total": 2365
+  },
+  "log": "{\"at_utc\": \"2026-11-02T22:27:46.624686+00:00\", \"root\": \"/backup/shaoshitong/img2code_20261029/conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e\", \"total\": 2365, \"completed\": 2365, \"recomputed_completed\": 1097, \"recomputed_total\": 1097, \"counts\": {\"unsupported\": 1507, \"error\": 17, \"admitted\": 841}, \"finished\": true, \"elapsed_seconds\": 75.70242412388325, \"normal_calls\": 0, \"candidate_emissions\": 0, \"QA_calls\": 0, \"model_calls\": 0, \"goal_complete\": false, \"files\": {\"admitted.jsonl\": {\"file\": \"conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e/admitted.jsonl\", \"sha256\": \"be74ef3198a3e6b69408606ae195cae61e96e1d97ebb1c974dbf8bd7684464ab\"}, \"unsupported.jsonl\": {\"file\": \"conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e/unsupported.jsonl\", \"sha256\": \"f7c4f88c90d3ce81154f90673cd818248b7433f2fa2ab8f203afb7f5571481d5\"}, \"error.jsonl\": {\"file\": \"conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e/error.jsonl\", \"sha256\": \"dfc8dd3818be729046bf14c13a1cf66953b968f34720d3321b75f1b5a7fc624e\"}}}\n"
+}
