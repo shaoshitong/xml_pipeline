@@ -1,0 +1,63 @@
+{
+  "schema": "DaTikZ_complex_39_source_readiness_not_native_qualification_v1",
+  "at_utc": "2026-11-02T21:59:30.111120+00:00",
+  "root": "/backup/shaoshitong/img2code_20261029/clean/priority_datikz_source_readiness_v1/c9f7944137cc43559b6062f203469aea",
+  "targets": {
+    "file": "clean/complexity_curation_20261102T054553Z_v1/priority_sources/priority_datikz_targets39_v1.json",
+    "sha256": "187d588c616db141f0c5de7dcbbed41c4563d124e496d39c8e576284c63c1880",
+    "bytes": 35872
+  },
+  "input_summary": {
+    "file": "conversion/priority_datikz_compile_preflight_v5/31dc009a9bdf478ca5d394eae3cd5fd6/summary.json",
+    "sha256": "6e8b795bdf32f79a91cfcbe60183c8f24a9cfe800fc68ed6542c1ea2d7cadaa9",
+    "bytes": 1024
+  },
+  "source_readiness": {
+    "file": "clean/priority_datikz_source_readiness_v1/c9f7944137cc43559b6062f203469aea/source_readiness.jsonl",
+    "sha256": "d0a43fa421f7f56bf9a2cc8d3b712a67c79477f6eac05a12745511787bbe0dbf",
+    "bytes": 125662
+  },
+  "producer": {
+    "file": "conversion/scripts/close_datikz_preflight_census_v2.py",
+    "sha256": "65c42d593279b2e087d0fd934da8088b7805ebc7bc14975dc3e2bb4ca15cc9ed",
+    "bytes": 4757
+  },
+  "selected_sources": 39,
+  "original_source_hashes_verified": 39,
+  "baseline_original_sources_compiled": 38,
+  "readiness_counts": {
+    "source_trace_supported": 22,
+    "source_trace_unsupported": 13,
+    "instrumentation_hook_compilation_failed": 2,
+    "source_single_page_profile_unsupported": 1,
+    "source_baseline_compilation_failed": 1
+  },
+  "native_development": {
+    "file": "conversion/priority_datikz_native_pilot_v1/bdda92b0e0ae42058f682bdb55efa270/summary.json",
+    "sha256": "ab8032b76ef112f693678bf798437440f40e6f4d8e80e77e019505b6974f4dce",
+    "bytes": 3645
+  },
+  "native_normal_calls": 3,
+  "native_qualified": 0,
+  "native_failures": [
+    {
+      "raw_id": "8fcbacbc9966c558cb04b1370f6a2e0c9580b1760f3aef45a68ce378dba5a460",
+      "reason": "source_binding_incomplete",
+      "detail": "source_binding_incomplete:[{\"reason\": \"execution_binding_unsupported\", \"error\": \"No exact unarrowed source path or symmetric named nodes to establish the global source frame: Execution node not uniquely identified in PDF source paint: P\"}]"
+    },
+    {
+      "raw_id": "4972350fae3aa6b6abe3d600011fa3c1e8bef241d4c05d9480e7f2be22fc0d74",
+      "reason": "source_binding_incomplete",
+      "detail": "source_binding_incomplete:[{\"reason\": \"execution_binding_unsupported\", \"error\": \"Source path with multiple semantic edges requires complete polyline ownership\"}]"
+    },
+    {
+      "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+      "reason": "source_binding_incomplete",
+      "detail": "source_binding_incomplete:[{\"reason\": \"execution_binding_unsupported\", \"error\": \"Source path with multiple semantic edges requires complete polyline ownership\"}]"
+    }
+  ],
+  "provider_original_PNG_fidelity_claimed": false,
+  "no_whole_image_wrappers": true,
+  "model_calls": 0,
+  "goal_complete": false
+}
