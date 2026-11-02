@@ -1,29 +1,40 @@
 {
-  "at_utc": "2026-11-02T19:31:33.767111+00:00",
+  "at_utc": "2026-11-02T19:34:50.772008+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
   "core_key": "a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733",
   "source_frontend": "compiler_svg_scene_frontend_v12",
   "generation_plugin": "compiler_svg_general_guard_v8",
   "QA": "compiler_svg_scene_quality_ro_v13",
-  "strict_native_canvas_contract": "svg_analytic_iteration_controls_v3",
+  "strict_native_canvas_contract": "svg_analytic_iteration_controls_v4",
   "controls_proof": {
-    "file": "release/compiler_iterations/controls/svg_source_nested_groups_20261102_v1/proof.json",
-    "sha256": "64e4cdf4d3f91cc752e23105ce22c0518a971e0547423b4ba769475afe52fb9e"
+    "file": "release/compiler_iterations/controls/svg_actual_shadow_layout_20261102_v12/proof.json",
+    "sha256": "d28b52a19223b1741baac78dd3c542a0cbd2aad479f214a08fa36487025de377"
   },
   "runtime_dispatch_proof": {
     "file": "release/compiler_iterations/controls/svg_nested_groups_runtime_controls_20261102_v2/proof.json",
     "sha256": "29ffd446f17b7ba7ede7ba21a2aceb8ee86bd2fdd44b6ca6d09d0e5d135180bd"
   },
-  "frozen_once_catalog": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_nested_groups_20261102_v4.json",
+  "frozen_once_catalog": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_actual_shadow_layout_20261102_v6.json",
   "fixed_chain_handle": {
-    "pid": 3520183,
-    "birth_ticks": 1143534309,
-    "chain_root": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/chains/svg_nested_groups_unseen100_20261102_v3",
-    "chain_source": "svg_analytic_iteration_chain_v3.py",
-    "pool_source": "svg_analytic_iteration_pool_v3.py"
+    "run": "svg_complex_symbol_viewport_unseen100_20261102_v7",
+    "program": "release/compiler_iterations/programs/svg_complex_symbol_viewport_unseen100_20261102_v7",
+    "program_pid": 44276,
+    "program_birth_ticks": 1143970430,
+    "workers": 12,
+    "full_svg_scope_audited": 26754,
+    "all_format_provenance_scope": 131904,
+    "complex_target_source_count": 5672,
+    "applicable_complex_population": 2365,
+    "validation_sources": 100,
+    "independent_families_before_reservation": 439,
+    "source_pool": "release/compiler_iterations/source_pools/svg_complex_symbol_viewport_unseen100_20261102_v7",
+    "same_source_core_normal_reexecution_allowed": false,
+    "progress_helper": "work/takeover/check_svg_progress_v3.py",
+    "next_action": "Observe same PID/birth and ledger. B is existing-candidate baseline (48 complete at last check), C will make new source conversions. Fixed program automatically releases supported complex targets only if the unchanged >=20%/5increment/zero-regression/zero-infra gates pass. Do not redo full audit, rerun normal or create new program on observation timeout.",
+    "terminal": false
   },
-  "observed_state": "886 strict complex pairs. Native-symbol repair controls passed; one development candidate is still held by independent paint-order QA. Fresh validation bootstrap running; no mass release.",
+  "observed_state": "New source core actual controls and runtime once-safe controls passed. Fresh independent complex validation running, B baseline progressed 21 -> 48 completed, zero infrastructure failures. C queued, no mass release.",
   "source_scope": 26754,
   "all_format_provenance_scope": 131904,
   "validation_samples_per_phase": 100,
@@ -52,132 +63,83 @@
     "selected": 100,
     "supported_remaining_population": 10118
   },
-  "known_catalogue_pairs": 1359,
   "latest_progress": {
-    "at_utc": "2026-11-02T19:10:15.695590+00:00",
+    "at_utc": "2026-11-02T19:34:23.367333+00:00",
     "state": {
       "goal_complete": false,
-      "stage": "round_complete_next_repair_required"
+      "stage": "validation_B"
     },
     "process": {
-      "pid": 3901192,
-      "live": false,
-      "missing": true
+      "pid": 44276,
+      "same_birth": true,
+      "live": true,
+      "state": "S"
     },
     "failure": null,
     "B": {
       "evaluation": "old_baseline",
       "counts": {
-        "abandoned": 100
+        "abandoned": 48,
+        "queued": 41,
+        "running": 11
       },
-      "completed": 100,
+      "completed": 48,
       "reasons": {
-        "[{'reason': 'source_profile_failed', 'type': 'ValueError'}]": 37,
-        "[{'reason': 'source_profile_unsupported', 'type': 'ValueError'}]": 30,
-        "[{'reason': 'dangling_named_terminal', 'type': 'ValueError'}]": 2,
-        "[{'reason': 'Native content requires full tight canvas', 'type': 'AssertionError'}]": 31
+        "[{'reason': 'source_profile_failed', 'type': 'ValueError'}]": 19,
+        "[{'reason': 'Native content requires full tight canvas', 'type': 'AssertionError'}]": 14,
+        "[{'reason': 'source_profile_unsupported', 'type': 'ValueError'}]": 14,
+        "[{'reason': 'dangling_named_terminal', 'type': 'ValueError'}]": 1
       },
       "source_reasons": {
-        "semantics_failed": 25,
-        "glyphs_failed": 25,
-        "physical_fonts_failed": 24,
+        "source_triangle_not_symmetric_about_owner_tangent": 1,
+        "semantics_failed": 12,
+        "glyphs_failed": 12,
+        "physical_fonts_failed": 12,
         "same_domain_pixels_failed": 6,
-        "source_primitive_pixels_failed": 7,
-        "source_use_audit_changed_source_pixels": 4,
-        "source_open_path_has_multiple_subpaths": 4,
-        "source_cairosvg_render_failed": 10,
-        "source_scene_feature_unsupported": 10,
-        "source_triangle_not_symmetric_about_owner_tangent": 2,
-        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 1,
-        "source_triangle_paint_not_solid_fill": 2,
-        "actual_source_use_shadow_snapshot_failed": 2,
+        "source_primitive_pixels_failed": 5,
+        "source_open_path_has_multiple_subpaths": 2,
+        "source_cairosvg_render_failed": 3,
+        "source_use_audit_changed_source_pixels": 3,
+        "source_scene_feature_unsupported": 4,
+        "source_endpoint_direction_multiple_subpaths": 2,
+        "source_triangle_outside_native_marker_geometric_candidate_bound": 2,
         "source_marker_not_one_filled_triangle": 2,
-        "source_run_wrapper_changed_visible_source_pixels": 1,
-        "unregistered_reference_canvas_difference": 1,
-        "source_dom_extractor_changed_pixels": 2,
-        "source_marker_owner_not_bound_to_nodes": 1
+        "source_cairo_browser_logical_paint_inventory_differs": 2
       },
       "infrastructure_failures": 0,
-      "cleanup_complete": 100,
+      "cleanup_complete": 48,
       "quality_seconds": {
-        "mean": 10.808,
-        "total": 1080.802
+        "mean": 12.892,
+        "total": 618.837
       },
       "process": {
-        "pid": 3901274,
-        "live": false,
-        "missing": true
+        "pid": 44283,
+        "same_birth": true,
+        "live": true,
+        "state": "R"
       },
       "infrastructure_stop": null
     },
     "C": {
       "evaluation": "new_frontend",
       "counts": {
-        "abandoned": 94,
-        "qualified": 6
+        "queued": 100
       },
-      "completed": 100,
-      "reasons": {
-        "independent_full_source_native_quality_passed": 6,
-        "source_use_audit_changed_source_pixels": 8,
-        "source_open_path_has_multiple_subpaths": 5,
-        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 8,
-        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 4,
-        "source_native_anchor_delta_exceeds_supported_rounding": 7,
-        "Native content requires full tight canvas": 8,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v19\", \"useContext\": \"u1\", \"actualBBox\": {\"x\": 250, \"y\": 200, \"w\": 30, \"h\": 30}, \"cloneBBox\": {\"x\": 253, \"y\": 200, \"w\": 537, \"h\": 480}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v19\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v20\", \"useContext\": \"u2\", \"actualBBox\": {\"x\": 310, \"y\": 200, \"w\": 480, \"h\": 480}, \"cloneBBox\": {\"x\": 250, \"y\": 200, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v20\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v27\", \"useContext\": \"u3\", \"actualBBox\": {\"x\": 285, \"y\": 200, \"w\": 30, \"h\": 30}, \"cloneBBox\": {\"x\": 288, \"y\": 200, \"w\": 537, \"h\": 480}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v27\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v28\", \"useContext\": \"u4\", \"actualBBox\": {\"x\": 345, \"y\": 200, \"w\": 480, \"h\": 480}, \"cloneBBox\": {\"x\": 285, \"y\": 200, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v28\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v35\", \"useContext\": \"u5\", \"actualBBox\": {\"x\": 320, \"y\": 200, \"w\": 30, \"h\": 30}, \"cloneBBox\": {\"x\": 323, \"y\": 200, \"w\": 537, \"h\": 480}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol": 1,
-        "source_native_physical_font_mismatch": 5,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v4\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v13\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v35\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v81\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v121\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v127\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v133\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v139\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v145\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v152\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v186\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v195\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
-        "[{'reason': 'raster_anomaly:source_native_marker_contour_changed', 'type': 'ValueError'}]": 2,
-        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 1,
-        "source_triangle_not_symmetric_about_owner_tangent": 3,
-        "[{'reason': 'source_profile_failed', 'type': 'ValueError'}]": 4,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v34\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v41\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v48\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v2\", \"useContext\": \"u1\", \"actualBBox\": {\"x\": 50, \"y\": 90, \"w\": 30, \"h\": 96}, \"cloneBBox\": {\"x\": 50, \"y\": 90, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v2\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v23\", \"useContext\": \"u2\", \"actualBBox\": {\"x\": 260, \"y\": 90, \"w\": 30, \"h\": 96}, \"cloneBBox\": {\"x\": 260, \"y\": 90, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v23\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v44\", \"useContext\": \"u3\", \"actualBBox\": {\"x\": 560, \"y\": 90, \"w\": 30, \"h\": 96}, \"cloneBBox\": {\"x\": 560, \"y\": 90, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v44\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v59\", \"useContext\": \"u4\", \"actualBBox\": {\"x\": 660, \"y\": 90, \"w\": 30, \"h\": 96}, \"cloneBBox\": {\"x\": 660, \"y\": 90, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v59\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v75\", \"useContext\": \"u5\", \"actualBBox\": {\"x\": 910, \"y\": 90, \"w\": 30, \"h\": 96}, \"cloneBBox\": {\"x\": 910, \"y\": 90, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\"": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v6\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v19\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v22\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v29\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v33\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v37\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v41\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v45\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v49\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v60\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v63\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v66\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v69\", \"useContext\": \"u13\", \"severity\": \"unsupported\", \"s": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v31\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v35\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v52\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v56\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v109\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v121\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v156\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v168\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
-        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v17\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v77\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v86\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v96\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v104\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v113\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v121\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v129\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v137\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v145\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v153\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v186\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v196\", \"useContext\": \"u13\", \"severity\": \"unsupp": 1,
-        "source_triangle_paint_not_solid_fill": 3,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v3\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v11\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v21\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v35\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v56\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v70\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v91\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v105\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v126\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v140\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v161\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v175\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v198\", \"useContext\": \"u13\", \"severity\": \"unsupporte": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v2\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v6\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v12\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v19\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v47\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v58\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v74\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v81\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
-        "actual_source_use_shadow_snapshot_failed:{'exceptionId': 1, 'text': 'Uncaught', 'lineNumber': 0, 'columnNumber': 515, 'scriptId': '50', 'stackTrace': {'callFrames': [{'functionName': '', 'scriptId': '50', 'url': '', 'lineNumber': 0, 'columnNumber': 521}, {'functionName': '', 'scriptId': '50', 'url': '', 'lineNumber': 0, 'columnNumber': 478}]}, 'exception': {'type': 'object', 'subtype': 'error', 'className': 'Error', 'description': 'Error: actual_use_shadow_paint_tag_requires_another_contract:use\\n    at <anonymous>:1:522\\n    at Array.map (<anonymous>)\\n    at SVGGElement.<anonymous> (<anonymous>:1:479)', 'objectId': '-5642482657317664081.1.4'}}": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v18\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v23\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v28\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v33\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v44\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v49\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v54\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v59\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v73\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v78\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v83\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v88\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v99\", \"useContext\": \"u13\", \"severity\": \"unsupported\", \"": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v79\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v82\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v86\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v90\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v94\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v98\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v102\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v106\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v110\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v113\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v116\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v119\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v162\", \"useContext\": \"u13\", \"severity\": \"unsuppor": 1,
-        "source_marker_not_one_filled_triangle": 3,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v123\", \"useContext\": \"u1\", \"actualBBox\": {\"x\": 1034, \"y\": 304, \"w\": 480, \"h\": 416}, \"cloneBBox\": {\"x\": 650, \"y\": 240, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v123\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v137\", \"useContext\": \"u2\", \"actualBBox\": {\"x\": 1066, \"y\": 312, \"w\": 480, \"h\": 416}, \"cloneBBox\": {\"x\": 682, \"y\": 248, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v137\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v152\", \"useContext\": \"u3\", \"actualBBox\": {\"x\": 1066.5322265625, \"y\": 649.3651733398438, \"w\": 817.4180908203125, \"h\": 739.5466918945312}, \"cloneBBox\": {\"x\": 624.3096923828125, \"y\": 454.80224609375, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v152\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v166\", \"useContext\": \"u4\", \"actualBBox\": {\"x\": 1298, \"y\": 540, \"w\": 720, \"h\": 624}, \"cloneBBox\": {\"x\": 722, \"y\": 444, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v166\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v181\", \"useContext\": \"u5\", \"actualBBox\": {\"x\": 1150, \"y\": 670, \"w\": 600, \"h\": 520}, \"cloneBBox\": {\"x\": 670, \"y\": 590, \"w\": 0, \"h\"": 1,
-        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  [Previous line repeated 1 more time]\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 1,
-        "source_cairo_browser_logical_paint_inventory_differs": 4,
-        "source_run_wrapper_changed_visible_source_pixels": 2,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v130\", \"useContext\": \"u1\", \"actualBBox\": {\"x\": 818.3333129882812, \"y\": 716.6666870117188, \"w\": 1093.333251953125, \"h\": 683.3333129882812}, \"cloneBBox\": {\"x\": 725, \"y\": 580, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v130\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v132\", \"useContext\": \"u2\", \"actualBBox\": {\"x\": 878.3333129882812, \"y\": 716.6666870117188, \"w\": 1093.333251953125, \"h\": 683.3333129882812}, \"cloneBBox\": {\"x\": 785, \"y\": 580, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v132\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v134\", \"useContext\": \"u3\", \"actualBBox\": {\"x\": 938.3333129882812, \"y\": 716.6666870117188, \"w\": 1093.333251953125, \"h\": 683.3333129882812}, \"cloneBBox\": {\"x\": 845, \"y\": 580, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v134\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v136\", \"useContext\": \"u4\", \"actualBBox\": {\"x\": 998.3333129882812, \"y\": 716.6666870117188, \"w\": 1093.333251953125, \"h\": 683.3333129882812}, \"cloneBBox\": {\"x\": 905, \"y\": 580, \"w\": 0, \"h\": 0}, \"severity\": \"unsupported\", \"scope\": \"source_paint\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v136\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_expansion_bbox_mismat": 1,
-        "source_native_graphemes_changed": 2,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v4\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v10\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v124\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v133\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
-        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v4\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v12\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v20\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v38\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v46\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v54\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v92\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v96\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v119\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v131\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v135\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"id\": \"\", \"reason\": \"use_symbol_aspect_requires_review\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v185\", \"useContext\": \"u12\", \"actualBBox\": {\"x\": 619.55224609375, \"y\": 352, \"w\": 60.44775390625, \"h\": 36}, \"cloneBBox\": {\"x\": 619.55224609375,": 1,
-        "actual_source_use_shadow_snapshot_failed:{'exceptionId': 1, 'text': 'Uncaught', 'lineNumber': 0, 'columnNumber': 515, 'scriptId': '50', 'stackTrace': {'callFrames': [{'functionName': '', 'scriptId': '50', 'url': '', 'lineNumber': 0, 'columnNumber': 521}, {'functionName': '', 'scriptId': '50', 'url': '', 'lineNumber': 0, 'columnNumber': 478}]}, 'exception': {'type': 'object', 'subtype': 'error', 'className': 'Error', 'description': 'Error: actual_use_shadow_paint_tag_requires_another_contract:use\\n    at <anonymous>:1:522\\n    at Array.map (<anonymous>)\\n    at SVGGElement.<anonymous> (<anonymous>:1:479)', 'objectId': '-6449194551435874846.1.7'}}": 1,
-        "source_dom_extractor_changed_pixels": 2,
-        "source_endpoint_direction_multiple_subpaths": 1,
-        "actual_source_use_shadow_snapshot_failed:{'exceptionId': 1, 'text': 'Uncaught', 'lineNumber': 0, 'columnNumber': 515, 'scriptId': '50', 'stackTrace': {'callFrames': [{'functionName': '', 'scriptId': '50', 'url': '', 'lineNumber': 0, 'columnNumber': 521}, {'functionName': '', 'scriptId': '50', 'url': '', 'lineNumber': 0, 'columnNumber': 478}]}, 'exception': {'type': 'object', 'subtype': 'error', 'className': 'Error', 'description': 'Error: actual_use_shadow_paint_tag_requires_another_contract:use\\n    at <anonymous>:1:522\\n    at Array.map (<anonymous>)\\n    at SVGGElement.<anonymous> (<anonymous>:1:479)', 'objectId': '-6540034044652582458.1.13'}}": 1,
-        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 1,
-        "source_marker_owner_not_bound_to_nodes": 1
-      },
-      "source_reasons": {
-        "actual_overlapping_native_source_paint_order_changed": 147,
-        "source_primitive_pixels_failed": 1,
-        "same_domain_pixels_failed": 1
-      },
+      "completed": 0,
+      "reasons": {},
+      "source_reasons": {},
       "infrastructure_failures": 0,
-      "cleanup_complete": 100,
-      "quality_seconds": {
-        "mean": 53.806,
-        "total": 645.668
-      },
-      "process": {
-        "pid": 3947726,
-        "live": false,
-        "missing": true
-      },
+      "cleanup_complete": 0,
+      "quality_seconds": null,
+      "process": null,
       "infrastructure_stop": null
-    }
+    },
+    "deployed_runtime_files_exact": 21,
+    "runtime_dispatch_proof": {
+      "file": "release/compiler_iterations/controls/svg_symbol_runtime_controls_20261102_v1/proof.json",
+      "sha256": "9b4981e9af5c93b0d9cbb8724fa9dc65a06b0029a620737a4a8aaabf9b994542"
+    },
+    "normal_history_unchanged_and_prevented_reexecution": true
   },
   "next_generic_repair": "Integrate native symbol viewport reconstruction and isolate source observers into scratch pages; 12 exact viewport/layout positives and 3 actual negative mutations passed. No native full-QA claim for the viewport prototype yet.",
   "next_chain": {
@@ -273,7 +235,7 @@
     "frontend": "compiler_svg_scene_frontend_v13",
     "plugin": "compiler_svg_general_guard_v9",
     "quality": "compiler_svg_scene_quality_ro_v15",
-    "state": "regression_and_actual_negative_controls_passed_runtime_preflight_running",
+    "state": "fresh_complex_validation_B_running",
     "preflight_seconds": 8.343553779646754,
     "actual_symbols_proved": 12,
     "source_objects": 190,
@@ -304,6 +266,12 @@
       "negative_cases": 3,
       "normal_source_conversions": 1,
       "normal_reexecution_allowed": false
-    }
+    },
+    "runtime_dispatch_proof": {
+      "file": "release/compiler_iterations/controls/svg_symbol_runtime_controls_20261102_v1/proof.json",
+      "sha256": "9b4981e9af5c93b0d9cbb8724fa9dc65a06b0029a620737a4a8aaabf9b994542"
+    },
+    "normal_history_preserved": true,
+    "QA_held_not_qualified": true
   }
 }

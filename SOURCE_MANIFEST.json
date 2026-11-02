@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T19:31:33.760847+00:00",
+  "at_utc": "2026-11-02T19:34:50.772008+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -12403,6 +12403,12 @@
       "mtime_ns": 1793645838672611070
     },
     {
+      "file": "scripts/check_svg_progress_v3.py",
+      "sha256": "735e27f156a1c4ce61256ea8e9ee6c0fa87dd0c444aecaf8876c097b80c0d662",
+      "bytes": 3046,
+      "mtime_ns": 1793648023673294202
+    },
+    {
       "file": "scripts/cleanup_authorized_storage.py",
       "sha256": "2ff851ee2bb8b230bd4faf0d2c417f8b099d474f7411910060d86b403d132287",
       "bytes": 2333,
@@ -12647,6 +12653,12 @@
       "sha256": "5dac493b7ad75ef53414834b42d245233ac16601c861e00117e69419dc862265",
       "bytes": 2132,
       "mtime_ns": 1793379066446298360
+    },
+    {
+      "file": "scripts/verify_symbol_round_v1.py",
+      "sha256": "360aed6c91c09a11cf53a1a9d8de1b1fad5a57bbb1e2cb468b7ba9d4972783a9",
+      "bytes": 2467,
+      "mtime_ns": 1793648090774593799
     },
     {
       "file": "scripts/visual_audit.py",

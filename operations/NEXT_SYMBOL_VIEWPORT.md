@@ -34,17 +34,13 @@ Important observed causes:
 - A symbol must retain a real native nested `<svg>` viewport. A scaled `<g>` alone loses alignment/default sizing/clipping semantics.
 - Perform reconstruction in a separate scratch page loaded from the same source DOM snapshot. Do not append cloned IDs or toggle display in the original source observer page. The prototype preserves original pixels exactly this way.
 
-## Next concrete integration
+## Current fixed validation
 
-Create immutable successors; do not modify current/frozen files. Likely free version slots: frontend v13, backend v11, guard v9, quality ro14, adapter v10, endpoint bridge v3, legacy DOM v9 and source-scene DOM v4 (verify existence first).
+`svg_complex_symbol_viewport_unseen100_20261102_v7` is running under PID 44276 / birth ticks 1143970430 with 12 workers. At 19:34:23 UTC its existing-candidate baseline had progressed from 21 to 48 completed, with zero infrastructure errors. New conversion phase C is queued and will start automatically. The prior full source audit and compact complex-source selection were reused; 100 fresh families were selected from 439 available independent families over 2,365 applicable complex targets. No thresholds changed.
 
-Extract the prototype's native source viewport builder/UA-shadow verification into a shared runtime module. Inject that exact builder into both legacy and enriched scene capture so source object IDs stay aligned. Feed fresh source-only symbol facts (resolved native viewport dimensions, source child markup, exact paint/layout proof, full-paint containment) to use expansion. Suppress an unproved-viewport issue only when the fresh complete containment proof actually succeeds. Leave cropped, nested/unproved, CSS-changing or unsupported cases pending.
+The once-safe runtime proof is `release/compiler_iterations/controls/svg_symbol_runtime_controls_20261102_v1/proof.json`, SHA256 `9b4981e9af5c93b0d9cbb8724fa9dc65a06b0029a620737a4a8aaabf9b994542`. It actually prevented the consumed 6c normal before calling conversion, ran the next existing positive through full QA, and kept source history/canonical rows unchanged. Setup including this check took 108.06 s. New manual history is `manual_catalog_svg_native_symbol_viewport_20261102_v7.json`; do not repeat the normal.
 
-Isolate source observations into scratch pages. Keep the original text-range/font observer on its unchanged source page; verify legacy/general object identities and original source pixels. Extend ownership proof only from fresh actual UA evidence, and preserve all independent source, marker geometry/editing, font, raster and strict-page gates.
-
-Run one normal on a consumed development source under the genuinely new source core; freeze before calling, create an exclusive once claim, preserve its result even if rejected, then register the event in a successor manual history catalog. Follow actual terminal/full-eight results. Do not count source-only prototype success as conversion success.
-
-After two real positive and two XML/PNG negative controls plus actual once-safe runtime dispatch controls, reuse full audit/seal metadata and reserve fresh unseen complex targets. Source-only preselection has 5,672 complex/dense sources, 2,365 applicable pending sources in the last pool, and a complete 26,754-SVG / 131,904-all-format provenance seal. `derive_complex_source_pool_v2.py` avoids repeating the full audit and pins a compact frozen target snapshot instead of rehashing the 160 MB source index every dispatch. Preserve the unchanged validation/release gates and 12-worker fixed program.
+Use `scripts/check_svg_progress_v3.py` (remote stdin) for the current round. Observe the same PID and ledger; never restart on an observation timeout. The fixed program will gate mass conversion automatically. Once terminal, use its grouped remaining failures for the next generic repair, including retained paint-order limitations. The 6c development pair has not been added to the 886 strict scientific pairs.
 
 ## Source content/value evidence
 
