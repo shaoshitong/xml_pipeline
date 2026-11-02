@@ -39,4 +39,4 @@ with tempfile.TemporaryDirectory() as t:
  state,updated=d.execute('select state,output_record from jobs').fetchone();assert state=='needs_quality_repair';assert json.loads(updated)['root_review']['automatic_quality']['source']=='automatic_quality'
  assert d.execute('select state,attempts,priority,session_dir,error from harness_queue_v3').fetchone()==('held_for_source_v5',2,9,'preserved','history')
  assert (dest/'diagram.drawio').read_bytes()==xml and (dest/'image.png').read_bytes()==b'unchanged'
-print(json.dumps({'ok':True,'fixtures':5,'live_queue_schema':True,'previous_payloads_preserved':True,'cas_ownership_protection':True}))
+print(json.dumps({'ok':True,'fixtures':4,'live_queue_schema':True,'previous_payloads_preserved':True,'cas_ownership_protection':True}))

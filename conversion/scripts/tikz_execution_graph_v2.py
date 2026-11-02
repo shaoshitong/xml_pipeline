@@ -15,16 +15,15 @@ ARITY={**v1.ARITY,'extension':2,'instance':7,'nodelink':4,'anchorread':9,'alias'
 sha=lambda b:hashlib.sha256(b).hexdigest()
 
 
-def parse_events(data,extra_arity=None):
- arity={**ARITY,**(extra_arity or {})}
+def parse_events(data):
  events=[];pos=0
  while pos<len(data):
   while pos<len(data) and data[pos].isspace():pos+=1
   if pos==len(data):break
   match=re.match(r'\\IIC([A-Za-z]+)',data[pos:])
-  if not match or match[1] not in arity:raise ValueError('Unknown/corrupt v2 event near '+repr(data[pos:pos+80]))
+  if not match or match[1] not in ARITY:raise ValueError('Unknown/corrupt v2 event near '+repr(data[pos:pos+80]))
   kind=match[1];pos+=match.end();fields=[]
-  for _ in range(arity[kind]):
+  for _ in range(ARITY[kind]):
    while pos<len(data) and data[pos].isspace():pos+=1
    if pos==len(data) or data[pos]!='{':raise ValueError('Missing v2 field '+kind)
    start=pos+1;pos+=1;depth=1
@@ -118,12 +117,12 @@ def graph_from_events(events):
  graph['failures']=failures+graph['failures'];return graph
 
 
-def compile_execution_graph(data,directory,extra_hooks=(),extra_arity=None):
+def compile_execution_graph(data,directory):
  from tectonic_compile import compile_case,RUNTIME
  from native_worker import W,now
  import sys
  sys.path.append(str(W/'runtime/python_packages'));import pymupdf
- directory=Path(directory);directory.mkdir(parents=True,exist_ok=False);hooks={name:Path(__file__).with_name(name).read_bytes() for name in ('tikz_execution_graph_hooks.tex','tikz_execution_graph_hooks_v2.tex',*extra_hooks)};wrappers={'baseline':b'\\input{original_source.tex}\n','instrumented':('\\AtBeginDocument{'+''.join('\\input{'+name+'}' for name in hooks)+'}\n\\input{original_source.tex}\n').encode()};out={'version':VERSION,'at':now(),'source_sha256':sha(data),'engine_file':str(RUNTIME/'tectonic'),'engine_sha256':sha((RUNTIME/'tectonic').read_bytes()),'hooks':{n:sha(b) for n,b in hooks.items()},'runs':{},'source_bytes_unchanged':True,'source_names_modified':False,'published':False,'instrumentation_ok':False}
+ directory=Path(directory);directory.mkdir(parents=True,exist_ok=False);hooks={name:Path(__file__).with_name(name).read_bytes() for name in ('tikz_execution_graph_hooks.tex','tikz_execution_graph_hooks_v2.tex')};wrappers={'baseline':b'\\input{original_source.tex}\n','instrumented':b'\\AtBeginDocument{\\input{tikz_execution_graph_hooks.tex}\\input{tikz_execution_graph_hooks_v2.tex}}\n\\input{original_source.tex}\n'};out={'version':VERSION,'at':now(),'source_sha256':sha(data),'engine_file':str(RUNTIME/'tectonic'),'engine_sha256':sha((RUNTIME/'tectonic').read_bytes()),'hooks':{n:sha(b) for n,b in hooks.items()},'runs':{},'source_bytes_unchanged':True,'source_names_modified':False,'published':False,'instrumentation_ok':False}
  out['pgf_core_files']={}
  for name in ('tikz.code.tex','pgfmoduleshapes.code.tex','pgfcorearrows.code.tex'):
   path=next((RUNTIME/'cache/bundles/data').glob('*/'+name));out['pgf_core_files'][name]={'file':str(path),'sha256':sha(path.read_bytes())}
@@ -143,6 +142,6 @@ def compile_execution_graph(data,directory,extra_hooks=(),extra_arity=None):
     px=x.get_pixmap(matrix=pymupdf.Matrix(1.5,1.5),alpha=False);py=y.get_pixmap(matrix=pymupdf.Matrix(1.5,1.5),alpha=False);same=(x.rect,px.width,px.height,px.samples)==(y.rect,py.width,py.height,py.samples);pages.append({'page':index,'pixel_identical':same,'baseline_pixel_sha256':sha(px.samples),'instrumented_pixel_sha256':sha(py.samples),'size':[px.width,px.height]})
   out['instrumentation_pdf_pixel_equivalence']=pages
   if not pages or not all(p['pixel_identical'] for p in pages):raise ValueError('v2 instrumentation changes actual PDF pixels')
-  trace=(directory/'instrumented/source.iic').read_bytes();out['execution_trace_sha256']=sha(trace);events=parse_events(trace.decode(),extra_arity);out['graph']=graph_from_events(events);out['instrumentation_ok']=True;out['ok']=out['graph']['ok']
+  trace=(directory/'instrumented/source.iic').read_bytes();out['execution_trace_sha256']=sha(trace);events=parse_events(trace.decode());out['graph']=graph_from_events(events);out['instrumentation_ok']=True;out['ok']=out['graph']['ok']
  except Exception as exc:out['ok']=False;out['error']=repr(exc)
  (directory/'execution_graph.json').write_text(json.dumps(out,indent=2)+'\n');return out

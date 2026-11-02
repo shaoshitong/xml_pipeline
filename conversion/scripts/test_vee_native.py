@@ -3,7 +3,7 @@ from PIL import Image
 from playwright.sync_api import sync_playwright
 from native_worker import R,W,native,now
 from svg_convert_v5 import build
-from svg_source_coverage_v2 import audit
+from svg_source_coverage import audit
 from native_move_audit import audit as move_audit
 from svg_batch import metric
 D=sqlite3.connect(W/'jobs.sqlite');id,raw=D.execute('select id,output_record from jobs where id like "007a96b7%"').fetchone();out=json.loads(raw);src=R/'clean/drawio_unified'/id[:2]/id/'source_render.svg';code=src.read_text();data=(R/out['original_reference']).read_bytes();w,h=Image.open(io.BytesIO(data)).size
