@@ -1,0 +1,498 @@
+{
+  "actual_source_marker_instances": 27,
+  "all_source_tips_are_actual_path_endpoints": true,
+  "curves_not_flattened": true,
+  "all_off_axis_negative_controls_rejected": true,
+  "proof": [
+    {
+      "source_marker": "v186",
+      "shaft": "v185",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          62.04860768450635,
+          31.807498248344018
+        ],
+        "length": 5.5347625952281305,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v188",
+      "shaft": "v187",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          62.04860768450635,
+          105.89781463165127
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v190",
+      "shaft": "v189",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          168.35180276164465,
+          110.5875079036814
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151047442290292,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v192",
+      "shaft": "v191",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          62.04860768450635,
+          187.90481698293297
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v194",
+      "shaft": "v193",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          62.04860768450635,
+          241.10778312695766
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v196",
+      "shaft": "v195",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          62.04860768450635,
+          302.07925279950723
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v198",
+      "shaft": "v197",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          121.10446891809988,
+          302.07925279950723
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151047442290292,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v200",
+      "shaft": "v199",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          168.3490265098517,
+          197.29948350823543
+        ],
+        "length": 5.534690719219526,
+        "width": 4.150973272557991,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v202",
+      "shaft": "v201",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          168.34904770261346,
+          301.57884930839646
+        ],
+        "length": 5.534765244323353,
+        "width": 4.151047442290292,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v204",
+      "shaft": "v203",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          266.7754813258726,
+          197.36100609567802
+        ],
+        "length": 5.53467704461454,
+        "width": 4.150962684941021,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v206",
+      "shaft": "v205",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          266.7755025186343,
+          301.57884930839646
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v208",
+      "shaft": "v207",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          176.0808665605,
+          377.6270404449315
+        ],
+        "length": 5.534786437085131,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v210",
+      "shaft": "v209",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          176.0808665605,
+          428.80891647643875
+        ],
+        "length": 5.534786437085131,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v212",
+      "shaft": "v211",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          395.0028162849194,
+          187.68648915109225
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v216",
+      "shaft": "v215",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          395.0028162849194,
+          260.2441476516833
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v218",
+      "shaft": "v217",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          395.0028162849194,
+          315.3627275328545
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v220",
+      "shaft": "v219",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          395.0028162849194,
+          364.57590195896046
+        ],
+        "length": 5.534786437085131,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v222",
+      "shaft": "v221",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          484.60331233796023,
+          142.40913907503636
+        ],
+        "length": 5.534786437085131,
+        "width": 4.151047442290292,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v224",
+      "shaft": "v223",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          548.5478085965879,
+          181.50297108320956
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v226",
+      "shaft": "v225",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          548.5478085965879,
+          244.49614545836812
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v228",
+      "shaft": "v227",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          548.5478085965879,
+          307.4893198335267
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v230",
+      "shaft": "v229",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          642.0856230893842,
+          327.4513331643757
+        ],
+        "length": 5.534786437085131,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v232",
+      "shaft": "v231",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          706.0301617335354,
+          284.4201933128279
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v234",
+      "shaft": "v233",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          706.0301617335354,
+          221.42701893766935
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v236",
+      "shaft": "v235",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          706.0301617335354,
+          161.42566912828624
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v238",
+      "shaft": "v237",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          395.0028162849194,
+          73.55251031675289
+        ],
+        "length": 5.534786437085131,
+        "width": 4.151058038671181,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    },
+    {
+      "source_marker": "v240",
+      "shaft": "v239",
+      "side": "end",
+      "geometry": {
+        "tip": [
+          395.0028162849194,
+          112.92253699280263
+        ],
+        "length": 5.534765244323353,
+        "width": 4.15106863505207,
+        "actual_closed_cubic_source_contour": true,
+        "tip_is_actual_source_endpoint": true,
+        "analytic_extrema_used": true,
+        "source_curve_flattened": false,
+        "reference_or_candidate_pixels_used": false
+      }
+    }
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "new_source_captures": 0,
+  "model_calls": 0
+}

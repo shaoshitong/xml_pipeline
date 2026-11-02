@@ -1,0 +1,62 @@
+[
+  [
+    "dedec540",
+    false,
+    "Actual native PNG inspected: complete attention arithmetic layout, but source score label 0.0 is occluded; hold original-content defect."
+  ],
+  [
+    "e2c8ca19",
+    true,
+    "Actual native PNG inspected: complete embedding, BiLSTM, edge and walk-layer architecture with interpolation and bilinear blocks; no source occlusion or native layout flags."
+  ],
+  [
+    "791ff49a",
+    true,
+    "Actual native PNG inspected: complete paired CNN layer specifications with channel dimensions, pooling, dense outputs and terminal arrows."
+  ],
+  [
+    "6505d03e",
+    true,
+    "Actual native PNG inspected: complete RGB agricultural-classification CNN, feature-map dimensions, pooling, dense projection and output taxonomy."
+  ],
+  [
+    "19260164",
+    true,
+    "Actual native PNG inspected: complete decoder comparison and conditional-computation expert/router detail panel."
+  ],
+  [
+    "370e1db1",
+    true,
+    "Actual native PNG inspected: complete convolution, spatial-attention and classification architecture, including the symbol legend and output labels."
+  ],
+  [
+    "edeafaae",
+    true,
+    "Actual native PNG inspected: complete original/ASR encoder fusion gate and recurrent decoder with distinct source branches and mathematical labels."
+  ],
+  [
+    "70b8acda",
+    false,
+    "Actual native PNG inspected: dimension labels in the 3D CNN/table figure overlap; actual glyph-layout check flags 6x56x56x256 versus 6x112x112x256; hold."
+  ],
+  [
+    "ec1cdc8b",
+    true,
+    "Actual native PNG inspected: complete facts encoder, hierarchical recurrent encoder and decoder with all source groups, links and mathematical input labels."
+  ],
+  [
+    "ddfe53bb",
+    true,
+    "Actual native PNG inspected: complete knowledge-triple encoder and GRU text decoder with example entity/property inputs and output sequence."
+  ],
+  [
+    "a8e000fe",
+    true,
+    "Actual native PNG inspected: complete side-by-side feed-forward, gated feed-forward and residual 3D feed-forward module comparison."
+  ],
+  [
+    "51889757",
+    false,
+    "Actual native PNG inspected: source dimension values 9952, 239 and 20 are occluded by white source rectangles; hold original-content defect."
+  ]
+]

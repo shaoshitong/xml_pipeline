@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T23:33:14.587020+00:00",
+  "at_utc": "2026-11-02T23:56:23.631260+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11521,6 +11521,192 @@
       "sha256": "dd1308e34c82495383cf77813e6f05077f71dc4d90546552b36930068f8db794",
       "bytes": 7334,
       "mtime_ns": 1793662339444227885
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v3.py",
+      "sha256": "22601673c2be82a472e0a948add68c02d98b26ec8ee131481bdc9dd95adfbb41",
+      "bytes": 7521,
+      "mtime_ns": 1793663739969300730
+    },
+    {
+      "file": "conversion/scripts/datikz_executed_open_polylines_v1.py",
+      "sha256": "2e77414837c3172270e576db82c9cf51c4cb6a596a5865cdd480d1f00e83032f",
+      "bytes": 1114,
+      "mtime_ns": 1793662988225396649
+    },
+    {
+      "file": "conversion/scripts/datikz_source_bezier_marker_geometry_v1.py",
+      "sha256": "ce9b0d5c57d9f359c0b45ce0ac43bba5495897226194d72875fcf6d29243ccac",
+      "bytes": 1950,
+      "mtime_ns": 1793663247216265322
+    },
+    {
+      "file": "conversion/scripts/datikz_source_bezier_marker_geometry_v2.py",
+      "sha256": "734ee777104b380fffd942b0b9a4d178e75b03194fc5c8050e17d771c022101a",
+      "bytes": 2184,
+      "mtime_ns": 1793663289632080011
+    },
+    {
+      "file": "conversion/scripts/datikz_source_frame_ownership_v1.py",
+      "sha256": "a919be0f9c6fe572d6e285eb082728ec85f17089658252c522ee3d8e962ca0da",
+      "bytes": 5493,
+      "mtime_ns": 1793662729706525450
+    },
+    {
+      "file": "conversion/scripts/datikz_source_node_glyph_prefix_v1.py",
+      "sha256": "525f3c1b54cb9bde59bfab75afd9f62b29fb67bccb5497b314ebe61fddaac9ad",
+      "bytes": 1072,
+      "mtime_ns": 1793662538835358402
+    },
+    {
+      "file": "conversion/scripts/datikz_text_terminal_normal_v1.py",
+      "sha256": "3496270b7a24c998af41311ee2f492a9865d2690afedd6b03ec28df28b9a6a4d",
+      "bytes": 5947,
+      "mtime_ns": 1793662926349666876
+    },
+    {
+      "file": "conversion/scripts/datikz_text_terminal_normal_v2.py",
+      "sha256": "22e57b67ba7e67ba663a2c4caca311484d701476df9cda0214900d6fece14e04",
+      "bytes": 5986,
+      "mtime_ns": 1793662988449395671
+    },
+    {
+      "file": "conversion/scripts/datikz_text_terminal_normal_v3.py",
+      "sha256": "8a2249af692dce407c647ea15011c4918b4d568ec7c6623a96327032a38bad86",
+      "bytes": 5986,
+      "mtime_ns": 1793663060121082631
+    },
+    {
+      "file": "conversion/scripts/datikz_text_terminal_normal_v4.py",
+      "sha256": "e6a183e25a2a6a49246084fbde79c5574ee503d442ae6a09e902ba01114386b0",
+      "bytes": 6031,
+      "mtime_ns": 1793663247508264047
+    },
+    {
+      "file": "conversion/scripts/datikz_text_terminal_normal_v5.py",
+      "sha256": "2801c9a016df4da38214de8ac67bc1d16ddbc25d8b83989dc7cc072b97e9adb3",
+      "bytes": 6032,
+      "mtime_ns": 1793663289880078927
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v10.py",
+      "sha256": "924527cdaef0c441ba6df686e96002c776a3fb1db04d41ed7c07c6ec6a01dc19",
+      "bytes": 41280,
+      "mtime_ns": 1793663289692079749
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v5.py",
+      "sha256": "feca6eade58390295fa8b3ab76ad9598113859c306d306d4ac9e395c0d2e22e4",
+      "bytes": 38278,
+      "mtime_ns": 1793662538891358157
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v6.py",
+      "sha256": "140a9c6e791a738404bc098e9211d6190f6f337095f2bdd5a2b06367fc091084",
+      "bytes": 40277,
+      "mtime_ns": 1793662825390107726
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v7.py",
+      "sha256": "1143490ca122e4e551f8ab9faac0fa21db0ab02445a87cb1a7aa151e4e90ef20",
+      "bytes": 40468,
+      "mtime_ns": 1793662988297396335
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v8.py",
+      "sha256": "86f30aaac353e700004021bd8483fcee342fab26a78cebf5b49502ca5d4509d5",
+      "bytes": 40880,
+      "mtime_ns": 1793663059953083365
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v9.py",
+      "sha256": "a32bde53c75690a0c2c83bf1f89e9266f85cf1928d6cdf15b9bfbdf1a910d09e",
+      "bytes": 41280,
+      "mtime_ns": 1793663247280265043
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_replay_quality_v5.py",
+      "sha256": "11b9118208f07c6cb75559a3b67801b01ba0df4849eac4cd0a3cbf2830be1ead",
+      "bytes": 14623,
+      "mtime_ns": 1793662825514107185
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_replay_quality_v6.py",
+      "sha256": "bc186a30b61e283d9a7970b7c66562f350eaa638a2f5d337e7e6b4b0a10e9a95",
+      "bytes": 14623,
+      "mtime_ns": 1793662988397395899
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_replay_quality_v7.py",
+      "sha256": "bce97ba4d3624d70734134569c53491671e686ede3bf258333bc89ae69174e65",
+      "bytes": 14623,
+      "mtime_ns": 1793663060069082858
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_replay_quality_v8.py",
+      "sha256": "172a9e16d37c4df7b0740f30ad1938ac67f83b6f642e920d384222b67382bf40",
+      "bytes": 14623,
+      "mtime_ns": 1793663247436264362
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_replay_quality_v9.py",
+      "sha256": "f8b3429dfc065141a5efbf2c2fabca7a7ff1851298215e92f653a5de6ea7b660",
+      "bytes": 14623,
+      "mtime_ns": 1793663289820079190
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_viewport_v4.py",
+      "sha256": "00d800c6fc834f0b2b2bf11d2e75da9d08842b07ddffaa7dc0a148a7aeb3c690",
+      "bytes": 28762,
+      "mtime_ns": 1793662825462107412
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_viewport_v5.py",
+      "sha256": "38e45454acbf9eaeb1b1ed72e337eb628c53ad3c3c533cca942d8067c0cbe028",
+      "bytes": 28801,
+      "mtime_ns": 1793662988345396126
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_viewport_v6.py",
+      "sha256": "8b56a3f9ff5e74e2a63e52b2d4dcb878473938fdc0385295f0e01e889193ec44",
+      "bytes": 28801,
+      "mtime_ns": 1793663060013083103
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_viewport_v7.py",
+      "sha256": "0a886a162a856d72f6ccf18d45083cfb86ca9a7b2b0c2a52cf1d737e36019f14",
+      "bytes": 29106,
+      "mtime_ns": 1793663247388264571
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_source_viewport_v8.py",
+      "sha256": "18775a7803cdda65ce3974ddb8ec1b1e21e16414fcaa26baf96787df605250b4",
+      "bytes": 29109,
+      "mtime_ns": 1793663289760079451
+    },
+    {
+      "file": "conversion/scripts/prove_datikz_bezier_markers_v1.py",
+      "sha256": "9db305a2f53e5342a2887b44a9f08528b8e3224c0ed8a7bb63051e4db8e4f260",
+      "bytes": 1672,
+      "mtime_ns": 1793663267748175621
+    },
+    {
+      "file": "conversion/scripts/prove_datikz_bezier_markers_v2.py",
+      "sha256": "6f5e361004e570458e3bed0a0f15eb598ed19507a4b3e7697bd7d54db5226c3d",
+      "bytes": 1672,
+      "mtime_ns": 1793663289928078718
+    },
+    {
+      "file": "conversion/scripts/prove_datikz_source_ownership_v1.py",
+      "sha256": "97800fd4a18bd792a6c812ec6445d15f4926e1140936b9bd34c1e4671cc8fafe",
+      "bytes": 3855,
+      "mtime_ns": 1793662853265986012
+    },
+    {
+      "file": "conversion/scripts/review_fixed_resolved_geometry_pairs_v1.py",
+      "sha256": "ef312744d29758a8dfb4850d56421470af60b76249138eac56117445a2556633",
+      "bytes": 5978,
+      "mtime_ns": 1793663347115828857
     }
   ],
   "excluded_for_credential_review": []

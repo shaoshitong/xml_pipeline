@@ -1,70 +1,66 @@
 {
-  "at_utc": "2026-11-02T23:33:14.549110+00:00",
+  "at_utc": "2026-11-02T23:56:23.607258+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "bytes": 4433473,
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T224451450839Z_review_batch_v8/paired_priority_complex.jsonl",
-    "rows": 964,
-    "sha256": "3e62182fcc5476400ec31c3c1ec9f05fb5077c5da649b6a3e44e620492cf1ddb"
+    "bytes": 4461126,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235126380451Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 973,
+    "sha256": "32b85e6887a5d16ca3c2bbd5872a6ed7514e1af30b50a0a8c2daacfc364f273d"
   },
-  "strict_main_rows": 964,
-  "previous_goal_turn": "progress: resolved geometry regression/runtime controls passed, fixed full-source-to-validation chain running, omitted 1875 chart outputs integrated with unchanged reference profiles, 92 actual-source complex scientific charts curated and seven-source delivery audit published",
+  "strict_main_rows": 973,
+  "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
-    "run": "svg_complex_compound_linear_cached_unseen_20261102_v10",
-    "terminal": true,
-    "normal_attempts_current_core": 5,
-    "source_core_key": "15b5824c60cea4f7f2ea7f0a27613d07742ab1d803a7e51e7aa7f69a592fa241",
-    "source_frontend": "compiler_svg_scene_frontend_v21",
-    "generation": "compiler_svg_general_guard_v17",
-    "backend": "compiler_svg_scene_backend_v16",
-    "QA": "compiler_svg_scene_quality_ro_v28",
-    "QA_adapter": "compiler_svg_general_quality_adapter_v24",
-    "coordinates": "compiler_svg_explicit_coordinates_v8.py/.js",
-    "B_qualified": 0,
-    "C_qualified": 3,
-    "samples": 4,
-    "release_adopted": false,
-    "mass": null,
+    "run": "svg_complex_resolved_geometry_cached_unseen_20261102_v11",
+    "stage": "mass",
+    "mass": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass",
+    "mass_targets": 839,
+    "counts": {
+      "abandoned": 28,
+      "qualified": 2,
+      "queued": 797,
+      "running": 12
+    },
     "gate": {
-      "approved_units": [],
-      "controls_passed": true,
-      "goal_complete": false,
-      "implementation_identity_sha256": "e32084d7008dcc2d082d5dddac80833c18eaf9c731882c06c79fcdd94ee153f5",
-      "infrastructure_errors": 0,
-      "model_calls": 0,
-      "preserved_prior_SOURCE_candidate_attempts": 1,
-      "preserved_qualified_assets_verified": 2445,
-      "protocol_sha256": "c9882314bb0a998910a31c2cf5c07745e8e57a0a1d2c2a19ba36af2cc47dfec4",
-      "units": {
-        "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_subpath_guard_v17": {
-          "B_qualified": 0,
-          "C_qualified": 3,
-          "full_qualified_rate": 0.75,
-          "new_qualified": 3,
-          "passed": false,
-          "positive_regressions": 0,
-          "samples": 4
-        }
+      "file": "release/compiler_iterations/programs/svg_complex_resolved_geometry_cached_unseen_20261102_v11/release_gate.json",
+      "sha256": "a589dda86435449705dde6d63db45dceca7555b1070cb85d2f9016c6b6a233e0"
+    },
+    "validation_units": {
+      "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18": {
+        "B_qualified": 0,
+        "C_qualified": 12,
+        "full_qualified_rate": 0.3870967741935484,
+        "new_qualified": 12,
+        "passed": true,
+        "positive_regressions": 0,
+        "samples": 31
       }
     },
-    "next_repair": {
-      "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_compound_linear_cached_unseen_20261102_v10/next_repair.json",
-      "sha256": "6dfb806ab94483937dc9a0e92f5111568df0753d0d42ccc97e4388d8db8dac49"
-    }
+    "infrastructure_errors": 0,
+    "source_population": 988,
+    "source_core_key": "bd51ff94284b48fc07a8384c5f1ec759d1916e089cc05e8721adaf00157eef00",
+    "goal_complete": false
   },
   "source_admission": {
-    "total_targets": 2365,
-    "admitted": 841,
-    "unsupported": 1507,
-    "retained_errors": 17,
-    "recomputed": 1097,
-    "newly_admitted": 56,
-    "previous785_preserved": true,
-    "root": "/backup/shaoshitong/img2code_20261029/conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e"
+    "full_original_and_additive_targets": 2730,
+    "source_semantic_admitted": 988,
+    "prior_targets_current_observed": 2365,
+    "prior_counts": {
+      "admitted": 842,
+      "unsupported": 1450,
+      "error": 73
+    },
+    "additive_targets": 365,
+    "additive_counts": {
+      "admitted": 146,
+      "unsupported": 208,
+      "error": 11
+    },
+    "all_targets_accounted": true,
+    "source_only_not_qualification": true
   },
   "review_registry": {
-    "held": 26,
-    "published": 62
+    "held": 30,
+    "published": 71
   },
   "pending_reviews": 0,
   "next_generic_repair": {
@@ -73,22 +69,108 @@
   "no_subagents": true,
   "network_configuration": "Do not touch: Claude/Codex/Chrome VPS and HKUST-only userspace EasyConnect SSH route remain outside this task.",
   "deferred_DaTikZ": {
-    "qualification_claimed": false,
-    "new_normal_calls": 0,
-    "new_QA_calls": 0,
-    "gate_passed": false,
-    "current_failure": "Executed node center/source PDF glyph group not unique: Gene_expression_data",
-    "next_step": "Inspect saved source node paint before any new candidate generation; do not relax matching or repeat consumed normal attempts."
+    "normals": [
+      {
+        "canonical_unchanged": true,
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v4/normal_once/91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": false,
+        "detail": "source_binding_incomplete:[{\"reason\": \"execution_binding_unsupported\", \"error\": \"One executed straight/polyline path per source path required\"}]",
+        "development_only": true,
+        "elapsed_seconds": 6.556972017511725,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "source_binding_incomplete",
+        "source_core_sha256": "91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v1/d73c10214c93417e86d98d1a6d6f1c7f"
+      },
+      {
+        "canonical_unchanged": true,
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v5/normal_once/9324360909150caab310795af35cfaf7189d8e7d45693af596622b0fc1cc2f97/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": false,
+        "detail": "source_binding_incomplete:[{\"reason\": \"tikz_source_connectivity_unresolved\", \"error\": \"node label not uniquely matched: Preprocess_box\"}]",
+        "development_only": true,
+        "elapsed_seconds": 6.11548887938261,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "source_binding_incomplete",
+        "source_core_sha256": "9324360909150caab310795af35cfaf7189d8e7d45693af596622b0fc1cc2f97",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v2/252407d3a9234582b4a1df3971b21cbc"
+      },
+      {
+        "canonical_unchanged": true,
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v6/normal_once/b5bc0e084594f99b8327a1df05a207504c5742d55b792e3b4162daa5db27f7df/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": false,
+        "detail": "source_binding_incomplete:[{\"reason\": \"tikz_source_connectivity_unresolved\", \"error\": \"arrowhead not uniquely matched in PDF paint order\"}]",
+        "development_only": true,
+        "elapsed_seconds": 6.068803828209639,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "source_binding_incomplete",
+        "source_core_sha256": "b5bc0e084594f99b8327a1df05a207504c5742d55b792e3b4162daa5db27f7df",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v3/39a86a8750bb42a3b97790d4699c0096"
+      },
+      {
+        "candidate": "/backup/shaoshitong/img2code_20261029/clean/priority_datikz_source_viewport_v8/be/be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93/f63ab1913a0a446281652162c49acbee/record.json",
+        "canonical_unchanged": true,
+        "checks": [
+          "reference_registration",
+          "resources",
+          "source_preliminary"
+        ],
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v8/normal_once/4ae6988cafbe80eeaf1bf54e669452eeeec831629c801644d92a3eef9055b301/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": true,
+        "detail": null,
+        "development_only": true,
+        "elapsed_seconds": 37.847480399534106,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "qualified_not_published": false,
+        "quality_failures": [
+          {
+            "reason": "source_profile_unsupported",
+            "type": "ValueError"
+          }
+        ],
+        "quality_ok": false,
+        "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/DaTikZ_text_terminal_v4_dbb967693b0b4c0582c9bb2d76a3b1b6/report.json",
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "native_candidate_pending_independent_full_quality",
+        "source_core_sha256": "4ae6988cafbe80eeaf1bf54e669452eeeec831629c801644d92a3eef9055b301",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v5/c04692112c934323bc39a0ad06b1a838"
+      }
+    ],
+    "latest_candidate_assets_verified": 4,
+    "qualified": false,
+    "remaining_failure": "actual_original_PDF_to_source_SVG_raster_anomaly",
+    "source_raster_ssim": 0.8893715647115513,
+    "unchanged_required_ssim": 0.9,
+    "no_failed_core_reexecution": true,
+    "next_step": "Keep the immutable source/candidate and failed QA; diagnose actual PDF physical-font/raster replay before any next core or QA review. No relaxation or reference substitution."
   },
   "source_publication_receipt": {
-    "at_utc": "2026-11-02T23:14:57.416573+00:00",
+    "at_utc": "2026-11-02T23:33:51.019291+00:00",
     "session": "01a19c31-2baf-7f90-8a7c-0100ca3bf5b9",
-    "source_commit": "2ad57521165602cc4472c4ac78f1a98054de2e36",
-    "remote_SHA": "2ad57521165602cc4472c4ac78f1a98054de2e36",
+    "source_commit": "af032c03dedfaa23111937552fef49bb172fda0d",
+    "remote_SHA": "af032c03dedfaa23111937552fef49bb172fda0d",
     "branch": "codex/pipeline-repair-20261102",
     "repository": "https://github.com/shaoshitong/xml_pipeline",
-    "verified_remote_SHA": true,
-    "new_source_files_hash_verified": 32
+    "remote_SHA_verified": true,
+    "source_files_hash_verified": 45
   },
   "resolved_geometry_repair": {
     "source_core": {
@@ -217,7 +299,7 @@
       ]
     }
   },
-  "next_step": "Observe the existing finite validation-chain handle. It waits for the two original source admissions and current runtime proof, freezes all 2730 original/additive targets, atomically reserves genuinely fresh families, and launches validation then gated whole-applicable-population conversion. Never duplicate any consumed normal attempt.",
+  "next_step": "Continue the existing birth-verified 839-case fixed batch and review new full8 results for scientific value/completeness. Preserve every attempted source/core and original reference. Do not rerun the successful validation or restart live batch.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -634,14 +716,14 @@
     "goal_complete": false
   },
   "seven_source_delivery_audit": {
-    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v2/5c9a1cdc411943b9829db1ae257bc1c6",
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v3/26bc05de90854169b6c9b434a50efe5e",
     "audit": {
-      "file": "clean/complex_research_delivery_audit_v2/5c9a1cdc411943b9829db1ae257bc1c6/audit.json",
-      "sha256": "21b04d95f38266b10e97730d96cd4770e371c9081cd324b1d16d9046e6b5dac4",
-      "bytes": 9885
+      "file": "clean/complex_research_delivery_audit_v3/26bc05de90854169b6c9b434a50efe5e/audit.json",
+      "sha256": "46570d371e8da454700fe99f18d9496e1aaf333d3acdb2dfb73ebb1ec71f2ccb",
+      "bytes": 10114
     },
     "strict_main_by_source": {
-      "QijiaHe--VFIG-Data": 184,
+      "QijiaHe--VFIG-Data": 193,
       "VincentHancoder--RAP": 780
     },
     "latest_chart_by_source": {
@@ -679,5 +761,248 @@
     "new_normal_calls": 0,
     "new_QA_calls": 0,
     "model_calls": 0
+  },
+  "source_admission_previous_core21": {
+    "total_targets": 2365,
+    "admitted": 841,
+    "unsupported": 1507,
+    "retained_errors": 17,
+    "recomputed": 1097,
+    "newly_admitted": 56,
+    "previous785_preserved": true,
+    "root": "/backup/shaoshitong/img2code_20261029/conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e"
+  },
+  "resolved_geometry_mass": {
+    "at_utc": "2026-11-02T23:54:21.951812+00:00",
+    "program_live": true,
+    "stage": "mass",
+    "mass": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass",
+    "mass_total": 839,
+    "counts": {
+      "abandoned": 28,
+      "qualified": 2,
+      "queued": 797,
+      "running": 12
+    },
+    "attempt_distribution": {
+      "0": 797,
+      "1": 42
+    },
+    "release_gate": {
+      "file": "release/compiler_iterations/programs/svg_complex_resolved_geometry_cached_unseen_20261102_v11/release_gate.json",
+      "sha256": "a589dda86435449705dde6d63db45dceca7555b1070cb85d2f9016c6b6a233e0"
+    },
+    "validation_units": {
+      "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18": {
+        "B_qualified": 0,
+        "C_qualified": 12,
+        "full_qualified_rate": 0.3870967741935484,
+        "new_qualified": 12,
+        "passed": true,
+        "positive_regressions": 0,
+        "samples": 31
+      }
+    },
+    "infrastructure_errors": 0,
+    "strict_main": {
+      "bytes": 4461126,
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235126380451Z_review_batch_v8/paired_priority_complex.jsonl",
+      "rows": 973,
+      "sha256": "32b85e6887a5d16ca3c2bbd5872a6ed7514e1af30b50a0a8c2daacfc364f273d"
+    },
+    "review_registry": {
+      "held": 30,
+      "published": 71
+    },
+    "TikZ_development": {
+      "normals": [
+        {
+          "canonical_unchanged": true,
+          "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v4/normal_once/91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+          "conversion_ok": false,
+          "detail": "source_binding_incomplete:[{\"reason\": \"execution_binding_unsupported\", \"error\": \"One executed straight/polyline path per source path required\"}]",
+          "development_only": true,
+          "elapsed_seconds": 6.556972017511725,
+          "fresh_unseen_validation_claimed": false,
+          "goal_complete": false,
+          "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+          "new_model_calls": 0,
+          "normal_calls": 1,
+          "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+          "reason": "source_binding_incomplete",
+          "source_core_sha256": "91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470",
+          "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v1/d73c10214c93417e86d98d1a6d6f1c7f"
+        },
+        {
+          "canonical_unchanged": true,
+          "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v5/normal_once/9324360909150caab310795af35cfaf7189d8e7d45693af596622b0fc1cc2f97/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+          "conversion_ok": false,
+          "detail": "source_binding_incomplete:[{\"reason\": \"tikz_source_connectivity_unresolved\", \"error\": \"node label not uniquely matched: Preprocess_box\"}]",
+          "development_only": true,
+          "elapsed_seconds": 6.11548887938261,
+          "fresh_unseen_validation_claimed": false,
+          "goal_complete": false,
+          "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+          "new_model_calls": 0,
+          "normal_calls": 1,
+          "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+          "reason": "source_binding_incomplete",
+          "source_core_sha256": "9324360909150caab310795af35cfaf7189d8e7d45693af596622b0fc1cc2f97",
+          "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v2/252407d3a9234582b4a1df3971b21cbc"
+        },
+        {
+          "canonical_unchanged": true,
+          "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v6/normal_once/b5bc0e084594f99b8327a1df05a207504c5742d55b792e3b4162daa5db27f7df/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+          "conversion_ok": false,
+          "detail": "source_binding_incomplete:[{\"reason\": \"tikz_source_connectivity_unresolved\", \"error\": \"arrowhead not uniquely matched in PDF paint order\"}]",
+          "development_only": true,
+          "elapsed_seconds": 6.068803828209639,
+          "fresh_unseen_validation_claimed": false,
+          "goal_complete": false,
+          "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+          "new_model_calls": 0,
+          "normal_calls": 1,
+          "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+          "reason": "source_binding_incomplete",
+          "source_core_sha256": "b5bc0e084594f99b8327a1df05a207504c5742d55b792e3b4162daa5db27f7df",
+          "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v3/39a86a8750bb42a3b97790d4699c0096"
+        },
+        {
+          "candidate": "/backup/shaoshitong/img2code_20261029/clean/priority_datikz_source_viewport_v8/be/be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93/f63ab1913a0a446281652162c49acbee/record.json",
+          "canonical_unchanged": true,
+          "checks": [
+            "reference_registration",
+            "resources",
+            "source_preliminary"
+          ],
+          "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v8/normal_once/4ae6988cafbe80eeaf1bf54e669452eeeec831629c801644d92a3eef9055b301/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+          "conversion_ok": true,
+          "detail": null,
+          "development_only": true,
+          "elapsed_seconds": 37.847480399534106,
+          "fresh_unseen_validation_claimed": false,
+          "goal_complete": false,
+          "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+          "new_model_calls": 0,
+          "normal_calls": 1,
+          "qualified_not_published": false,
+          "quality_failures": [
+            {
+              "reason": "source_profile_unsupported",
+              "type": "ValueError"
+            }
+          ],
+          "quality_ok": false,
+          "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/DaTikZ_text_terminal_v4_dbb967693b0b4c0582c9bb2d76a3b1b6/report.json",
+          "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+          "reason": "native_candidate_pending_independent_full_quality",
+          "source_core_sha256": "4ae6988cafbe80eeaf1bf54e669452eeeec831629c801644d92a3eef9055b301",
+          "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v5/c04692112c934323bc39a0ad06b1a838"
+        }
+      ],
+      "latest_candidate_assets_verified": 4,
+      "qualified": false,
+      "remaining_failure": "actual_original_PDF_to_source_SVG_raster_anomaly",
+      "source_raster_ssim": 0.8893715647115513,
+      "unchanged_required_ssim": 0.9,
+      "no_failed_core_reexecution": true,
+      "next_step": "Keep the immutable source/candidate and failed QA; diagnose actual PDF physical-font/raster replay before any next core or QA review. No relaxation or reference substitution."
+    },
+    "goal_complete": false
+  },
+  "resolved_geometry_C_publication": {
+    "review": {
+      "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_51522df37a68456dad9187d9cd8fcc59",
+      "pairs": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_51522df37a68456dad9187d9cd8fcc59/reviewed_pairs.jsonl",
+        "sha256": "347f58e79cd7f13a1aee62073f8ad10af884251a734338d8bc6db1711feef74b",
+        "bytes": 64914
+      },
+      "occlusion": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_C_11202baa645a4cc8b50689a342fc949b/source_text_occlusion_reviews.jsonl",
+        "sha256": "fa67e59bbe08ea5c05a07e297672b53c0f13d30f5002b593abc633c8a9724b06",
+        "bytes": 6849
+      },
+      "input_summary": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_C_11202baa645a4cc8b50689a342fc949b/summary.json",
+        "sha256": "740f7f8f885cc6812d848ace2900e6f41c003815227540c538e3c1bdf86945a6",
+        "bytes": 3808
+      },
+      "decisions": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_51522df37a68456dad9187d9cd8fcc59/decisions.json",
+        "sha256": "27494d1f16d7ceb7c7ab2ef285544e5994451a9c3364c0a4eb7bf1cdd99be86d",
+        "bytes": 3584
+      },
+      "approved_ids": [
+        "e2c8ca19ea54010e2dfc64ac00f2bb498523777029ec7881e67a3df723973758",
+        "791ff49a027617478c621b92e95cf1feeb6028b8497ff7bc77a3fd2c8e4201cf",
+        "6505d03ea6e253f4e41f6a3f9d6e3e9adaaaffc155bc3b95007ff823d0d300da",
+        "1926016497f1f84f2536de5c2b05adf16481e1ef4bf51d809d51de77c7993361",
+        "370e1db158bdec733f1e38bf606a99be1d32504e7d44a43c940782b0ae7f9bcc",
+        "edeafaaecdf5dd3869e5e4ca4ba35082680ea5b3e4f4fd43dd4909ce218fa66c",
+        "ec1cdc8bc7ff5e60e3ccbf0f0b3f200c0c3465cba502a4665dea0fe7fd1e53c8",
+        "ddfe53bbc9a93cccb0345fc799dae15dfa3cf3bedee7f78ecd3ba8daab25c38a",
+        "a8e000fe8a74bbf1c57bf07e7290878b00dfe467b18cbba0097ac82c13537dae"
+      ],
+      "held_ids": [
+        "dedec5402ad2301a3a2ac7db023f122816ca88d96126bd37b09300276a256d1f",
+        "70b8acda5a54fe27e0e83fd529b041f66eced5aeb5379af5a435026c16228d57",
+        "518897579421fbbd3c05da362a996b0240ef7739695f0a075bee7bbd19339a5f"
+      ],
+      "actual_native_PNG_inspected_ids": [
+        "dedec5402ad2301a3a2ac7db023f122816ca88d96126bd37b09300276a256d1f",
+        "e2c8ca19ea54010e2dfc64ac00f2bb498523777029ec7881e67a3df723973758",
+        "791ff49a027617478c621b92e95cf1feeb6028b8497ff7bc77a3fd2c8e4201cf",
+        "6505d03ea6e253f4e41f6a3f9d6e3e9adaaaffc155bc3b95007ff823d0d300da",
+        "1926016497f1f84f2536de5c2b05adf16481e1ef4bf51d809d51de77c7993361",
+        "370e1db158bdec733f1e38bf606a99be1d32504e7d44a43c940782b0ae7f9bcc",
+        "edeafaaecdf5dd3869e5e4ca4ba35082680ea5b3e4f4fd43dd4909ce218fa66c",
+        "70b8acda5a54fe27e0e83fd529b041f66eced5aeb5379af5a435026c16228d57",
+        "ec1cdc8bc7ff5e60e3ccbf0f0b3f200c0c3465cba502a4665dea0fe7fd1e53c8",
+        "ddfe53bbc9a93cccb0345fc799dae15dfa3cf3bedee7f78ecd3ba8daab25c38a",
+        "a8e000fe8a74bbf1c57bf07e7290878b00dfe467b18cbba0097ac82c13537dae",
+        "518897579421fbbd3c05da362a996b0240ef7739695f0a075bee7bbd19339a5f"
+      ],
+      "technical_qualifications_unchanged": true,
+      "new_normal_calls": 0,
+      "new_QA_calls": 0,
+      "model_calls": 0
+    },
+    "publication": {
+      "before": 964,
+      "after": 973,
+      "added_ids": [
+        "e2c8ca19ea54010e2dfc64ac00f2bb498523777029ec7881e67a3df723973758",
+        "791ff49a027617478c621b92e95cf1feeb6028b8497ff7bc77a3fd2c8e4201cf",
+        "6505d03ea6e253f4e41f6a3f9d6e3e9adaaaffc155bc3b95007ff823d0d300da",
+        "1926016497f1f84f2536de5c2b05adf16481e1ef4bf51d809d51de77c7993361",
+        "370e1db158bdec733f1e38bf606a99be1d32504e7d44a43c940782b0ae7f9bcc",
+        "edeafaaecdf5dd3869e5e4ca4ba35082680ea5b3e4f4fd43dd4909ce218fa66c",
+        "ec1cdc8bc7ff5e60e3ccbf0f0b3f200c0c3465cba502a4665dea0fe7fd1e53c8",
+        "ddfe53bbc9a93cccb0345fc799dae15dfa3cf3bedee7f78ecd3ba8daab25c38a",
+        "a8e000fe8a74bbf1c57bf07e7290878b00dfe467b18cbba0097ac82c13537dae"
+      ],
+      "held_ids": [
+        "dedec5402ad2301a3a2ac7db023f122816ca88d96126bd37b09300276a256d1f",
+        "70b8acda5a54fe27e0e83fd529b041f66eced5aeb5379af5a435026c16228d57",
+        "518897579421fbbd3c05da362a996b0240ef7739695f0a075bee7bbd19339a5f"
+      ],
+      "main": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235126380451Z_review_batch_v8/paired_priority_complex.jsonl",
+        "sha256": "32b85e6887a5d16ca3c2bbd5872a6ed7514e1af30b50a0a8c2daacfc364f273d",
+        "bytes": 4461126,
+        "rows": 973
+      },
+      "review": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235126380451Z_review_batch_v8/value_review.json",
+        "sha256": "d0dcc5e830e19c8bdc3986594d91ecddd480dfba9081e1c454bedbdf0c65ceec",
+        "bytes": 13344
+      },
+      "pointer": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+        "sha256": "e68790422e7ffddf6cdd32e66b1a1d91c95a51358394f9e65c414cd53255c048",
+        "bytes": 3514
+      }
+    }
   }
 }

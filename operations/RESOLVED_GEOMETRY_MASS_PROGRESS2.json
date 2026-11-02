@@ -1,0 +1,137 @@
+{
+  "at_utc": "2026-11-02T23:54:21.951812+00:00",
+  "program_live": true,
+  "stage": "mass",
+  "mass": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass",
+  "mass_total": 839,
+  "counts": {
+    "abandoned": 28,
+    "qualified": 2,
+    "queued": 797,
+    "running": 12
+  },
+  "attempt_distribution": {
+    "0": 797,
+    "1": 42
+  },
+  "release_gate": {
+    "file": "release/compiler_iterations/programs/svg_complex_resolved_geometry_cached_unseen_20261102_v11/release_gate.json",
+    "sha256": "a589dda86435449705dde6d63db45dceca7555b1070cb85d2f9016c6b6a233e0"
+  },
+  "validation_units": {
+    "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18": {
+      "B_qualified": 0,
+      "C_qualified": 12,
+      "full_qualified_rate": 0.3870967741935484,
+      "new_qualified": 12,
+      "passed": true,
+      "positive_regressions": 0,
+      "samples": 31
+    }
+  },
+  "infrastructure_errors": 0,
+  "strict_main": {
+    "bytes": 4461126,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235126380451Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 973,
+    "sha256": "32b85e6887a5d16ca3c2bbd5872a6ed7514e1af30b50a0a8c2daacfc364f273d"
+  },
+  "review_registry": {
+    "held": 30,
+    "published": 71
+  },
+  "TikZ_development": {
+    "normals": [
+      {
+        "canonical_unchanged": true,
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v4/normal_once/91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": false,
+        "detail": "source_binding_incomplete:[{\"reason\": \"execution_binding_unsupported\", \"error\": \"One executed straight/polyline path per source path required\"}]",
+        "development_only": true,
+        "elapsed_seconds": 6.556972017511725,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "source_binding_incomplete",
+        "source_core_sha256": "91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v1/d73c10214c93417e86d98d1a6d6f1c7f"
+      },
+      {
+        "canonical_unchanged": true,
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v5/normal_once/9324360909150caab310795af35cfaf7189d8e7d45693af596622b0fc1cc2f97/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": false,
+        "detail": "source_binding_incomplete:[{\"reason\": \"tikz_source_connectivity_unresolved\", \"error\": \"node label not uniquely matched: Preprocess_box\"}]",
+        "development_only": true,
+        "elapsed_seconds": 6.11548887938261,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "source_binding_incomplete",
+        "source_core_sha256": "9324360909150caab310795af35cfaf7189d8e7d45693af596622b0fc1cc2f97",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v2/252407d3a9234582b4a1df3971b21cbc"
+      },
+      {
+        "canonical_unchanged": true,
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v6/normal_once/b5bc0e084594f99b8327a1df05a207504c5742d55b792e3b4162daa5db27f7df/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": false,
+        "detail": "source_binding_incomplete:[{\"reason\": \"tikz_source_connectivity_unresolved\", \"error\": \"arrowhead not uniquely matched in PDF paint order\"}]",
+        "development_only": true,
+        "elapsed_seconds": 6.068803828209639,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "source_binding_incomplete",
+        "source_core_sha256": "b5bc0e084594f99b8327a1df05a207504c5742d55b792e3b4162daa5db27f7df",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v3/39a86a8750bb42a3b97790d4699c0096"
+      },
+      {
+        "candidate": "/backup/shaoshitong/img2code_20261029/clean/priority_datikz_source_viewport_v8/be/be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93/f63ab1913a0a446281652162c49acbee/record.json",
+        "canonical_unchanged": true,
+        "checks": [
+          "reference_registration",
+          "resources",
+          "source_preliminary"
+        ],
+        "claim": "/backup/shaoshitong/img2code_20261029/conversion/priority_datikz_source_viewport_v8/normal_once/4ae6988cafbe80eeaf1bf54e669452eeeec831629c801644d92a3eef9055b301/d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b.json",
+        "conversion_ok": true,
+        "detail": null,
+        "development_only": true,
+        "elapsed_seconds": 37.847480399534106,
+        "fresh_unseen_validation_claimed": false,
+        "goal_complete": false,
+        "id": "be12a33e5806b959b3018b090eee6774e4271652474e8654da4df34ad0d35c93",
+        "new_model_calls": 0,
+        "normal_calls": 1,
+        "qualified_not_published": false,
+        "quality_failures": [
+          {
+            "reason": "source_profile_unsupported",
+            "type": "ValueError"
+          }
+        ],
+        "quality_ok": false,
+        "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/DaTikZ_text_terminal_v4_dbb967693b0b4c0582c9bb2d76a3b1b6/report.json",
+        "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+        "reason": "native_candidate_pending_independent_full_quality",
+        "source_core_sha256": "4ae6988cafbe80eeaf1bf54e669452eeeec831629c801644d92a3eef9055b301",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v5/c04692112c934323bc39a0ad06b1a838"
+      }
+    ],
+    "latest_candidate_assets_verified": 4,
+    "qualified": false,
+    "remaining_failure": "actual_original_PDF_to_source_SVG_raster_anomaly",
+    "source_raster_ssim": 0.8893715647115513,
+    "unchanged_required_ssim": 0.9,
+    "no_failed_core_reexecution": true
+  },
+  "goal_complete": false
+}

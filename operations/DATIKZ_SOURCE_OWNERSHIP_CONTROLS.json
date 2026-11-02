@@ -1,0 +1,13 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/datikz_source_ownership_development_v1/a32d2d49788a4db18786a66361d26572",
+  "proof": {
+    "file": "conversion/datikz_source_ownership_development_v1/a32d2d49788a4db18786a66361d26572/proof.json",
+    "sha256": "d45b4978059740dfb6085abeffc445ef94234ef1077965b60228a9ace4891bd9"
+  },
+  "actual_source_cases": 2,
+  "negative_controls": 6,
+  "glyph_boundary_controls": 2,
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "model_calls": 0
+}

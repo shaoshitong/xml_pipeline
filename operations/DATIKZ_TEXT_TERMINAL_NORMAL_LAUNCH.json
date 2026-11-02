@@ -1,0 +1,10 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/datikz_text_terminal_normal_v1/d73c10214c93417e86d98d1a6d6f1c7f",
+  "pid": 3905681,
+  "birth_ticks": "1145465065",
+  "source_core_sha256": "91c5f889147b816b4723ef6f38096823328aa96ff6e9a42064bd3b04f6d72470",
+  "normal_calls_planned": 1,
+  "known_development_case": true,
+  "model_calls": 0,
+  "goal_complete": false
+}

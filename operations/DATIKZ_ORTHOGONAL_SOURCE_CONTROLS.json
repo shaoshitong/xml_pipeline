@@ -1,0 +1,54 @@
+{
+  "raw_source": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+  "orthogonal_operations": 2,
+  "original_points_and_paths_unchanged": true,
+  "unknown_curves_rejected": true,
+  "multiple_path_owners_rejected": true,
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "model_calls": 0,
+  "proof": [
+    {
+      "picture": "1",
+      "path": "42",
+      "original_executed_operation": "horizontal_vertical",
+      "complete_original_softpath_sha256": "08a260de1a31b564bfaf85f46a96746006a18ff043ca28dda44a1f97614fab35",
+      "all_original_points_pt": [
+        [
+          "31.98572pt",
+          "-42.67912pt"
+        ],
+        [
+          "76.82434pt",
+          "-42.67912pt"
+        ],
+        [
+          "76.82434pt",
+          "-72.60735pt"
+        ]
+      ],
+      "no_corner_or_endpoint_synthesized": true
+    },
+    {
+      "picture": "1",
+      "path": "46",
+      "original_executed_operation": "horizontal_vertical",
+      "complete_original_softpath_sha256": "43c26517f0827e3c508fd69e0b2731d47a26666ad2385d48e9b6518f33598368",
+      "all_original_points_pt": [
+        [
+          "31.98572pt",
+          "-182.74388pt"
+        ],
+        [
+          "42.67912pt",
+          "-182.74388pt"
+        ],
+        [
+          "42.67912pt",
+          "-210.99664pt"
+        ]
+      ],
+      "no_corner_or_endpoint_synthesized": true
+    }
+  ]
+}
