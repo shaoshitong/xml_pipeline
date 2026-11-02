@@ -1,13 +1,13 @@
 {
-  "at_utc": "2026-11-02T23:56:23.607258+00:00",
+  "at_utc": "2026-11-02T23:58:56.966386+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "bytes": 4461126,
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235126380451Z_review_batch_v8/paired_priority_complex.jsonl",
-    "rows": 973,
-    "sha256": "32b85e6887a5d16ca3c2bbd5872a6ed7514e1af30b50a0a8c2daacfc364f273d"
+    "bytes": 4485758,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235847286492Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 981,
+    "sha256": "00fcbaab6c71643acaf80b11b6966c6eb9e2adb4f9af1ffe44e32a104facaa05"
   },
-  "strict_main_rows": 973,
+  "strict_main_rows": 981,
   "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
     "run": "svg_complex_resolved_geometry_cached_unseen_20261102_v11",
@@ -60,7 +60,7 @@
   },
   "review_registry": {
     "held": 30,
-    "published": 71
+    "published": 79
   },
   "pending_reviews": 0,
   "next_generic_repair": {
@@ -1004,5 +1004,35 @@
         "bytes": 3514
       }
     }
-  }
+  },
+  "latest_mass_progress": {
+    "at_utc": "2026-11-02T23:58:56.966386+00:00",
+    "program_live": true,
+    "stage": "mass",
+    "mass_total": 839,
+    "counts": {
+      "abandoned": 81,
+      "qualified": 10,
+      "queued": 737,
+      "running": 11
+    },
+    "attempt_distribution": {
+      "0": 737,
+      "1": 102
+    },
+    "infrastructure_errors": 0,
+    "strict_main": {
+      "bytes": 4485758,
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T235847286492Z_review_batch_v8/paired_priority_complex.jsonl",
+      "rows": 981,
+      "sha256": "00fcbaab6c71643acaf80b11b6966c6eb9e2adb4f9af1ffe44e32a104facaa05"
+    },
+    "review_registry": {
+      "held": 30,
+      "published": 79
+    },
+    "goal_complete": false
+  },
+  "latest_value_publication": "operations/resolved-geometry-mass-publication1.json",
+  "next_action": "Continue existing fixed v11 mass owner; review only newly qualified PNGs, group genuine failures after batch, preserve old outputs and do not rerun consumed source/core."
 }
