@@ -1,0 +1,74 @@
+{
+  "at_utc": "2026-11-02T20:25:26.363298+00:00",
+  "program": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+  "handle": {
+    "argv": [
+      "/home/shaoshitong/anaconda3/bin/python",
+      "-B",
+      "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v5.py",
+      "supervise",
+      "--program-dir",
+      "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+      "--workers",
+      "12",
+      "--case-timeout",
+      "900",
+      "--nonce",
+      "f6838c5fbe734733b18c6836e1b607cf"
+    ],
+    "finite": true,
+    "goal_complete": false,
+    "pid": 954672,
+    "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+    "start_ticks": 1144269332,
+    "watch": false
+  },
+  "state": {
+    "goal_complete": false,
+    "stage": "validation_B"
+  },
+  "phases": {
+    "B": {
+      "total": 100,
+      "counts": {
+        "abandoned": 79,
+        "running": 12,
+        "queued": 9
+      },
+      "finished": false,
+      "measured_completed": 79,
+      "measured_wall_seconds": 153.17,
+      "per_case_wall_seconds_mean": 20.78,
+      "per_case_wall_seconds_p50": 21.45,
+      "per_case_wall_seconds_p95": 36.22,
+      "infrastructure_failures": 0,
+      "failure_reasons": {
+        "source_profile_failed": 61,
+        "Native content requires full tight canvas": 14,
+        "dangling_named_terminal": 2,
+        "source_profile_unsupported": 2
+      },
+      "elapsed_measures_remote_work_not_HTTP_or_model_thinking": true
+    },
+    "C": {
+      "total": 100,
+      "counts": {
+        "queued": 100
+      },
+      "finished": false,
+      "measured_completed": 0,
+      "measured_wall_seconds": 0,
+      "per_case_wall_seconds_mean": null,
+      "per_case_wall_seconds_p50": null,
+      "per_case_wall_seconds_p95": null,
+      "infrastructure_failures": 0,
+      "failure_reasons": {},
+      "elapsed_measures_remote_work_not_HTTP_or_model_thinking": true
+    },
+    "mass": null
+  },
+  "query_processing_seconds": 0.0107,
+  "read_only": true,
+  "goal_complete": false,
+  "ssh_total_seconds": 0.719
+}

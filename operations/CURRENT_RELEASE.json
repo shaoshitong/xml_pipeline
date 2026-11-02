@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:01:35.188492+00:00",
+  "at_utc": "2026-11-02T20:25:12.497081+00:00",
   "goal_complete": false,
   "source_frontend": "compiler_svg_scene_frontend_v15",
   "generation_plugin": "compiler_svg_general_guard_v11",
@@ -22,28 +22,39 @@
     "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423"
   },
   "latest_progress": {
-    "at_utc": "2026-11-02T19:58:49.179469+00:00",
+    "at_utc": "2026-11-02T20:25:12.497081+00:00",
     "audit": {
       "live": {
         "pid": 241651,
-        "same_birth": true,
-        "live": true,
-        "state": "S"
+        "live": false,
+        "missing": true
       },
       "summary": {
         "QA_calls": 0,
-        "at_utc": "2026-11-02T19:58:48.637197+00:00",
+        "at_utc": "2026-11-02T20:22:17.955746+00:00",
         "candidate_emissions": 0,
-        "completed": 664,
+        "completed": 2365,
         "counts": {
-          "admitted": 224,
-          "error": 4,
-          "queued": 1689,
-          "running": 12,
-          "unsupported": 436
+          "admitted": 785,
+          "error": 17,
+          "unsupported": 1563
         },
-        "elapsed_seconds": 525.3044703155756,
-        "finished": false,
+        "elapsed_seconds": 1934.6228804606944,
+        "files": {
+          "admitted.jsonl": {
+            "file": "conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423/admitted.jsonl",
+            "sha256": "5cdbe18b6466df94794eaaee7a24a315738490176c12e189fad23257078e07d3"
+          },
+          "error.jsonl": {
+            "file": "conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423/error.jsonl",
+            "sha256": "4fcaab41108a086198dd13c6207aa6e80a0838380edea3335f313a1fab43b737"
+          },
+          "unsupported.jsonl": {
+            "file": "conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423/unsupported.jsonl",
+            "sha256": "b50b2e284ce8abe0475a4e6d1bea2d0d1d06da0e6cf1d5ea0e68be6c418fde51"
+          }
+        },
+        "finished": true,
         "goal_complete": false,
         "model_calls": 0,
         "normal_conversion_calls": 0,
@@ -51,45 +62,155 @@
         "source_core_configuration_sha256": "c9051f2ac571b2fbfe22f9160aee8de9de09e0ebf903011104541f82ee8de4a4",
         "total": 2365
       },
-      "measured_completed": 664,
+      "measured_completed": 2365,
       "admission_reasons": {
-        "source_open_path_has_multiple_subpaths": 53,
-        "source_scene_feature_unsupported": 49,
-        "source_cairosvg_render_failed": 139,
-        "source_semantic_admission_passed": 224,
-        "source_cairo_browser_logical_paint_inventory_differs": 42,
-        "source_triangle_paint_not_solid_fill": 6,
-        "source_marker_not_one_filled_triangle": 26,
-        "source_connector_cap_or_join_requires_explicit_native_mapping": 24,
-        "source_triangle_not_symmetric_about_owner_tangent": 25,
-        "source_endpoint_direction_multiple_subpaths": 15,
-        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 15,
-        "source_run_wrapper_changed_visible_source_pixels": 8,
-        "actual_source_use_shadow_snapshot_failed": 6,
-        "source_element_or_ancestor_opacity_requires_compositing_frontend": 16,
-        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 6,
-        "source_triangle_outside_native_marker_geometric_candidate_bound": 5,
-        "native_bezier_control_filter_would_change_source_curve": 4,
-        "actual_source_use_UA_shadow_not_unique": 1
+        "source_open_path_has_multiple_subpaths": 220,
+        "source_scene_feature_unsupported": 175,
+        "source_cairosvg_render_failed": 471,
+        "source_semantic_admission_passed": 785,
+        "source_cairo_browser_logical_paint_inventory_differs": 133,
+        "source_triangle_paint_not_solid_fill": 27,
+        "source_marker_not_one_filled_triangle": 88,
+        "source_connector_cap_or_join_requires_explicit_native_mapping": 89,
+        "source_triangle_not_symmetric_about_owner_tangent": 73,
+        "source_endpoint_direction_multiple_subpaths": 48,
+        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 43,
+        "source_run_wrapper_changed_visible_source_pixels": 18,
+        "actual_source_use_shadow_snapshot_failed": 19,
+        "source_element_or_ancestor_opacity_requires_compositing_frontend": 92,
+        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 36,
+        "source_triangle_outside_native_marker_geometric_candidate_bound": 14,
+        "native_bezier_control_filter_would_change_source_curve": 16,
+        "actual_source_use_UA_shadow_not_unique": 1,
+        "source_marker_owner_not_bound_to_nodes": 11,
+        "source_marker_paint_clipped_by_viewport": 1,
+        "source_vector_effect_requires_another_native_stroke_mapping": 2,
+        "CDPSession.send": 1,
+        "source_stroked_nonconformal_connector_requires_outline_compiler": 2
       },
-      "observer_seconds_mean": 9.151,
+      "observer_seconds_mean": 9.43,
       "candidate_emissions": 0
     },
     "chain": {
       "live": {
         "pid": 354594,
+        "live": false,
+        "missing": true
+      },
+      "state": {
+        "stage": "fixed_source_qualified_validation_then_gated_mass_launched",
+        "goal_complete": false,
+        "program": {
+          "pid": 954672,
+          "start_ticks": 1144269332,
+          "argv": [
+            "/home/shaoshitong/anaconda3/bin/python",
+            "-B",
+            "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v5.py",
+            "supervise",
+            "--program-dir",
+            "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+            "--workers",
+            "12",
+            "--case-timeout",
+            "900",
+            "--nonce",
+            "f6838c5fbe734733b18c6836e1b607cf"
+          ],
+          "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+          "finite": true,
+          "watch": false,
+          "goal_complete": false
+        },
+        "selection": {
+          "pool": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/source_pools/svg_complex_semantic_admission_unseen_20261102_v8",
+          "run_id": "svg_complex_semantic_admission_unseen_20261102_v8",
+          "selected": 100,
+          "eligible_observed_families": 127,
+          "policy": {
+            "all_applicable_source_population": 10104,
+            "all_format_provenance_scope": 131904,
+            "applicable_complex_target_population": 2365,
+            "deferred_other_sources": 7739,
+            "frozen_complex_or_dense_targets": 5672,
+            "full_scope_parent_summary": {
+              "file": "release/compiler_iterations/source_pools/svg_actual_shadow_unseen100_20261102_v4/summary.json",
+              "sha256": "ac5eab8effc89c359657ff309696b5af634b65425009759e5d1116526cffa94b"
+            },
+            "goal_complete": false,
+            "inputs": {
+              "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/priority_sources/index.jsonl": "bd930fcdd3923563a9a03cc9a6529d1fce160539235ca4ccdadf0be2db545aa2",
+              "/backup/shaoshitong/img2code_20261029/clean/priority_svg_dense_source_screen_v2/new_complex_candidates.jsonl": "fa412b7046cbf5b04d110c6da07e73248f3e9ccbf97e42363aa5af11b361f6a3"
+            },
+            "metadata_only_successor": true,
+            "no_repeated_source_audit_or_raster": true,
+            "parent_complex_pool_summary": {
+              "file": "release/compiler_iterations/source_pools/svg_complex_actual_shadow_unseen100_20261102_v6/summary.json",
+              "sha256": "dc9c5a561e2c9950fe08ca2e9eb46d24dd6562e0e55c714361c2b1862a553f75"
+            },
+            "quality_thresholds_changed": false,
+            "schema": "priority_complex_source_queue_policy_v1",
+            "source_family_seal_and_anti_leakage_unchanged": true,
+            "source_only_filters_predate_current_QA": true,
+            "source_scope": 26754,
+            "unchanged_static_admission_literal_source_checked": true,
+            "user_scope": "Complex scientific diagrams, posters and scientific visualizations; simple sources remain in the complete audit but are not dispatched in this priority round.",
+            "source_semantic_admission_preregistered_before_unseen_selection": true,
+            "source_admission_plan_sha256": "26a9d2f299771e11edf5018386658bafaeb6875ead9d287e10ffcdde1b451083",
+            "raw_complex_source_targets_preserved": 2365,
+            "source_semantically_admitted": 785,
+            "source_unsupported_retained": 1563,
+            "source_admission_errors_retained_pending": 17,
+            "candidate_or_QA_outcomes_used_for_source_eligibility": false,
+            "not_a_format_completion": true
+          }
+        },
+        "setup_seconds": 1656.3823982067406
+      }
+    },
+    "goal_complete": false,
+    "program": {
+      "live": {
+        "pid": 954672,
         "same_birth": true,
         "live": true,
         "state": "S"
       },
+      "handle": {
+        "pid": 954672,
+        "start_ticks": 1144269332,
+        "argv": [
+          "/home/shaoshitong/anaconda3/bin/python",
+          "-B",
+          "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v5.py",
+          "supervise",
+          "--program-dir",
+          "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+          "--workers",
+          "12",
+          "--case-timeout",
+          "900",
+          "--nonce",
+          "f6838c5fbe734733b18c6836e1b607cf"
+        ],
+        "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
+        "finite": true,
+        "watch": false,
+        "goal_complete": false
+      },
       "state": {
-        "stage": "waiting_for_existing_source_only_admission_audit",
         "goal_complete": false,
-        "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
-        "preflight_seconds": 106.9075373802334
+        "stage": "validation_B"
+      },
+      "B": {
+        "abandoned": 72,
+        "queued": 17,
+        "running": 11
+      },
+      "C": {
+        "queued": 100
       }
     },
-    "goal_complete": false,
     "runtime_proof": {
       "file": "release/compiler_iterations/controls/svg_edge_use_runtime_controls_20261102_v1/proof.json",
       "sha256": "4f65ff4d5ba0ba0381daa9253cf92f020534159b6486f61b44a6ced7fa67108c"
@@ -120,18 +241,18 @@
       "new_667_pair_present": true
     },
     "catalogue": {
-      "at_utc": "2026-11-02T19:51:01.669239+00:00",
+      "at_utc": "2026-11-02T20:24:21.181490+00:00",
       "goal_complete": false,
       "index": {
-        "bytes": 1996204,
-        "file": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea/pairs.jsonl",
-        "rows": 1394,
-        "sha256": "4e1ddc3ae6efc1569b7d6bb7586d47b17d5fdadf99d0f708442e29e90bff6030"
+        "bytes": 2015534,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623/pairs.jsonl",
+        "rows": 1406,
+        "sha256": "cb71bd6e911ce7d74149372874e0feb92adc7a4adcf23f40495d31b84c5fed51"
       },
-      "input_fingerprint": "ddf04f09d6eaa2e22e00e32b65bdb90f817bd2db559e4184db3e6ef9359b66f0",
+      "input_fingerprint": "be766e686623d2ea825c95b42453fea70c6d37228eba003fbb32b06616f6a37d",
       "input_rows_by_evidence_view": {
-        "arxiv_author_native_source_replay": 304,
-        "arxiv_registered_original_PDF_visual_v2": 90,
+        "arxiv_author_native_source_replay": 316,
+        "arxiv_registered_original_PDF_visual_v2": 94,
         "paper_diagrams_and_posters_full8": 887,
         "scientific_chart_provider_original": 29,
         "scientific_chart_source_replay": 168,
@@ -140,25 +261,25 @@
       "publisher": "research_catalog_refresh_v3",
       "publisher_source_sha256": "1dc676579a20b70feca0c2dbaf02c77596db455daf50db6c691a2e8d9eeee9d8",
       "schema": "research_pairs_catalogue_pointer_v3",
-      "snapshot": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea",
+      "snapshot": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623",
       "summary": {
-        "bytes": 6063,
-        "file": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea/summary.json",
-        "sha256": "d76ad424f23e31c5a4b21828fca7a40575f9f6b05ffb71367214a3d1b82938cf"
+        "bytes": 6064,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623/summary.json",
+        "sha256": "63bd5c1e1773d1a09b5101c2599c6b1dfedcecd3f6e389347a0bd6ae873c7510"
       },
-      "unique_code_PNG_pairs": 1394,
+      "unique_code_PNG_pairs": 1406,
       "unique_pairs_by_evidence_view": {
-        "arxiv_author_native_source_replay": 304,
-        "arxiv_registered_original_PDF_visual_v2": 90,
+        "arxiv_author_native_source_replay": 316,
+        "arxiv_registered_original_PDF_visual_v2": 94,
         "paper_diagrams_and_posters_full8": 887,
         "scientific_chart_provider_original": 29,
         "scientific_chart_source_replay": 168,
         "scientific_chart_source_replay_repaired": 5
       },
       "validation": {
-        "bytes": 4851666,
-        "file": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea/validation.json",
-        "sha256": "16cea97cdeeb5bcc6db12c9bb0d0363a2cde709a11ddf8c31dd7a785e5681e20"
+        "bytes": 4909389,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623/validation.json",
+        "sha256": "fff8447cc1e5884a1463d624796ffb9e3f385c34e12d8d7699d7d5c2e67e635f"
       }
     }
   },
@@ -204,5 +325,15 @@
   "unified_catalogue_pairs": 1394,
   "next_action": "Observe the same audit and chain birth identities. Chain already passed actual once-safe dispatch and will wait for the entire 2365-row source-only admission export, then freeze eligibility, reserve independent families and run B/C and unchanged gated mass with 12 workers. Do not repeat the source audit, development normals or controls. Other named datasets still require coverage/remaining-reason audit; do not equate this SVG unit with completion of all formats.",
   "normal_reexecution_for_same_source_core_allowed": false,
-  "local_data_policy": "Only code/config/small audit summaries on Mac; datasets, fonts/runtime and PNG/XML assets remain on HKUST."
+  "local_data_policy": "Only code/config/small audit summaries on Mac; datasets, fonts/runtime and PNG/XML assets remain on HKUST.",
+  "timing_report_helper": "scripts/summarize_iteration_timing_v1.py",
+  "source_admission_terminal": {
+    "total": 2365,
+    "admitted": 785,
+    "unsupported": 1563,
+    "error": 17,
+    "actual_elapsed_seconds": 1934.6228804606944,
+    "normal_conversion_calls": 0,
+    "candidate_emissions": 0
+  }
 }

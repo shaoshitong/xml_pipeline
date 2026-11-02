@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:21:30.210699+00:00",
+  "at_utc": "2026-11-02T20:25:49.030353+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13013,6 +13013,12 @@
       "sha256": "30e3f37b6a72d4c60253f3b88048df304d1337eb66104e7b747161cd82b6f032",
       "bytes": 12891,
       "mtime_ns": 1793308414625676631
+    },
+    {
+      "file": "scripts/summarize_iteration_timing_v1.py",
+      "bytes": 3446,
+      "sha256": "736981d80df0c19f6c989124a3e1edf83be672b5b3c3a1140b0cada2076d7773",
+      "origin": "work/takeover/summarize_iteration_timing_v1.py"
     },
     {
       "file": "scripts/verify_storage_records.py",
