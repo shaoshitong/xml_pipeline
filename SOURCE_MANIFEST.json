@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:53:58.531423+00:00",
+  "at_utc": "2026-11-02T21:26:30.956199+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -557,6 +557,13 @@
       "bytes": 4121,
       "sha256": "40b3b5fddcf5ca1f296dd2b17ee60e40d270c276c20554cb1daede5db4b9c60f",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/approve_semantic_admission_content_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/approve_unseen27_content_v1.py",
+      "bytes": 3775,
+      "sha256": "af16dda66e8f14ce078a133c21fb07178d15e5a1946f1902df1a1f5de5d812e4",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/approve_unseen27_content_v1.py",
       "remote_source_hash_verified": true
     },
     {
@@ -1134,6 +1141,13 @@
       "sha256": "59b5608a4b5bfbfdf759f4071b25c1b1bfa90f365c064529c2d060aa78565a3f",
       "bytes": 11846,
       "mtime_ns": 1793442187689450263
+    },
+    {
+      "file": "conversion/scripts/close_background_rotation_controls_v1.py",
+      "bytes": 3997,
+      "sha256": "d99dac38d1c124b0c8697c777b2037b6cbc95485802aa80990dd1510b7eb1a5c",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/close_background_rotation_controls_v1.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/close_completed_symbol_round_v1.py",
@@ -4442,6 +4456,13 @@
       "mtime_ns": 1793400832670007944
     },
     {
+      "file": "conversion/scripts/derive_cached_semantic_source_pool_v2.py",
+      "bytes": 7015,
+      "sha256": "f09f8fee563a14742361b5e657dcbb3f4c225f047d840077e71c030793e5ef8d",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/derive_cached_semantic_source_pool_v2.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/derive_complex_source_pool_v1.py",
       "sha256": "9d425760ff26b783bedbcc0acda8288ce62610ddf808794c838743f7df439170",
       "bytes": 6223,
@@ -5906,6 +5927,13 @@
       "mtime_ns": 1793645250927993756
     },
     {
+      "file": "conversion/scripts/launch_after_cached_background_admission_v1.py",
+      "bytes": 2566,
+      "sha256": "f92fbbbc87da285e9fb59ad2c5471b6214802ae08dfc9c5e5236b558ff24a1ce",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/launch_after_cached_background_admission_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/launch_after_semantic_admission_v1.py",
       "sha256": "2857b98cd635aac3f497bec9ccf3fda52b980b966861760d2495d5f5d14a848d",
       "bytes": 2574,
@@ -6906,6 +6934,13 @@
       "sha256": "7488d7414ddf00c9b2514a6ad4a6c0d54be6d97a97dd9ac7302dfd8af433cb43",
       "bytes": 3913,
       "mtime_ns": 1793404515355335712
+    },
+    {
+      "file": "conversion/scripts/native_text_layout_review_v1.py",
+      "bytes": 4036,
+      "sha256": "4808525348639a65a9fd66621520db6bff5d6fcd924782d4d6fc00909c06fd40",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/native_text_layout_review_v1.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/native_translation.py",
@@ -8211,6 +8246,13 @@
       "remote_source_hash_verified": true
     },
     {
+      "file": "conversion/scripts/review_fixed_background_pairs_v1.py",
+      "bytes": 4495,
+      "sha256": "8a2f3e485443681d398809c4dc5327816d229a5403115eac0be5e5575d0412c5",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_fixed_background_pairs_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/review_harness_v2.py",
       "sha256": "300f4eb916157ed7007d241d5ad95773cd6aa25f900ba73c0c8fb7d3cdee2c08",
       "bytes": 1047,
@@ -8542,6 +8584,13 @@
       "mtime_ns": 1793649438131978478
     },
     {
+      "file": "conversion/scripts/svg_analytic_cohort_refresh_v6.py",
+      "bytes": 3678,
+      "sha256": "29acdae4f9489f84e081f721d1d5f0c42f93305c1f356c523b0976e95d94e1a9",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_cohort_refresh_v6.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_batch_v1.py",
       "sha256": "7238a9e9380d1be23ed0a5fca24b2d88b1e80962025b5174f77b7705cb56d1a2",
       "bytes": 29127,
@@ -8572,6 +8621,13 @@
       "mtime_ns": 1793649438133263715
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_batch_v6.py",
+      "bytes": 29127,
+      "sha256": "82d101bd799e04097df6abfc6be07a1a90c3d377542dfad2298a2746a1c68a93",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_batch_v6.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_case_v1.py",
       "sha256": "fe9f84a4c26f0a86c22fc5936182dedfc6c6067f6e24d2912a7a3ba63c9534dd",
       "bytes": 16203,
@@ -8600,6 +8656,13 @@
       "sha256": "083fd3016798b5363dbf01325cd701c0989a1c10b531998be008b8f73cff06a4",
       "bytes": 16861,
       "mtime_ns": 1793649438132745720
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_case_v6.py",
+      "bytes": 16868,
+      "sha256": "5d7e710bc712b2e84aa64c73b960355daa1894cbb2d4da26782b5808e43a661e",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_case_v6.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_chain_v1.py",
@@ -8638,6 +8701,13 @@
       "mtime_ns": 1793649438134000749
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_chain_v7.py",
+      "bytes": 16718,
+      "sha256": "d94a88bc1b535f47ba628c2a1f56603d6dcf07b189b357d38d8468c852146a88",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_chain_v7.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_controls_v1.py",
       "sha256": "7d3d029ae0c240b33cf8c27e70930cc97d4e5230219f2ea47adc92e5a40c7d4f",
       "bytes": 8857,
@@ -8672,6 +8742,13 @@
       "sha256": "fdd1a8bd53e44fd6dc0445ec583911252c892db705973a1d1b4b28830ff6e79a",
       "bytes": 9703,
       "mtime_ns": 1793649438128586055
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_controls_v7.py",
+      "bytes": 163,
+      "sha256": "a25d1dc9ed7688800f43ba523cf6f1a605ba8accf8d4f2b86f2c146744f813cb",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_controls_v7.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_pool_v1.py",
@@ -8710,6 +8787,13 @@
       "mtime_ns": 1793649438132365016
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_pool_v7.py",
+      "bytes": 28620,
+      "sha256": "5659935e6614c2f60b335d274e0e70c83f034c6a00f13e77287160a04e733457",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_pool_v7.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_program_v1.py",
       "sha256": "aeb0487ad1500947ece5b9b9cba76c2a51d5821ed7c8b2b7cb70de00abc65044",
       "bytes": 34903,
@@ -8738,6 +8822,13 @@
       "sha256": "a0ec609f96c1e521f2349068ca9121ccdae2db2667ce3f644b51a2b87d542b89",
       "bytes": 35438,
       "mtime_ns": 1793649438133713085
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_program_v6.py",
+      "bytes": 35449,
+      "sha256": "41354fe85974dfa5cce7d1217c8304f266e6e626fb83be685a84408670308d6f",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v6.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/svg_analytic_private_QA_lease_v1.py",
@@ -8782,6 +8873,13 @@
       "mtime_ns": 1793649438131754939
     },
     {
+      "file": "conversion/scripts/svg_analytic_source_contract_v6.py",
+      "bytes": 5600,
+      "sha256": "441091a2f66e0bceda8a66a0ab0f45b15882621c390607f95f4384d24fbf7fb9",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_source_contract_v6.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_background_interleaving_quality_contract_v1.py",
       "bytes": 9925,
       "sha256": "9dfc892c19da0d5785d1985c0c4d3473a9afce8fed5691517f83d65a56bcefd1",
@@ -8793,6 +8891,13 @@
       "bytes": 9925,
       "sha256": "8151ccac44ceee2a0cfd33305515a6fbe8ca05346122862c203dd1a5b8a9c807",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_background_interleaving_quality_contract_v2.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_background_rotation_quality_control_v1.py",
+      "bytes": 7467,
+      "sha256": "78537b29e97129424310201b5ed804ac8e779009600664378d9afcb81bc05bb7",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_background_rotation_quality_control_v1.py",
       "remote_source_hash_verified": true
     },
     {
@@ -9248,6 +9353,13 @@
       "bytes": 4733,
       "sha256": "373fde2c76f79354baab52425ee6194e65b9e36144a219ca28ee949e2a60eca2",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_background_rotation_normal_dev_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_cached_admission_v1.py",
+      "bytes": 10957,
+      "sha256": "3c20b85bda1460c504f2dce7fb1f8c16bd74888a2cfd732a47a2d6bdaf214cff",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_cached_admission_v1.py",
       "remote_source_hash_verified": true
     },
     {
@@ -13064,6 +13176,13 @@
       "mtime_ns": 1793649493510390584
     },
     {
+      "file": "scripts/build_background_rotation_orchestration_v1.py",
+      "bytes": 4139,
+      "sha256": "a6fe0429ea87c4772391571e0617d4ca1299b307e2693e5e19e36efb722b215e",
+      "origin": "work/svg_group_order_fix/build_background_rotation_orchestration_v1.py",
+      "remote_source_hash_verified": false
+    },
+    {
       "file": "scripts/build_edge_and_use_successor_v1.py",
       "sha256": "d0ec7df794e2dc999dd3f2d70498eb08ada0bb2de1efd3625746ba726eb354f2",
       "bytes": 6245,
@@ -13092,6 +13211,12 @@
       "sha256": "fa7ff0fa3017baa12d1b66f969fc613f36805d3b63181ed2396e58b2682f0af6",
       "bytes": 3060,
       "mtime_ns": 1793649695190040297
+    },
+    {
+      "file": "scripts/check_background_validation_progress_v1.py",
+      "bytes": 2978,
+      "sha256": "37a8918684a31547ccc5022e96d211ef4c9b576afeddc04137709fa305dce1a7",
+      "origin": "work/takeover/check_background_validation_progress_v1.py"
     },
     {
       "file": "scripts/check_svg_progress.py",
@@ -13340,6 +13465,13 @@
       "bytes": 2741,
       "sha256": "01edc81a5eec3b2c5b0a8806463018407f09d57d7f38ace2515079e4e02728ce",
       "origin": "work/svg_group_order_fix/start_background_interleaving_normal_v1.py",
+      "remote_source_hash_verified": false
+    },
+    {
+      "file": "scripts/start_background_rotation_QA_controls_v1.py",
+      "bytes": 3286,
+      "sha256": "2907cb5e5608dfa40cf208afd4a1a4e20a5d6e3b678bf3b5cb42720267d726c8",
+      "origin": "work/svg_group_order_fix/start_background_rotation_QA_controls_v1.py",
       "remote_source_hash_verified": false
     },
     {

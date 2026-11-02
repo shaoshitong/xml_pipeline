@@ -1,379 +1,191 @@
 {
-  "at_utc": "2026-11-02T20:53:58.531423+00:00",
+  "schema": "complex_research_pipeline_current_core18_v1",
+  "at_utc": "2026-11-02T21:25:55.302437+00:00",
   "goal_complete": false,
-  "source_frontend": "compiler_svg_scene_frontend_v15",
-  "generation_plugin": "compiler_svg_general_guard_v11",
-  "QA": "compiler_svg_scene_quality_ro_v17",
-  "QA_adapter": "compiler_svg_general_quality_adapter_v13",
-  "core_key": "a26deb4ee449f8df0abc7f7b48ad42f95939a47e40f5496bf8d310663b444f5f",
-  "mass_release_approved": false,
-  "source_only_admission": {
-    "pid": 241651,
-    "birth_ticks": "1144072470",
-    "work": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
-    "source_targets": 2365,
-    "candidate_emissions": 0,
-    "normal_calls": 0,
-    "finished": true
+  "data_root": "/backup/shaoshitong/img2code_20261029",
+  "requested_sources": [
+    "SciDiagramRevision",
+    "RAP",
+    "DwT_drawio",
+    "VFIG",
+    "DaTikZ",
+    "ChartMimic",
+    "Chart2Code",
+    "recent_AI_arXiv"
+  ],
+  "source_frontend": "compiler_svg_scene_frontend_v18",
+  "generation_plugin": "compiler_svg_general_guard_v14",
+  "backend": "compiler_svg_scene_backend_v13",
+  "QA": "compiler_svg_scene_quality_ro_v24",
+  "QA_adapter": "compiler_svg_general_quality_adapter_v20",
+  "quality_contract": "svg_background_interleaving_quality_contract_v2.py",
+  "core_key": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086",
+  "controls_proof": {
+    "file": "release/compiler_iterations/controls/svg_background_rotation_20261102_v1/proof.json",
+    "sha256": "0a5cd20d32cb6a2862e223eb41da3168397a5590498a4a6a4841bfe128eec5ab"
   },
-  "automatic_validation_handoff": {
-    "pid": 354594,
-    "birth_ticks": "1144103753",
-    "work": "/backup/shaoshitong/img2code_20261029/conversion/semantic_admission_validation_launch_v1/633bef4096854e8d81b03d04112e620e",
-    "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
-    "stage": "round_complete_next_repair_required"
+  "runtime_dispatch_proof": {
+    "file": "release/compiler_iterations/controls/svg_background_rotation_runtime_controls_20261102_v1/proof.json",
+    "sha256": "8aae80194b6e6531f49c7da2ec1c2d93c80c63ad8ea5d7ce1ac33ead2d4f2106"
   },
-  "latest_progress": {
-    "at_utc": "2026-11-02T20:25:12.497081+00:00",
-    "audit": {
-      "live": {
-        "pid": 241651,
-        "live": false,
-        "missing": true
-      },
-      "summary": {
-        "QA_calls": 0,
-        "at_utc": "2026-11-02T20:22:17.955746+00:00",
-        "candidate_emissions": 0,
-        "completed": 2365,
-        "counts": {
-          "admitted": 785,
-          "error": 17,
-          "unsupported": 1563
-        },
-        "elapsed_seconds": 1934.6228804606944,
-        "files": {
-          "admitted.jsonl": {
-            "file": "conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423/admitted.jsonl",
-            "sha256": "5cdbe18b6466df94794eaaee7a24a315738490176c12e189fad23257078e07d3"
-          },
-          "error.jsonl": {
-            "file": "conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423/error.jsonl",
-            "sha256": "4fcaab41108a086198dd13c6207aa6e80a0838380edea3335f313a1fab43b737"
-          },
-          "unsupported.jsonl": {
-            "file": "conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423/unsupported.jsonl",
-            "sha256": "b50b2e284ce8abe0475a4e6d1bea2d0d1d06da0e6cf1d5ea0e68be6c418fde51"
-          }
-        },
-        "finished": true,
-        "goal_complete": false,
-        "model_calls": 0,
-        "normal_conversion_calls": 0,
-        "root": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
-        "source_core_configuration_sha256": "c9051f2ac571b2fbfe22f9160aee8de9de09e0ebf903011104541f82ee8de4a4",
-        "total": 2365
-      },
-      "measured_completed": 2365,
-      "admission_reasons": {
-        "source_open_path_has_multiple_subpaths": 220,
-        "source_scene_feature_unsupported": 175,
-        "source_cairosvg_render_failed": 471,
-        "source_semantic_admission_passed": 785,
-        "source_cairo_browser_logical_paint_inventory_differs": 133,
-        "source_triangle_paint_not_solid_fill": 27,
-        "source_marker_not_one_filled_triangle": 88,
-        "source_connector_cap_or_join_requires_explicit_native_mapping": 89,
-        "source_triangle_not_symmetric_about_owner_tangent": 73,
-        "source_endpoint_direction_multiple_subpaths": 48,
-        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 43,
-        "source_run_wrapper_changed_visible_source_pixels": 18,
-        "actual_source_use_shadow_snapshot_failed": 19,
-        "source_element_or_ancestor_opacity_requires_compositing_frontend": 92,
-        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 36,
-        "source_triangle_outside_native_marker_geometric_candidate_bound": 14,
-        "native_bezier_control_filter_would_change_source_curve": 16,
-        "actual_source_use_UA_shadow_not_unique": 1,
-        "source_marker_owner_not_bound_to_nodes": 11,
-        "source_marker_paint_clipped_by_viewport": 1,
-        "source_vector_effect_requires_another_native_stroke_mapping": 2,
-        "CDPSession.send": 1,
-        "source_stroked_nonconformal_connector_requires_outline_compiler": 2
-      },
-      "observer_seconds_mean": 9.43,
-      "candidate_emissions": 0
+  "once_catalog": {
+    "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_background_rotation_20261102_v9.json",
+    "sha256": "5ddf0e1863b4eba82cda15d0696463eea27f1784815f9d73426aaf751bf2d0c9"
+  },
+  "source_admission": {
+    "live": {
+      "pid": 1342536,
+      "live": false,
+      "missing": true
     },
-    "chain": {
-      "live": {
-        "pid": 354594,
-        "live": false,
-        "missing": true
+    "summary": {
+      "QA_calls": 0,
+      "at_utc": "2026-11-02T21:00:29.545832+00:00",
+      "browser_source_recaptures": 0,
+      "candidate_emissions": 0,
+      "completed": 2365,
+      "counts": {
+        "admitted": 785,
+        "error": 17,
+        "unsupported": 1563
       },
-      "state": {
-        "stage": "fixed_source_qualified_validation_then_gated_mass_launched",
-        "goal_complete": false,
-        "program": {
-          "pid": 954672,
-          "start_ticks": 1144269332,
-          "argv": [
-            "/home/shaoshitong/anaconda3/bin/python",
-            "-B",
-            "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v5.py",
-            "supervise",
-            "--program-dir",
-            "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
-            "--workers",
-            "12",
-            "--case-timeout",
-            "900",
-            "--nonce",
-            "f6838c5fbe734733b18c6836e1b607cf"
-          ],
-          "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
-          "finite": true,
-          "watch": false,
-          "goal_complete": false
+      "elapsed_seconds": 140.4166318513453,
+      "files": {
+        "admitted.jsonl": {
+          "file": "conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea/admitted.jsonl",
+          "sha256": "c07a6a41f18b22b8a4d1db3ab8297f4aa855e73f01bcda69915a8b93947c2981"
         },
-        "selection": {
-          "pool": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/source_pools/svg_complex_semantic_admission_unseen_20261102_v8",
-          "run_id": "svg_complex_semantic_admission_unseen_20261102_v8",
-          "selected": 100,
-          "eligible_observed_families": 127,
-          "policy": {
-            "all_applicable_source_population": 10104,
-            "all_format_provenance_scope": 131904,
-            "applicable_complex_target_population": 2365,
-            "deferred_other_sources": 7739,
-            "frozen_complex_or_dense_targets": 5672,
-            "full_scope_parent_summary": {
-              "file": "release/compiler_iterations/source_pools/svg_actual_shadow_unseen100_20261102_v4/summary.json",
-              "sha256": "ac5eab8effc89c359657ff309696b5af634b65425009759e5d1116526cffa94b"
-            },
-            "goal_complete": false,
-            "inputs": {
-              "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/priority_sources/index.jsonl": "bd930fcdd3923563a9a03cc9a6529d1fce160539235ca4ccdadf0be2db545aa2",
-              "/backup/shaoshitong/img2code_20261029/clean/priority_svg_dense_source_screen_v2/new_complex_candidates.jsonl": "fa412b7046cbf5b04d110c6da07e73248f3e9ccbf97e42363aa5af11b361f6a3"
-            },
-            "metadata_only_successor": true,
-            "no_repeated_source_audit_or_raster": true,
-            "parent_complex_pool_summary": {
-              "file": "release/compiler_iterations/source_pools/svg_complex_actual_shadow_unseen100_20261102_v6/summary.json",
-              "sha256": "dc9c5a561e2c9950fe08ca2e9eb46d24dd6562e0e55c714361c2b1862a553f75"
-            },
-            "quality_thresholds_changed": false,
-            "schema": "priority_complex_source_queue_policy_v1",
-            "source_family_seal_and_anti_leakage_unchanged": true,
-            "source_only_filters_predate_current_QA": true,
-            "source_scope": 26754,
-            "unchanged_static_admission_literal_source_checked": true,
-            "user_scope": "Complex scientific diagrams, posters and scientific visualizations; simple sources remain in the complete audit but are not dispatched in this priority round.",
-            "source_semantic_admission_preregistered_before_unseen_selection": true,
-            "source_admission_plan_sha256": "26a9d2f299771e11edf5018386658bafaeb6875ead9d287e10ffcdde1b451083",
-            "raw_complex_source_targets_preserved": 2365,
-            "source_semantically_admitted": 785,
-            "source_unsupported_retained": 1563,
-            "source_admission_errors_retained_pending": 17,
-            "candidate_or_QA_outcomes_used_for_source_eligibility": false,
-            "not_a_format_completion": true
-          }
+        "error.jsonl": {
+          "file": "conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea/error.jsonl",
+          "sha256": "9da707de9517f0e83f8e6d7167d67d9e0738c53a129de0c6c58c103af10abc94"
         },
-        "setup_seconds": 1656.3823982067406
-      }
+        "unsupported.jsonl": {
+          "file": "conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea/unsupported.jsonl",
+          "sha256": "14ce491d5374dc994c0274a3d318a6b56d2ac4a6e2bf17f673d0edb3a28ebf39"
+        }
+      },
+      "finished": true,
+      "goal_complete": false,
+      "model_calls": 0,
+      "normal_conversion_calls": 0,
+      "recomputed_current_semantics": 785,
+      "retained_prior_source_decisions": 1580,
+      "total": 2365
+    }
+  },
+  "program": {
+    "handle": {
+      "pid": 1400932,
+      "start_ticks": 1144523835,
+      "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+      "finite": true,
+      "watch": false,
+      "goal_complete": false
     },
-    "goal_complete": false,
-    "program": {
-      "live": {
-        "pid": 954672,
-        "same_birth": true,
-        "live": true,
-        "state": "S"
-      },
-      "handle": {
-        "pid": 954672,
-        "start_ticks": 1144269332,
-        "argv": [
-          "/home/shaoshitong/anaconda3/bin/python",
-          "-B",
-          "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v5.py",
-          "supervise",
-          "--program-dir",
-          "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
-          "--workers",
-          "12",
-          "--case-timeout",
-          "900",
-          "--nonce",
-          "f6838c5fbe734733b18c6836e1b607cf"
+    "live": {
+      "pid": 1400932,
+      "live": true,
+      "same_birth": true,
+      "state": "S"
+    },
+    "state": {
+      "gate": {
+        "approved_units": [
+          "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14"
         ],
-        "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_semantic_admission_unseen_20261102_v8",
-        "finite": true,
-        "watch": false,
-        "goal_complete": false
-      },
-      "state": {
+        "controls_passed": true,
         "goal_complete": false,
-        "stage": "validation_B"
+        "implementation_identity_sha256": "0d350f00d45841b65e7136289ecdd7bbe34138d68a622bf1df5996d583322557",
+        "infrastructure_errors": 0,
+        "model_calls": 0,
+        "preserved_prior_SOURCE_candidate_attempts": 2,
+        "preserved_qualified_assets_verified": 2445,
+        "protocol_sha256": "9b000b9ad4c73a81d48b4d738905cde0a8103fc34ad3b38e6fc8403a68324830",
+        "units": {
+          "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14": {
+            "B_qualified": 0,
+            "C_qualified": 6,
+            "full_qualified_rate": 0.2222222222222222,
+            "new_qualified": 6,
+            "passed": true,
+            "positive_regressions": 0,
+            "samples": 27
+          }
+        }
       },
-      "B": {
-        "abandoned": 72,
-        "queued": 17,
-        "running": 11
-      },
-      "C": {
-        "queued": 100
-      }
+      "goal_complete": false,
+      "mass": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_complex_background_rotation_cached_unseen_20261102_v9_mass",
+      "stage": "mass"
     },
-    "runtime_proof": {
-      "file": "release/compiler_iterations/controls/svg_edge_use_runtime_controls_20261102_v1/proof.json",
-      "sha256": "4f65ff4d5ba0ba0381daa9253cf92f020534159b6486f61b44a6ced7fa67108c"
-    },
-    "previous_round": {
-      "state": {
-        "goal_complete": false,
-        "post_failure_closure": {
-          "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_symbol_viewport_unseen100_20261102_v7/post_failure_closure.json",
-          "sha256": "f56e2481ab22910c417f928a2ed6d7d63ca5d90088a10831eeb3afbb6cbbc524"
-        },
-        "stage": "round_complete_after_history_metadata_closure_repair"
-      },
-      "post_failure_closure": {
-        "release_gate": {
-          "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/release_gate.json",
-          "sha256": "e22526c208821c1c0186288c2f1aab903beb733c41c025ca34f40cc134d018ac"
-        },
-        "summary": {
-          "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/summary.json",
-          "sha256": "4675ff092ef9111c5253cfd878e6bfd4d6128f0feab53d464e31da04d9037490"
+    "gate": {
+      "approved_units": [
+        "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14"
+      ],
+      "controls_passed": true,
+      "goal_complete": false,
+      "implementation_identity_sha256": "0d350f00d45841b65e7136289ecdd7bbe34138d68a622bf1df5996d583322557",
+      "infrastructure_errors": 0,
+      "model_calls": 0,
+      "preserved_prior_SOURCE_candidate_attempts": 2,
+      "preserved_qualified_assets_verified": 2445,
+      "protocol_sha256": "9b000b9ad4c73a81d48b4d738905cde0a8103fc34ad3b38e6fc8403a68324830",
+      "units": {
+        "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14": {
+          "B_qualified": 0,
+          "C_qualified": 6,
+          "full_qualified_rate": 0.2222222222222222,
+          "new_qualified": 6,
+          "passed": true,
+          "positive_regressions": 0,
+          "samples": 27
         }
       }
     },
-    "strict_main": {
-      "rows": 887,
-      "sha256": "41c7323d20ac84df2570a7e1e18b1412c58a08e788ce0a2266e8985635a15835",
-      "new_667_pair_present": true
+    "gate_asset": {
+      "file": "release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9/release_gate.json",
+      "sha256": "7b8dfdc311f71bcbccad27592140868a0fdf17e3794bb68eadc36923aac15c6c"
     },
-    "catalogue": {
-      "at_utc": "2026-11-02T20:24:21.181490+00:00",
-      "goal_complete": false,
-      "index": {
-        "bytes": 2015534,
-        "file": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623/pairs.jsonl",
-        "rows": 1406,
-        "sha256": "cb71bd6e911ce7d74149372874e0feb92adc7a4adcf23f40495d31b84c5fed51"
+    "summary": null,
+    "queues": {
+      "B": {
+        "abandoned": 27
       },
-      "input_fingerprint": "be766e686623d2ea825c95b42453fea70c6d37228eba003fbb32b06616f6a37d",
-      "input_rows_by_evidence_view": {
-        "arxiv_author_native_source_replay": 316,
-        "arxiv_registered_original_PDF_visual_v2": 94,
-        "paper_diagrams_and_posters_full8": 887,
-        "scientific_chart_provider_original": 29,
-        "scientific_chart_source_replay": 168,
-        "scientific_chart_source_replay_repaired": 5
+      "C": {
+        "abandoned": 21,
+        "qualified": 6
       },
-      "publisher": "research_catalog_refresh_v3",
-      "publisher_source_sha256": "1dc676579a20b70feca0c2dbaf02c77596db455daf50db6c691a2e8d9eeee9d8",
-      "schema": "research_pairs_catalogue_pointer_v3",
-      "snapshot": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623",
-      "summary": {
-        "bytes": 6064,
-        "file": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623/summary.json",
-        "sha256": "63bd5c1e1773d1a09b5101c2599c6b1dfedcecd3f6e389347a0bd6ae873c7510"
-      },
-      "unique_code_PNG_pairs": 1406,
-      "unique_pairs_by_evidence_view": {
-        "arxiv_author_native_source_replay": 316,
-        "arxiv_registered_original_PDF_visual_v2": 94,
-        "paper_diagrams_and_posters_full8": 887,
-        "scientific_chart_provider_original": 29,
-        "scientific_chart_source_replay": 168,
-        "scientific_chart_source_replay_repaired": 5
-      },
-      "validation": {
-        "bytes": 4909389,
-        "file": "clean/research_pairs_catalog/snapshot_20261102T202413565108Z_v3_be766e686623/validation.json",
-        "sha256": "fff8447cc1e5884a1463d624796ffb9e3f385c34e12d8d7699d7d5c2e67e635f"
+      "mass": {
+        "abandoned": 187,
+        "qualified": 20,
+        "queued": 515,
+        "running": 12
       }
     }
   },
-  "controls_proof": {
-    "file": "release/compiler_iterations/controls/svg_source_edge_layers_untouched_use_20261102_v1/proof.json",
-    "sha256": "fb73462f9964da0bcad2051ac5db18d2267e86717d2789d7ff555af0c300376b"
-  },
-  "runtime_dispatch_proof": {
-    "file": "release/compiler_iterations/controls/svg_edge_use_runtime_controls_20261102_v1/proof.json",
-    "sha256": "4f65ff4d5ba0ba0381daa9253cf92f020534159b6486f61b44a6ced7fa67108c"
-  },
-  "frozen_once_catalog": {
-    "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_edge_layers_untouched_use_20261102_v8.json",
-    "sha256": "f94e6a69e6c7628ccf2151d39258a7969cffe2fa879458fa1587b4038be9e470"
-  },
-  "previous_validation": {
-    "run": "svg_complex_symbol_viewport_unseen100_20261102_v7",
-    "B_completed": 100,
-    "C_completed": 100,
-    "qualified": 1,
-    "released": false,
-    "closing_metadata_error_preserved": true,
-    "closure": {
-      "release_gate": {
-        "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/release_gate.json",
-        "sha256": "e22526c208821c1c0186288c2f1aab903beb733c41c025ca34f40cc134d018ac"
-      },
-      "summary": {
-        "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/summary.json",
-        "sha256": "4675ff092ef9111c5253cfd878e6bfd4d6128f0feab53d464e31da04d9037490"
-      }
-    }
-  },
-  "strict_complex_main": {
-    "rows": 887,
-    "sha256": "41c7323d20ac84df2570a7e1e18b1412c58a08e788ce0a2266e8985635a15835",
-    "new_667_pair_present": true
+  "mass_release_approved": true,
+  "strict_main": {
+    "bytes": 4245547,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T212421351765Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 902,
+    "sha256": "c8e99138836c3e104ee7d5a4ff19c1e62e0f39ba085ba2b1bee4528bdfdc6fd3"
   },
   "strict_source_counts": {
-    "VincentHancoder--RAP": 780,
-    "QijiaHe--VFIG-Data": 107
+    "RAP": 780,
+    "VFIG": 122
   },
-  "unified_catalogue_pairs": 1394,
-  "next_action": "Observe the same audit and chain birth identities. Chain already passed actual once-safe dispatch and will wait for the entire 2365-row source-only admission export, then freeze eligibility, reserve independent families and run B/C and unchanged gated mass with 12 workers. Do not repeat the source audit, development normals or controls. Other named datasets still require coverage/remaining-reason audit; do not equate this SVG unit with completion of all formats.",
-  "normal_reexecution_for_same_source_core_allowed": false,
-  "local_data_policy": "Only code/config/small audit summaries on Mac; datasets, fonts/runtime and PNG/XML assets remain on HKUST.",
-  "timing_report_helper": "scripts/summarize_iteration_timing_v1.py",
-  "source_admission_terminal": {
-    "total": 2365,
-    "admitted": 785,
-    "unsupported": 1563,
-    "error": 17,
-    "actual_elapsed_seconds": 1934.6228804606944,
-    "normal_conversion_calls": 0,
-    "candidate_emissions": 0
-  },
-  "strict_main": {
-    "bytes": 4236496,
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T205207181004Z_review_batch_v8/paired_priority_complex.jsonl",
-    "rows": 899,
-    "sha256": "b42a4046dbaaa0921d4eef936e9739d28bd7267bf6167fc5cc3ba27c5be4cb4d"
-  },
-  "completed_semantic_round": {
-    "run": "svg_complex_semantic_admission_unseen_20261102_v8",
-    "B_qualified": 0,
-    "C_qualified": 14,
-    "samples": 100,
-    "mass_released": false,
-    "infra_errors": 0
-  },
-  "experimental_generation": {
-    "frontend": "compiler_svg_scene_frontend_v18",
-    "guard": "compiler_svg_general_guard_v14",
-    "backend": "compiler_svg_scene_backend_v13",
-    "core_key": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086",
-    "QA": "compiler_svg_scene_quality_ro_v24",
-    "QA_adapter": "compiler_svg_general_quality_adapter_v20",
-    "validation_released": false,
-    "QA_only_handle": {
-      "pid": 1286137,
-      "birth_ticks": "1144426325",
-      "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v3/99ddf3f373de42cbb0ce81a55724e102",
-      "normal_conversion_calls": 0,
-      "finite": true
-    },
-    "quality_contract": "svg_background_interleaving_quality_contract_v2.py",
-    "development_full8_passed": true,
-    "stage": "development_full8_passed_controls_and_unseen_required",
-    "full8_positive": "operations/BACKGROUND_ROTATION_FULL8_POSITIVE.json",
-    "consumed_normal_catalog": {
-      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_background_rotation_20261102_v9.json",
-      "sha256": "5ddf0e1863b4eba82cda15d0696463eea27f1784815f9d73426aaf751bf2d0c9"
+  "catalogue": {
+    "at_utc": "2026-11-02T21:25:20.737687+00:00",
+    "unique_code_PNG_pairs": 1466,
+    "unique_pairs_by_evidence_view": {
+      "arxiv_author_native_source_replay": 355,
+      "arxiv_registered_original_PDF_visual_v2": 106,
+      "paper_diagrams_and_posters_full8": 902,
+      "scientific_chart_provider_original": 29,
+      "scientific_chart_source_replay": 168,
+      "scientific_chart_source_replay_repaired": 5
     }
-  }
+  },
+  "normal_reexecution_for_same_source_core_allowed": false,
+  "next_progress_helper": "scripts/check_background_validation_progress_v1.py",
+  "next_action": "Follow the existing 734-target mass supervisor and queue; no restart on observation timeout. Run content/layout review of qualified pairs, retain bad source layouts and generic layer summaries outside strict main. Keep all seven named source datasets and arXiv scope intact."
 }

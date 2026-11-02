@@ -1,0 +1,461 @@
+{
+  "latest": {
+    "at_utc": "2026-11-02T21:25:55.302437+00:00",
+    "cache": {
+      "live": {
+        "pid": 1342536,
+        "live": false,
+        "missing": true
+      },
+      "summary": {
+        "QA_calls": 0,
+        "at_utc": "2026-11-02T21:00:29.545832+00:00",
+        "browser_source_recaptures": 0,
+        "candidate_emissions": 0,
+        "completed": 2365,
+        "counts": {
+          "admitted": 785,
+          "error": 17,
+          "unsupported": 1563
+        },
+        "elapsed_seconds": 140.4166318513453,
+        "files": {
+          "admitted.jsonl": {
+            "file": "conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea/admitted.jsonl",
+            "sha256": "c07a6a41f18b22b8a4d1db3ab8297f4aa855e73f01bcda69915a8b93947c2981"
+          },
+          "error.jsonl": {
+            "file": "conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea/error.jsonl",
+            "sha256": "9da707de9517f0e83f8e6d7167d67d9e0738c53a129de0c6c58c103af10abc94"
+          },
+          "unsupported.jsonl": {
+            "file": "conversion/source_cached_admission_v1/2d47ad593b4545038329916ff229a8ea/unsupported.jsonl",
+            "sha256": "14ce491d5374dc994c0274a3d318a6b56d2ac4a6e2bf17f673d0edb3a28ebf39"
+          }
+        },
+        "finished": true,
+        "goal_complete": false,
+        "model_calls": 0,
+        "normal_conversion_calls": 0,
+        "recomputed_current_semantics": 785,
+        "retained_prior_source_decisions": 1580,
+        "total": 2365
+      }
+    },
+    "chain": {
+      "live": {
+        "pid": 1379272,
+        "live": false,
+        "missing": true
+      },
+      "state": {
+        "stage": "fixed_source_qualified_validation_then_gated_mass_launched",
+        "goal_complete": false,
+        "program": {
+          "pid": 1400932,
+          "start_ticks": 1144523835,
+          "argv": [
+            "/home/shaoshitong/anaconda3/bin/python",
+            "-B",
+            "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v6.py",
+            "supervise",
+            "--program-dir",
+            "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+            "--workers",
+            "12",
+            "--case-timeout",
+            "900",
+            "--nonce",
+            "d2bb1176d5064873b4470b0ab9de0517"
+          ],
+          "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+          "finite": true,
+          "watch": false,
+          "goal_complete": false
+        },
+        "selection": {
+          "pool": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/source_pools/svg_complex_background_rotation_cached_unseen_20261102_v9",
+          "run_id": "svg_complex_background_rotation_cached_unseen_20261102_v9",
+          "selected": 27,
+          "eligible_observed_families": 27
+        },
+        "setup_seconds": 137.02674030140042
+      }
+    },
+    "runtime_preflight": {
+      "abandoned": 1,
+      "qualified": 1
+    },
+    "goal_complete": false,
+    "program": {
+      "handle": {
+        "pid": 1400932,
+        "start_ticks": 1144523835,
+        "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+        "finite": true,
+        "watch": false,
+        "goal_complete": false
+      },
+      "live": {
+        "pid": 1400932,
+        "live": true,
+        "same_birth": true,
+        "state": "S"
+      },
+      "state": {
+        "gate": {
+          "approved_units": [
+            "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14"
+          ],
+          "controls_passed": true,
+          "goal_complete": false,
+          "implementation_identity_sha256": "0d350f00d45841b65e7136289ecdd7bbe34138d68a622bf1df5996d583322557",
+          "infrastructure_errors": 0,
+          "model_calls": 0,
+          "preserved_prior_SOURCE_candidate_attempts": 2,
+          "preserved_qualified_assets_verified": 2445,
+          "protocol_sha256": "9b000b9ad4c73a81d48b4d738905cde0a8103fc34ad3b38e6fc8403a68324830",
+          "units": {
+            "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14": {
+              "B_qualified": 0,
+              "C_qualified": 6,
+              "full_qualified_rate": 0.2222222222222222,
+              "new_qualified": 6,
+              "passed": true,
+              "positive_regressions": 0,
+              "samples": 27
+            }
+          }
+        },
+        "goal_complete": false,
+        "mass": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_complex_background_rotation_cached_unseen_20261102_v9_mass",
+        "stage": "mass"
+      },
+      "gate": {
+        "approved_units": [
+          "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14"
+        ],
+        "controls_passed": true,
+        "goal_complete": false,
+        "implementation_identity_sha256": "0d350f00d45841b65e7136289ecdd7bbe34138d68a622bf1df5996d583322557",
+        "infrastructure_errors": 0,
+        "model_calls": 0,
+        "preserved_prior_SOURCE_candidate_attempts": 2,
+        "preserved_qualified_assets_verified": 2445,
+        "protocol_sha256": "9b000b9ad4c73a81d48b4d738905cde0a8103fc34ad3b38e6fc8403a68324830",
+        "units": {
+          "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14": {
+            "B_qualified": 0,
+            "C_qualified": 6,
+            "full_qualified_rate": 0.2222222222222222,
+            "new_qualified": 6,
+            "passed": true,
+            "positive_regressions": 0,
+            "samples": 27
+          }
+        }
+      },
+      "gate_asset": {
+        "file": "release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9/release_gate.json",
+        "sha256": "7b8dfdc311f71bcbccad27592140868a0fdf17e3794bb68eadc36923aac15c6c"
+      },
+      "summary": null,
+      "queues": {
+        "B": {
+          "abandoned": 27
+        },
+        "C": {
+          "abandoned": 21,
+          "qualified": 6
+        },
+        "mass": {
+          "abandoned": 187,
+          "qualified": 20,
+          "queued": 515,
+          "running": 12
+        }
+      }
+    },
+    "strict_main": {
+      "bytes": 4245547,
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T212421351765Z_review_batch_v8/paired_priority_complex.jsonl",
+      "rows": 902,
+      "sha256": "c8e99138836c3e104ee7d5a4ff19c1e62e0f39ba085ba2b1bee4528bdfdc6fd3"
+    },
+    "catalogue": {
+      "at_utc": "2026-11-02T21:25:20.737687+00:00",
+      "unique_code_PNG_pairs": 1466,
+      "unique_pairs_by_evidence_view": {
+        "arxiv_author_native_source_replay": 355,
+        "arxiv_registered_original_PDF_visual_v2": 106,
+        "paper_diagrams_and_posters_full8": 902,
+        "scientific_chart_provider_original": 29,
+        "scientific_chart_source_replay": 168,
+        "scientific_chart_source_replay_repaired": 5
+      }
+    }
+  },
+  "unseen_content_publication": {
+    "before": 899,
+    "after": 902,
+    "added_ids": [
+      "159fd1abaf2d08b4ba452c863bd9417cf0ea7591c4e2b96f525d6b128e8d0491",
+      "f1b59b4f114675275fcd2ceb0bddbec7527204913aaa22de6c227896001a47b0",
+      "92ffcab5ce5c3b56b53a34ee577e6f16945873e6da0ffdc24f8a83200d98a935"
+    ],
+    "held_ids": [
+      "3dad888e4d4bff312e3b23ab2e0e14ca5d31d95e12dd8a5006bc77d01972e80f",
+      "53971523afc986f94a50a61545cc8190e1e3de5e51ed0f40db40e4711097e19f",
+      "b30f4138e73439f68215e99effb2af8838ef38e370be22cbc3b191f51ae0dadf"
+    ],
+    "main": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T212421351765Z_review_batch_v8/paired_priority_complex.jsonl",
+      "sha256": "c8e99138836c3e104ee7d5a4ff19c1e62e0f39ba085ba2b1bee4528bdfdc6fd3",
+      "bytes": 4245547,
+      "rows": 902
+    },
+    "review": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T212421351765Z_review_batch_v8/value_review.json",
+      "sha256": "c80c3e3ab51396ba80533748fdad822256f2d11cee33f2ea7c171697e711f352",
+      "bytes": 6905
+    },
+    "pointer": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+      "sha256": "37baed5732fe64c46cf8ef7a694cdd22d0580b71b60304d84b97620c723b353f",
+      "bytes": 3514
+    }
+  },
+  "native_layout_review": {
+    "controls": [
+      {
+        "name": "separate",
+        "expected_flag": false,
+        "observed_flag": false
+      },
+      {
+        "name": "stacked",
+        "expected_flag": true,
+        "observed_flag": true
+      },
+      {
+        "name": "same_logical_parent",
+        "expected_flag": false,
+        "observed_flag": false
+      },
+      {
+        "name": "clipped",
+        "expected_flag": true,
+        "observed_flag": true
+      }
+    ],
+    "results": [
+      {
+        "id": "3dad888e4d4bff312e3b23ab2e0e14ca5d31d95e12dd8a5006bc77d01972e80f",
+        "native_render": {
+          "file": "conversion/prototype/candidate_quality_ro_v1/iteration_svg_complex_background_rotation_cached_unseen_20261102_v9_C_3_40d7e80d44044543acd5f6fe7dcb8de7/native_render.json",
+          "sha256": "7bb6cc87f2fadae31c1d982ead71510f6e806ea469fc4d83cae4443bc89037bf"
+        },
+        "actual_native_text_cells": 50,
+        "actual_nonblank_glyphs": 272,
+        "potential_text_overlap_pairs": 0,
+        "potential_outside_canvas_text_cells": 0,
+        "overlap_examples": [],
+        "outside_canvas_examples": [],
+        "needs_content_review": false,
+        "source_and_candidate_unchanged": true,
+        "qualification_or_rejection_not_implied": true,
+        "method": "actual_native_grapheme_rectangles_distinct_logical_cells_40pct_overlap_3glyphs_20pct_labels_v1"
+      },
+      {
+        "id": "53971523afc986f94a50a61545cc8190e1e3de5e51ed0f40db40e4711097e19f",
+        "native_render": {
+          "file": "conversion/prototype/candidate_quality_ro_v1/iteration_svg_complex_background_rotation_cached_unseen_20261102_v9_C_12_f1f07a2875c74e82afe6b7b6a11d530f/native_render.json",
+          "sha256": "4a5e4fa138b502ad2bb19c3e1bc118d0400847505f6fd9ce3bd186fef24ad7c2"
+        },
+        "actual_native_text_cells": 54,
+        "actual_nonblank_glyphs": 984,
+        "potential_text_overlap_pairs": 13,
+        "potential_outside_canvas_text_cells": 0,
+        "overlap_examples": [
+          {
+            "left_cell": "v29t0",
+            "right_cell": "v33t0",
+            "left_text": "Extracting emission line data",
+            "right_text": "Detect narrow H-alpha, H-beta",
+            "left_overlapping_graphemes": 13,
+            "right_overlapping_graphemes": 12
+          },
+          {
+            "left_cell": "v29t0",
+            "right_cell": "v33t29",
+            "left_text": "Extracting emission line data",
+            "right_text": "and OIII emission lines",
+            "left_overlapping_graphemes": 12,
+            "right_overlapping_graphemes": 13
+          },
+          {
+            "left_cell": "v33t0",
+            "right_cell": "v37t0",
+            "left_text": "Detect narrow H-alpha, H-beta",
+            "right_text": "Apply multi-component fitting",
+            "left_overlapping_graphemes": 25,
+            "right_overlapping_graphemes": 25
+          },
+          {
+            "left_cell": "v29t0",
+            "right_cell": "v37t0",
+            "left_text": "Extracting emission line data",
+            "right_text": "Apply multi-component fitting",
+            "left_overlapping_graphemes": 12,
+            "right_overlapping_graphemes": 11
+          },
+          {
+            "left_cell": "v33t29",
+            "right_cell": "v37t29",
+            "left_text": "and OIII emission lines",
+            "right_text": "approach",
+            "left_overlapping_graphemes": 9,
+            "right_overlapping_graphemes": 8
+          },
+          {
+            "left_cell": "v33t0",
+            "right_cell": "v41t0",
+            "left_text": "Detect narrow H-alpha, H-beta",
+            "right_text": "Output: Cleaned emission line",
+            "left_overlapping_graphemes": 26,
+            "right_overlapping_graphemes": 24
+          },
+          {
+            "left_cell": "v37t0",
+            "right_cell": "v41t0",
+            "left_text": "Apply multi-component fitting",
+            "right_text": "Output: Cleaned emission line",
+            "left_overlapping_graphemes": 26,
+            "right_overlapping_graphemes": 25
+          },
+          {
+            "left_cell": "v29t0",
+            "right_cell": "v41t0",
+            "left_text": "Extracting emission line data",
+            "right_text": "Output: Cleaned emission line",
+            "left_overlapping_graphemes": 12,
+            "right_overlapping_graphemes": 12
+          },
+          {
+            "left_cell": "v33t29",
+            "right_cell": "v41t29",
+            "left_text": "and OIII emission lines",
+            "right_text": "data",
+            "left_overlapping_graphemes": 4,
+            "right_overlapping_graphemes": 4
+          },
+          {
+            "left_cell": "v37t29",
+            "right_cell": "v41t29",
+            "left_text": "approach",
+            "right_text": "data",
+            "left_overlapping_graphemes": 4,
+            "right_overlapping_graphemes": 4
+          },
+          {
+            "left_cell": "v65t0",
+            "right_cell": "v69t0",
+            "left_text": "Estimating stellar kinematics",
+            "right_text": "Use pPXF to extract stellar velocity",
+            "left_overlapping_graphemes": 25,
+            "right_overlapping_graphemes": 24
+          },
+          {
+            "left_cell": "v69t0",
+            "right_cell": "v73t0",
+            "left_text": "Use pPXF to extract stellar velocity",
+            "right_text": "Output: Stellar kinematic data",
+            "left_overlapping_graphemes": 26,
+            "right_overlapping_graphemes": 27
+          },
+          {
+            "left_cell": "v65t0",
+            "right_cell": "v73t0",
+            "left_text": "Estimating stellar kinematics",
+            "right_text": "Output: Stellar kinematic data",
+            "left_overlapping_graphemes": 24,
+            "right_overlapping_graphemes": 26
+          }
+        ],
+        "outside_canvas_examples": [],
+        "needs_content_review": true,
+        "source_and_candidate_unchanged": true,
+        "qualification_or_rejection_not_implied": true,
+        "method": "actual_native_grapheme_rectangles_distinct_logical_cells_40pct_overlap_3glyphs_20pct_labels_v1"
+      },
+      {
+        "id": "159fd1abaf2d08b4ba452c863bd9417cf0ea7591c4e2b96f525d6b128e8d0491",
+        "native_render": {
+          "file": "conversion/prototype/candidate_quality_ro_v1/iteration_svg_complex_background_rotation_cached_unseen_20261102_v9_C_14_8637f197c9444cb88b6d03f3d17b0364/native_render.json",
+          "sha256": "44f864fc20de0295894ba66478b73064c4270e8cdf2b177f214390e598bd2576"
+        },
+        "actual_native_text_cells": 27,
+        "actual_nonblank_glyphs": 515,
+        "potential_text_overlap_pairs": 0,
+        "potential_outside_canvas_text_cells": 0,
+        "overlap_examples": [],
+        "outside_canvas_examples": [],
+        "needs_content_review": false,
+        "source_and_candidate_unchanged": true,
+        "qualification_or_rejection_not_implied": true,
+        "method": "actual_native_grapheme_rectangles_distinct_logical_cells_40pct_overlap_3glyphs_20pct_labels_v1"
+      },
+      {
+        "id": "b30f4138e73439f68215e99effb2af8838ef38e370be22cbc3b191f51ae0dadf",
+        "native_render": {
+          "file": "conversion/prototype/candidate_quality_ro_v1/iteration_svg_complex_background_rotation_cached_unseen_20261102_v9_C_16_afea8270dc7c4f07b62bc44500209a4d/native_render.json",
+          "sha256": "11ebe3738b5d79488dd56cca59b2bd544187f6a1e391c765ed1cfd2668d34218"
+        },
+        "actual_native_text_cells": 24,
+        "actual_nonblank_glyphs": 255,
+        "potential_text_overlap_pairs": 0,
+        "potential_outside_canvas_text_cells": 0,
+        "overlap_examples": [],
+        "outside_canvas_examples": [],
+        "needs_content_review": false,
+        "source_and_candidate_unchanged": true,
+        "qualification_or_rejection_not_implied": true,
+        "method": "actual_native_grapheme_rectangles_distinct_logical_cells_40pct_overlap_3glyphs_20pct_labels_v1"
+      },
+      {
+        "id": "f1b59b4f114675275fcd2ceb0bddbec7527204913aaa22de6c227896001a47b0",
+        "native_render": {
+          "file": "conversion/prototype/candidate_quality_ro_v1/iteration_svg_complex_background_rotation_cached_unseen_20261102_v9_C_18_80b53cb0f7b14631abbc30de438e1eae/native_render.json",
+          "sha256": "e404e99dbe4d0000cc6f44fda7d206f8485b6e466f4f6792e82500473cb2bbfa"
+        },
+        "actual_native_text_cells": 49,
+        "actual_nonblank_glyphs": 531,
+        "potential_text_overlap_pairs": 0,
+        "potential_outside_canvas_text_cells": 0,
+        "overlap_examples": [],
+        "outside_canvas_examples": [],
+        "needs_content_review": false,
+        "source_and_candidate_unchanged": true,
+        "qualification_or_rejection_not_implied": true,
+        "method": "actual_native_grapheme_rectangles_distinct_logical_cells_40pct_overlap_3glyphs_20pct_labels_v1"
+      },
+      {
+        "id": "92ffcab5ce5c3b56b53a34ee577e6f16945873e6da0ffdc24f8a83200d98a935",
+        "native_render": {
+          "file": "conversion/prototype/candidate_quality_ro_v1/iteration_svg_complex_background_rotation_cached_unseen_20261102_v9_C_26_e5dc75816cfb4072926f1a2ebbabda62/native_render.json",
+          "sha256": "437af27b7824112a5c8fc9b093e34a3de0d8202d6e52a2053c69968ab1ac1456"
+        },
+        "actual_native_text_cells": 49,
+        "actual_nonblank_glyphs": 426,
+        "potential_text_overlap_pairs": 0,
+        "potential_outside_canvas_text_cells": 0,
+        "overlap_examples": [],
+        "outside_canvas_examples": [],
+        "needs_content_review": false,
+        "source_and_candidate_unchanged": true,
+        "qualification_or_rejection_not_implied": true,
+        "method": "actual_native_grapheme_rectangles_distinct_logical_cells_40pct_overlap_3glyphs_20pct_labels_v1"
+      }
+    ]
+  }
+}
