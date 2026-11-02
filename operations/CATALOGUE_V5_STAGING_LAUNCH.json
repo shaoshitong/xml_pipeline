@@ -1,0 +1,9 @@
+{
+  "parent": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_v5_preflight/fbc99e7ed8ae4c739dc8d7d5f3f6c092",
+  "pid": 3509545,
+  "birth_ticks": "1145358182",
+  "catalog": "clean/research_pairs_catalog_v5_staging",
+  "new_conversion_calls": 0,
+  "new_QA_calls": 0,
+  "goal_complete": false
+}

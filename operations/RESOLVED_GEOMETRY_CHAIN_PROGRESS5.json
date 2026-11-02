@@ -1,0 +1,131 @@
+{
+  "chain": {
+    "live": true,
+    "state.json": {
+      "stage": "waiting_original_source_admissions_and_runtime_proof",
+      "sources": [
+        {
+          "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+          "completed": 365,
+          "total": 365,
+          "finished": true
+        },
+        {
+          "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_fork_v3/49b1e0f29af24202a8b6af5043c1017c",
+          "completed": 1748,
+          "total": 2365,
+          "finished": false
+        }
+      ],
+      "runtime_proof": true,
+      "goal_complete": false
+    }
+  },
+  "source": {
+    "live": true,
+    "summary.json": {
+      "QA_calls": 0,
+      "at_utc": "2026-11-02T23:33:12.396356+00:00",
+      "candidate_emissions": 0,
+      "completed": 1748,
+      "counts": {
+        "admitted": 623,
+        "error": 48,
+        "queued": 605,
+        "running": 12,
+        "unsupported": 1077
+      },
+      "elapsed_seconds": 1380.8438165355474,
+      "finished": false,
+      "goal_complete": false,
+      "model_calls": 0,
+      "normal_conversion_calls": 0,
+      "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_fork_v3/49b1e0f29af24202a8b6af5043c1017c",
+      "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+      "total": 2365
+    }
+  },
+  "catalogue": {
+    "live": true,
+    "watch_status": {
+      "at_utc": "2026-11-02T23:33:00.847026+00:00",
+      "input_fingerprint": "6acfbd31b335d25994e14738cec445ee8125058685822b71e941dfcfba45e869",
+      "interval_seconds": 60.0,
+      "last_refresh_status": "unchanged",
+      "pid": 3602814,
+      "status": "running"
+    },
+    "refresh_status": {
+      "at_utc": "2026-11-02T23:33:00.754972+00:00",
+      "elapsed_seconds": 3.784029019996524,
+      "input_fingerprint": "6acfbd31b335d25994e14738cec445ee8125058685822b71e941dfcfba45e869",
+      "publisher": "research_catalog_refresh_v5",
+      "status": "unchanged"
+    },
+    "stderr_bytes": 0,
+    "current": {
+      "at_utc": "2026-11-02T23:30:52.853010+00:00",
+      "goal_complete": false,
+      "index": {
+        "bytes": 4949390,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T233030308831Z_v5_6acfbd31b335/pairs.jsonl",
+        "rows": 3457,
+        "sha256": "b4a005989238be2265b9db5053004e6486e816a96a80adbfff73c7a10eb1a408"
+      },
+      "input_fingerprint": "6acfbd31b335d25994e14738cec445ee8125058685822b71e941dfcfba45e869",
+      "input_rows_by_evidence_view": {
+        "arxiv_author_native_source_replay": 411,
+        "arxiv_registered_original_PDF_visual_v2": 123,
+        "paper_diagrams_and_posters_full8": 964,
+        "scientific_chart_provider_original": 119,
+        "scientific_chart_source_SVG_backend_replay": 728,
+        "scientific_chart_source_replay": 1225,
+        "scientific_chart_source_replay_repaired": 5
+      },
+      "publisher": "research_catalog_refresh_v5",
+      "publisher_source_sha256": "d6ae995e49bbf2d8101ce9f064f2d3d01a01c622343cb27a9a976d1faa16981e",
+      "schema": "research_pairs_catalogue_pointer_v5",
+      "snapshot": "clean/research_pairs_catalog/snapshot_20261102T233030308831Z_v5_6acfbd31b335",
+      "summary": {
+        "bytes": 8079,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T233030308831Z_v5_6acfbd31b335/summary.json",
+        "sha256": "72de15d067d06b7498eaa7ebc8b95f2b1dd534850843b8ebf9a970458d187670"
+      },
+      "unique_code_PNG_pairs": 3457,
+      "unique_pairs_by_evidence_view": {
+        "arxiv_author_native_source_replay": 411,
+        "arxiv_registered_original_PDF_visual_v2": 123,
+        "paper_diagrams_and_posters_full8": 964,
+        "scientific_chart_provider_original": 119,
+        "scientific_chart_source_SVG_backend_replay": 727,
+        "scientific_chart_source_replay": 1225,
+        "scientific_chart_source_replay_repaired": 5
+      },
+      "validation": {
+        "bytes": 19093110,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T233030308831Z_v5_6acfbd31b335/validation.json",
+        "sha256": "83cc25415ccfcfedeb4f5d3836f9cb505ef44077ab633a948cadd0a4f30d0b70"
+      }
+    }
+  },
+  "complex_scientific_charts": {
+    "curated_pairs": {
+      "file": "clean/complex_scientific_chart_curation_v4/3f96e866a8c947ddaa37b9a870f331a0/curated_pairs_by_reference_profile.jsonl",
+      "sha256": "b39976fa3b448d37848b7a9c68904870b8a8b1fd2ee6828d177988ccfac67108",
+      "bytes": 1699384
+    },
+    "summary": {
+      "file": "clean/complex_scientific_chart_curation_v4/3f96e866a8c947ddaa37b9a870f331a0/curation_acceptance.json",
+      "sha256": "624c184e2828dfb30c3e7048f45f510931faa34f7a547a12f7131f29e4d4224b",
+      "bytes": 2614
+    },
+    "rows": 92,
+    "profile_counts": {
+      "provider_original_reference_aligned": 2,
+      "source_replay_aligned": 28,
+      "source_svg_backend_replay_aligned": 62
+    },
+    "strict_full8_main_unchanged": true,
+    "goal_complete": false
+  }
+}

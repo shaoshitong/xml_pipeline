@@ -1,0 +1,11 @@
+{
+  "at_utc": "2026-11-02T23:20:10.918872+00:00",
+  "live": true,
+  "log": "",
+  "io": "rchar: 4485086480\nwchar: 4433473\nsyscr: 4265\nsyscw: 1\nread_bytes: 76390400\nwrite_bytes: 4435968\ncancelled_write_bytes: 0\n",
+  "building_inputs": {
+    ".building_snapshot_20261102T231705202060Z_v4_00d94b42dda7": [
+      "paper_diagrams_and_posters_full8.jsonl"
+    ]
+  }
+}

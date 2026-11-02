@@ -1,0 +1,24 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v2/5c9a1cdc411943b9829db1ae257bc1c6",
+  "audit": {
+    "file": "clean/complex_research_delivery_audit_v2/5c9a1cdc411943b9829db1ae257bc1c6/audit.json",
+    "sha256": "21b04d95f38266b10e97730d96cd4770e371c9081cd324b1d16d9046e6b5dac4",
+    "bytes": 9885
+  },
+  "strict_main_by_source": {
+    "QijiaHe--VFIG-Data": 184,
+    "VincentHancoder--RAP": 780
+  },
+  "latest_chart_by_source": {
+    "CSU-JPG--Chart2Code": {
+      "provider_original_reference_aligned": 90,
+      "source_replay_aligned": 178,
+      "source_svg_backend_replay_aligned": 123
+    },
+    "ChartMimic--ChartMimic": {
+      "source_replay_aligned": 879,
+      "source_svg_backend_replay_aligned": 605
+    }
+  },
+  "goal_complete": false
+}

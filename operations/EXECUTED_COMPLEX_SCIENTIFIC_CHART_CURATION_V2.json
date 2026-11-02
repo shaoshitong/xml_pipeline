@@ -1,0 +1,49 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/clean/complex_scientific_chart_curation_v2/a33c43a1f3934e1ea17eab1b1df29f58",
+  "input_pairs": 1875,
+  "counts": {
+    "structure_or_scientific_context_review": 1610,
+    "complex_scientific_candidate": 93,
+    "simple_deprioritized": 151,
+    "source_structure_error": 21
+  },
+  "selected": 93,
+  "source_inputs": [
+    {
+      "file": "clean/matplotlib_plot_pipeline_20261102_v1/vector_backend_rollout_v6/provider_original_reference_aligned.jsonl",
+      "sha256": "9227c4e65e00d2e2c1791a370c794cdf176964545712450ff89133c3d3c0212e"
+    },
+    {
+      "file": "clean/matplotlib_plot_pipeline_20261102_v1/vector_backend_rollout_v6/source_replay_aligned.jsonl",
+      "sha256": "40d1786d41d9709c58eed617d94e309952773fe6dc4b981d6e1d291054935864"
+    },
+    {
+      "file": "clean/matplotlib_plot_pipeline_20261102_v1/vector_backend_rollout_v6/source_svg_backend_replay_aligned.jsonl",
+      "sha256": "95a5ebd80ab7e3bd57986bb772ebb0d5c692406414db918b2a48064c5c9a1da1"
+    }
+  ],
+  "source_policy_sha256": "2dc2c26e7c01dc8dc093b07b13429d2f999b3a7e2e52f7d06e8c1932e0e530ec",
+  "producer_sha256": "6c8cb47618366420f1bb55d4ed60a83cd387c4c63ca93df0b5569f0f7131b68c",
+  "elapsed_seconds": 10.656814420595765,
+  "scientific_value_individually_certified": false,
+  "selected_source_structure_and_scientific_text_evidence": true,
+  "strict_full8_main_changed": false,
+  "new_conversions": 0,
+  "new_QA": 0,
+  "model_calls": 0,
+  "goal_complete": false,
+  "files": {
+    "source_audit.jsonl": {
+      "file": "clean/complex_scientific_chart_curation_v2/a33c43a1f3934e1ea17eab1b1df29f58/source_audit.jsonl",
+      "sha256": "5620177f4bc7eabdf4b2c9b36b516e65b16afb04e27c5547c17a79cdc7e48695"
+    },
+    "complex_scientific_candidates.jsonl": {
+      "file": "clean/complex_scientific_chart_curation_v2/a33c43a1f3934e1ea17eab1b1df29f58/complex_scientific_candidates.jsonl",
+      "sha256": "314004b4a67e5524de556e692f69c0d5226229aaae7c8bc730b0b1a6fa324e70"
+    },
+    "policy.json": {
+      "file": "clean/complex_scientific_chart_curation_v2/a33c43a1f3934e1ea17eab1b1df29f58/policy.json",
+      "sha256": "2dc2c26e7c01dc8dc093b07b13429d2f999b3a7e2e52f7d06e8c1932e0e530ec"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "file": "release/compiler_iterations/development_seen_v1/matplotlib_actual_execution_metadata_20261102_v1.jsonl",
+  "sha256": "8d0b73b8d05272518ca6468dd2aa6eb819c1427efd02f5270af01bb79f05ef95",
+  "rows": 2707,
+  "evidence": [
+    {
+      "database": "clean/matplotlib_plot_pipeline_20261102_v1/once.sqlite",
+      "actual_source_execution_rows": 433,
+      "database_sha256": "4028fdacecf3b6d46dfadad7d82bc78ab37717e4589e8490adb3474b23f2607e"
+    },
+    {
+      "database": "clean/matplotlib_plot_pipeline_20261102_v1/vector_backend_rollout_v6/once.sqlite",
+      "actual_source_execution_rows": 2402,
+      "database_sha256": "a211bffa330cb2a4adcf400bbe80b584a12772e5668c767562f9a6abb23f2234"
+    }
+  ],
+  "source_or_image_payloads_read": false,
+  "candidate_or_quality_outcomes_used": false,
+  "new_source_executions": 0,
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "model_calls": 0
+}

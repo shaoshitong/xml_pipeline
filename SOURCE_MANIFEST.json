@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T23:14:21.069639+00:00",
+  "at_utc": "2026-11-02T23:33:14.570866+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "6b7438cf36d010cca300659b6908bb055fb72e75816e5a56785b4983aea24ee7",
-      "bytes": 23329,
-      "mtime_ns": 1793661261048926834
+      "sha256": "5f73e10e15e52d417ff9adbb7a9182c3e0fb8c25fb900e58a06e9e22381ccb8a",
+      "bytes": 32147,
+      "mtime_ns": 1793662394551009730
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14855,25 +14855,25 @@
       "file": "operations/COMPACT_SOURCE_ADMISSION_LAUNCH.json",
       "sha256": "c4ed2c38c5385994015d31fa870797dc763bc31f80a21850810dfcdc97d89b60",
       "bytes": 390,
-      "mtime_ns": 1793661261044037572
+      "mtime_ns": 1793662394544976399
     },
     {
       "file": "operations/COMPACT_SOURCE_ADMISSION_PROGRESS1.json",
       "sha256": "61996d3eecf8622810ce7d260ca9599ea91db30f363c39e4407d5d0db721cd80",
       "bytes": 587,
-      "mtime_ns": 1793661261044307575
+      "mtime_ns": 1793662394545149527
     },
     {
       "file": "operations/COMPACT_SVG_SCREEN_SUMMARY.json",
       "sha256": "72161b508bc8b1ca0bcf2862622781717f5d00d4887dd1f7d409b2c24f25c732",
       "bytes": 1483,
-      "mtime_ns": 1793661261043938529
+      "mtime_ns": 1793662394544886065
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_SOURCE_CONTENT_REVIEW.json",
       "sha256": "1df0196509dd73ad6531b0405adac2130cbfe19c3dc0116196a5d1bd377fe32f",
       "bytes": 606,
-      "mtime_ns": 1793661261042534098
+      "mtime_ns": 1793662394543231960
     },
     {
       "file": "operations/BACKGROUND_ROTATION_FULL8_POSITIVE.json",
@@ -14903,7 +14903,7 @@
       "file": "operations/RESOLVED_GEOMETRY_VALUE_REVIEW.json",
       "sha256": "05184bad6fd1497c70c03b36a47be68edb1410418273475a472bf602a6114594",
       "bytes": 1636,
-      "mtime_ns": 1793661261043263314
+      "mtime_ns": 1793662394544050846
     },
     {
       "file": "operations/INCREMENTAL_MASS_PUBLICATIONS_4_8.json",
@@ -14915,7 +14915,7 @@
       "file": "operations/RESOLVED_GEOMETRY_PUBLICATION.json",
       "sha256": "6a7bc11ed0849c8c8239ad14bfd0029350f198c7fa41fd76ff0b022b9a072487",
       "bytes": 1844,
-      "mtime_ns": 1793661261043531567
+      "mtime_ns": 1793662394544256515
     },
     {
       "file": "operations/NEXT_SYMBOL_VIEWPORT.md",
@@ -14939,7 +14939,7 @@
       "file": "operations/RESOLVED_GEOMETRY_NORMAL_RESULT.json",
       "sha256": "d3054c8752453ce8893e6c955e24d484b288ee4edaac9b0db905c71d7f6fd17a",
       "bytes": 7583,
-      "mtime_ns": 1793661261043007769
+      "mtime_ns": 1793662394543729133
     },
     {
       "file": "operations/STROKE_SUPPORT_DEVELOPMENT.json",
@@ -14955,15 +14955,15 @@
     },
     {
       "file": "operations/publish_resolved_geometry_sources_v1.py",
-      "sha256": "39a4d95de3e3e18335019374c4bacec154ba86aaa7cfa7947fa50607778d1bb2",
-      "bytes": 7218,
-      "mtime_ns": 1793661261049205795
+      "sha256": "c3705134d21f143096c92cb61dae694f95d0e072567f907858db04b3890c7ff2",
+      "bytes": 9231,
+      "mtime_ns": 1793662394551299609
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "8937d022a172b53a276c158ddf46b224cb5cef1811545a54941de2f8d5542d40",
-      "bytes": 23306,
-      "mtime_ns": 1793661261047408734
+      "sha256": "fe04ab226eab59f67185e70e1e8f75e14b29a583b38f56524a0508c5d0f98c58",
+      "bytes": 32619,
+      "mtime_ns": 1793662394550396888
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -14975,7 +14975,7 @@
       "file": "operations/RESOLVED_GEOMETRY_NORMAL_PRESERVATION.json",
       "sha256": "c16cc9911deaed004a468dcf2d5fce17c328cbaa33b88e96a72cb8773f2b187f",
       "bytes": 637,
-      "mtime_ns": 1793661261043738819
+      "mtime_ns": 1793662394544499768
     },
     {
       "file": "operations/SEMANTIC_ROUND_PUBLICATION.json",
@@ -14987,13 +14987,13 @@
       "file": "operations/COMPACT_SOURCE_ADMISSION_PROGRESS2.json",
       "sha256": "8809737fb61b47b0ad903be5f7a656458adf554fb5ab1806fd588ab077572c4b",
       "bytes": 3201,
-      "mtime_ns": 1793661261044587870
+      "mtime_ns": 1793662394545293070
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_BROWSER_CONTROLS.json",
       "sha256": "f420451dbc6e57d49c97f3f01d5ba3926870198eef5cff3091e432a0e6daebd5",
       "bytes": 3379,
-      "mtime_ns": 1793661261042818101
+      "mtime_ns": 1793662394543531089
     },
     {
       "file": "conversion/scripts/source_resolved_geometry_admission_fork_v2.py",
@@ -15083,37 +15083,181 @@
       "file": "operations/RESOLVED_GEOMETRY_CHAIN_LAUNCH.json",
       "sha256": "ffe574883df57f593486a133c3b9e394ff2111e66f953c64e20b703287cd5f6e",
       "bytes": 229,
-      "mtime_ns": 1793661261045617798
+      "mtime_ns": 1793662394545978288
     },
     {
       "file": "operations/PRIOR_COMPLEX_CURRENT_GEOMETRY_ADMISSION_LAUNCH_V3.json",
       "sha256": "b0271eb68b1e911c1181ae69b5723b577fb8a8defccbcd69f4d1b4c342615098",
       "bytes": 433,
-      "mtime_ns": 1793661261046097845
+      "mtime_ns": 1793662394546358918
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_CHAIN_PROGRESS2.json",
       "sha256": "3327d2a114aa541030064c9f8a4cd921262bb59a53a94387529d4c338334051f",
       "bytes": 4949,
-      "mtime_ns": 1793661261045906801
+      "mtime_ns": 1793662394546238541
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_CONTROLS_CLOSURE.json",
       "sha256": "f208f620a2a0fe642bbf05a972098d77b4fc1cdfb7a83a82ea27a93515431b4c",
       "bytes": 708,
-      "mtime_ns": 1793661261045272961
+      "mtime_ns": 1793662394545766452
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_RUNTIME_PREFLIGHT_LAUNCH.json",
       "sha256": "4a9ce0b8412580aa302e29194a8c27864918c68ddc27773d21fb9b341caf4607",
       "bytes": 216,
-      "mtime_ns": 1793661261045451671
+      "mtime_ns": 1793662394545874745
     },
     {
       "file": "operations/COMPACT_SOURCE_TERMINAL_AUDIT.json",
       "sha256": "a346357b8204a3d7763028743d83e6e15ba1b8592a9d9d28e5e184d6aced1e8d",
       "bytes": 5247,
-      "mtime_ns": 1793661261045048875
+      "mtime_ns": 1793662394545575157
+    },
+    {
+      "file": "conversion/scripts/research_catalog_refresh_v4.py",
+      "sha256": "13d4e4b97e77b90fcd98c8be05df4ce2720029455b67733d799b3b9ae0eb85d5",
+      "bytes": 28327,
+      "mtime_ns": 1793661424036197517
+    },
+    {
+      "file": "conversion/scripts/research_catalog_refresh_v5.py",
+      "sha256": "d6ae995e49bbf2d8101ce9f064f2d3d01a01c622343cb27a9a976d1faa16981e",
+      "bytes": 29782,
+      "mtime_ns": 1793661859034317870
+    },
+    {
+      "file": "conversion/scripts/promote_research_catalog_v4.py",
+      "sha256": "a038a879d91f49bd50a7ce3e175e02c6774b2f4ab4e7eeaac934671d4ede1ce3",
+      "bytes": 4806,
+      "mtime_ns": 1793661647903232439
+    },
+    {
+      "file": "conversion/scripts/promote_research_catalog_v5.py",
+      "sha256": "fc547a57d6132751e7b1b22757049eb99dbb1c6588aab3a6f3366b3fe4a063bb",
+      "bytes": 4905,
+      "mtime_ns": 1793661859086317644
+    },
+    {
+      "file": "conversion/scripts/register_chart_execution_knowledge_v1.py",
+      "sha256": "5ff853b73046fe83c109242a0277965edf8bfc1326536b7976dc6c20de78bf7f",
+      "bytes": 2001,
+      "mtime_ns": 1793661572639557535
+    },
+    {
+      "file": "conversion/scripts/curate_executed_complex_scientific_charts_v1.py",
+      "sha256": "2887d03b88a563f3684f7a8b05bafd38aae817650e8e87810156e3d499827a08",
+      "bytes": 7780,
+      "mtime_ns": 1793661910802093154
+    },
+    {
+      "file": "conversion/scripts/curate_executed_complex_scientific_charts_v2.py",
+      "sha256": "6c8cb47618366420f1bb55d4ed60a83cd387c4c63ca93df0b5569f0f7131b68c",
+      "bytes": 8584,
+      "mtime_ns": 1793662053785471750
+    },
+    {
+      "file": "conversion/scripts/curate_executed_complex_scientific_charts_v3.py",
+      "sha256": "91a7e02ee23facc68c075ccef938d66ed069bb3c38bbbd9dc69e2577c0aa00a6",
+      "bytes": 8867,
+      "mtime_ns": 1793662139649098155
+    },
+    {
+      "file": "conversion/scripts/curate_executed_complex_scientific_charts_v4.py",
+      "sha256": "08daa3ca3f5ff8ea4937c2b77ca9eaa7871efeaeaf8ac728d6ddf49dadeac998",
+      "bytes": 9217,
+      "mtime_ns": 1793662262944561240
+    },
+    {
+      "file": "conversion/scripts/publish_complex_scientific_chart_curation_v1.py",
+      "sha256": "5a4a646a19538d4294d53ad4fcc9e98c25b8608f98da0c4acf7e54947e9c9a50",
+      "bytes": 3418,
+      "mtime_ns": 1793662205492811485
+    },
+    {
+      "file": "conversion/scripts/publish_complex_scientific_chart_curation_v2.py",
+      "sha256": "e802bc4187fedff92f1cb722056e0b72f2f491f7c88ff1dad50d42794c0061da",
+      "bytes": 3476,
+      "mtime_ns": 1793662262992561031
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v1.py",
+      "sha256": "8298d8af39a849b0dfba68082545d58db990b5e75245113485a68d85d1d8b147",
+      "bytes": 6836,
+      "mtime_ns": 1793661982213782924
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v2.py",
+      "sha256": "dd1308e34c82495383cf77813e6f05077f71dc4d90546552b36930068f8db794",
+      "bytes": 7334,
+      "mtime_ns": 1793662339444227885
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_CHAIN_PROGRESS5.json",
+      "sha256": "23f944e3b50137093a8f24064fbdb7058639e660a5dba1d6b894996238212a24",
+      "bytes": 5082,
+      "mtime_ns": 1793662394548588489
+    },
+    {
+      "file": "operations/EXECUTED_COMPLEX_SCIENTIFIC_CHART_CURATION_V3.json",
+      "sha256": "bab3e888413f372ca94bc8dacefcc4dc0e030203b3b3a04345b8fbc006e71e27",
+      "bytes": 2220,
+      "mtime_ns": 1793662394547955314
+    },
+    {
+      "file": "operations/EXECUTED_COMPLEX_SCIENTIFIC_CHART_CURATION_V2.json",
+      "sha256": "1ae460d1eb320816bd06ab440fc9dd78f1b44d73c74fef7c8ec60da855fdeb72",
+      "bytes": 2221,
+      "mtime_ns": 1793662394547710144
+    },
+    {
+      "file": "operations/COMPLEX_SCIENTIFIC_CHART_CURATION_PUBLICATION.json",
+      "sha256": "c2dccd59e05ea142cb6551e324badf32bde619b425aabdb07650ed45bfcbabb5",
+      "bytes": 729,
+      "mtime_ns": 1793662394548271777
+    },
+    {
+      "file": "operations/EXECUTED_COMPLEX_SCIENTIFIC_CHART_CURATION_V4.json",
+      "sha256": "5db3d99ee6dc0f35b883395f8b9e9e565a0a5c48a1a7b6ecfbb7694a4bd180a1",
+      "bytes": 2220,
+      "mtime_ns": 1793662394548085274
+    },
+    {
+      "file": "operations/SEVEN_SOURCE_DELIVERY_AUDIT_V2.json",
+      "sha256": "9e409eb7d2dd1868ca399823ef73df241b981ee2d196cd2a0317504c3766d4c6",
+      "bytes": 793,
+      "mtime_ns": 1793662394548392778
+    },
+    {
+      "file": "operations/CATALOGUE_V4_STAGING_PROGRESS2.json",
+      "sha256": "2b5ddb96dde82f1c98833d50741f7c4889b16e2f7a8e83d833004739455bc199",
+      "bytes": 368,
+      "mtime_ns": 1793662394546700422
+    },
+    {
+      "file": "operations/CATALOGUE_V5_PROMOTION.json",
+      "sha256": "00bfe5687d1bc4801bcc1f13aff43f2644be6114533c08b65dba8930ef400beb",
+      "bytes": 5727,
+      "mtime_ns": 1793662394547121428
+    },
+    {
+      "file": "operations/CHART_EXECUTION_GLOBAL_FRESHNESS_REGISTRATION.json",
+      "sha256": "211056eff090ade4791ba88b311303a79f404bb84db514cf898b1339ba2ccefd",
+      "bytes": 895,
+      "mtime_ns": 1793662394547448224
+    },
+    {
+      "file": "operations/CATALOGUE_V4_STAGING_LAUNCH.json",
+      "sha256": "347a8950ce26692aa36bd7edba5159385a1608ac735dccc4ca9ae47b66f6dac1",
+      "bytes": 311,
+      "mtime_ns": 1793662394546505337
+    },
+    {
+      "file": "operations/CATALOGUE_V5_STAGING_LAUNCH.json",
+      "sha256": "3f476d26b54780e8767f15fd3b19dca3331f4cab00b87cc663807d8f0c34bb46",
+      "bytes": 311,
+      "mtime_ns": 1793662394546918759
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

@@ -1,0 +1,20 @@
+{
+  "curated_pairs": {
+    "file": "clean/complex_scientific_chart_curation_v4/3f96e866a8c947ddaa37b9a870f331a0/curated_pairs_by_reference_profile.jsonl",
+    "sha256": "b39976fa3b448d37848b7a9c68904870b8a8b1fd2ee6828d177988ccfac67108",
+    "bytes": 1699384
+  },
+  "summary": {
+    "file": "clean/complex_scientific_chart_curation_v4/3f96e866a8c947ddaa37b9a870f331a0/curation_acceptance.json",
+    "sha256": "624c184e2828dfb30c3e7048f45f510931faa34f7a547a12f7131f29e4d4224b",
+    "bytes": 2614
+  },
+  "rows": 92,
+  "profile_counts": {
+    "provider_original_reference_aligned": 2,
+    "source_replay_aligned": 28,
+    "source_svg_backend_replay_aligned": 62
+  },
+  "strict_full8_main_unchanged": true,
+  "goal_complete": false
+}
