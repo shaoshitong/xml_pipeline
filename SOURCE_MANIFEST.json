@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:47:09.529692+00:00",
+  "at_utc": "2026-11-02T20:53:58.531423+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -3014,6 +3014,13 @@
       "mtime_ns": 1793649438122724449
     },
     {
+      "file": "conversion/scripts/compiler_svg_explicit_coordinates_v7.js",
+      "bytes": 12260,
+      "sha256": "e5f562e6688a1b7c052d2b34da3514f4d96c3a36755040b9018f2da9da3bf370",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_explicit_coordinates_v7.js",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/compiler_svg_explicit_coordinates_v7.py",
       "bytes": 8001,
       "sha256": "44058530cf11b357637bf39e07dcd68c0864976598ac971597a628a5a4185302",
@@ -3225,6 +3232,13 @@
       "bytes": 3715,
       "sha256": "d8158145328256c4649564cdeb817186fae6ae8cb5dd06d54c66f54cb3399401",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v19.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v20.py",
+      "bytes": 3770,
+      "sha256": "06a960b72d30aa6fd30137940c7b78c8d59d6d0b31433b4b33eb6ab6293167b6",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v20.py",
       "remote_source_hash_verified": true
     },
     {
@@ -3692,6 +3706,13 @@
       "bytes": 13795,
       "sha256": "c7d82fc2bee1919fac250e893df26b478e2f058ec1c3591f679ee5be589ee0c2",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v23.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v24.py",
+      "bytes": 13808,
+      "sha256": "52935249f1c896b1a91aac227fc4402ab099578b6c7a1e332d94663bcae20eab",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v24.py",
       "remote_source_hash_verified": true
     },
     {
@@ -7577,6 +7598,13 @@
       "mtime_ns": 1793381030476159811
     },
     {
+      "file": "conversion/scripts/preserve_background_normal_history_v1.py",
+      "bytes": 3535,
+      "sha256": "b2b5726d0c7904bee80018bf450181af6b0decd154156553b883cad4792e19c8",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/preserve_background_normal_history_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/prime_tex_missing_v2.py",
       "sha256": "dc5fdd4c5b3662ef383ccbe8a45970fe97a243de9ac91b47088c7f98e49464a6",
       "bytes": 1064,
@@ -8169,6 +8197,20 @@
       "remote_source_hash_verified": true
     },
     {
+      "file": "conversion/scripts/review_background_rotation_candidate_v3.py",
+      "bytes": 2706,
+      "sha256": "21a742ed144150be2abe30d95f39561bdf596bcda61d73465b98d82351471199",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_background_rotation_candidate_v3.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/review_background_rotation_positive_v1.py",
+      "bytes": 4362,
+      "sha256": "f9528200e82870dd260a0bcc17d4a757c7b490966df6093bde0960eb7117050d",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_background_rotation_positive_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/review_harness_v2.py",
       "sha256": "300f4eb916157ed7007d241d5ad95773cd6aa25f900ba73c0c8fb7d3cdee2c08",
       "bytes": 1047,
@@ -8740,6 +8782,20 @@
       "mtime_ns": 1793649438131754939
     },
     {
+      "file": "conversion/scripts/svg_background_interleaving_quality_contract_v1.py",
+      "bytes": 9925,
+      "sha256": "9dfc892c19da0d5785d1985c0c4d3473a9afce8fed5691517f83d65a56bcefd1",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_background_interleaving_quality_contract_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_background_interleaving_quality_contract_v2.py",
+      "bytes": 9925,
+      "sha256": "8151ccac44ceee2a0cfd33305515a6fbe8ca05346122862c203dd1a5b8a9c807",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_background_interleaving_quality_contract_v2.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_batch.py",
       "sha256": "37c8082d799e67865aca045afa0a0b440e8eb7f909c3e1d14c83f258427ebd88",
       "bytes": 6646,
@@ -9178,6 +9234,13 @@
       "bytes": 4740,
       "sha256": "ef357f5c1bb716f1175a1030b8556d723e3ccb6922e825014c66af0d4ad40603",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_background_rotation_anchor_normal_dev_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_background_rotation_anchor_quality23_normal_dev_v1.py",
+      "bytes": 4745,
+      "sha256": "90d66396e05bb1a35169d1c95b6c56bd7f4b5d75e417bc4d543c84670e542ec6",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_background_rotation_anchor_quality23_normal_dev_v1.py",
       "remote_source_hash_verified": true
     },
     {
@@ -13277,6 +13340,13 @@
       "bytes": 2741,
       "sha256": "01edc81a5eec3b2c5b0a8806463018407f09d57d7f38ace2515079e4e02728ce",
       "origin": "work/svg_group_order_fix/start_background_interleaving_normal_v1.py",
+      "remote_source_hash_verified": false
+    },
+    {
+      "file": "scripts/start_background_rotation_anchor_af_normal_v1.py",
+      "bytes": 2855,
+      "sha256": "cbfc6bd0cbbb6da38000c0f0255cc3be75722fea9d3330e7d9c67d0f7f21af08",
+      "origin": "work/svg_group_order_fix/start_background_rotation_anchor_af_normal_v1.py",
       "remote_source_hash_verified": false
     },
     {

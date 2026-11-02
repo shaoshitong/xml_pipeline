@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:44:49.749606+00:00",
+  "at_utc": "2026-11-02T20:53:58.531423+00:00",
   "goal_complete": false,
   "source_frontend": "compiler_svg_scene_frontend_v15",
   "generation_plugin": "compiler_svg_general_guard_v11",
@@ -339,10 +339,10 @@
     "candidate_emissions": 0
   },
   "strict_main": {
-    "bytes": 4233495,
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T203609456112Z_review_batch_v8/paired_priority_complex.jsonl",
-    "rows": 898,
-    "sha256": "e7e9ef4c72ff11360d1e7d12e2c5691afd5183aed0aac27963882f3532369bae"
+    "bytes": 4236496,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T205207181004Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 899,
+    "sha256": "b42a4046dbaaa0921d4eef936e9739d28bd7267bf6167fc5cc3ba27c5be4cb4d"
   },
   "completed_semantic_round": {
     "run": "svg_complex_semantic_admission_unseen_20261102_v8",
@@ -357,15 +357,23 @@
     "guard": "compiler_svg_general_guard_v14",
     "backend": "compiler_svg_scene_backend_v13",
     "core_key": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086",
-    "QA": "compiler_svg_scene_quality_ro_v23",
-    "QA_adapter": "compiler_svg_general_quality_adapter_v19",
+    "QA": "compiler_svg_scene_quality_ro_v24",
+    "QA_adapter": "compiler_svg_general_quality_adapter_v20",
     "validation_released": false,
     "QA_only_handle": {
-      "pid": 1258837,
-      "birth_ticks": "1144411540",
-      "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v2/59b77b81100c4714a70652b909eba3df",
+      "pid": 1286137,
+      "birth_ticks": "1144426325",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v3/99ddf3f373de42cbb0ce81a55724e102",
       "normal_conversion_calls": 0,
       "finite": true
+    },
+    "quality_contract": "svg_background_interleaving_quality_contract_v2.py",
+    "development_full8_passed": true,
+    "stage": "development_full8_passed_controls_and_unseen_required",
+    "full8_positive": "operations/BACKGROUND_ROTATION_FULL8_POSITIVE.json",
+    "consumed_normal_catalog": {
+      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_background_rotation_20261102_v9.json",
+      "sha256": "5ddf0e1863b4eba82cda15d0696463eea27f1784815f9d73426aaf751bf2d0c9"
     }
   }
 }

@@ -173,5 +173,174 @@
     "normal_conversion_calls": 0,
     "finite": true
   },
-  "scope_repair": "Count original source line crops with the existing source-only expected-region function: 72 logical text runs produce 225 source crop windows. All 225 remain mandatory, with unchanged raster thresholds. Original QA22 evidence retained."
+  "scope_repair": "Count original source line crops with the existing source-only expected-region function: 72 logical text runs produce 225 source crop windows. All 225 remain mandatory, with unchanged raster thresholds. Original QA22 evidence retained.",
+  "QA23_and_AF_core18_outcomes": {
+    "at_utc": "2026-11-02T20:48:27.850449+00:00",
+    "QA23": {
+      "handle": {
+        "pid": 1258837,
+        "birth_ticks": "1144411540",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v2/59b77b81100c4714a70652b909eba3df",
+        "normal_conversion_calls": 0,
+        "finite": true
+      },
+      "live": false,
+      "summary": {
+        "id": "957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v2/59b77b81100c4714a70652b909eba3df",
+        "candidate_file": "/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/record.json",
+        "normal_conversion_calls": 0,
+        "quality_ok": false,
+        "quality_failures": [
+          {
+            "type": "FileNotFoundError",
+            "reason": "[Errno 2] No such file or directory: '/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_explicit_coordinates_v7.js'"
+          }
+        ],
+        "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/source_background_rotation_visual_scope_review_59b77b81100c4714a70652b909eba3df/report.json",
+        "checks": [
+          "structure",
+          "resources",
+          "render",
+          "source",
+          "text_paint",
+          "fonts",
+          "visual"
+        ],
+        "elapsed_seconds": 75.53395951353014,
+        "original_candidate_unchanged": true,
+        "canonical_unchanged": true
+      }
+    },
+    "AF_normal18": {
+      "handle": {
+        "pid": 1273178,
+        "birth_ticks": "1144418436",
+        "parent": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v18/normal_development_v1/f847142b9e954f1a9eb941e9c42639e6",
+        "work": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v18/normal_development_v1/f847142b9e954f1a9eb941e9c42639e6/af1e3e102c646d715ba7f6a037fa9715e237bd794bd652b4eae366ed41f27abd",
+        "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14:d437c004a9fb0efacfd0"
+      },
+      "live": false,
+      "summary": {
+        "id": "af1e3e102c646d715ba7f6a037fa9715e237bd794bd652b4eae366ed41f27abd",
+        "source_core": {
+          "schema": "frozen_source_core_identity_v3",
+          "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14",
+          "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14:d437c004a9fb0efacfd0",
+          "key": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086"
+        },
+        "conversion_ok": false,
+        "conversion_reason": "Native content requires full tight canvas",
+        "canonical_unchanged": true
+      },
+      "timing": {
+        "elapsed_seconds": 24.426538141444325,
+        "exit_code": 0
+      }
+    }
+  },
+  "QA24_complete_edit_handle": {
+    "pid": 1286137,
+    "birth_ticks": "1144426325",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v3/99ddf3f373de42cbb0ce81a55724e102",
+    "normal_conversion_calls": 0,
+    "finite": true
+  },
+  "editing_runtime_receipt": {
+    "packaged_file": "conversion/scripts/compiler_svg_explicit_coordinates_v7.js",
+    "byte_identical_to": "conversion/scripts/compiler_svg_explicit_coordinates_v6.js",
+    "sha256": "e5f562e6688a1b7c052d2b34da3514f4d96c3a36755040b9018f2da9da3bf370",
+    "new_QA_pins_actual_runtime_path": true,
+    "QA23_packaging_infrastructure_errors": 1
+  },
+  "QA24_terminal": {
+    "at_utc": "2026-11-02T20:50:52.152557+00:00",
+    "handle": {
+      "pid": 1286137,
+      "birth_ticks": "1144426325",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v3/99ddf3f373de42cbb0ce81a55724e102",
+      "normal_conversion_calls": 0,
+      "finite": true
+    },
+    "live": false,
+    "summary": {
+      "id": "957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v3/99ddf3f373de42cbb0ce81a55724e102",
+      "candidate_file": "/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/record.json",
+      "candidate_metadata_sha256": "4d750a9440d1139fd1c63cd83dbe5cd6786a1bdc7b1729e7ec20ed9211d18ead",
+      "normal_conversion_calls": 0,
+      "quality_ok": true,
+      "quality_failures": [],
+      "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/source_background_rotation_complete_edit_review_99ddf3f373de42cbb0ce81a55724e102/report.json",
+      "checks": [
+        "structure",
+        "resources",
+        "render",
+        "source",
+        "text_paint",
+        "fonts",
+        "visual",
+        "native_editing"
+      ],
+      "elapsed_seconds": 78.603082947433,
+      "original_candidate_unchanged": true,
+      "previous_QA_retained": true,
+      "model_calls": 0,
+      "goal_complete": false,
+      "qualified_manifest": {
+        "id": "957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a",
+        "source_pair_sha256": "957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a",
+        "source": "QijiaHe--VFIG-Data",
+        "category": "scientific_diagram",
+        "source_format": "svg",
+        "format": "drawio",
+        "code_file": "clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/candidate.drawio",
+        "code_sha256": "00b7903b6775279ba3d586d8b8f457a5f25697e1fcd4cb888622ed18bd601be0",
+        "image_file": "clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/candidate.png",
+        "image_sha256": "727de51305243f40871bee5f057ff5269f738e8db60bbf9c0c40db84413147c5",
+        "original_reference": "clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/reference.bin",
+        "original_source_code": "clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/original.svg",
+        "source_code_sha256": "eedb3742513ce828f8b26708a8ba76a9255ad98e770df6a130866b6d6eeed4c9",
+        "source_image_sha256": "e7cec0d36249200e6693a68477db3fc8e44ee3495001e890882ee5a1cd9eb751",
+        "conversion_method": "compiler_svg_scene_frontend_v18",
+        "model": null,
+        "model_configuration": {
+          "external_model_calls": 0,
+          "deterministic_compiler": true
+        },
+        "automatic_quality_policy": "independent_svg_source_analytic_bezier_nested_groups_candidate_quality_readonly_session_owner_source_owned_edge_layers_untouched_UA_use_leaf_alpha_interleaving_background_rotation_local_anchor_painter_frame_rotated_visual_scope_edit_runtime_v24:41a190e3c73b5c4b8b47",
+        "automatic_quality_audit": "conversion/prototype/candidate_quality_ro_v1/source_background_rotation_complete_edit_review_99ddf3f373de42cbb0ce81a55724e102/report.json",
+        "accepted_at_utc": "2026-11-02T20:50:21.142825+00:00",
+        "status": "qualified",
+        "schema_version": 4,
+        "metadata_file": "clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/accepted_metadata.602511da1c9d6c448009d47d.json",
+        "metadata_sha256": "602511da1c9d6c448009d47d22a72d8af092e947f36642f639a97c2943db7d00"
+      },
+      "canonical_unchanged": true
+    },
+    "current_full8_contract_passed": true
+  },
+  "new_strict_main": {
+    "bytes": 4236496,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T205207181004Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 899,
+    "sha256": "b42a4046dbaaa0921d4eef936e9739d28bd7267bf6167fc5cc3ba27c5be4cb4d"
+  },
+  "source_core_normal_history": {
+    "catalog": {
+      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_background_rotation_20261102_v9.json",
+      "sha256": "5ddf0e1863b4eba82cda15d0696463eea27f1784815f9d73426aaf751bf2d0c9"
+    },
+    "normal_receipts": {
+      "file": "conversion/source_core_manual_background_catalog_v1/a338dff3d79a49f4860d4e8107492f58/normal_receipts.json",
+      "sha256": "fbfd01e8769b7c5171e46dedfcb1748a2cda6af171cff0eff1e9268302e27a27"
+    },
+    "preserved_new_normals": 5,
+    "current_core_preserved_normals": 2,
+    "all_current_core_reexecution_blocked": true,
+    "old_catalog_unchanged": true,
+    "normal_calls": 0,
+    "QA_calls": 0,
+    "model_calls": 0
+  }
 }
