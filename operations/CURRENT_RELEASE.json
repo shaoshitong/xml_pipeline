@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:36:34.488305+00:00",
+  "at_utc": "2026-11-02T18:42:41.322195+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
   "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
@@ -158,36 +158,22 @@
     }
   },
   "next_generic_repair": {
-    "frontend": "compiler_svg_scene_frontend_v9",
-    "source_endpoint_bridge": "svg_source_endpoint_bridge_v2",
-    "probe": "conversion/source_endpoint_instance_probe_v2/f835c92780a248acae02ad05c8ebe0dc/summary.json",
-    "actual_source_missing_endpoint_issues_before": 8,
-    "after": 0,
-    "both_sources_pixels_unchanged": true,
-    "full_QA_claimed": false,
-    "normal_development_launch": {
+    "frontend": "compiler_svg_scene_frontend_v12",
+    "backend": "compiler_svg_scene_backend_v10",
+    "QA": "compiler_svg_scene_quality_ro_v13",
+    "source_instance_proof": "svg_source_use_instance_proof_v3",
+    "passed_source_probe": {
       "exit": 0,
-      "stdout": "{\"pid\": 3682610, \"birth\": {\"pid\": 3682610, \"ppid\": 3682372, \"state\": \"R\", \"process_group\": 3682610, \"session\": 3682610, \"start_ticks\": 1143625668}, \"work\": \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v9/normal_development_v2/e01da74e78e64c7cb85b22fbaf13267a/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"freeze\": \"/backup/shaoshitong/img2code_20261029/release/compiler_iterations/controls/svg_use_instances_core_20261102_v9/freeze.json\", \"argv\": [\"/home/shaoshitong/anaconda3/bin/python\", \"-B\", \"/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_use_instances_normal_dev_v2.py\", \"0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v9/normal_development_v2/e01da74e78e64c7cb85b22fbaf13267a/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"/backup/shaoshitong/img2code_20261029/release/compiler_iterations/controls/svg_use_instances_core_20261102_v9/freeze.json\"]}\n",
+      "stdout": "{\"id\": \"0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"root\": \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v12/source_use_marker_proof_probe_v4/bf627b636c474af29230f985c83ffffb\", \"markers\": 8, \"verified_source_instances\": 8, \"original_reference_reproduced\": true, \"controls\": [{\"mutation\": \"missing_replacement_proof\", \"rejected\": true, \"reason\": \"source_marker_use_actual_pixel_replacement_unproven\"}, {\"mutation\": \"changed_shadow_paint\", \"rejected\": true, \"reason\": \"source_marker_use_actual_pixel_replacement_unproven\"}, {\"mutation\": \"changed_clone_bbox\", \"rejected\": true, \"reason\": \"source_marker_use_replacement_bbox_changed\"}, {\"mutation\": \"changed_paint_css\", \"rejected\": true, \"reason\": \"source_marker_use_context_css_or_geometry_unproven\"}], \"new_normal_conversions\": 0, \"full_QA_claimed\": false}\n",
       "stderr": ""
     },
-    "normal_result": {
-      "id": "0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e",
-      "normal_frontend_calls": 1,
-      "claim": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v9/normal_once/65de8fc016e9a5ae62b220658010f33f1fbf15e4c7ee14a3a503bc6c4713c831/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e.json",
-      "source_core": {
-        "schema": "frozen_source_core_identity_v3",
-        "unit": "general_svg_v9_analytic_endpoint_cubic_bezier_nested_groups_use_instances_source_compositing_order_guard_v5",
-        "policy": "general_svg_v9_analytic_endpoint_cubic_bezier_nested_groups_use_instances_source_compositing_order_guard_v5:31b11f0135d63ac470c1",
-        "key": "65de8fc016e9a5ae62b220658010f33f1fbf15e4c7ee14a3a503bc6c4713c831"
-      },
-      "configuration_policy": "general_svg_v9_analytic_endpoint_cubic_bezier_nested_groups_use_instances_source_compositing_order_guard_v5:31b11f0135d63ac470c1",
-      "model_calls": 0,
-      "goal_complete": false,
-      "conversion_ok": false,
-      "conversion_reason": "source_marker_owner_not_original_source_instance",
-      "canonical_unchanged": true
+    "normal_launch": {
+      "exit": 0,
+      "stdout": "{\"pid\": 3779283, \"birth\": {\"pid\": 3779283, \"ppid\": 3779173, \"state\": \"R\", \"process_group\": 3779283, \"session\": 3779283, \"start_ticks\": 1143666495}, \"work\": \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v12/normal_development_v5/7a070524878d4c838af26b32466a54c6/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"freeze\": \"/backup/shaoshitong/img2code_20261029/release/compiler_iterations/controls/svg_actual_shadow_layout_core_20261102_v12/freeze.json\", \"argv\": [\"/home/shaoshitong/anaconda3/bin/python\", \"-B\", \"/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_actual_shadow_layout_use_instances_normal_dev_v5.py\", \"0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v12/normal_development_v5/7a070524878d4c838af26b32466a54c6/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"/backup/shaoshitong/img2code_20261029/release/compiler_iterations/controls/svg_actual_shadow_layout_core_20261102_v12/freeze.json\"]}\n",
+      "stderr": ""
     },
-    "next_required_work": "Prove actual use-instance marker ownership and composed geometry in the backend and independent marker verifier before qualification; retain existing source-instance checks until proof is implemented.",
-    "conversion_qualified": false
+    "actual_UA_shadow_paths_paint_linear_transform_and_CDP_layout_quads_exact": true,
+    "four_negative_ownership_controls_rejected": true,
+    "native_full_QA_not_yet_claimed": true
   }
 }
