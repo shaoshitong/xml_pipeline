@@ -1,0 +1,102 @@
+{
+  "at_utc": "2026-11-02T22:11:02.022538+00:00",
+  "program": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+  "handle": {
+    "argv": [
+      "/home/shaoshitong/anaconda3/bin/python",
+      "-B",
+      "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_analytic_iteration_program_v6.py",
+      "supervise",
+      "--program-dir",
+      "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+      "--workers",
+      "12",
+      "--case-timeout",
+      "900",
+      "--nonce",
+      "d2bb1176d5064873b4470b0ab9de0517"
+    ],
+    "finite": true,
+    "goal_complete": false,
+    "pid": 1400932,
+    "program_dir": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_background_rotation_cached_unseen_20261102_v9",
+    "start_ticks": 1144523835,
+    "watch": false
+  },
+  "state": {
+    "goal_complete": false,
+    "stage": "round_complete_next_repair_required"
+  },
+  "phases": {
+    "B": {
+      "total": 27,
+      "counts": {
+        "abandoned": 27
+      },
+      "finished": true,
+      "measured_completed": 27,
+      "measured_wall_seconds": 64.67,
+      "per_case_wall_seconds_mean": 23.3,
+      "per_case_wall_seconds_p50": 24.1,
+      "per_case_wall_seconds_p95": 34.18,
+      "infrastructure_failures": 0,
+      "failure_reasons": {
+        "source_profile_failed": 24,
+        "Native content requires full tight canvas": 3
+      },
+      "elapsed_measures_remote_work_not_HTTP_or_model_thinking": true
+    },
+    "C": {
+      "total": 27,
+      "counts": {
+        "abandoned": 21,
+        "qualified": 6
+      },
+      "finished": true,
+      "measured_completed": 27,
+      "measured_wall_seconds": 161.31,
+      "per_case_wall_seconds_mean": 51.99,
+      "per_case_wall_seconds_p50": 23.47,
+      "per_case_wall_seconds_p95": 122.17,
+      "infrastructure_failures": 0,
+      "failure_reasons": {
+        "source_layer_interleaving_needs_compound_paint_representation": 9,
+        "source_native_physical_font_mismatch": 4,
+        "raster_anomaly:source_native_marker_contour_changed": 3,
+        "source_run_wrapper_changed_visible_source_pixels": 2,
+        "source_marker_use_actual_pixel_replacement_unproven": 1,
+        "Native content requires full tight canvas": 1,
+        "source_native_graphemes_changed": 1
+      },
+      "elapsed_measures_remote_work_not_HTTP_or_model_thinking": true
+    },
+    "mass": {
+      "total": 734,
+      "counts": {
+        "abandoned": 651,
+        "qualified": 83
+      },
+      "finished": true,
+      "measured_completed": 734,
+      "measured_wall_seconds": 3222.37,
+      "per_case_wall_seconds_mean": 50.7,
+      "per_case_wall_seconds_p50": 26.0,
+      "per_case_wall_seconds_p95": 132.16,
+      "infrastructure_failures": 0,
+      "failure_reasons": {
+        "source_layer_interleaving_needs_compound_paint_representation": 203,
+        "source_native_physical_font_mismatch": 115,
+        "raster_anomaly:source_native_marker_contour_changed": 111,
+        "Native content requires full tight canvas": 71,
+        "source_native_graphemes_changed": 35,
+        "source_profile_failed": 27,
+        "source_marker_use_actual_pixel_replacement_unproven": 19,
+        "source_native_marker_ink_missing": 14
+      },
+      "elapsed_measures_remote_work_not_HTTP_or_model_thinking": true
+    }
+  },
+  "query_processing_seconds": 0.042,
+  "read_only": true,
+  "goal_complete": false
+}

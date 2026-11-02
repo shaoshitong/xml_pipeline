@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T22:00:08.959129+00:00",
+  "at_utc": "2026-11-02T22:11:31.364771+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -4486,6 +4486,12 @@
       "mtime_ns": 1793641477816973950
     },
     {
+      "file": "conversion/scripts/datikz_coordinate_routes_v1.py",
+      "sha256": "1add75871993151af3b44d8dba2f08765fe28125f643b1a364795a38e020c4e9",
+      "bytes": 4606,
+      "mtime_ns": 1793657053109990429
+    },
+    {
       "file": "conversion/scripts/debug_mermaid_markers.py",
       "sha256": "456efbae5ccc2a69703e341e2331eb28432a0840c840e52360b8a15720e0b369",
       "bytes": 695,
@@ -7766,6 +7772,24 @@
       "mtime_ns": 1793620948893574714
     },
     {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v2.py",
+      "sha256": "b1f1b296245acf05192aee2016321d0f9ec6fd2eaefc3bf52043f7f793a7ad9e",
+      "bytes": 37442,
+      "mtime_ns": 1793657053109990429
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v3.py",
+      "sha256": "cf32ef94fb3723520bda9dad3272681a0e4b9ea8fb974af374c6d1351a7ed4a7",
+      "bytes": 38058,
+      "mtime_ns": 1793657121537514647
+    },
+    {
+      "file": "conversion/scripts/priority_datikz_execution_binding_v4.py",
+      "sha256": "5478cdedcb35ae3a94a91353ff100b9959b9bf78d8b730d6f4c8d179208c35d0",
+      "bytes": 38355,
+      "mtime_ns": 1793657177381126942
+    },
+    {
       "file": "conversion/scripts/priority_datikz_native_pilot_v1.py",
       "sha256": "a229a82f83948c7aab4da5f18347c2aec1184bb750e599806267b477b38ad753",
       "bytes": 7450,
@@ -7896,6 +7920,24 @@
       "sha256": "229208752e1f74ccf5e51505a9955ce0f1a1a368882f526d35d64ece3643a51b",
       "bytes": 4248,
       "mtime_ns": 1793655626856532752
+    },
+    {
+      "file": "conversion/scripts/probe_datikz_coordinate_routes_v1.py",
+      "sha256": "41a0dab5c93dde62a70a89735b3bb9ff4f936c1e1ed793a8917019f1e72317b8",
+      "bytes": 1776,
+      "mtime_ns": 1793657078625812918
+    },
+    {
+      "file": "conversion/scripts/probe_datikz_coordinate_routes_v2.py",
+      "sha256": "7eb6cca2d34c49e1fa304da79ff1c485660e9ef213097a10b33f52a142ed7f7b",
+      "bytes": 1785,
+      "mtime_ns": 1793657121537514647
+    },
+    {
+      "file": "conversion/scripts/probe_datikz_coordinate_routes_v3.py",
+      "sha256": "2acdc506ca84925f4c4f75828697be9f171b32aa8549b9db28fd4592c4b3ba08",
+      "bytes": 1784,
+      "mtime_ns": 1793657177381126942
     },
     {
       "file": "conversion/scripts/probe_endpoint_instances_v2.py",
@@ -13368,6 +13410,54 @@
       "mtime_ns": 1793305427533580780
     },
     {
+      "file": "operations/BACKGROUND_FINAL_PUBLICATION_AUDIT.json",
+      "sha256": "78433a15c26b35c9cdc9d1da1b44db64921029f0cc9babae7bb836a2b794b494",
+      "bytes": 1003,
+      "mtime_ns": 1793657479062257140
+    },
+    {
+      "file": "operations/BACKGROUND_FINAL_TIMING.json",
+      "sha256": "93ebcd1885a2877a4770bdca73e608505c090e7fd6f5a5ad8a755b1f76f9638c",
+      "bytes": 3562,
+      "mtime_ns": 1793657461809576203
+    },
+    {
+      "file": "operations/CURRENT_RELEASE.json",
+      "sha256": "1775fa0940fb98398d26c7d0934d585669215d0befb500362e3022cc7da69fa6",
+      "bytes": 1533,
+      "mtime_ns": 1793657491365253310
+    },
+    {
+      "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
+      "sha256": "0d12e4d168d8899babefecef29509948eebb9cc1c10f46e05d4ae0b4b3f66e5a",
+      "bytes": 11107,
+      "mtime_ns": 1793657121474554707
+    },
+    {
+      "file": "operations/DATIKZ_COORDINATE_ROUTES_DEVELOPMENT.json",
+      "sha256": "0ee2d4bc9cff74246f4858b3acbad9c4dda4b5f771af6f2620431eb4fd796086",
+      "bytes": 11098,
+      "mtime_ns": 1793657078612901132
+    },
+    {
+      "file": "operations/DATIKZ_INTERIOR_BEND_DEVELOPMENT.json",
+      "sha256": "57ce6c0ea0c3107a431662e58cac3370898d7b1096f84192d5fc6e9af5771d44",
+      "bytes": 10910,
+      "mtime_ns": 1793657177310963745
+    },
+    {
+      "file": "operations/INCREMENTAL_MASS_PUBLICATION_10.json",
+      "sha256": "efed7bb58f4a68e52a11514d7f5a1c574e7da1edd9ec62e9885134c52e807086",
+      "bytes": 4874,
+      "mtime_ns": 1793657451679324258
+    },
+    {
+      "file": "operations/INCREMENTAL_MASS_PUBLICATION_9.json",
+      "sha256": "155e6edb9552475d383652c045d6419a9278be435ff538ebe33f505bd7588031",
+      "bytes": 4208,
+      "mtime_ns": 1793657290080844199
+    },
+    {
       "file": "scripts/arxiv_source_pilot.py",
       "sha256": "1c6879ff8d2829081253b80dfb114a9c7c6bd930c72e32d4d09cbc8ea662a46b",
       "bytes": 17515,
@@ -13649,6 +13739,12 @@
       "sha256": "8baa12d4c5558c6a42ead6782c27c98bf3c850287dae5181c4e55cdf6fa39fab",
       "bytes": 23757,
       "mtime_ns": 1793339754855824708
+    },
+    {
+      "file": "scripts/finalize_background_curation_audit_v1.py",
+      "sha256": "e4896e11e97e1400ab40b0905d298bc02d6d17b6f344e272135595ddfea20cc9",
+      "bytes": 2905,
+      "mtime_ns": 1793657477979180919
     },
     {
       "file": "scripts/finalize_catalog.py",
@@ -14146,150 +14242,44 @@
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
   "incremental_remote_verification": {
-    "svg_source_stroke_support_v3.py": {
-      "sha256": "ac8e9947e1b9b2427c3ccf743a7d60d38ca7fcc85f9382d96fe813848d400b01",
-      "bytes": 4693,
-      "mtime_ns": 1793655920866163580
+    "at_utc": "2026-11-02T22:11:31.364771+00:00",
+    "files": {
+      "datikz_coordinate_routes_v1.py": {
+        "sha256": "1add75871993151af3b44d8dba2f08765fe28125f643b1a364795a38e020c4e9",
+        "bytes": 4606,
+        "mtime_ns": 1793657053109990429
+      },
+      "priority_datikz_execution_binding_v2.py": {
+        "sha256": "b1f1b296245acf05192aee2016321d0f9ec6fd2eaefc3bf52043f7f793a7ad9e",
+        "bytes": 37442,
+        "mtime_ns": 1793657053109990429
+      },
+      "priority_datikz_execution_binding_v3.py": {
+        "sha256": "cf32ef94fb3723520bda9dad3272681a0e4b9ea8fb974af374c6d1351a7ed4a7",
+        "bytes": 38058,
+        "mtime_ns": 1793657121537514647
+      },
+      "priority_datikz_execution_binding_v4.py": {
+        "sha256": "5478cdedcb35ae3a94a91353ff100b9959b9bf78d8b730d6f4c8d179208c35d0",
+        "bytes": 38355,
+        "mtime_ns": 1793657177381126942
+      },
+      "probe_datikz_coordinate_routes_v1.py": {
+        "sha256": "41a0dab5c93dde62a70a89735b3bb9ff4f936c1e1ed793a8917019f1e72317b8",
+        "bytes": 1776,
+        "mtime_ns": 1793657078625812918
+      },
+      "probe_datikz_coordinate_routes_v2.py": {
+        "sha256": "7eb6cca2d34c49e1fa304da79ff1c485660e9ef213097a10b33f52a142ed7f7b",
+        "bytes": 1785,
+        "mtime_ns": 1793657121537514647
+      },
+      "probe_datikz_coordinate_routes_v3.py": {
+        "sha256": "2acdc506ca84925f4c4f75828697be9f171b32aa8549b9db28fd4592c4b3ba08",
+        "bytes": 1784,
+        "mtime_ns": 1793657177381126942
+      }
     },
-    "priority_datikz_dependency_overlay_v4_recover_v1.py": {
-      "sha256": "973cbf07bcfb2c5110c625df95433bbfb8bc58dd558857d06875a7e392e414d9",
-      "bytes": 3914,
-      "mtime_ns": 1793656318083193281
-    },
-    "svg_source_edge_layers_v12.py": {
-      "sha256": "f9d987fc4e2d404b4ddf181b27d02d5e63c117483e24d40eecfe5e547148fa6b",
-      "bytes": 14223,
-      "mtime_ns": 1793655746587543287
-    },
-    "priority_datikz_source_replay_quality_v4.py": {
-      "sha256": "24ffb2264e5e7562e4a2dd664c83e7a3e9bd0b3fc4e2f7ea58f017917ad97ff9",
-      "bytes": 14623,
-      "mtime_ns": 1793656428170397493
-    },
-    "svg_source_edge_layers_v13.py": {
-      "sha256": "0a8760a22026715bd0f97eddace06adc3e6a5982062703a30944f12c25bfd763",
-      "bytes": 14358,
-      "mtime_ns": 1793655786243223685
-    },
-    "priority_datikz_tex_execution_v4.py": {
-      "sha256": "1b50fc09c09d0b1a15726b9b633b47f6f0621f6cde43d02191faba46ebfa9927",
-      "bytes": 8376,
-      "mtime_ns": 1793656357518907205
-    },
-    "priority_datikz_dependency_overlay_v6.py": {
-      "sha256": "4c454c6678a733726e5b3dc37048af8f5d495c6f28f12cbf416cb0656f0569d6",
-      "bytes": 3630,
-      "mtime_ns": 1793656639884887700
-    },
-    "priority_datikz_native_pilot_v1.py": {
-      "sha256": "a229a82f83948c7aab4da5f18347c2aec1184bb750e599806267b477b38ad753",
-      "bytes": 7450,
-      "mtime_ns": 1793656428174397464
-    },
-    "priority_datikz_compile_preflight_v3.py": {
-      "sha256": "3381179965b0e713bfe59e3f3d2aebfd1bfbe0abd72262d5d0a09461bb24415f",
-      "bytes": 8722,
-      "mtime_ns": 1793656357518907205
-    },
-    "close_datikz_preflight_census_v2.py": {
-      "sha256": "65c42d593279b2e087d0fd934da8088b7805ebc7bc14975dc3e2bb4ca15cc9ed",
-      "bytes": 4757,
-      "mtime_ns": 1793656769563972923
-    },
-    "priority_datikz_dependency_overlay_v3.py": {
-      "sha256": "10acbe5ecc73cd7450755ed258214f097cc7f5c7163a46a0a7cfe3dc0f4b07e0",
-      "bytes": 3734,
-      "mtime_ns": 1793656157024375592
-    },
-    "priority_datikz_tex_execution_v5.py": {
-      "sha256": "2f20d09aa7cba2e412d535cf677b0f06d7bc412a18cb74b95789881c467d772b",
-      "bytes": 8376,
-      "mtime_ns": 1793656588337253214
-    },
-    "priority_datikz_compile_preflight_v2.py": {
-      "sha256": "0637a22e97f43f41295117a1102186ed43eee7b9da2642b2c53fc9b41253a804",
-      "bytes": 8862,
-      "mtime_ns": 1793656191496120441
-    },
-    "priority_datikz_compile_preflight_v5.py": {
-      "sha256": "d2b7aba0544655ecd38a1de2f2669f1f26f1707299cbc66676101a41a83db1ac",
-      "bytes": 8728,
-      "mtime_ns": 1793656671112666827
-    },
-    "priority_datikz_tex_execution_v6.py": {
-      "sha256": "ad5de91043d0e614aeb50aeb1b592c15db8a894fb978181e82f0fdb1cad75c3f",
-      "bytes": 8376,
-      "mtime_ns": 1793656671112666827
-    },
-    "priority_datikz_dependency_overlay_v4.py": {
-      "sha256": "096c7397615ede099ed5e47f4c6545f016aa7c6fa26d49132fd4dd4ac9809222",
-      "bytes": 3688,
-      "mtime_ns": 1793656269511547341
-    },
-    "probe_source_outline_SCC_ownership_v1.py": {
-      "sha256": "212ada6424f34687b754bd3cad6cc0332124a3f2e62120ee020bc2f816a43ce3",
-      "bytes": 4238,
-      "mtime_ns": 1793655746587543287
-    },
-    "probe_compound_group_ancestry_v1.py": {
-      "sha256": "229208752e1f74ccf5e51505a9955ce0f1a1a368882f526d35d64ece3643a51b",
-      "bytes": 4248,
-      "mtime_ns": 1793655626856532752
-    },
-    "priority_datikz_compile_preflight_v1.py": {
-      "sha256": "c42e533f71ed7049965ea14cb01fe8cb9e0a02fe9b1a7e25bc2765558320b081",
-      "bytes": 7738,
-      "mtime_ns": 1793656075028987874
-    },
-    "priority_datikz_dependency_overlay_v5.py": {
-      "sha256": "04970a3007308c6268945ec4843df76cb1fde10eba19684fd62507fc3e9dc3a4",
-      "bytes": 3640,
-      "mtime_ns": 1793656553637499958
-    },
-    "probe_sharp_closed_stroke_support_v1.py": {
-      "sha256": "a7e0dc7716c07fe2d16cc5321cbea5434e83701c5c2729455920e0ab2ec30bcd",
-      "bytes": 4849,
-      "mtime_ns": 1793655920866163580
-    },
-    "priority_datikz_tex_execution_v3.py": {
-      "sha256": "0bd50182b899c5f21e91930d4cee2a8bba64deb3abe3f35fd9cce0e81bcee60c",
-      "bytes": 8376,
-      "mtime_ns": 1793656191496120441
-    },
-    "close_datikz_preflight_census_v1.py": {
-      "sha256": "6fe934d112f335e1ca58db1cc521b1c9f17c494f4edfe64c7989d33d7709dca3",
-      "bytes": 4453,
-      "mtime_ns": 1793656716648345444
-    },
-    "priority_datikz_source_viewport_v3.py": {
-      "sha256": "bd5d66889734f0cb92bebea9dd9f7562ed5cde7a057c908ad35d3b9f2a97bf20",
-      "bytes": 28609,
-      "mtime_ns": 1793656428170397493
-    },
-    "probe_source_outline_ownership_v1.py": {
-      "sha256": "919b8a873f57a32b42dcc8d2554f36978bc6b4acb7e1eefb4ebf6f9b6249645d",
-      "bytes": 3880,
-      "mtime_ns": 1793655684464051776
-    },
-    "priority_datikz_compile_preflight_v4.py": {
-      "sha256": "74b3d4d0dbc9611953472c7e0100d0cc35b730a4d92dc33c1d0393c1845c2dc2",
-      "bytes": 8732,
-      "mtime_ns": 1793656588337253214
-    },
-    "svg_source_edge_layers_v14.py": {
-      "sha256": "07e934e90b8fba62a4faa83efd9ee74db27cae54b6af0add2bdc70661772b64e",
-      "bytes": 12554,
-      "mtime_ns": 1793655920866163580
-    },
-    "probe_source_outline_bidirectional_SCC_v1.py": {
-      "sha256": "0beac3e4a48a2016dd26d9d0a4fba1d21bafb1a0fd15078c0b3e7c732340f59a",
-      "bytes": 4242,
-      "mtime_ns": 1793655786243223685
-    },
-    "svg_source_edge_layers_v11.py": {
-      "sha256": "9cd424212d2e8bccc99a722ed51eb3af5e8f131885583b17d27087254a5f7252",
-      "bytes": 13301,
-      "mtime_ns": 1793655684464051776
-    }
+    "matched": true
   }
 }

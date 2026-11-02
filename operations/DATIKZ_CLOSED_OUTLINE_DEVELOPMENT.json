@@ -1,0 +1,371 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/datikz_coordinate_closed_outline_development_v1/1325788a2d3d4cb8b08bf21bae0a8c79",
+  "controls": {
+    "coordinate_chain_preserved_as_complete_polyline": true,
+    "visible_node_not_collapsed": true,
+    "branch_junction_not_collapsed": true,
+    "internal_arrow_not_dropped": true,
+    "unmatched_coordinate_not_invented": true
+  },
+  "results": [
+    {
+      "raw_id": "4972350fae3aa6b6abe3d600011fa3c1e8bef241d4c05d9480e7f2be22fc0d74",
+      "proofs": [
+        {
+          "picture": "1",
+          "path": "65",
+          "kind": "executed_nonpainting_degree_two_route_chain",
+          "original_edges": [
+            {
+              "picture": "1",
+              "path": "65",
+              "source": "CROWD1",
+              "source_anchor": "center",
+              "source_auto_border": true,
+              "target": "below",
+              "target_anchor": "center",
+              "target_auto_border": false,
+              "operation": "vertical_horizontal",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 2,
+              "start_arrow": false,
+              "end_arrow": false
+            },
+            {
+              "picture": "1",
+              "path": "65",
+              "source": "below",
+              "source_anchor": "center",
+              "source_auto_border": false,
+              "target": "top1",
+              "target_anchor": "center",
+              "target_auto_border": false,
+              "operation": "vertical_horizontal",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 3,
+              "start_arrow": false,
+              "end_arrow": true
+            }
+          ],
+          "coordinate_bends": [
+            {
+              "name": "below",
+              "center_pt": [
+                "190.7711pt",
+                "-340.07008pt"
+              ],
+              "distance_to_original_bend_TeXpt": 0.020509826912940628,
+              "degree": 2,
+              "shape": "coordinate",
+              "nonpainting": true
+            }
+          ],
+          "complete_softpath_points_pt": [
+            [
+              "82.45018pt",
+              "-331.53418pt"
+            ],
+            [
+              "82.45018pt",
+              "-340.08797pt"
+            ],
+            [
+              "190.78113pt",
+              "-340.08797pt"
+            ],
+            [
+              "190.78113pt",
+              "-45.94572pt"
+            ],
+            [
+              "240.68874pt",
+              "-45.94572pt"
+            ]
+          ],
+          "no_geometry_changed": true
+        },
+        {
+          "picture": "1",
+          "path": "65",
+          "kind": "explicit_executed_coordinate_endpoints",
+          "endpoints": [
+            {
+              "side": "target",
+              "name": "top1",
+              "center_pt": [
+                "240.67609pt",
+                "-45.94331pt"
+              ],
+              "original_softpath_endpoint_pt": [
+                "240.68874pt",
+                "-45.94572pt"
+              ],
+              "nonpainting": true,
+              "degree": 1
+            }
+          ],
+          "no_nearest_node_inference": true,
+          "no_geometry_changed": true
+        },
+        {
+          "picture": "1",
+          "path": "66",
+          "kind": "executed_nonpainting_degree_two_route_chain",
+          "original_edges": [
+            {
+              "picture": "1",
+              "path": "66",
+              "source": "nextpop",
+              "source_anchor": "center",
+              "source_auto_border": true,
+              "target": "top2",
+              "target_anchor": "center",
+              "target_auto_border": false,
+              "operation": "vertical_horizontal",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 2,
+              "start_arrow": false,
+              "end_arrow": false
+            },
+            {
+              "picture": "1",
+              "path": "66",
+              "source": "top2",
+              "source_anchor": "center",
+              "source_auto_border": false,
+              "target": "Maxgen",
+              "target_anchor": "center",
+              "target_auto_border": true,
+              "operation": "line",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 3,
+              "start_arrow": false,
+              "end_arrow": true
+            }
+          ],
+          "coordinate_bends": [
+            {
+              "name": "top2",
+              "center_pt": [
+                "240.67609pt",
+                "-31.71693pt"
+              ],
+              "distance_to_original_bend_TeXpt": 0.01275975705098606,
+              "degree": 2,
+              "shape": "coordinate",
+              "nonpainting": true
+            }
+          ],
+          "complete_softpath_points_pt": [
+            [
+              "465.6312pt",
+              "-76.33952pt"
+            ],
+            [
+              "465.6312pt",
+              "-31.7186pt"
+            ],
+            [
+              "240.68874pt",
+              "-31.7186pt"
+            ],
+            [
+              "240.68414pt",
+              "-74.39915pt"
+            ]
+          ],
+          "no_geometry_changed": true
+        }
+      ],
+      "source_graph_ok": true,
+      "frame_ok": false,
+      "reason": "No exact unarrowed source path or symmetric named nodes to establish the global source frame: Execution node not uniquely identified in PDF source paint: Gene_expression_data"
+    },
+    {
+      "raw_id": "d33bf4c3f050929ae2907cf8c94f46be081fbe626e11d747d933c2e938982c5b",
+      "proofs": [
+        {
+          "picture": "1",
+          "path": "65",
+          "kind": "executed_nonpainting_degree_two_route_chain",
+          "original_edges": [
+            {
+              "picture": "1",
+              "path": "65",
+              "source": "CROWD1",
+              "source_anchor": "center",
+              "source_auto_border": true,
+              "target": "below",
+              "target_anchor": "center",
+              "target_auto_border": false,
+              "operation": "vertical_horizontal",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 2,
+              "start_arrow": false,
+              "end_arrow": false
+            },
+            {
+              "picture": "1",
+              "path": "65",
+              "source": "below",
+              "source_anchor": "center",
+              "source_auto_border": false,
+              "target": "top1",
+              "target_anchor": "center",
+              "target_auto_border": false,
+              "operation": "vertical_horizontal",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 3,
+              "start_arrow": false,
+              "end_arrow": true
+            }
+          ],
+          "coordinate_bends": [
+            {
+              "name": "below",
+              "center_pt": [
+                "190.7306pt",
+                "-339.97163pt"
+              ],
+              "distance_to_original_bend_TeXpt": 0.0,
+              "degree": 2,
+              "shape": "coordinate",
+              "nonpainting": true
+            }
+          ],
+          "complete_softpath_points_pt": [
+            [
+              "82.41006pt",
+              "-331.43573pt"
+            ],
+            [
+              "82.41006pt",
+              "-339.97163pt"
+            ],
+            [
+              "190.7306pt",
+              "-339.97163pt"
+            ],
+            [
+              "190.7306pt",
+              "-45.84248pt"
+            ],
+            [
+              "240.62292pt",
+              "-45.84248pt"
+            ]
+          ],
+          "no_geometry_changed": true
+        },
+        {
+          "picture": "1",
+          "path": "65",
+          "kind": "explicit_executed_coordinate_endpoints",
+          "endpoints": [
+            {
+              "side": "target",
+              "name": "top1",
+              "center_pt": [
+                "240.62292pt",
+                "-45.84248pt"
+              ],
+              "original_softpath_endpoint_pt": [
+                "240.62292pt",
+                "-45.84248pt"
+              ],
+              "nonpainting": true,
+              "degree": 1
+            }
+          ],
+          "no_nearest_node_inference": true,
+          "no_geometry_changed": true
+        },
+        {
+          "picture": "1",
+          "path": "66",
+          "kind": "executed_nonpainting_degree_two_route_chain",
+          "original_edges": [
+            {
+              "picture": "1",
+              "path": "66",
+              "source": "nextpop",
+              "source_anchor": "center",
+              "source_auto_border": true,
+              "target": "top2",
+              "target_anchor": "center",
+              "target_auto_border": false,
+              "operation": "vertical_horizontal",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 2,
+              "start_arrow": false,
+              "end_arrow": false
+            },
+            {
+              "picture": "1",
+              "path": "66",
+              "source": "top2",
+              "source_anchor": "center",
+              "source_auto_border": false,
+              "target": "Maxgen",
+              "target_anchor": "center",
+              "target_auto_border": true,
+              "operation": "line",
+              "expanded_labels_tex": [],
+              "executed_label_nodes": [],
+              "operation_number": 3,
+              "start_arrow": false,
+              "end_arrow": true
+            }
+          ],
+          "coordinate_bends": [
+            {
+              "name": "top2",
+              "center_pt": [
+                "240.62292pt",
+                "-31.6161pt"
+              ],
+              "distance_to_original_bend_TeXpt": 0.0,
+              "degree": 2,
+              "shape": "coordinate",
+              "nonpainting": true
+            }
+          ],
+          "complete_softpath_points_pt": [
+            [
+              "465.3995pt",
+              "-76.17053pt"
+            ],
+            [
+              "465.3995pt",
+              "-31.6161pt"
+            ],
+            [
+              "240.62292pt",
+              "-31.6161pt"
+            ],
+            [
+              "240.62292pt",
+              "-74.29485pt"
+            ]
+          ],
+          "no_geometry_changed": true
+        }
+      ],
+      "source_graph_ok": true,
+      "frame_ok": false,
+      "reason": "No exact unarrowed source path or symmetric named nodes to establish the global source frame: Execution node not uniquely identified in PDF source paint: Gene_expression_data"
+    }
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "source_recaptures": 0,
+  "model_calls": 0,
+  "qualification_claimed": false
+}
