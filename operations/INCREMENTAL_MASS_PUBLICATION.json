@@ -1,0 +1,83 @@
+{
+  "review": {
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_53f2cf0cc6314bc2b9443f7be974178c",
+    "pairs": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_53f2cf0cc6314bc2b9443f7be974178c/reviewed_pairs.jsonl",
+      "sha256": "93259f92150836c933b99f3d89567273c058ae8783499a9bb4edc2504d3b07de",
+      "bytes": 41919
+    },
+    "occlusion": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_cf93bd7d421e4f3ab4ae8ababf3ae9e1/source_text_occlusion_reviews.jsonl",
+      "sha256": "ff0842f9ae883a05e3a6e77f38103b779b2294c488189e94d26d2825906b5193",
+      "bytes": 2824
+    },
+    "input_summary": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_cf93bd7d421e4f3ab4ae8ababf3ae9e1/summary.json",
+      "sha256": "aab8bb9b14b45864d74e929715a10189ff38e1a6e41252f643d581482a57a054",
+      "bytes": 2759
+    },
+    "decisions": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_53f2cf0cc6314bc2b9443f7be974178c/decisions.json",
+      "sha256": "d0b2a7ea6912f7216a4f97d1cfd38beea9dbcb74e26799f45e5a3422c8d70337",
+      "bytes": 2646
+    },
+    "approved_ids": [
+      "37e0122c626e4ded83f6868de9d625ecf494bbd2aed5086b1e9c6bd90eff8c65",
+      "1d81a14c654e9333b1f03302cca39bf49e0026c2130b27c9be76742c4cbf0fb7",
+      "7436f6a5ed5cc41b6b53677608628ba9c067b368140014c9ca4082f52f6d1fca",
+      "af3322c51cacf41712803572b40fa44e7a5f5b5ffdc3aef2566b1c6f289a6b23",
+      "4b83ffc742c7748cdacfff94a3a694475e068999c1664266323ba16b653877b6",
+      "9f0d21311e7158469abf3fee74dbd514fac9c909a3aca82b1bcf7c89a92b8537",
+      "ddf7ca736e8cbe6376a2c5abc6889a0bd6d2b0a845c48aafd0b447b9f1202e39"
+    ],
+    "held_ids": [
+      "5425928681ab3f28f34f7715f3c3cbc15336cbd58a3b5f95ce35c2b7bb6494e1"
+    ],
+    "actual_native_PNG_inspected_ids": [
+      "37e0122c626e4ded83f6868de9d625ecf494bbd2aed5086b1e9c6bd90eff8c65",
+      "5425928681ab3f28f34f7715f3c3cbc15336cbd58a3b5f95ce35c2b7bb6494e1",
+      "1d81a14c654e9333b1f03302cca39bf49e0026c2130b27c9be76742c4cbf0fb7",
+      "7436f6a5ed5cc41b6b53677608628ba9c067b368140014c9ca4082f52f6d1fca",
+      "af3322c51cacf41712803572b40fa44e7a5f5b5ffdc3aef2566b1c6f289a6b23",
+      "4b83ffc742c7748cdacfff94a3a694475e068999c1664266323ba16b653877b6",
+      "9f0d21311e7158469abf3fee74dbd514fac9c909a3aca82b1bcf7c89a92b8537",
+      "ddf7ca736e8cbe6376a2c5abc6889a0bd6d2b0a845c48aafd0b447b9f1202e39"
+    ],
+    "technical_qualifications_unchanged": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "model_calls": 0
+  },
+  "publication": {
+    "before": 902,
+    "after": 909,
+    "added_ids": [
+      "37e0122c626e4ded83f6868de9d625ecf494bbd2aed5086b1e9c6bd90eff8c65",
+      "1d81a14c654e9333b1f03302cca39bf49e0026c2130b27c9be76742c4cbf0fb7",
+      "7436f6a5ed5cc41b6b53677608628ba9c067b368140014c9ca4082f52f6d1fca",
+      "af3322c51cacf41712803572b40fa44e7a5f5b5ffdc3aef2566b1c6f289a6b23",
+      "4b83ffc742c7748cdacfff94a3a694475e068999c1664266323ba16b653877b6",
+      "9f0d21311e7158469abf3fee74dbd514fac9c909a3aca82b1bcf7c89a92b8537",
+      "ddf7ca736e8cbe6376a2c5abc6889a0bd6d2b0a845c48aafd0b447b9f1202e39"
+    ],
+    "held_ids": [
+      "5425928681ab3f28f34f7715f3c3cbc15336cbd58a3b5f95ce35c2b7bb6494e1"
+    ],
+    "main": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T213230529985Z_review_batch_v8/paired_priority_complex.jsonl",
+      "sha256": "6463b02f3d7d6557a81a988621a3c0592993da6af8a9ab1678494917752a508f",
+      "bytes": 4266757,
+      "rows": 909
+    },
+    "review": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T213230529985Z_review_batch_v8/value_review.json",
+      "sha256": "c62f7f23567e91d87d4fe52ca8234201f8d35426066a9eeb84fafb19b3c7ab57",
+      "bytes": 10733
+    },
+    "pointer": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+      "sha256": "902b4fd8602679ddf692c5cd4c365a334242735e89d39bfd59f2b254c5763fbf",
+      "bytes": 3514
+    }
+  }
+}

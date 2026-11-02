@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T21:26:30.956199+00:00",
+  "at_utc": "2026-11-02T21:32:45.110812+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -4859,6 +4859,12 @@
       "mtime_ns": 1793442843747516870
     },
     {
+      "file": "conversion/scripts/finalize_incremental_visual_review_v1.py",
+      "sha256": "1d43b8d397338dbbe745c6b9bd30cf463c477d6385b7849ca5e5b7760a6e1bcf",
+      "bytes": 2490,
+      "mtime_ns": 1793655150239961521
+    },
+    {
       "file": "conversion/scripts/fit_mermaid_reference_scale.py",
       "sha256": "e2c3edffd05cf07ee7aa26f31c9119b6d80ad077ddb8322c1ca9d6666f1cfe37",
       "bytes": 1662,
@@ -8251,6 +8257,12 @@
       "sha256": "8a2f3e485443681d398809c4dc5327816d229a5403115eac0be5e5575d0412c5",
       "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_fixed_background_pairs_v1.py",
       "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/review_fixed_background_pairs_v2.py",
+      "sha256": "61b354a70cea73c9ff3005fde02d3253cc8fd1949445384d9e92fcd1a291781e",
+      "bytes": 5985,
+      "mtime_ns": 1793654894373438711
     },
     {
       "file": "conversion/scripts/review_harness_v2.py",
@@ -13351,6 +13363,12 @@
       "mtime_ns": 1793339771483756780
     },
     {
+      "file": "scripts/finalize_incremental_visual_review_v1.py",
+      "sha256": "1d43b8d397338dbbe745c6b9bd30cf463c477d6385b7849ca5e5b7760a6e1bcf",
+      "bytes": 2490,
+      "mtime_ns": 1793655164990629510
+    },
+    {
       "file": "scripts/finalize_reviewed_release.py",
       "sha256": "44fb8c9e425f5dfac3ff0ad32bedaa26af3b81b1cd4e78f152621f539d31fa65",
       "bytes": 4849,
@@ -13446,6 +13464,12 @@
       "sha256": "8a8a8673c0df9bc516f7e3c4078a545d68158dc6247399681a8ca75ac39e131a",
       "bytes": 10801,
       "mtime_ns": 1793310286685243606
+    },
+    {
+      "file": "scripts/review_fixed_background_pairs_v2.py",
+      "sha256": "61b354a70cea73c9ff3005fde02d3253cc8fd1949445384d9e92fcd1a291781e",
+      "bytes": 5985,
+      "mtime_ns": 1793655164990159229
     },
     {
       "file": "scripts/start_admission_validation_chain_v1.py",
@@ -13604,5 +13628,17 @@
       "mtime_ns": 1793339754935824394
     }
   ],
-  "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded."
+  "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
+  "incremental_remote_verification": {
+    "review_fixed_background_pairs_v2.py": {
+      "sha256": "61b354a70cea73c9ff3005fde02d3253cc8fd1949445384d9e92fcd1a291781e",
+      "bytes": 5985,
+      "mtime_ns": 1793654894373438711
+    },
+    "finalize_incremental_visual_review_v1.py": {
+      "sha256": "1d43b8d397338dbbe745c6b9bd30cf463c477d6385b7849ca5e5b7760a6e1bcf",
+      "bytes": 2490,
+      "mtime_ns": 1793655150239961521
+    }
+  }
 }
