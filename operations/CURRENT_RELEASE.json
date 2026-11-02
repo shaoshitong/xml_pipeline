@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:26:54.000943+00:00",
+  "at_utc": "2026-11-02T18:28:45.726720+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
   "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
@@ -23,7 +23,7 @@
     "chain_source": "svg_analytic_iteration_chain_v3.py",
     "pool_source": "svg_analytic_iteration_pool_v3.py"
   },
-  "observed_state": "Full source audit completed; preparing frozen B/C cohorts.",
+  "observed_state": "Fixed four-worker B baseline QA then C new-frontend conversion running; baseline rejection is not a new-frontend failure.",
   "source_scope": 26754,
   "all_format_provenance_scope": 131904,
   "validation_samples_per_phase": 100,
@@ -52,5 +52,38 @@
     "selected": 100,
     "supported_remaining_population": 10118
   },
-  "known_catalogue_pairs": 1359
+  "known_catalogue_pairs": 1359,
+  "latest_progress": {
+    "at_utc": "2026-11-02T18:28:45.840177Z",
+    "state": {
+      "goal_complete": false,
+      "stage": "validation_B"
+    },
+    "B": {
+      "evaluation": "existing_baseline",
+      "counts": {
+        "abandoned": 43,
+        "queued": 53,
+        "running": 4
+      },
+      "completed": 43,
+      "cleanup_complete": 43,
+      "infrastructure_failures": 0,
+      "reasons": {
+        "retryable_independent_quality_failure": 43
+      },
+      "infrastructure_stop": false
+    },
+    "C": {
+      "evaluation": "new_source_frontend",
+      "counts": {
+        "queued": 100
+      },
+      "completed": 0,
+      "cleanup_complete": 0,
+      "infrastructure_failures": 0,
+      "reasons": {},
+      "infrastructure_stop": false
+    }
+  }
 }
