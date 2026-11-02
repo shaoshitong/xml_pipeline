@@ -1,0 +1,177 @@
+{
+  "development_v16_first": {
+    "handle": {
+      "pid": 1179933,
+      "birth_ticks": "1144354238",
+      "parent": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v16/normal_development_v1/07b98ad7a60d4d3ea4349ff9c485cb70",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v16/normal_development_v1/07b98ad7a60d4d3ea4349ff9c485cb70/af1e3e102c646d715ba7f6a037fa9715e237bd794bd652b4eae366ed41f27abd",
+      "policy": "general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5"
+    },
+    "live": false,
+    "timing": {
+      "elapsed_seconds": 23.79858025535941,
+      "exit_code": 0
+    },
+    "summary": {
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v16_source_background_interleaving_guard_v12",
+        "policy": "general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5",
+        "key": "952a212215c1855bd0929027d408260f9a7e7f774f4cecaa504fc691db40be40"
+      },
+      "conversion_ok": false,
+      "conversion_reason": "Native content requires full tight canvas",
+      "canonical_unchanged": true
+    },
+    "frontend": {
+      "ok": false,
+      "reason": "Native content requires full tight canvas"
+    },
+    "log_tail": "{\"id\": \"af1e3e102c646d715ba7f6a037fa9715e237bd794bd652b4eae366ed41f27abd\", \"normal_frontend_calls\": 1, \"claim\": \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v16/normal_once/952a212215c1855bd0929027d408260f9a7e7f774f4cecaa504fc691db40be40/af1e3e102c646d715ba7f6a037fa9715e237bd794bd652b4eae366ed41f27abd.json\", \"source_core\": {\"schema\": \"frozen_source_core_identity_v3\", \"unit\": \"general_svg_v16_source_background_interleaving_guard_v12\", \"policy\": \"general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5\", \"key\": \"952a212215c1855bd0929027d408260f9a7e7f774f4cecaa504fc691db40be40\"}, \"configuration_policy\": \"general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5\", \"model_calls\": 0, \"goal_complete\": false, \"conversion_ok\": false, \"conversion_reason\": \"Native content requires full tight canvas\", \"canonical_unchanged\": true}\n"
+  },
+  "development_v16_second": {
+    "handle": {
+      "pid": 1185159,
+      "birth_ticks": "1144361181",
+      "parent": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v16/normal_development_v1/87ba4b263d7d4cc695a11612455f09c4",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v16/normal_development_v1/87ba4b263d7d4cc695a11612455f09c4/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a",
+      "policy": "general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5"
+    },
+    "live": false,
+    "timing": {
+      "elapsed_seconds": 16.444127505645156,
+      "exit_code": 0
+    },
+    "summary": {
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v16_source_background_interleaving_guard_v12",
+        "policy": "general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5",
+        "key": "952a212215c1855bd0929027d408260f9a7e7f774f4cecaa504fc691db40be40"
+      },
+      "conversion_ok": false,
+      "conversion_reason": "source_native_anchor_delta_exceeds_supported_rounding",
+      "canonical_unchanged": true
+    },
+    "frontend": {
+      "ok": false,
+      "reason": "source_native_anchor_delta_exceeds_supported_rounding",
+      "stage": "source_derived_text_anchor"
+    },
+    "log_tail": "{\"id\": \"957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a\", \"normal_frontend_calls\": 1, \"claim\": \"/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v16/normal_once/952a212215c1855bd0929027d408260f9a7e7f774f4cecaa504fc691db40be40/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a.json\", \"source_core\": {\"schema\": \"frozen_source_core_identity_v3\", \"unit\": \"general_svg_v16_source_background_interleaving_guard_v12\", \"policy\": \"general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5\", \"key\": \"952a212215c1855bd0929027d408260f9a7e7f774f4cecaa504fc691db40be40\"}, \"configuration_policy\": \"general_svg_v16_source_background_interleaving_guard_v12:5f34c8408eab9c55f8f5\", \"model_calls\": 0, \"goal_complete\": false, \"conversion_ok\": false, \"conversion_reason\": \"source_native_anchor_delta_exceeds_supported_rounding\", \"canonical_unchanged\": true}\n"
+  },
+  "development_v17": {
+    "at_utc": "2026-11-02T20:40:49.430647+00:00",
+    "live": false,
+    "timing": {
+      "elapsed_seconds": 43.24780823290348,
+      "exit_code": 0
+    },
+    "summary": {
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v17_source_background_interleaving_rotated_text_guard_v13",
+        "policy": "general_svg_v17_source_background_interleaving_rotated_text_guard_v13:0970b6dcae74aa272ea7",
+        "key": "5a09323b55480328def58d8d075d389d1fc78a065e64b390204e195a246cb26d"
+      },
+      "conversion_ok": true,
+      "conversion_reason": "native_candidate_pending_full_quality",
+      "candidate_file": "/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v17/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/71564ec232834a9183fb324db73906d1/record.json",
+      "quality_ok": false,
+      "quality_failures": [
+        {
+          "type": "ValueError",
+          "reason": "source_profile_failed"
+        }
+      ],
+      "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/SVG_background_interleaving_rotation_v17_957add973f_230b676f63f54a95ae73d51f7939cba1/report.json",
+      "canonical_unchanged": true
+    },
+    "frontend": {
+      "ok": true,
+      "reason": "native_candidate_pending_full_quality"
+    }
+  },
+  "development_v18": {
+    "at_utc": "2026-11-02T20:43:20.707223+00:00",
+    "handle": {
+      "pid": 1211656,
+      "birth_ticks": "1144381275",
+      "parent": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v18/normal_development_v1/7005595f162b4de697c00e3e1cf95c02",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v18/normal_development_v1/7005595f162b4de697c00e3e1cf95c02/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a",
+      "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14:d437c004a9fb0efacfd0"
+    },
+    "live": false,
+    "timing": {
+      "elapsed_seconds": 70.74674199707806,
+      "exit_code": 0
+    },
+    "summary": {
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14",
+        "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_guard_v14:d437c004a9fb0efacfd0",
+        "key": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086"
+      },
+      "conversion_ok": true,
+      "conversion_reason": "native_candidate_pending_full_quality",
+      "candidate_file": "/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v18/95/957add973f1b7dfb1275150c907ef140763cf2fb0114919a20d5bb687d647c5a/450e7911283245969f21c9e154a7787d/record.json",
+      "quality_ok": false,
+      "quality_failures": [
+        {
+          "type": "ValueError",
+          "reason": "source_profile_failed"
+        }
+      ],
+      "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/SVG_background_interleaving_rotation_anchor_v18_957add973f_72e8e59df301454f94aecae72fac7874/report.json",
+      "canonical_unchanged": true
+    },
+    "frontend": {
+      "ok": true,
+      "reason": "native_candidate_pending_full_quality"
+    }
+  },
+  "no_development_normal_may_be_repeated_on_the_same_source_core": true,
+  "mass_release_approved": false,
+  "goal_complete": false,
+  "QA_only_successor": {
+    "pid": 1243695,
+    "birth_ticks": "1144397228",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v1/81abea41d62a4e8aa3176c41bb2b5105",
+    "normal_conversion_calls": 0,
+    "finite": true
+  },
+  "original_QA21_failure": "Additional current-source check compared inverse-painter-adjusted XML directly to raw source coordinates. QA adapter18/QAro22 retain all gates and normalize using fresh actual native SVG screen offsets; original QA evidence and candidate unchanged.",
+  "QA22_source_proof": {
+    "source_ok": true,
+    "logical_text_runs": 72,
+    "actual_source_text_crop_regions": 225,
+    "source_glyphs": {
+      "ok": true,
+      "maximum_error_px": null,
+      "maximum_geometry_error_px": 0.027496337890625,
+      "source_graphemes": 535,
+      "checked_graphemes": null
+    },
+    "same_browser_pixels": {
+      "ok": true,
+      "ssim_1024": 0.9938699364846735,
+      "text_regions_checked": 225
+    },
+    "current_backend_membership_ok": true,
+    "failure": [
+      {
+        "reason": "staged_visual_incomplete_fresh_source_expected_scope",
+        "type": "ValueError"
+      }
+    ]
+  },
+  "QA23_scope_successor": {
+    "pid": 1258837,
+    "birth_ticks": "1144411540",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v2/59b77b81100c4714a70652b909eba3df",
+    "normal_conversion_calls": 0,
+    "finite": true
+  },
+  "scope_repair": "Count original source line crops with the existing source-only expected-region function: 72 logical text runs produce 225 source crop windows. All 225 remain mandatory, with unchanged raster thresholds. Original QA22 evidence retained."
+}

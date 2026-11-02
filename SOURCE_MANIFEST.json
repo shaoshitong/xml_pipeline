@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:25:49.030353+00:00",
+  "at_utc": "2026-11-02T20:47:09.529692+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -551,6 +551,13 @@
       "sha256": "81cc6c643fe45785cff9abbe35f5dc544000731b37ac9cba79368c0b3cec8461",
       "bytes": 838,
       "mtime_ns": 1793389406424357652
+    },
+    {
+      "file": "conversion/scripts/approve_semantic_admission_content_v1.py",
+      "bytes": 4121,
+      "sha256": "40b3b5fddcf5ca1f296dd2b17ee60e40d270c276c20554cb1daede5db4b9c60f",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/approve_semantic_admission_content_v1.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/arxiv_author_native_asset_package_v1.py",
@@ -3007,6 +3014,13 @@
       "mtime_ns": 1793649438122724449
     },
     {
+      "file": "conversion/scripts/compiler_svg_explicit_coordinates_v7.py",
+      "bytes": 8001,
+      "sha256": "44058530cf11b357637bf39e07dcd68c0864976598ac971597a628a5a4185302",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_explicit_coordinates_v7.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/compiler_svg_general_guard_v1.py",
       "sha256": "f076000b947507d306f8bcd65bfaca753b20a334c2600b9cb0b501c1ca65528b",
       "bytes": 7286,
@@ -3023,6 +3037,27 @@
       "sha256": "c8e976f6e608cf236465ab74a4b1f396ea5ddf75c3cb5743d9aee91722937f6e",
       "bytes": 8290,
       "mtime_ns": 1793649438126759199
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v12.py",
+      "bytes": 8279,
+      "sha256": "be680b6a60f88b2b982527bf4ea49b23f926dc305ab4447e04ec964ba0684637",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_guard_v12.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v13.py",
+      "bytes": 8362,
+      "sha256": "dcc59f7cf97b98c5733abe85744108893343f5402723ffe1443003269f2137b4",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_guard_v13.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v14.py",
+      "bytes": 8365,
+      "sha256": "a043f27ab1b3b47aef9ca37cdfd05a17933456e3ae4d953d204f9d408a971d50",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_guard_v14.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/compiler_svg_general_guard_v2.py",
@@ -3149,6 +3184,48 @@
       "sha256": "a9142acbeccfd70a9825d7acaa393060f892c4f9ecf32e2939febe5b010c76be",
       "bytes": 3272,
       "mtime_ns": 1793649438127157986
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v14.py",
+      "bytes": 3282,
+      "sha256": "50251c680ac1a7621988842cf9477a198af4579d65b6daadaa0660883d25b405",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v14.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v15.py",
+      "bytes": 3291,
+      "sha256": "f86a7c3618a137c8201d10a40e7a91b4925bb06841c3635c3078f4ade898c8bf",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v15.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v16.py",
+      "bytes": 3683,
+      "sha256": "12ef3f20843a77ca914f61527351cc76887f2fd8f92e756e44a3f45e2d7972f0",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v16.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v17.py",
+      "bytes": 3696,
+      "sha256": "cb276e864cd7526ad1f155d8d9754ace3d2b56a80c01f3b64405bb6fdc5f1fcc",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v17.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v18.py",
+      "bytes": 3589,
+      "sha256": "aa7f899aa4d34c040bd6b414d8608c42f4a2f4a327e5ee94fc971d68b35b23f0",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v18.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v19.py",
+      "bytes": 3715,
+      "sha256": "d8158145328256c4649564cdeb817186fae6ae8cb5dd06d54c66f54cb3399401",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_quality_adapter_v19.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/compiler_svg_general_quality_adapter_v4.py",
@@ -3313,6 +3390,20 @@
       "mtime_ns": 1793649438122240329
     },
     {
+      "file": "conversion/scripts/compiler_svg_scene_backend_v12.py",
+      "bytes": 17930,
+      "sha256": "9a631677b8f2fdd989ff2e2b0fa302ec9e1517d2e239890bc386fd7e18215385",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_backend_v12.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_backend_v13.py",
+      "bytes": 18343,
+      "sha256": "4af0f66d16336288115833138e61e569ed0f7a5ca79ef688bbcddb3b4a010727",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_backend_v13.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/compiler_svg_scene_backend_v2.py",
       "sha256": "4f8c9b2c2f2339d1bbc16a68cdf99d8668f39eb6e4b7e4434b301180cf82e77a",
       "bytes": 12506,
@@ -3433,6 +3524,27 @@
       "mtime_ns": 1793649438126295245
     },
     {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v16.py",
+      "bytes": 55195,
+      "sha256": "1f3e2146894d05560208b45539f2a573f629982e7413cf252a13a6c26c838433",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_frontend_v16.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v17.py",
+      "bytes": 55208,
+      "sha256": "b3c077bd7032cca592388bbb306ebb82047297cb72e4e56930252ee6107e7735",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_frontend_v17.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v18.py",
+      "bytes": 55617,
+      "sha256": "c78537bb3adc0e3e9d2250dfb00369ef4bd13e4b05cfc9bc5ca6807d4f5c03c5",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_frontend_v18.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/compiler_svg_scene_frontend_v2.py",
       "sha256": "d7b4083b08138d88d50bfe1fac8cf7ceea0e8f802ce34e97152a7016f82e15a5",
       "bytes": 48663,
@@ -3535,10 +3647,52 @@
       "mtime_ns": 1793649438127554274
     },
     {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v18.py",
+      "bytes": 13738,
+      "sha256": "a78ae9d422d9d73834b8757e02cc8a0a625ae095a1b7b9053b0e9eca123e7bf4",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v18.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v19.py",
+      "bytes": 13747,
+      "sha256": "bf2966d23d4c4a6a8f2e9d43ce33d32b6321279a29a6ea397f515340f33cf1c3",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v19.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v2.py",
       "sha256": "439baa3ed0f9d2a5721122b2a3f3f736066c57c2104e19a8ac28967066b432e7",
       "bytes": 13044,
       "mtime_ns": 1793553433583755731
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v20.py",
+      "bytes": 13766,
+      "sha256": "c370eb1e16354116b6ccf4521f0333051a473d4f4da7f769714e229af0263c70",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v20.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v21.py",
+      "bytes": 13779,
+      "sha256": "a89fd3c13a096f93bb568aba3230964eeb0a1e490873a77dcf081604cb197164",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v21.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v22.py",
+      "bytes": 13785,
+      "sha256": "c78b099a74f6f70867593de9cddac99daf17d4a2c782b05f6e4942d726866f78",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v22.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v23.py",
+      "bytes": 13795,
+      "sha256": "c7d82fc2bee1919fac250e893df26b478e2f058ec1c3591f679ee5be589ee0c2",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_quality_ro_v23.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v3.py",
@@ -7603,10 +7757,66 @@
       "origin": "work/scidiagram_panels/probe_scidiagram_panels_v1.py"
     },
     {
+      "file": "conversion/scripts/probe_source_background_all_paint_order_v1.py",
+      "bytes": 4148,
+      "sha256": "985e8563d6959f00d5cbb05fec2ed7f9b031d78ebea436892c2cca7288134873",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_source_background_all_paint_order_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/probe_source_background_edge_order_v1.py",
+      "bytes": 4143,
+      "sha256": "4e8cf18c7f760e18c0820da089a959e1b41d125c3bf5f48525d19ada7d567d37",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_source_background_edge_order_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/probe_source_background_interleaving_order_v1.py",
+      "bytes": 4151,
+      "sha256": "640f4bdaaf8483ab8a94f73c70ee3dd76c95e2f1c3a1ace8de95b850d66602f5",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_source_background_interleaving_order_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/probe_source_background_use_edge_diagnostic_v1.py",
+      "bytes": 4820,
+      "sha256": "69220aa1629fda2b805e0e94a1255edeb6ac41224b9a1c5943b54425ffdc5a51",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_source_background_use_edge_diagnostic_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/probe_source_background_use_edge_order_v1.py",
+      "bytes": 4147,
+      "sha256": "d40e369de33a8491de889006d3b4f46200b791e638221738f85eacd44f0520eb",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_source_background_use_edge_order_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/probe_source_edge_layers_v1.py",
       "sha256": "bf217d10ac2bcf4c29a96bd556cc7bc9bed1103057f60f20fd96ece4361f5f72",
       "bytes": 4140,
       "mtime_ns": 1793649438119278901
+    },
+    {
+      "file": "conversion/scripts/probe_stroke_support_cycle_diagnostic_v1.py",
+      "bytes": 4164,
+      "sha256": "fc93c9eef11c252515890de0bb8fa029fd80dd812aa18496005175e51676d8f2",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_stroke_support_cycle_diagnostic_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/probe_stroke_support_order_v1.py",
+      "bytes": 4093,
+      "sha256": "7f160c693d9bd83bd7eb98434f9ceb3dfe3bdbcc7e74f5a5ec37db13f384a5bf",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_stroke_support_order_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/probe_stroke_support_order_v2.py",
+      "bytes": 4142,
+      "sha256": "1c1b545919c5b412983ef1511a186345a5021f7b5f70fd6c31d520ec134f70b2",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/probe_stroke_support_order_v2.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/probe_svg_fullname_font.py",
@@ -7945,6 +8155,20 @@
       "mtime_ns": 1793410926283139467
     },
     {
+      "file": "conversion/scripts/review_background_rotation_candidate_v1.py",
+      "bytes": 2698,
+      "sha256": "ce420a0fa4afa1ca59aeac3adcbeb7da5a789e5ac2e5dd7b5aef174529827529",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_background_rotation_candidate_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/review_background_rotation_candidate_v2.py",
+      "bytes": 2705,
+      "sha256": "8534128f23d4e16898bb34cbad2f63ac345a2ede4839322d3b7ff05b20438ff9",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_background_rotation_candidate_v2.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/review_harness_v2.py",
       "sha256": "300f4eb916157ed7007d241d5ad95773cd6aa25f900ba73c0c8fb7d3cdee2c08",
       "bytes": 1047,
@@ -7961,6 +8185,13 @@
       "sha256": "ddfe8b53e28b2ec3fd21d27543a4c7913cd7394d0d0e266dab4a29bf4e06d1f8",
       "bytes": 5767,
       "mtime_ns": 1793646948281773647
+    },
+    {
+      "file": "conversion/scripts/review_semantic_admission_round_v1.py",
+      "bytes": 4104,
+      "sha256": "d5fdbaf3c021cea31a7ad6842b65a8300a45fd1f732f29490661de41e72b77e3",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/review_semantic_admission_round_v1.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/review_symbol_round_and_edge_normal_v1.py",
@@ -8929,6 +9160,34 @@
       "mtime_ns": 1793641477640671824
     },
     {
+      "file": "conversion/scripts/svg_rotated_source_visual_scope_v1.py",
+      "bytes": 4523,
+      "sha256": "4576f8fa136e09a18c1612849bca24eea8ccb1f7971d491e60524c59d743d883",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_rotated_source_visual_scope_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_background_interleaving_normal_dev_v1.py",
+      "bytes": 4724,
+      "sha256": "f744ef5bfb0da889d8729ffa467f8fc93d32316b14e0fe82aa81fd00bdeb441b",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_background_interleaving_normal_dev_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_background_rotation_anchor_normal_dev_v1.py",
+      "bytes": 4740,
+      "sha256": "ef357f5c1bb716f1175a1030b8556d723e3ccb6922e825014c66af0d4ad40603",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_background_rotation_anchor_normal_dev_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_background_rotation_normal_dev_v1.py",
+      "bytes": 4733,
+      "sha256": "373fde2c76f79354baab52425ee6194e65b9e36144a219ca28ee949e2a60eca2",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_background_rotation_normal_dev_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_source_coverage.py",
       "sha256": "eeb5dc9133cd9b8fc4960779052a9e3254a4a0f0d8038842ae3f89840380dc0f",
       "bytes": 2297,
@@ -8941,6 +9200,13 @@
       "mtime_ns": 1793391120070754051
     },
     {
+      "file": "conversion/scripts/svg_source_edge_layers_cycle_diagnostic_v1.py",
+      "bytes": 7207,
+      "sha256": "e956243f4852e0c27baafcbbfe3b2ba5c688be197943c506516317ad78621119",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_cycle_diagnostic_v1.py",
+      "remote_source_hash_verified": true
+    },
+    {
       "file": "conversion/scripts/svg_source_edge_layers_v1.py",
       "sha256": "aefe472316c4f77e26fcffe2b078b499a46c498f8101240bd61490b469656a71",
       "bytes": 6639,
@@ -8951,6 +9217,55 @@
       "sha256": "d27cad865355e9f970f53ae8333f9a2187af4e612511df9f86023c6d5d2662d3",
       "bytes": 6524,
       "mtime_ns": 1793649438121837666
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v3.py",
+      "bytes": 6600,
+      "sha256": "45e533887747a1f1855238ceda049363742ad72d5ec639e1133bcd4a3ec17a33",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v3.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v4.py",
+      "bytes": 7062,
+      "sha256": "d6495c5f9697de8814b62fdde4aa90e8ce93b01b785213340a93f6d1d7603949",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v4.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v5.py",
+      "bytes": 7264,
+      "sha256": "a82a6c5d842f0589f538745a68c442e944b9c4280be974d43dcb29ce02aca32c",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v5.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v6.py",
+      "bytes": 9024,
+      "sha256": "9807f8b0402e7b0856737adadebcc05a683d6abe505c28f8c91865e373ce0187",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v6.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v7.py",
+      "bytes": 12269,
+      "sha256": "88cef8ed9ca6a0ad9bbae1569d9af2c8017e87598ad089e8ef5b3b40cee9a75d",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v7.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v8.py",
+      "bytes": 12333,
+      "sha256": "e084632b1470645bd07ebbb131f83fadb347dc15e0449565e750a453077b0993",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v8.py",
+      "remote_source_hash_verified": true
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v9.py",
+      "bytes": 12422,
+      "sha256": "ecef2553f2230556b1ea75b51f7501824cae334d6b5e55989c2c7c619b83fdc1",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_edge_layers_v9.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/svg_source_endpoint_bridge_linear_gradient_v1.py",
@@ -9059,6 +9374,13 @@
       "sha256": "decd7788e25751f55ab461fecf0cef05be5fcae83477b5f5993f6effbabcfce2",
       "bytes": 10613,
       "mtime_ns": 1793649438130109122
+    },
+    {
+      "file": "conversion/scripts/svg_source_stroke_support_v1.py",
+      "bytes": 3656,
+      "sha256": "3e59e121cd7f41edbe770552db40637b70f4b4850e2e7ecf6152bc24c3205715",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_source_stroke_support_v1.py",
+      "remote_source_hash_verified": true
     },
     {
       "file": "conversion/scripts/svg_source_symbol_viewport_v1.js",
@@ -12883,6 +13205,13 @@
       "mtime_ns": 1793305622668431282
     },
     {
+      "file": "scripts/make_endpoint_instance_bridge_v2.py",
+      "bytes": 1554,
+      "sha256": "7cff943e568f498d09d53e872704281591176952b4accf698174d9f168e46cde",
+      "origin": "work/svg_group_order_fix/make_endpoint_instance_bridge_v2.py",
+      "remote_source_hash_verified": false
+    },
+    {
       "file": "scripts/migrate_storage.py",
       "sha256": "d067855331e35e0427a38a0992c6c1f1a0d993901384cf32c55b2dfea8216b19",
       "bytes": 5387,
@@ -12935,6 +13264,34 @@
       "sha256": "e694ad38a05c9226401b89742ec1c252e23aceb521fa106856bd1dddcfa46216",
       "bytes": 2089,
       "mtime_ns": 1793649493510511708
+    },
+    {
+      "file": "scripts/start_background_interleaving_normal2_v1.py",
+      "bytes": 2742,
+      "sha256": "57e3eb4ade7e0d3dfb510f1e11b67933ec70b36e6a71ea3c1b169ffe4b9958b4",
+      "origin": "work/svg_group_order_fix/start_background_interleaving_normal2_v1.py",
+      "remote_source_hash_verified": false
+    },
+    {
+      "file": "scripts/start_background_interleaving_normal_v1.py",
+      "bytes": 2741,
+      "sha256": "01edc81a5eec3b2c5b0a8806463018407f09d57d7f38ace2515079e4e02728ce",
+      "origin": "work/svg_group_order_fix/start_background_interleaving_normal_v1.py",
+      "remote_source_hash_verified": false
+    },
+    {
+      "file": "scripts/start_background_rotation_anchor_normal_v1.py",
+      "bytes": 2792,
+      "sha256": "0e102ff4115dac9995709a50ae76e8add25d831780057720c75c1835e08dcda0",
+      "origin": "work/svg_group_order_fix/start_background_rotation_anchor_normal_v1.py",
+      "remote_source_hash_verified": false
+    },
+    {
+      "file": "scripts/start_background_rotation_normal_v1.py",
+      "bytes": 2729,
+      "sha256": "3af0c4845a8539fd2a510ec7ace5b5e42ad9e65730534f4f0d96b35762fa2d4e",
+      "origin": "work/svg_group_order_fix/start_background_rotation_normal_v1.py",
+      "remote_source_hash_verified": false
     },
     {
       "file": "scripts/start_edge_layers_normal_v1.py",

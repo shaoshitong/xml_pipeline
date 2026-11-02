@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T20:25:12.497081+00:00",
+  "at_utc": "2026-11-02T20:44:49.749606+00:00",
   "goal_complete": false,
   "source_frontend": "compiler_svg_scene_frontend_v15",
   "generation_plugin": "compiler_svg_general_guard_v11",
@@ -13,13 +13,15 @@
     "work": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
     "source_targets": 2365,
     "candidate_emissions": 0,
-    "normal_calls": 0
+    "normal_calls": 0,
+    "finished": true
   },
   "automatic_validation_handoff": {
     "pid": 354594,
     "birth_ticks": "1144103753",
     "work": "/backup/shaoshitong/img2code_20261029/conversion/semantic_admission_validation_launch_v1/633bef4096854e8d81b03d04112e620e",
-    "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423"
+    "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
+    "stage": "round_complete_next_repair_required"
   },
   "latest_progress": {
     "at_utc": "2026-11-02T20:25:12.497081+00:00",
@@ -335,5 +337,35 @@
     "actual_elapsed_seconds": 1934.6228804606944,
     "normal_conversion_calls": 0,
     "candidate_emissions": 0
+  },
+  "strict_main": {
+    "bytes": 4233495,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T203609456112Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 898,
+    "sha256": "e7e9ef4c72ff11360d1e7d12e2c5691afd5183aed0aac27963882f3532369bae"
+  },
+  "completed_semantic_round": {
+    "run": "svg_complex_semantic_admission_unseen_20261102_v8",
+    "B_qualified": 0,
+    "C_qualified": 14,
+    "samples": 100,
+    "mass_released": false,
+    "infra_errors": 0
+  },
+  "experimental_generation": {
+    "frontend": "compiler_svg_scene_frontend_v18",
+    "guard": "compiler_svg_general_guard_v14",
+    "backend": "compiler_svg_scene_backend_v13",
+    "core_key": "d82fa5c6e13e5f305a0c50bc2c358c4b91030e251e7dea6cdd2e775ba51b6086",
+    "QA": "compiler_svg_scene_quality_ro_v23",
+    "QA_adapter": "compiler_svg_general_quality_adapter_v19",
+    "validation_released": false,
+    "QA_only_handle": {
+      "pid": 1258837,
+      "birth_ticks": "1144411540",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/source_background_rotation_quality_review_v2/59b77b81100c4714a70652b909eba3df",
+      "normal_conversion_calls": 0,
+      "finite": true
+    }
   }
 }

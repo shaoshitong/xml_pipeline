@@ -1,3 +1,5 @@
+> This is historical: the 2365-source audit and v8 validation are now terminal. Strict main is 898; see NEXT_BACKGROUND_INTERLEAVING.md and CURRENT_RELEASE.json for the active repair. Never restart the old handles.
+
 # Current source admission and edge-layer repair
 
 Strict content-reviewed main: **887 pairs**, RAP 780 HTML posters and VFIG 107 SVG diagrams. Unified catalogue: 1,394 unique pairs at the last verified snapshot; evidence views remain separate. The new complete DA/DG/SSL-versus-few-shot comparison `66710413...` was directly inspected, passed full converter QA and source-label visibility, and is included in the consumer catalogue. The `6c1c25a2...` parameter/training/prediction figure stays outside the strict main: original `Pipeline` and `Fingerprints` labels are partly occluded, despite correct conversion.
