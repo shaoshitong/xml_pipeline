@@ -1,0 +1,470 @@
+{
+  "structural_development": {
+    "root": "/backup/shaoshitong/img2code_20261029/conversion/background_stroke_support_structural_development_v1/c8a2b5b035af4a1a8ba05c15aae391c7",
+    "controls": {
+      "disjoint_broad_boxes": true,
+      "true_crossing_retained": true,
+      "rotated_text_keeps_original_paint_support": true
+    },
+    "results": [
+      {
+        "id": "568c5cf4c3baf1cadbc7f20e59483af17fff651f85dd32a8f4e86543eb90ccd8",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/568c5cf4c3baf1cadbc7f20e59483af17fff651f85dd32a8f4e86543eb90ccd8/20224450ee7c4244b0193229e979a0bf/dom.json",
+          "sha256": "b5eaad13b7baf0a57cbaaedcbaf4b1f2b5519fa3c2cc4ef91dcb08ed82ecd777"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.9880161602050066
+      },
+      {
+        "id": "e99263f5c4b6270d48ae6892ef8440c3f3bb6a6280f13094d188f4327b5d6c84",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/e99263f5c4b6270d48ae6892ef8440c3f3bb6a6280f13094d188f4327b5d6c84/290bfa2bf74a42909b36b0980b67afaf/dom.json",
+          "sha256": "62441cc2ad0944383b2b82391040f0faea40ce388bf9c60104c47a6725ccfa4b"
+        },
+        "structural_order_passed": true,
+        "xml_sha256": "c310eea4dd9467daec68e583b97d88562d71b630912dff6f58b12c7958439c27",
+        "source_edge_layers": {
+          "policy": "source_paint_order_witnessed_solid_background_interleaving_rotated_bounds_conservative_stroke_support_v10",
+          "edge_parent_changes": [
+            {
+              "edge": "v10",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v14",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v18",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v22",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v26",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v28",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v33",
+              "old_parent": "1",
+              "new_parent": "node_source_v1",
+              "source_group_witness": "a2"
+            },
+            {
+              "edge": "v46",
+              "old_parent": "1",
+              "new_parent": "node_source_v36",
+              "source_group_witness": "a57"
+            },
+            {
+              "edge": "v50",
+              "old_parent": "1",
+              "new_parent": "node_source_v36",
+              "source_group_witness": "a57"
+            },
+            {
+              "edge": "v54",
+              "old_parent": "1",
+              "new_parent": "node_source_v36",
+              "source_group_witness": "a57"
+            },
+            {
+              "edge": "v58",
+              "old_parent": "1",
+              "new_parent": "node_source_v36",
+              "source_group_witness": "a57"
+            },
+            {
+              "edge": "v72",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v73",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v74",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v75",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v76",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v77",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v79",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v80",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v81",
+              "old_parent": "1",
+              "new_parent": "node_source_v60",
+              "source_group_witness": "a98"
+            },
+            {
+              "edge": "v94",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v95",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v96",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v97",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v98",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v99",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v106",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v107",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            },
+            {
+              "edge": "v108",
+              "old_parent": "1",
+              "new_parent": "node_source_v82",
+              "source_group_witness": "a125"
+            }
+          ],
+          "overlap_pairs_constrained": 116,
+          "vertex_world_geometry_exact": true,
+          "edge_world_geometry_and_binding_exact": true,
+          "nonedge_cells_unchanged": true,
+          "primitive_parent_changes": [],
+          "nonedge_payloads_unchanged_except_proven_parent_coordinate_translation": true,
+          "source_only": true,
+          "reference_pixels_used": false
+        },
+        "elapsed_seconds": 0.5595198702067137
+      },
+      {
+        "id": "6d0691ae2de8fed7e8b094b23cfa77477121d279a398d4dc5a659f9f6d35ff17",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/6d0691ae2de8fed7e8b094b23cfa77477121d279a398d4dc5a659f9f6d35ff17/44f810a7c866410aabb8975cde8e42b2/dom.json",
+          "sha256": "4e0c088be197d2e495d470fd7269427d03b16456fd92899086382ca428aa33f5"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 1.8983279913663864
+      }
+    ],
+    "normal_conversion_calls": 0,
+    "QA_calls": 0,
+    "browser_recaptures": 0,
+    "model_calls": 0,
+    "qualification_claimed": false,
+    "running_validation_unchanged": true
+  },
+  "expanded_structural_development": {
+    "root": "/backup/shaoshitong/img2code_20261029/conversion/background_stroke_support_structural_development_v1/7fa3aa9a4018435aa64d57448e5a9422",
+    "controls": {
+      "disjoint_broad_boxes": true,
+      "true_crossing_retained": true,
+      "rotated_text_keeps_original_paint_support": true
+    },
+    "results": [
+      {
+        "id": "ed25b9e246d3a937bce6d694fd8717f4f7bc0567d7e693ede7d466f5fd71eca8",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/ed25b9e246d3a937bce6d694fd8717f4f7bc0567d7e693ede7d466f5fd71eca8/dbeb90456e474ca1aac7d85415c61256/dom.json",
+          "sha256": "845d7574339e69a546dec9356d3b4042c03735050c20f800f7a334a90dccc1fa"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 1.8514782674610615
+      },
+      {
+        "id": "4330a15f7d3c9e15d1d3ab3dda8530d9d140cbfc283700ace64743a6ee939dc2",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/4330a15f7d3c9e15d1d3ab3dda8530d9d140cbfc283700ace64743a6ee939dc2/e17b9f9a64304d89b5230f382f0ddc42/dom.json",
+          "sha256": "2e4dbfdd283125be92490569bfd37b9aeedf123943f5e7526a6fc6f38200d6c0"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.8608613479882479
+      },
+      {
+        "id": "d1fdfbac252219a28c84afe4d697b9d87ab30acd28f9187fde612b5547856223",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/d1fdfbac252219a28c84afe4d697b9d87ab30acd28f9187fde612b5547856223/d2dc83745872480287d596b51875963b/dom.json",
+          "sha256": "8211309ec9062b684d4bc131e5068239322614dfb9cf77f56d82485d46179f85"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 6.691752670332789
+      },
+      {
+        "id": "38acb8bc1269025d767f7add6cfc0a8242a14f9caa7487cb50a9b86b1313e665",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/38acb8bc1269025d767f7add6cfc0a8242a14f9caa7487cb50a9b86b1313e665/2fdd05b6fa834ce687a4e561c0107288/dom.json",
+          "sha256": "72d488789f7b5f019d1edb5ebafd7651de2d9cf9897897c9f67e6e1c76bf0076"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.2478772345930338
+      },
+      {
+        "id": "f76066e223e28a27fa5f327cd4206dd5a6caa6b4697ee4135df02de0b06dc765",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/f76066e223e28a27fa5f327cd4206dd5a6caa6b4697ee4135df02de0b06dc765/1bf52993e53f456782f350b51c54f001/dom.json",
+          "sha256": "a4aeac16e0e7a9e5415ce3188824aa2528fd201754a0a0affe7ff2c392eaa8df"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 8.378586407750845
+      },
+      {
+        "id": "adfebb326d308f571f7a30650ecad0b8094a1719286e1901d70cd117a7151099",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/adfebb326d308f571f7a30650ecad0b8094a1719286e1901d70cd117a7151099/7614507eff944aa7ac38223e5acae49d/dom.json",
+          "sha256": "ff775383e1f14763036510b8b828d1f7bdb01b46e3021c57316146d5d6cb040d"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 1.2883986681699753
+      },
+      {
+        "id": "91c6717cdfe0c9efb500c5c1bb6614deb6908a8043eb0919f3ca740ba6d99dcd",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/91c6717cdfe0c9efb500c5c1bb6614deb6908a8043eb0919f3ca740ba6d99dcd/7621db3e93f44937b508394e9acb4398/dom.json",
+          "sha256": "b547fe609988c8ef84e423791d97a1560a650d6df2980945d8af265869273fe4"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.3774581737816334
+      },
+      {
+        "id": "34860792cf2e1c15a1281e1289e7bb9324b7c2dd5e1489e1370237a4b73ff325",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/34860792cf2e1c15a1281e1289e7bb9324b7c2dd5e1489e1370237a4b73ff325/97175fc997ae4723819f7e687fbdca21/dom.json",
+          "sha256": "0d8d7be723f34d43aa5d7713ae40c490f1a48bb07d05cb9af1cb44d40eec9ee7"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.9582284353673458
+      },
+      {
+        "id": "b385215a3053452e61ec8a7d6205816485718bbe8c343f174e0d2ad76b91d65a",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/b385215a3053452e61ec8a7d6205816485718bbe8c343f174e0d2ad76b91d65a/616dd35f5b7b438bba99dccabaa7ea0f/dom.json",
+          "sha256": "16a67a8fdb3c2ad47fed581967b8500d942647ab4e67e54b1cd8c0690dec308c"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.467650244012475
+      },
+      {
+        "id": "12daf0d89f5b243f6470e4e01a7a41816a52e5558e9ed37e4f0f6b977433385a",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/12daf0d89f5b243f6470e4e01a7a41816a52e5558e9ed37e4f0f6b977433385a/c2e9c6dbb1e24dca9ac7ddee4611faf9/dom.json",
+          "sha256": "eacc7a06598b27889e333115860a0a26967928b6bc4c9e9e0a21d54df3cb3ca8"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 1.605181423947215
+      },
+      {
+        "id": "89831609df6885c8ee37d56d6412aaa63f45a971ac72f0880e1d01ac32f10003",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/89831609df6885c8ee37d56d6412aaa63f45a971ac72f0880e1d01ac32f10003/8a524b9068bd475cb143fb26e9642d6d/dom.json",
+          "sha256": "7da8b67dafdb43a07dc7836fa1874e6da8c86b1452fad3e35f6bb2434d06d672"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.3106219321489334
+      },
+      {
+        "id": "3f45e0fbb6973c33a4d99a2c2344b439d8b3397b127abf66e17243501c15a077",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/3f45e0fbb6973c33a4d99a2c2344b439d8b3397b127abf66e17243501c15a077/9e4d5cf3992449aab4f404ea54e66158/dom.json",
+          "sha256": "e774000788faef523dc8609e359bdd53435c32e573781288475b92110ba8c647"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 1.906790267676115
+      },
+      {
+        "id": "45155bbfb4c65426cef9946bc99e7307a0c2e2323762d925fd2b1928db61fc14",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/45155bbfb4c65426cef9946bc99e7307a0c2e2323762d925fd2b1928db61fc14/fe29468eaa7941d296388ac46ace7854/dom.json",
+          "sha256": "612258178cced5fe5356f6c88c942890080b706c1bb7ad16230fd9024236423b"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.47566910088062286
+      },
+      {
+        "id": "24f7fe507489de75c543f58160e2298e14b95386bba0fa1c753f56701f08f7ec",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/24f7fe507489de75c543f58160e2298e14b95386bba0fa1c753f56701f08f7ec/9a05d11181a64e9798c3db53d76385f9/dom.json",
+          "sha256": "89908a24d5b8c787d3d74c432bf2ade66d21edb3c415cf005ad0a141b1422190"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 0.9004666209220886
+      },
+      {
+        "id": "a121f0dfcc2bdf77ba568046cae253fd271fc682c027851d864b1bcdc7fb8302",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/a121f0dfcc2bdf77ba568046cae253fd271fc682c027851d864b1bcdc7fb8302/982aef4677a94e7cbaf2c388759c3a40/dom.json",
+          "sha256": "8c3b0d70386159b1098b4da999a9d0e018c4a4ea80d1baf857e6efe14a911b3c"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 1.4674771782010794
+      },
+      {
+        "id": "ee24f2db9b4435d567d6a9bee3e9fddde6a76dc1792dfa33855f4cc31a1cee80",
+        "prior_reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "source_DOM": {
+          "file": "conversion/compiler_svg_scene_frontend_v15/source/ee24f2db9b4435d567d6a9bee3e9fddde6a76dc1792dfa33855f4cc31a1cee80/3213cda90b6344338b7015769ee60f13/dom.json",
+          "sha256": "11930f52be65fb6ee1831b29f1b41ee58a7756903387e9b01887e983e2849952"
+        },
+        "structural_order_passed": false,
+        "reason": "source_layer_interleaving_needs_compound_paint_representation",
+        "elapsed_seconds": 3.278559548780322
+      }
+    ],
+    "normal_conversion_calls": 0,
+    "QA_calls": 0,
+    "browser_recaptures": 0,
+    "model_calls": 0,
+    "qualification_claimed": false,
+    "running_validation_unchanged": true
+  },
+  "owner_rejection_launch": {
+    "pid": 2026880,
+    "birth_ticks": "1144710852",
+    "parent": "/backup/shaoshitong/img2code_20261029/conversion/background_stroke_support_normal_development_v1/a0ab875affa74dbab2ccee65fc242e3c",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/background_stroke_support_normal_development_v1/a0ab875affa74dbab2ccee65fc242e3c/e99263f5c4b6270d48ae6892ef8440c3f3bb6a6280f13094d188f4327b5d6c84",
+    "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_stroke_support_guard_v15:eb2486e117a4f21dfc5c",
+    "source_core": {
+      "schema": "frozen_source_core_identity_v3",
+      "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_stroke_support_guard_v15",
+      "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_stroke_support_guard_v15:eb2486e117a4f21dfc5c",
+      "key": "3f3de9cb5298146f4088c91908c93a113969d21ecccca85d74e8b3b4cb0cffc2"
+    },
+    "normal_calls_planned": 1,
+    "model_calls": 0,
+    "existing_mass_unchanged": true
+  },
+  "once_history": {
+    "catalog": {
+      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_background_stroke_support_20261102_v10.json",
+      "sha256": "6c9fc637158fb7055f3bd3d019b41fd677427c644bafe8cebfba0b0ae8abaa69"
+    },
+    "normal_receipts": {
+      "file": "conversion/source_core_manual_stroke_support_catalog_v1/1970844abed54d55866b5452621389f4/normal_receipts.json",
+      "sha256": "44d8e9a87642ceec3704126ee7552cd73712b238c2d226a32306f3d5e03fa353"
+    },
+    "current_core_preserved_invocations": 1,
+    "owner_rejected_before_source_preparation": true,
+    "source_or_native_candidate_emissions": 0,
+    "all_current_core_reexecution_blocked": true,
+    "old_catalog_unchanged": true,
+    "new_normal_calls": 0,
+    "QA_calls": 0,
+    "model_calls": 0
+  },
+  "actual_full8_successes": 0,
+  "structural_passed": 1,
+  "structural_attempted": 19,
+  "release_adopted": false,
+  "release_reason": "One of nineteen structural recoveries; one consumed invocation rejected by owner before source preparation. No validation gate passed; current mass frozen core18 remains authoritative.",
+  "next_action": "Inspect remaining compound paint-order cycles and marker contour errors; do not repeat consumed current-core invocation or adopt this low-yield structural variant."
+}
