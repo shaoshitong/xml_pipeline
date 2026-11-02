@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:30:14.858529+00:00",
+  "at_utc": "2026-11-02T18:35:48.481296+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -2947,6 +2947,12 @@
       "mtime_ns": 1793640171709877252
     },
     {
+      "file": "conversion/scripts/compiler_svg_general_guard_v5.py",
+      "sha256": "b24f6d31234db99b186b6c91f1c4081296683b9e48bc93f88e30b8cf658e2b18",
+      "bytes": 8327,
+      "mtime_ns": 1793644548148150953
+    },
+    {
       "file": "conversion/scripts/compiler_svg_general_iteration_batch_v1.py",
       "sha256": "fdafca1246e6bfe5a7204830e6797843bc59cfd4cae211568b7cfda43d663522",
       "bytes": 27859,
@@ -3011,6 +3017,12 @@
       "sha256": "2e677a1e00c020f98d0c030b6fa051ffc311da4857dbb997b52e54c084961046",
       "bytes": 2918,
       "mtime_ns": 1793640171709877252
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v6.py",
+      "sha256": "289bb78c674601c5331f0942051ce31e40d29898d2171b1f2759fb5a5e806155",
+      "bytes": 2932,
+      "mtime_ns": 1793644548148442583
     },
     {
       "file": "conversion/scripts/compiler_svg_general_unseen_pool_v1.py",
@@ -3241,10 +3253,22 @@
       "mtime_ns": 1793640171709877252
     },
     {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v9.py",
+      "sha256": "0e2cc8898ec2bdc0d8e24ead1405f26f6d3bca065df1ce96b38e2ee11897228c",
+      "bytes": 54882,
+      "mtime_ns": 1793644548147752862
+    },
+    {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v1.py",
       "sha256": "f92097a666d579e30ecf16608113852da136ae404697b4cdeb8877b996a04b7b",
       "bytes": 13044,
       "mtime_ns": 1793553031984910011
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v10.py",
+      "sha256": "57c1f120363b61b609de36b44f460ee10563286d01828b256a0a1d1bc0a8ee5c",
+      "bytes": 13673,
+      "mtime_ns": 1793644548148839924
     },
     {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v2.py",
@@ -7165,6 +7189,12 @@
       "mtime_ns": 1793404461463944673
     },
     {
+      "file": "conversion/scripts/probe_endpoint_instances_v2.py",
+      "sha256": "9c697a70f1137e9ff5ca9a45c6a1f92f03115074440b426cb87b8d442bb284c3",
+      "bytes": 3379,
+      "mtime_ns": 1793644548147308354
+    },
+    {
       "file": "conversion/scripts/probe_harness.py",
       "sha256": "e8e62a956b911f8fba2402f9be4cd5cd25a1335748a11c11ab156ac05ac04754",
       "bytes": 606,
@@ -8023,6 +8053,12 @@
       "mtime_ns": 1793595518658268928
     },
     {
+      "file": "conversion/scripts/svg_dom_source_scene_v3.js",
+      "sha256": "ede1e1d8da363bd423e79e98dafeaf061572eed4542d97015cc0d8215165e92b",
+      "bytes": 30748,
+      "mtime_ns": 1793644548146631384
+    },
+    {
       "file": "conversion/scripts/svg_dom_v6.js",
       "sha256": "4e51cd32174078a6dd4409d1d21de3b30644c76fa5ac03d98d8dea5905653a81",
       "bytes": 9418,
@@ -8033,6 +8069,12 @@
       "sha256": "032953365924236725701f4dd6a070d74db68ba770915103213c7aece03b9f4c",
       "bytes": 11294,
       "mtime_ns": 1793595518658268928
+    },
+    {
+      "file": "conversion/scripts/svg_dom_v8.js",
+      "sha256": "472e4bed5c1a3f02e0d3bb660d5934b82beddf72cdc51d17c271d39da4682ce6",
+      "bytes": 11801,
+      "mtime_ns": 1793644548146242627
     },
     {
       "file": "conversion/scripts/svg_failure_closure_scan_v1.py",
@@ -8257,6 +8299,12 @@
       "mtime_ns": 1793592932451877355
     },
     {
+      "file": "conversion/scripts/svg_source_endpoint_bridge_v2.py",
+      "sha256": "ef2b4658151f71f0bb68caebdb48cb4cc8b8edf7fe0bc7d70863aebb412a321a",
+      "bytes": 2466,
+      "mtime_ns": 1793644548146915472
+    },
+    {
       "file": "conversion/scripts/svg_source_endpoint_descriptors_v1.js",
       "sha256": "457b7000b0899b701593fc8fa3404c1132ec2018a64a633082b1293a413b2866",
       "bytes": 1449,
@@ -8321,6 +8369,12 @@
       "sha256": "68cf75c231dc351028bd2835f44c8dc696296dfbf40c82ab7676d3a16c956c82",
       "bytes": 8404,
       "mtime_ns": 1793608525479366779
+    },
+    {
+      "file": "conversion/scripts/svg_use_instances_normal_dev_v2.py",
+      "sha256": "7bf333e0072af1efc9a5bfbe2e2e627e423c80fe9d21c9cc8403a205c907c77d",
+      "bytes": 4712,
+      "mtime_ns": 1793644548149138096
     },
     {
       "file": "conversion/scripts/svg_v3_repair_batch.py",
