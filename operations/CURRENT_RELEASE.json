@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:42:41.322195+00:00",
+  "at_utc": "2026-11-02T18:47:30.947057+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
   "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
@@ -23,7 +23,7 @@
     "chain_source": "svg_analytic_iteration_chain_v3.py",
     "pool_source": "svg_analytic_iteration_pool_v3.py"
   },
-  "observed_state": "Baseline 100 complete; C new frontend has qualified results and continues with four workers.",
+  "observed_state": "Old unseen B/C complete: 13/100 new qualified, no mass release. New use-instance core normal passes full eight and controls close; next finite preflight/full-scope audit launched.",
   "source_scope": 26754,
   "all_format_provenance_scope": 131904,
   "validation_samples_per_phase": 100,
@@ -54,16 +54,15 @@
   },
   "known_catalogue_pairs": 1359,
   "latest_progress": {
-    "at_utc": "2026-11-02T18:36:18.344892+00:00",
+    "at_utc": "2026-11-02T18:44:30.745557+00:00",
     "state": {
       "goal_complete": false,
-      "stage": "validation_C"
+      "stage": "round_complete_next_repair_required"
     },
     "process": {
       "pid": 3559227,
-      "same_birth": true,
-      "live": true,
-      "state": "S"
+      "live": false,
+      "missing": true
     },
     "failure": null,
     "B": {
@@ -113,46 +112,57 @@
     "C": {
       "evaluation": "new_frontend",
       "counts": {
-        "abandoned": 33,
-        "qualified": 6,
-        "queued": 57,
-        "running": 4
+        "abandoned": 87,
+        "qualified": 13
       },
-      "completed": 39,
+      "completed": 100,
       "reasons": {
         "source_scene_feature_unsupported:[{\"id\": \"v33\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v37\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v43\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v47\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v85\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v89\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v94\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}, {\"id\": \"v98\", \"reason\": \"marker_expansion_failed\", \"error\": \"Error: source_analytic_endpoint_facts_missing\"}]": 1,
         "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 1,
-        "Native content requires full tight canvas": 6,
-        "[{'reason': 'source_profile_failed', 'type': 'ValueError'}]": 8,
-        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 1,
-        "independent_full_source_native_quality_passed": 6,
-        "source_marker_not_one_filled_triangle": 3,
-        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 1,
-        "source_dom_extractor_changed_pixels": 5,
+        "Native content requires full tight canvas": 11,
+        "[{'reason': 'source_profile_failed', 'type': 'ValueError'}]": 15,
+        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 3,
+        "independent_full_source_native_quality_passed": 13,
+        "source_marker_not_one_filled_triangle": 10,
+        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 2,
+        "source_dom_extractor_changed_pixels": 9,
         "native_bezier_control_filter_would_change_source_curve": 1,
-        "source_native_anchor_delta_exceeds_supported_rounding": 1,
-        "source_native_physical_font_mismatch": 1,
-        "source_endpoint_direction_multiple_subpaths": 1,
+        "source_native_anchor_delta_exceeds_supported_rounding": 4,
+        "source_native_physical_font_mismatch": 5,
+        "source_endpoint_direction_multiple_subpaths": 2,
         "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v10\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v24\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v31\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v39\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v53\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v57\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
-        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 1,
-        "source_native_graphemes_changed": 1
+        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 3,
+        "source_native_graphemes_changed": 2,
+        "[{'reason': 'raster_anomaly:source_native_marker_contour_changed', 'type': 'ValueError'}]": 3,
+        "source_cairo_browser_logical_paint_inventory_differs": 2,
+        "[{'reason': 'source_native_marker_ink_missing', 'type': 'ValueError'}]": 1,
+        "source_cairosvg_render_failed:lf.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/defs.py\", line 372, in use\n    surface.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 1,
+        "[{'reason': 'source_run_wrapper_changed_visible_source_pixels', 'type': 'ValueError'}]": 1,
+        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v14\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v22\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v25\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v28\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v33\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v38\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v47\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v55\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v58\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v61\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v66\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v71\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v80\", \"useContext\": \"u13\", \"severity\": \"unsupported\", \"": 1,
+        "source_open_path_has_multiple_subpaths": 1,
+        "source_native_text_shaping_differs_not_translation": 1,
+        "source_triangle_not_symmetric_about_owner_tangent": 2,
+        "source_cairosvg_render_failed:Traceback (most recent call last):\n  File \"<string>\", line 45, in <module>\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 137, in convert\n    instance = cls(\n               ^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 230, in __init__\n    self.draw(tree)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 477, in draw\n    self.draw(child)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/surface.py\", line 409, in draw\n    TAGS[node.tag](self, node)\n  File \"/backup/shaoshitong/img2code_20261029/conversion/runtime/compiler_svg_source_layout_v1/cairo_py/cairosvg/text.py\", line 219, in text\n    surface.context.text_path(letter)\n  File \"<string>\", line 37, in wrapped\n  File \"<string>\", line 31, in observe\nValueError: source_cairo_actual_face_missing_codepoints\n": 1,
+        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v56\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v83\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v110\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}]": 1,
+        "source_triangle_paint_not_solid_fill": 1,
+        "source_scene_feature_unsupported:[{\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v4\", \"useContext\": \"u1\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v8\", \"useContext\": \"u2\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v12\", \"useContext\": \"u3\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v17\", \"useContext\": \"u4\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v21\", \"useContext\": \"u5\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v25\", \"useContext\": \"u6\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v31\", \"useContext\": \"u7\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v35\", \"useContext\": \"u8\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v39\", \"useContext\": \"u9\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v44\", \"useContext\": \"u10\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v48\", \"useContext\": \"u11\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"reason\": \"scene_use_symbol_viewport_clip_unproven\", \"id\": \"v52\", \"useContext\": \"u12\", \"severity\": \"unsupported\", \"scope\": \"use_viewport\"}, {\"id\": \"\", \"reason\": \"use_symbol_aspect_requires_review\"}, {\"reason\": \"scene_use_expansion_bbox_mismatch\", \"id\": \"v57\"": 1
       },
       "source_reasons": {
-        "source_primitive_pixels_failed": 5,
-        "same_domain_pixels_failed": 1,
-        "actual_overlapping_native_source_paint_order_changed": 30
+        "source_primitive_pixels_failed": 6,
+        "same_domain_pixels_failed": 2,
+        "actual_overlapping_native_source_paint_order_changed": 49,
+        "source_element_or_ancestor_opacity_requires_compositing_frontend": 3
       },
       "infrastructure_failures": 0,
-      "cleanup_complete": 39,
+      "cleanup_complete": 100,
       "quality_seconds": {
-        "mean": 26.371,
-        "total": 369.191
+        "mean": 31.438,
+        "total": 1037.44
       },
       "process": {
         "pid": 3625161,
-        "same_birth": true,
-        "live": true,
-        "state": "S"
+        "live": false,
+        "missing": true
       },
       "infrastructure_stop": null
     }
@@ -174,6 +184,55 @@
     },
     "actual_UA_shadow_paths_paint_linear_transform_and_CDP_layout_quads_exact": true,
     "four_negative_ownership_controls_rejected": true,
-    "native_full_QA_not_yet_claimed": true
-  }
+    "native_full_QA_not_yet_claimed": false,
+    "actual_normal_result": {
+      "id": "0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e",
+      "normal_frontend_calls": 1,
+      "claim": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v12/normal_once/a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e.json",
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8",
+        "policy": "general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8:a5e04b00856e65657213",
+        "key": "a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733"
+      },
+      "configuration_policy": "general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8:a5e04b00856e65657213",
+      "model_calls": 0,
+      "goal_complete": false,
+      "conversion_ok": true,
+      "conversion_reason": "native_candidate_pending_full_quality",
+      "candidate_file": "/backup/shaoshitong/img2code_20261029/clean/compiler_svg_scene_frontend_v12/0d/0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e/5b0c6c7913ab402d9824e20e58daae7a/record.json",
+      "quality_ok": true,
+      "quality_failures": [],
+      "quality_report": "/backup/shaoshitong/img2code_20261029/conversion/prototype/candidate_quality_ro_v1/SVG_actual_shadow_layout_use_instances_v12_0dc3f8bb2a_2747866abf4947b2ae09edf60bc00cb3/report.json",
+      "checks": [
+        "structure",
+        "resources",
+        "render",
+        "source",
+        "text_paint",
+        "fonts",
+        "visual",
+        "native_editing"
+      ],
+      "canonical_owner_guard": {
+        "policy": "readonly_canonical_owner_v1",
+        "worker_pid": null,
+        "decision": "no_claim",
+        "canonical_mutations": 0,
+        "canonical_raw_row_sha256": "df464ad8b730a837b71b9fbc3a3d43029f14531f0e237e07299b40f9584e09bc"
+      },
+      "canonical_unchanged": true
+    }
+  },
+  "next_chain": {
+    "exit": 0,
+    "stdout": "{\"pid\": 3810644, \"birth\": {\"pid\": 3810644, \"ppid\": 3810634, \"state\": \"R\", \"process_group\": 3810644, \"session\": 3810644, \"start_ticks\": 1143694435}, \"work\": \"/backup/shaoshitong/img2code_20261029/conversion/svg_actual_shadow_chain_launcher_v1/22f89bc515a5402b970f493553b054aa\"}\n",
+    "stderr": ""
+  },
+  "new_core_controls": {
+    "exit": 0,
+    "stdout": "{\"proof\": {\"file\": \"release/compiler_iterations/controls/svg_actual_shadow_layout_20261102_v12/proof.json\", \"sha256\": \"d28b52a19223b1741baac78dd3c542a0cbd2aad479f214a08fa36487025de377\"}, \"catalog\": {\"file\": \"release/compiler_iterations/source_core_attempts/manual_catalog_svg_actual_shadow_layout_20261102_v6.json\", \"sha256\": \"4e2a76b0bdafef205fc2c717d9a30ebfc225b8ce3f0d27b003a0d1bcded5ca3b\"}, \"source_core\": {\"schema\": \"frozen_source_core_identity_v3\", \"unit\": \"general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8\", \"policy\": \"general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8:a5e04b00856e65657213\", \"key\": \"a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733\"}, \"positive_cases\": 2, \"negative_cases\": 2, \"new_normal_calls\": 0, \"new_QA_calls\": 0}\n",
+    "stderr": ""
+  },
+  "next_workers": 12
 }

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:42:41.623634+00:00",
+  "at_utc": "2026-11-02T18:47:31.202960+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -1127,6 +1127,12 @@
       "sha256": "59b5608a4b5bfbfdf759f4071b25c1b1bfa90f365c064529c2d060aa78565a3f",
       "bytes": 11846,
       "mtime_ns": 1793442187689450263
+    },
+    {
+      "file": "conversion/scripts/close_svg_actual_shadow_controls_v2.py",
+      "sha256": "5746066b2a57d10783b651bba3624d4b440ea27dc0531d81abc006c8d0da7fb4",
+      "bytes": 6778,
+      "mtime_ns": 1793645250938377887
     },
     {
       "file": "conversion/scripts/close_svg_nested_controls_v1.py",
@@ -5563,6 +5569,12 @@
       "mtime_ns": 1793422911894930362
     },
     {
+      "file": "conversion/scripts/launch_actual_shadow_chain_v1.py",
+      "sha256": "a184886c3cee978e18c6c4e49f17eb52c1cf3fe4aee7062b069b39964e031487",
+      "bytes": 1527,
+      "mtime_ns": 1793645250927993756
+    },
+    {
       "file": "conversion/scripts/launch_arxiv_parallel_pipeline_v3.py",
       "sha256": "c55938bdb4a386925255fe9b64b1d4958c10a0a4605106cb4aa19fe75b051b4d",
       "bytes": 3443,
@@ -7927,6 +7939,12 @@
       "mtime_ns": 1793644961319612559
     },
     {
+      "file": "conversion/scripts/svg_actual_shadow_quality_control_v2.py",
+      "sha256": "84d4d134a926fc357a96ec381e065d2a2fc137e7706f7b182f2b1a2f61988b92",
+      "bytes": 6350,
+      "mtime_ns": 1793645250940847616
+    },
+    {
       "file": "conversion/scripts/svg_actual_shadow_use_instances_normal_dev_v4.py",
       "sha256": "6451d252c147dd4ba42c17fa5f17f7088d442039513ecba83036bc1f0d4b3eb4",
       "bytes": 4727,
@@ -7957,6 +7975,12 @@
       "mtime_ns": 1793643544460339520
     },
     {
+      "file": "conversion/scripts/svg_analytic_cohort_refresh_v3.py",
+      "sha256": "6ae429695b05c90efba016a87fd9865ba21632bc2b8263757a578f7590e08a3f",
+      "bytes": 3678,
+      "mtime_ns": 1793645250941415704
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_batch_v1.py",
       "sha256": "7238a9e9380d1be23ed0a5fca24b2d88b1e80962025b5174f77b7705cb56d1a2",
       "bytes": 29127,
@@ -7969,6 +7993,12 @@
       "mtime_ns": 1793643544454949442
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_batch_v3.py",
+      "sha256": "c72b712efd6caaa33f398efb30e9588c1b8b25b4cf868db587bab361ecdcc07a",
+      "bytes": 29127,
+      "mtime_ns": 1793645250925539818
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_case_v1.py",
       "sha256": "fe9f84a4c26f0a86c22fc5936182dedfc6c6067f6e24d2912a7a3ba63c9534dd",
       "bytes": 16203,
@@ -7979,6 +8009,12 @@
       "sha256": "c5e72fb198d836e8e05c53bdf8f396562d29d4c67423b3e22cc24c5c50f1c994",
       "bytes": 16860,
       "mtime_ns": 1793643544451751304
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_case_v3.py",
+      "sha256": "36ccdd205ad0884483e351f0252d78e7065e837a1e88a9899a522b3b059f6421",
+      "bytes": 16861,
+      "mtime_ns": 1793645250918937303
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_chain_v1.py",
@@ -7999,6 +8035,12 @@
       "mtime_ns": 1793644014009619628
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_chain_v4.py",
+      "sha256": "75d5d2aa92674eab22911bb6c500418c07ce991d2258dd7306c5eb076d0094c9",
+      "bytes": 16371,
+      "mtime_ns": 1793645250915614191
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_controls_v1.py",
       "sha256": "7d3d029ae0c240b33cf8c27e70930cc97d4e5230219f2ea47adc92e5a40c7d4f",
       "bytes": 8857,
@@ -8015,6 +8057,12 @@
       "sha256": "81e4ba16f27b34186e209b87df64619443d24f11ef9de1b44f324553001193bf",
       "bytes": 9701,
       "mtime_ns": 1793643068330080528
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_controls_v4.py",
+      "sha256": "817c64572edeea453869997360df113fa9bbd189010369e755a868134fbea1c9",
+      "bytes": 9701,
+      "mtime_ns": 1793645250920614651
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_pool_v1.py",
@@ -8035,6 +8083,12 @@
       "mtime_ns": 1793644014002299617
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_pool_v4.py",
+      "sha256": "7bb7e04b9281834e8bdb331522386ee6b57e9610b950f08551eb93d61a4fb6c2",
+      "bytes": 28620,
+      "mtime_ns": 1793645250946798084
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_program_v1.py",
       "sha256": "aeb0487ad1500947ece5b9b9cba76c2a51d5821ed7c8b2b7cb70de00abc65044",
       "bytes": 34903,
@@ -8045,6 +8099,12 @@
       "sha256": "06b668dae19f8bf6317c7cf3932a2754f0c8809680632b7e83eb67857ac02ae0",
       "bytes": 35175,
       "mtime_ns": 1793643544457644772
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_program_v3.py",
+      "sha256": "aebc33ffc6c51bbf478139cb5cf977e0819fc3a102713563f9653c3ec6334024",
+      "bytes": 35175,
+      "mtime_ns": 1793645250935057316
     },
     {
       "file": "conversion/scripts/svg_analytic_private_QA_lease_v1.py",
@@ -8069,6 +8129,12 @@
       "sha256": "dd485730aa8f209ed9da6ace774b3e13e26951becdfb16400a7a0bc0e911e445",
       "bytes": 5608,
       "mtime_ns": 1793643544460129472
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_source_contract_v3.py",
+      "sha256": "870aa35fac0eaa67be580ec1741a2ad8d23ee9d8b5b6e0160573b6941b496cb3",
+      "bytes": 5654,
+      "mtime_ns": 1793645250939805482
     },
     {
       "file": "conversion/scripts/svg_batch.py",
