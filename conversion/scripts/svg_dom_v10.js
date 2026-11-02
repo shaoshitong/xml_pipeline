@@ -1,0 +1,95 @@
+endpointInput => {
+ const endpointFacts=endpointInput.owners,endpointRequests=[],instanceFacts=new Map(endpointInput.instances.map(f=>[JSON.stringify(f.descriptor),f]));
+ const root=document.querySelector('svg'),objects=[],issues=[],nodes={};let serial=0,markerDepth=0,useDepth=0;
+ const mat=m=>[m.a,m.b,m.c,m.d,m.e,m.f];
+ const symbolBuilder=(__SOURCE_SYMBOL_VIEWPORT_BUILDER_V1__),symbolFacts=new WeakMap();
+ const symbolHosts=[...document.querySelectorAll('svg use')].filter(e=>!e.closest('defs,symbol,marker,clipPath,mask'));
+ for(const f of endpointInput.symbols||[]){if(!f.proof?.ok)continue;const e=symbolHosts[f.index];if(!e)throw Error('symbol_host_missing');const m=e.getScreenCTM(),b=e.getBoundingClientRect(),descriptor={attributes:[...e.attributes].map(a=>[a.name,a.value]),matrix:[m.a,m.b,m.c,m.d,m.e,m.f],bbox:{x:b.x,y:b.y,w:b.width,h:b.height}};if(JSON.stringify(descriptor)!==JSON.stringify(f.descriptor))throw Error('symbol_actual_host_changed');symbolFacts.set(e,f);}
+
+
+ const sourceEndpointMap=new WeakMap(),describeEndpointOwners=(__SOURCE_ENDPOINT_DESCRIPTORS_V1__),sourceEndpointRows=describeEndpointOwners(root);
+ if(!Array.isArray(endpointFacts)||endpointFacts.length!==sourceEndpointRows.length)throw Error('source_endpoint_owner_inventory_changed');
+ for(let i=0;i<sourceEndpointRows.length;i++){const actual=sourceEndpointRows[i],fact=endpointFacts[i];if(actual.index!==fact.index||JSON.stringify(actual.descriptor)!==JSON.stringify(fact.descriptor))throw Error('source_endpoint_owner_descriptor_changed');sourceEndpointMap.set(actual.element,fact);}
+
+ const box=b=>({x:b.x,y:b.y,w:b.width,h:b.height});
+ function group(el,cls){const g=el.closest('g.'+cls);if(!g)return null;let title=[...g.children].find(e=>e.localName==='title')?.textContent;return {id:g.id,title,bbox:box(g.getBoundingClientRect())};}
+
+ // display/opacity suppress a whole subtree. Visibility is inherited but may
+ // be reset by a descendant, so only the actual painting leaf decides it.
+ function sourceSubtreeBlocked(el){for(let p=el;p;p=p.parentElement){const c=getComputedStyle(p);if(c.display==='none'||+c.opacity===0)return true;if(p===root)break;}return false;}
+ function sourceTextPainted(node){const p=node.parentElement;return p&&getComputedStyle(p).visibility==='visible'&&!p.closest('defs,marker,symbol,pattern,clipPath,mask')&&!sourceSubtreeBlocked(p);}
+ function sourceInstanceVisibilityRisk(el){const blocked=p=>{const c=getComputedStyle(p);return c.visibility!=='visible'||c.display==='none'||+c.opacity===0;};for(const p of [el,...el.querySelectorAll('*')])if(blocked(p))return true;for(let p=el.parentElement;p;p=p.parentElement){if(blocked(p))return true;if(p===root)break;}return false;}
+ function walk(el){
+  const tag=el.localName;
+  if(['defs','title','desc','metadata','style','script','filter','marker','clipPath','mask','symbol'].includes(tag))return;
+  const cs=getComputedStyle(el);
+  if(sourceSubtreeBlocked(el))return;
+  for(const k of ['filter','clipPath','maskImage'])if(cs[k]&&cs[k]!=='none')issues.push({id:el.id,tag,reason:k,value:cs[k]});
+  let opacity=1;for(let p=el;p&&p instanceof SVGElement;p=p.parentElement)opacity*=+getComputedStyle(p).opacity;
+  const matrix=el.getScreenCTM?.();if(!matrix)return;
+  if(['svg','g','a','switch'].includes(tag)){for(const c of el.children)walk(c);return;}
+  if(tag!=='text'&&tag!=='use'&&cs.visibility!=='visible')return;
+  if(tag==='use'&&cs.visibility!=='visible'){issues.push({id:el.id,tag,reason:'source_use_visibility_context_requires_instance_proof'});return;}
+  const s={fill:cs.fill,stroke:cs.stroke,strokeWidth:parseFloat(cs.strokeWidth)||0,fillOpacity:+cs.fillOpacity,strokeOpacity:+cs.strokeOpacity,opacity,linecap:cs.strokeLinecap,linejoin:cs.strokeLinejoin,dash:cs.strokeDasharray,fillRule:cs.fillRule};
+  for(const k of ['fill','stroke'])if(s[k].includes('url('))issues.push({id:el.id,tag,reason:k+'_paint_server',value:s[k]});
+  const node=group(el,'node'),edge=group(el,'edge');if(node)nodes[node.id]=node;
+  const common={id:'v'+(++serial),sourceId:el.id,tag,matrix:mat(matrix),style:s,node:node?.id,edge:edge||null};
+  const paint=cs.fill.match(/url\(["']?#([^"')]+)["']?\)/);if(paint){const grad=document.getElementById(paint[1]);if(grad?.localName==='linearGradient'){common.gradient={tag:'linearGradient',units:grad.getAttribute('gradientUnits')||'objectBoundingBox',transform:grad.getAttribute('gradientTransform'),x1:grad.getAttribute('x1')||'0%',y1:grad.getAttribute('y1')||'0%',x2:grad.getAttribute('x2')||'100%',y2:grad.getAttribute('y2')||'0%',stops:[...grad.querySelectorAll('stop')].map(x=>({offset:x.offset.baseVal,color:getComputedStyle(x).stopColor,opacity:+getComputedStyle(x).stopOpacity}))};}}
+  if(cs.mixBlendMode!=='normal')issues.push({id:el.id,reason:'mix_blend_mode',value:cs.mixBlendMode});
+  if(cs.fillRule==='evenodd')issues.push({id:el.id,reason:'evenodd_requires_review'});
+  if(tag==='text'){
+   if(el.querySelector('textPath')){issues.push({id:el.id,tag,reason:'textPath'});return;}
+   const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n,offset=0;
+   while(n=walker.nextNode()){
+    if(!n.textContent.trim()||!sourceTextPainted(n)){offset+=n.textContent.length;continue;}
+    const parent=n.parentElement,c=getComputedStyle(parent);const range=document.createRange();range.selectNodeContents(n);const r=range.getBoundingClientRect();
+    if(r.width&&r.height){
+     const pm=parent.getScreenCTM();const scale=Math.hypot(pm.a,pm.b),rotation=Math.atan2(pm.b,pm.a)*180/Math.PI;
+     let textBox=box(r),nativeRotation=0,rotationHandled=false;
+     const sy=Math.hypot(pm.c,pm.d),uniform=scale>0&&pm.a*pm.d-pm.b*pm.c>0&&Math.abs(sy-scale)<Math.max(scale,.01)*.0001&&Math.abs(pm.a*pm.c+pm.b*pm.d)<Math.max(scale*scale,.01)*.0001;
+     if(Math.abs(rotation)>.01&&uniform&&!el.hasAttribute('rotate')&&!el.querySelector('[rotate]')){
+      const saved=root.getAttribute('style'),prior=getComputedStyle(root).transform;
+      try{
+       root.style.setProperty('transform','rotate('+(-rotation)+'deg) '+(prior==='none'?'':prior),'important');root.style.setProperty('transform-origin','0 0','important');
+       const flat=range.getBoundingClientRect();if(!(flat.width>0&&flat.height>0))throw Error('empty unrotated text range');
+       textBox={x:r.x+r.width/2-flat.width/2,y:r.y+r.height/2-flat.height/2,w:flat.width,h:flat.height};nativeRotation=rotation;rotationHandled=true;
+      }finally{if(saved===null)root.removeAttribute('style');else root.setAttribute('style',saved);}
+     }
+     if((Math.abs(rotation)>.01||Math.abs(pm.c)>.01||Math.abs(sy-scale)>.01)&&!rotationHandled)issues.push({id:el.id,reason:'text_transform',matrix:mat(pm)});
+     objects.push({...common,id:common.id+'t'+offset,type:'text',text:n.textContent,bbox:textBox,originalBoundingBox:box(r),nativeRotation,rotationHandled,fontFamily:c.fontFamily,fontSize:parseFloat(c.fontSize)*scale,color:c.fill,bold:parseInt(c.fontWeight)>=600,italic:c.fontStyle==='italic',underline:c.textDecorationLine.includes('underline'),opacity});
+    }
+    offset+=n.textContent.length;
+   }return;
+  }
+  const a={};for(const k of ['x','y','width','height','rx','ry','cx','cy','r','x1','y1','x2','y2'])a[k]=el[k]?.baseVal?.value??+(el.getAttribute(k)||0);
+  if(['path','rect','circle','ellipse','line','polyline','polygon'].includes(tag)){
+   let endpoints=null,points=null;
+   if((edge||cs.markerStart!=='none'||cs.markerEnd!=='none')&&el.getTotalLength){
+    const length=el.getTotalLength();const steps=Math.min(3000,Math.max(1,Math.ceil(length/2)));points=[];for(let i=0;i<=steps;i++){const p=el.getPointAtLength(length*i/steps).matrixTransform(matrix);points.push([p.x,p.y]);}endpoints=[points[0],points.at(-1)];
+   }
+   const obj={...common,type:'shape',attrs:a,d:el.getAttribute('d'),pointsAttr:el.getAttribute('points'),bbox:box(el.getBoundingClientRect()),sampledPoints:points,endpoints,markerStart:cs.markerStart,markerEnd:cs.markerEnd};objects.push(obj);
+   if(cs.markerMid!=='none')issues.push({id:el.id,reason:'marker_mid'});
+   if(!markerDepth)for(const [position,url] of [['start',cs.markerStart],['end',cs.markerEnd]]){
+    if(url==='none')continue;
+    try{
+     const name=url.match(/url\(["']?#([^"')]+)["']?\)/)?.[1],marker=document.getElementById(name);if(!marker)throw Error('missing marker '+url);if(sourceInstanceVisibilityRisk(marker))throw Error('source_marker_visibility_context_requires_instance_proof');
+     let fact=sourceEndpointMap.get(el);if(!fact){const row=describeEndpointOwners(root).find(row=>row.element===el);if(!row)throw Error('source_instance_endpoint_descriptor_missing');fact=instanceFacts.get(JSON.stringify(row.descriptor));if(!fact){endpointRequests.push(row.descriptor);throw Error('source_instance_endpoint_facts_pending');}sourceEndpointMap.set(el,fact);} const endpoint=fact.direction[position],p=new DOMPoint(...endpoint.point_local),orient=marker.getAttribute('orient')||'0';let angle;if(orient==='auto'||orient==='auto-start-reverse'){const v=endpoint.forward_local;angle=Math.atan2(v[1],v[0])*180/Math.PI;if(orient==='auto-start-reverse'&&position==='start')angle+=180;}else angle=marker.orientAngle.baseVal.value;
+     const unit=marker.getAttribute('markerUnits')==='userSpaceOnUse'?1:parseFloat(cs.strokeWidth);const vb=marker.viewBox.baseVal,mw=marker.markerWidth.baseVal.value,mh=marker.markerHeight.baseVal.value;let sx=vb.width?mw/vb.width:1,sy=vb.height?mh/vb.height:1;if((marker.getAttribute('preserveAspectRatio')||'xMidYMid meet')!=='none')sx=sy=Math.min(sx,sy);const rx=marker.refX.baseVal.value,ry=marker.refY.baseVal.value;
+     const T=root.getScreenCTM().inverse().multiply(matrix).translate(p.x,p.y).rotate(angle).scale(unit).scale(sx,sy).translate(-rx,-ry);const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('transform','matrix('+mat(T).join(',')+')');g.style.fill=getComputedStyle(marker).fill;g.style.stroke=getComputedStyle(marker).stroke;
+     for(const c of marker.children)g.appendChild(c.cloneNode(true));root.appendChild(g);for(const c of g.querySelectorAll('*')){if(c.getAttribute('fill')==='context-stroke')c.setAttribute('fill',cs.stroke);if(c.getAttribute('fill')==='context-fill')c.setAttribute('fill',cs.fill);}
+     const before=objects.length;markerDepth++;for(const c of g.children)walk(c);markerDepth--;for(const added of objects.slice(before))added.markerOwner=obj.id;g.remove();obj[position+'MarkerExpanded']=true;
+    }catch(e){markerDepth=0;issues.push({id:obj.id,reason:'marker_expansion_failed',error:String(e)});}
+   }
+   return;
+  }
+  if(tag==='use'){
+   let g=null;
+   try{if(useDepth>=8)throw Error('cyclic/deep use');const href=el.getAttribute('href')||el.getAttributeNS('http://www.w3.org/1999/xlink','href');if(!href?.startsWith('#'))throw Error('external use');const src=document.getElementById(href.slice(1));if(!src)throw Error('missing use target');if(sourceInstanceVisibilityRisk(src))throw Error('source_use_visibility_context_requires_instance_proof');let T=root.getScreenCTM().inverse().multiply(matrix).translate(el.x.baseVal.value,el.y.baseVal.value);const symbolFact=src.localName==='symbol'?symbolFacts.get(el):null;if(src.localName==='symbol'){if(!symbolFact)throw Error('source_symbol_actual_viewport_unproved');g=symbolBuilder(root,el,symbolFact.definition).g;}else{g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('transform','matrix('+mat(T).join(',')+')');for(const k of ['fill','stroke','strokeWidth','color','fontFamily','fontSize'])g.style[k]=cs[k];const clone=src.cloneNode(true);clone.removeAttribute('id');if(clone.querySelector('[id]'))throw Error('source_group_descendant_ids_require_reference_remapping');g.appendChild(clone);root.appendChild(g);}useDepth++;for(const c of g.children)walk(c);useDepth--;g.remove();return;}catch(e){if(g)g.remove();useDepth=0;issues.push({id:el.id,reason:'use_expansion_failed',error:String(e)});return;}
+  }
+  if(tag==='image'){
+   const href=el.getAttribute('href')||el.getAttributeNS('http://www.w3.org/1999/xlink','href');if(href?.startsWith('data:image/')){objects.push({...common,type:'image',href,bbox:box(el.getBoundingClientRect())});if(Math.abs(matrix.b)>.001||Math.abs(matrix.c)>.001)issues.push({id:el.id,reason:'image_transform_requires_review'});return;}
+  }
+  issues.push({id:el.id,tag,reason:'unsupported_visible_element'});
+ }
+ walk(root);return {sourceEndpointRequests:endpointRequests,objects,issues,nodes,sourceText:root.textContent};
+}

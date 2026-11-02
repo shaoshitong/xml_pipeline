@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T19:34:50.772008+00:00",
+  "at_utc": "2026-11-02T19:57:58.196977+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -1127,6 +1127,24 @@
       "sha256": "59b5608a4b5bfbfdf759f4071b25c1b1bfa90f365c064529c2d060aa78565a3f",
       "bytes": 11846,
       "mtime_ns": 1793442187689450263
+    },
+    {
+      "file": "conversion/scripts/close_completed_symbol_round_v1.py",
+      "sha256": "52ce56f4b0d78b90170960492df2f6f4a2a1bf2203d93d253bc5e324314fffe1",
+      "bytes": 6367,
+      "mtime_ns": 1793649438130508119
+    },
+    {
+      "file": "conversion/scripts/close_completed_symbol_round_v2.py",
+      "sha256": "3ed89514483a455a12f0e11861282c4c81eed6ef662513e99d56632c766b976e",
+      "bytes": 9144,
+      "mtime_ns": 1793649438130971364
+    },
+    {
+      "file": "conversion/scripts/close_edge_use_controls_v1.py",
+      "sha256": "690cbe043ef44c13295cde2d4882a030e8145e572dac38a1026821a25d31348c",
+      "bytes": 4852,
+      "mtime_ns": 1793649438131325693
     },
     {
       "file": "conversion/scripts/close_native_symbol_controls_v1.py",
@@ -2971,10 +2989,34 @@
       "mtime_ns": 1793644961269231076
     },
     {
+      "file": "conversion/scripts/compiler_svg_explicit_coordinates_v6.js",
+      "sha256": "e5f562e6688a1b7c052d2b34da3514f4d96c3a36755040b9018f2da9da3bf370",
+      "bytes": 12260,
+      "mtime_ns": 1793649438123251943
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_explicit_coordinates_v6.py",
+      "sha256": "ee4008f8a5de9c945337fd273f11d88fd8fa306355359e5fc9914f79ee0e8f3d",
+      "bytes": 7989,
+      "mtime_ns": 1793649438122724449
+    },
+    {
       "file": "conversion/scripts/compiler_svg_general_guard_v1.py",
       "sha256": "f076000b947507d306f8bcd65bfaca753b20a334c2600b9cb0b501c1ca65528b",
       "bytes": 7286,
       "mtime_ns": 1793556750354549884
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v10.py",
+      "sha256": "d19676785bf13bb1ad594cbd8fb6366d5b3c32b1c2b4a1400ecf5d0a0832da24",
+      "bytes": 8295,
+      "mtime_ns": 1793649438123922353
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v11.py",
+      "sha256": "c8e976f6e608cf236465ab74a4b1f396ea5ddf75c3cb5743d9aee91722937f6e",
+      "bytes": 8290,
+      "mtime_ns": 1793649438126759199
     },
     {
       "file": "conversion/scripts/compiler_svg_general_guard_v2.py",
@@ -3089,6 +3131,18 @@
       "sha256": "51b9f7730deb0664acf4fb59d080f6b778632ac7345281817aab1f6e18012aba",
       "bytes": 3250,
       "mtime_ns": 1793647893749980860
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v12.py",
+      "sha256": "a741cf809096d7e5ddcd99dff507894274c0ee5497027ca67370fa3597c01b14",
+      "bytes": 3267,
+      "mtime_ns": 1793649438124594055
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v13.py",
+      "sha256": "a9142acbeccfd70a9825d7acaa393060f892c4f9ecf32e2939febe5b010c76be",
+      "bytes": 3272,
+      "mtime_ns": 1793649438127157986
     },
     {
       "file": "conversion/scripts/compiler_svg_general_quality_adapter_v4.py",
@@ -3247,6 +3301,12 @@
       "mtime_ns": 1793644961317181391
     },
     {
+      "file": "conversion/scripts/compiler_svg_scene_backend_v11.py",
+      "sha256": "2d58d0f3186e5d6d8be4bbdef9cb6ca8820ad5c0795617a2ef53f3df6846baad",
+      "bytes": 17917,
+      "mtime_ns": 1793649438122240329
+    },
+    {
       "file": "conversion/scripts/compiler_svg_scene_backend_v2.py",
       "sha256": "4f8c9b2c2f2339d1bbc16a68cdf99d8668f39eb6e4b7e4434b301180cf82e77a",
       "bytes": 12506,
@@ -3355,6 +3415,18 @@
       "mtime_ns": 1793647893748104725
     },
     {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v14.py",
+      "sha256": "ddec0ce0b2fb8eb3850646b10c39a54ef7b8a28eb579d25a0228088b55973c07",
+      "bytes": 55129,
+      "mtime_ns": 1793649438123557982
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v15.py",
+      "sha256": "48bc3d582f826d8f394c34b2d3a1a537ac19e31ee99688adc0066c212a2d116a",
+      "bytes": 55171,
+      "mtime_ns": 1793649438126295245
+    },
+    {
       "file": "conversion/scripts/compiler_svg_scene_frontend_v2.py",
       "sha256": "d7b4083b08138d88d50bfe1fac8cf7ceea0e8f802ce34e97152a7016f82e15a5",
       "bytes": 48663,
@@ -3443,6 +3515,18 @@
       "sha256": "a3c788827518c8a916db5f228dcbda31730d8146986e7a59701442011f650304",
       "bytes": 13706,
       "mtime_ns": 1793647893750267022
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v16.py",
+      "sha256": "b7d409d8f59a74faa6a1064bde9d6b860c7ed5aeb2541af05ab76b38ef396d2f",
+      "bytes": 13719,
+      "mtime_ns": 1793649438124997884
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v17.py",
+      "sha256": "184c533c540ef3a9b30dc70b1679e1ca0be1cfb696b2eaf480fb9320e3c03023",
+      "bytes": 13714,
+      "mtime_ns": 1793649438127554274
     },
     {
       "file": "conversion/scripts/compiler_svg_scene_quality_ro_v2.py",
@@ -4187,6 +4271,12 @@
       "sha256": "10cb613989906faee96151ac700ccaab61d723efd2461c8441750f81fcc88757",
       "bytes": 6428,
       "mtime_ns": 1793645838671311184
+    },
+    {
+      "file": "conversion/scripts/derive_semantic_complex_source_pool_v1.py",
+      "sha256": "ccb2d7f8c66527b3cf96493db6fe34e51da0b83267f4b1456a8158604ba00ace",
+      "bytes": 6683,
+      "mtime_ns": 1793649438134277704
     },
     {
       "file": "conversion/scripts/derive_symbol_complex_source_pool_v1.py",
@@ -5633,6 +5723,12 @@
       "sha256": "a184886c3cee978e18c6c4e49f17eb52c1cf3fe4aee7062b069b39964e031487",
       "bytes": 1527,
       "mtime_ns": 1793645250927993756
+    },
+    {
+      "file": "conversion/scripts/launch_after_semantic_admission_v1.py",
+      "sha256": "2857b98cd635aac3f497bec9ccf3fda52b980b966861760d2495d5f5d14a848d",
+      "bytes": 2574,
+      "mtime_ns": 1793649438134512994
     },
     {
       "file": "conversion/scripts/launch_arxiv_parallel_pipeline_v3.py",
@@ -7411,6 +7507,18 @@
       "mtime_ns": 1793644548147308354
     },
     {
+      "file": "conversion/scripts/probe_group_use_identity_v1.py",
+      "sha256": "7b67b5281a03401ee8ed441adf1b0d3e8d08fa57bf9f6a24c227c68825420ba3",
+      "bytes": 1484,
+      "mtime_ns": 1793649438125759542
+    },
+    {
+      "file": "conversion/scripts/probe_group_use_identity_v2.py",
+      "sha256": "54b57203cfe9cd0056cf98f61228d52c0b07abdbd785e6cb0bc4a4dab6ee6579",
+      "bytes": 1484,
+      "mtime_ns": 1793649438128310808
+    },
+    {
       "file": "conversion/scripts/probe_harness.py",
       "sha256": "e8e62a956b911f8fba2402f9be4cd5cd25a1335748a11c11ab156ac05ac04754",
       "bytes": 606,
@@ -7475,6 +7583,12 @@
       "sha256": "02ebe00fd781f18e0f38ff45ce00dd38c9af50aca04f7c26819450ced1705fd3",
       "bytes": 2712,
       "mtime_ns": 1793644961317733692
+    },
+    {
+      "file": "conversion/scripts/probe_source_edge_layers_v1.py",
+      "sha256": "bf217d10ac2bcf4c29a96bd556cc7bc9bed1103057f60f20fd96ece4361f5f72",
+      "bytes": 4140,
+      "mtime_ns": 1793649438119278901
     },
     {
       "file": "conversion/scripts/probe_svg_fullname_font.py",
@@ -7547,6 +7661,12 @@
       "sha256": "ec9944547f527a63085257747caef43cf6ab2db3d5672e8623c2c78d5bef74bd",
       "bytes": 6656,
       "mtime_ns": 1793646948282720587
+    },
+    {
+      "file": "conversion/scripts/publish_content_reviewed_complex_v2.py",
+      "sha256": "cc566f9be6b268cb25dcc0a0cddfcb578d85b2ee1ab8ff50a9019895ec3bd728",
+      "bytes": 6355,
+      "mtime_ns": 1793649438135180779
     },
     {
       "file": "conversion/scripts/publish_curated_current_views_v2.py",
@@ -7823,6 +7943,12 @@
       "sha256": "ddfe8b53e28b2ec3fd21d27543a4c7913cd7394d0d0e266dab4a29bf4e06d1f8",
       "bytes": 5767,
       "mtime_ns": 1793646948281773647
+    },
+    {
+      "file": "conversion/scripts/review_symbol_round_and_edge_normal_v1.py",
+      "sha256": "09c270040f585c7db15e8d3a5091ae49dad63f75a24d29cdde4c0b71b703ac0a",
+      "bytes": 5195,
+      "mtime_ns": 1793649438134793282
     },
     {
       "file": "conversion/scripts/review_tikz_connected.py",
@@ -8107,6 +8233,12 @@
       "mtime_ns": 1793647893751983493
     },
     {
+      "file": "conversion/scripts/svg_analytic_cohort_refresh_v5.py",
+      "sha256": "3d45a49ac626acbfdfdaa117b4c36bd29c5f843890e5b245b30f14eb21aed6e3",
+      "bytes": 3678,
+      "mtime_ns": 1793649438131978478
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_batch_v1.py",
       "sha256": "7238a9e9380d1be23ed0a5fca24b2d88b1e80962025b5174f77b7705cb56d1a2",
       "bytes": 29127,
@@ -8131,6 +8263,12 @@
       "mtime_ns": 1793647893754789778
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_batch_v5.py",
+      "sha256": "b88648ed732f47d537e96dcacce265b14ede2ebb4ed0077a4c0c50dfd9f5c260",
+      "bytes": 29127,
+      "mtime_ns": 1793649438133263715
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_case_v1.py",
       "sha256": "fe9f84a4c26f0a86c22fc5936182dedfc6c6067f6e24d2912a7a3ba63c9534dd",
       "bytes": 16203,
@@ -8153,6 +8291,12 @@
       "sha256": "2f1d2dc713a1d0903917c62dbb32cc498c6fc3123d28e1d060f3ba58a2c07f9b",
       "bytes": 16861,
       "mtime_ns": 1793647893754434368
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_case_v5.py",
+      "sha256": "083fd3016798b5363dbf01325cd701c0989a1c10b531998be008b8f73cff06a4",
+      "bytes": 16861,
+      "mtime_ns": 1793649438132745720
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_chain_v1.py",
@@ -8185,6 +8329,12 @@
       "mtime_ns": 1793647893755318228
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_chain_v6.py",
+      "sha256": "9447fe51372099b2b7fde274f421b6bda986bbb400c70b4e2aa92c9404c81db3",
+      "bytes": 16511,
+      "mtime_ns": 1793649438134000749
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_controls_v1.py",
       "sha256": "7d3d029ae0c240b33cf8c27e70930cc97d4e5230219f2ea47adc92e5a40c7d4f",
       "bytes": 8857,
@@ -8213,6 +8363,12 @@
       "sha256": "7d8373a3075706929711661bbe5cb4575c9daa7f2ead5df1f594ba64ed588d6f",
       "bytes": 9702,
       "mtime_ns": 1793647893750794179
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_controls_v6.py",
+      "sha256": "fdd1a8bd53e44fd6dc0445ec583911252c892db705973a1d1b4b28830ff6e79a",
+      "bytes": 9703,
+      "mtime_ns": 1793649438128586055
     },
     {
       "file": "conversion/scripts/svg_analytic_iteration_pool_v1.py",
@@ -8245,6 +8401,12 @@
       "mtime_ns": 1793647893754214121
     },
     {
+      "file": "conversion/scripts/svg_analytic_iteration_pool_v6.py",
+      "sha256": "ffadb976081f9bd0a2b34b5f55c7a28c236f070bc0e74c04cb9341acf8c63215",
+      "bytes": 28620,
+      "mtime_ns": 1793649438132365016
+    },
+    {
       "file": "conversion/scripts/svg_analytic_iteration_program_v1.py",
       "sha256": "aeb0487ad1500947ece5b9b9cba76c2a51d5821ed7c8b2b7cb70de00abc65044",
       "bytes": 34903,
@@ -8267,6 +8429,12 @@
       "sha256": "0b5ee50f6d5e5122838d8e60d76679a9a522ed65853511803f46afacd670ea42",
       "bytes": 35289,
       "mtime_ns": 1793647893755124606
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_program_v5.py",
+      "sha256": "a0ec609f96c1e521f2349068ca9121ccdae2db2667ce3f644b51a2b87d542b89",
+      "bytes": 35438,
+      "mtime_ns": 1793649438133713085
     },
     {
       "file": "conversion/scripts/svg_analytic_private_QA_lease_v1.py",
@@ -8303,6 +8471,12 @@
       "sha256": "fe2a9f280aac6956a8c1e06db6bc2f0a5b4788cc515fac06747d45a82d940827",
       "bytes": 5600,
       "mtime_ns": 1793647893751737955
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_source_contract_v5.py",
+      "sha256": "824b576540a1dcd19ae9c5df84e23a3e4b1b22b20c4de30417f7637d9b8d6710",
+      "bytes": 5614,
+      "mtime_ns": 1793649438131754939
     },
     {
       "file": "conversion/scripts/svg_batch.py",
@@ -8461,6 +8635,18 @@
       "mtime_ns": 1793647893747295780
     },
     {
+      "file": "conversion/scripts/svg_dom_source_scene_v5.js",
+      "sha256": "62694b35e087558cef3268510e49cece77cf7ff8437fcc82629b1a4ee80dbe77",
+      "bytes": 31822,
+      "mtime_ns": 1793649438120773427
+    },
+    {
+      "file": "conversion/scripts/svg_dom_v10.js",
+      "sha256": "4b1f09c19f13f7bb6f4e071c8b07e0933e30db0a2183b5a5789a31590cda8766",
+      "bytes": 12466,
+      "mtime_ns": 1793649438120163934
+    },
+    {
       "file": "conversion/scripts/svg_dom_v6.js",
       "sha256": "4e51cd32174078a6dd4409d1d21de3b30644c76fa5ac03d98d8dea5905653a81",
       "bytes": 9418,
@@ -8483,6 +8669,24 @@
       "sha256": "807102a5fc6070eedfefe4a57bc1ccb3f65d0d800da15ccb1925c5c793f192e2",
       "bytes": 12318,
       "mtime_ns": 1793647893747049660
+    },
+    {
+      "file": "conversion/scripts/svg_edge_layers_quality_contract_v1.py",
+      "sha256": "053e8010ec5ef59419fc32cf9a0c4cd7c267cf19644a44133badcccad0a910ff",
+      "bytes": 9703,
+      "mtime_ns": 1793649438129696210
+    },
+    {
+      "file": "conversion/scripts/svg_edge_layers_quality_control_v1.py",
+      "sha256": "a538095e26f03d81d986e13e6a57c3b3f07dc2736e69853d9da9fa39f798f367",
+      "bytes": 7255,
+      "mtime_ns": 1793649438128832011
+    },
+    {
+      "file": "conversion/scripts/svg_edge_layers_quality_control_v2.py",
+      "sha256": "f0fc9220dd6218a4d83e674232ddd74549e282ba9cc8d3f30106f99e1a314f6d",
+      "bytes": 7446,
+      "mtime_ns": 1793649438129153424
     },
     {
       "file": "conversion/scripts/svg_failure_closure_scan_v1.py",
@@ -8707,6 +8911,18 @@
       "mtime_ns": 1793391120070754051
     },
     {
+      "file": "conversion/scripts/svg_source_edge_layers_v1.py",
+      "sha256": "aefe472316c4f77e26fcffe2b078b499a46c498f8101240bd61490b469656a71",
+      "bytes": 6639,
+      "mtime_ns": 1793649438118794240
+    },
+    {
+      "file": "conversion/scripts/svg_source_edge_layers_v2.py",
+      "sha256": "d27cad865355e9f970f53ae8333f9a2187af4e612511df9f86023c6d5d2662d3",
+      "bytes": 6524,
+      "mtime_ns": 1793649438121837666
+    },
+    {
       "file": "conversion/scripts/svg_source_endpoint_bridge_linear_gradient_v1.py",
       "sha256": "ea1c4d2db59aaafc7e7df57b44a532932f7038eb979cfa0deb28627c06868193",
       "bytes": 1797,
@@ -8743,6 +8959,12 @@
       "mtime_ns": 1793647893747476944
     },
     {
+      "file": "conversion/scripts/svg_source_endpoint_bridge_v4.py",
+      "sha256": "f71e4a235f96865cf57bd91ec3786ed257a0e271ee46ad302ca55e6d74ebd69a",
+      "bytes": 3290,
+      "mtime_ns": 1793649438121420337
+    },
+    {
       "file": "conversion/scripts/svg_source_endpoint_descriptors_v1.js",
       "sha256": "457b7000b0899b701593fc8fa3404c1132ec2018a64a633082b1293a413b2866",
       "bytes": 1449,
@@ -8773,6 +8995,18 @@
       "mtime_ns": 1793604341501440286
     },
     {
+      "file": "conversion/scripts/svg_source_owned_edge_layers_normal_dev_v1.py",
+      "sha256": "874548160967edc0291d4817dbdfc65b3343ab76890dc22d9d871ef0f7870c78",
+      "bytes": 4725,
+      "mtime_ns": 1793649438125425129
+    },
+    {
+      "file": "conversion/scripts/svg_source_owned_edge_layers_normal_dev_v2.py",
+      "sha256": "1ddee3652e0cb5bd159519ffd6fe66b8509a0247ec8345ca05b22cc1f2f3e8a7",
+      "bytes": 4739,
+      "mtime_ns": 1793649438127804938
+    },
+    {
       "file": "conversion/scripts/svg_source_probe.py",
       "sha256": "ff83a0b61220e2be09484dd514b3b406ab5f990886f0a10316333e8d2721be9f",
       "bytes": 768,
@@ -8789,6 +9023,12 @@
       "sha256": "ca736a3348b4df13496396add8f0f2724ba46f94a39c2e6fe41f289768a7f7f5",
       "bytes": 10325,
       "mtime_ns": 1793592932451877355
+    },
+    {
+      "file": "conversion/scripts/svg_source_semantic_admission_audit_v1.py",
+      "sha256": "decd7788e25751f55ab461fecf0cef05be5fcae83477b5f5993f6effbabcfce2",
+      "bytes": 10613,
+      "mtime_ns": 1793649438130109122
     },
     {
       "file": "conversion/scripts/svg_source_symbol_viewport_v1.js",
@@ -8837,6 +9077,18 @@
       "sha256": "2d1fa8d94d143c04f2be1a8a80a5dc3ea1c591c36ae6e090911b74a4cd578cd2",
       "bytes": 9764,
       "mtime_ns": 1793647893747800772
+    },
+    {
+      "file": "conversion/scripts/svg_source_use_instance_proof_v5.py",
+      "sha256": "937e18da330ddb4e1ebe12aab3dba48d35da3a1dba6d54c0e8e6601bfe151313",
+      "bytes": 9948,
+      "mtime_ns": 1793649438121055800
+    },
+    {
+      "file": "conversion/scripts/svg_source_use_instance_proof_v6.py",
+      "sha256": "32adabbbba9a314f70208b8671eecd1b48d04178497a6f2fa3ebf4ebdf83a9f5",
+      "bytes": 4212,
+      "mtime_ns": 1793649438126014248
     },
     {
       "file": "conversion/scripts/svg_two_nonconformal_stroke_classification_v1.py",
@@ -12373,6 +12625,18 @@
       "mtime_ns": 1793295508918064117
     },
     {
+      "file": "scripts/build_admission_orchestration_v1.py",
+      "sha256": "80f9691f331393400f3fc7cf6f08da85da4a3272b84b7e14b71f78cb232739d0",
+      "bytes": 3755,
+      "mtime_ns": 1793649493510390584
+    },
+    {
+      "file": "scripts/build_edge_and_use_successor_v1.py",
+      "sha256": "d0ec7df794e2dc999dd3f2d70498eb08ada0bb2de1efd3625746ba726eb354f2",
+      "bytes": 6245,
+      "mtime_ns": 1793649493509538176
+    },
+    {
       "file": "scripts/build_symbol_integration_v1.py",
       "sha256": "a8962adbe1f1354e6abc96b1c3dfd82d50d248ce803ac4b0ffb8df5c0acf2451",
       "bytes": 8060,
@@ -12389,6 +12653,12 @@
       "sha256": "924558f130963c780c161760b8ae8b957e936a021e2768561f0c5f07d32bce25",
       "bytes": 7959,
       "mtime_ns": 1793309584546583175
+    },
+    {
+      "file": "scripts/check_admission_progress_v1.py",
+      "sha256": "fa7ff0fa3017baa12d1b66f969fc613f36805d3b63181ed2396e58b2682f0af6",
+      "bytes": 3060,
+      "mtime_ns": 1793649695190040297
     },
     {
       "file": "scripts/check_svg_progress.py",
@@ -12613,10 +12883,34 @@
       "mtime_ns": 1793310286685243606
     },
     {
+      "file": "scripts/start_admission_validation_chain_v1.py",
+      "sha256": "e694ad38a05c9226401b89742ec1c252e23aceb521fa106856bd1dddcfa46216",
+      "bytes": 2089,
+      "mtime_ns": 1793649493510511708
+    },
+    {
+      "file": "scripts/start_edge_layers_normal_v1.py",
+      "sha256": "9eb953428a4f76ae0677af0b2d811478bb77b2ea517fbc73df276f29fcd859c2",
+      "bytes": 2920,
+      "mtime_ns": 1793649493509746758
+    },
+    {
+      "file": "scripts/start_edge_use_QA_controls_v1.py",
+      "sha256": "a81260607c6189ae8949942c38ad67587cea67beb01318c1afa843e5a2d4e98a",
+      "bytes": 3275,
+      "mtime_ns": 1793649493510143837
+    },
+    {
       "file": "scripts/start_existing_quantum_QA_control_v1.py",
       "sha256": "dd91ebfee76f3c8a060177a88f3e3fad19a4ac9527e16920b139c2f9b5a00c37",
       "bytes": 1586,
       "mtime_ns": 1793647893757514607
+    },
+    {
+      "file": "scripts/start_source_semantic_admission_v1.py",
+      "sha256": "2950baad1ddb2c34c4b695aa992f034fe1bf971cf64415ccce34e39f42401581",
+      "bytes": 1988,
+      "mtime_ns": 1793649493510262961
     },
     {
       "file": "scripts/start_symbol_QA_controls_v1.py",
@@ -12641,6 +12935,18 @@
       "sha256": "cd563c65e2870e80d1a18b9866158ff8528218df6ef996ae7ef6c0cebd72a7b3",
       "bytes": 1906,
       "mtime_ns": 1793647893757887059
+    },
+    {
+      "file": "scripts/start_untouched_use_normal_v1.py",
+      "sha256": "3937fcefa1678e31181cda7a0169caef850d9d1dac05b066737b7dd408742ea0",
+      "bytes": 2960,
+      "mtime_ns": 1793649493510013171
+    },
+    {
+      "file": "scripts/start_untouched_use_probes_v1.py",
+      "sha256": "ccd55871fb672246049b0decdd2f94537944ed853a5b7554db4910bdb2e7e03a",
+      "bytes": 2048,
+      "mtime_ns": 1793649493509882006
     },
     {
       "file": "scripts/stencil_cache.py",

@@ -1,277 +1,208 @@
 {
-  "at_utc": "2026-11-02T19:34:50.772008+00:00",
-  "host": "hkust3",
-  "root": "/backup/shaoshitong/img2code_20261029",
-  "core_key": "a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733",
-  "source_frontend": "compiler_svg_scene_frontend_v12",
-  "generation_plugin": "compiler_svg_general_guard_v8",
-  "QA": "compiler_svg_scene_quality_ro_v13",
-  "strict_native_canvas_contract": "svg_analytic_iteration_controls_v4",
-  "controls_proof": {
-    "file": "release/compiler_iterations/controls/svg_actual_shadow_layout_20261102_v12/proof.json",
-    "sha256": "d28b52a19223b1741baac78dd3c542a0cbd2aad479f214a08fa36487025de377"
-  },
-  "runtime_dispatch_proof": {
-    "file": "release/compiler_iterations/controls/svg_nested_groups_runtime_controls_20261102_v2/proof.json",
-    "sha256": "29ffd446f17b7ba7ede7ba21a2aceb8ee86bd2fdd44b6ca6d09d0e5d135180bd"
-  },
-  "frozen_once_catalog": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_actual_shadow_layout_20261102_v6.json",
-  "fixed_chain_handle": {
-    "run": "svg_complex_symbol_viewport_unseen100_20261102_v7",
-    "program": "release/compiler_iterations/programs/svg_complex_symbol_viewport_unseen100_20261102_v7",
-    "program_pid": 44276,
-    "program_birth_ticks": 1143970430,
-    "workers": 12,
-    "full_svg_scope_audited": 26754,
-    "all_format_provenance_scope": 131904,
-    "complex_target_source_count": 5672,
-    "applicable_complex_population": 2365,
-    "validation_sources": 100,
-    "independent_families_before_reservation": 439,
-    "source_pool": "release/compiler_iterations/source_pools/svg_complex_symbol_viewport_unseen100_20261102_v7",
-    "same_source_core_normal_reexecution_allowed": false,
-    "progress_helper": "work/takeover/check_svg_progress_v3.py",
-    "next_action": "Observe same PID/birth and ledger. B is existing-candidate baseline (48 complete at last check), C will make new source conversions. Fixed program automatically releases supported complex targets only if the unchanged >=20%/5increment/zero-regression/zero-infra gates pass. Do not redo full audit, rerun normal or create new program on observation timeout.",
-    "terminal": false
-  },
-  "observed_state": "New source core actual controls and runtime once-safe controls passed. Fresh independent complex validation running, B baseline progressed 21 -> 48 completed, zero infrastructure failures. C queued, no mass release.",
-  "source_scope": 26754,
-  "all_format_provenance_scope": 131904,
-  "validation_samples_per_phase": 100,
-  "release_gate": {
-    "minimum_qualified_fraction": 0.2,
-    "minimum_new_qualified": 5,
-    "maximum_regressions": 0,
-    "maximum_infrastructure_failures": 0,
-    "maximum_negative_false_acceptances": 0
-  },
-  "normal_core_source_conversions_before_unseen": 1,
-  "normal_reexecution_for_same_source_core_allowed": false,
-  "known_qualified_primary_complex_pairs": 886,
-  "new_normal_pair_value_status": "2a6f actual PNG reviewed as complex scientific comparison; full-eight quality passed; added to main once.",
-  "local_tests": {
-    "catalogue_integration": 9,
-    "group_geometry_and_actual_canvas_contract": 6
-  },
-  "catalogue_current_pointer": "clean/research_pairs_catalog/current.json",
-  "data_and_runtime_packages_in_git": false,
+  "at_utc": "2026-11-02T20:01:35.188492+00:00",
   "goal_complete": false,
-  "source_audit": {
-    "audited_svg_sources": 26754,
-    "all_format_provenance": 131904,
-    "eligible_unseen_families": 2851,
-    "selected": 100,
-    "supported_remaining_population": 10118
+  "source_frontend": "compiler_svg_scene_frontend_v15",
+  "generation_plugin": "compiler_svg_general_guard_v11",
+  "QA": "compiler_svg_scene_quality_ro_v17",
+  "QA_adapter": "compiler_svg_general_quality_adapter_v13",
+  "core_key": "a26deb4ee449f8df0abc7f7b48ad42f95939a47e40f5496bf8d310663b444f5f",
+  "mass_release_approved": false,
+  "source_only_admission": {
+    "pid": 241651,
+    "birth_ticks": "1144072470",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
+    "source_targets": 2365,
+    "candidate_emissions": 0,
+    "normal_calls": 0
+  },
+  "automatic_validation_handoff": {
+    "pid": 354594,
+    "birth_ticks": "1144103753",
+    "work": "/backup/shaoshitong/img2code_20261029/conversion/semantic_admission_validation_launch_v1/633bef4096854e8d81b03d04112e620e",
+    "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423"
   },
   "latest_progress": {
-    "at_utc": "2026-11-02T19:34:23.367333+00:00",
-    "state": {
-      "goal_complete": false,
-      "stage": "validation_B"
-    },
-    "process": {
-      "pid": 44276,
-      "same_birth": true,
-      "live": true,
-      "state": "S"
-    },
-    "failure": null,
-    "B": {
-      "evaluation": "old_baseline",
-      "counts": {
-        "abandoned": 48,
-        "queued": 41,
-        "running": 11
-      },
-      "completed": 48,
-      "reasons": {
-        "[{'reason': 'source_profile_failed', 'type': 'ValueError'}]": 19,
-        "[{'reason': 'Native content requires full tight canvas', 'type': 'AssertionError'}]": 14,
-        "[{'reason': 'source_profile_unsupported', 'type': 'ValueError'}]": 14,
-        "[{'reason': 'dangling_named_terminal', 'type': 'ValueError'}]": 1
-      },
-      "source_reasons": {
-        "source_triangle_not_symmetric_about_owner_tangent": 1,
-        "semantics_failed": 12,
-        "glyphs_failed": 12,
-        "physical_fonts_failed": 12,
-        "same_domain_pixels_failed": 6,
-        "source_primitive_pixels_failed": 5,
-        "source_open_path_has_multiple_subpaths": 2,
-        "source_cairosvg_render_failed": 3,
-        "source_use_audit_changed_source_pixels": 3,
-        "source_scene_feature_unsupported": 4,
-        "source_endpoint_direction_multiple_subpaths": 2,
-        "source_triangle_outside_native_marker_geometric_candidate_bound": 2,
-        "source_marker_not_one_filled_triangle": 2,
-        "source_cairo_browser_logical_paint_inventory_differs": 2
-      },
-      "infrastructure_failures": 0,
-      "cleanup_complete": 48,
-      "quality_seconds": {
-        "mean": 12.892,
-        "total": 618.837
-      },
-      "process": {
-        "pid": 44283,
+    "at_utc": "2026-11-02T19:58:49.179469+00:00",
+    "audit": {
+      "live": {
+        "pid": 241651,
         "same_birth": true,
         "live": true,
-        "state": "R"
+        "state": "S"
       },
-      "infrastructure_stop": null
-    },
-    "C": {
-      "evaluation": "new_frontend",
-      "counts": {
-        "queued": 100
+      "summary": {
+        "QA_calls": 0,
+        "at_utc": "2026-11-02T19:58:48.637197+00:00",
+        "candidate_emissions": 0,
+        "completed": 664,
+        "counts": {
+          "admitted": 224,
+          "error": 4,
+          "queued": 1689,
+          "running": 12,
+          "unsupported": 436
+        },
+        "elapsed_seconds": 525.3044703155756,
+        "finished": false,
+        "goal_complete": false,
+        "model_calls": 0,
+        "normal_conversion_calls": 0,
+        "root": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
+        "source_core_configuration_sha256": "c9051f2ac571b2fbfe22f9160aee8de9de09e0ebf903011104541f82ee8de4a4",
+        "total": 2365
       },
-      "completed": 0,
-      "reasons": {},
-      "source_reasons": {},
-      "infrastructure_failures": 0,
-      "cleanup_complete": 0,
-      "quality_seconds": null,
-      "process": null,
-      "infrastructure_stop": null
-    },
-    "deployed_runtime_files_exact": 21,
-    "runtime_dispatch_proof": {
-      "file": "release/compiler_iterations/controls/svg_symbol_runtime_controls_20261102_v1/proof.json",
-      "sha256": "9b4981e9af5c93b0d9cbb8724fa9dc65a06b0029a620737a4a8aaabf9b994542"
-    },
-    "normal_history_unchanged_and_prevented_reexecution": true
-  },
-  "next_generic_repair": "Integrate native symbol viewport reconstruction and isolate source observers into scratch pages; 12 exact viewport/layout positives and 3 actual negative mutations passed. No native full-QA claim for the viewport prototype yet.",
-  "next_chain": {
-    "exit": 0,
-    "stdout": "{\"pid\": 3810644, \"birth\": {\"pid\": 3810644, \"ppid\": 3810634, \"state\": \"R\", \"process_group\": 3810644, \"session\": 3810644, \"start_ticks\": 1143694435}, \"work\": \"/backup/shaoshitong/img2code_20261029/conversion/svg_actual_shadow_chain_launcher_v1/22f89bc515a5402b970f493553b054aa\"}\n",
-    "stderr": ""
-  },
-  "new_core_controls": {
-    "exit": 0,
-    "stdout": "{\"proof\": {\"file\": \"release/compiler_iterations/controls/svg_actual_shadow_layout_20261102_v12/proof.json\", \"sha256\": \"d28b52a19223b1741baac78dd3c542a0cbd2aad479f214a08fa36487025de377\"}, \"catalog\": {\"file\": \"release/compiler_iterations/source_core_attempts/manual_catalog_svg_actual_shadow_layout_20261102_v6.json\", \"sha256\": \"4e2a76b0bdafef205fc2c717d9a30ebfc225b8ce3f0d27b003a0d1bcded5ca3b\"}, \"source_core\": {\"schema\": \"frozen_source_core_identity_v3\", \"unit\": \"general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8\", \"policy\": \"general_svg_v12_analytic_endpoint_cubic_bezier_nested_groups_actual_shadow_layout_use_instances_source_compositing_order_guard_v8:a5e04b00856e65657213\", \"key\": \"a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733\"}, \"positive_cases\": 2, \"negative_cases\": 2, \"new_normal_calls\": 0, \"new_QA_calls\": 0}\n",
-    "stderr": ""
-  },
-  "next_workers": 12,
-  "current_run": "svg_complex_actual_shadow_unseen100_20261102_v6",
-  "current_program_handle": {
-    "pid": 3901192,
-    "start_ticks": 1143751068,
-    "path": "release/compiler_iterations/programs/svg_complex_actual_shadow_unseen100_20261102_v6"
-  },
-  "complex_queue_policy": {
-    "pool": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/source_pools/svg_complex_actual_shadow_unseen100_20261102_v6",
-    "run_id": "svg_complex_actual_shadow_unseen100_20261102_v6",
-    "policy": {
-      "schema": "priority_complex_source_queue_policy_v1",
-      "user_scope": "Complex scientific diagrams, posters and scientific visualizations; simple sources remain in the complete audit but are not dispatched in this priority round.",
-      "source_only_filters_predate_current_QA": true,
-      "inputs": {
-        "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/priority_sources/index.jsonl": "bd930fcdd3923563a9a03cc9a6529d1fce160539235ca4ccdadf0be2db545aa2",
-        "/backup/shaoshitong/img2code_20261029/clean/priority_svg_dense_source_screen_v2/new_complex_candidates.jsonl": "fa412b7046cbf5b04d110c6da07e73248f3e9ccbf97e42363aa5af11b361f6a3"
+      "measured_completed": 664,
+      "admission_reasons": {
+        "source_open_path_has_multiple_subpaths": 53,
+        "source_scene_feature_unsupported": 49,
+        "source_cairosvg_render_failed": 139,
+        "source_semantic_admission_passed": 224,
+        "source_cairo_browser_logical_paint_inventory_differs": 42,
+        "source_triangle_paint_not_solid_fill": 6,
+        "source_marker_not_one_filled_triangle": 26,
+        "source_connector_cap_or_join_requires_explicit_native_mapping": 24,
+        "source_triangle_not_symmetric_about_owner_tangent": 25,
+        "source_endpoint_direction_multiple_subpaths": 15,
+        "source_cairo_nonfill_or_stroked_text_physical_paint_profile_unsupported": 15,
+        "source_run_wrapper_changed_visible_source_pixels": 8,
+        "actual_source_use_shadow_snapshot_failed": 6,
+        "source_element_or_ancestor_opacity_requires_compositing_frontend": 16,
+        "source_visible_glyph_region_needs_explicit_viewport_clip_mapping": 6,
+        "source_triangle_outside_native_marker_geometric_candidate_bound": 5,
+        "native_bezier_control_filter_would_change_source_curve": 4,
+        "actual_source_use_UA_shadow_not_unique": 1
       },
-      "frozen_complex_or_dense_targets": 5672,
-      "all_applicable_source_population": 10104,
-      "applicable_complex_target_population": 2365,
-      "deferred_other_sources": 7739,
-      "source_scope": 26754,
-      "all_format_provenance_scope": 131904,
-      "quality_thresholds_changed": false,
-      "source_family_seal_and_anti_leakage_unchanged": true,
-      "full_scope_parent_summary": {
-        "file": "release/compiler_iterations/source_pools/svg_actual_shadow_unseen100_20261102_v4/summary.json",
-        "sha256": "ac5eab8effc89c359657ff309696b5af634b65425009759e5d1116526cffa94b"
+      "observer_seconds_mean": 9.151,
+      "candidate_emissions": 0
+    },
+    "chain": {
+      "live": {
+        "pid": 354594,
+        "same_birth": true,
+        "live": true,
+        "state": "S"
       },
-      "goal_complete": false
+      "state": {
+        "stage": "waiting_for_existing_source_only_admission_audit",
+        "goal_complete": false,
+        "audit": "/backup/shaoshitong/img2code_20261029/conversion/source_semantic_admission_audit_v1/e430695f8e8042d3bf1b4426ca99b423",
+        "preflight_seconds": 106.9075373802334
+      }
     },
-    "selected": 100,
-    "eligible_observed_families": 539
-  },
-  "value_review": {
-    "exit": 0,
-    "stdout": "{\"at_utc\": \"2026-11-02T18:52:15.491939+00:00\", \"full8_pairs\": 14, \"strict_main_additions\": 0, \"value_states\": {\"simple_source_deprioritized\": 5, \"simple_repetitive_network\": 1, \"value_review_pending\": 6, \"hold_label_occlusion\": 2}, \"full_scope_svg_source_states\": {\"structure_review\": 19028, \"simple_deprioritized\": 1838, \"complex_candidate\": 63}, \"frozen_complex_or_dense_source_targets\": 5672, \"qualified_pair_ids_in_frozen_source_targets\": 1, \"not_all_full8_pairs_are_complex\": true, \"new_normal_conversions\": 0, \"new_QA_calls\": 0, \"new_model_calls\": 0, \"main_pointer_changed\": false, \"producer\": {\"file\": \"conversion/scripts/review_new_full8_pairs_v1.py\", \"sha256\": \"9cde7d0b2c74e2880bcb8e6c3dc5773fff77598a3c84c211d1d930875560e0b7\", \"bytes\": 6078}, \"pairs\": {\"file\": \"clean/complexity_curation_20261102T054553Z_v1/value_reviews/new_full8_20261102T185215491146Z/reviewed_pairs.jsonl\", \"sha256\": \"4a4e4a12c2b47661cac98fe0a3064d7bd57bc9620fb280334a498c0abfccffbb\", \"bytes\": 54776}}\n",
-    "stderr": ""
-  },
-  "previous_broad_dispatch_intervention": {
-    "exit": 0,
-    "stdout": "{\"at_utc\": \"2026-11-02T18:53:54.367054+00:00\", \"action\": \"cooperative_stop_new_dispatch_only\", \"object\": \"svg_actual_shadow_unseen100_20261102_v4\", \"scope\": \"This broad SVG validation dispatch; active workers finish. Existing artifacts and source-core normal history are preserved. Goal and arxiv pipelines remain active.\", \"effective_user_instruction\": \"\\u7b5b\\u9009\\u6709\\u4ef7\\u503c\\u7684\\u590d\\u6742\\u79d1\\u7814\\u56fe\\uff1b\\u6392\\u9664\\u7b80\\u5355\\u793a\\u610f\\u56fe\\u3001\\u7f51\\u9875\\u548c\\u6b8b\\u7f3a\\u6570\\u636e\\uff1b\\u6301\\u7eed\\u5173\\u6ce8\\u7b97\\u6cd5\\u53ca\\u6d41\\u6c34\\u7ebf\\u6548\\u7387\\u3002\", \"original_goal_created_at_unix\": 1793631071, \"reason\": \"Full-eight outputs value audit found only 1 of 14 in frozen complex/dense targets. The fixed source preselection predates these QA outcomes. Reuse complete full-scope source audit and seal, then validate complex targets only without weakening any gate.\", \"prior_stop_instruction_used\": false, \"new_run_scope\": \"All preselected complex/dense source targets applicable to the same compiler; full source-family and provenance audit preserved.\", \"B_before\": {\"abandoned\": 43, \"queued\": 46, \"running\": 11}, \"C_before\": {\"queued\": 100}, \"controller_owner\": {\"at\": \"2026-11-02T18:52:47.348840+00:00\", \"case_timeout_seconds\": 900.0, \"execution_protocol\": \"generation_flock_v1\", \"freeze_sha256\": \"b4eb1f7f8720fc1382f1a7c560a43200d2a948199d71e1eae89e52c622844b7f\", \"generation\": \"03b27c9d19f04b539594c1319964175f\", \"mode\": \"validation\", \"model_calls\": 0, \"pid\": 3862226, \"start_ticks\": 1143728857, \"watch\": false, \"workers\": 12}}\n",
-    "stderr": ""
-  },
-  "broad_round_new_normal_conversion_calls_before_retarget": 0,
-  "current_run_terminal": true,
-  "content_occlusion_controls": {
-    "exit": 0,
-    "stdout": "{\"actual_browser_controls\": [{\"name\": \"text_above_background\", \"expected_occlusion\": false, \"observed_occluded_labels\": 0}, {\"name\": \"covered_text\", \"expected_occlusion\": true, \"observed_occluded_labels\": 1}, {\"name\": \"outline_only\", \"expected_occlusion\": false, \"observed_occluded_labels\": 0}, {\"name\": \"invisible_cover\", \"expected_occlusion\": false, \"observed_occluded_labels\": 0}], \"read_only\": true}\n",
-    "stderr": ""
-  },
-  "source_content_reviews": {
-    "prior14": {
-      "exit": 0,
-      "stdout": "{\"root\": \"/backup/shaoshitong/img2code_20261029/clean/source_content_review_v1/ec79a8fdb3564e64aeadbecbec6f1380\", \"samples\": 14, \"flagged\": 3, \"rows\": [{\"id\": \"528ce1206018fedc9113dd5ce1910f2e98f2481e0d78c0fb31232eb137a9607f\", \"labels\": []}, {\"id\": \"7755f4bf41d00c231b1300069f3979345643c6c1425686b8ce1f4d5429dd56e6\", \"labels\": []}, {\"id\": \"15477cd04affe94de91f01a9c5c59c0de1c3b087ed55df79c7dfed4cd002c837\", \"labels\": []}, {\"id\": \"fba9044f5e3936d99b8d96c36ea8badbb761b2a89fd956f8fe3208d6cb2e8b3c\", \"labels\": [{\"text\": \"learn\", \"covered_graphemes\": 2, \"total_graphemes\": 5}, {\"text\": \"learn\", \"covered_graphemes\": 2, \"total_graphemes\": 5}, {\"text\": \"learn\", \"covered_graphemes\": 2, \"total_graphemes\": 5}]}, {\"id\": \"55627c559d9a94bea0ce56bdbe8201fa333df0af874faf3796d374990ea627c5\", \"labels\": []}, {\"id\": \"bfcb929c43ea743fe869ad3d748a1a26806e9a85e76339e530187f08f905d6bd\", \"labels\": [{\"text\": \"AvgPool\", \"covered_graphemes\": 4, \"total_graphemes\": 7}, {\"text\": \"Attention\", \"covered_graphemes\": 7, \"total_graphemes\": 9}]}, {\"id\": \"5fe21500f97c9c4014277b80acc662a1059fc782c949fd36f1764eaa5dc79d5b\", \"labels\": []}, {\"id\": \"9cdd78ef6080e8de1231dd17f61ea7b84b970cc3432b8d59063bc90614b91977\", \"labels\": []}, {\"id\": \"93f3b7294948d46f6234ebc5bdc10749f51bae21d66142938264bd9d5c1b26a8\", \"labels\": []}, {\"id\": \"d5419dc8ed666273966945e7deb88536e5fcacd4f2e4e9417fed30e459df17f8\", \"labels\": []}, {\"id\": \"2e27fda9f64c46b92c73fa7936e7d727b2b56b93419da42d5d0e8ab0ba222f2e\", \"labels\": [{\"text\": \"Token Input\", \"covered_graphemes\": 3, \"total_graphemes\": 10}, {\"text\": \"Char-CNN\", \"covered_graphemes\": 2, \"total_graphemes\": 8}, {\"text\": \"word embedding\", \"covered_graphemes\": 4, \"total_graphemes\": 13}]}, {\"id\": \"7ad832ab942de3ff4be1da26f60077b1cdf60c462ceac87ab5ab8090b2c44388\", \"labels\": []}, {\"id\": \"af7c79858e979599575e452868e8333b506fb734da16827c4582ca3fb0c4a197\", \"labels\": []}, {\"id\": \"0dc3f8bb2a134a79aba055dc8cc6686f7d097b187bd08267a5bdc4f8d8bd633e\", \"labels\": []}], \"new_normal_conversions\": 0, \"new_QA_calls\": 0, \"new_model_calls\": 0, \"source_and_qualification_unchanged\": true}\n",
-      "stderr": ""
+    "goal_complete": false,
+    "runtime_proof": {
+      "file": "release/compiler_iterations/controls/svg_edge_use_runtime_controls_20261102_v1/proof.json",
+      "sha256": "4f65ff4d5ba0ba0381daa9253cf92f020534159b6486f61b44a6ced7fa67108c"
     },
-    "current6": {
-      "exit": 0,
-      "stdout": "{\"root\": \"/backup/shaoshitong/img2code_20261029/clean/source_content_review_v1/8d22a12e94724267b88288c14d5cd528\", \"samples\": 6, \"flagged\": 0, \"rows\": [{\"id\": \"efecce22ee302d32144e7fababb72a6168c4bd90f2f73d81b8da7edb07548f60\", \"labels\": []}, {\"id\": \"3ebc4b82fdfadb3c15fd8a6297df471645f30aa1f2c48ecf3835baa060c22242\", \"labels\": []}, {\"id\": \"64d31ce9aa7eca321a3ec9123a612452ac390ab635c6266ede26f320d6e8b68f\", \"labels\": []}, {\"id\": \"09dd51fdda39ccb1ca5fe661f77f9d64d298639f388e00a5f025d0706c89e00b\", \"labels\": []}, {\"id\": \"6e82196057566fe4ef2b458f44574d287cd4b1951638d06016a74312889d439e\", \"labels\": []}, {\"id\": \"7cc2feb61b0b6278e2905371b01e0c571b97d7e390bae349f5a73a455ff7a3b9\", \"labels\": []}], \"new_normal_conversions\": 0, \"new_QA_calls\": 0, \"new_model_calls\": 0, \"source_and_qualification_unchanged\": true}\n",
-      "stderr": ""
+    "previous_round": {
+      "state": {
+        "goal_complete": false,
+        "post_failure_closure": {
+          "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_symbol_viewport_unseen100_20261102_v7/post_failure_closure.json",
+          "sha256": "f56e2481ab22910c417f928a2ed6d7d63ca5d90088a10831eeb3afbb6cbbc524"
+        },
+        "stage": "round_complete_after_history_metadata_closure_repair"
+      },
+      "post_failure_closure": {
+        "release_gate": {
+          "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/release_gate.json",
+          "sha256": "e22526c208821c1c0186288c2f1aab903beb733c41c025ca34f40cc134d018ac"
+        },
+        "summary": {
+          "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/summary.json",
+          "sha256": "4675ff092ef9111c5253cfd878e6bfd4d6128f0feab53d464e31da04d9037490"
+        }
+      }
+    },
+    "strict_main": {
+      "rows": 887,
+      "sha256": "41c7323d20ac84df2570a7e1e18b1412c58a08e788ce0a2266e8985635a15835",
+      "new_667_pair_present": true
+    },
+    "catalogue": {
+      "at_utc": "2026-11-02T19:51:01.669239+00:00",
+      "goal_complete": false,
+      "index": {
+        "bytes": 1996204,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea/pairs.jsonl",
+        "rows": 1394,
+        "sha256": "4e1ddc3ae6efc1569b7d6bb7586d47b17d5fdadf99d0f708442e29e90bff6030"
+      },
+      "input_fingerprint": "ddf04f09d6eaa2e22e00e32b65bdb90f817bd2db559e4184db3e6ef9359b66f0",
+      "input_rows_by_evidence_view": {
+        "arxiv_author_native_source_replay": 304,
+        "arxiv_registered_original_PDF_visual_v2": 90,
+        "paper_diagrams_and_posters_full8": 887,
+        "scientific_chart_provider_original": 29,
+        "scientific_chart_source_replay": 168,
+        "scientific_chart_source_replay_repaired": 5
+      },
+      "publisher": "research_catalog_refresh_v3",
+      "publisher_source_sha256": "1dc676579a20b70feca0c2dbaf02c77596db455daf50db6c691a2e8d9eeee9d8",
+      "schema": "research_pairs_catalogue_pointer_v3",
+      "snapshot": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea",
+      "summary": {
+        "bytes": 6063,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea/summary.json",
+        "sha256": "d76ad424f23e31c5a4b21828fca7a40575f9f6b05ffb71367214a3d1b82938cf"
+      },
+      "unique_code_PNG_pairs": 1394,
+      "unique_pairs_by_evidence_view": {
+        "arxiv_author_native_source_replay": 304,
+        "arxiv_registered_original_PDF_visual_v2": 90,
+        "paper_diagrams_and_posters_full8": 887,
+        "scientific_chart_provider_original": 29,
+        "scientific_chart_source_replay": 168,
+        "scientific_chart_source_replay_repaired": 5
+      },
+      "validation": {
+        "bytes": 4851666,
+        "file": "clean/research_pairs_catalog/snapshot_20261102T195054236265Z_v3_ddf04f09d6ea/validation.json",
+        "sha256": "16cea97cdeeb5bcc6db12c9bb0d0363a2cde709a11ddf8c31dd7a785e5681e20"
+      }
     }
   },
-  "main_publication": {
-    "exit": 0,
-    "stdout": "{\"before\": 881, \"after\": 886, \"added_ids\": [\"efecce22ee302d32144e7fababb72a6168c4bd90f2f73d81b8da7edb07548f60\", \"64d31ce9aa7eca321a3ec9123a612452ac390ab635c6266ede26f320d6e8b68f\", \"09dd51fdda39ccb1ca5fe661f77f9d64d298639f388e00a5f025d0706c89e00b\", \"6e82196057566fe4ef2b458f44574d287cd4b1951638d06016a74312889d439e\", \"7cc2feb61b0b6278e2905371b01e0c571b97d7e390bae349f5a73a455ff7a3b9\"], \"held_ids\": [\"3ebc4b82fdfadb3c15fd8a6297df471645f30aa1f2c48ecf3835baa060c22242\"], \"main\": {\"file\": \"clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T191431267111Z_review_batch_v7/paired_priority_complex.jsonl\", \"sha256\": \"4413adbfc71b6a2c634a4e9fb645a70fdc8fb7782ba0db783fd6253c063dea5f\", \"bytes\": 4198440, \"rows\": 886}, \"review\": {\"file\": \"clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T191431267111Z_review_batch_v7/value_review.json\", \"sha256\": \"e381c5d7e3ae1ae2ce2d5911043600c207bba9e931d69edc150252d1c995e041\", \"bytes\": 6845}, \"pointer\": {\"file\": \"clean/complexity_curation_20261102T054553Z_v1/current.json\", \"sha256\": \"2d4124eda220e57cf0c57e36827e48fbe0e52f929d0fc77bd416fe97c583f30e\", \"bytes\": 3514}}\n",
-    "stderr": ""
+  "controls_proof": {
+    "file": "release/compiler_iterations/controls/svg_source_edge_layers_untouched_use_20261102_v1/proof.json",
+    "sha256": "fb73462f9964da0bcad2051ac5db18d2267e86717d2789d7ff555af0c300376b"
   },
-  "symbol_viewport_development_probe": {
-    "exit": 0,
-    "stdout": "{\"id\": \"6c1c25a290c58f50b7affe778c2f52dba94ffae8f91ac0172547cdbc186d74bb\", \"root\": \"/backup/shaoshitong/img2code_20261029/conversion/symbol_viewport_layout_probe_v4/380d7d97f1f4458682bfdc800bc26b13\", \"source_sha256\": \"1523b11523e19a42fa4fbf14a48c5204c368256b8e296ee9bb273fce4299917f\", \"cases\": [{\"index\": 0, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 8, \"viewport\": [[30, 120], [70, 120], [70, 160], [30, 160]], \"negative_controls\": [{\"mutation\": \"shift_viewport_4px\", \"rejected\": true}, {\"mutation\": \"change_actual_leaf_fill\", \"rejected\": true}, {\"mutation\": \"move_leaf_outside_viewport\", \"rejected\": true, \"full_paint_contained\": false}]}, {\"index\": 1, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[105, 130], [129, 130], [129, 154], [105, 154]], \"negative_controls\": []}, {\"index\": 2, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[215, 138], [239, 138], [239, 162], [215, 162]], \"negative_controls\": []}, {\"index\": 3, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[490, 138], [514, 138], [514, 162], [490, 162]], \"negative_controls\": []}, {\"index\": 4, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[630, 90], [650, 90], [650, 110], [630, 110]], \"negative_controls\": []}, {\"index\": 5, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[685, 90], [705, 90], [705, 110], [685, 110]], \"negative_controls\": []}, {\"index\": 6, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[630, 135], [650, 135], [650, 155], [630, 155]], \"negative_controls\": []}, {\"index\": 7, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[685, 135], [705, 135], [705, 155], [685, 155]], \"negative_controls\": []}, {\"index\": 8, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[630, 180], [650, 180], [650, 200], [630, 200]], \"negative_controls\": []}, {\"index\": 9, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[690, 180], [710, 180], [710, 200], [690, 200]], \"negative_controls\": []}, {\"index\": 10, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 8, \"viewport\": [[935, 50], [975, 50], [975, 90], [935, 90]], \"negative_controls\": []}, {\"index\": 11, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[935, 158], [975, 158], [975, 198], [935, 198]], \"negative_controls\": []}], \"new_normal_conversions\": 0, \"full_QA_or_acceptance_claimed\": false, \"source_files_unchanged\": true}\n",
-    "stderr": ""
+  "runtime_dispatch_proof": {
+    "file": "release/compiler_iterations/controls/svg_edge_use_runtime_controls_20261102_v1/proof.json",
+    "sha256": "4f65ff4d5ba0ba0381daa9253cf92f020534159b6486f61b44a6ced7fa67108c"
   },
-  "production_core": {
-    "frontend": "compiler_svg_scene_frontend_v12",
-    "plugin": "compiler_svg_general_guard_v8",
-    "key": "a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733"
+  "frozen_once_catalog": {
+    "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_edge_layers_untouched_use_20261102_v8.json",
+    "sha256": "f94e6a69e6c7628ccf2151d39258a7969cffe2fa879458fa1587b4038be9e470"
   },
-  "development_core": {
-    "frontend": "compiler_svg_scene_frontend_v13",
-    "plugin": "compiler_svg_general_guard_v9",
-    "quality": "compiler_svg_scene_quality_ro_v15",
-    "state": "fresh_complex_validation_B_running",
-    "preflight_seconds": 8.343553779646754,
-    "actual_symbols_proved": 12,
-    "source_objects": 190,
-    "launch": {
-      "pid": 29248,
-      "birth_ticks": "1143959706",
-      "work": "/backup/shaoshitong/img2code_20261029/conversion/symbol_validation_launch_v1/ea373deaa6a84da5bc07d22e136ff223"
-    },
-    "QA_adapter": "compiler_svg_general_quality_adapter_v11",
-    "normal_QA_held_reason": "two_actual_overlapping_native_source_paint_order_changes",
-    "normal_conversion_and_initial_QA_seconds": 54.615590043365955,
-    "controls": {
-      "proof": {
-        "file": "release/compiler_iterations/controls/svg_native_symbol_viewport_20261102_v1/proof.json",
-        "sha256": "629dee8ca279df1918b57251825f27cf2446306ef3c6ec41274a4a3c8564fc05"
+  "previous_validation": {
+    "run": "svg_complex_symbol_viewport_unseen100_20261102_v7",
+    "B_completed": 100,
+    "C_completed": 100,
+    "qualified": 1,
+    "released": false,
+    "closing_metadata_error_preserved": true,
+    "closure": {
+      "release_gate": {
+        "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/release_gate.json",
+        "sha256": "e22526c208821c1c0186288c2f1aab903beb733c41c025ca34f40cc134d018ac"
       },
-      "catalog": {
-        "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_native_symbol_viewport_20261102_v7.json",
-        "sha256": "6e3601f49eb3ff5f12fbaf0e30c67574a700fe358f6a0aedbc568c6be11c2da6"
-      },
-      "source_core": {
-        "schema": "frozen_source_core_identity_v3",
-        "unit": "general_svg_v13_native_symbol_viewport_source_compositing_order_guard_v9",
-        "policy": "general_svg_v13_native_symbol_viewport_source_compositing_order_guard_v9:15d8f92301274f97fb14",
-        "key": "79dc0b649fb4f508b9b41bb06ede66afc9d22f4dcc0d37d03631bf926af8b57b"
-      },
-      "positive_cases": 2,
-      "negative_cases": 3,
-      "normal_source_conversions": 1,
-      "normal_reexecution_allowed": false
-    },
-    "runtime_dispatch_proof": {
-      "file": "release/compiler_iterations/controls/svg_symbol_runtime_controls_20261102_v1/proof.json",
-      "sha256": "9b4981e9af5c93b0d9cbb8724fa9dc65a06b0029a620737a4a8aaabf9b994542"
-    },
-    "normal_history_preserved": true,
-    "QA_held_not_qualified": true
-  }
+      "summary": {
+        "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/closures/svg_complex_symbol_viewport_unseen100_20261102_v7_history_v1/summary.json",
+        "sha256": "4675ff092ef9111c5253cfd878e6bfd4d6128f0feab53d464e31da04d9037490"
+      }
+    }
+  },
+  "strict_complex_main": {
+    "rows": 887,
+    "sha256": "41c7323d20ac84df2570a7e1e18b1412c58a08e788ce0a2266e8985635a15835",
+    "new_667_pair_present": true
+  },
+  "strict_source_counts": {
+    "VincentHancoder--RAP": 780,
+    "QijiaHe--VFIG-Data": 107
+  },
+  "unified_catalogue_pairs": 1394,
+  "next_action": "Observe the same audit and chain birth identities. Chain already passed actual once-safe dispatch and will wait for the entire 2365-row source-only admission export, then freeze eligibility, reserve independent families and run B/C and unchanged gated mass with 12 workers. Do not repeat the source audit, development normals or controls. Other named datasets still require coverage/remaining-reason audit; do not equate this SVG unit with completion of all formats.",
+  "normal_reexecution_for_same_source_core_allowed": false,
+  "local_data_policy": "Only code/config/small audit summaries on Mac; datasets, fonts/runtime and PNG/XML assets remain on HKUST."
 }
