@@ -1,3 +1,17 @@
+# Current measured symbol integration
+
+The immutable frontend v13 and generation guard v9 now reconstruct native symbol viewports in isolated scratch pages, sharing the exact native builder between legacy and enriched extraction. The original source page stays unchanged, and physical UA-shadow vector attributes, styles and layout quads bind each accepted instance. The source preflight on `6c1c25a2...` proved all 12 symbols and 190 objects in **8.34 s**.
+
+The one actual development normal on this new source core (`79dc0b649fb4f508b9b41bb06ede66afc9d22f4dcc0d37d03631bf926af8b57b`) completed conversion and initial independent QA in **54.62 s**. Its initial QA rejected two opacity guards; the actual XML already had the correct `opacity=80`. No normal repeat is permitted. The failed result is preserved.
+
+QA adapter v11/independent QA ro15 add a proof for single fill-only rect/circle/ellipse leaf opacity, requiring opaque ancestors, no use/marker contexts or effects, and exact native opacity. Group alpha and compound paint stay pending. Three genuinely mutated XML/PNG controls (text, geometry and opacity) were correctly rejected in **25.0–25.5 s**, and two existing positives passed full eight stages in **54.88 s and 66.47 s** while running concurrently.
+
+The new symbol development candidate remains **pending** because the fresh native DOM order check found `v174`/`v178` painting after `v179`. All symbol geometry, source glyph/font and primitive-pixel gates passed; this is a separate retained paint-order failure, not a qualification. Strict main remains 886.
+
+The planned next round reuses the frozen complete source audit and complex selection, takes fresh independent reservations, and runs twelve workers through the unchanged validation-to-mass gates. Do not redo the 26,754-source audit or the development normal.
+
+---
+
 # Next generic source repair
 
 Current completed round: `svg_complex_actual_shadow_unseen100_20261102_v6`, 100 B / 100 C, C=6 qualified / 94 pending, zero infrastructure failures. No mass release because the unchanged 20% / five-increment / zero-regression gate did not pass. Five qualified architectures were value-screened and published; strict main is 886. Taxonomy `3ebc4b82...` remains held for layout quality. Arxiv acquisition/replay/reference and catalogue watcher remain independent.

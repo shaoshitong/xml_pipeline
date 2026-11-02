@@ -1,11 +1,11 @@
 {
-  "at_utc": "2026-11-02T19:15:48.283036+00:00",
+  "at_utc": "2026-11-02T19:31:33.767111+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
-  "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
-  "source_frontend": "compiler_svg_scene_frontend_v8",
-  "generation_plugin": "compiler_svg_general_guard_v4",
-  "QA": "compiler_svg_scene_quality_ro_v9",
+  "core_key": "a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733",
+  "source_frontend": "compiler_svg_scene_frontend_v12",
+  "generation_plugin": "compiler_svg_general_guard_v8",
+  "QA": "compiler_svg_scene_quality_ro_v13",
   "strict_native_canvas_contract": "svg_analytic_iteration_controls_v3",
   "controls_proof": {
     "file": "release/compiler_iterations/controls/svg_source_nested_groups_20261102_v1/proof.json",
@@ -23,7 +23,7 @@
     "chain_source": "svg_analytic_iteration_chain_v3.py",
     "pool_source": "svg_analytic_iteration_pool_v3.py"
   },
-  "observed_state": "Complex validation complete: 6/100 qualified, no mass release. Five content-reviewed architecture pairs atomically added to strict complex main, now 886.",
+  "observed_state": "886 strict complex pairs. Native-symbol repair controls passed; one development candidate is still held by independent paint-order QA. Fresh validation bootstrap running; no mass release.",
   "source_scope": 26754,
   "all_format_provenance_scope": 131904,
   "validation_samples_per_phase": 100,
@@ -263,5 +263,47 @@
     "exit": 0,
     "stdout": "{\"id\": \"6c1c25a290c58f50b7affe778c2f52dba94ffae8f91ac0172547cdbc186d74bb\", \"root\": \"/backup/shaoshitong/img2code_20261029/conversion/symbol_viewport_layout_probe_v4/380d7d97f1f4458682bfdc800bc26b13\", \"source_sha256\": \"1523b11523e19a42fa4fbf14a48c5204c368256b8e296ee9bb273fce4299917f\", \"cases\": [{\"index\": 0, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 8, \"viewport\": [[30, 120], [70, 120], [70, 160], [30, 160]], \"negative_controls\": [{\"mutation\": \"shift_viewport_4px\", \"rejected\": true}, {\"mutation\": \"change_actual_leaf_fill\", \"rejected\": true}, {\"mutation\": \"move_leaf_outside_viewport\", \"rejected\": true, \"full_paint_contained\": false}]}, {\"index\": 1, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[105, 130], [129, 130], [129, 154], [105, 154]], \"negative_controls\": []}, {\"index\": 2, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[215, 138], [239, 138], [239, 162], [215, 162]], \"negative_controls\": []}, {\"index\": 3, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[490, 138], [514, 138], [514, 162], [490, 162]], \"negative_controls\": []}, {\"index\": 4, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[630, 90], [650, 90], [650, 110], [630, 110]], \"negative_controls\": []}, {\"index\": 5, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[685, 90], [705, 90], [705, 110], [685, 110]], \"negative_controls\": []}, {\"index\": 6, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[630, 135], [650, 135], [650, 155], [630, 155]], \"negative_controls\": []}, {\"index\": 7, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[685, 135], [705, 135], [705, 155], [685, 155]], \"negative_controls\": []}, {\"index\": 8, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[630, 180], [650, 180], [650, 200], [630, 200]], \"negative_controls\": []}, {\"index\": 9, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 4, \"viewport\": [[690, 180], [710, 180], [710, 200], [690, 200]], \"negative_controls\": []}, {\"index\": 10, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 8, \"viewport\": [[935, 50], [975, 50], [975, 90], [935, 90]], \"negative_controls\": []}, {\"index\": 11, \"actual_shadow_and_reconstructed_vector_layout_exact\": true, \"full_paint_contained_in_viewport\": true, \"original_source_pixels_restored\": true, \"paint_objects\": 2, \"viewport\": [[935, 158], [975, 158], [975, 198], [935, 198]], \"negative_controls\": []}], \"new_normal_conversions\": 0, \"full_QA_or_acceptance_claimed\": false, \"source_files_unchanged\": true}\n",
     "stderr": ""
+  },
+  "production_core": {
+    "frontend": "compiler_svg_scene_frontend_v12",
+    "plugin": "compiler_svg_general_guard_v8",
+    "key": "a55037567b7746db66cdb914ccbe3db71b0de337a5513d275ee760ab89287733"
+  },
+  "development_core": {
+    "frontend": "compiler_svg_scene_frontend_v13",
+    "plugin": "compiler_svg_general_guard_v9",
+    "quality": "compiler_svg_scene_quality_ro_v15",
+    "state": "regression_and_actual_negative_controls_passed_runtime_preflight_running",
+    "preflight_seconds": 8.343553779646754,
+    "actual_symbols_proved": 12,
+    "source_objects": 190,
+    "launch": {
+      "pid": 29248,
+      "birth_ticks": "1143959706",
+      "work": "/backup/shaoshitong/img2code_20261029/conversion/symbol_validation_launch_v1/ea373deaa6a84da5bc07d22e136ff223"
+    },
+    "QA_adapter": "compiler_svg_general_quality_adapter_v11",
+    "normal_QA_held_reason": "two_actual_overlapping_native_source_paint_order_changes",
+    "normal_conversion_and_initial_QA_seconds": 54.615590043365955,
+    "controls": {
+      "proof": {
+        "file": "release/compiler_iterations/controls/svg_native_symbol_viewport_20261102_v1/proof.json",
+        "sha256": "629dee8ca279df1918b57251825f27cf2446306ef3c6ec41274a4a3c8564fc05"
+      },
+      "catalog": {
+        "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_native_symbol_viewport_20261102_v7.json",
+        "sha256": "6e3601f49eb3ff5f12fbaf0e30c67574a700fe358f6a0aedbc568c6be11c2da6"
+      },
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v13_native_symbol_viewport_source_compositing_order_guard_v9",
+        "policy": "general_svg_v13_native_symbol_viewport_source_compositing_order_guard_v9:15d8f92301274f97fb14",
+        "key": "79dc0b649fb4f508b9b41bb06ede66afc9d22f4dcc0d37d03631bf926af8b57b"
+      },
+      "positive_cases": 2,
+      "negative_cases": 3,
+      "normal_source_conversions": 1,
+      "normal_reexecution_allowed": false
+    }
   }
 }
