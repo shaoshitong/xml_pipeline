@@ -1,0 +1,38 @@
+{
+  "at_utc": "2026-11-02T20:21:30.210699+00:00",
+  "goal_complete": false,
+  "source_preflight": {
+    "QA_calls": 0,
+    "at_utc": "2026-11-02T20:18:27.954724+00:00",
+    "candidate_emissions": 0,
+    "completed": 46,
+    "counts": {
+      "source_reference_or_font_review": 8,
+      "source_unsupported": 38
+    },
+    "elapsed_seconds": 44.51403811946511,
+    "finished": true,
+    "goal_complete": false,
+    "model_calls": 0,
+    "normal_calls": 0,
+    "results": {
+      "file": "clean/priority_scidiagram_source_preflight_v1/38f4921046864d83aef91ce40f9d4f0f/source_preflight_results.jsonl",
+      "sha256": "97627ddda6164f26ec9ca5aed01dc97cc91054c50ff3d4bf29ceafb2530a2fbe"
+    },
+    "root": "/backup/shaoshitong/img2code_20261029/clean/priority_scidiagram_source_preflight_v1/38f4921046864d83aef91ce40f9d4f0f",
+    "scope": 46
+  },
+  "resource_resolution": {
+    "original_manifest_panel_assets": 4,
+    "inline_vs_original_pixels": "exact",
+    "unsafe_resource_negatives_rejected": 3
+  },
+  "reference_probe": {
+    "id": "0186e98ef75dda6a66308b68b0fc72be864a3e197416d82fae0134eba19d3d10",
+    "browser_source_to_provider_ssim": 0.68017994,
+    "source_weights": "explicit_600_700",
+    "passed": false
+  },
+  "candidate_emissions": 0,
+  "quality_thresholds_unchanged": true
+}

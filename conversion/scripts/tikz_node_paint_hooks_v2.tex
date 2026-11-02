@@ -1,0 +1,191 @@
+% Execution-only PGF/TikZ sidecar hooks. Original source is input byte-for-byte.
+% The Python prototype pins the PGF files and verifies uninjected/injected PDF pixels.
+\makeatletter
+\newwrite\iic@stream
+\immediate\openout\iic@stream=source.iic
+\newcount\iic@picturecount
+\newcount\iic@pathcount
+\newcount\iic@nodecount
+\newcount\iic@paintownercount
+\newcount\iic@nodepaintcount
+\def\iic@activepaintowner{0}
+\def\iic@picture{0}
+\def\iic@path{0}
+\def\iic@segment{0}
+\def\iic@nodeactive{0}
+\def\iic@finishing{0}
+\def\iic@nodetext{}
+\def\iic@nodekind{node}
+\let\iic@originalpointanchor\pgfpointanchor
+\def\pgfpointanchor#1#2{%
+  \ifnum\iic@nodeactive=0\relax
+    \immediate\write\iic@stream{\string\IICanchor{\iic@picture}{\iic@path}{#1}{#2}}%
+  \fi
+  \iic@originalpointanchor{#1}{#2}%
+}
+\immediate\write\iic@stream{\string\IICheader{1}{\pgfversion}}
+\def\iic@picturebegin{%
+  \global\advance\iic@picturecount by1\relax
+  \edef\iic@picture{\the\iic@picturecount}%
+  \immediate\write\iic@stream{\string\IICpicture{\iic@picture}{begin}}%
+}
+\def\iic@pictureend{%
+  \immediate\write\iic@stream{\string\IICpicture{\iic@picture}{end}}%
+}
+\def\iic@pathbegin{%
+  \global\advance\iic@pathcount by1\relax
+  \edef\iic@path{\the\iic@pathcount}%
+  \def\iic@segment{0}%
+  \def\iic@nodeactive{0}%
+  \immediate\write\iic@stream{\string\IICpath{\iic@picture}{\iic@path}{begin}}%
+}
+% TikZ resets picture begin/end macros before applying picture options. Append
+% instrumentation to the actual picture call, rather than setting discarded keys.
+\let\iic@originalpicture\tikz@picture
+\def\tikz@picture[#1]{\iic@originalpicture[#1,execute at begin picture={\iic@picturebegin},execute at end picture={\iic@pictureend}]}
+\tikzset{every path/.append code={\iic@pathbegin}}
+
+% This wrapper passes exactly the same braced contents to the original parser.
+% No claim of non-interference is made until PDF pixel equivalence is verified.
+\let\iic@originalfigmain\tikz@fig@main
+\long\def\tikz@fig@main#1{%
+  \def\iic@nodeactive{1}%
+  \iftikz@node@is@a@label\def\iic@nodekind{label}\else\def\iic@nodekind{node}\fi
+  \ifx\tikz@time\pgfutil@empty\else\def\iic@nodekind{label}\fi
+  \protected@edef\iic@expandedtext{#1}%
+  \edef\iic@nodetext{\expandafter\detokenize\expandafter{\iic@expandedtext}}%
+  \iic@originalfigmain{#1}%
+}
+
+% The PGF callback executes after a node's own final anchor transform is known,
+% including unnamed annotations which never enter the global named-node table.
+\def\iic@callbackx{}\def\iic@callbacky{}
+\def\iic@capturecallback#1{%
+  \begingroup
+    \pgf@process{\pgfpointtransformed{\pgf@sh@reanchor{\pgf@sm@shape@name}{center}}}%
+    \xdef\iic@callbackx{\the\pgf@x}\xdef\iic@callbacky{\the\pgf@y}%
+  \endgroup
+  \iic@savednodecallback{#1}%
+}
+\let\iic@originalmultipart\pgfmultipartnode
+\long\def\pgfmultipartnode#1#2#3#4{%
+  \global\advance\iic@paintownercount by1\relax
+  \expandafter\iic@multipartowned\expandafter{\the\iic@paintownercount}{#1}{#2}{#3}{#4}%
+}
+\long\def\iic@withpaintowner#1#2{%
+  \expandafter\iic@withpaintowner@restore\expandafter{\iic@activepaintowner}{#1}{#2}%
+}
+\long\def\iic@withpaintowner@restore#1#2#3{%
+  \def\iic@activepaintowner{#2}%
+  #3%
+  \def\iic@activepaintowner{#1}%
+}
+\long\def\iic@multipartowned#1#2#3#4#5{%
+  \global\let\iic@callbackx\pgfutil@empty\global\let\iic@callbacky\pgfutil@empty
+  % pgfpicture resets the callback, so wrap its current value at execution time.
+  \let\iic@savednodecallback\pgf@nodecallback\let\pgf@nodecallback\iic@capturecallback
+  \iic@originalmultipart{#2}{#3}{#4}{\iic@withpaintowner{#1}{#5}}%
+  \let\pgf@nodecallback\iic@savednodecallback
+  \begingroup
+    \edef\iic@name{#4}%
+    \ifx\iic@name\pgfutil@empty
+      \let\iic@cx\iic@callbackx\let\iic@cy\iic@callbacky%
+    \else
+      \pgftransformreset
+      \pgf@process{\pgfpointanchor{\iic@name}{center}}%
+      \edef\iic@cx{\the\pgf@x}\edef\iic@cy{\the\pgf@y}%
+    \fi
+    \global\advance\iic@nodecount by1\relax
+    \immediate\write\iic@stream{\string\IICnode{\iic@picture}{\iic@path}{\the\iic@nodecount}{\iic@nodekind}{\iic@name}{#2}{\iic@nodetext}{\iic@cx}{\iic@cy}{\iic@segment}}%
+    \immediate\write\iic@stream{\string\IICnodeowner{\iic@picture}{\the\iic@nodecount}{#1}}%
+  \endgroup
+}
+
+% PGF has already expanded the coordinate expression before this function.
+% Preserve its callback role, resolved name-prefix behavior and explicit anchor.
+\let\iic@originalparsenode\tikz@parse@node
+\def\tikz@parse@node#1(#2){%
+  \begingroup
+    \edef\iic@rawref{#2}%
+    \def\iic@autoborder{0}%
+    \pgfutil@in@.{#2}%
+    \ifpgfutil@in@
+      \expandafter\iic@splitref\iic@rawref\iic@stop
+    \else
+      \let\iic@refname\iic@rawref\def\iic@refanchor{center}%
+      \def\iic@autoborder{1}%
+    \fi
+    \ifcsname pgf@sh@ns@\tikz@pp@name{\iic@refname}\endcsname
+      \edef\iic@resolvedname{\tikz@pp@name{\iic@refname}}%
+    \else
+      \let\iic@resolvedname\iic@refname
+    \fi
+    \expandafter\ifx\csname pgf@sh@ns@\iic@resolvedname\endcsname\tikz@coordinate@text\def\iic@autoborder{0}\fi
+    \pgftransformreset
+    {\def\iic@nodeactive{1}\pgf@process{\pgfpointanchor{\iic@resolvedname}{\iic@refanchor}}\xdef\iic@refx{\the\pgf@x}\xdef\iic@refy{\the\pgf@y}}%
+    \immediate\write\iic@stream{\string\IICref{\iic@picture}{\iic@path}{\string#1}{\iic@resolvedname}{\iic@refanchor}{\iic@refx}{\iic@refy}{\iic@autoborder}}%
+  \endgroup
+  \iic@originalparsenode#1(#2)%
+}
+\def\iic@splitref#1.#2\iic@stop{\def\iic@refname{#1}\def\iic@refanchor{#2}}
+
+\def\iic@operation#1{%
+  \edef\iic@segment{\the\numexpr\iic@segment+1\relax}%
+  \immediate\write\iic@stream{\string\IICoperation{\iic@picture}{\iic@path}{#1}{\iic@segment}}%
+}
+\let\iic@originalmoveto\tikz@@moveto
+\def\tikz@@moveto#1{\iic@operation{move}\iic@originalmoveto{#1}}
+\let\iic@originallineto\tikz@@lineto
+\def\tikz@@lineto#1{\iic@operation{line}\iic@originallineto{#1}}
+\let\iic@originalhvlineto\tikz@@hv@lineto
+\def\tikz@@hv@lineto#1{\iic@operation{horizontal_vertical}\iic@originalhvlineto{#1}}
+\let\iic@originalvhlineto\tikz@@vh@lineto
+\def\tikz@@vh@lineto#1{\iic@operation{vertical_horizontal}\iic@originalvhlineto{#1}}
+\let\iic@originalcurveend\tikz@curveC
+\def\tikz@curveC#1{\iic@operation{cubic}\iic@originalcurveend{#1}}
+
+\let\iic@originalfinish\tikz@finish
+\def\tikz@finish{%
+  \ifnum\iic@nodeactive=0\relax
+    \begingroup
+      \pgfsyssoftpath@getcurrentpath\iic@softpath
+      \edef\iic@pathtext{\expandafter\detokenize\expandafter{\iic@softpath}}%
+      \protected@edef\iic@arrows{\tikz@current@arrows}%
+      \edef\iic@arrowtext{\expandafter\detokenize\expandafter{\iic@arrows}}%
+      \ifx\pgf@start@tip@sequence\pgfutil@empty\def\iic@startarrow{0}\else\def\iic@startarrow{1}\fi
+      \ifx\pgf@end@tip@sequence\pgfutil@empty\def\iic@endarrow{0}\else\def\iic@endarrow{1}\fi
+      \immediate\write\iic@stream{\string\IICfinish{\iic@picture}{\iic@path}{\iic@arrowtext}{\iic@startarrow}{\iic@endarrow}{\iic@pathtext}}%
+    \endgroup
+  \fi
+  \def\iic@finishing{1}%
+  \iic@originalfinish
+}
+% Detect drawing code which bypasses TikZ's path pipeline entirely. Source node
+% paint and the recorded main-path pipeline are allowed; custom direct PGF paint
+% outside both is an explicit unsupported event, not an inferred named edge.
+\def\iic@paint#1{%
+  \ifnum\iic@activepaintowner>0\relax
+    \begingroup
+      \pgfsyssoftpath@getcurrentpath\iic@nodepaintcurrent
+      \edef\iic@nodepaintcurrenttext{\expandafter\detokenize\expandafter{\iic@nodepaintcurrent}}%
+      \ifdefined\pgf@last@processed@path
+        \edef\iic@nodepaintprocessedtext{\expandafter\detokenize\expandafter{\pgf@last@processed@path}}%
+      \else\def\iic@nodepaintprocessedtext{}\fi
+      \global\advance\iic@nodepaintcount by1\relax
+      \immediate\write\iic@stream{\string\IICnodepaint{\iic@picture}{\iic@activepaintowner}{\the\iic@nodepaintcount}{#1}{\iic@nodepaintcurrenttext}{\iic@nodepaintprocessedtext}}%
+    \endgroup
+  \fi
+  \ifnum\iic@nodeactive=0\relax
+    \ifnum\iic@finishing=0\relax
+      \immediate\write\iic@stream{\string\IICunsupportedpaint{\iic@picture}{\iic@path}{#1}}%
+    \fi
+  \fi
+}
+\let\iic@originalstroke\pgfsys@stroke
+\def\pgfsys@stroke{\iic@paint{stroke}\iic@originalstroke}
+\let\iic@originalfill\pgfsys@fill
+\def\pgfsys@fill{\iic@paint{fill}\iic@originalfill}
+\let\iic@originalfillstroke\pgfsys@fillstroke
+\def\pgfsys@fillstroke{\iic@paint{fillstroke}\iic@originalfillstroke}
+\AtEndDocument{\immediate\write\iic@stream{\string\IICownershipcomplete{\the\iic@paintownercount}{\the\iic@nodepaintcount}}\immediate\write\iic@stream{\string\IICcomplete{\the\iic@picturecount}{\the\iic@pathcount}{\the\iic@nodecount}}\immediate\closeout\iic@stream}
+\makeatother

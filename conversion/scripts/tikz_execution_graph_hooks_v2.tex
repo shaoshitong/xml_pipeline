@@ -1,0 +1,85 @@
+% Additional, isolated instance-identity events. Load AFTER the frozen v1 hook.
+% No source names or geometry are changed. PDF pixel equivalence is mandatory.
+\makeatletter
+\newcount\iicv@counter
+\newcount\iicv@depth
+\immediate\write\iic@stream{\string\IICextension{2}{actual-node-table-instance-and-anchor-read}}
+\def\iicv@getid#1{%
+  \def\iicv@result{}%
+  \ifcsname iicv@map@#1\endcsname
+    \expandafter\ifx\csname iicv@map@#1\endcsname\relax\else
+      \edef\iicv@result{\csname iicv@map@#1\endcsname}%
+    \fi
+  \fi
+}
+\let\iicv@originalmultipart\pgfmultipartnode
+\long\def\pgfmultipartnode#1#2#3#4{%
+  \global\advance\iicv@counter by1\relax
+  \global\advance\iicv@depth by1\relax
+  \expandafter\xdef\csname iicv@contextid@\the\iicv@depth\endcsname{v2n\the\iicv@counter}%
+  \expandafter\xdef\csname iicv@contextname@\the\iicv@depth\endcsname{#3}%
+  \expandafter\gdef\csname iicv@installed@\the\iicv@depth\endcsname{0}%
+  \iicv@originalmultipart{#1}{#2}{#3}{#4}%
+  \immediate\write\iic@stream{\string\IICnodelink{\iic@picture}{\iic@path}{\the\iic@nodecount}{\csname iicv@contextid@\the\iicv@depth\endcsname}}%
+  \global\advance\iicv@depth by-1\relax
+}
+% PGF's callback runs AFTER its global shape/points/transform table has been
+% installed, and BEFORE TikZ's saved callback creates aliases such as lastnode.
+\let\iicv@originalcapturecallback\iic@capturecallback
+\def\iic@capturecallback#1{%
+  \ifnum\iicv@depth>0\relax
+    \begingroup
+      \edef\iicv@actualname{#1}%
+      \edef\iicv@declaredname{\csname iicv@contextname@\the\iicv@depth\endcsname}%
+      \ifx\iicv@actualname\iicv@declaredname
+        \ifnum\csname iicv@installed@\the\iicv@depth\endcsname=0\relax
+          \expandafter\gdef\csname iicv@installed@\the\iicv@depth\endcsname{1}%
+          \edef\iicv@instance{\csname iicv@contextid@\the\iicv@depth\endcsname}%
+          \ifx\iicv@actualname\pgfutil@empty\else
+            \expandafter\xdef\csname iicv@map@\iicv@actualname\endcsname{\iicv@instance}%
+          \fi
+          \pgf@process{\pgfpointtransformed{\pgf@sh@reanchor{\pgf@sm@shape@name}{center}}}%
+          \immediate\write\iic@stream{\string\IICinstance{\iic@picture}{\iic@path}{\iicv@instance}{\iicv@actualname}{\pgf@sm@shape@name}{\the\pgf@x}{\the\pgf@y}}%
+        \fi
+      \fi
+    \endgroup
+  \fi
+  \iicv@originalcapturecallback{#1}%
+}
+\let\iicv@originalpointanchor\pgfpointanchor
+\def\pgfpointanchor#1#2{%
+  \iicv@originalpointanchor{#1}{#2}%
+  \begingroup
+    \edef\iicv@readname{#1}\edef\iicv@readanchor{#2}%
+    \iicv@getid{\iicv@readname}%
+    % PGFpointanchor explicitly undoes the current transform before returning.
+    % Record both that returned local point and the forward-transformed global
+    % point. pgf@process assigns x/y globally, so restore the exact return value.
+    \edef\iicv@localx{\the\pgf@x}\edef\iicv@localy{\the\pgf@y}%
+    \pgf@process{\pgfpointtransformed{\pgfqpoint{\iicv@localx}{\iicv@localy}}}%
+    \immediate\write\iic@stream{\string\IICanchorread{\iic@picture}{\iic@path}{\iicv@readname}{\iicv@readanchor}{\iicv@result}{\iicv@localx}{\iicv@localy}{\the\pgf@x}{\the\pgf@y}}%
+    \global\pgf@x=\iicv@localx\relax\global\pgf@y=\iicv@localy\relax
+  \endgroup
+}
+% Aliases copy the currently installed table, not a future definition of its
+% spelling. Register before PGF's final alias callback can read the new alias.
+\let\iicv@originalalias\pgfnodealias
+\def\pgfnodealias#1#2{%
+  \begingroup
+    \edef\iicv@new{#1}\edef\iicv@old{#2}\iicv@getid{\iicv@old}%
+    \ifx\iicv@result\pgfutil@empty
+      \expandafter\global\expandafter\let\csname iicv@map@\iicv@new\endcsname\relax
+    \else
+      \expandafter\xdef\csname iicv@map@\iicv@new\endcsname{\iicv@result}%
+    \fi
+    \immediate\write\iic@stream{\string\IICalias{\iic@picture}{\iic@path}{\iicv@new}{\iicv@old}{\iicv@result}}%
+  \endgroup
+  \iicv@originalalias{#1}{#2}%
+}
+\let\iicv@originalrename\pgfnoderename
+\def\pgfnoderename#1#2{%
+  \iicv@originalrename{#1}{#2}%
+  \expandafter\global\expandafter\let\csname iicv@map@#2\endcsname\relax
+  \immediate\write\iic@stream{\string\IICunbind{\iic@picture}{\iic@path}{#2}{rename}}%
+}
+\makeatother

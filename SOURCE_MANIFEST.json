@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T19:57:58.196977+00:00",
+  "at_utc": "2026-11-02T20:21:30.210699+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -2861,6 +2861,12 @@
       "sha256": "2eebaae9164803227034282e2f8ab4326aac699a56d58052b67349295ed2a699",
       "bytes": 19931,
       "mtime_ns": 1793521679808396816
+    },
+    {
+      "file": "conversion/scripts/compiler_scidiagram_source_frontend_v1.py",
+      "bytes": 4778,
+      "sha256": "b8bf462fdef38ed58d267dd26bd8430c1d2331496c9737f005bd44cb53c991c5",
+      "origin": "work/scidiagram_panels/compiler_scidiagram_source_frontend_v1.py"
     },
     {
       "file": "conversion/scripts/compiler_source_cohort_exhaustive_v1.py",
@@ -7585,6 +7591,18 @@
       "mtime_ns": 1793644961317733692
     },
     {
+      "file": "conversion/scripts/probe_scidiagram_browser_reference_v1.py",
+      "bytes": 1575,
+      "sha256": "ce7f68e26a17f76e7fe628c9c1f861fc6b2b6442fdbf9f3e3623dfcfae457721",
+      "origin": "work/scidiagram_panels/probe_scidiagram_browser_reference_v1.py"
+    },
+    {
+      "file": "conversion/scripts/probe_scidiagram_panels_v1.py",
+      "bytes": 4098,
+      "sha256": "6ef6157af5c98eca0068f4995e5135c10e56a0c774f531ce3c82cf77a6fbfdb2",
+      "origin": "work/scidiagram_panels/probe_scidiagram_panels_v1.py"
+    },
+    {
       "file": "conversion/scripts/probe_source_edge_layers_v1.py",
       "sha256": "bf217d10ac2bcf4c29a96bd556cc7bc9bed1103057f60f20fd96ece4361f5f72",
       "bytes": 4140,
@@ -8069,6 +8087,18 @@
       "sha256": "4f2b3d2b74359dfd04178d89c59b3b159890c6a07c0537f8292bb599b0db9f97",
       "bytes": 3280,
       "mtime_ns": 1793406113051452875
+    },
+    {
+      "file": "conversion/scripts/scidiagram_panel_assets_v1.py",
+      "bytes": 4182,
+      "sha256": "b80123418415a3aa7bcbf80d48ee9b2deb1d2634e977bc2ba6f92b337d97d6ee",
+      "origin": "work/scidiagram_panels/scidiagram_panel_assets_v1.py"
+    },
+    {
+      "file": "conversion/scripts/scidiagram_source_preflight_v1.py",
+      "bytes": 5574,
+      "sha256": "973299b9e74fa49b859ad993fae6bfdd3ed8fed460f37914ce2ba0a88bf8b869",
+      "origin": "work/scidiagram_panels/scidiagram_source_preflight_v1.py"
     },
     {
       "file": "conversion/scripts/sdk_guarded_drain_status_v1.py",
@@ -11923,6 +11953,18 @@
       "mtime_ns": 1793427612945109605
     },
     {
+      "file": "conversion/scripts/tikz_execution_graph_hooks.tex",
+      "bytes": 7225,
+      "sha256": "a778e5802efbae03ca0d54581f2a7773cef295014a3ae413dda23978bbc1fb88",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/tikz_execution_graph_hooks.tex"
+    },
+    {
+      "file": "conversion/scripts/tikz_execution_graph_hooks_v2.tex",
+      "bytes": 4114,
+      "sha256": "967adb50ccbd5bd8663b01ed4c990d5293d75fae81be2d247262a0774ce9f1f1",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/tikz_execution_graph_hooks_v2.tex"
+    },
+    {
       "file": "conversion/scripts/tikz_execution_graph_real_pilot.py",
       "sha256": "321ade7a97a41a145cae1d5e2be891ad83f7f9ae3e410775c79bc40168fd8f8b",
       "bytes": 2840,
@@ -12257,6 +12299,12 @@
       "sha256": "4eef1121de8f9a91ab0ef303a815c5351fe03759c8d80af31c20e43d6c4272f4",
       "bytes": 2539,
       "mtime_ns": 1793589899268491506
+    },
+    {
+      "file": "conversion/scripts/tikz_node_paint_hooks_v2.tex",
+      "bytes": 8615,
+      "sha256": "5058b9672bad904dc91f7fa1e97be98e288203165f3088a16d79e7b7feef6b3c",
+      "origin": "/backup/shaoshitong/img2code_20261029/conversion/scripts/tikz_node_paint_hooks_v2.tex"
     },
     {
       "file": "conversion/scripts/tikz_node_paint_match_v2.py",
@@ -12905,6 +12953,18 @@
       "sha256": "dd91ebfee76f3c8a060177a88f3e3fad19a4ac9527e16920b139c2f9b5a00c37",
       "bytes": 1586,
       "mtime_ns": 1793647893757514607
+    },
+    {
+      "file": "scripts/start_scidiagram_panels_probe_v1.py",
+      "bytes": 1403,
+      "sha256": "308a82236812b441cae51d7a0a83b47849ab8e76bce119f1b4e6bc2141186074",
+      "origin": "work/scidiagram_panels/start_scidiagram_panels_probe_v1.py"
+    },
+    {
+      "file": "scripts/start_scidiagram_preflight_v1.py",
+      "bytes": 1502,
+      "sha256": "9120d203076c94797130f952a4d51c255a5ac20cea5494e7d413782044d14849",
+      "origin": "work/scidiagram_panels/start_scidiagram_preflight_v1.py"
     },
     {
       "file": "scripts/start_source_semantic_admission_v1.py",
