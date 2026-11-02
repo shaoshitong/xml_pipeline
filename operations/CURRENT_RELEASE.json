@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T18:19:04.468180+00:00",
+  "at_utc": "2026-11-02T18:26:54.000943+00:00",
   "host": "hkust3",
   "root": "/backup/shaoshitong/img2code_20261029",
   "core_key": "e2c12fe28c0c3ef3a6863e79798a32af96aef6c536dc03b0846abe1829c91d4f",
@@ -17,17 +17,13 @@
   },
   "frozen_once_catalog": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_nested_groups_20261102_v4.json",
   "fixed_chain_handle": {
-    "at_utc": "2026-11-02T18:17:03.231837+00:00",
-    "pid": 3504717,
-    "birth_ticks": 1143514517,
-    "run": "/backup/shaoshitong/img2code_20261029/conversion/svg_nested_fixed_chain_launch_v2/185dd4b6985d4befa3503ef4707f5a71",
-    "preflight_log": "/backup/shaoshitong/img2code_20261029/conversion/svg_nested_fixed_chain_launch_v2/185dd4b6985d4befa3503ef4707f5a71/preflight.log",
-    "chain_root": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/chains/svg_nested_groups_unseen100_20261102_v2",
-    "previous_failed_wrapper": "/backup/shaoshitong/img2code_20261029/conversion/svg_nested_fixed_chain_launch_v2/95a356aacd6642a3a5d3439ffca5b5a3",
-    "repair": "deployed_missing_private_QA_dependency_before_any_dispatch",
-    "normal_source_conversions_repeated": false
+    "pid": 3520183,
+    "birth_ticks": 1143534309,
+    "chain_root": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/chains/svg_nested_groups_unseen100_20261102_v3",
+    "chain_source": "svg_analytic_iteration_chain_v3.py",
+    "pool_source": "svg_analytic_iteration_pool_v3.py"
   },
-  "observed_state": "real runtime preflight passed; source audit launch in progress, inspect its current handle",
+  "observed_state": "Full source audit completed; preparing frozen B/C cohorts.",
   "source_scope": 26754,
   "all_format_provenance_scope": 131904,
   "validation_samples_per_phase": 100,
@@ -40,13 +36,21 @@
   },
   "normal_core_source_conversions_before_unseen": 1,
   "normal_reexecution_for_same_source_core_allowed": false,
-  "known_qualified_primary_complex_pairs": 880,
-  "new_normal_pair_value_status": "2a6f passes full QA; frozen source screen says structure_review; not yet counted in strict primary set",
+  "known_qualified_primary_complex_pairs": 881,
+  "new_normal_pair_value_status": "2a6f actual PNG reviewed as complex scientific comparison; full-eight quality passed; added to main once.",
   "local_tests": {
     "catalogue_integration": 9,
     "group_geometry_and_actual_canvas_contract": 6
   },
   "catalogue_current_pointer": "clean/research_pairs_catalog/current.json",
   "data_and_runtime_packages_in_git": false,
-  "goal_complete": false
+  "goal_complete": false,
+  "source_audit": {
+    "audited_svg_sources": 26754,
+    "all_format_provenance": 131904,
+    "eligible_unseen_families": 2851,
+    "selected": 100,
+    "supported_remaining_population": 10118
+  },
+  "known_catalogue_pairs": 1359
 }
