@@ -1,0 +1,26 @@
+{
+  "at_utc": "2026-11-02T22:20:05.609671+00:00",
+  "main": {
+    "bytes": 4430410,
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261102T221846148550Z_review_batch_v8/paired_priority_complex.jsonl",
+    "rows": 963,
+    "sha256": "43a26c11446a5694f648ad023be5a6aff03b2716d5581f16258de08b6616632e"
+  },
+  "new_pair_assets_verified": 5,
+  "pending_reviews": 0,
+  "catalogue": {
+    "at_utc": "2026-11-02T22:19:54.185668+00:00",
+    "unique_code_PNG_pairs": 1551,
+    "unique_pairs_by_evidence_view": {
+      "arxiv_author_native_source_replay": 379,
+      "arxiv_registered_original_PDF_visual_v2": 115,
+      "paper_diagrams_and_posters_full8": 963,
+      "scientific_chart_provider_original": 29,
+      "scientific_chart_source_replay": 168,
+      "scientific_chart_source_replay_repaired": 5
+    }
+  },
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "model_calls": 0
+}
