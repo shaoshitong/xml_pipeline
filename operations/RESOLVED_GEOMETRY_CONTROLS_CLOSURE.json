@@ -1,0 +1,16 @@
+{
+  "proof": {
+    "file": "release/compiler_iterations/controls/svg_resolved_geometry_20261102_v1/proof.json",
+    "sha256": "b44e63b745e698f65568f90e6deb81bda1e2d9786d195ef2ff766f5edc84fde7"
+  },
+  "positive_cases": 2,
+  "negative_cases": 2,
+  "source_core": {
+    "schema": "frozen_source_core_identity_v3",
+    "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18",
+    "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18:c448c519e8a8153931bc",
+    "key": "bd51ff94284b48fc07a8384c5f1ec759d1916e089cc05e8721adaf00157eef00"
+  },
+  "new_normal_calls": 0,
+  "new_QA_calls": 0
+}

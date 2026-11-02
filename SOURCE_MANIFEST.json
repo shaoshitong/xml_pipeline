@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T23:08:02.474784+00:00",
+  "at_utc": "2026-11-02T23:14:21.069639+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "418abb9d4cc94a154b9d63fa45631e521aa5a2ed60d63ce00ae087b5dc27a12c",
-      "bytes": 10911,
-      "mtime_ns": 1793660882457409103
+      "sha256": "6b7438cf36d010cca300659b6908bb055fb72e75816e5a56785b4983aea24ee7",
+      "bytes": 23329,
+      "mtime_ns": 1793661261048926834
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14855,25 +14855,25 @@
       "file": "operations/COMPACT_SOURCE_ADMISSION_LAUNCH.json",
       "sha256": "c4ed2c38c5385994015d31fa870797dc763bc31f80a21850810dfcdc97d89b60",
       "bytes": 390,
-      "mtime_ns": 1793660882455337331
+      "mtime_ns": 1793661261044037572
     },
     {
       "file": "operations/COMPACT_SOURCE_ADMISSION_PROGRESS1.json",
       "sha256": "61996d3eecf8622810ce7d260ca9599ea91db30f363c39e4407d5d0db721cd80",
       "bytes": 587,
-      "mtime_ns": 1793660882455554042
+      "mtime_ns": 1793661261044307575
     },
     {
       "file": "operations/COMPACT_SVG_SCREEN_SUMMARY.json",
       "sha256": "72161b508bc8b1ca0bcf2862622781717f5d00d4887dd1f7d409b2c24f25c732",
       "bytes": 1483,
-      "mtime_ns": 1793660882455224455
+      "mtime_ns": 1793661261043938529
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_SOURCE_CONTENT_REVIEW.json",
       "sha256": "1df0196509dd73ad6531b0405adac2130cbfe19c3dc0116196a5d1bd377fe32f",
       "bytes": 606,
-      "mtime_ns": 1793660882452763928
+      "mtime_ns": 1793661261042534098
     },
     {
       "file": "operations/BACKGROUND_ROTATION_FULL8_POSITIVE.json",
@@ -14903,7 +14903,7 @@
       "file": "operations/RESOLVED_GEOMETRY_VALUE_REVIEW.json",
       "sha256": "05184bad6fd1497c70c03b36a47be68edb1410418273475a472bf602a6114594",
       "bytes": 1636,
-      "mtime_ns": 1793660882454381029
+      "mtime_ns": 1793661261043263314
     },
     {
       "file": "operations/INCREMENTAL_MASS_PUBLICATIONS_4_8.json",
@@ -14915,7 +14915,7 @@
       "file": "operations/RESOLVED_GEOMETRY_PUBLICATION.json",
       "sha256": "6a7bc11ed0849c8c8239ad14bfd0029350f198c7fa41fd76ff0b022b9a072487",
       "bytes": 1844,
-      "mtime_ns": 1793660882454692990
+      "mtime_ns": 1793661261043531567
     },
     {
       "file": "operations/NEXT_SYMBOL_VIEWPORT.md",
@@ -14939,7 +14939,7 @@
       "file": "operations/RESOLVED_GEOMETRY_NORMAL_RESULT.json",
       "sha256": "d3054c8752453ce8893e6c955e24d484b288ee4edaac9b0db905c71d7f6fd17a",
       "bytes": 7583,
-      "mtime_ns": 1793660882453945774
+      "mtime_ns": 1793661261043007769
     },
     {
       "file": "operations/STROKE_SUPPORT_DEVELOPMENT.json",
@@ -14955,15 +14955,15 @@
     },
     {
       "file": "operations/publish_resolved_geometry_sources_v1.py",
-      "sha256": "1bf80bb2aa0d0c9dbdd5e9fb467d91ad89d0ae4c2b377ca183c5ebb854be6ee3",
-      "bytes": 5651,
-      "mtime_ns": 1793660882457626106
+      "sha256": "39a4d95de3e3e18335019374c4bacec154ba86aaa7cfa7947fa50607778d1bb2",
+      "bytes": 7218,
+      "mtime_ns": 1793661261049205795
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "4e79c9bcc925be93943be9e105ba900f819f97087af4e9ae4b6fd0397cefc71d",
-      "bytes": 11679,
-      "mtime_ns": 1793660882456738846
+      "sha256": "8937d022a172b53a276c158ddf46b224cb5cef1811545a54941de2f8d5542d40",
+      "bytes": 23306,
+      "mtime_ns": 1793661261047408734
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -14975,7 +14975,7 @@
       "file": "operations/RESOLVED_GEOMETRY_NORMAL_PRESERVATION.json",
       "sha256": "c16cc9911deaed004a468dcf2d5fce17c328cbaa33b88e96a72cb8773f2b187f",
       "bytes": 637,
-      "mtime_ns": 1793660882454948660
+      "mtime_ns": 1793661261043738819
     },
     {
       "file": "operations/SEMANTIC_ROUND_PUBLICATION.json",
@@ -14987,13 +14987,133 @@
       "file": "operations/COMPACT_SOURCE_ADMISSION_PROGRESS2.json",
       "sha256": "8809737fb61b47b0ad903be5f7a656458adf554fb5ab1806fd588ab077572c4b",
       "bytes": 3201,
-      "mtime_ns": 1793660882455868628
+      "mtime_ns": 1793661261044587870
     },
     {
       "file": "operations/RESOLVED_GEOMETRY_BROWSER_CONTROLS.json",
       "sha256": "f420451dbc6e57d49c97f3f01d5ba3926870198eef5cff3091e432a0e6daebd5",
       "bytes": 3379,
-      "mtime_ns": 1793660882453453685
+      "mtime_ns": 1793661261042818101
+    },
+    {
+      "file": "conversion/scripts/source_resolved_geometry_admission_fork_v2.py",
+      "sha256": "2d6c093fb619ca7e120d535d9631277094c503d4d6e9777afe5564f7ab64777b",
+      "bytes": 10171,
+      "mtime_ns": 1793660968406134596
+    },
+    {
+      "file": "conversion/scripts/source_resolved_geometry_admission_fork_v3.py",
+      "sha256": "8d299d50a7ff1a2ba4d2c0b72c305e407a2cd2fbbce72ddc2f649a49ad2ff45b",
+      "bytes": 10177,
+      "mtime_ns": 1793661008721965377
+    },
+    {
+      "file": "conversion/scripts/svg_resolved_geometry_quality_control_v1.py",
+      "sha256": "5bce77616c60824195ccba7817e37b0e072ba1906b0c91ec7d30abd844b693f1",
+      "bytes": 8371,
+      "mtime_ns": 1793660939614255097
+    },
+    {
+      "file": "conversion/scripts/close_resolved_geometry_controls_v1.py",
+      "sha256": "d4bf46bc281850e8fad5de94efb1fbc463c6af1d26c80daedfb9f2af93ac7aa3",
+      "bytes": 3242,
+      "mtime_ns": 1793660979262089084
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_source_contract_v8.py",
+      "sha256": "3f20893a26db6e8fbcc6ae700c2fb96da6a5b9b5aaf27117282fc9b881f03ddf",
+      "bytes": 5631,
+      "mtime_ns": 1793661101161575440
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_cohort_refresh_v8.py",
+      "sha256": "40ae1f5293f8a1cd87262463a399e82466437b978836e844ebdde417f5b36e68",
+      "bytes": 3678,
+      "mtime_ns": 1793661101209575237
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_pool_v9.py",
+      "sha256": "171af0da9c9c94378dd1bc006579743c3c72ee0ae59bdfa4da89d24dbc2cf954",
+      "bytes": 28620,
+      "mtime_ns": 1793661101285574915
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_chain_v9.py",
+      "sha256": "76e32844d6760d14c490097dc775e9a2e1fbb2b31b2a546fca57ea394370cff8",
+      "bytes": 16708,
+      "mtime_ns": 1793661101337574696
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_controls_v9.py",
+      "sha256": "4c02319cf087c10b5ad5583d27927bd799616c66847fff0e270b0151d741aee6",
+      "bytes": 157,
+      "mtime_ns": 1793661101389574476
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_program_v8.py",
+      "sha256": "53e596ad19728b3a79f50824c570568e5521c9db95b474678ae4cc604cb4bc95",
+      "bytes": 35649,
+      "mtime_ns": 1793661101441574255
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_batch_v8.py",
+      "sha256": "88a56c917bbe3ebccfa24fe0866ab6a14635cfca10cee95097a571227bba7cc5",
+      "bytes": 29127,
+      "mtime_ns": 1793661101501574002
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_case_v8.py",
+      "sha256": "9090558bba4d2b119dfa1f44d7af9fc00276a9c3e3ce8dbecd1c9380be54df34",
+      "bytes": 16868,
+      "mtime_ns": 1793661101557573765
+    },
+    {
+      "file": "conversion/scripts/derive_resolved_geometry_source_pool_v1.py",
+      "sha256": "10237727c4d476e18038288bfc1330e77630aee4e3e257d9f7d3294c788f40fa",
+      "bytes": 6001,
+      "mtime_ns": 1793661127409464276
+    },
+    {
+      "file": "conversion/scripts/resolved_geometry_validation_chain_v1.py",
+      "sha256": "71116558d5046c9d71d1bdd96cb91bda2ef17d6e3bcad8a2935694ebdf2b54f4",
+      "bytes": 4680,
+      "mtime_ns": 1793661149337371270
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_CHAIN_LAUNCH.json",
+      "sha256": "ffe574883df57f593486a133c3b9e394ff2111e66f953c64e20b703287cd5f6e",
+      "bytes": 229,
+      "mtime_ns": 1793661261045617798
+    },
+    {
+      "file": "operations/PRIOR_COMPLEX_CURRENT_GEOMETRY_ADMISSION_LAUNCH_V3.json",
+      "sha256": "b0271eb68b1e911c1181ae69b5723b577fb8a8defccbcd69f4d1b4c342615098",
+      "bytes": 433,
+      "mtime_ns": 1793661261046097845
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_CHAIN_PROGRESS2.json",
+      "sha256": "3327d2a114aa541030064c9f8a4cd921262bb59a53a94387529d4c338334051f",
+      "bytes": 4949,
+      "mtime_ns": 1793661261045906801
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_CONTROLS_CLOSURE.json",
+      "sha256": "f208f620a2a0fe642bbf05a972098d77b4fc1cdfb7a83a82ea27a93515431b4c",
+      "bytes": 708,
+      "mtime_ns": 1793661261045272961
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_RUNTIME_PREFLIGHT_LAUNCH.json",
+      "sha256": "4a9ce0b8412580aa302e29194a8c27864918c68ddc27773d21fb9b341caf4607",
+      "bytes": 216,
+      "mtime_ns": 1793661261045451671
+    },
+    {
+      "file": "operations/COMPACT_SOURCE_TERMINAL_AUDIT.json",
+      "sha256": "a346357b8204a3d7763028743d83e6e15ba1b8592a9d9d28e5e184d6aced1e8d",
+      "bytes": 5247,
+      "mtime_ns": 1793661261045048875
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

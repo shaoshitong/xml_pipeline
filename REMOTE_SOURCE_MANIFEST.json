@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T23:08:02.490772+00:00",
+  "at_utc": "2026-11-02T23:14:21.086880+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11359,6 +11359,90 @@
       "sha256": "b8064d232fc9e3dad92ed581f3ace20428d84e310a4b40237f5c1b2ed3a9fd00",
       "bytes": 2446,
       "mtime_ns": 1793660836842682565
+    },
+    {
+      "file": "conversion/scripts/source_resolved_geometry_admission_fork_v2.py",
+      "sha256": "2d6c093fb619ca7e120d535d9631277094c503d4d6e9777afe5564f7ab64777b",
+      "bytes": 10171,
+      "mtime_ns": 1793660968406134596
+    },
+    {
+      "file": "conversion/scripts/source_resolved_geometry_admission_fork_v3.py",
+      "sha256": "8d299d50a7ff1a2ba4d2c0b72c305e407a2cd2fbbce72ddc2f649a49ad2ff45b",
+      "bytes": 10177,
+      "mtime_ns": 1793661008721965377
+    },
+    {
+      "file": "conversion/scripts/svg_resolved_geometry_quality_control_v1.py",
+      "sha256": "5bce77616c60824195ccba7817e37b0e072ba1906b0c91ec7d30abd844b693f1",
+      "bytes": 8371,
+      "mtime_ns": 1793660939614255097
+    },
+    {
+      "file": "conversion/scripts/close_resolved_geometry_controls_v1.py",
+      "sha256": "d4bf46bc281850e8fad5de94efb1fbc463c6af1d26c80daedfb9f2af93ac7aa3",
+      "bytes": 3242,
+      "mtime_ns": 1793660979262089084
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_source_contract_v8.py",
+      "sha256": "3f20893a26db6e8fbcc6ae700c2fb96da6a5b9b5aaf27117282fc9b881f03ddf",
+      "bytes": 5631,
+      "mtime_ns": 1793661101161575440
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_cohort_refresh_v8.py",
+      "sha256": "40ae1f5293f8a1cd87262463a399e82466437b978836e844ebdde417f5b36e68",
+      "bytes": 3678,
+      "mtime_ns": 1793661101209575237
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_pool_v9.py",
+      "sha256": "171af0da9c9c94378dd1bc006579743c3c72ee0ae59bdfa4da89d24dbc2cf954",
+      "bytes": 28620,
+      "mtime_ns": 1793661101285574915
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_chain_v9.py",
+      "sha256": "76e32844d6760d14c490097dc775e9a2e1fbb2b31b2a546fca57ea394370cff8",
+      "bytes": 16708,
+      "mtime_ns": 1793661101337574696
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_controls_v9.py",
+      "sha256": "4c02319cf087c10b5ad5583d27927bd799616c66847fff0e270b0151d741aee6",
+      "bytes": 157,
+      "mtime_ns": 1793661101389574476
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_program_v8.py",
+      "sha256": "53e596ad19728b3a79f50824c570568e5521c9db95b474678ae4cc604cb4bc95",
+      "bytes": 35649,
+      "mtime_ns": 1793661101441574255
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_batch_v8.py",
+      "sha256": "88a56c917bbe3ebccfa24fe0866ab6a14635cfca10cee95097a571227bba7cc5",
+      "bytes": 29127,
+      "mtime_ns": 1793661101501574002
+    },
+    {
+      "file": "conversion/scripts/svg_analytic_iteration_case_v8.py",
+      "sha256": "9090558bba4d2b119dfa1f44d7af9fc00276a9c3e3ce8dbecd1c9380be54df34",
+      "bytes": 16868,
+      "mtime_ns": 1793661101557573765
+    },
+    {
+      "file": "conversion/scripts/derive_resolved_geometry_source_pool_v1.py",
+      "sha256": "10237727c4d476e18038288bfc1330e77630aee4e3e257d9f7d3294c788f40fa",
+      "bytes": 6001,
+      "mtime_ns": 1793661127409464276
+    },
+    {
+      "file": "conversion/scripts/resolved_geometry_validation_chain_v1.py",
+      "sha256": "71116558d5046c9d71d1bdd96cb91bda2ef17d6e3bcad8a2935694ebdf2b54f4",
+      "bytes": 4680,
+      "mtime_ns": 1793661149337371270
     }
   ],
   "excluded_for_credential_review": []

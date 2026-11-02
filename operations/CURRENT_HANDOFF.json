@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T22:48:22.164251+00:00",
+  "at_utc": "2026-11-02T23:14:21.046477+00:00",
   "goal_complete": false,
   "authoritative_main": {
     "bytes": 4433473,
@@ -68,12 +68,7 @@
   },
   "pending_reviews": 0,
   "next_generic_repair": {
-    "problem": "Source observer reads geometry attributes only; CSS-controlled rectangle width/height are recorded as zero despite measured source CSS/getBBox=30x30, creating native 0.01x0.01 rectangles.",
-    "development_case": "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95",
-    "diagnosis": "operations/SOURCE_CSS_GEOMETRY_DIAGNOSIS.json",
-    "source_extractor": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_dom_source_scene_v5.js",
-    "next_step": "Create a new immutable source-observer/compiler version that records actual resolved SVG geometry. Preserve original SVG/reference bytes. Validate actual source dimensions and rejected/positive controls before one new-core development normal. All four v10 families are now consumed and cannot be relabeled unseen; audit new source coverage for fresh independent validation before any next mass pass.",
-    "do_not_relax_pixel_thresholds": true
+    "problem": "CSS geometry repaired; current regression and negative controls passed. Await full source audit and fixed fresh validation gate."
   },
   "no_subagents": true,
   "network_configuration": "Do not touch: Claude/Codex/Chrome VPS and HKUST-only userspace EasyConnect SSH route remain outside this task.",
@@ -213,5 +208,266 @@
       ]
     }
   },
-  "next_step": "Observe the one fixed source-only admission run; freeze fresh family scope and current-core controls before any next automatic conversion release. Do not repeat consumed source/core attempts."
+  "next_step": "Observe the existing finite validation-chain handle. It waits for the two original source admissions and current runtime proof, freezes all 2730 original/additive targets, atomically reserves genuinely fresh families, and launches validation then gated whole-applicable-population conversion. Never duplicate any consumed normal attempt.",
+  "fixed_validation_chain": {
+    "launch": {
+      "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
+      "pid": 3232369,
+      "birth_ticks": "1145287215",
+      "finite": true,
+      "goal_complete": false
+    },
+    "latest": {
+      "compact": {
+        "live": false,
+        "summary.json": {
+          "QA_calls": 0,
+          "at_utc": "2026-11-02T23:13:34.585446+00:00",
+          "candidate_emissions": 0,
+          "completed": 365,
+          "counts": {
+            "admitted": 146,
+            "error": 11,
+            "unsupported": 208
+          },
+          "elapsed_seconds": 375.6132140606642,
+          "files": {
+            "admitted.jsonl": {
+              "file": "conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d/admitted.jsonl",
+              "sha256": "fef99a03c5087e3083ea6b608ff9ef35a52eca23cb043582043e6a47d69cddda"
+            },
+            "error.jsonl": {
+              "file": "conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d/error.jsonl",
+              "sha256": "8268536d67345bc1adc55a5b1ba3e87c7ffa785ece89a277c46e79f5f0237fff"
+            },
+            "unsupported.jsonl": {
+              "file": "conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d/unsupported.jsonl",
+              "sha256": "52a99ce3274ef0c8445547b5795f49aff1f60af7ffeb299e61aba5cb1d160377"
+            }
+          },
+          "finished": true,
+          "goal_complete": false,
+          "model_calls": 0,
+          "normal_conversion_calls": 0,
+          "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+          "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+          "total": 365
+        }
+      },
+      "prior": {
+        "live": true,
+        "summary.json": {
+          "QA_calls": 0,
+          "at_utc": "2026-11-02T23:13:35.464962+00:00",
+          "candidate_emissions": 0,
+          "completed": 260,
+          "counts": {
+            "admitted": 87,
+            "error": 7,
+            "queued": 2093,
+            "running": 12,
+            "unsupported": 166
+          },
+          "elapsed_seconds": 203.91279192455113,
+          "finished": false,
+          "goal_complete": false,
+          "model_calls": 0,
+          "normal_conversion_calls": 0,
+          "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_fork_v3/49b1e0f29af24202a8b6af5043c1017c",
+          "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+          "total": 2365
+        }
+      },
+      "chain": {
+        "live": true,
+        "state.json": {
+          "stage": "waiting_original_source_admissions_and_runtime_proof",
+          "sources": [
+            {
+              "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+              "completed": 365,
+              "total": 365,
+              "finished": true
+            },
+            {
+              "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_fork_v3/49b1e0f29af24202a8b6af5043c1017c",
+              "completed": 260,
+              "total": 2365,
+              "finished": false
+            }
+          ],
+          "runtime_proof": false,
+          "goal_complete": false
+        }
+      },
+      "runtime": {
+        "live": true,
+        "log": ""
+      },
+      "unified_catalog": {
+        "at_utc": "2026-11-02T23:05:06.536165+00:00",
+        "goal_complete": false,
+        "index": {
+          "bytes": 2273085,
+          "file": "clean/research_pairs_catalog/snapshot_20261102T230500286359Z_v3_1da74e7baa73/pairs.jsonl",
+          "rows": 1581,
+          "sha256": "f7b550180a30bc553641fbc2ffbd0e92f26dd3e9eb877fffc2a5ee5c153a2606"
+        },
+        "input_fingerprint": "1da74e7baa73fe9217e807b02ff0b78b4d7a3b01e99015b553b0da829ed8aadf",
+        "input_rows_by_evidence_view": {
+          "arxiv_author_native_source_replay": 408,
+          "arxiv_registered_original_PDF_visual_v2": 122,
+          "paper_diagrams_and_posters_full8": 964,
+          "scientific_chart_provider_original": 29,
+          "scientific_chart_source_replay": 168,
+          "scientific_chart_source_replay_repaired": 5
+        },
+        "publisher": "research_catalog_refresh_v3",
+        "publisher_source_sha256": "1dc676579a20b70feca0c2dbaf02c77596db455daf50db6c691a2e8d9eeee9d8",
+        "schema": "research_pairs_catalogue_pointer_v3",
+        "snapshot": "clean/research_pairs_catalog/snapshot_20261102T230500286359Z_v3_1da74e7baa73",
+        "summary": {
+          "bytes": 6068,
+          "file": "clean/research_pairs_catalog/snapshot_20261102T230500286359Z_v3_1da74e7baa73/summary.json",
+          "sha256": "2bacd54117c1be0eef45a1ffc7e6151739bf7bcc99f75e45bb3ca9feb3cf70d1"
+        },
+        "unique_code_PNG_pairs": 1581,
+        "unique_pairs_by_evidence_view": {
+          "arxiv_author_native_source_replay": 408,
+          "arxiv_registered_original_PDF_visual_v2": 122,
+          "paper_diagrams_and_posters_full8": 964,
+          "scientific_chart_provider_original": 29,
+          "scientific_chart_source_replay": 168,
+          "scientific_chart_source_replay_repaired": 5
+        },
+        "validation": {
+          "bytes": 5593258,
+          "file": "clean/research_pairs_catalog/snapshot_20261102T230500286359Z_v3_1da74e7baa73/validation.json",
+          "sha256": "77a7bb4fdb21daaf79c168a87364e0c9eae136cd8e1cd4be0ccbce565abb1639"
+        }
+      }
+    },
+    "control_closure": {
+      "proof": {
+        "file": "release/compiler_iterations/controls/svg_resolved_geometry_20261102_v1/proof.json",
+        "sha256": "b44e63b745e698f65568f90e6deb81bda1e2d9786d195ef2ff766f5edc84fde7"
+      },
+      "positive_cases": 2,
+      "negative_cases": 2,
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18",
+        "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18:c448c519e8a8153931bc",
+        "key": "bd51ff94284b48fc07a8384c5f1ec759d1916e089cc05e8721adaf00157eef00"
+      },
+      "new_normal_calls": 0,
+      "new_QA_calls": 0
+    },
+    "compact_terminal_audit": {
+      "summary": {
+        "QA_calls": 0,
+        "at_utc": "2026-11-02T23:13:34.585446+00:00",
+        "candidate_emissions": 0,
+        "completed": 365,
+        "counts": {
+          "admitted": 146,
+          "error": 11,
+          "unsupported": 208
+        },
+        "elapsed_seconds": 375.6132140606642,
+        "files": {
+          "admitted.jsonl": {
+            "file": "conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d/admitted.jsonl",
+            "sha256": "fef99a03c5087e3083ea6b608ff9ef35a52eca23cb043582043e6a47d69cddda"
+          },
+          "error.jsonl": {
+            "file": "conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d/error.jsonl",
+            "sha256": "8268536d67345bc1adc55a5b1ba3e87c7ffa785ece89a277c46e79f5f0237fff"
+          },
+          "unsupported.jsonl": {
+            "file": "conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d/unsupported.jsonl",
+            "sha256": "52a99ce3274ef0c8445547b5795f49aff1f60af7ffeb299e61aba5cb1d160377"
+          }
+        },
+        "finished": true,
+        "goal_complete": false,
+        "model_calls": 0,
+        "normal_conversion_calls": 0,
+        "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+        "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+        "total": 365
+      },
+      "error_reasons": {
+        "native_bezier_control_filter_would_change_source_curve": 4,
+        "compound_path_nonopaque_stroke_requires_union_compositing": 1,
+        "compound_path_marker_or_use_requires_separate_ownership": 5,
+        "compound_path_cap_or_join_requires_another_native_mapping": 1
+      },
+      "development_seen_sample": {
+        "file": "release/compiler_iterations/development_seen_v1/compact_grouped_source_sample_20261102_v1.jsonl",
+        "sha256": "f4bd5f9c23ba3eb2b46108fa05bf4b8cbbe3797f19d7de686c91a8d68c68bcaf",
+        "rows": [
+          {
+            "id": "18073b1bee6ca1a39f681362205bafa5dabcb7be8afed0f713a0148c11aae2eb",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "5f05cef9a41e8938c3fd2328d2a342fce98f8c8b9c2d5068dae3318dfade5615",
+            "source_image_sha256": "739b7466a4947f034ef927736f341bbe14695a75530732a03d30d45da8afbc1d"
+          },
+          {
+            "id": "129493d317353ea85e2a8568215d8b41bb39aa26623df62d588c050e7c567e1e",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "ed85e4c7ff16f2aba7e7d9a042671ef10ab22f39a6c3884ec1b4887f99931f4a",
+            "source_image_sha256": "eac25527e60b21400a288da0a348ee5db23872e27be32c38a535f6c37c0b33f9"
+          },
+          {
+            "id": "adf6e0455dafdebdff8d7ac1dfc4d91e34ae3d4621c53874a9399b496165a8b5",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "bfc39a79037973c2b448016d3de8c3a2b6e8d9898c9d39fc02a4e9efbaabaf52",
+            "source_image_sha256": "7b1775973d5b97aedbc8f8df6c60d3f8d1e95d336d24c117e5e44149a5a1d7ca"
+          },
+          {
+            "id": "0baf96ddaf225902be238b3282d7b9aa8864bf21d4c9245a8ce1cc688e0c251d",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "13d4276adfde30292ad15206343a0d5d922146be6dddfd3c0342c92f6d647b5c",
+            "source_image_sha256": "2611862bbc6956c5b573349ffd5f3a220480264fe6953e33bba2448d40cf2505"
+          },
+          {
+            "id": "8449f580eba503f332b4c544139ea1ad333c6994bf09b63a8ffd65c41f280695",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "1c08a4c0a1bde2c79b76e492505ca308bf420ddc7bc894b4c5fe285385b3f6ea",
+            "source_image_sha256": "589f1a4efa6f003e5ac4f35fcc4b2bedf4904a7158371a6574d66ec992c028a4"
+          },
+          {
+            "id": "c48e81b2e03de84636a148ba7de12bdd6faf3f29eadbc5b86881834f7a1238b2",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "764547b584e9693345e6b399c7256fbde4f8dae558a3a53e18e5ec81ea3af524",
+            "source_image_sha256": "c7eb61ad0311af7272e563a354b20ca0e5177158bab37455b4044a6c4d1c3559"
+          },
+          {
+            "id": "f51825996f1833f1e50beb2fe81620925f78bcf15735afef377445b85d2807a7",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "a1bae13bcece4314e7e0b3ca55239eeb0f6c912c30c3942865d04cc71b1feca3",
+            "source_image_sha256": "b394f4a18ca8f2a8051b4e75af8b9a6578c343c64f010aa98ca993e72cc372a4"
+          },
+          {
+            "id": "3906f34cd1de5f09fbbe3e4c858f753d894ac14f61f2b4b2bbb6fb326c69c83a",
+            "reason": "Original source PNG spot review before fresh selection",
+            "source_code_sha256": "9a31fa5b7e3204d432492c0e101bf71646457aee8119822719076d27e603cd8b",
+            "source_image_sha256": "507dc0b8857793871e7ef0e29007b2bc437e321147ebee674b2ec50a7c01b9a5"
+          }
+        ]
+      },
+      "source_spot_review": {
+        "count": 8,
+        "actual_original_PNGs_inspected": true,
+        "multiple_grouped_architectures_and_panels_present": true,
+        "all_sources_have_short_labels_with_rich_graphics": true,
+        "final_native_value_review_still_required": true,
+        "never_reuse_these_as_unseen": true
+      },
+      "normal_calls": 0,
+      "QA_calls": 0,
+      "model_calls": 0
+    }
+  }
 }
