@@ -1,0 +1,32 @@
+{
+  "source_run": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v22/normal_development_resolved_geometry_v1/ddb0c4992412441398ddbd1ec9fe83cc/332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95/summary.json",
+  "source_phase": "resolved_geometry_v22",
+  "source_generation_core": "bd51ff94284b48fc07a8384c5f1ec759d1916e089cc05e8721adaf00157eef00",
+  "source_and_actual_paired_native_layout_review": true,
+  "candidate_qualification_unchanged": true,
+  "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_resolved_geometry_v22_10bd9bbf3fd040c08426984914c72813",
+  "pairs": {
+    "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_resolved_geometry_v22_10bd9bbf3fd040c08426984914c72813/reviewed_pairs.jsonl",
+    "sha256": "3a8e8e2a8ebb371bcb9918b2555559748921eb7037b5c2586721f9f25615ef33",
+    "bytes": 8604
+  },
+  "occlusion": {
+    "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_resolved_geometry_v22_10bd9bbf3fd040c08426984914c72813/source_text_occlusion_reviews.jsonl",
+    "sha256": "8dbc2a64f1f1cff2d6999409bfb4522f809493dfe1afcdba9424bc366ad4ae2c",
+    "bytes": 353
+  },
+  "reviewed": 1,
+  "approved_ids": [],
+  "held_ids": [
+    "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95"
+  ],
+  "source_occlusion": [
+    {
+      "id": "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95",
+      "labels": []
+    }
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "main_pointer_changed": false
+}

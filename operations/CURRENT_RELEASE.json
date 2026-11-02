@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T22:48:22.164251+00:00",
+  "at_utc": "2026-11-02T23:08:02.456930+00:00",
   "goal_complete": false,
   "authoritative_main": {
     "bytes": 4433473,
@@ -63,17 +63,13 @@
     "root": "/backup/shaoshitong/img2code_20261029/conversion/source_compound_linear_admission_v2/3749196e297b437087d2065e3b8e314e"
   },
   "review_registry": {
-    "held": 26,
+    "held": 27,
     "published": 62
   },
   "pending_reviews": 0,
   "next_generic_repair": {
-    "problem": "Source observer reads geometry attributes only; CSS-controlled rectangle width/height are recorded as zero despite measured source CSS/getBBox=30x30, creating native 0.01x0.01 rectangles.",
-    "development_case": "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95",
-    "diagnosis": "operations/SOURCE_CSS_GEOMETRY_DIAGNOSIS.json",
-    "source_extractor": "/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_dom_source_scene_v5.js",
-    "next_step": "Create a new immutable source-observer/compiler version that records actual resolved SVG geometry. Preserve original SVG/reference bytes. Validate actual source dimensions and rejected/positive controls before one new-core development normal. All four v10 families are now consumed and cannot be relabeled unseen; audit new source coverage for fresh independent validation before any next mass pass.",
-    "do_not_relax_pixel_thresholds": true
+    "problem": "Resolved source geometry repair is complete for the consumed development case. Original legend is unreadable and correctly held from the strict main.",
+    "next_step": "Observe the one fixed source-only admission run; freeze fresh family scope and current-core controls before any next automatic conversion release. Do not repeat consumed source/core attempts."
   },
   "no_subagents": true,
   "network_configuration": "Do not touch: Claude/Codex/Chrome VPS and HKUST-only userspace EasyConnect SSH route remain outside this task.",
@@ -85,5 +81,132 @@
     "current_failure": "Executed node center/source PDF glyph group not unique: Gene_expression_data",
     "next_step": "Inspect saved source node paint before any new candidate generation; do not relax matching or repeat consumed normal attempts."
   },
-  "source_publication_receipt": "outputs/github-source-publication-20261102.json"
+  "source_publication_receipt": "outputs/github-source-publication-20261102.json",
+  "resolved_geometry_repair": {
+    "source_core": {
+      "schema": "frozen_source_core_identity_v3",
+      "unit": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18",
+      "policy": "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18:c448c519e8a8153931bc",
+      "key": "bd51ff94284b48fc07a8384c5f1ec759d1916e089cc05e8721adaf00157eef00"
+    },
+    "full_eight_checks_passed": true,
+    "elapsed_seconds": 90.46021139062941,
+    "known_development_case": true,
+    "fresh_validation_claimed": false,
+    "source_content_review": {
+      "id": "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95",
+      "original_reference_sha256": "5b39b1e366cdcc8b6132d28e0e00fc24138835bd9c79731cb039d4f9b003352e",
+      "native_image_sha256": "de5cb98f01b19c852fc4f6de905ce4f5905d8aaf276e7f30a16621fc534187f8",
+      "actual_source_and_native_PNGs_inspected": true,
+      "finding": "The unreadable stacked legend already exists in the original reference and is reproduced in the native output. Source-content defect; do not change original source or lower the value gate.",
+      "strict_main_admitted": false,
+      "new_normal_calls": 0,
+      "new_QA_calls": 0
+    },
+    "manual_catalog": {
+      "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_resolved_geometry_20261102_v13.json",
+      "sha256": "656371136cc509bb7bf6d5398fd5f081537bf731e9f710520112b034dcd044c1"
+    },
+    "batch_release_adopted": false
+  },
+  "compact_source_screen": {
+    "QA_calls": 0,
+    "additional_source_candidates": 365,
+    "by_source": {
+      "QijiaHe--VFIG-Data": 365
+    },
+    "deferred": {
+      "below_compact_prefilter": 6123,
+      "outside_primary_priority_index": 190
+    },
+    "elapsed_seconds": 1.7214868310838938,
+    "errors": 0,
+    "files": {
+      "policy.json": {
+        "file": "clean/priority_svg_compact_source_screen_v1/ba1792e0b02f44dab9b2b613ea562876/policy.json",
+        "sha256": "d2e42c6c4842c0454d9f51a7b4ae5107969675b24606774532bc1f55c2c94da7"
+      },
+      "screened.jsonl": {
+        "file": "clean/priority_svg_compact_source_screen_v1/ba1792e0b02f44dab9b2b613ea562876/screened.jsonl",
+        "sha256": "18343e42430075aa165a0a4e0a7fcc0d8208af90a2006f8b1a9c33612d70e91e"
+      },
+      "selected.jsonl": {
+        "file": "clean/priority_svg_compact_source_screen_v1/ba1792e0b02f44dab9b2b613ea562876/selected.jsonl",
+        "sha256": "d193619a51a1caa563e3999f16b7ba89d7d6788251ee67e7bed0787132fef1ed"
+      },
+      "source_sample.jsonl": {
+        "file": "clean/priority_svg_compact_source_screen_v1/ba1792e0b02f44dab9b2b613ea562876/source_sample.jsonl",
+        "sha256": "b5d033b9638cd0446a5c6c4ed89b9218f4da448bed53b47ab35c225b40971846"
+      }
+    },
+    "finished": true,
+    "full_static_supported": 10104,
+    "goal_complete": false,
+    "inspected": 1426,
+    "model_calls": 0,
+    "normal_calls": 0,
+    "prior_complex_targets": 2365,
+    "root": "/backup/shaoshitong/img2code_20261029/clean/priority_svg_compact_source_screen_v1/ba1792e0b02f44dab9b2b613ea562876"
+  },
+  "compact_source_admission": {
+    "launch": {
+      "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+      "pid": 3080485,
+      "birth_ticks": "1145256035",
+      "targets": 365,
+      "workers": 12,
+      "input_sha256": "cd4441fd71671331d6527c4b6fba810b51abdd048ef1b052d06e279f0750a589",
+      "normal_calls": 0,
+      "QA_calls": 0,
+      "model_calls": 0,
+      "goal_complete": false
+    },
+    "latest_observation": {
+      "QA_calls": 0,
+      "at_utc": "2026-11-02T23:07:48.700877+00:00",
+      "candidate_emissions": 0,
+      "completed": 31,
+      "counts": {
+        "admitted": 10,
+        "error": 1,
+        "queued": 322,
+        "running": 12,
+        "unsupported": 20
+      },
+      "elapsed_seconds": 29.728743935003877,
+      "finished": false,
+      "goal_complete": false,
+      "model_calls": 0,
+      "normal_conversion_calls": 0,
+      "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+      "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+      "total": 365,
+      "owner": {
+        "at_utc": "2026-11-02T23:07:18.972361+00:00",
+        "birth_ticks": "1145256035",
+        "pid": 3080485
+      },
+      "live": true,
+      "error_examples": [
+        {
+          "QA_calls": 0,
+          "at_utc": "2026-11-02T23:07:19.662232+00:00",
+          "candidate_emissions": 0,
+          "elapsed_seconds": 15.66567556373775,
+          "error_type": "ValueError",
+          "finished_at": "2026-11-02T23:07:35.327948+00:00",
+          "id": "5e74bf58a8c97b92e1a839919c0a990170af86257fd56bb938345381d7544ebb",
+          "model_calls": 0,
+          "normal_conversion_calls": 0,
+          "reason": "native_bezier_control_filter_would_change_source_curve",
+          "source_code_sha256": "69ba940fe15c98d8c5aeead6a293446519eb0fab93063aa48ec087331d76da1e",
+          "source_image_sha256": "78c3824b36f769d02560283bf6d97b8c2bfd74b297f32ad591865bf26e3c0460",
+          "source_observation_work": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v22/source/5e74bf58a8c97b92e1a839919c0a990170af86257fd56bb938345381d7544ebb/de6ef83535d547338c7116b4bf1adb83",
+          "source_reference_and_physical_font_reproduced": true,
+          "status": "error",
+          "traceback": "Traceback (most recent call last):\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/source_resolved_geometry_admission_v1.py\", line 22, in case\n    dom=prepared['capture']['dom'];features=core.source_features(dom,prepared['size']);allowed={o['id']for o in dom['objects']if leaf_alpha_source_supported(o,dom)}\n                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_guard_v18.py\", line 37, in source_features\n    semantic,binding=derive(dom,size);owners={b['owner'] for b in binding['bindings']};failures=[]\n                     ^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_backend_v16.py\", line 181, in derive\n    obj=objects[binding['owner']];ir=compile_path(path_for(obj),obj['matrix'])\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_native_bezier_ir_v1.py\", line 71, in compile_path\n    pieces=subdivide(segment)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_native_bezier_ir_v1.py\", line 68, in subdivide\n    raise ValueError('native_bezier_control_filter_would_change_source_curve')\nValueError: native_bezier_control_filter_would_change_source_curve\n"
+        }
+      ]
+    }
+  }
 }

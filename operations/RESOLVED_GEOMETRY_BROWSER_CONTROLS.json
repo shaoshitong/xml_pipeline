@@ -1,0 +1,170 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_browser_controls_v1/ec23ecf635944173a7316d0c9aced9af",
+  "controls": {
+    "css_overrides_attributes": {
+      "passed": true,
+      "attrs": {
+        "x": 5,
+        "y": 7,
+        "width": 30,
+        "height": 40,
+        "rx": 0,
+        "ry": 0,
+        "cx": 0,
+        "cy": 0,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "missing_dimensions": {
+      "passed": true,
+      "attrs": {
+        "x": 0,
+        "y": 0,
+        "width": 30,
+        "height": 30,
+        "rx": 0,
+        "ry": 0,
+        "cx": 0,
+        "cy": 0,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "circle_css_radius": {
+      "passed": true,
+      "attrs": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rx": 0,
+        "ry": 0,
+        "cx": 30,
+        "cy": 40,
+        "r": 15,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "ellipse_css_radii": {
+      "passed": true,
+      "attrs": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rx": 20,
+        "ry": 10,
+        "cx": 30,
+        "cy": 40,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "percent_rect": {
+      "passed": true,
+      "attrs": {
+        "x": 10,
+        "y": 20,
+        "width": 100,
+        "height": 50,
+        "rx": 0,
+        "ry": 0,
+        "cx": 0,
+        "cy": 0,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "local_geometry_under_transform": {
+      "passed": true,
+      "attrs": {
+        "x": 5,
+        "y": 7,
+        "width": 20,
+        "height": 10,
+        "rx": 0,
+        "ry": 0,
+        "cx": 0,
+        "cy": 0,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "absolute_css_corners": {
+      "passed": true,
+      "attrs": {
+        "x": 0,
+        "y": 0,
+        "width": 30,
+        "height": 20,
+        "rx": 5,
+        "ry": 3,
+        "cx": 0,
+        "cy": 0,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "ordinary_attributes": {
+      "passed": true,
+      "attrs": {
+        "x": 5,
+        "y": 7,
+        "width": 30,
+        "height": 40,
+        "rx": 2,
+        "ry": 2,
+        "cx": 0,
+        "cy": 0,
+        "r": 0,
+        "x1": 0,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      },
+      "pixels_unchanged": true,
+      "source_attributes_unchanged": true
+    },
+    "percentage_radius_rejected_without_guessing": true
+  },
+  "passed": true,
+  "normal_calls": 0,
+  "QA_calls": 0,
+  "model_calls": 0
+}

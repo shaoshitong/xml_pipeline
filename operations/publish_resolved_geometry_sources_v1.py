@@ -1,0 +1,29 @@
+"""Verify remote task sources and preserve current implementation and small audits in Git."""
+from pathlib import Path
+import datetime,hashlib,json,shutil,subprocess
+W=Path(__file__).resolve().parents[2];repo=W/'work/xml_pipeline';src=W/'work/catalog_refresh';out=W/'outputs'
+names=['svg_resolved_geometry_v1.js','svg_dom_v11.js','svg_dom_source_scene_v6.js','svg_source_endpoint_bridge_v5.py','compiler_svg_scene_frontend_v22.py','compiler_svg_general_guard_v18.py','compiler_svg_general_quality_adapter_v25.py','compiler_svg_scene_quality_ro_v29.py','svg_rotated_source_visual_scope_v5.py','svg_resolved_geometry_normal_dev_v1.py','test_resolved_geometry_browser_v1.py','launch_resolved_geometry_normal_v1.py','screen_compact_grouped_svg_sources_v1.py','svg_resolved_geometry_quality_contract_v1.py','review_resolved_geometry_qualified_v1.py','source_resolved_geometry_admission_v1.py','preserve_resolved_geometry_normal_history_v1.py','launch_compact_source_admission_v1.py']
+code="from pathlib import Path\nimport hashlib,json\nS=Path('/backup/shaoshitong/img2code_20261029/conversion/scripts')\nresult=[]\nfor name in "+repr(names)+":\n p=S/name;b=p.read_bytes();result.append(dict(file='conversion/scripts/'+name,sha256=hashlib.sha256(b).hexdigest(),bytes=len(b),mtime_ns=p.stat().st_mtime_ns))\nprint(json.dumps(result))"
+r=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8','hkust3','/home/shaoshitong/anaconda3/bin/python','-'],input=code,text=True,capture_output=True,check=True,timeout=30);remote=json.loads(r.stdout)
+for entry,name in zip(remote,names):
+ p=src/name;assert hashlib.sha256(p.read_bytes()).hexdigest()==entry['sha256'],name
+ target=repo/entry['file'];assert not target.exists()or target.read_bytes()==p.read_bytes();shutil.copyfile(p,target)
+def load(name):return json.loads((out/name).read_text())
+def save(name,value):(repo/'operations'/name).write_text(json.dumps(value,indent=2)+'\n')
+normal=load('resolved-geometry-normal-result.json');launch=load('compact-source-admission-launch.json')
+source_diagnosis=dict(id=normal['summary']['id'],original_reference_sha256=normal['summary']['source']['image_sha256'],native_image_sha256=normal['summary']['qualified_manifest']['image_sha256'],actual_source_and_native_PNGs_inspected=True,finding='The unreadable stacked legend already exists in the original reference and is reproduced in the native output. Source-content defect; do not change original source or lower the value gate.',strict_main_admitted=False,new_normal_calls=0,new_QA_calls=0)
+save('RESOLVED_GEOMETRY_SOURCE_CONTENT_REVIEW.json',source_diagnosis)
+for name in ['resolved-geometry-browser-controls.json','resolved-geometry-normal-result.json','resolved-geometry-value-review.json','resolved-geometry-publication.json','resolved-geometry-normal-preservation.json','compact-svg-screen-summary.json','compact-source-admission-launch.json','compact-source-admission-progress1.json','compact-source-admission-progress2.json']:
+ save(name[:-5].upper().replace('-','_')+'.json',load(name))
+state=load('CURRENT_HANDOFF.json');state['resolved_geometry_repair']=dict(source_core=normal['summary']['source_core'],full_eight_checks_passed=True,elapsed_seconds=normal['timing']['elapsed_seconds'],known_development_case=True,fresh_validation_claimed=False,source_content_review=source_diagnosis,manual_catalog=load('resolved-geometry-normal-preservation.json')['catalog'],batch_release_adopted=False)
+state['compact_source_screen']=load('compact-svg-screen-summary.json');state['compact_source_admission']=dict(launch=launch,latest_observation=load('compact-source-admission-progress2.json'));state['goal_complete']=False;state['next_step']='Observe the one fixed source-only admission run; freeze fresh family scope and current-core controls before any next automatic conversion release. Do not repeat consumed source/core attempts.'
+(out/'CURRENT_HANDOFF.json').write_text(json.dumps(state,indent=2)+'\n');save('CURRENT_HANDOFF.json',state)
+release=json.loads((repo/'operations/CURRENT_RELEASE.json').read_text());release['at_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();release['resolved_geometry_repair']=state['resolved_geometry_repair'];release['compact_source_screen']=state['compact_source_screen'];release['compact_source_admission']=state['compact_source_admission'];release['review_registry']=dict(held=27,published=62);release['pending_reviews']=0;release['next_generic_repair']=dict(problem='Resolved source geometry repair is complete for the consumed development case. Original legend is unreadable and correctly held from the strict main.',next_step=state['next_step']);save('CURRENT_RELEASE.json',release)
+shutil.copyfile(Path(__file__),repo/'operations'/Path(__file__).name)
+for manifest_name in ['SOURCE_MANIFEST.json','REMOTE_SOURCE_MANIFEST.json']:
+ p=repo/manifest_name;m=json.loads(subprocess.check_output(['git','-C',str(repo),'show','HEAD:'+manifest_name]));d={r['file']:r for r in m['files']};d.update({r['file']:r for r in remote})
+ if manifest_name=='SOURCE_MANIFEST.json':
+  for f in (repo/'operations').iterdir():
+   if f.is_file():b=f.read_bytes();d[str(f.relative_to(repo))]=dict(file=str(f.relative_to(repo)),sha256=hashlib.sha256(b).hexdigest(),bytes=len(b),mtime_ns=f.stat().st_mtime_ns)
+ m['files']=list(d.values());m['at_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();p.write_text(json.dumps(m,indent=2)+'\n')
+print(json.dumps(dict(remote_source_files_verified=len(remote),manifest_files=len(json.loads((repo/'SOURCE_MANIFEST.json').read_text())['files']),strict_main_rows=964,source_content_hold=True,source_admission_launch=launch)))

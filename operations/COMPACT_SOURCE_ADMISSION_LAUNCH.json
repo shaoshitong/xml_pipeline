@@ -1,0 +1,12 @@
+{
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+  "pid": 3080485,
+  "birth_ticks": "1145256035",
+  "targets": 365,
+  "workers": 12,
+  "input_sha256": "cd4441fd71671331d6527c4b6fba810b51abdd048ef1b052d06e279f0750a589",
+  "normal_calls": 0,
+  "QA_calls": 0,
+  "model_calls": 0,
+  "goal_complete": false
+}

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T22:48:22.164251+00:00",
+  "at_utc": "2026-11-02T23:08:02.474784+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "6c32431e76350d75db6c9eecb8fdc0f5450085bdfe2cbb084b1c61401cfc9342",
-      "bytes": 4421,
-      "mtime_ns": 1793659702165564027
+      "sha256": "418abb9d4cc94a154b9d63fa45631e521aa5a2ed60d63ce00ae087b5dc27a12c",
+      "bytes": 10911,
+      "mtime_ns": 1793660882457409103
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14730,6 +14730,270 @@
       "sha256": "f005417c24df57c0b80a9e995f0524ce97714320f15c3da626164c4aea429185",
       "bytes": 14150,
       "mtime_ns": 1793339754935824394
+    },
+    {
+      "file": "conversion/scripts/svg_resolved_geometry_v1.js",
+      "sha256": "04a272adf9dc6dbcb98c5e990e045fe79424e10de1b6a5077d32f5da48650c95",
+      "bytes": 2204,
+      "mtime_ns": 1793659828526351739
+    },
+    {
+      "file": "conversion/scripts/svg_dom_v11.js",
+      "sha256": "661319b7e8e9e0ffe4866753e448a782da35cd30492a81646b80bfd3e0c69695",
+      "bytes": 12837,
+      "mtime_ns": 1793659828578351599
+    },
+    {
+      "file": "conversion/scripts/svg_dom_source_scene_v6.js",
+      "sha256": "bcfeb25636e2134a49b66a59aaea14922861037582a9e51587fa24157ffc3934",
+      "bytes": 32193,
+      "mtime_ns": 1793659828630351458
+    },
+    {
+      "file": "conversion/scripts/svg_source_endpoint_bridge_v5.py",
+      "sha256": "5b1b571d4380b39fbbebd380dea5f07103c2b99ac20ed4879a95c51fac151c84",
+      "bytes": 3515,
+      "mtime_ns": 1793659828678351329
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v22.py",
+      "sha256": "882bc1d72625e2cc887b6fb1c666aa1d0711e2ab5f78465dc40b611cc288f382",
+      "bytes": 55757,
+      "mtime_ns": 1793659828746351146
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v18.py",
+      "sha256": "86dd7097eea21f69af308d48b1192f8c319dc474ef30fdf3b00614f23c8772a7",
+      "bytes": 8634,
+      "mtime_ns": 1793659828810350973
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v25.py",
+      "sha256": "a7fbe58b00016e7888591f17a830053d10a017501876c3182c0f047230cbc8d1",
+      "bytes": 3820,
+      "mtime_ns": 1793659828890350758
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v29.py",
+      "sha256": "8c437c3c0cfeaf21c16b3735d0b91c6fe7dfa7e05ae32064269db2f229253f2b",
+      "bytes": 13858,
+      "mtime_ns": 1793659828942350618
+    },
+    {
+      "file": "conversion/scripts/svg_rotated_source_visual_scope_v5.py",
+      "sha256": "81157fd8ff86ff967ef38c8e1f254806e140089d3f27a35935534e49c0a4227e",
+      "bytes": 4523,
+      "mtime_ns": 1793659828990350488
+    },
+    {
+      "file": "conversion/scripts/svg_resolved_geometry_normal_dev_v1.py",
+      "sha256": "f0bead0861ccf84da8c4e87ca54e0c706c894bf070b2a0b775336f5040d6c913",
+      "bytes": 4725,
+      "mtime_ns": 1793659829038350359
+    },
+    {
+      "file": "conversion/scripts/test_resolved_geometry_browser_v1.py",
+      "sha256": "21e084ccff2b53afd7702626dfee31ff3f19b64960f39feb6fec5ffb5bdda2a7",
+      "bytes": 3337,
+      "mtime_ns": 1793659832550340870
+    },
+    {
+      "file": "conversion/scripts/launch_resolved_geometry_normal_v1.py",
+      "sha256": "8a5d6467467bb0abbe2cec11145679a701f477927e4bf4aae51aea638e909d2b",
+      "bytes": 2922,
+      "mtime_ns": 1793660817518762430
+    },
+    {
+      "file": "conversion/scripts/screen_compact_grouped_svg_sources_v1.py",
+      "sha256": "4816c84b8a0d1bb6701242bb27bc2b6d96b3610ee2fd6a143ec48dbd5b99b58e",
+      "bytes": 7362,
+      "mtime_ns": 1793660297988814801
+    },
+    {
+      "file": "conversion/scripts/svg_resolved_geometry_quality_contract_v1.py",
+      "sha256": "1ef34db7e3c4ec30dea82cc2b045a4b42ccb39729feb8eb9f3533986aee16a48",
+      "bytes": 9925,
+      "mtime_ns": 1793660712747192184
+    },
+    {
+      "file": "conversion/scripts/review_resolved_geometry_qualified_v1.py",
+      "sha256": "8d922f02a314a40c50a29e18686b98aa6a8bd64e27c40c721d08c100a1324f59",
+      "bytes": 5896,
+      "mtime_ns": 1793660712799191972
+    },
+    {
+      "file": "conversion/scripts/source_resolved_geometry_admission_v1.py",
+      "sha256": "79c6aa900cefbfac16067abcaf28480abb849680815b584cbc6447aadf65c9a8",
+      "bytes": 10626,
+      "mtime_ns": 1793660712851191760
+    },
+    {
+      "file": "conversion/scripts/preserve_resolved_geometry_normal_history_v1.py",
+      "sha256": "a6f346804c729413e2704836a41664cd719569b39f501e4defd562f4c3330849",
+      "bytes": 2438,
+      "mtime_ns": 1793660817470762628
+    },
+    {
+      "file": "conversion/scripts/launch_compact_source_admission_v1.py",
+      "sha256": "b8064d232fc9e3dad92ed581f3ace20428d84e310a4b40237f5c1b2ed3a9fd00",
+      "bytes": 2446,
+      "mtime_ns": 1793660836842682565
+    },
+    {
+      "file": "operations/BACKGROUND_VALIDATION_AND_MASS.json",
+      "sha256": "06607c488b9f4ecd21554ec113ce5fc2549677375c96b97ed92d48466755df1b",
+      "bytes": 18405,
+      "mtime_ns": 1793654790963647067
+    },
+    {
+      "file": "operations/DATIKZ_SOURCE_READINESS_39.json",
+      "sha256": "0562a6835c048c6bb38a7345d06b6a2e12b4c82eb7688ed26152fec614edf959",
+      "bytes": 3025,
+      "mtime_ns": 1793656809905609419
+    },
+    {
+      "file": "operations/COMPACT_SOURCE_ADMISSION_LAUNCH.json",
+      "sha256": "c4ed2c38c5385994015d31fa870797dc763bc31f80a21850810dfcdc97d89b60",
+      "bytes": 390,
+      "mtime_ns": 1793660882455337331
+    },
+    {
+      "file": "operations/COMPACT_SOURCE_ADMISSION_PROGRESS1.json",
+      "sha256": "61996d3eecf8622810ce7d260ca9599ea91db30f363c39e4407d5d0db721cd80",
+      "bytes": 587,
+      "mtime_ns": 1793660882455554042
+    },
+    {
+      "file": "operations/COMPACT_SVG_SCREEN_SUMMARY.json",
+      "sha256": "72161b508bc8b1ca0bcf2862622781717f5d00d4887dd1f7d409b2c24f25c732",
+      "bytes": 1483,
+      "mtime_ns": 1793660882455224455
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_SOURCE_CONTENT_REVIEW.json",
+      "sha256": "1df0196509dd73ad6531b0405adac2130cbfe19c3dc0116196a5d1bd377fe32f",
+      "bytes": 606,
+      "mtime_ns": 1793660882452763928
+    },
+    {
+      "file": "operations/BACKGROUND_ROTATION_FULL8_POSITIVE.json",
+      "sha256": "5e226adeec4a09bf197ff28574263907ffc82f5c763b3b873a2b4a52e25b21f8",
+      "bytes": 6627,
+      "mtime_ns": 1793652838538011965
+    },
+    {
+      "file": "operations/INCREMENTAL_MASS_PUBLICATIONS_2_3.json",
+      "sha256": "7f527e5f3a5145ff4e205fb4f61195b317d8358c1a11b4e0203a739a24daf16d",
+      "bytes": 8753,
+      "mtime_ns": 1793655531713229165
+    },
+    {
+      "file": "operations/INCREMENTAL_MASS_PUBLICATION.json",
+      "sha256": "4f107e0724896c382dc3edcbf769fcec27f995114282c6c327968ee30519fd97",
+      "bytes": 4209,
+      "mtime_ns": 1793655164999731868
+    },
+    {
+      "file": "operations/NEXT_BACKGROUND_INTERLEAVING.md",
+      "sha256": "4f41a4049dbdaf19648fc93985af8b6a5422cdae7a29d7a7efe41eccac37a18f",
+      "bytes": 5030,
+      "mtime_ns": 1793656809907029436
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_VALUE_REVIEW.json",
+      "sha256": "05184bad6fd1497c70c03b36a47be68edb1410418273475a472bf602a6114594",
+      "bytes": 1636,
+      "mtime_ns": 1793660882454381029
+    },
+    {
+      "file": "operations/INCREMENTAL_MASS_PUBLICATIONS_4_8.json",
+      "sha256": "760cbcdf971ed11620933e749b6cf2cba33524a7991446dc1c16ce9210c9af69",
+      "bytes": 21868,
+      "mtime_ns": 1793656809905512667
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_PUBLICATION.json",
+      "sha256": "6a7bc11ed0849c8c8239ad14bfd0029350f198c7fa41fd76ff0b022b9a072487",
+      "bytes": 1844,
+      "mtime_ns": 1793660882454692990
+    },
+    {
+      "file": "operations/NEXT_SYMBOL_VIEWPORT.md",
+      "sha256": "71b9d446222bfdf9b42448154712def4ae3c74d7eb2ee3315d1ce3f37795fcb6",
+      "bytes": 4833,
+      "mtime_ns": 1793652289759953662
+    },
+    {
+      "file": "operations/SCIDIAGRAM_SOURCE_PREFLIGHT.json",
+      "sha256": "bcb87c3b4583c25ab4994b6ca09fb771f1afa073126999af5ea605209e810bd4",
+      "bytes": 1289,
+      "mtime_ns": 1793650890216475885
+    },
+    {
+      "file": "operations/COMPOUND_OWNERSHIP_DEVELOPMENT.json",
+      "sha256": "2e7f591216c9325535efcd8ee7476555efbbd80ce9416e89ae07c8af5737772b",
+      "bytes": 46692,
+      "mtime_ns": 1793656809906787641
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_NORMAL_RESULT.json",
+      "sha256": "d3054c8752453ce8893e6c955e24d484b288ee4edaac9b0db905c71d7f6fd17a",
+      "bytes": 7583,
+      "mtime_ns": 1793660882453945774
+    },
+    {
+      "file": "operations/STROKE_SUPPORT_DEVELOPMENT.json",
+      "sha256": "661be16b8fb2e5798f726b33f3eda77d0447c0b7ced16a3850241d1fc76926f0",
+      "bytes": 21869,
+      "mtime_ns": 1793655531713007622
+    },
+    {
+      "file": "operations/ITERATION_TIMING.json",
+      "sha256": "303b20445e13d16a47b392e0094e0aac6fb727a01fe75a4a9f43178859b139f6",
+      "bytes": 2292,
+      "mtime_ns": 1793651149036736180
+    },
+    {
+      "file": "operations/publish_resolved_geometry_sources_v1.py",
+      "sha256": "1bf80bb2aa0d0c9dbdd5e9fb467d91ad89d0ae4c2b377ca183c5ebb854be6ee3",
+      "bytes": 5651,
+      "mtime_ns": 1793660882457626106
+    },
+    {
+      "file": "operations/CURRENT_HANDOFF.json",
+      "sha256": "4e79c9bcc925be93943be9e105ba900f819f97087af4e9ae4b6fd0397cefc71d",
+      "bytes": 11679,
+      "mtime_ns": 1793660882456738846
+    },
+    {
+      "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
+      "sha256": "4ec4546a28302ebf32be86ce1b93473eb0fa770f9a2e377bf9465650ca4aa721",
+      "bytes": 18892,
+      "mtime_ns": 1793652838538878804
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_NORMAL_PRESERVATION.json",
+      "sha256": "c16cc9911deaed004a468dcf2d5fce17c328cbaa33b88e96a72cb8773f2b187f",
+      "bytes": 637,
+      "mtime_ns": 1793660882454948660
+    },
+    {
+      "file": "operations/SEMANTIC_ROUND_PUBLICATION.json",
+      "sha256": "8bf8b007c2217b959cd41de0c3663832329fd88a51db0a15df69503a1a67e296",
+      "bytes": 3619,
+      "mtime_ns": 1793652191184574065
+    },
+    {
+      "file": "operations/COMPACT_SOURCE_ADMISSION_PROGRESS2.json",
+      "sha256": "8809737fb61b47b0ad903be5f7a656458adf554fb5ab1806fd588ab077572c4b",
+      "bytes": 3201,
+      "mtime_ns": 1793660882455868628
+    },
+    {
+      "file": "operations/RESOLVED_GEOMETRY_BROWSER_CONTROLS.json",
+      "sha256": "f420451dbc6e57d49c97f3f01d5ba3926870198eef5cff3091e432a0e6daebd5",
+      "bytes": 3379,
+      "mtime_ns": 1793660882453453685
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

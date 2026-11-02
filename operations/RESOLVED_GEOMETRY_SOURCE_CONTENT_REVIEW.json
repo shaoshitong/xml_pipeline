@@ -1,0 +1,10 @@
+{
+  "id": "332efaa1e373c717ff5ccbaf723e1662944dda4077fd2b56fa2a03f140002d95",
+  "original_reference_sha256": "5b39b1e366cdcc8b6132d28e0e00fc24138835bd9c79731cb039d4f9b003352e",
+  "native_image_sha256": "de5cb98f01b19c852fc4f6de905ce4f5905d8aaf276e7f30a16621fc534187f8",
+  "actual_source_and_native_PNGs_inspected": true,
+  "finding": "The unreadable stacked legend already exists in the original reference and is reproduced in the native output. Source-content defect; do not change original source or lower the value gate.",
+  "strict_main_admitted": false,
+  "new_normal_calls": 0,
+  "new_QA_calls": 0
+}

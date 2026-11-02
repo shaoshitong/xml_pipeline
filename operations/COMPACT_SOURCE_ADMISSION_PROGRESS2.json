@@ -1,0 +1,47 @@
+{
+  "QA_calls": 0,
+  "at_utc": "2026-11-02T23:07:48.700877+00:00",
+  "candidate_emissions": 0,
+  "completed": 31,
+  "counts": {
+    "admitted": 10,
+    "error": 1,
+    "queued": 322,
+    "running": 12,
+    "unsupported": 20
+  },
+  "elapsed_seconds": 29.728743935003877,
+  "finished": false,
+  "goal_complete": false,
+  "model_calls": 0,
+  "normal_conversion_calls": 0,
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+  "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+  "total": 365,
+  "owner": {
+    "at_utc": "2026-11-02T23:07:18.972361+00:00",
+    "birth_ticks": "1145256035",
+    "pid": 3080485
+  },
+  "live": true,
+  "error_examples": [
+    {
+      "QA_calls": 0,
+      "at_utc": "2026-11-02T23:07:19.662232+00:00",
+      "candidate_emissions": 0,
+      "elapsed_seconds": 15.66567556373775,
+      "error_type": "ValueError",
+      "finished_at": "2026-11-02T23:07:35.327948+00:00",
+      "id": "5e74bf58a8c97b92e1a839919c0a990170af86257fd56bb938345381d7544ebb",
+      "model_calls": 0,
+      "normal_conversion_calls": 0,
+      "reason": "native_bezier_control_filter_would_change_source_curve",
+      "source_code_sha256": "69ba940fe15c98d8c5aeead6a293446519eb0fab93063aa48ec087331d76da1e",
+      "source_image_sha256": "78c3824b36f769d02560283bf6d97b8c2bfd74b297f32ad591865bf26e3c0460",
+      "source_observation_work": "/backup/shaoshitong/img2code_20261029/conversion/compiler_svg_scene_frontend_v22/source/5e74bf58a8c97b92e1a839919c0a990170af86257fd56bb938345381d7544ebb/de6ef83535d547338c7116b4bf1adb83",
+      "source_reference_and_physical_font_reproduced": true,
+      "status": "error",
+      "traceback": "Traceback (most recent call last):\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/source_resolved_geometry_admission_v1.py\", line 22, in case\n    dom=prepared['capture']['dom'];features=core.source_features(dom,prepared['size']);allowed={o['id']for o in dom['objects']if leaf_alpha_source_supported(o,dom)}\n                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_general_guard_v18.py\", line 37, in source_features\n    semantic,binding=derive(dom,size);owners={b['owner'] for b in binding['bindings']};failures=[]\n                     ^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/compiler_svg_scene_backend_v16.py\", line 181, in derive\n    obj=objects[binding['owner']];ir=compile_path(path_for(obj),obj['matrix'])\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_native_bezier_ir_v1.py\", line 71, in compile_path\n    pieces=subdivide(segment)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/backup/shaoshitong/img2code_20261029/conversion/scripts/svg_native_bezier_ir_v1.py\", line 68, in subdivide\n    raise ValueError('native_bezier_control_filter_would_change_source_curve')\nValueError: native_bezier_control_filter_would_change_source_curve\n"
+    }
+  ]
+}

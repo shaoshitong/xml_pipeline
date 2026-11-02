@@ -1,0 +1,16 @@
+{
+  "catalog": {
+    "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_resolved_geometry_20261102_v13.json",
+    "sha256": "656371136cc509bb7bf6d5398fd5f081537bf731e9f710520112b034dcd044c1"
+  },
+  "normal_receipts": {
+    "file": "conversion/source_core_manual_resolved_geometry_catalog_v1/43eaa1c344004912a596bb2207bf3be2/normal_receipts.json",
+    "sha256": "2b538faa4da04f6b091a86707e07381ae794a8afbb880476422ba692188a697c"
+  },
+  "preserved_normal_count": 1,
+  "same_source_core_reexecution_blocked": true,
+  "parent_catalog_unchanged": true,
+  "new_normal_calls": 0,
+  "QA_calls": 0,
+  "model_calls": 0
+}

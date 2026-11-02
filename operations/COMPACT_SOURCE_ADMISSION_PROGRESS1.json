@@ -1,0 +1,19 @@
+{
+  "QA_calls": 0,
+  "at_utc": "2026-11-02T23:07:21.830968+00:00",
+  "candidate_emissions": 0,
+  "completed": 4,
+  "counts": {
+    "queued": 349,
+    "running": 12,
+    "unsupported": 4
+  },
+  "elapsed_seconds": 2.8588737044483423,
+  "finished": false,
+  "goal_complete": false,
+  "model_calls": 0,
+  "normal_conversion_calls": 0,
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/source_resolved_geometry_admission_v1/66a1afa4a59e41f2af612d04b6d2636d",
+  "source_core_configuration_sha256": "24c4ae0a5ca0f3820803595adb77221cf3fdf4cd7ba6d0813281e3a9bd22114b",
+  "total": 365
+}
