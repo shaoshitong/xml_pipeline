@@ -1,0 +1,3 @@
+import datetime,json,os,sqlite3,subprocess
+from pathlib import Path
+R=Path('/backup/shaoshitong/img2code_20261029');W=R/'conversion';db=sqlite3.connect(W/'jobs.sqlite',timeout=60);files=list((W/'version_archive').glob('*/html_v2/diagram.drawio'));print(json.dumps({'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),'archived_files':len(files),'archived_xml_bytes':sum(x.stat().st_size for x in files),'last_mtime':max((x.stat().st_mtime for x in files),default=0),'html_states':dict(db.execute('select state,count(*) from jobs where format="html" group by state'))}));r=subprocess.run(['ps','-eo','pid,etime,stat,wchan:28,args'],capture_output=True,text=True);print('\n'.join(x for x in r.stdout.splitlines() if 'anaconda3/bin/python -' in x and 'ps -eo' not in x))

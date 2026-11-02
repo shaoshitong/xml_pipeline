@@ -1,0 +1,4 @@
+import sqlite3,json,time
+from native_worker import W,now
+from durable_sqlite import begin,commit
+D=sqlite3.connect(W/'jobs.sqlite',timeout=2);before=D.execute('select count(*) from jobs').fetchone()[0];assert before==131904;t=time.monotonic();retries=begin(D);D.execute('create index if not exists job_format_state_id_idx on jobs(format,state,id)');commit(D);after=D.execute('select count(*) from jobs').fetchone()[0];assert after==before;r={'at':now(),'index':'job_format_state_id_idx','definition':'jobs(format,state,id)','rows_before':before,'rows_after':after,'writer_retry_count':retries,'seconds':time.monotonic()-t,'plan':list(D.execute("explain query plan select id from jobs where format='svg' and state in ('rendered','needs_quality_repair') order by id limit 1"))};(W/'format_claim_index_audit.json').write_text(json.dumps(r,indent=2));print(json.dumps(r))

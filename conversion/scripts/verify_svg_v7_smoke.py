@@ -1,0 +1,8 @@
+import json,sqlite3,hashlib,io
+from pathlib import Path
+from PIL import Image
+from native_worker import R,W,native,now
+D=sqlite3.connect(W/'jobs.sqlite');summary=json.loads((W/'svg_v7_repair_smoke_summary.json').read_text());assert sum(x['processed'] for x in summary['results'])==4;events=[json.loads(s) for s in (W/'svg_v7_repair_events.jsonl').read_text().splitlines() if s];assert len(events)==4;results=[]
+for e in events:
+ id=e['id'];state,raw,pid=D.execute('select state,output_record,worker_pid from jobs where id=?',(id,)).fetchone();r=json.loads(raw);assert state!='svg_v6_repairing';assert e['published'],'Unexpected smoke failure';cp=W/'svg_v7_publication'/id;j=json.loads((cp/'committed.json').read_text());assert j['code_sha256']==r['code_sha256'] and j['image_sha256']==r['image_sha256'];xml=(R/r['code_file']).read_text();png=(R/r['image_file']).read_bytes();assert hashlib.sha256(xml.encode()).hexdigest()==r['code_sha256'];assert hashlib.sha256(png).hexdigest()==r['image_sha256'];w,h=Image.open(R/r['original_reference']).size;fresh=native.native_job(xml,w,h,90,W/'rendering_fonts/remote_render.py',8192,R/'evaluation/assets/drawio-runtime-v32.6.1/manifest.json');assert fresh['ok'] and fresh['png']==png;assert e['candidate_reference_ssim']>=e['previous_reference_ssim']-.01;results.append({'id':id,'hashes_match_db_and_checkpoint':True,'fresh_actual_native_png_identical':True,'regression_gate_passed':True,'state':state,'accepted':False})
+report={'at':now(),'ok':True,'results':results};(W/'svg_v7_smoke_verification.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))

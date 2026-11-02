@@ -1,0 +1,17 @@
+import json,sqlite3,hashlib,mimetypes,urllib.parse
+from PIL import Image
+from playwright.sync_api import sync_playwright
+from native_worker import R,W,native
+id='00415df3102c6167b8656ddfc48958e7c9e33b501c68fe381fa80147c050f411';D=sqlite3.connect(W/'jobs.sqlite');out=json.loads(D.execute('select output_record from jobs where id=?',(id,)).fetchone()[0]);code=(R/out['original_source_code']).read_text();assets=(R/out['original_asset_root']).resolve();assert assets.is_relative_to(R/'clean');assert hashlib.sha256(code.encode()).hexdigest()==out['source_code_sha256'];width,height=Image.open(R/out['original_reference']).size;B=W/'poster_header_layout'/id;B.mkdir(parents=True,exist_ok=True);blocked=[]
+with sync_playwright() as p:
+ browser=p.chromium.launch(executable_path='/home/shaoshitong/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',args=['--disable-dev-shm-usage']);ctx=browser.new_context(viewport={'width':width,'height':height},java_script_enabled=False,service_workers='block');page=ctx.new_page()
+ def route(req):
+  url=urllib.parse.urlparse(req.request.url)
+  if url.hostname!='source.invalid':blocked.append(req.request.url);req.abort();return
+  rel=urllib.parse.unquote(url.path.lstrip('/'))
+  if rel=='index.html':req.fulfill(body=code,content_type='text/html');return
+  target=(assets/rel).resolve()
+  if not target.is_relative_to(assets) or not target.is_file():blocked.append(rel);req.abort();return
+  req.fulfill(body=target.read_bytes(),content_type=mimetypes.guess_type(str(target))[0] or 'application/octet-stream')
+ ctx.route('**/*',route);page.goto('http://source.invalid/index.html',wait_until='networkidle');page.evaluate('document.fonts.ready');assert not blocked;dom=page.evaluate((W/'scripts/html_dom_clip.js').read_text());header=page.evaluate('''()=>{let rows=[];const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);while(w.nextNode()){let n=w.currentNode;if(!n.textContent.trim()||['STYLE','SCRIPT'].includes(n.parentElement.tagName))continue;let r=document.createRange();r.selectNodeContents(n);let b=r.getBoundingClientRect();if(b.y>180||b.bottom<0)continue;let cs=getComputedStyle(n.parentElement);let chars=[];for(const {segment,index} of new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(n.textContent)){let cr=document.createRange();cr.setStart(n,index);cr.setEnd(n,index+segment.length);let b=cr.getBoundingClientRect();chars.push({text:segment,x:b.x,y:b.y,width:b.width,height:b.height});}rows.push({text:n.textContent,html:n.parentElement.outerHTML.slice(0,2000),bbox:{x:b.x,y:b.y,width:b.width,height:b.height},font:cs.font,lineHeight:cs.lineHeight,margin:cs.margin,padding:cs.padding,textAlign:cs.textAlign,chars});}return rows;}''');(B/'source.png').write_bytes(page.screenshot());ctx.close();browser.close()
+xml=(R/out['code_file']).read_text();fresh=native.native_job(xml,width,height,120,W/'rendering_fontpositions/remote_render.py',8192,R/'evaluation/assets/drawio-runtime-v32.6.1/manifest.json');assert fresh['ok'];(B/'native.png').write_bytes(fresh['png']);native_rows=[x for x in fresh['native_render']['actual_text_positions'] if any(c['y']<180 for r in x['runs'] for c in r['chars'])];report={'id':id,'dom_header':[o for o in dom['objects'] if o['type']=='text' and o['y']<180],'source_header':header,'native_header':native_rows,'blocked':blocked};(B/'source_dom_clip.json').write_text(json.dumps(dom,indent=2));(B/'header_clip.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))

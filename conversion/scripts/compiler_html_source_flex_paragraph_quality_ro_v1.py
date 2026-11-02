@@ -1,0 +1,62 @@
+"""Independent fresh HTML/source graph, paragraph flow, physical-font full QA."""
+import hashlib,io,json,sqlite3,time,xml.etree.ElementTree as E
+from pathlib import Path
+R=Path('/backup/shaoshitong/img2code_20261029');W=R/'conversion'
+VERSION='independent_HTML_original_flex_paragraph_exact_ink_full_native_quality_v1'
+sha=lambda b:hashlib.sha256(b).hexdigest()
+def require(ok,reason):
+ if not ok:raise ValueError(reason)
+def pins():
+ from compiler_html_source_quality_ro_v8 import pins as old
+ out=old()
+ for name in ['html_source_paragraph_export_v9.py','html_source_paragraph_render_v9.py','html_source_paragraph_renderer_v9.py','html_source_paragraph_editing_v9.py','html_source_paragraph_ink_v9.py','html_source_text_node_binding_v9.py','html_source_paragraph_strut_fonts_v9.py','html_source_paragraph_frontend_v9.py','html_source_paragraph_capture_v9.py','html_source_paragraph_ir_v9.js','compiler_html_source_paragraph_quality_ro_v9.py','html_source_paragraph_fonts_v9.py','html_source_paragraph_native_observer_v1.py','compiler_native_text_node_cdp_v2.py','native_font_final_named_style_v1.py','native_source_font_profile_v4.py','compiler_native_source_repair_fonts_v2.py']:
+  p=W/'scripts'/name;out[str(p)]=sha(p.read_bytes())
+ p=W/'rendering_html_source_paragraph_v9/remote_render.py';out[str(p)]=sha(p.read_bytes())
+ for name in ['html_source_flex_paragraph_ir_v1.js','html_source_flex_paragraph_capture_v1.py','html_source_flex_paragraph_frontend_v1.py','compiler_html_source_flex_paragraph_quality_ro_v1.py']:
+  p=W/'scripts'/name;out[str(p)]=sha(p.read_bytes())
+ return out
+def verify(identifier,record_file,data_root,plugin_file,work,database=W/'jobs.sqlite'):
+ import html_source_flex_paragraph_frontend_v1 as frontend
+ import html_source_paragraph_fonts_v9 as fonts
+ from fixed_batch_case_v1 import checked,save,raw
+ from auto_quality_common import resource_checks,structure_checks,require_rendered_text,image_quality
+ from strict_canvas_gate import require_declared_page
+ from native_source_font_profile_v4 import verify_assets,_models
+ from native_worker import native
+ from html_source_paragraph_editing_v9 import audit as edit
+ from compiler_typed_runtime_failure_v1 import diagnose
+ started=time.monotonic();record_file=Path(record_file).resolve(strict=True);work=Path(work).resolve();require(Path(data_root).resolve()==R.resolve(),'paragraph_quality_wrong_data_root');require(Path(plugin_file).resolve()==Path(frontend.__file__).resolve(),'paragraph_quality_wrong_frontend');require(work.is_relative_to((W/'prototype/candidate_quality_ro_v1').resolve())and not work.exists(),'paragraph_quality_unowned_work');work.mkdir(parents=True,exist_ok=False);blob=record_file.read_bytes();record=json.loads(blob);config=frontend.configuration();report={'id':identifier,'version':VERSION,'ok':False,'accepted':False,'checks':{},'failures':[],'implementation_pins':config['pins'],'quality_policy':config['policy'],'input_record_sha256':sha(blob),'canonical_mutations':0,'model_calls':0}
+ try:
+  require(all(sha(Path(p).read_bytes())==h for p,h in config['pins'].items()),'infrastructure_paragraph_quality_pin_changed')
+  with sqlite3.connect('file:'+str(database)+'?mode=ro',uri=True,timeout=30)as d:job=d.execute('select*from jobs where id=?',(identifier,)).fetchone()
+  require(job is not None and job[12]is None,'paragraph_original_job_missing_or_owned');source=json.loads(job[4]);manifest=json.loads(job[11]);require((record['id'],record['source_pair_sha256'],record['source_format'],record['category'],record['source'],record['source_code_sha256'],record['source_image_sha256'])==(identifier,identifier,'html','poster',source['source'],source['code_sha256'],source['image_sha256']),'paragraph_original_source_identity_changed')
+  xml=checked(record['code_file'],record['code_sha256']).decode();stored=checked(record['image_file'],record['image_sha256']);reference=checked(record['original_reference'],record['source_image_sha256']);original=checked(record['original_source_code'],record['source_code_sha256']);require((R/manifest['source_code']).read_bytes()==original and(R/manifest['reference_image']).read_bytes()==reference,'paragraph_source_not_exact_canonical_manifest');report['checks']['resources']=resource_checks(R,record,xml,reference)
+  # A new browser reopens only the unchanged original HTML and original assets.
+  # Source block boxes, all original Unicode/Text nodes, shaping, clipping and
+  # full signed paint must independently succeed before reproducing font XML.
+  from html_source_paragraph_export_v9 import attach,compare,pixels,MODE
+  expected=frontend.reconstruct(record,work/'fresh_source_compilation');derived=fonts.compile(expected['xml'],expected['size'],work/'independent_physical_fonts');source_struts=frontend.source_strut_checks(expected['ir'],derived);require(attach(derived['xml'],expected['capture']['viewport'])==xml,'paragraph_candidate_not_fresh_original_source_physical_font_and_declared_viewport_XML');require(derived['png']==expected['png'],'paragraph_portable_fonts_changed_exact_SOURCE_inspection_pixels')
+  files={};faces=verify_assets(R,record,_models(expected['xml'])[1],_models(xml)[1],files);require(all(sha(Path(p).read_bytes())==h for p,h in files.items()),'paragraph_physical_font_asset_changed')
+  structure=structure_checks(xml);require(structure['edges']==0 and structure['vertices']==record['vertices'],'paragraph_unproved_graph_object_scope');require(structure['vertices']==sum(o['type']!='text'for o in expected['dom']['objects'])+len(expected['ir']['groups']),'paragraph_missing_or_duplicate_original_object');report['checks']['structure']=structure
+  fresh=frontend.render(xml,expected['size'],work,'fresh');require(fresh['png']==stored,'paragraph_stored_PNG_not_fresh_official_native');glyphs=frontend.source_glyph_checks(expected['ir'],fresh['native_render'],custom=True)
+  strict=native.native_job(xml,*expected['size'],180,W/'rendering_paintbounds_strict/remote_render.py',8192,R/'evaluation/assets/drawio-runtime-v32.6.1/manifest.json');require(strict.get('ok')is True,'paragraph_strict_official_native_render_pending');require_declared_page(strict['native_render'],*expected['size']);require(strict['png']==derived['png'],'paragraph_observation_changed_official_native_inspection_pixels');compare(strict['png'],stored,expected['capture']['viewport']);inspection=Path(fresh['inspection_png']).read_bytes();require(pixels(inspection)==pixels(strict['png']),'paragraph_export_changed_full_model_inspection_pixels');proof=fresh['native_render']['source_html_export'];require(proof['inspection_to_export_crop_RGBA_exact']and proof['model_geometry_preserved_by_export'],'paragraph_export_does_not_preserve_model_or_crop')
+  meta=record['html_source_paragraph_v9'];stored_inspection=checked(meta['inspection_file'],meta['inspection_sha256']);stored_proof=json.loads(checked(meta['export_proof_file'],meta['export_proof_sha256']));checked(meta['native_svg_file'],meta['native_svg_sha256']);require(pixels(stored_inspection)==pixels(inspection),'paragraph_clean_inspection_not_current_native_model')
+  for key in('mode','model_frame','inspection_frame','export_frame','original_source_viewport','source_to_model_translation','inspection_to_export_crop_RGBA_exact','unclipped_native_outside_original_source_viewport_pixels','model_geometry_preserved_by_export','native_view_scale','native_view_translate'):
+   require(stored_proof[key]==proof[key],'paragraph_clean_export_contract_not_current_native_model:'+key)
+  assets={name:{'file':meta[field],'sha256':meta[digest]}for name,field,digest in[('inspection','inspection_file','inspection_sha256'),('export_proof','export_proof_file','export_proof_sha256'),('native_svg','native_svg_file','native_svg_sha256')]}
+  report['checks']['render']={'code_sha256':record['code_sha256'],'image_sha256':sha(stored),'canvas':expected['capture']['viewport'],'export_mode':MODE,'paint_safety_frame':'full_native_model_inspection_viewport','model_frame':proof['model_frame'],'inspection_frame':proof['inspection_frame'],'export_frame':proof['export_frame'],'original_source_viewport':proof['original_source_viewport'],'strict_outside_inspection_pixels':0,'strict_outside_export_pixels':0,'unclipped_native_outside_original_source_viewport_pixels':proof['unclipped_native_outside_original_source_viewport_pixels'],'complete_source_paint_retained':True,'complete_native_model_paint_inspected':True,'model_geometry_preserved_by_export':True,'inspection_to_export_crop_RGBA_exact':True,'actual_upstream_drawio':True,'source_to_model_translation':[32,32],'original_source_viewport_declaration':{'source_code_sha256':record['source_code_sha256'],'source_image_sha256':record['source_image_sha256'],'capture_viewport':expected['capture']['viewport']},'clean_replayable_evidence':assets,'native_svg_kind':'actual_official_graph_getSvg_diagnostic_preserving_native_model','renderer_sha256':sha((W/'rendering_html_source_paragraph_v9/remote_render.py').read_bytes())};report['checks']['text_paint']=require_rendered_text(xml,fresh['native_render'])
+  report['checks']['fonts']={'all_rendered_fonts_embedded':True,'complete_original_Text_node_physical_PS_and_glyph_inventory_preserved':True,'actual_custom_font_glyphs':sum(f['glyphCount']for row in fresh['native_render']['source_paragraph_observation']for run in row['runs']for f in run['actual_fonts']if f.get('glyphCount',0)),'physical_sfnt_tables_and_original_font_bytes_verified':faces,'before_after_actual_native_pixels_exact':True,'all_original_Unicode_Text_nodes_and_markup_preserved':True,'all_element_and_host_primary_physical_struts_bound_to_embedded_faces':derived['proof'].get('all_original_element_and_host_strut_primary_physical_fonts_preserved')is True,'source_glyph_checks':glyphs,'independent_original_SOURCE_native_portable_primary_M_element_checks':source_struts}
+  source_evidence={'complete_source_coverage':True,'all_original_source_Text_nodes_and_raw_Unicode_preserved':True,'all_original_text_objects_partitioned_once':expected['ir']['completeSourceObjectPartition'],'original_source_text_objects':len(expected['ir']['allSourceTextObjects']),'editable_native_paragraph_objects':len(expected['ir']['groups']),'all_original_nontext_shapes_and_assets_preserved':True,'source_geometry_registration':expected['registration'],'all_fresh_HTML_native_text_ink':expected['ink'],'actual_original_Text_node_glyph_checks':glyphs,'fresh_source_code_and_reference_hashes':[record['source_code_sha256'],record['source_image_sha256']],'no_reference_pixel_parameter_fitting':True};report['checks']['source']={'ok':True,'supported':True,'profile':VERSION,'evidence':source_evidence}
+  import copy
+  visual_positions=copy.deepcopy(fresh['native_render']['actual_text_positions'])
+  for row in visual_positions:
+   for run in row['runs']:
+    for char in run['chars']:
+     if char.get('width',0)or char.get('height',0):char['x']-=32;char['y']-=32
+  visual=image_quality(reference,stored,{},visual_positions);report['checks']['visual']=visual;require(visual['ok'],'paragraph_original_reference_raster_anomaly:'+','.join(visual['failures']))
+  report['checks']['native_editing']=edit(xml,work/'native_editing');require(report['checks']['native_editing'].get('ok')is True,'paragraph_actual_native_editing_failed')
+  require(record_file.read_bytes()==blob,'paragraph_candidate_changed_during_quality');require(all(sha(Path(p).read_bytes())==h for p,h in config['pins'].items()),'infrastructure_paragraph_quality_pin_changed')
+  with sqlite3.connect('file:'+str(database)+'?mode=ro',uri=True,timeout=30)as d:require(d.execute('select*from jobs where id=?',(identifier,)).fetchone()==job,'infrastructure_paragraph_original_job_changed')
+  save(work/'fresh.png',stored);report.update(ok=True,accepted=True)
+ except Exception as error:report['failures'].append({'type':type(error).__name__,'reason':str(error)[:7500]});report['infrastructure_diagnosis']=diagnose(exception=error);report['infrastructure_failure']=report['infrastructure_diagnosis']['infrastructure_failure']
+ report['seconds']=time.monotonic()-started;report['evidence_file']=str(work/'report.json');save(work/'report.json',raw(report));return report

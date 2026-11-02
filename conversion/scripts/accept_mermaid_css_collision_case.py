@@ -1,0 +1,17 @@
+"""Case-specific acceptance after independent native replay and root visual review."""
+import json,sqlite3,os
+from native_worker import R,W,now,sha
+from durable_sqlite import begin,commit
+
+ID='047acd3596838a3e998ae96081f3d778bdec3210a6eb1e0ced7e4aafbe81733f'
+EXPECTED='dc927c7b956b130b5ea76128d3d4a3673b7ca83ce39deeb0b5241169cbcf9f63'
+D=sqlite3.connect(W/'jobs.sqlite',timeout=2);state,raw=D.execute('select state,output_record from jobs where id=?',(ID,)).fetchone();r=json.loads(raw);assert state=='needs_quality_repair' and r['code_sha256']==EXPECTED
+audit=json.loads((W/'mermaid_label_order_release_audit.json').read_text());checks=[x for x in audit['results'] if x['id']==ID];assert audit['ok'] and len(checks)==1 and checks[0]['code_sha256']==EXPECTED;check=checks[0];assert check['source_nodes']==15 and check['source_edges']==14 and check['endpoint_moves']==28 and check['backgrounds']==7 and check['actual_render_after_harness_roundtrip_identical']
+sourceaudit=json.loads((W/'mermaid_adapter_nonvisual_tests.json').read_text());assert sourceaudit['ok'] and any(x['id']==ID and x['legacy_css_collision_reproduced'] for x in sourceaudit['results'])
+pairdir=(R/r['code_file']).parent;assert sha((R/r['code_file']).read_bytes())==EXPECTED and sha((R/r['image_file']).read_bytes())==r['image_sha256'];assert json.loads((pairdir/'conversion.json').read_text())==r
+B=W/'mermaid_css_collision_acceptance'/ID;B.mkdir(parents=True,exist_ok=True);(B/'before_record.json').write_text(raw)
+review={'at':now(),'reviewer':'root','decision':'accepted_case_specific','code_sha256':EXPECTED,'image_sha256':r['image_sha256'],'evidence':'Root compared original and current native PNG side by side at readable scale after rejecting earlier black-edge/small-label version. All 15 named nodes, seven pink process connections and seven light-blue dashed stakeholder connections, seven gray-backed edge labels, source typography, node fills, relative positions and full page retained. Native arrowheads and curve antialiasing have small residual contour differences; no material omitted content, clipping, missing label, color substitution or group displacement observed.','source_content_and_render_audit':check,'source_css_preserved':True,'not_exact_original_pixels':True,'case_specific':True}
+(B/'root_acceptance.json').write_text(json.dumps(review,indent=2));r['root_review']=review;r['root_acceptance']=str((B/'root_acceptance.json').relative_to(R));r['quality_state']='accepted_source_css_geometry_fonts_and_root_visual_review';r['accepted_at_utc']=now();r['validation_pending']=[]
+begin(D);assert D.execute('select state,output_record from jobs where id=?',(ID,)).fetchone()==(state,raw);q=D.execute('select state from harness_queue_v3 where id=?',(ID,)).fetchone();assert not q or q[0]!='running'
+tmp=pairdir/'conversion.json.css-accept.tmp';tmp.write_text(json.dumps(r,ensure_ascii=False,indent=2));tmp.replace(pairdir/'conversion.json');D.execute('update jobs set state="accepted",output_record=?,error=NULL,worker_pid=NULL,updated_at=? where id=?',(json.dumps(r,ensure_ascii=False),now(),ID));D.execute('update harness_queue_v3 set state="resolved_by_deterministic_acceptance",error=NULL,worker_pid=NULL where id=?',(ID,));commit(D)
+assert sha((R/r['code_file']).read_bytes())==EXPECTED and sha((R/r['image_file']).read_bytes())==r['image_sha256'];print(json.dumps({'at':now(),'id':ID,'accepted':True,'new_native_xml_png_unchanged':True,'review':review}))

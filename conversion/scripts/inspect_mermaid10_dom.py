@@ -1,0 +1,6 @@
+import json
+from playwright.sync_api import sync_playwright
+from native_worker import R,W
+x=next(x for x in json.loads((W/'text_fidelity_selection.json').read_text()) if x['format']=='mermaid');code=(R/x['source_code']).read_text()
+with sync_playwright() as p:
+ b=p.chromium.launch(executable_path='/home/shaoshitong/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',args=['--disable-dev-shm-usage']);page=b.new_page();page.route('**/*',lambda r:r.abort());page.set_content('<html><body></body></html>');page.add_script_tag(path=str(W/'runtime/mermaid_versions/10.9.1/mermaid.min.js'));a=page.evaluate('''async code=>{mermaid.initialize({startOnLoad:false,securityLevel:'strict'});const result=await mermaid.render('test',code);document.body.innerHTML=result.svg;const d=await mermaid.mermaidAPI.getDiagramFromText(code);return {vertices:d.db.getVertices(),edges:d.db.getEdges(),groups:d.db.getSubGraphs(),nodes:[...document.querySelectorAll('g.node')].slice(0,2).map(e=>e.outerHTML),paths:[...document.querySelectorAll('.flowchart-link')].slice(0,3).map(e=>e.outerHTML),labels:[...document.querySelectorAll('g.edgeLabel')].slice(0,2).map(e=>e.outerHTML)};}''',code);b.close();print(json.dumps(a,ensure_ascii=False,indent=2))

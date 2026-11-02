@@ -1,0 +1,331 @@
+"""Bind execution-proven named TikZ paths; preserves source-native objects.
+
+This isolated prototype requires a verified execution sidecar and a fresh source
+DOM. It never parses/expands source macros, writes jobs, or publishes candidates.
+Only straight executed paths are currently supported. Curves fail explicitly.
+"""
+import collections,hashlib,html,json,math,re,statistics,xml.etree.ElementTree as E
+from tikz_literal_connectivity import Unsupported,norm,polyline,boundary,relative_label,source_text_match
+from svg_convert_v2 import num,color,stencil,style as svg_style
+from svg_convert_v3 import unpack,pack,distance
+from tikz_literal_graph import literal
+from tikz_literal_connectivity import balanced
+from tikz_execution_graph import graph_from_events
+
+TEX_PT_TO_PDF_BP=72/72.27
+
+
+def executed_plain_text(value):
+ """Decode formatting in already engine-expanded tokens; never expand macros.
+
+ Unknown commands/math stay unsupported instead of deleting their glyphs.
+ """
+ directives={'protect','tiny','scriptsize','footnotesize','small','normalsize','large','Large','LARGE','huge','Huge','bfseries','mdseries','itshape','slshape','upshape','sffamily','rmfamily','ttfamily','normalfont','selectfont','centering','raggedright','raggedleft'}
+ wrappers={'textbf','textit','textsl','textsf','textrm','texttt','textnormal','emph','underline'}
+ output=[];i=0
+ while i<len(value):
+  ch=value[i]
+  if ch=='$':raise Unsupported('Expanded mathematical text needs actual PDF glyph matching')
+  if ch in '{}':i+=1;continue
+  if ch!='\\':output.append(ch);i+=1;continue
+  i+=1
+  if i==len(value):raise Unsupported('Trailing backslash in expanded text')
+  if value[i] in '%&#_{}':output.append(value[i]);i+=1;continue
+  if value[i]=='\\':
+   output.append(' ');i+=1
+   while i<len(value) and value[i].isspace():i+=1
+   if i<len(value) and value[i]=='[':_,end=balanced(value[i:],0,'[',']');i+=end
+   continue
+  match=re.match('[A-Za-z@]+',value[i:])
+  if not match:raise Unsupported('Unknown expanded TeX text control')
+  command=match[0];i+=len(command)
+  while i<len(value) and value[i].isspace():i+=1
+  if command in directives:continue
+  if command in wrappers:continue
+  arguments={'color':1,'textcolor':1,'fontfamily':1,'fontsize':2,'hspace':1,'vspace':1}.get(command)
+  if arguments is None:raise Unsupported('Unverified expanded text command: '+command)
+  for _ in range(arguments):
+   while i<len(value) and value[i].isspace():i+=1
+   _,i=balanced(value,i)
+ return ''.join(output).strip()
+
+
+def _pt(value):
+ if not re.fullmatch(r'[-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)pt',value):raise Unsupported('Execution coordinate is not a literal TeX dimension')
+ return float(value[:-2])
+
+
+def _nodes(dom,graph):
+ objects=dom['objects'];shapes=[o for o in objects if o['type']=='shape'];found={}
+ for node in graph['nodes']:
+  label=executed_plain_text(node['expanded_label_tex']);matches=[]
+  for shape in shapes:
+   box=shape['bbox']
+   if shape['style']['fill']=='none' or min(box['w'],box['h'])<8:continue
+   texts=[]
+   for item in objects[objects.index(shape)+1:]:
+    if item['type']!='text':break
+    texts.append(item)
+   if texts and source_text_match(texts,label) and all(box['x']-.5<=t['bbox']['x']+t['bbox']['w']/2<=box['x']+box['w']+.5 and box['y']-.5<=t['bbox']['y']+t['bbox']['h']/2<=box['y']+box['h']+.5 for t in texts):matches.append(shape)
+  if len(matches)!=1:raise Unsupported('Execution node not uniquely identified in PDF source paint: '+node['name'])
+  found[node['name']]=matches[0]
+ if len({o['id'] for o in found.values()})!=len(found):raise Unsupported('Two executed nodes share one PDF shape')
+ return found
+
+
+def coordinate_mapping(dom,graph,root_matrix):
+ if len(root_matrix)!=6:raise Unsupported('Missing actual source SVG root ScreenCTM')
+ a,b,c,d,_,_=root_matrix
+ if abs(b)>1e-8 or abs(c)>1e-8 or min(a,d)<=0:raise Unsupported('Source SVG root transform is not positive axis aligned')
+ nodes=_nodes(dom,graph)
+ anchors=[n for n in graph['nodes'] if n['shape'] in ('rectangle','circle','ellipse')]
+ if len(anchors)<3:raise Unsupported('At least three symmetric named nodes required to verify the fixed-unit coordinate translation')
+ sx=a*TEX_PT_TO_PDF_BP;sy=-d*TEX_PT_TO_PDF_BP;offsets=[]
+ for node in anchors:
+  box=nodes[node['name']]['bbox'];x,y=map(_pt,node['center_pt']);offsets.append((box['x']+box['w']/2-sx*x,box['y']+box['h']/2-sy*y))
+ tx=statistics.median(x for x,y in offsets);ty=statistics.median(y for x,y in offsets)
+ errors=[math.hypot(x-tx,y-ty) for x,y in offsets]
+ if max(errors)>.05:raise Unsupported('Known TeXpt/PDFbp/SVG unit transform is inconsistent across named nodes: '+str(max(errors)))
+ xvalues=[_pt(n['center_pt'][0]) for n in anchors];yvalues=[_pt(n['center_pt'][1]) for n in anchors]
+ if max(xvalues)-min(xvalues)<10:raise Unsupported('Named nodes do not span enough horizontal extent for unit proof')
+ for node in graph['nodes']:
+  box=nodes[node['name']]['bbox'];px=sx*_pt(node['center_pt'][0])+tx;py=sy*_pt(node['center_pt'][1])+ty
+  if not (box['x']-.05<=px<=box['x']+box['w']+.05 and box['y']-.05<=py<=box['y']+box['h']+.05):raise Unsupported('Executed node center falls outside its uniquely matched source shape')
+ return {'matrix':[sx,0,0,sy,tx,ty],'tex_pt_to_pdf_bp':TEX_PT_TO_PDF_BP,'actual_svg_root_screen_ctm':root_matrix,'node_centers_checked':len(anchors),'source_nodes_label_shape_matched':len(nodes),'maximum_node_center_error_px':max(errors),'node_cell_ids':{name:o['id'] for name,o in nodes.items()}}
+
+
+def _mapped(point,mapping):
+ sx,_,_,sy,tx,ty=mapping['matrix'];return [sx*_pt(point[0])+tx,sy*_pt(point[1])+ty]
+
+
+def _softpath_points(value):
+ pattern=r'\\pgfsyssoftpath@(moveto|lineto)token\s*\{([^{}]+)\}\{([^{}]+)\}'
+ matches=list(re.finditer(pattern,value));remainder=re.sub(pattern,'',value).strip()
+ if remainder or not matches or matches[0][1]!='moveto' or any(m[1]!='lineto' for m in matches[1:]):raise Unsupported('Non-straight or multi-subpath PGF path needs exact native bezier/route support')
+ return [[m[2],m[3]] for m in matches]
+
+
+def _path_matches_execution(points,expected,edge):
+ if len(points)!=2 or len(expected)!=2:return False
+ start,end=expected;dx,dy=end[0]-start[0],end[1]-start[1];length=math.hypot(dx,dy)
+ if length<.1:return False
+ ux,uy=dx/length,dy/length
+ for index,(actual,target,arrow) in enumerate(zip(points,expected,(edge['start_arrow'],edge['end_arrow']))):
+  vx,vy=actual[0]-target[0],actual[1]-target[1]
+  if abs(vx*uy-vy*ux)>.05:return False
+  along=vx*ux+vy*uy
+  # PGF shortens the painted shaft for its separately painted marker.
+  if not arrow and abs(along)>.05:return False
+  if arrow and (abs(along)>20 or index==0 and along<-.05 or index==1 and along>.05):return False
+ return True
+
+
+def _marker_stroke(marker,shaft,native_style):
+ style=marker['style']
+ if style['stroke']=='none':return 'transparent'
+ if color(style['stroke'])!=color(shaft['style']['stroke']):raise Unsupported('Marker outline color differs from owning source shaft')
+ a,b,c,d,_,_=marker['matrix'];width=style['strokeWidth']*math.sqrt(abs(a*d-b*c))
+ if abs(width-float(native_style.get('strokeWidth',1)))>.001:raise Unsupported('Marker outline width differs from native shaft width')
+ if abs(style['opacity']*style['strokeOpacity']-shaft['style']['opacity']*shaft['style']['strokeOpacity'])>1e-8:raise Unsupported('Marker outline opacity differs from source shaft')
+ if style['linejoin']!='miter':raise Unsupported('Marker outline join requires another native marker representation')
+ return color(style['stroke'])
+
+
+def _verify_source_paint(xml,dom):
+ cells={c.get('id'):c for c in E.fromstring(xml).iter('mxCell')}
+ for obj in dom['objects']:
+  if obj['id'] not in cells:raise Unsupported('Source paint object missing from current native inventory')
+  actual=unpack(cells[obj['id']].get('style'))
+  expected=svg_style(obj) if obj['type']=='shape' else {'fontColor':color(obj['color']),'fontSize':num(obj['fontSize']),'opacity':num(obj['opacity']*100)} if obj['type']=='text' else {}
+  for key in ('fillColor','strokeColor','strokeWidth','fillOpacity','strokeOpacity','opacity','fontColor','fontSize'):
+   if key not in expected:continue
+   found=actual.get(key,{'opacity':'100','fillOpacity':'100','strokeOpacity':'100','strokeWidth':'1'}.get(key))
+   try:equal=abs(float(found)-float(expected[key]))<.001
+   except (TypeError,ValueError):equal=found==expected[key]
+   if not equal:raise Unsupported('Current native/source paint property mismatch: '+obj['id']+' '+key)
+
+
+def bind_execution(xml,dom,sidecar,events,root_matrix):
+ report={'version':'execution_named_graph_binding_prototype_v1','complete':False,'issues':[]}
+ try:
+  if not sidecar.get('ok') or not sidecar['graph'].get('ok'):raise Unsupported('Execution sidecar did not pass its source/trace/PDF proof')
+  if graph_from_events(events)!=sidecar['graph']:raise Unsupported('Execution graph no longer matches its actual trace')
+  if dom.get('issues'):raise Unsupported('Fresh PDF SVG has unsupported visible features: '+json.dumps(dom['issues'][:10]))
+  _verify_source_paint(xml,dom)
+  native_cells={c.get('id'):c for c in E.fromstring(xml).iter('mxCell')}
+  if any(c.get('edge')=='1' for c in native_cells.values()):raise Unsupported('This version requires the original unbound native inventory')
+  if any(c.get('vertex')=='1' and c.get('parent')!='1' for c in native_cells.values()):raise Unsupported('This version requires a flat source-painted vertex inventory')
+  for obj in dom['objects']:
+   if obj['type']!='text':continue
+   cell=native_cells.get(obj['id'])
+   if cell is None:raise Unsupported('Current native text object is absent')
+   expected=obj.get('nativeRotation',0) if obj.get('rotationHandled') else 0
+   if abs(float(unpack(cell.get('style')).get('rotation',0))-expected)>.01:raise Unsupported('Current native text has not preserved the actual source rotation')
+  graph=sidecar['graph'];mapping=coordinate_mapping(dom,graph,root_matrix);report['coordinate_mapping']=mapping
+  source_centers={n['name']:_mapped(n['center_pt'],mapping) for n in graph['nodes']}
+  for reference in graph['reference_events']:
+   if reference['name'] in source_centers and reference['anchor']=='center' and math.dist(_mapped(reference['point_pt'],mapping),source_centers[reference['name']])>.05:raise Unsupported('Executed named reference point disagrees with its source node center')
+  finishes={(e['fields'][0],e['fields'][1]):e['fields'][-1] for e in events if e['kind']=='finish'}
+  edges=[];by_path=collections.Counter((e['picture'],e['path']) for e in graph['edges'])
+  for executed in graph['edges']:
+   key=(executed['picture'],executed['path'])
+   if executed['operation']!='line' or by_path[key]!=1:raise Unsupported('Only one straight named segment per executed path is supported in this binding version')
+   points=[_mapped(p,mapping) for p in _softpath_points(finishes[key])]
+   labels=executed['executed_label_nodes']
+   if len(labels)>1:raise Unsupported('Multiple labels on one executed edge require grouped text matching')
+   edges.append({**executed,'label':executed_plain_text(labels[0]['expanded_label_tex']) if labels else '', 'source_anchor':None,'target_anchor':None,'route':'--','_executed_points':points,'_execution_path':list(key),'_label_center':_mapped(labels[0]['center_pt'],mapping) if labels else None})
+  retained_annotations=[];owned_annotations=[]
+  for annotation in graph['decorative_nodes']:
+   dependencies={d['name'] for d in annotation.get('executed_anchor_dependencies',[]) if d['name'] in mapping['node_cell_ids']}
+   if len(dependencies)!=2:retained_annotations.append(annotation['serial']);continue
+   choices=[e for e in edges if {e['source'],e['target']}==dependencies]
+   if len(choices)!=1:raise Unsupported('Executed annotation depends on an ambiguous semantic node pair')
+   edge=choices[0]
+   center=_mapped(annotation['center_pt'],mapping);start,end=edge['_executed_points'];dx,dy=end[0]-start[0],end[1]-start[1];length2=dx*dx+dy*dy;t=max(0,min(1,((center[0]-start[0])*dx+(center[1]-start[1])*dy)/(length2 or 1)));distance_to_path=math.dist(center,[start[0]+t*dx,start[1]+t*dy])
+   if distance_to_path>40:
+    # Reading an anchor in an at(...) expression does not prove the value was
+    # used. For example, a standalone node's midway style can override at(...)
+    # and actually place it at the origin. Preserve such original annotation
+    # objects, and report the unresolved attachment instead of guessing.
+    retained_annotations.append(annotation['serial']);report['issues'].append({'reason':'executed_annotation_position_not_on_its_anchor_pair_path','serial':annotation['serial'],'distance_px':distance_to_path});continue
+   if edge['label']:raise Unsupported('Executed edge already has another label')
+   edge['label']=executed_plain_text(annotation['expanded_label_tex']);edge['_label_center']=center;owned_annotations.append({'serial':annotation['serial'],'edge_path':edge['_execution_path'],'dependencies':sorted(dependencies)})
+  source={'nodes':{n['name']:executed_plain_text(n['expanded_label_tex']) for n in graph['nodes']},'edges':edges,'parser':'actual_pgf_execution_named_nodes_v1'}
+  candidate,binding=_bind_objects(xml,dom,source)
+  if not binding['complete']:report['issues'].extend(binding['issues']);return xml,report
+  report.update(complete=True,coordinate_mapping=mapping,binding=binding,source_nodes=len(source['nodes']),source_edges=len(edges),owned_executed_annotations=owned_annotations,retained_free_annotation_serials=retained_annotations)
+  return candidate,report
+ except (ValueError,KeyError,TypeError) as exc:
+  report['issues'].append({'reason':'execution_binding_unsupported','error':str(exc)})
+  return xml,report
+
+
+def _bind_objects(xml,dom,source):
+ report={'version':'tikz_literal_nodes_binding_v1','complete':False,'issues':[]}
+ try:
+  report['source_graph']={k:v for k,v in source.items() if not k.startswith('_')};root=E.fromstring(xml);cr=root.find('.//mxGraphModel/root');cells={c.get('id'):c for c in cr};objs=dom['objects'];shapes=[o for o in objs if o['type']=='shape'];texts=[o for o in objs if o['type']=='text'];groups=collections.defaultdict(list)
+  for t in texts:groups[t['sourceId'].split('_')[0]].append(t)
+  # Bind only a current native object set that still matches the actual source DOM.
+  if {c.get('id') for c in cr if c.get('vertex')=='1'}!={o['id'] for o in objs}:raise Unsupported('native/source object inventory differs')
+  from svg_convert_v2 import stencil
+  for obj in shapes:
+   expected,bounds=stencil(obj);cell=cells[obj['id']];geometry=cell.find('mxGeometry')
+   if unpack(cell.get('style')).get('shape')!=expected or any(abs(float(geometry.get(k,'0'))-v)>1e-4 for k,v in zip(('x','y','width','height'),bounds)):raise Unsupported('native/source shape geometry changed')
+  for obj in texts:
+   if norm(cells[obj['id']].get('value',''))!=norm(obj['text']):raise Unsupported('native/source text changed')
+  node_objs={};node_texts={}
+  for name,label in source['nodes'].items():
+   candidates=[]
+   for o in shapes:
+    b=o['bbox']
+    if o['style']['fill']=='none' or min(b['w'],b['h'])<8:continue
+    inside=[]
+    for t in objs[objs.index(o)+1:]:
+     if t['type']!='text':break
+     inside.append(t)
+    # TikZ paints its node shape followed by its complete text block. Preserve all
+    # contiguous PDF text traces, including wrapping, without capturing overlapping
+    # labels belonging to later source drawing operations.
+    if inside and source_text_match(inside,label) and all(b['x']-.5<=t['bbox']['x']+t['bbox']['w']/2<=b['x']+b['w']+.5 and b['y']-.5<=t['bbox']['y']+t['bbox']['h']/2<=b['y']+b['h']+.5 for t in inside):candidates.append((o,inside))
+   if len(candidates)!=1:raise Unsupported('node label not uniquely matched: '+name)
+   node_objs[name],node_texts[name]=candidates[0]
+  if len({o['id'] for o in node_objs.values()})!=len(node_objs):raise Unsupported('multiple source nodes mapped to same shape')
+  paths=[]
+  for o in shapes:
+   if o['style']['fill']=='none' and o['style']['stroke']!='none':
+    pts=polyline(o)
+    if len(pts)>=2 and distance(pts[0],pts[-1])>.1:paths.append((o,pts))
+  if len(paths)!=len(source['edges']):raise Unsupported(f'path/edge coverage differs: {len(paths)} versus {len(source["edges"])}')
+  bindings=[];used=set()
+  for edge in source['edges']:
+   matches=[]
+   for o,pts in paths:
+    if _path_matches_execution(pts,edge['_executed_points'],edge):matches.append((o,pts))
+   if len(matches)!=1 or matches[0][0]['id'] in used:raise Unsupported('executed source path not uniquely matched to PDF shaft: '+str(edge['_execution_path']))
+   o,pts=matches[0];used.add(o['id']);bindings.append((edge,o,[list(p) for p in pts]))
+  # All semantic matches must pass before changing the XML.
+  arrow_reports=[];label_reports=[];coverage={};consumed=set()
+  for edge,o,points in bindings:
+   c=cells[o['id']];s=unpack(c.get('style'));s.pop('shape',None);s.update(fillColor='none',endArrow='none',startArrow='none',edgeStyle='none',rounded='0');c.attrib.pop('vertex',None);c.set('edge','1');c.set('source',node_objs[edge['source']]['id']);c.set('target',node_objs[edge['target']]['id']);c.remove(c.find('mxGeometry'))
+   for side,terminal,index in [('start',edge['source'],0),('end',edge['target'],-1)]:
+    if edge[side+'_arrow']:
+     # PDF paint order keeps an arrow adjacent to its own shaft, even when tips overlap.
+     index_o=objs.index(o);following=objs[index_o+1:index_o+3];arrow_options=[];p=points[index];q=points[1 if side=='start' else -2];dx,dy=p[0]-q[0],p[1]-q[1];length=math.hypot(dx,dy);ux,uy=dx/length,dy/length
+     for a in following:
+      if a['type']!='shape' or a['style']['fill']=='none' or a['id'] in consumed or color(a['style']['fill'])!=color(o['style']['stroke']):continue
+      b=a['bbox']
+      if max(b['w'],b['h'])>20:continue
+      try:poly=polyline(a)
+      except Unsupported:continue
+      tip=max(poly,key=lambda z:z[0]*ux+z[1]*uy);back=min(z[0]*ux+z[1]*uy for z in poly);alen=tip[0]*ux+tip[1]*uy-back;awidth=max(-z[0]*uy+z[1]*ux for z in poly)-min(-z[0]*uy+z[1]*ux for z in poly)
+      if distance(tip,p)>20 or alen<.1:continue
+      arrow_options.append((a,tip,alen,awidth))
+     if len(arrow_options)!=1:raise Unsupported('arrowhead not uniquely matched in PDF paint order')
+     a,tip,alen,awidth=arrow_options[0];sw=float(s.get('strokeWidth',1));poly=polyline(a)
+     if len(poly)>1 and distance(poly[0],poly[-1])<1e-6:poly=poly[:-1]
+     if len(poly) not in (3,4):raise Unsupported('marker contour requires separate native representation')
+     marker_stroke=_marker_stroke(a,o,s)
+     if abs(a['style']['opacity']*a['style']['fillOpacity']-o['style']['opacity']*o['style']['strokeOpacity'])>1e-8:raise Unsupported('marker opacity differs from shaft')
+     base='block' if len(poly)==3 else 'classic';marker=base+'Thin' if abs(awidth/alen-2/3)<abs(awidth/alen-1) else base
+     s.update({side+'Arrow':marker,side+'Size':num(max(.1,alen-sw)),side+'Fill':'1',side+'FillColor':color(a['style']['fill']),side+'StrokeColor':marker_stroke});points[index]=[tip[0]+ux*sw*1.118,tip[1]+uy*sw*1.118];cr.remove(cells[a['id']]);consumed.add(a['id']);arrow_reports.append({'source_object':a['id'],'edge':c.get('id'),'side':side,'marker':marker,'source_width_length_ratio':awidth/alen,'source_marker_stroke':a['style']['stroke'],'native_marker_stroke':marker_stroke,'source_polygon_vertices':len(poly),'note':'Source fill/outline colors, opacity and shaft-matched stroke width retained; native notch contour requires a separate local-raster gate'})
+    b=node_objs[terminal]['bbox'];prefix='exit' if side=='start' else 'entry';s.update({prefix+'X':num((points[index][0]-b['x'])/b['w']),prefix+'Y':num((points[index][1]-b['y'])/b['h']),prefix+'Perimeter':'0'})
+   c.set('style',pack(s));g=E.SubElement(c,'mxGeometry',{'relative':'1','as':'geometry'});arr=E.SubElement(g,'Array',{'as':'points'})
+   for x,y in points[1:-1]:E.SubElement(arr,'mxPoint',{'x':num(x),'y':num(y)})
+   if edge['label']:
+    options=[ts for ts in groups.values() if source_text_match(ts,edge['label'])]
+    if not options:
+     node_text_ids={t['id'] for ts in node_texts.values() for t in ts};seen_options=set()
+     for background in shapes:
+      if background['id'] in {v['id'] for v in node_objs.values()} or background['style']['fill']=='none':continue
+      bb=background['bbox'];ts=[t for t in texts if t['id'] not in node_text_ids and bb['x']<=t['bbox']['x']+t['bbox']['w']/2<=bb['x']+bb['w'] and bb['y']<=t['bbox']['y']+t['bbox']['h']/2<=bb['y']+bb['h']]
+      ids=tuple(t['id'] for t in ts)
+      if ts and source_text_match(ts,edge['label']) and ids not in seen_options:options.append(ts);seen_options.add(ids)
+    if edge.get('_label_center') and options:
+     center=edge['_label_center'];ranked=[]
+     for ts in options:
+      x0=min(t['bbox']['x'] for t in ts);y0=min(t['bbox']['y'] for t in ts);x1=max(t['bbox']['x']+t['bbox']['w'] for t in ts);y1=max(t['bbox']['y']+t['bbox']['h'] for t in ts);delta=math.hypot((x0+x1)/2-center[0],(y0+y1)/2-center[1]);ranked.append((delta,max(2,(y1-y0)*.75+1),ts))
+     ranked.sort(key=lambda x:x[0])
+     if ranked[0][0]>ranked[0][1] or len(ranked)>1 and ranked[1][0]-ranked[0][0]<1:raise Unsupported('executed label position does not uniquely match PDF glyphs')
+     options=[ranked[0][2]]
+    if len(options)!=1:raise Unsupported('edge label not uniquely matched')
+    ts=options[0];paintboxes=[t.get('originalBoundingBox',t['bbox']) for t in ts];tx=min(b['x'] for b in paintboxes);ty=min(b['y'] for b in paintboxes);tr=max(b['x']+b['w'] for b in paintboxes);tb=max(b['y']+b['h'] for b in paintboxes)
+    # Own the original label's painted background as well as every text fragment.
+    backgrounds=[]
+    for obj in shapes:
+     if obj['id'] in {v['id'] for v in node_objs.values()} or obj['id'] in consumed or obj['style']['fill']=='none':continue
+     bb=obj['bbox'];aa,ab,ac,ad,_,_=obj['matrix'];paint_pad=float(obj['style']['strokeWidth'])*math.sqrt(abs(aa*ad-ab*ac))/2
+     # SVG geometry bounds exclude the actual stroke; text line boxes may reach into it.
+     if objs.index(obj)<min(objs.index(t) for t in ts) and bb['x']-paint_pad<=tx and bb['y']-paint_pad<=ty and bb['x']+bb['w']+paint_pad>=tr and bb['y']+bb['h']+paint_pad>=tb and bb['w']*bb['h']<=4*max(1,(tr-tx)*(tb-ty)):backgrounds.append(obj)
+    if len(backgrounds)>1:raise Unsupported('edge label background ambiguous')
+    first_text=min(objs.index(t) for t in ts);prior=objs[first_text-1] if first_text else None
+    if prior and prior['type']=='shape' and prior['style']['fill']!='none' and prior['id'] not in {v['id'] for v in node_objs.values()}:
+     bb=prior['bbox'];cx=(tx+tr)/2;cy=(ty+tb)/2
+     if bb['x']<=cx<=bb['x']+bb['w'] and bb['y']<=cy<=bb['y']+bb['h'] and prior not in backgrounds:raise Unsupported('source label paint background is not safely owned')
+    owned=backgrounds+ts;box=[min(o['bbox']['x'] for o in owned),min(o['bbox']['y'] for o in owned),max(o['bbox']['x']+o['bbox']['w'] for o in owned),max(o['bbox']['y']+o['bbox']['h'] for o in owned)]
+    gid='tikz_label_'+c.get('id');assert gid not in cells
+    group=E.Element('mxCell',{'id':gid,'vertex':'1','parent':'1','connectable':'0','style':'group;fillColor=none;strokeColor=none;container=1;recursiveResize=1;'})
+    E.SubElement(group,'mxGeometry',{'x':num(box[0]),'y':num(box[1]),'width':num(box[2]-box[0]),'height':num(box[3]-box[1]),'as':'geometry'})
+    relative_label(group,c,points);cr.append(group)
+    for obj in owned:
+     child=cells[obj['id']];child.set('parent',gid);cg=child.find('mxGeometry');cg.set('x',num(float(cg.get('x',0))-box[0]));cg.set('y',num(float(cg.get('y',0))-box[1]));consumed.add(obj['id'])
+    label_reports.append({'source_label':edge['label'],'edge':c.get('id'),'label_group':gid,'children':[t['id'] for t in ts],'backgrounds':[o['id'] for o in backgrounds]})
+   coverage[c.get('id')]={'source':edge['source'],'target':edge['target'],'source_pdf_path':o['sourceId']}
+  for name,o in node_objs.items():
+   b=o['bbox'];c=cells[o['id']];s=unpack(c.get('style'));s['container']='1';s['recursiveResize']='1';c.set('style',pack(s))
+   for t in node_texts[name]:
+    tc=cells[t['id']];tc.set('parent',o['id']);g=tc.find('mxGeometry');g.set('x',num(float(g.get('x',0))-b['x']));g.set('y',num(float(g.get('y',0))-b['y']))
+  # Stable topological ordering retains all peer paint order and ensures parent decoding.
+  pending=list(cr);ordered=[];seen=set()
+  while pending:
+   progressed=False
+   for child in pending[:]:
+    if child.get('parent') is None or child.get('parent') in seen:
+     ordered.append(child);seen.add(child.get('id'));pending.remove(child);progressed=True
+   if not progressed:raise Unsupported('cyclic or missing parent')
+  for child in list(cr):cr.remove(child)
+  cr.extend(ordered)
+  report.update(complete=True,nodes={k:v['id'] for k,v in node_objs.items()},bound_edges=coverage,native_arrowheads=arrow_reports,edge_child_labels=label_reports,source_text_nodes=len(source['nodes']),source_edges=len(source['edges']),source_hyphenation_matches=[{'source_node':name,'source_label':source['nodes'][name],'rendered_fragments':[t['text'] for t in ts],'native_glyphs_preserved':True} for name,ts in node_texts.items() if norm(''.join(t['text'] for t in ts))!=norm(source['nodes'][name])])
+  if arrow_reports:report['issues'].append({'reason':'native_arrow_contour_approximation_requires_visual_review','count':len(arrow_reports)})
+  return E.tostring(root,encoding='unicode'),report
+ except (Unsupported,ValueError,KeyError) as e:
+  report['issues'].append({'reason':'tikz_source_connectivity_unresolved','error':str(e)});return xml,report
