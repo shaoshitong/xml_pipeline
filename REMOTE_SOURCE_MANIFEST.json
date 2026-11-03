@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T11:47:24.322625+00:00",
+  "at_utc": "2026-11-03T12:11:21.062102+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -649,6 +649,12 @@
       "sha256": "925ca4f93e9a0bc6feb1a449fb9eda650c35ef3da3e708ab1d90d1b7c337cffb",
       "bytes": 12725,
       "mtime_ns": 1793702520807725410
+    },
+    {
+      "file": "conversion/scripts/arxiv_embedded_XML_parallel_prefilter_v1.py",
+      "sha256": "958decbfcfe33a6b900852b7c3d1aae36767b31d1ff465dff3b8df1652051ee9",
+      "bytes": 9343,
+      "mtime_ns": 1793707371833973655
     },
     {
       "file": "conversion/scripts/arxiv_goal500_progress_v1.py",
@@ -8875,6 +8881,12 @@
       "sha256": "1bb569fa3939f2ba19455cccab4df246457a9a01bba2bbe561556de6737ef52d",
       "bytes": 1240,
       "mtime_ns": 1793702344700879193
+    },
+    {
+      "file": "conversion/scripts/test_arxiv_embedded_XML_parallel_prefilter_v1.py",
+      "sha256": "0b6f19cd644fed6f6755d7563926bf0b5d9693950f2f1121f8a8c5167e0e65a8",
+      "bytes": 4881,
+      "mtime_ns": 1793707338261842390
     },
     {
       "file": "conversion/scripts/test_arxiv_lan_source_relay_v1.py",
