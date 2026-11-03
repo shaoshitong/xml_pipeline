@@ -63,3 +63,35 @@ one global PDF claim, 50 retries of one byte reservation, preservation of old
 budget usage, idempotent enqueue and all five non-overlapping shard deliveries.
 Production validation additionally requires two measured byte/paper/result deltas
 and checks for actual errors. Startup or heartbeat alone is insufficient.
+
+Update 2026-11-03 08:00 UTC: all five nodes are deployed and have real source-byte
+and paper-progress observations. HKUST4/5 completed their initial cached metadata
+shards fastest. HKUST1/2/3 are slower; their source speed floor is now disabled and
+a 600-second stream watchdog preserves partials instead of imposing 64 KiB/s.
+Transient truncation, HTTP 408 and server 5xx remain network pending, not completed
+papers. Worker handover freezes only the owned task process group and verifies no
+active paper/PDF claim before restarting; partials and outboxes stay intact.
+
+OAI returns HTTP503 for the current October token and fresh November partitions.
+The feeder now prioritizes untouched partitions over repeatedly failing ones.
+The failures remain pending; no metadata-exhausted or 500-pair completion is claimed.
+
+A generic official-renderer issue affected 518 preserved author-XML recoveries:
+math was disabled in the old Editor initialization. A versioned math renderer
+loads only the official offline bundle from the same pinned WAR. The official
+MathJax SVG font cache is disabled to avoid changing per-export glyph IDs; all
+existing exact model, topology, SVG and actual PNG/RGBA restoration gates remain.
+A fresh synthetic formula passed those unchanged strict gates.
+
+`arxiv_math_source_repair_v1.py` selects 2023+ structurally valuable unprocessed
+source-replay cases from that preserved XML. It never invokes a PDF importer and
+never alters old failures or accepted payloads. The new once ledger uses queued
+and committed attempt states; saved child results are recovered without repeating
+conversion after controller handover. It has two cold source-replay workers.
+
+The first measured recovery batch produced 34 fully verified source replays.
+Many other recovered XML files fail the existing exact model/pixel restore gates
+and remain pending; enabling math does not make them acceptable automatically.
+A snapshot-restore v2 prototype failed its fresh source probe and is not deployed
+as the production recipe. Final scientific-value review is still required for
+each newly accepted goal500 pair. The goal remains active and below +500.

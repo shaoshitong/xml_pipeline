@@ -182,7 +182,7 @@ def download_direct_source(self, paper):
                     if out.tell() > 128 * 1024 ** 2:
                         raise ValueError('typed_skip_source_above128MiB')
                     wall = time.perf_counter() - stream_start
-                    if wall > 90 and received / wall < 64 * 1024:
+                    if wall > 90 and received / wall < 64 * 1024 and not getattr(self, 'allow_slow_direct', False):
                         raise engine.requests.exceptions.ConnectionError('network_source_below64KiB_s_for90s')
                 out.flush()
                 os.fsync(out.fileno())
@@ -200,7 +200,9 @@ def download_direct_source(self, paper):
         reason = type(e).__name__ + ':' + str(e)[:1000]
         self.emit('source_download_failed', paper=ident, reason=reason)
         self.save()
-        return {'error': reason, 'network_failure': isinstance(e, (engine.requests.ConnectionError, engine.requests.Timeout))}
+        status = getattr(getattr(e, 'response', None), 'status_code', None)
+        retryable = isinstance(e, (engine.requests.ConnectionError, engine.requests.Timeout, engine.requests.exceptions.ChunkedEncodingError, engine.requests.exceptions.ContentDecodingError)) or (status is not None and (status in [403, 408, 429] or status >= 500)) or str(e) in ['incomplete_source_content_length', 'range_resume_not_confirmed', 'resume_overlap_does_not_match_original']
+        return {'error': reason, 'network_failure': retryable}
 
 
 class DirectState(previous.UnicodeSafeState):
@@ -375,7 +377,9 @@ def run(pilot):
                     time.sleep(5)
                     continue
                 break
-            unit = available[0]
+            # A failed endpoint/token must not indefinitely head-block every
+            # untouched date/category partition. Failures remain pending.
+            unit = min(available, key=lambda u: u.get('failures', 0))
             try:
                 papers, next_token = metadata(unit)
                 known = {r[0] for r in state.db.execute('select id from papers')}

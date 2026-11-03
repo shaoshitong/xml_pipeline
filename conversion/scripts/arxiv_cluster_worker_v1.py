@@ -6,6 +6,7 @@ No models, system proxy, global DNS, VPS or Mac bulk transfer is involved.
 from pathlib import Path
 import argparse, concurrent.futures as cf, datetime, fcntl, hashlib, io, json, os
 import shutil, sqlite3, sys, tarfile, threading, time, uuid
+import socket
 import requests
 
 STOP = False
@@ -77,8 +78,17 @@ def main(root, config_path):
     class Body:
         def __init__(self,response):self.r=response
         def __getattr__(self,k):return getattr(self.r,k)
-        def __enter__(self):self.r.__enter__();return self
-        def __exit__(self,*a):return self.r.__exit__(*a)
+        def __enter__(self):
+            self.r.__enter__()
+            def abort():
+                try:self.r.raw._fp.fp.raw._sock.shutdown(socket.SHUT_RDWR)
+                except (AttributeError,OSError):pass
+                self.r.close()
+            self.timer=threading.Timer(600,abort);self.timer.daemon=True;self.timer.start()
+            return self
+        def __exit__(self,*a):
+            self.timer.cancel()
+            return self.r.__exit__(*a)
         def iter_content(self,size):
             it=self.r.iter_content(size)
             while True:
@@ -89,6 +99,7 @@ def main(root, config_path):
                 with counterlock:counters['actual_source_bytes']+=len(b)
                 yield b
     class State(direct.DirectState):
+        allow_slow_direct=True
         def request(self,url,stream=False,headers=None,api=False):
             permit=rpc('rate');time.sleep(permit['wait_seconds'])
             response=self.session().get(url,stream=stream,headers=headers,timeout=(12,25))

@@ -74,7 +74,7 @@ def snapshot():
     baseline_exact_bytes = {(row['code_sha256'], row['image_sha256']) for row in baseline}
     cachefile = D / 'verified_pair_cache.json'
     cache = json.loads(cachefile.read_text()) if cachefile.exists() else {}
-    sources = [P / 'author_native_source_replay_v1/published_source_replay_v2/source_replay_aligned.jsonl', P / 'author_native_source_replay_incremental_v1/author_native_source_replay.jsonl']
+    sources = [P / 'author_native_source_replay_v1/published_source_replay_v2/source_replay_aligned.jsonl', P / 'author_native_source_replay_incremental_v1/author_native_source_replay.jsonl', P / 'math_source_replay_v1/author_native_math_source_replay.jsonl']
     rows = [json.loads(line) for path in sources if path.exists() for line in path.read_text().splitlines()]
     selected, all_new = {}, {}
     errors, statuses = [], collections.Counter()
@@ -159,6 +159,15 @@ def snapshot():
     guard = json.loads((P / 'transport_performance_v3/resource_guard_v1/state.json').read_text())
     policy = json.loads((P / 'oai_direct_pipeline_v1/policy.json').read_text())
     measurement = dict(epoch=time.time(), at_utc=now(), baseline=3759, new_complex_accepted=len(accepted), new_complex_selected_pending_review=len(ordered) - len(accepted), new_technical_pairs=len(all_new), curation_states=dict(statuses), new_paper_states=paper_states, phase_source_network_bytes=max(0, guard['observed_payload_bytes'] - policy['initial_cumulative_network_bytes']), cumulative_source_budget_used_bytes=guard['observed_payload_bytes'], cumulative_source_budget_limit_bytes=guard['network_payload_limit_bytes'], source_errors=len(errors), goal_target=500, goal_complete=False)
+    cluster = P / 'cluster_direct_v1'
+    if (cluster / 'transition.json').exists() and (cluster / 'progress.json').exists():
+        transition = json.loads((cluster / 'transition.json').read_text())
+        progress = json.loads((cluster / 'progress.json').read_text())
+        measurement['phase_network_budget_charged_bytes'] = measurement['phase_source_network_bytes']
+        measurement['phase_source_network_bytes'] = max(0, transition['budget_used_before'] - policy['initial_cumulative_network_bytes']) + progress['source_bytes_actually_received']
+        measurement['network_measurement_protocol'] = 'old_single_node_body_counter_plus_cluster_actual_body_counter_v1'
+        measurement['cluster_network_budget_is_conservative_reservation'] = True
+        measurement['cluster_jobs'] = progress['jobs']
     measurement.update(held_dialogue_or_nondense_composites=held_composites, accepted_by_quality_view=dict(collections.Counter(v for r in accepted for v in r['quality_views'])), quality_views_overlap=True)
     origin_file = D / 'measurement_origin.json'
     if not origin_file.exists():
@@ -171,7 +180,7 @@ def snapshot():
     measurement.update(production_window_seconds=elapsed, accepted_products_generated_in_window=produced, measured_production_pairs_per_hour=produced * 3600 / elapsed if elapsed > 0 else None, measured_production_seconds_per_pair=elapsed / produced if produced else None, accepted_preexisting_since_frozen_baseline=sum(r['official_validated_image_mtime_epoch'] < origin for r in accepted))
     history = D / 'speed_measurements.jsonl'
     previous = [json.loads(line) for line in history.read_text().splitlines()] if history.exists() else []
-    candidates = [m for m in previous if m['epoch'] >= measurement['epoch'] - 1800]
+    candidates = [m for m in previous if m['epoch'] >= measurement['epoch'] - 1800 and m.get('network_measurement_protocol') == measurement.get('network_measurement_protocol')]
     if candidates:
         first = candidates[0]
         delta = measurement['new_complex_accepted'] - first['new_complex_accepted']

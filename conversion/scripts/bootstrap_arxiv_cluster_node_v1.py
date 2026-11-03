@@ -24,8 +24,11 @@ if sys.version_info[:2] != (3,12):
     subprocess.run([sys.executable,'-m','pip','install','--disable-pip-version-check','--no-cache-dir','--upgrade','--target',str(packages),'greenlet','--index-url','https://pypi.org/simple'],check=True)
 fontconfig=root/'runtime/fonts.conf'
 fontconfig.write_text('<?xml version="1.0"?><!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd"><fontconfig><dir>'+str(root/'runtime/fonts')+'</dir><cachedir>'+str(root/'runtime/fontcache')+'</cachedir><config></config></fontconfig>')
-env=dict(os.environ,PYTHONPATH=str(packages),FONTCONFIG_FILE=str(fontconfig),TMPDIR=str(root/'runtime/tmp'),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1')
 (root/'runtime/tmp').mkdir(exist_ok=True)
+short=Path('/tmp','arxiv-'+str(os.getuid())+'-'+a.node)
+if short.is_symlink():assert short.resolve()==(root/'runtime/tmp').resolve()
+else:short.symlink_to(root/'runtime/tmp',target_is_directory=True)
+env=dict(os.environ,PYTHONPATH=str(packages),FONTCONFIG_FILE=str(fontconfig),TMPDIR=str(short),OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1')
 # Verify actual package imports, official JS execution and browser startup.
 probe="import fitz,PIL,playwright.sync_api;from playwright.sync_api import sync_playwright;p=sync_playwright().start();b=p.chromium.launch(executable_path="+repr(str(root/'runtime/chrome/chrome'))+",args=['--disable-dev-shm-usage','--disable-gpu']);print(b.version);b.close();p.stop()"
 subprocess.run([sys.executable,'-c',probe],env=env,check=True,timeout=90)
