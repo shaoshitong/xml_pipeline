@@ -180,3 +180,6 @@ Archive fixture passes exact membership and rejects tampered/duplicate/escaping/
 
 
 2026-11-03 10:51 UTC observation: direct-author branch8verified/2pending. Eight paired code files independently passed resource closure without a PDF context. Two pending causes: external CTAN fontSource in2302.14696v3, Text-backend node-binding change in2407.19922v1. Neither was retried or counted. Visual batch20 accepted13/held7, including three of the native author-source figures; draft canvases, large gaps, near variants and overlap were excluded. Publisher approval set190; wait for authoritative current index before reporting190.
+
+
+2026-11-03 marker inventory: bounded first scan read8715PNG/89SVG headers and found141 native XML markers in55seconds; directory walk incomplete. No pixels decoded, no downloads/import/replay/model calls. Markers are not parsed/qualified products. New v2 scanner persists a frozen filename cohort in its own SQLite queue and commits500-file checkpoints, so continuation does not rescan the same prefix forever. Existing v1 partial inventory is retained. Next step is official embedded XML extraction, graph duplicate detection and unchanged strict source QA plus individual review; none of these141 markers is counted yet.

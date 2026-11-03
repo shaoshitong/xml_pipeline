@@ -93,5 +93,14 @@
     "new_model_calls": 0,
     "original_PDF_figure_usage_not_certified": true
   },
-  "accepted_new_index_SHA256": "44437f4b5e86006ad896829c003ff1061aeb5f0fe499cf674cf58a15c9e1f514"
+  "accepted_new_index_SHA256": "44437f4b5e86006ad896829c003ff1061aeb5f0fe499cf674cf58a15c9e1f514",
+  "embedded_source_candidate_discovery": {
+    "partial_v1_directory": "clean/arxiv_research_figures_v1/embedded_XML_image_inventory_v1",
+    "partial_marker_candidates": 141,
+    "partial_scanned_PNG": 8715,
+    "partial_scanned_SVG": 89,
+    "v2_directory": "clean/arxiv_research_figures_v1/embedded_XML_image_inventory_v2",
+    "not_converted_or_accepted": true,
+    "next_step": "Inspect persisted v2 queue/marker results, use official PNG/SVG embedded-source extraction, deduplicate existing processed graphs before source replay; preserve all exact QA and visual policy."
+  }
 }
