@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T10:44:25.490898+00:00",
+  "at_utc": "2026-11-03T10:57:03.586816+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -6519,6 +6519,12 @@
       "sha256": "b8c6b4720e241549dab413eb08e1d2bc1a92be88a05c409982b10d794282ae0f",
       "bytes": 3095,
       "mtime_ns": 1793701519769777649
+    },
+    {
+      "file": "conversion/scripts/inventory_arxiv_embedded_XML_images_v1.py",
+      "sha256": "59418e7fc0a32b2ead4eb778771269bba2999c8c824b8b1078d74110e4deab8b",
+      "bytes": 2188,
+      "mtime_ns": 1793703423584377738
     },
     {
       "file": "conversion/scripts/inventory_literal_tikz.py",

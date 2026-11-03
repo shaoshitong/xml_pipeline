@@ -1,0 +1,156 @@
+{
+  "at_utc": "2026-11-03T10:51:47.675918+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T104512Z",
+  "contact_manifest_sha256": "4b0f6c7a5af7c9d2f650bb28a4df0629510a27feae40197514164cc1a9669ded",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "efc6c661e27b91fb3357e879178e1f1ccc28719cd44d2d38682935e07edf04b8",
+    "contact_02.jpg": "27546c23999feca14ceb36ce0efbee47c305862232c94fa3bd83e368ee63e8d4",
+    "contact_03.jpg": "c355a227ff309a9daf7e9a27812c8a27b6ce5742e5dd5df06ee05d084a5f9191",
+    "contact_04.jpg": "798eb3b3d9e7ba03dd4fc72b3e540b1a02ed186185f6cb04318e0f61867a631e",
+    "contact_05.jpg": "21b95b07755b63dfc4935373afb77e89abfd67cd38cad7c829d9a3ddb673d3ee"
+  },
+  "decisions": [
+    {
+      "number": 1,
+      "id": "06372746d711cbdabd7bef9a7d0ad13c5fcdd4c590c3f99c83c05d328c2a4bad",
+      "paper": "2504.00233v1",
+      "accepted": false,
+      "reason": "Author canvas combines near-duplicate communication architectures with a large unused gap; retain as source, not a curated complete single figure."
+    },
+    {
+      "number": 2,
+      "id": "0691c19c922f2cd1621f760edbc6fa6b8fc09a2ba629f616ec3943f4f254d031",
+      "paper": "2312.17122v4",
+      "accepted": false,
+      "reason": "Very tall draft canvas repeats four small near-identical causal-system diagrams with poor use of space; not a usable final figure."
+    },
+    {
+      "number": 3,
+      "id": "1f0ac94227f23c46c557d340d0fab6f85465404ed524b1f64e51e13747ba8696",
+      "paper": "2609.13842v1",
+      "accepted": true,
+      "reason": "Complete audio-LLM guided residual/cross-view learning architecture with explicit gating and fusion modules."
+    },
+    {
+      "number": 4,
+      "id": "20d077d92ad8a4549e158abea7e04def54338aa04dead782f50a1449977e9b2c",
+      "paper": "2609.04715v1",
+      "accepted": false,
+      "reason": "Lower adapter/equation labels visibly overlap, compromising readability despite successful source replay."
+    },
+    {
+      "number": 5,
+      "id": "3bc10a214de1661dec9801f8065ce509c64385d67688fc91cca1b528cb2e1777",
+      "paper": "2609.23989v1",
+      "accepted": true,
+      "reason": "Complete comparison of sequential, multi-teacher, self-distilled and model-merging training methods."
+    },
+    {
+      "number": 6,
+      "id": "3dcd9ce5cd4d80dc8d2061902d889002e0ef06bf999e8a9535872fc7dfe25ca9",
+      "paper": "2312.17122v4",
+      "accepted": false,
+      "reason": "Near duplicate of tall draft canvas2, repeating small causal-framework highlights."
+    },
+    {
+      "number": 7,
+      "id": "415cc0e7edea0bf44e794144f1cd0064ad00108c439eb4586de3a63238d8ff88",
+      "paper": "2406.19941v3",
+      "accepted": true,
+      "reason": "Full face-video transformer with entanglement features, positional encoding and masked reconstruction learning."
+    },
+    {
+      "number": 8,
+      "id": "4285affbcff5e2bdf2455d05db514e6ccc3ebcc97a6ff320f9b62c16aeac7686",
+      "paper": "2609.19491v1",
+      "accepted": true,
+      "reason": "Complete semantic-join query planning and indexed filtered-scoring execution architecture."
+    },
+    {
+      "number": 9,
+      "id": "6a3546073498c5ebb2456bcd5174f45baccfb1c6177f18d72961b05774195a5b",
+      "paper": "2610.01754v1",
+      "accepted": true,
+      "reason": "Full contextual video anomaly detection with LVLM rationale extraction, semantic retrieval, cross-modal reranking and temporal aggregation."
+    },
+    {
+      "number": 10,
+      "id": "727398edd1815dd9c7c99779dd89e154a4cbdb0b3bfae414ec80c71fd7ce1ad9",
+      "paper": "2505.24451v1",
+      "accepted": false,
+      "reason": "Very long author draft canvas contains many tiny disconnected architecture variants with large whitespace; not a usable finished figure."
+    },
+    {
+      "number": 11,
+      "id": "816b245166fd37bfee9eb1138fb9ec386f4c5b4c78b003c4b6f1e3c4e75d7ca2",
+      "paper": "2406.19941v3",
+      "accepted": true,
+      "reason": "Distinct graph-convolution facial-video framework with sparse feature entanglement and graph regularization, complementary to masked-transformer7."
+    },
+    {
+      "number": 12,
+      "id": "98e01e075980a351774ab54411092f92e5996da18948284960390ea07b4c38e2",
+      "paper": "2410.15359v2",
+      "accepted": true,
+      "reason": "Complete post-generation and preference/reasoning optimization taxonomy with explicit correction workflows."
+    },
+    {
+      "number": 13,
+      "id": "b90d58d9c6643addd20cd13297210d7915050a4dee653910fd3cc8a0c5a01146",
+      "paper": "2609.17555v1",
+      "accepted": true,
+      "reason": "Full protected systolic-array accelerator, processing-element and voting-circuit architecture."
+    },
+    {
+      "number": 14,
+      "id": "c477e821bc2f7fc24a7e70ba7b55d90be871b1b9f986adb1b15822ff1e286f99",
+      "paper": "2606.00999v2",
+      "accepted": true,
+      "reason": "Complete teacher/student segmentation distillation with multiscale window attention and prototype discriminative losses."
+    },
+    {
+      "number": 15,
+      "id": "cfde221d624c537bc990b92c1cbf5b8ece71c9dd99f8aa1b790d43676fa5f0d9",
+      "paper": "2410.15359v2",
+      "accepted": true,
+      "reason": "Complete comparison of data rewriting, overconfidence calibration and object-cooccurrence mitigation workflows; distinct from inference-stage12."
+    },
+    {
+      "number": 16,
+      "id": "e32dd65de166fc7d9fd2c74bde816c85c0bcb1a05e78ab68a70cea61876b8242",
+      "paper": "2609.00999v1",
+      "accepted": false,
+      "reason": "Text-heavy signal taxonomy with little method or complex scientific visualization structure."
+    },
+    {
+      "number": 17,
+      "id": "ea4f1b8311a91a67f305b47d3e3de162d4838efb408297c016a951ec96cafdbe",
+      "paper": "2504.00233v1",
+      "accepted": false,
+      "reason": "Author canvas repeats two metasurface communication versions with a large unused gap; retain source without counting a polished final figure."
+    },
+    {
+      "number": 18,
+      "id": "eb3b6187b42441af882df6fda16221b794dc3cb37977e7a5637e9dd8f540eb81",
+      "paper": "2410.15359v2",
+      "accepted": true,
+      "reason": "Complete hallucination evaluation taxonomy including object/property tests, knowledge regimes, self-awareness and automated evaluation workflows."
+    },
+    {
+      "number": 19,
+      "id": "f366c7701a067c6c764d6772319621085f227b0b4b671f35125a379e5f47d682",
+      "paper": "2609.13524v1",
+      "accepted": true,
+      "reason": "Complete clinical/machine transformer fusion and classical-model stacking architecture with detailed data views and decision stages."
+    },
+    {
+      "number": 20,
+      "id": "fa5bfab6d0a1a44ebb9ccb84d97262c51d346a52366fef19b32bd156becaa03f",
+      "paper": "2410.15359v2",
+      "accepted": true,
+      "reason": "Complete feature-fusion, perceptual-reinforcement and contrastive cooccurrence mitigation workflows; distinct method structures from12 and15."
+    }
+  ],
+  "scope": "Individual visual review after unchanged strict replay; author draft canvases/overlaps excluded; original PDF fidelity not certified."
+}
