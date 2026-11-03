@@ -1,0 +1,47 @@
+[
+  [
+    "903c1d1d8312",
+    true,
+    "Complete target/draft model, attention-to-Mamba replacement and distillation panels."
+  ],
+  [
+    "9b7293fa1d34",
+    true,
+    "Complete reusable/specific parameter block comparison for CNN, decoder LLM and PEFT."
+  ],
+  [
+    "a1196757c1da",
+    true,
+    "Complete host bandwidth measurement, hierarchical feature assembly and online prediction workflow."
+  ],
+  [
+    "a31a48a14ebb",
+    true,
+    "Complete pore-network permeability model and expanded graph-edge conductance prediction."
+  ],
+  [
+    "a37706f44114",
+    false,
+    "Hold: source convolution feature-map dimensions are covered by the feature planes."
+  ],
+  [
+    "a555d9bf30d0",
+    true,
+    "Complete contrastive/connection/expansive blocks and multiscale probability-mask architecture."
+  ],
+  [
+    "a8470f7674d7",
+    true,
+    "Complete partner graph, Bayesian belief update, decision-making and language generation workflow."
+  ],
+  [
+    "ab281c0f36ed",
+    true,
+    "Complete retrieval-augmented deepfake explanation framework with separately labeled example frames."
+  ],
+  [
+    "add6df8f42a6",
+    true,
+    "Complete proof-state exploration, constrained tactics, batched inference and Lean prover workflow."
+  ]
+]

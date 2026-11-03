@@ -1,0 +1,63 @@
+{
+  "argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "hkust3",
+    "/home/shaoshitong/anaconda3/bin/python",
+    "/backup/shaoshitong/img2code_20261029/conversion/scripts/research_catalog_refresh_v5.py"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 30.109,
+  "stdout": {
+    "status": "published",
+    "schema": "research_pairs_catalogue_pointer_v5",
+    "publisher": "research_catalog_refresh_v5",
+    "publisher_source_sha256": "d6ae995e49bbf2d8101ce9f064f2d3d01a01c622343cb27a9a976d1faa16981e",
+    "at_utc": "2026-11-03T01:13:23.201220+00:00",
+    "snapshot": "clean/research_pairs_catalog/snapshot_20261103T011254217546Z_v5_c6f4775ab11b",
+    "input_fingerprint": "c6f4775ab11b1816a46375515bcb1cae6d7384c79732aac1ce47ab15d49cfcc7",
+    "unique_code_PNG_pairs": 3632,
+    "input_rows_by_evidence_view": {
+      "paper_diagrams_and_posters_full8": 1111,
+      "scientific_chart_provider_original": 119,
+      "scientific_chart_source_replay": 1225,
+      "scientific_chart_source_SVG_backend_replay": 728,
+      "scientific_chart_source_replay_repaired": 5,
+      "arxiv_registered_original_PDF_visual_v2": 130,
+      "arxiv_author_native_source_replay": 439
+    },
+    "unique_pairs_by_evidence_view": {
+      "paper_diagrams_and_posters_full8": 1111,
+      "scientific_chart_provider_original": 119,
+      "scientific_chart_source_replay": 1225,
+      "scientific_chart_source_SVG_backend_replay": 727,
+      "scientific_chart_source_replay_repaired": 5,
+      "arxiv_registered_original_PDF_visual_v2": 130,
+      "arxiv_author_native_source_replay": 439
+    },
+    "goal_complete": false,
+    "index": {
+      "file": "clean/research_pairs_catalog/snapshot_20261103T011254217546Z_v5_c6f4775ab11b/pairs.jsonl",
+      "sha256": "6261376d47058f99b23b44caca930c37ccaba5e618e459c56e9bae59a1ced39d",
+      "bytes": 5194833,
+      "rows": 3632
+    },
+    "summary": {
+      "file": "clean/research_pairs_catalog/snapshot_20261103T011254217546Z_v5_c6f4775ab11b/summary.json",
+      "sha256": "c02a543763b7eae62f0a964dfaf0682535108583ef785c339d3eb69797280074",
+      "bytes": 8082
+    },
+    "validation": {
+      "file": "clean/research_pairs_catalog/snapshot_20261103T011254217546Z_v5_c6f4775ab11b/validation.json",
+      "sha256": "bf00e1c9054b1c4ca108ff508e0802775aad34a7c77b9e452df67eff8952c7df",
+      "bytes": 19672449
+    },
+    "elapsed_seconds": 29.13912677951157
+  },
+  "stderr": "",
+  "force": false,
+  "existing_refresh_lock_respected": true
+}

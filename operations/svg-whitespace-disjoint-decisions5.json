@@ -1,0 +1,77 @@
+[
+  [
+    "6ffa4b0b0264",
+    true,
+    "Complete mixture-of-experts offline training and online output-length prediction framework."
+  ],
+  [
+    "709d746754a9",
+    true,
+    "Complete classifier prediction, global/local fairness analysis and certainty-check example."
+  ],
+  [
+    "73296ada5d1c",
+    false,
+    "Hold: DSP label is covered and arithmetic/cycle annotations overlap in hardware panel."
+  ],
+  [
+    "753672ea2ebe",
+    false,
+    "Hold: source No branch label is covered in adaptive classifier flowchart."
+  ],
+  [
+    "7aad07ef7c7a",
+    true,
+    "Complete three-model long-term series forecasting comparison and module grouping."
+  ],
+  [
+    "7cc3d633a559",
+    true,
+    "Complete VGG19/plain/residual network comparison including original caption."
+  ],
+  [
+    "7db13d583713",
+    true,
+    "Complete accelerator generation, top architecture and binary matrix-vector datapath panels."
+  ],
+  [
+    "7dfcc4c8c866",
+    false,
+    "Hold: experimental assignment, writing-prompt and reasoning-token headings are covered or overlapping."
+  ],
+  [
+    "7ef26d4c730d",
+    true,
+    "Complete in-context camera API task example, test prompt and response workflow."
+  ],
+  [
+    "7f9959337018",
+    true,
+    "Complete closed-set, user adaptation and menu-aware multimodal recognition tasks."
+  ],
+  [
+    "7fc92bebcd26",
+    false,
+    "Hold: result-synthesis connector extends down the figure without a destination."
+  ],
+  [
+    "801803698d17",
+    true,
+    "Complete multi-family hybrid quantization and sparsification comparison."
+  ],
+  [
+    "802f50639455",
+    true,
+    "Complete abstract summarization prompt/retrieval design with five strategy examples."
+  ],
+  [
+    "81088522f133",
+    true,
+    "Complete road-network spatiotemporal graph fusion and residual GCN/GRU prediction architecture."
+  ],
+  [
+    "81caa9f6c8ed",
+    true,
+    "Complete vision/text embeddings and target-layer multimodal token compression framework."
+  ]
+]

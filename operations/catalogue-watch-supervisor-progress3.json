@@ -1,0 +1,78 @@
+{
+  "at_utc": "2026-11-03T01:22:11.992477+00:00",
+  "root": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_watch_supervisor_v1/ccb04e3799e0439cbf3f87b612c0d736",
+  "supervisor_live": true,
+  "delegate_live": true,
+  "healthy_current_watch": true,
+  "state": {
+    "at_utc": "2026-11-03T01:21:29.700660+00:00",
+    "stage": "watching",
+    "delegate": {
+      "pid": 2342551,
+      "birth_ticks": 1146029889,
+      "command": [
+        "/home/shaoshitong/anaconda3/bin/python",
+        "-u",
+        "/backup/shaoshitong/img2code_20261029/conversion/scripts/research_catalog_refresh_v5.py",
+        "--watch",
+        "--interval",
+        "60.0"
+      ],
+      "source_sha256": "d6ae995e49bbf2d8101ce9f064f2d3d01a01c622343cb27a9a976d1faa16981e",
+      "supervisor_pid": 2336605,
+      "supervisor_birth": 1146028832,
+      "supervisor_root": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_watch_supervisor_v1/ccb04e3799e0439cbf3f87b612c0d736",
+      "attempt": 4,
+      "stdout": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_watch_supervisor_v1/ccb04e3799e0439cbf3f87b612c0d736/attempt_000004.stdout.log",
+      "stderr": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_watch_supervisor_v1/ccb04e3799e0439cbf3f87b612c0d736/attempt_000004.stderr.log",
+      "startup_success_unproven": true
+    },
+    "last_successful_refresh": {
+      "at_utc": "2026-11-03T01:21:29.524318+00:00",
+      "input_fingerprint": "c386101ddbdc5ec7689860ba86b3cd8bc79e3249bc0c62b0234994cb2cb97416",
+      "interval_seconds": 60.0,
+      "last_refresh_status": "published",
+      "pid": 2342551,
+      "status": "running"
+    }
+  },
+  "controlled_busy_exits": [
+    {
+      "exit": {
+        "at_utc": "2026-11-03T01:16:06.941812+00:00",
+        "returncode": 75,
+        "explicit_supervisor_stop": false
+      },
+      "stderr": "{\"at_utc\": \"2026-11-03T01:16:06.521985+00:00\", \"status\": \"busy\", \"error\": \"publisher_lock_held:/backup/shaoshitong/img2code_20261029/clean/research_pairs_catalog/refresh.lock\"}\n"
+    },
+    {
+      "exit": {
+        "at_utc": "2026-11-03T01:16:10.445279+00:00",
+        "returncode": 75,
+        "explicit_supervisor_stop": false
+      },
+      "stderr": "{\"at_utc\": \"2026-11-03T01:16:10.035793+00:00\", \"status\": \"busy\", \"error\": \"publisher_lock_held:/backup/shaoshitong/img2code_20261029/clean/research_pairs_catalog/refresh.lock\"}\n"
+    },
+    {
+      "exit": {
+        "at_utc": "2026-11-03T01:16:13.948642+00:00",
+        "returncode": 75,
+        "explicit_supervisor_stop": false
+      },
+      "stderr": "{\"at_utc\": \"2026-11-03T01:16:13.530978+00:00\", \"status\": \"busy\", \"error\": \"publisher_lock_held:/backup/shaoshitong/img2code_20261029/clean/research_pairs_catalog/refresh.lock\"}\n"
+    }
+  ],
+  "watch_status": {
+    "at_utc": "2026-11-03T01:21:29.524318+00:00",
+    "input_fingerprint": "c386101ddbdc5ec7689860ba86b3cd8bc79e3249bc0c62b0234994cb2cb97416",
+    "interval_seconds": 60.0,
+    "last_refresh_status": "published",
+    "pid": 2342551,
+    "status": "running"
+  },
+  "catalogue_at": "2026-11-03T01:21:29.353477+00:00",
+  "catalogue_main": 1122,
+  "delegate_source_unchanged": true,
+  "no_converter_or_QA_changes": true,
+  "goal_complete": false
+}

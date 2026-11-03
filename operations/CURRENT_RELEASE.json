@@ -1,13 +1,13 @@
 {
-  "at_utc": "2026-11-03T01:08:56.498436+00:00",
+  "at_utc": "2026-11-03T01:24:41.654895+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/paired_priority_complex.jsonl",
-    "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
-    "bytes": 4835154,
-    "rows": 1094
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T012104706955Z_review_batch_v8/paired_priority_complex.jsonl",
+    "sha256": "95095951a4072d30af5bef87e1b209cf355bd4f821bcd368cd4669aa1e2f4bd5",
+    "bytes": 4940899,
+    "rows": 1128
   },
-  "strict_main_rows": 1094,
+  "strict_main_rows": 1128,
   "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
     "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
@@ -68,8 +68,8 @@
     "source_only_not_qualification": true
   },
   "review_registry": {
-    "held": 51,
-    "published": 192
+    "held": 58,
+    "published": 226
   },
   "pending_reviews": 0,
   "next_generic_repair": {
@@ -308,7 +308,7 @@
       ]
     }
   },
-  "next_step": "Old v11 whole batch is now terminal:839 originals each attempted exactly once,84 technically qualified,755 typed source/quality failures,all cleanup complete,zero infrastructure failures,final84 asset checks passed. All84 qualified originals accounted:72 in strict main and12 held after actual PNG content/layout review. Last case802 completed normally with unchanged source/native marker contour failure,full QA408.268sec; no timeout/restart. This turn17 actual PNGs inspected,12 approved and5 held. Current1448 curated=1094 strict diagrams/posters+92 chart+262 arXiv,all payloads audited; incremental12 took2.44sec,1436 unchanged reused. Continue both birth-verified disjoint v24 batches and parent v12 automatic final catchup; current disjoint terminal counts378/566 and87/285,0 infrastructure errors. Accumulate/review only new qualified increments,retain existing same-core normal history,refresh final delivery and complete whole-goal requirement audit after fixed applicable scope finishes. No further experiments or network changes.",
+  "next_step": "Current1482 curated=1128 strict diagrams/posters+92 scientific charts+262 arXiv. This turn41 actual PNGs reviewed,34 approved,7 held; all1482 payloads audited with unchanged-asset reuse. Original15118-qualified structural screening retained. arXiv262 from175 paper versions all initial arXiv submissions2023-2026; these are identifier submission years, not journal dates. Old v11 round839 terminal/84 qualified/72 curated/12 held/0infra. Both disjoint v24 inputs851 are nonoverlapping and distinct from43 validation originals, complete parent supported population1149 retained. Latest disjoint counts524/566 and257/285 terminal,0infra; keep existing actual owners and parent final catchup, no duplicate normals/new experiments/network changes. Index incident: my on-demand refresh acquired refresh.lock and v5 daemon exited75. Restored via new separately locked supervisor around byte-identical v5 delegate; actual8sec lock test produced3 busy75 retries, then successful actual refreshes16:21 and17:26 and later published1122. Supervisor2336605/birth1146028832; delegate2342551/birth1146029889; source hashd6ae995e49bbf2d8101ce9f064f2d3d01a01c622343cb27a9a976d1faa16981e. Observe with snapshot_catalogue_watch_supervisor_v1.py and saved launch receipt; do not mistake stale running status for live PID. Finish all applicable fixed batches and parent catchup, review final new qualifiers, refresh delivery, then final per-requirement audit. Include exact-source matched old-v11 versus new-v24 outcome comparison in final repair-effect evidence; do not sum unrelated cohort counts or claim every unqualified source repaired.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -725,14 +725,14 @@
     "goal_complete": false
   },
   "seven_source_delivery_audit": {
-    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v6/89d6bef2aa194c759afbc62785949396",
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v7/d7dccf2df4f3400087a249bda8d1669b",
     "audit": {
-      "file": "clean/complex_research_delivery_audit_v6/89d6bef2aa194c759afbc62785949396/audit.json",
-      "sha256": "b51898d0fa2e2b593597adbe27cd6003bfc9683977c7bcbc70cf94a0ae04bc84",
-      "bytes": 19406
+      "file": "clean/complex_research_delivery_audit_v7/d7dccf2df4f3400087a249bda8d1669b/audit.json",
+      "sha256": "6389e8a3f3220b06f0d26d44382f9967c4c76aeb07fb58ec7096bf2ff639d787",
+      "bytes": 20198
     },
     "strict_main_by_source": {
-      "QijiaHe--VFIG-Data": 314,
+      "QijiaHe--VFIG-Data": 348,
       "VincentHancoder--RAP": 780
     },
     "latest_chart_by_source": {
@@ -748,23 +748,23 @@
     },
     "curated_delivery": {
       "pairs": {
-        "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/pairs.jsonl",
-        "sha256": "b4a155adf5503bdaeb9e85404913801233bf98c2bc47c567198cab5b8cfa3dab",
-        "bytes": 2378012
+        "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/pairs.jsonl",
+        "sha256": "7b1cbf897f2f26cf682b720a8542ea54a699bc916a59f8af6184d3d7e5012bd0",
+        "bytes": 2431599
       },
       "summary": {
-        "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/summary.json",
-        "sha256": "4d8b3fabd5a3ff348817d888afc64fd78f6113516d011b9e81a1b696e812ea0f",
+        "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/summary.json",
+        "sha256": "a51c945c509cbc47e2aa9590bb33ac30e3bd03a9a085f1caa48100939ad8a832",
         "bytes": 4341
       },
       "readme": {
-        "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/README.md",
-        "sha256": "200fd089f34906ca54c3b7832ce818860879b9dbcc48c98a70697e2c53dbedba",
+        "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/README.md",
+        "sha256": "d20dd65559103746de9a987b14bef3d744fcee03a6ed6699eeb1a601ac582e18",
         "bytes": 1361
       },
-      "unique_code_RGBA_pairs": 1448,
+      "unique_code_RGBA_pairs": 1482,
       "curation_memberships": {
-        "complex_paper_diagrams_and_posters": 1094,
+        "complex_paper_diagrams_and_posters": 1128,
         "complex_scientific_charts": 92,
         "complex_arxiv_native": 262
       },
@@ -864,7 +864,7 @@
             "bytes": 161433
           }
         },
-        "verified_foreign_pending_originals": 395
+        "verified_foreign_pending_originals": 81
       }
     },
     "approved_disjoint_mass": {
@@ -874,9 +874,9 @@
         "stage": "approved_disjoint_mass"
       },
       "counts": {
-        "abandoned": 330,
-        "qualified": 44,
-        "queued": 180,
+        "abandoned": 455,
+        "qualified": 67,
+        "queued": 32,
         "running": 12
       },
       "targets": 566,
@@ -908,9 +908,9 @@
           "stage": "approved_disjoint_mass"
         },
         "counts": {
-          "abandoned": 330,
-          "qualified": 44,
-          "queued": 180,
+          "abandoned": 455,
+          "qualified": 67,
+          "queued": 32,
           "running": 12
         },
         "targets": 566,
@@ -941,9 +941,9 @@
           "stage": "approved_disjoint_mass"
         },
         "counts": {
-          "abandoned": 73,
-          "qualified": 9,
-          "queued": 191,
+          "abandoned": 232,
+          "qualified": 20,
+          "queued": 21,
           "running": 12
         },
         "targets": 285,
@@ -969,6 +969,25 @@
       }
     },
     "existing_qualified_rows_screened": 15118,
+    "catalogue_watch_supervision": {
+      "delegate_pid": 2342551,
+      "delegate_birth": 1146029889,
+      "delegate_live": true,
+      "watch_status": {
+        "at_utc": "2026-11-03T01:22:59.080605+00:00",
+        "input_fingerprint": "daec5899a55ece42691802e0dd875a5fd6740ca288f743789c86ebd1143219dc",
+        "interval_seconds": 60.0,
+        "last_refresh_status": "published",
+        "pid": 2342551,
+        "status": "running"
+      },
+      "supervisor_root": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_watch_supervisor_v1/ccb04e3799e0439cbf3f87b612c0d736",
+      "last_launch": {
+        "file": "clean/research_pairs_catalog/latest_launch_v5.json",
+        "sha256": "f1b03b850892cd39862cf083c4d1692b8a57ff4dcb57c24f2eec18cb474263fc",
+        "bytes": 930
+      }
+    },
     "goal_complete": false
   },
   "global_chart_execution_freshness": {
@@ -1531,23 +1550,23 @@
   },
   "curated_delivery": {
     "pairs": {
-      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/pairs.jsonl",
-      "sha256": "b4a155adf5503bdaeb9e85404913801233bf98c2bc47c567198cab5b8cfa3dab",
-      "bytes": 2378012
+      "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/pairs.jsonl",
+      "sha256": "7b1cbf897f2f26cf682b720a8542ea54a699bc916a59f8af6184d3d7e5012bd0",
+      "bytes": 2431599
     },
     "summary": {
-      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/summary.json",
-      "sha256": "4d8b3fabd5a3ff348817d888afc64fd78f6113516d011b9e81a1b696e812ea0f",
+      "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/summary.json",
+      "sha256": "a51c945c509cbc47e2aa9590bb33ac30e3bd03a9a085f1caa48100939ad8a832",
       "bytes": 4341
     },
     "readme": {
-      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/README.md",
-      "sha256": "200fd089f34906ca54c3b7832ce818860879b9dbcc48c98a70697e2c53dbedba",
+      "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/README.md",
+      "sha256": "d20dd65559103746de9a987b14bef3d744fcee03a6ed6699eeb1a601ac582e18",
       "bytes": 1361
     },
-    "unique_code_RGBA_pairs": 1448,
+    "unique_code_RGBA_pairs": 1482,
     "curation_memberships": {
-      "complex_paper_diagrams_and_posters": 1094,
+      "complex_paper_diagrams_and_posters": 1128,
       "complex_scientific_charts": 92,
       "complex_arxiv_native": 262
     },
@@ -1726,35 +1745,48 @@
   },
   "latest_actual_PNG_publication": {
     "review": {
-      "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19",
+      "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_14f0641e7dad4068ba34ab67db94e089",
       "pairs": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19/reviewed_pairs.jsonl",
-        "sha256": "64b6157c601df06800e6e607a75b97bb14eba91a69c0b2f286ae34d6af7cb216",
-        "bytes": 10300
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_14f0641e7dad4068ba34ab67db94e089/reviewed_pairs.jsonl",
+        "sha256": "5e20b2506b4c177e803f34f94ac5ff99ca99cf8f865c5a9d23e5aec1b026ab0c",
+        "bytes": 42114
       },
       "occlusion": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_666d1ca87569458780b0c2410044a878/source_text_occlusion_reviews.jsonl",
-        "sha256": "d367262644d5d58857d598e997f0f7fb46ab5854ac663206fad8032aeab161c7",
-        "bytes": 706
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_disjoint_mass_v2_a3d666c7eb4f4c899b5eb35ee4ece3a6/source_text_occlusion_reviews.jsonl",
+        "sha256": "bfe1ea72b887f54cb0ca04ff115b9a81923429c8177335b0fc6f2882b1211e31",
+        "bytes": 3319
       },
       "input_summary": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_666d1ca87569458780b0c2410044a878/summary.json",
-        "sha256": "78fb21636bd4763cc62e7e2165e7895d7a6bbff286b14a5eb12a1820fbe95c0b",
-        "bytes": 1653
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_disjoint_mass_v2_a3d666c7eb4f4c899b5eb35ee4ece3a6/summary.json",
+        "sha256": "fb12495f4487745fedad821e8bb286a932319376e098badcb14ef6f55d58a202",
+        "bytes": 2878
       },
       "decisions": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19/decisions.json",
-        "sha256": "251c83238517e3305c103311e063ca79aeaf3ee8247917f48238e7a8ef323461",
-        "bytes": 496
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_14f0641e7dad4068ba34ab67db94e089/decisions.json",
+        "sha256": "7f4aa995bb635455d8b7b079ac197c8d22d6ed94da5ca4f231d02aa8bb7cacb3",
+        "bytes": 1953
       },
       "approved_ids": [
-        "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
-        "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
+        "b2c3dd465bb0e71a6e672329718cf515c99e57846675959abb3a09e6f9886fa9",
+        "b4248aa7a473e2a197c76e6156da45d7ce3af252dea0bfe7ac790b1fa3e018ca",
+        "c0f44011ba8e2d91fc4433f2c748388f8183b6a5d8ec19021837fcaeef07bdd3",
+        "c39295fee7fe5d652dfa3ce7fb55d92a1e0838e39de8d5166e13bbeaba6c9358",
+        "c76c96d096d8b40632d9627419dea0daf1c7be6802efd27e06f6e39d440c2d66",
+        "cb0a35bbd8f8d0e471062c392d716c9d4eda71d40270880c7db58089a672ce9b"
       ],
-      "held_ids": [],
+      "held_ids": [
+        "ae8e3d68751e8e78a3d289246cbb530bb5dd735e57a15efe7dc27dc984b83cf7",
+        "bce2a4ba06d85a902bb97306ec00e5c23a616308a4d97ba8bc30fa99b1d4eb33"
+      ],
       "actual_native_PNG_inspected_ids": [
-        "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
-        "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
+        "ae8e3d68751e8e78a3d289246cbb530bb5dd735e57a15efe7dc27dc984b83cf7",
+        "b2c3dd465bb0e71a6e672329718cf515c99e57846675959abb3a09e6f9886fa9",
+        "b4248aa7a473e2a197c76e6156da45d7ce3af252dea0bfe7ac790b1fa3e018ca",
+        "bce2a4ba06d85a902bb97306ec00e5c23a616308a4d97ba8bc30fa99b1d4eb33",
+        "c0f44011ba8e2d91fc4433f2c748388f8183b6a5d8ec19021837fcaeef07bdd3",
+        "c39295fee7fe5d652dfa3ce7fb55d92a1e0838e39de8d5166e13bbeaba6c9358",
+        "c76c96d096d8b40632d9627419dea0daf1c7be6802efd27e06f6e39d440c2d66",
+        "cb0a35bbd8f8d0e471062c392d716c9d4eda71d40270880c7db58089a672ce9b"
       ],
       "technical_qualifications_unchanged": true,
       "new_normal_calls": 0,
@@ -1762,33 +1794,40 @@
       "model_calls": 0
     },
     "publication": {
-      "before": 1092,
-      "after": 1094,
+      "before": 1122,
+      "after": 1128,
       "added_ids": [
-        "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
-        "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
+        "b2c3dd465bb0e71a6e672329718cf515c99e57846675959abb3a09e6f9886fa9",
+        "b4248aa7a473e2a197c76e6156da45d7ce3af252dea0bfe7ac790b1fa3e018ca",
+        "c0f44011ba8e2d91fc4433f2c748388f8183b6a5d8ec19021837fcaeef07bdd3",
+        "c39295fee7fe5d652dfa3ce7fb55d92a1e0838e39de8d5166e13bbeaba6c9358",
+        "c76c96d096d8b40632d9627419dea0daf1c7be6802efd27e06f6e39d440c2d66",
+        "cb0a35bbd8f8d0e471062c392d716c9d4eda71d40270880c7db58089a672ce9b"
       ],
-      "held_ids": [],
+      "held_ids": [
+        "ae8e3d68751e8e78a3d289246cbb530bb5dd735e57a15efe7dc27dc984b83cf7",
+        "bce2a4ba06d85a902bb97306ec00e5c23a616308a4d97ba8bc30fa99b1d4eb33"
+      ],
       "main": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/paired_priority_complex.jsonl",
-        "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
-        "bytes": 4835154,
-        "rows": 1094
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T012104706955Z_review_batch_v8/paired_priority_complex.jsonl",
+        "sha256": "95095951a4072d30af5bef87e1b209cf355bd4f821bcd368cd4669aa1e2f4bd5",
+        "bytes": 4940899,
+        "rows": 1128
       },
       "review": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/value_review.json",
-        "sha256": "2e1fc63a5013bc6d9ec2829eea581c768eb0962ad5d39c56b4939035468600f9",
-        "bytes": 3395
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T012104706955Z_review_batch_v8/value_review.json",
+        "sha256": "93837d9f271dcf1bd1addfd61a7cf8f2484e0ea3a54411c101c0fcec88b2e0a5",
+        "bytes": 9167
       },
       "pointer": {
         "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
-        "sha256": "66e7d9858479ab4b5cab48f8469140cb902ba145185eac1424b6a6ffe084a1b6",
+        "sha256": "ff6b5b890888ce4f9361d32916fbcb981cfe0304abbb27b787c6719b7860fe24",
         "bytes": 3516
       }
     }
   },
   "latest_runtime_progress": {
-    "at_utc": "2026-11-03T01:08:35.995581+00:00",
+    "at_utc": "2026-11-03T01:23:47.503893+00:00",
     "batches": {
       "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
         "counts": {
@@ -1812,13 +1851,13 @@
       },
       "svg_source_whitespace_disjoint_20261103_v1_mass": {
         "counts": {
-          "abandoned": 334,
-          "qualified": 44,
-          "queued": 176,
+          "abandoned": 457,
+          "qualified": 67,
+          "queued": 30,
           "running": 12
         },
         "total": 566,
-        "terminal": 378,
+        "terminal": 524,
         "infrastructure_errors": 0,
         "controller": {
           "pid": 800133,
@@ -1826,22 +1865,22 @@
           "live": true
         },
         "recent_quality_seconds": {
-          "samples": 10,
-          "mean": 77.4209,
-          "median": 76.28399999999999,
-          "max": 136.372
+          "samples": 9,
+          "mean": 87.7611111111111,
+          "median": 65.217,
+          "max": 258.354
         },
         "infrastructure_stop": null
       },
       "svg_source_whitespace_disjoint_20261103_v2_mass": {
         "counts": {
-          "abandoned": 78,
-          "qualified": 9,
-          "queued": 186,
+          "abandoned": 236,
+          "qualified": 21,
+          "queued": 16,
           "running": 12
         },
         "total": 285,
-        "terminal": 87,
+        "terminal": 257,
         "infrastructure_errors": 0,
         "controller": {
           "pid": 1718674,
@@ -1849,10 +1888,10 @@
           "live": true
         },
         "recent_quality_seconds": {
-          "samples": 8,
-          "mean": 87.6035,
-          "median": 84.5475,
-          "max": 117.9
+          "samples": 9,
+          "mean": 95.87366666666667,
+          "median": 82.04,
+          "max": 196.836
         },
         "infrastructure_stop": null
       },
@@ -1862,17 +1901,17 @@
     },
     "cpu_count": 144,
     "load_average": [
-      50.0322265625,
-      49.35546875,
-      46.9716796875
+      48.0673828125,
+      47.3828125,
+      47.060546875
     ],
     "new_normal_calls": 0,
     "new_QA_calls": 0,
     "parent": {
       "state": {
-        "elapsed_seconds": 2896.918489780277,
+        "elapsed_seconds": 3812.2286466024816,
         "goal_complete": false,
-        "pending_originals": 390,
+        "pending_originals": 73,
         "stage": "validated_waiting_existing_foreign_batch"
       },
       "owner": {
@@ -1880,14 +1919,14 @@
         "birth": "1145650317",
         "live": true
       },
-      "foreign_pending_count": 390,
+      "foreign_pending_count": 73,
       "failure": null
     },
     "review_registry": {
-      "held": 51,
-      "published": 192
+      "held": 58,
+      "published": 226
     },
-    "local_exec_wall_seconds": 1.258
+    "local_exec_wall_seconds": 1.365
   },
   "datikz_saved_source_raster_diagnostic": {
     "saved_source_only": true,
@@ -1907,67 +1946,67 @@
     }
   },
   "curated_payload_audit": {
-    "root": "/backup/shaoshitong/img2code_20261029/clean/curated_delivery_payload_audit_v1/1068b916e99b4832a3caa6cc76bfe12f",
-    "at_utc": "2026-11-03T01:08:19.382915+00:00",
-    "rows": 1448,
+    "root": "/backup/shaoshitong/img2code_20261029/clean/curated_delivery_payload_audit_v1/d5baaf2d35ed45d2ab455542fcb95eec",
+    "at_utc": "2026-11-03T01:23:30.912525+00:00",
+    "rows": 1482,
     "counts": {
-      "payload_valid": 1448
+      "payload_valid": 1482
     },
-    "fresh_payloads": 12,
-    "unchanged_payloads_reused": 1436,
+    "fresh_payloads": 17,
+    "unchanged_payloads_reused": 1465,
     "provenance_manifests": [
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/arxiv_author_native_incremental.jsonl",
-        "sha256": "031b4c5c6d5829b19a2ccfef3773a20c32b907491841566881248fd575cd917c",
-        "bytes": 3464636
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/arxiv_author_native_incremental.jsonl",
+        "sha256": "72b32580679a93aa50e3dbf80c12c8098f0e61ad561a9c139ae3703bd134f570",
+        "bytes": 3500060
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/paper_diagrams_and_posters_full8.jsonl",
-        "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
-        "bytes": 4835154
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/paper_diagrams_and_posters_full8.jsonl",
+        "sha256": "95095951a4072d30af5bef87e1b209cf355bd4f821bcd368cd4669aa1e2f4bd5",
+        "bytes": 4940899
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/arxiv_registered_original_PDF_visual_v2.jsonl",
-        "sha256": "db0cd17a049f29af8f0c9b9b42daad9db83f4f7ca091717252c97c30c7b55513",
-        "bytes": 174809
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/arxiv_registered_original_PDF_visual_v2.jsonl",
+        "sha256": "9a7ca3c87355a0b06299c9428821b8632b583b3e609570791ad3e6b2e9b2fb60",
+        "bytes": 178844
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/scientific_chart_vector_SVG_backend.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/scientific_chart_vector_SVG_backend.jsonl",
         "sha256": "95a5ebd80ab7e3bd57986bb772ebb0d5c692406414db918b2a48064c5c9a1da1",
         "bytes": 12058425
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/scientific_chart_vector_source_replay.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/scientific_chart_vector_source_replay.jsonl",
         "sha256": "40d1786d41d9709c58eed617d94e309952773fe6dc4b981d6e1d291054935864",
         "bytes": 20108920
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/arxiv_author_native_frozen.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/arxiv_author_native_frozen.jsonl",
         "sha256": "8e1a635ec4532edebe8def1c333656efef0bb05ac2a19a807f5724684ef5b3fb",
         "bytes": 215044
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/scientific_chart_vector_provider_original.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T012229638034Z_v5_daec5899a55e/input_manifests/scientific_chart_vector_provider_original.jsonl",
         "sha256": "9227c4e65e00d2e2c1791a370c794cdf176964545712450ff89133c3d3c0212e",
         "bytes": 2023787
       }
     ],
     "source_pointer": {
-      "file": "clean/curated_delivery_payload_audit_v1/1068b916e99b4832a3caa6cc76bfe12f/input_pointer.json",
-      "sha256": "e9f14919f7459acd8340db53c638f4841fc736d5506e89cfee067536c95a5307",
+      "file": "clean/curated_delivery_payload_audit_v1/d5baaf2d35ed45d2ab455542fcb95eec/input_pointer.json",
+      "sha256": "8f3051d98bf02a36b4c3a152900041d8455bea9276fe4074d8f6b8e9b304823a",
       "bytes": 914
     },
     "source_pairs": {
-      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/pairs.jsonl",
-      "sha256": "b4a155adf5503bdaeb9e85404913801233bf98c2bc47c567198cab5b8cfa3dab",
-      "bytes": 2378012
+      "file": "clean/curated_complex_research_delivery_v1/631fb4522e4247858707d00290098b35/pairs.jsonl",
+      "sha256": "7b1cbf897f2f26cf682b720a8542ea54a699bc916a59f8af6184d3d7e5012bd0",
+      "bytes": 2431599
     },
     "audit_rows": {
-      "file": "clean/curated_delivery_payload_audit_v1/1068b916e99b4832a3caa6cc76bfe12f/payload_audit.jsonl",
-      "sha256": "0ee1bdda9aa0966f3f8912e9c428a6e1759b95338b495935bfa66a8e7195b6f9",
-      "bytes": 3272568
+      "file": "clean/curated_delivery_payload_audit_v1/d5baaf2d35ed45d2ab455542fcb95eec/payload_audit.jsonl",
+      "sha256": "eebfc890a34c3981e993dfd9f83e5e3c12c4ac3d4bd2675582ac7fbe27e2abb9",
+      "bytes": 3347931
     },
-    "seconds": 2.4417065735906363,
+    "seconds": 3.1852936930954456,
     "producer": {
       "file": "conversion/scripts/audit_curated_delivery_payloads_v1.py",
       "sha256": "0b226ef23d14c37050b12bc3f9e517cb909218e674a4bcee5b0f899a5730d005",
@@ -1987,9 +2026,9 @@
         "stage": "approved_disjoint_mass"
       },
       "counts": {
-        "abandoned": 330,
-        "qualified": 44,
-        "queued": 180,
+        "abandoned": 455,
+        "qualified": 67,
+        "queued": 32,
         "running": 12
       },
       "targets": 566,
@@ -2020,9 +2059,9 @@
         "stage": "approved_disjoint_mass"
       },
       "counts": {
-        "abandoned": 73,
-        "qualified": 9,
-        "queued": 191,
+        "abandoned": 232,
+        "qualified": 20,
+        "queued": 21,
         "running": 12
       },
       "targets": 285,
@@ -2049,50 +2088,76 @@
   },
   "checkpoint_receipts": [
     "CURATED_RESEARCH_DELIVERY.md",
-    "curated-complex-research-delivery-v6.json",
-    "curated-delivery-payload-audit-v4.json",
-    "current-batch-runtime-progress15.json",
-    "current-batch-runtime-progress16.json",
-    "current-batch-runtime-progress17.json",
-    "current-batch-runtime-progress18.json",
-    "current-batch-runtime-progress19.json",
-    "resolved-geometry-mass-decisions8.json",
-    "resolved-geometry-mass-publication8.json",
-    "resolved-geometry-mass-value-review8.json",
-    "resolved-geometry-whole-round-completion-audit-v1.json",
-    "seven-source-delivery-audit-v7.json",
-    "svg-whitespace-disjoint-decisions3.json",
-    "svg-whitespace-disjoint-publication3.json",
-    "svg-whitespace-disjoint-value-review3.json",
-    "svg-whitespace-disjoint2-decisions1.json",
-    "svg-whitespace-disjoint2-publication1.json",
-    "svg-whitespace-disjoint2-value-review1.json"
+    "arxiv-curated-paper-year-census-v1.json",
+    "arxiv-curated-paper-year-census-v2.json",
+    "catalogue-on-demand-refresh-v1.json",
+    "catalogue-watch-lock-incident-resolution-v1.json",
+    "catalogue-watch-supervisor-launch-v1.json",
+    "catalogue-watch-supervisor-progress1.json",
+    "catalogue-watch-supervisor-progress2.json",
+    "catalogue-watch-supervisor-progress3.json",
+    "curated-complex-research-delivery-v7.json",
+    "curated-complex-research-delivery-v8.json",
+    "curated-delivery-payload-audit-v5.json",
+    "curated-delivery-payload-audit-v6.json",
+    "current-batch-runtime-progress20.json",
+    "current-batch-runtime-progress21.json",
+    "current-batch-runtime-progress22.json",
+    "current-batch-runtime-progress23.json",
+    "current-batch-runtime-progress24.json",
+    "seven-source-delivery-audit-v8.json",
+    "svg-whitespace-disjoint-decisions4.json",
+    "svg-whitespace-disjoint-decisions5.json",
+    "svg-whitespace-disjoint-publication4.json",
+    "svg-whitespace-disjoint-publication5.json",
+    "svg-whitespace-disjoint-value-review4.json",
+    "svg-whitespace-disjoint-value-review5.json",
+    "svg-whitespace-disjoint2-decisions2.json",
+    "svg-whitespace-disjoint2-decisions3.json",
+    "svg-whitespace-disjoint2-publication2.json",
+    "svg-whitespace-disjoint2-publication3.json",
+    "svg-whitespace-disjoint2-value-review2.json",
+    "svg-whitespace-disjoint2-value-review3.json",
+    "svg-whitespace-remaining-dispatch-census-v1.json"
   ],
   "checkpoint_arguments": {
     "source": [
-      "review_fixed_svg_whitespace_pairs_v3.py",
-      "audit_completed_svg_round_v1.py"
+      "research_catalog_watch_supervisor_v1.py",
+      "audit_seven_source_delivery_v7.py"
     ],
     "receipt": [
-      "resolved-geometry-whole-round-completion-audit-v1.json",
-      "svg-whitespace-disjoint-value-review3.json",
-      "svg-whitespace-disjoint-decisions3.json",
-      "svg-whitespace-disjoint-publication3.json",
-      "svg-whitespace-disjoint2-value-review1.json",
-      "svg-whitespace-disjoint2-decisions1.json",
-      "svg-whitespace-disjoint2-publication1.json",
-      "resolved-geometry-mass-value-review8.json",
-      "resolved-geometry-mass-decisions8.json",
-      "current-batch-runtime-progress15.json",
-      "current-batch-runtime-progress16.json",
-      "current-batch-runtime-progress17.json",
-      "current-batch-runtime-progress18.json"
+      "curated-complex-research-delivery-v7.json",
+      "curated-delivery-payload-audit-v5.json",
+      "svg-whitespace-disjoint-value-review4.json",
+      "svg-whitespace-disjoint-decisions4.json",
+      "svg-whitespace-disjoint-publication4.json",
+      "svg-whitespace-disjoint2-value-review2.json",
+      "svg-whitespace-disjoint2-decisions2.json",
+      "svg-whitespace-disjoint2-publication2.json",
+      "svg-whitespace-disjoint-value-review5.json",
+      "svg-whitespace-disjoint-decisions5.json",
+      "svg-whitespace-disjoint-publication5.json",
+      "svg-whitespace-disjoint2-value-review3.json",
+      "svg-whitespace-disjoint2-decisions3.json",
+      "svg-whitespace-remaining-dispatch-census-v1.json",
+      "current-batch-runtime-progress20.json",
+      "current-batch-runtime-progress21.json",
+      "current-batch-runtime-progress22.json",
+      "current-batch-runtime-progress23.json",
+      "catalogue-on-demand-refresh-v1.json",
+      "catalogue-watch-supervisor-launch-v1.json",
+      "catalogue-watch-supervisor-progress1.json",
+      "catalogue-watch-supervisor-progress2.json",
+      "catalogue-watch-supervisor-progress3.json",
+      "catalogue-watch-lock-incident-resolution-v1.json",
+      "arxiv-curated-paper-year-census-v1.json",
+      "arxiv-curated-paper-year-census-v2.json"
     ],
-    "delivery": "curated-complex-research-delivery-v6.json",
-    "publication": "resolved-geometry-mass-publication8.json",
-    "runtime": "current-batch-runtime-progress19.json",
-    "scope": "seven-source-delivery-audit-v7.json",
-    "payload": "curated-delivery-payload-audit-v4.json",
-    "next_step": "Old v11 whole batch is now terminal:839 originals each attempted exactly once,84 technically qualified,755 typed source/quality failures,all cleanup complete,zero infrastructure failures,final84 asset checks passed. All84 qualified originals accounted:72 in strict main and12 held after actual PNG content/layout review. Last case802 completed normally with unchanged source/native marker contour failure,full QA408.268sec; no timeout/restart. This turn17 actual PNGs inspected,12 approved and5 held. Current1448 curated=1094 strict diagrams/posters+92 chart+262 arXiv,all payloads audited; incremental12 took2.44sec,1436 unchanged reused. Continue both birth-verified disjoint v24 batches and parent v12 automatic final catchup; current disjoint terminal counts378/566 and87/285,0 infrastructure errors. Accumulate/review only new qualified increments,retain existing same-core normal history,refresh final delivery and complete whole-goal requirement audit after fixed applicable scope finishes. No further experiments or network changes."
+    "delivery": "curated-complex-research-delivery-v8.json",
+    "publication": "svg-whitespace-disjoint2-publication3.json",
+    "runtime": "current-batch-runtime-progress24.json",
+    "scope": "seven-source-delivery-audit-v8.json",
+    "payload": "curated-delivery-payload-audit-v6.json",
+    "next_step": "Current1482 curated=1128 strict diagrams/posters+92 scientific charts+262 arXiv. This turn41 actual PNGs reviewed,34 approved,7 held; all1482 payloads audited with unchanged-asset reuse. Original15118-qualified structural screening retained. arXiv262 from175 paper versions all initial arXiv submissions2023-2026; these are identifier submission years, not journal dates. Old v11 round839 terminal/84 qualified/72 curated/12 held/0infra. Both disjoint v24 inputs851 are nonoverlapping and distinct from43 validation originals, complete parent supported population1149 retained. Latest disjoint counts524/566 and257/285 terminal,0infra; keep existing actual owners and parent final catchup, no duplicate normals/new experiments/network changes. Index incident: my on-demand refresh acquired refresh.lock and v5 daemon exited75. Restored via new separately locked supervisor around byte-identical v5 delegate; actual8sec lock test produced3 busy75 retries, then successful actual refreshes16:21 and17:26 and later published1122. Supervisor2336605/birth1146028832; delegate2342551/birth1146029889; source hashd6ae995e49bbf2d8101ce9f064f2d3d01a01c622343cb27a9a976d1faa16981e. Observe with snapshot_catalogue_watch_supervisor_v1.py and saved launch receipt; do not mistake stale running status for live PID. Finish all applicable fixed batches and parent catchup, review final new qualifiers, refresh delivery, then final per-requirement audit. Include exact-source matched old-v11 versus new-v24 outcome comparison in final repair-effect evidence; do not sum unrelated cohort counts or claim every unqualified source repaired."
   }
 }

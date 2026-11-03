@@ -1,0 +1,47 @@
+[
+  [
+    "58feccf3c0e8",
+    true,
+    "Complete sensor-stream feature embedding and alternative complex-event detection framework."
+  ],
+  [
+    "5e1ca64824d1",
+    true,
+    "Complete multi-turn talker/thinker processing and persistent internal-state timeline."
+  ],
+  [
+    "5fab3681749c",
+    true,
+    "Complete CNN-LSTM-attention classifier with per-layer tensor dimensions."
+  ],
+  [
+    "6153a2927d20",
+    true,
+    "Complete system/user/belief encoders and multi-stage belief-state decoding example."
+  ],
+  [
+    "633925742cef",
+    true,
+    "Complete CLIP-feature encoder, quantization codebook, entropy model and decoder."
+  ],
+  [
+    "63a05d4339a2",
+    true,
+    "Complete internal/external dataset validation of hybrid voting classifiers."
+  ],
+  [
+    "646338e1c7a7",
+    true,
+    "Complete contrastive hand-mark encoding and positive/negative embedding matrix example."
+  ],
+  [
+    "6b0a3865626b",
+    true,
+    "Complete floating-point polynomial hardware pipeline with multiplier and adder detail panels."
+  ],
+  [
+    "6e07e5b19927",
+    true,
+    "Complete domain-specific preprocessing, dependency parsing and DSL formula generation."
+  ]
+]

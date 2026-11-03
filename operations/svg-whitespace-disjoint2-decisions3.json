@@ -1,0 +1,42 @@
+[
+  [
+    "ae8e3d68751e",
+    false,
+    "Hold: corpus-example text spills into adjacent Word2vec Training annotation."
+  ],
+  [
+    "b2c3dd465bb0",
+    true,
+    "Complete data ingestion, model training, deployment optimization and IoT integration pipeline."
+  ],
+  [
+    "b4248aa7a473",
+    true,
+    "Complete branching database-engine choice and indexing/partition strategy decision diagram."
+  ],
+  [
+    "bce2a4ba06d8",
+    false,
+    "Hold: source Cell annotation is covered in the multimodal biological encoder."
+  ],
+  [
+    "c0f44011ba8e",
+    true,
+    "Complete federated, distributed, edge-cloud and reinforcement-learning workflow comparison."
+  ],
+  [
+    "c39295fee7fe",
+    true,
+    "Complete sensor-data and transformer-label encoders with modal alignment and token embeddings."
+  ],
+  [
+    "c76c96d096d8",
+    true,
+    "Complete reinforcement-learning classifier training and inference phases with state/reward flow."
+  ],
+  [
+    "cb0a35bbd8f8",
+    true,
+    "Complete persona consistency/naturalness rewards and policy-gradient generation framework."
+  ]
+]

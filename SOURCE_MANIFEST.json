@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T01:08:56.498436+00:00",
+  "at_utc": "2026-11-03T01:24:41.654895+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "97873b005decf9a241d6615d2b0c29aee8d302ab3137b6d288c03d81e7faff94",
-      "bytes": 92569,
-      "mtime_ns": 1793668136504274949
+      "sha256": "9bd775ad43616d4d3e79699bbcb82c03aa17f21117edfad66ad60b7bdbbb60b8",
+      "bytes": 97239,
+      "mtime_ns": 1793669081658727365
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "97873b005decf9a241d6615d2b0c29aee8d302ab3137b6d288c03d81e7faff94",
-      "bytes": 92569,
-      "mtime_ns": 1793668136502502013
+      "sha256": "9bd775ad43616d4d3e79699bbcb82c03aa17f21117edfad66ad60b7bdbbb60b8",
+      "bytes": 97239,
+      "mtime_ns": 1793669081657096823
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -16023,9 +16023,9 @@
     },
     {
       "file": "operations/CURATED_RESEARCH_DELIVERY.md",
-      "sha256": "200fd089f34906ca54c3b7832ce818860879b9dbcc48c98a70697e2c53dbedba",
+      "sha256": "d20dd65559103746de9a987b14bef3d744fcee03a6ed6699eeb1a601ac582e18",
       "bytes": 1361,
-      "mtime_ns": 1793668136491994064
+      "mtime_ns": 1793669081640986526
     },
     {
       "file": "operations/complex-arxiv-native-curation-publication-v1.json",
@@ -16373,7 +16373,7 @@
       "file": "operations/publish_task_checkpoint_v1.py",
       "sha256": "d49616e20f5ec98818da5980fdcd118de0f0a01a9b6a68943d12ac5324534214",
       "bytes": 4115,
-      "mtime_ns": 1793668136498353467
+      "mtime_ns": 1793669081654854655
     },
     {
       "file": "operations/svg-whitespace-disjoint-v2-frozen-identity-proof.json",
@@ -16427,7 +16427,7 @@
       "file": "operations/snapshot_current_batch_runtime_v2.py",
       "sha256": "653989072a389808e1590942a1869793bb59d59c25ae5a6f8bc3aab8c0b1dcfa",
       "bytes": 3271,
-      "mtime_ns": 1793668136498031547
+      "mtime_ns": 1793669081654694989
     },
     {
       "file": "operations/resolved-geometry-mass-decisions6.json",
@@ -16602,6 +16602,210 @@
       "sha256": "1b3e928e4375eeb384c8c375f93f3a618f0c6a07fb09dd765bff0b71f0cc3fb1",
       "bytes": 3339,
       "mtime_ns": 1793668136491033471
+    },
+    {
+      "file": "conversion/scripts/research_catalog_watch_supervisor_v1.py",
+      "sha256": "438f84256fb0fef64b882008f5940638d8910521b3bc3a1def9f2a9dc84c40a4",
+      "bytes": 3593,
+      "mtime_ns": 1793668535859861254
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v7.py",
+      "sha256": "a54acb2422ad8cc38feae5d7a6f6accc3a558685439f706ad9d72ead0d1fd46a",
+      "bytes": 12645,
+      "mtime_ns": 1793668993148115853
+    },
+    {
+      "file": "operations/curated-delivery-payload-audit-v6.json",
+      "sha256": "8857b4e8a67eee704b2221ad31248e95bd0df5617aa15ba0ff6de9f1c264086b",
+      "bytes": 2976,
+      "mtime_ns": 1793669081644477319
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v7.json",
+      "sha256": "dbb312b497cc281d7e18576d9baa49137d5f282d7d5c90f76622037c54392b06",
+      "bytes": 834,
+      "mtime_ns": 1793669081651829404
+    },
+    {
+      "file": "operations/current-batch-runtime-progress24.json",
+      "sha256": "e4cfb7d653f772c7b130724815e0b254e13585f7f974f3accbd1d25578899ca7",
+      "bytes": 2353,
+      "mtime_ns": 1793669081650668154
+    },
+    {
+      "file": "operations/catalogue-watch-lock-incident-resolution-v1.json",
+      "sha256": "2e787df54ec296ad500fab50f371d131b8f2158f66a24a9c396b433f01ac3ccc",
+      "bytes": 1392,
+      "mtime_ns": 1793669081649613445
+    },
+    {
+      "file": "operations/arxiv-curated-paper-year-census-v2.json",
+      "sha256": "02d7eb27ea363de3b573aaae5e8a9a89f0661657dfc098dcbd7436b86d707588",
+      "bytes": 790,
+      "mtime_ns": 1793669081654068822
+    },
+    {
+      "file": "operations/catalogue-watch-supervisor-progress1.json",
+      "sha256": "ee3b9360adaef43233eb73e3a2d79dddc346325544020a4a4191c65f185e15ed",
+      "bytes": 3295,
+      "mtime_ns": 1793669081644249069
+    },
+    {
+      "file": "operations/current-batch-runtime-progress22.json",
+      "sha256": "97ad615f25f2382d1ec7ee720ab5ad126d6850b73586b096efb238c0bcf17ac4",
+      "bytes": 2364,
+      "mtime_ns": 1793669081646008736
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-decisions3.json",
+      "sha256": "351d31d326e8a591174d43e448a31b77df2ddc3b1fec92eb690a03c89f5996b5",
+      "bytes": 1081,
+      "mtime_ns": 1793669081641721484
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-decisions5.json",
+      "sha256": "938cb8404860ca691d89f084db416003bf3088e940fff3f7e78ee4e5ea83b6e8",
+      "bytes": 1965,
+      "mtime_ns": 1793669081639051400
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-publication2.json",
+      "sha256": "9ac38721350c134df3e2bf2c8041d598348fb5c8daef5236a7fdc6cf51e95487",
+      "bytes": 4457,
+      "mtime_ns": 1793669081653144613
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-value-review3.json",
+      "sha256": "5378702ed050f632d3532c3174ccf2f2e77aec62c5f80fec5f3c58ee0fc46bb4",
+      "bytes": 2553,
+      "mtime_ns": 1793669081650243696
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-value-review2.json",
+      "sha256": "f86a31014ef36cd9ac16aa89f6bb46be2f22bcff9206555b7ab6a0e66f096e4c",
+      "bytes": 2788,
+      "mtime_ns": 1793669081644840110
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-publication3.json",
+      "sha256": "8b93f725939c140999e9d44cd63354b549b6542472a3d91d0d925b7fa77dcf7a",
+      "bytes": 4234,
+      "mtime_ns": 1793669081643564527
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-decisions4.json",
+      "sha256": "8968d8b9fee21e0ee71cc5e85cb855c2594a7c71a0fdf26e828316401511da33",
+      "bytes": 1168,
+      "mtime_ns": 1793669081640538276
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-decisions2.json",
+      "sha256": "d0b2229558b25b48d56921a01f5480cd9fc4cfc2f59e423f32b394cb2e6b2658",
+      "bytes": 1241,
+      "mtime_ns": 1793669081643904277
+    },
+    {
+      "file": "operations/current-batch-runtime-progress23.json",
+      "sha256": "0b88cfa68f94329dd1931e808abbed66f35335bfc3e0840d412f6fe8d12d89e0",
+      "bytes": 2362,
+      "mtime_ns": 1793669081642095735
+    },
+    {
+      "file": "operations/current-batch-runtime-progress20.json",
+      "sha256": "a836bd2816bc4d2feafa8b27c9c1a0865722712a4bece39aa432fb4429bd0ef6",
+      "bytes": 2368,
+      "mtime_ns": 1793669081648850028
+    },
+    {
+      "file": "operations/catalogue-watch-supervisor-progress3.json",
+      "sha256": "6ea5582001f3d2b34aa10c6c98baea91a38abcd37d5f0828af06623d7261858f",
+      "bytes": 3295,
+      "mtime_ns": 1793669081645350902
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-value-review4.json",
+      "sha256": "422d4d76eac7be2740ac4992a353ab48842cf775ac216cf51923ba18e5c989e6",
+      "bytes": 2659,
+      "mtime_ns": 1793669081640160942
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-value-review5.json",
+      "sha256": "bf88257886bc9cea17babee99411127a9275fd67a01f446d4a5bae39c468fe62",
+      "bytes": 3898,
+      "mtime_ns": 1793669081641360859
+    },
+    {
+      "file": "operations/snapshot_catalogue_watch_supervisor_v1.py",
+      "sha256": "6882b7344daddf0f5d0653a832867805a354d36b83b638a5406527d352a4483d",
+      "bytes": 2400,
+      "mtime_ns": 1793669007308702338
+    },
+    {
+      "file": "operations/svg-whitespace-remaining-dispatch-census-v1.json",
+      "sha256": "449a0b56768db8ac3d08d33d54abfb466f84cfc0525233a642ab2928f62fac16",
+      "bytes": 1061,
+      "mtime_ns": 1793669081651185113
+    },
+    {
+      "file": "operations/catalogue-watch-supervisor-progress2.json",
+      "sha256": "8ef769fb2be69607cf5887f294eae07027e7084b0a38a4be541941b4499671bd",
+      "bytes": 3295,
+      "mtime_ns": 1793669081653757363
+    },
+    {
+      "file": "operations/current-batch-runtime-progress21.json",
+      "sha256": "e4c4b746289d7472a70e617bfcd5bd131a2f5b8fe861b0605b1a636c55509658",
+      "bytes": 2390,
+      "mtime_ns": 1793669081653488488
+    },
+    {
+      "file": "operations/catalogue-watch-supervisor-launch-v1.json",
+      "sha256": "c931eeb006a016df947ab7f66007dfd6b398c2c63ef236998aa6105b602fb630",
+      "bytes": 924,
+      "mtime_ns": 1793669081652471446
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-publication4.json",
+      "sha256": "496b48dab740f280e463445c2b143470ccdbedd755284773f6bc396dba865711",
+      "bytes": 4443,
+      "mtime_ns": 1793669081654322280
+    },
+    {
+      "file": "operations/seven-source-delivery-audit-v8.json",
+      "sha256": "0d7633d50a1962df739592c8e9abe8f3decbbde76cfc4d936a27b87d75182463",
+      "bytes": 7110,
+      "mtime_ns": 1793669081639719567
+    },
+    {
+      "file": "operations/arxiv-curated-paper-year-census-v1.json",
+      "sha256": "1776bc2f15d02d2c8542da5d045052601588a39fa39dbe8a12651ad1f145e855",
+      "bytes": 551,
+      "mtime_ns": 1793669081642820318
+    },
+    {
+      "file": "operations/catalogue-on-demand-refresh-v1.json",
+      "sha256": "903708555495619813804bb8eedd035d65504f1adb0a14f614ec56c5cf3276d7",
+      "bytes": 2490,
+      "mtime_ns": 1793669081643289902
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-publication5.json",
+      "sha256": "6bf70f4a93fd7cc4cfcb220b863c43a22c8ef7205ec6029c2622331edb3f11c9",
+      "bytes": 5784,
+      "mtime_ns": 1793669081647356444
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v8.json",
+      "sha256": "8f186ef970baa53f0c31f15cab9a9ba2b81a97beee3afa896f94af08234ad4e2",
+      "bytes": 834,
+      "mtime_ns": 1793669081648025153
+    },
+    {
+      "file": "operations/curated-delivery-payload-audit-v5.json",
+      "sha256": "d32d93493a9c370636d376323f9ec0f2228d1d479de1757e2ba0fc2702618e14",
+      "bytes": 2974,
+      "mtime_ns": 1793669081642476485
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

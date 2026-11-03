@@ -1,0 +1,31 @@
+{
+  "incident": "On-demand refresh acquired refresh.lock; v5 daemon exited75 on its next polling cycle instead of retrying.",
+  "old_daemon_pid": 3602814,
+  "old_delegate_source_unchanged": true,
+  "verified_exit_time_utc": "2026-11-03T01:13:02.692578+00:00",
+  "old_log_preserved_under": "/backup/shaoshitong/img2code_20261029/conversion/research_catalog_watch_supervisor_v1/ccb04e3799e0439cbf3f87b612c0d736",
+  "repair": "Add separately locked supervisor around unchanged v5 daemon; retry only busy75; preserve explicit stop and fatal exits.",
+  "controlled_lock_seconds": 8,
+  "controlled_busy_exits": 3,
+  "successful_refreshes_observed": [
+    "2026-11-03T01:16:21.487210+00:00",
+    "2026-11-03T01:17:26.115235+00:00"
+  ],
+  "supervisor_live": true,
+  "delegate_live": true,
+  "status": "resolved_verified",
+  "bulk_terminal_before": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": 839,
+    "svg_source_whitespace_disjoint_20261103_v1_mass": 391,
+    "svg_source_whitespace_disjoint_20261103_v2_mass": 98
+  },
+  "bulk_terminal_after": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": 839,
+    "svg_source_whitespace_disjoint_20261103_v1_mass": 458,
+    "svg_source_whitespace_disjoint_20261103_v2_mass": 185
+  },
+  "bulk_infrastructure_errors": 0,
+  "conversion_or_QA_modules_modified": false,
+  "model_calls": 0,
+  "goal_complete": false
+}
