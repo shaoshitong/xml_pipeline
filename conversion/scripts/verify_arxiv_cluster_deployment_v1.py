@@ -39,7 +39,9 @@ for name,expected in EXPECTED.items():
  p=R/name;actual=hashlib.sha256(p.read_bytes()).hexdigest();assert actual==expected,name
  rows.append(dict(file=name,sha256=actual,bytes=p.stat().st_size,mtime_ns=p.stat().st_mtime_ns))
 P=R/'clean/arxiv_research_figures_v1'
-print(json.dumps(dict(at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),files=rows,goal=json.loads((P/'goal500_progress_v1/current.json').read_text()),cluster=json.loads((P/'cluster_direct_v1/progress.json').read_text()),math=json.loads((P/'math_source_replay_v1/summary.json').read_text()),metadata=json.loads((P/'oai_direct_pipeline_v1/latest_metadata.json').read_text()))))
+goal_path=P/'goal500_automatic_admission_v2/current.json'
+if not goal_path.exists():goal_path=P/'goal500_progress_v1/current.json'
+print(json.dumps(dict(at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),files=rows,goal=json.loads(goal_path.read_text()),cluster=json.loads((P/'cluster_direct_v1/progress.json').read_text()),math=json.loads((P/'math_source_replay_v1/summary.json').read_text()),metadata=json.loads((P/'oai_direct_pipeline_v1/latest_metadata.json').read_text()))))
 """
 code='ROOT='+repr(R)+'\nEXPECTED='+repr(expected_sources)+'\n'+code
 central=remote('hkust3','/home/shaoshitong/anaconda3/bin/python',code)

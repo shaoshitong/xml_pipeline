@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T12:36:05.125916+00:00",
+  "at_utc": "2026-11-03T12:39:38.074580+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11974,9 +11974,9 @@
     },
     {
       "file": "conversion/scripts/verify_arxiv_cluster_deployment_v1.py",
-      "sha256": "cc42c3a44eb1ce77560cd245333657624784bbd6af68e7e7c6c46009fca3f6a4",
-      "bytes": 5681,
-      "mtime_ns": 1793700138855792309
+      "sha256": "382b594c8b91622e449ff1ed620a8a7789ac1907f3e21bffd74ed92e1213e1f3",
+      "bytes": 5783,
+      "mtime_ns": 1793709576101334687
     },
     {
       "file": "conversion/scripts/verify_fontmix_publication.py",

@@ -189,7 +189,7 @@
   "latest_user_CPU_constraint": {
     "recorded_at_utc": "2026-11-03T12:11:21.062102+00:00",
     "instruction": "\u4e0d\u8981\u7528mac\u7684cpu\u54c8\uff0c\u662fhkust3\u7684cpu",
-    "scope": "All research data parsing, deduplication, model/tool work, rendering, compilation and regression tests on HKUST3. Mac only SSH control, source editing and small audit receipts."
+    "scope": "The new DeepSeek Harness/compiler/prefilter/admission, source decoding and all new regression tests run on HKUST3. Mac only SSH control, source editing and small audit receipts. Existing user-authorized five-node collection/native-import workers keep their8+8 threads per node; this clarification does not stop or move them."
   },
   "embedded_XML_parallel_prefilter": {
     "directory": "clean/arxiv_research_figures_v1/embedded_XML_parallel_prefilter_v1",
