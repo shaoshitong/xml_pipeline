@@ -183,3 +183,6 @@ Archive fixture passes exact membership and rejects tampered/duplicate/escaping/
 
 
 2026-11-03 marker inventory: bounded first scan read8715PNG/89SVG headers and found141 native XML markers in55seconds; directory walk incomplete. No pixels decoded, no downloads/import/replay/model calls. Markers are not parsed/qualified products. New v2 scanner persists a frozen filename cohort in its own SQLite queue and commits500-file checkpoints, so continuation does not rescan the same prefix forever. Existing v1 partial inventory is retained. Next step is official embedded XML extraction, graph duplicate detection and unchanged strict source QA plus individual review; none of these141 markers is counted yet.
+
+
+2026-11-03 v2 actual progress: frozen cohort246,034source SVG/PNG filenames. At11:03:33UTC3500checked/37markers; at11:05:51UTC105,000checked/1712markers,141,034stillqueued. Same live PID1843921 verified by birth ticks1149548885. These remain unparsed marker candidates, not products. The scan performs no pixel decoding, network download, PDF import, source replay or model call.

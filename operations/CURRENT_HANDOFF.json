@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T10:56:43.112032+00:00",
+  "at_utc": "2026-11-03T11:06:49.856149+00:00",
   "goal_complete": false,
   "goal_status": "active",
   "previous_goal_turn": "Progress: implemented direct author-XML branch with archive membership, original metadata, resource closure, original font and exact edit/restore gates. Ten previously unseen source graphs produced8 strictly verified and2 pending; candidate visual batch20 produced13accepts/7holds, authoritative publisher confirmed190accepted/3949unified. Main five-node collection continues; no new PDF imports, source downloads or model calls in the new branch.",
@@ -13,7 +13,7 @@
   "accepted_new_last_observation": 190,
   "unified_rows_last_observation": 3949,
   "target_new_pairs": 500,
-  "remaining_required": "Continue collection and strict source replay toward500 accepted new complex pairs; native drawio files now scanned every5min with graph once claims. Refresh final random100 when the full target is met. Preserve current146-population preview.",
+  "remaining_required": "Continue toward500 accepted new complex pairs. Highest-priority next action: inspect persisted embedded_XML_image_inventory_v2 scanner (live pid1843921), already1712native markers after105000/246034image headers. Complete metadata extraction using official WAR PNG/SVG routines; prefilter original complexity and processed graph hashes; archive provenance+unchanged strict replay+visual review before counting. Keep190 accepted/3949 unified and preserve146-population random100 milestone; final500 random100 remains required.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
   "invariants": [
     "No VPS bulk transport or Mac bulk relay",
@@ -101,6 +101,15 @@
     "partial_scanned_SVG": 89,
     "v2_directory": "clean/arxiv_research_figures_v1/embedded_XML_image_inventory_v2",
     "not_converted_or_accepted": true,
-    "next_step": "Inspect persisted v2 queue/marker results, use official PNG/SVG embedded-source extraction, deduplicate existing processed graphs before source replay; preserve all exact QA and visual policy."
+    "next_step": "Inspect persisted v2 queue/marker results, use official PNG/SVG embedded-source extraction, deduplicate existing processed graphs before source replay; preserve all exact QA and visual policy.",
+    "v2_pid": 1843921,
+    "v2_birth_ticks": "1149548885",
+    "frozen_source_images": 246034,
+    "first_observed_checked": 3500,
+    "second_observed_checked": 105000,
+    "second_observed_markers": 1712,
+    "second_observed_queued": 141034,
+    "still_scanning": true,
+    "latest_observation_utc": "2026-11-03T11:05:51.004148+00:00"
   }
 }

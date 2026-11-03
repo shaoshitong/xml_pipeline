@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T10:45:39.853961+00:00",
+  "at_utc": "2026-11-03T11:03:36.078530+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -5571,6 +5571,18 @@
       "mtime_ns": 1793701099414540655
     },
     {
+      "file": "conversion/scripts/inventory_arxiv_embedded_XML_images_v1.py",
+      "sha256": "59418e7fc0a32b2ead4eb778771269bba2999c8c824b8b1078d74110e4deab8b",
+      "bytes": 2188,
+      "mtime_ns": 1793703403246786232
+    },
+    {
+      "file": "conversion/scripts/inventory_arxiv_embedded_XML_images_v2.py",
+      "sha256": "b4384e17173a86a1584e8db2dc7387df5b00846649ad75be837308d6c9737452",
+      "bytes": 3787,
+      "mtime_ns": 1793703705962939499
+    },
+    {
       "file": "conversion/scripts/inventory_literal_tikz.py",
       "sha256": "00919f1897521b997428d014ffab30ea40cb533af11b195b7021e5d7c7170676",
       "bytes": 1476,
@@ -5587,6 +5599,12 @@
       "sha256": "426bc5b995029a400e8d9ff8f1e4a8a315503417b38c4df4153ac027e8845232",
       "bytes": 1774,
       "mtime_ns": 1793702475032023630
+    },
+    {
+      "file": "conversion/scripts/launch_arxiv_embedded_XML_image_inventory_v2.py",
+      "sha256": "11d5f63df2cd2ded496351d46f63748b7d1bdc9cf4ef32cea57db55e5b206f9e",
+      "bytes": 1123,
+      "mtime_ns": 1793703706074939444
     },
     {
       "file": "conversion/scripts/launch_arxiv_lan_source_relay_v1.py",
