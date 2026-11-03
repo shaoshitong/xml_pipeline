@@ -74,7 +74,7 @@ def snapshot():
     baseline_exact_bytes = {(row['code_sha256'], row['image_sha256']) for row in baseline}
     cachefile = D / 'verified_pair_cache.json'
     cache = json.loads(cachefile.read_text()) if cachefile.exists() else {}
-    sources = [P / 'author_native_source_replay_v1/published_source_replay_v2/source_replay_aligned.jsonl', P / 'author_native_source_replay_incremental_v1/author_native_source_replay.jsonl', P / 'math_source_replay_v1/author_native_math_source_replay.jsonl']
+    sources = [P / 'author_native_source_replay_v1/published_source_replay_v2/source_replay_aligned.jsonl', P / 'author_native_source_replay_incremental_v1/author_native_source_replay.jsonl', P / 'math_source_replay_v1/author_native_math_source_replay.jsonl', P / 'math_viewport_source_replay_v1/author_native_math_source_replay.jsonl']
     rows = [json.loads(line) for path in sources if path.exists() for line in path.read_text().splitlines()]
     selected, all_new = {}, {}
     errors, statuses = [], collections.Counter()

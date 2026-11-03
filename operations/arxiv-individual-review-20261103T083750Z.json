@@ -1,0 +1,84 @@
+{
+  "at_utc": "2026-11-03T08:42:02.863223+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T083750Z",
+  "contact_manifest_sha256": "98ceca0578fdc34682e83fd629b2a31cb8227c8beb7efc16b69e3d754342c6aa",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "59fcbd58decbfce4471f1439aa6c4adfe84259845fef0b0ff85a30010db113f8",
+    "contact_03.jpg": "55202dd857655e32c2ecdfe56ba0da268f5ddded9685549b7bca0fb5b799f803",
+    "contact_02.jpg": "4bccbc1af163851ce60eff93a3d153c76bb1c22ba26fda125b2d1f1d1db420f8"
+  },
+  "decisions": [
+    {
+      "number": 1,
+      "id": "2ef0a2948455238afe404062b5193f4eb1a9caf06197a9e09f0fef97ff28400e",
+      "paper": "2610.15390v1",
+      "accepted": true,
+      "reason": "Complete audio-agent application, workflow, risk-surface and deployment framework."
+    },
+    {
+      "number": 2,
+      "id": "6115cc772afcc2108effcb868723ea05206b543ffd7677a3005031db75ce10b8",
+      "paper": "2403.19079v1",
+      "accepted": true,
+      "reason": "Detailed multiscale wavelet/physically-guided vision architecture with explicit operators."
+    },
+    {
+      "number": 3,
+      "id": "7fa39dc8a2ef3f7ec5839aa6706b2bd4e0a143c5774c7975e834375b4fef5b2c",
+      "paper": "2511.08328v2",
+      "accepted": false,
+      "reason": "Hold near-variant; detailed registration architecture in panel 9 is retained."
+    },
+    {
+      "number": 4,
+      "id": "9abc2815b5933ea8985c3d1b74c9db8c171589ff713c232421da8e202dba081c",
+      "paper": "2511.08328v2",
+      "accepted": false,
+      "reason": "Hold near-variant; detailed registration architecture in panel 9 is retained."
+    },
+    {
+      "number": 5,
+      "id": "a550ef5dff79e2985052390758d2aa03d14ec59f7ef5642e43dca288d3037089",
+      "paper": "2509.26062v1",
+      "accepted": true,
+      "reason": "Dynamic graph workflow synthesis, subgraph reuse and planner distillation framework."
+    },
+    {
+      "number": 6,
+      "id": "a7cef08a5ff721c249d4ee4b51396e345524948df86ee560635b67d58b3bbcde",
+      "paper": "2610.15390v1",
+      "accepted": true,
+      "reason": "Audio-agent workflow boundaries and full deployment/lifecycle decomposition."
+    },
+    {
+      "number": 7,
+      "id": "b082231cd0765896a17b88bfaffbe6579a7b660287eb0031f9b08f05593279b0",
+      "paper": "2511.08328v2",
+      "accepted": false,
+      "reason": "Hold near-variant; detailed registration architecture in panel 9 is retained."
+    },
+    {
+      "number": 8,
+      "id": "ba29c31eb7e8aa32467f969e16ce65c3811c11d5010555783eb13118151de8ec",
+      "paper": "2610.02597v1",
+      "accepted": true,
+      "reason": "Continual task retention/acquisition with explicit anchor and teacher distillation paths."
+    },
+    {
+      "number": 9,
+      "id": "badd006e41c009268aecdf39e48de6067e41a10eb7c5619ee1b1e62a1d70fbea",
+      "paper": "2511.08328v2",
+      "accepted": true,
+      "reason": "Complete temporal mammography fusion with detailed learned registration stack."
+    },
+    {
+      "number": 10,
+      "id": "cb45681977c9c5f469826eac5ba919b6c75369e56ca43f42516b4c31abffb22f",
+      "paper": "2305.19742v2",
+      "accepted": true,
+      "reason": "Dose-response surface, nuisance estimation and policy-learning scientific framework."
+    }
+  ],
+  "does_not_certify_original_PDF_fidelity": true
+}

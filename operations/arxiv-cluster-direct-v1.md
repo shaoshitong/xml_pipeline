@@ -115,3 +115,30 @@ future candidates remain unapproved until a later actual review.
 The math recovery ledger measured 34 verified source replays earlier, then 44
 verified and 190 pending. A pending result failing exact model/PNG restore is not
 counted. All these recoveries add zero PDF-import calls and zero model calls.
+
+Update 2026-11-03 08:59 UTC: a second individually inspected batch accepted 7 of
+10 figures. Three near-variant mammography architectures remain held in favor of
+the complete, detailed registration architecture. Accepted new count is 40.
+
+A static audit of an old failed formula figure established unchanged source-cell
+geometry but differing serialized viewport dx/dy, 1-pixel label widths and SVG
+edge-routing coordinates. A fresh synthetic wide/negative-coordinate math figure
+reproduced failure of the unchanged validator; applying a uniform identity view
+(scale 1, translate 0, scroll 0) before all validation stages made every original
+exact model/topology/SVG/PNG/RGBA restore gate pass. A previously unvalidated real
+source then passed under the same adapter with zero PDF-import/model calls.
+
+`arxiv_math_viewport_validation_v1.py` continues only prior source-validation
+failures with identical original/restored source-cell inventories, pinned physical
+fonts and closed resources. It uses a new per-protocol once ledger and preserves
+the prior PDF conversion, author XML, failed proof, failure record and baseline
+payloads. Old source/proof hashes are checked before and after. Source recipes are
+pinned and checked in each bounded worker. No original-PDF fidelity is inferred.
+The first real observation verified 19 additional source replays, with other
+failures still held; these are not counted as accepted scientific figures until
+individual visual review. The new manifest is included in the goal publisher.
+
+Evidence paths:
+- `clean/arxiv_research_figures_v1/math_viewport_protocol_selftest_v1/results.json`
+- `clean/arxiv_research_figures_v1/math_uniform_viewport_probe_v1/`
+- `clean/arxiv_research_figures_v1/math_viewport_source_replay_v1/{policy,summary}.json`
