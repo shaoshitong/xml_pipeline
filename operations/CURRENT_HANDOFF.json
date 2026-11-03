@@ -1,13 +1,13 @@
 {
-  "at_utc": "2026-11-03T00:32:56.573263+00:00",
+  "at_utc": "2026-11-03T00:45:39.280314+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T002308369688Z_review_batch_v8/paired_priority_complex.jsonl",
-    "sha256": "a9a6dcfd975e5349e7161c928e1dd18df87ce569b3f77f864ad542cad05c5242",
-    "bytes": 4581665,
-    "rows": 1012
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T004414743220Z_review_batch_v8/paired_priority_complex.jsonl",
+    "sha256": "8825d87f45f50b7a1ea51f905f11df0f01be607d0cd2f8b7421a23c6685cf5e5",
+    "bytes": 4649447,
+    "rows": 1034
   },
-  "strict_main_rows": 1012,
+  "strict_main_rows": 1034,
   "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
     "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
@@ -68,8 +68,8 @@
     "source_only_not_qualification": true
   },
   "review_registry": {
-    "held": 32,
-    "published": 94
+    "held": 38,
+    "published": 132
   },
   "pending_reviews": 0,
   "next_generic_repair": {
@@ -308,7 +308,7 @@
       ]
     }
   },
-  "next_step": "Follow existing v11 mass (PID3910048/start1145471490), v24 disjoint 566-case mass (wrapper PID800131/birth1145755784; controller PID800133/birth1145755791), and the unchanged v12 parent waiting on BOTH. Parent PID347847/start1145650317 passed17/43 and will automatically build the remaining full-population pass after these foreign pending IDs finish; global source-core journals preserve disjoint attempts and qualifications, including failures, so none are rerun. New disjoint run name deliberately does not share the parent run prefix, and its verified controller is visible to parent overlap detection. All1149 applicable originals remain retained. Current usable graded delivery1366 includes strict main1012,92 complex charts,262 arXiv. Review new qualified PNG increments; refresh delivery and full final audit after all batches finish. No launch-only completion, no reset/restart of existing handles.",
+  "next_step": "Prioritize completion and actual-result publication of the existing v11 mass, approved disjoint v24 mass and automatic parent v12 catchup. Do not expand diagnostics, rerun normals, restart active programs, alter QA thresholds or network routing. Review only new qualified PNG increments, refresh graded delivery and final whole-goal audit after all applicable cases are terminal. Current curated snapshot includes 1034 strict diagram/poster pairs, 92 complex charts and 262 arXiv pairs with separate reference grades.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -1431,23 +1431,23 @@
   },
   "curated_delivery": {
     "pairs": {
-      "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/pairs.jsonl",
-      "sha256": "cec9e69360f8ed793a41d4f02fc4733d277b7d28e73e31a2e83f68cc7c92ab92",
-      "bytes": 2248784
+      "file": "clean/curated_complex_research_delivery_v1/cca69753c7d94cd29a39ee7c0955be16/pairs.jsonl",
+      "sha256": "f94dfd9489c28b1f801031c86522306a934aba65b572b4720bdda581fe463fd0",
+      "bytes": 2283461
     },
     "summary": {
-      "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/summary.json",
-      "sha256": "241e4785ecfd756eaafeff3067f0344b442eb4001fcb179dcc14a8d4efa09945",
+      "file": "clean/curated_complex_research_delivery_v1/cca69753c7d94cd29a39ee7c0955be16/summary.json",
+      "sha256": "52d7824447517dc783be0dd72df347600351f6b9b90510d721a52fbdb5558107",
       "bytes": 4341
     },
     "readme": {
-      "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/README.md",
-      "sha256": "ebbf00a012ab523e68d750a702312184962c5b7f9fa353bc5a5a64e9b24d9269",
+      "file": "clean/curated_complex_research_delivery_v1/cca69753c7d94cd29a39ee7c0955be16/README.md",
+      "sha256": "9227a0ddd7e81e152647baddb3c033eecb75dcd3b8b532759eeba23dea542509",
       "bytes": 1361
     },
-    "unique_code_RGBA_pairs": 1366,
+    "unique_code_RGBA_pairs": 1388,
     "curation_memberships": {
-      "complex_paper_diagrams_and_posters": 1012,
+      "complex_paper_diagrams_and_posters": 1034,
       "complex_scientific_charts": 92,
       "complex_arxiv_native": 262
     },
@@ -1622,6 +1622,242 @@
         "queued": 313,
         "running": 11
       }
+    }
+  },
+  "latest_actual_PNG_publication": {
+    "review": {
+      "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_275d234fc03747aab0347032520598b1",
+      "pairs": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_275d234fc03747aab0347032520598b1/reviewed_pairs.jsonl",
+        "sha256": "855e11511e11761d96802130b7a13196b028173257d0bc67ed13b3b4e0065a33",
+        "bytes": 141467
+      },
+      "occlusion": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_3797ebfbdef64db7a3c6d9a64cf8bd2a/source_text_occlusion_reviews.jsonl",
+        "sha256": "52fcccb3e8cd4c42c58153a28d5f7f3e9f325ce0901daa27659fc909ca5c6287",
+        "bytes": 11596
+      },
+      "input_summary": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_3797ebfbdef64db7a3c6d9a64cf8bd2a/summary.json",
+        "sha256": "08a25345da7e895148ea573b080fde30cdaec1a84e664de21140b7ef9c7f4182",
+        "bytes": 6508
+      },
+      "decisions": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_275d234fc03747aab0347032520598b1/decisions.json",
+        "sha256": "ab6727c3641077274318df23322e48856829730bd227e6960586498c07c76ec6",
+        "bytes": 6151
+      },
+      "approved_ids": [
+        "4c71de6c2e2b2fb5ac125d4664c0c04c861ea70f79ba789e7dc01837a98d97dc",
+        "4d3af971beda2ac70dcf46819de11919108148c29ff518d09cb4cc945fd75774",
+        "5680ec669313f2d78d6c14c32aa6366797d52542d2eb1761e29a19763e4e67a8",
+        "575c1fa405b013f6d6d89b15bbaf7aa6114907f66692bc789926e2f02f211c7c",
+        "5fb2ba0154dbf9ccd2a07924af74f3da10171a8013a0a459d53ac4e4b5b23aa9",
+        "642b33b9ab2c8e535d367d53d1569c927d655d8a6a4eb19e74057d4c10e4f14a",
+        "64b288a7b6c207594572cee893b982a058b9e43dbe34061f57a4b483d3e031b1",
+        "69aedc9969f2c7c8225759f6c13dcb0c300b9e523a0084a5f6fa48f0b37a59ec",
+        "6a3f3009b601a58ad69f15d3a723acb61e4b7b5eca2a03ae9798e8a92dafcf54",
+        "74cdec7b7b98585ddd44ed00c9815c991a306c1b74f56cb9cee5783b1fbd1d99",
+        "778b6d155950698bb86c6c2e313e76edb303ae3864ec9951018a36d38a2e5150",
+        "7c850f70eed533766409ba0b27e9fa50c3aa1d3e09b8b97ab9826820e1cae5a9",
+        "7cae00fbb8e09468fd67e1734dd29c0eb62577ade07955cbae1d09228988902b",
+        "84533d54d8ddd813d7a9251ce177213f88865396a0a89fae450864205e0aea20",
+        "881aab247cdc9ff9dd6e3f7c8f28fe01fd36a90f8ccdabcb4f3803ce10441dcd",
+        "8a2732537390f13dda85ead5ddd0cc828b1c7094280629a8814b476fdeb111ca",
+        "8a7c93fa93af0ed52ef9cdbda0aa157ff757284a26c79885e333ea5142d8d276",
+        "8f7918ce99fac9f941a8ebe25ff5075e3c0c0e2c9b6956e3a1acf17dfd25d3e3",
+        "917d5be34e0c0ffa1de998547a8666fc82410f3d89c88188110038323a18f3f6",
+        "952bca4c9f0b0e90e6fc563a145b15eaeb0953f41c35d1bf53ca9eb60d24029a",
+        "a01cca6d1c8d78934bf34ff1afdf3dfdf4b8bf8e9b6390645f2c6a0cfe5447a4",
+        "a6e65723d06385c8b5c955f79a5de3afc680ba627926e8f6a81132f5df85f454"
+      ],
+      "held_ids": [
+        "60216137b34d2448635b453554fd169157b93d9036653b7014d25bc3ed0b67f2",
+        "6b8a23bc42de240208d4eb1a00cdde0a0e41340e3744d6ef5561cc2799bc3180",
+        "7a16ed1a20e5e2561c243fd3c7f0c2a151732389e74ccbdbe7762d1d25f0b52f",
+        "9686ed068eb4ebf92286239ff6279fa53d6f8c65aedca9d737ac13d6daf57b50",
+        "a6cca199a2a5ce47c85d3994d7e7b15dfe92a30f9e43bf2eb8589347c83ad9c6"
+      ],
+      "actual_native_PNG_inspected_ids": [
+        "4c71de6c2e2b2fb5ac125d4664c0c04c861ea70f79ba789e7dc01837a98d97dc",
+        "4d3af971beda2ac70dcf46819de11919108148c29ff518d09cb4cc945fd75774",
+        "5680ec669313f2d78d6c14c32aa6366797d52542d2eb1761e29a19763e4e67a8",
+        "575c1fa405b013f6d6d89b15bbaf7aa6114907f66692bc789926e2f02f211c7c",
+        "5fb2ba0154dbf9ccd2a07924af74f3da10171a8013a0a459d53ac4e4b5b23aa9",
+        "60216137b34d2448635b453554fd169157b93d9036653b7014d25bc3ed0b67f2",
+        "642b33b9ab2c8e535d367d53d1569c927d655d8a6a4eb19e74057d4c10e4f14a",
+        "64b288a7b6c207594572cee893b982a058b9e43dbe34061f57a4b483d3e031b1",
+        "69aedc9969f2c7c8225759f6c13dcb0c300b9e523a0084a5f6fa48f0b37a59ec",
+        "6a3f3009b601a58ad69f15d3a723acb61e4b7b5eca2a03ae9798e8a92dafcf54",
+        "6b8a23bc42de240208d4eb1a00cdde0a0e41340e3744d6ef5561cc2799bc3180",
+        "74cdec7b7b98585ddd44ed00c9815c991a306c1b74f56cb9cee5783b1fbd1d99",
+        "778b6d155950698bb86c6c2e313e76edb303ae3864ec9951018a36d38a2e5150",
+        "7a16ed1a20e5e2561c243fd3c7f0c2a151732389e74ccbdbe7762d1d25f0b52f",
+        "7c850f70eed533766409ba0b27e9fa50c3aa1d3e09b8b97ab9826820e1cae5a9",
+        "7cae00fbb8e09468fd67e1734dd29c0eb62577ade07955cbae1d09228988902b",
+        "84533d54d8ddd813d7a9251ce177213f88865396a0a89fae450864205e0aea20",
+        "881aab247cdc9ff9dd6e3f7c8f28fe01fd36a90f8ccdabcb4f3803ce10441dcd",
+        "8a2732537390f13dda85ead5ddd0cc828b1c7094280629a8814b476fdeb111ca",
+        "8a7c93fa93af0ed52ef9cdbda0aa157ff757284a26c79885e333ea5142d8d276",
+        "8f7918ce99fac9f941a8ebe25ff5075e3c0c0e2c9b6956e3a1acf17dfd25d3e3",
+        "917d5be34e0c0ffa1de998547a8666fc82410f3d89c88188110038323a18f3f6",
+        "952bca4c9f0b0e90e6fc563a145b15eaeb0953f41c35d1bf53ca9eb60d24029a",
+        "9686ed068eb4ebf92286239ff6279fa53d6f8c65aedca9d737ac13d6daf57b50",
+        "a01cca6d1c8d78934bf34ff1afdf3dfdf4b8bf8e9b6390645f2c6a0cfe5447a4",
+        "a6cca199a2a5ce47c85d3994d7e7b15dfe92a30f9e43bf2eb8589347c83ad9c6",
+        "a6e65723d06385c8b5c955f79a5de3afc680ba627926e8f6a81132f5df85f454"
+      ],
+      "technical_qualifications_unchanged": true,
+      "new_normal_calls": 0,
+      "new_QA_calls": 0,
+      "model_calls": 0
+    },
+    "publication": {
+      "before": 1012,
+      "after": 1034,
+      "added_ids": [
+        "4c71de6c2e2b2fb5ac125d4664c0c04c861ea70f79ba789e7dc01837a98d97dc",
+        "4d3af971beda2ac70dcf46819de11919108148c29ff518d09cb4cc945fd75774",
+        "5680ec669313f2d78d6c14c32aa6366797d52542d2eb1761e29a19763e4e67a8",
+        "575c1fa405b013f6d6d89b15bbaf7aa6114907f66692bc789926e2f02f211c7c",
+        "5fb2ba0154dbf9ccd2a07924af74f3da10171a8013a0a459d53ac4e4b5b23aa9",
+        "642b33b9ab2c8e535d367d53d1569c927d655d8a6a4eb19e74057d4c10e4f14a",
+        "64b288a7b6c207594572cee893b982a058b9e43dbe34061f57a4b483d3e031b1",
+        "69aedc9969f2c7c8225759f6c13dcb0c300b9e523a0084a5f6fa48f0b37a59ec",
+        "6a3f3009b601a58ad69f15d3a723acb61e4b7b5eca2a03ae9798e8a92dafcf54",
+        "74cdec7b7b98585ddd44ed00c9815c991a306c1b74f56cb9cee5783b1fbd1d99",
+        "778b6d155950698bb86c6c2e313e76edb303ae3864ec9951018a36d38a2e5150",
+        "7c850f70eed533766409ba0b27e9fa50c3aa1d3e09b8b97ab9826820e1cae5a9",
+        "7cae00fbb8e09468fd67e1734dd29c0eb62577ade07955cbae1d09228988902b",
+        "84533d54d8ddd813d7a9251ce177213f88865396a0a89fae450864205e0aea20",
+        "881aab247cdc9ff9dd6e3f7c8f28fe01fd36a90f8ccdabcb4f3803ce10441dcd",
+        "8a2732537390f13dda85ead5ddd0cc828b1c7094280629a8814b476fdeb111ca",
+        "8a7c93fa93af0ed52ef9cdbda0aa157ff757284a26c79885e333ea5142d8d276",
+        "8f7918ce99fac9f941a8ebe25ff5075e3c0c0e2c9b6956e3a1acf17dfd25d3e3",
+        "917d5be34e0c0ffa1de998547a8666fc82410f3d89c88188110038323a18f3f6",
+        "952bca4c9f0b0e90e6fc563a145b15eaeb0953f41c35d1bf53ca9eb60d24029a",
+        "a01cca6d1c8d78934bf34ff1afdf3dfdf4b8bf8e9b6390645f2c6a0cfe5447a4",
+        "a6e65723d06385c8b5c955f79a5de3afc680ba627926e8f6a81132f5df85f454"
+      ],
+      "held_ids": [
+        "60216137b34d2448635b453554fd169157b93d9036653b7014d25bc3ed0b67f2",
+        "6b8a23bc42de240208d4eb1a00cdde0a0e41340e3744d6ef5561cc2799bc3180",
+        "7a16ed1a20e5e2561c243fd3c7f0c2a151732389e74ccbdbe7762d1d25f0b52f",
+        "9686ed068eb4ebf92286239ff6279fa53d6f8c65aedca9d737ac13d6daf57b50",
+        "a6cca199a2a5ce47c85d3994d7e7b15dfe92a30f9e43bf2eb8589347c83ad9c6"
+      ],
+      "main": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T004414743220Z_review_batch_v8/paired_priority_complex.jsonl",
+        "sha256": "8825d87f45f50b7a1ea51f905f11df0f01be607d0cd2f8b7421a23c6685cf5e5",
+        "bytes": 4649447,
+        "rows": 1034
+      },
+      "review": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T004414743220Z_review_batch_v8/value_review.json",
+        "sha256": "24361a216ed68986bee77638109672eff82faa9e6a961a4c0c92fb74aeb23060",
+        "bytes": 28829
+      },
+      "pointer": {
+        "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+        "sha256": "5fb5e88aedbac88c49cf4440274dc3d7fbbe9d595b4246811375edf30fa328a7",
+        "bytes": 3516
+      }
+    }
+  },
+  "latest_runtime_progress": {
+    "at_utc": "2026-11-03T00:45:34.328381+00:00",
+    "batches": {
+      "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
+        "counts": {
+          "abandoned": 605,
+          "qualified": 66,
+          "queued": 156,
+          "running": 12
+        },
+        "total": 839,
+        "terminal": 671,
+        "infrastructure_errors": 0,
+        "controller": {
+          "pid": 4019247,
+          "birth": "1145518167",
+          "live": true
+        },
+        "recent_quality_seconds": {
+          "samples": 5,
+          "mean": 64.9634,
+          "median": 76.11,
+          "max": 89.874
+        },
+        "infrastructure_stop": null
+      },
+      "svg_source_whitespace_disjoint_20261103_v1_mass": {
+        "counts": {
+          "abandoned": 138,
+          "qualified": 13,
+          "queued": 404,
+          "running": 11
+        },
+        "total": 566,
+        "terminal": 151,
+        "infrastructure_errors": 0,
+        "controller": {
+          "pid": 800133,
+          "birth": "1145755791",
+          "live": true
+        },
+        "recent_quality_seconds": {
+          "samples": 4,
+          "mean": 80.1305,
+          "median": 79.215,
+          "max": 92.57
+        },
+        "infrastructure_stop": null
+      }
+    },
+    "cpu_count": 144,
+    "load_average": [
+      46.28173828125,
+      45.115234375,
+      39.0029296875
+    ],
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "parent": {
+      "state": {
+        "elapsed_seconds": 1517.2017140816897,
+        "goal_complete": false,
+        "pending_originals": 585,
+        "stage": "validated_waiting_existing_foreign_batch"
+      },
+      "owner": {
+        "pid": 347847,
+        "birth": "1145650317",
+        "live": true
+      },
+      "foreign_pending_count": 585,
+      "failure": null
+    },
+    "review_registry": {
+      "held": 38,
+      "published": 132
+    },
+    "local_exec_wall_seconds": 0.972
+  },
+  "datikz_saved_source_raster_diagnostic": {
+    "saved_source_only": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "canonical_reference_unchanged": true,
+    "baseline_SSIM": 0.8893715647115513,
+    "required_SSIM": 0.9,
+    "nontext_MSE_fraction": 0.6222141952768993,
+    "crispEdges_probe_SSIM": 0.8792336784363254,
+    "probe_not_adopted": true,
+    "remaining": "Source PDF/SVG raster mismatch; diagnostic CSS crispEdges worsens fidelity. Preserve unqualified source and native candidate; defer further experiments while fixed bulk runs finish.",
+    "cached_candidate_comparison": {
+      "status": "not_compared",
+      "reason": "unregistered_reference_canvas_difference",
+      "no_crop_or_fit_applied": true
     }
   }
 }

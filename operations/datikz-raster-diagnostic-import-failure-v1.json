@@ -1,0 +1,12 @@
+{
+  "script": "diagnose_datikz_pdf_svg_raster_v1.py",
+  "script_sha256": "34a0ca680bc30a7cdce541894bfcc92882dc0bed8907a4c66fe7134188f3b0e3",
+  "phase": "import_auto_quality_common_v4",
+  "error": "ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject",
+  "cause": "Diagnostic placed optional PDF runtime packages before the production NumPy/skimage environment.",
+  "fix": "Version2 uses the production append-only optional PDF runtime path order.",
+  "source_SVG_raster_probes": 0,
+  "normal_calls": 0,
+  "QA_calls": 0,
+  "production_jobs_modified": false
+}

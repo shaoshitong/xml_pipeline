@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:32:57.374123+00:00",
+  "at_utc": "2026-11-03T00:45:39.280314+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11977,6 +11977,24 @@
       "sha256": "97dcd913d0625256fde545b83ea375a9f2c88ca0480c6f0b7fe95a33f8872f5f",
       "bytes": 5648,
       "mtime_ns": 1793665683432643391
+    },
+    {
+      "file": "conversion/scripts/diagnose_datikz_pdf_svg_raster_v1.py",
+      "sha256": "34a0ca680bc30a7cdce541894bfcc92882dc0bed8907a4c66fe7134188f3b0e3",
+      "bytes": 4374,
+      "mtime_ns": 1793666175547876269
+    },
+    {
+      "file": "conversion/scripts/diagnose_datikz_pdf_svg_raster_v2.py",
+      "sha256": "07e1f0bbf6d2fbac40b3147298da8a37046dcf78f3918a7cb35cf430d729b1ca",
+      "bytes": 4395,
+      "mtime_ns": 1793666218635444414
+    },
+    {
+      "file": "conversion/scripts/probe_datikz_source_stroke_adjust_v1.py",
+      "sha256": "b03a0548baf5bf8b22c24dc115bc2f9b2531dfe04538dc50568b46b2f0e013f1",
+      "bytes": 3431,
+      "mtime_ns": 1793666475240844332
     }
   ],
   "excluded_for_credential_review": []

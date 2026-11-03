@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:32:57.362697+00:00",
+  "at_utc": "2026-11-03T00:45:39.280314+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "e2e927772c991bce250d5cc3cbfe87e9cb53d68a7140856348845a4d90145013",
-      "bytes": 73713,
-      "mtime_ns": 1793665977357758753
+      "sha256": "2bbcde10c081d2d3d35a3c9d0ea199cd7afac9cf517099a51be3dd97a8420f58",
+      "bytes": 84765,
+      "mtime_ns": 1793666739287226532
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "e2e927772c991bce250d5cc3cbfe87e9cb53d68a7140856348845a4d90145013",
-      "bytes": 73713,
-      "mtime_ns": 1793665977355019059
+      "sha256": "2bbcde10c081d2d3d35a3c9d0ea199cd7afac9cf517099a51be3dd97a8420f58",
+      "bytes": 84765,
+      "mtime_ns": 1793666739284019412
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -16023,9 +16023,9 @@
     },
     {
       "file": "operations/CURATED_RESEARCH_DELIVERY.md",
-      "sha256": "ebbf00a012ab523e68d750a702312184962c5b7f9fa353bc5a5a64e9b24d9269",
+      "sha256": "9227a0ddd7e81e152647baddb3c033eecb75dcd3b8b532759eeba23dea542509",
       "bytes": 1361,
-      "mtime_ns": 1793665591201336649
+      "mtime_ns": 1793666739279473777
     },
     {
       "file": "operations/complex-arxiv-native-curation-publication-v1.json",
@@ -16122,6 +16122,90 @@
       "sha256": "f65585568b33879140929cd021a00d902d6b8cf0157415f8c51212bfbabd7fba",
       "bytes": 525,
       "mtime_ns": 1793665977352081820
+    },
+    {
+      "file": "conversion/scripts/diagnose_datikz_pdf_svg_raster_v1.py",
+      "sha256": "34a0ca680bc30a7cdce541894bfcc92882dc0bed8907a4c66fe7134188f3b0e3",
+      "bytes": 4374,
+      "mtime_ns": 1793666175547876269
+    },
+    {
+      "file": "conversion/scripts/diagnose_datikz_pdf_svg_raster_v2.py",
+      "sha256": "07e1f0bbf6d2fbac40b3147298da8a37046dcf78f3918a7cb35cf430d729b1ca",
+      "bytes": 4395,
+      "mtime_ns": 1793666218635444414
+    },
+    {
+      "file": "conversion/scripts/probe_datikz_source_stroke_adjust_v1.py",
+      "sha256": "b03a0548baf5bf8b22c24dc115bc2f9b2531dfe04538dc50568b46b2f0e013f1",
+      "bytes": 3431,
+      "mtime_ns": 1793666475240844332
+    },
+    {
+      "file": "operations/resolved-geometry-mass-decisions4.json",
+      "sha256": "bd72bb9d8c5fae992d5b738d6745c0ac04c16273fb79a336fc9f6854c516871a",
+      "bytes": 3208,
+      "mtime_ns": 1793666739277242710
+    },
+    {
+      "file": "operations/datikz-source-stroke-adjust-probe-v1.json",
+      "sha256": "6d50aa7d2e7ee8efd52a7167b70cded216edf9eecf356b99fce1134a96f4b272",
+      "bytes": 1827,
+      "mtime_ns": 1793666739276212115
+    },
+    {
+      "file": "operations/snapshot_current_batch_runtime_v1.py",
+      "sha256": "6533b0a43b8a2964f2b512b26cda6f48186e358433402cecc287cf8a98ff7a72",
+      "bytes": 3050,
+      "mtime_ns": 1793666739279892532
+    },
+    {
+      "file": "operations/current-batch-runtime-progress2.json",
+      "sha256": "a773756e7b5f0e22a32e6fed5858d1304c1d037af98b4fc014735ae4ac2ef369",
+      "bytes": 1766,
+      "mtime_ns": 1793666739278879104
+    },
+    {
+      "file": "operations/resolved-geometry-mass-value-review4.json",
+      "sha256": "05ae836a91d6af1ec425b2ecf71c8083d44ce2eaf51a1592b6c1fb7eb01cc405",
+      "bytes": 5605,
+      "mtime_ns": 1793666739276760413
+    },
+    {
+      "file": "operations/publish_runtime_and_visual_review_sources_v1.py",
+      "sha256": "922504915fec672a19a92f991af960e89696ac96e6d7aeea3c2404a499710a97",
+      "bytes": 4544,
+      "mtime_ns": 1793666739280237869
+    },
+    {
+      "file": "operations/current-batch-runtime-progress1.json",
+      "sha256": "99c3e7651e8291f384d572b3c74d98bb858c722767f74e51734b8ce5e94f9f55",
+      "bytes": 1776,
+      "mtime_ns": 1793666739278479349
+    },
+    {
+      "file": "operations/datikz-pdf-svg-raster-diagnosis-v2.json",
+      "sha256": "773342b96360f4690e436a1568c5e35bd90432aa72793943c614960f0651aef9",
+      "bytes": 2104,
+      "mtime_ns": 1793666739275632817
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v2.json",
+      "sha256": "22114349596ec7a14d9dd4d79046712801a7cfeba08d3cafd8b1e53ee51ad397",
+      "bytes": 834,
+      "mtime_ns": 1793666739278088262
+    },
+    {
+      "file": "operations/resolved-geometry-mass-publication4.json",
+      "sha256": "8c3d4bf6ec43119e7834b055eafdba784f1ec66e31266df1a99e240dd09b6d83",
+      "bytes": 8431,
+      "mtime_ns": 1793666739277759924
+    },
+    {
+      "file": "operations/datikz-raster-diagnostic-import-failure-v1.json",
+      "sha256": "844529604607356b01c156d8d0ddbf67bd4712120354de40b4b4dd6901b94c28",
+      "bytes": 627,
+      "mtime_ns": 1793666739275046268
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
