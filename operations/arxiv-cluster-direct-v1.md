@@ -1,0 +1,65 @@
+# Direct arXiv collection on HKUST1–5
+
+The confirmed baseline is `clean/accepted_3759_v1/pairs.jsonl`, SHA256
+`913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2`.
+The phase target remains 500 additional valuable complex editable pairs; merely
+recovered XML or completed downloads do not satisfy it.
+
+The direct pipeline replaces failing legacy search requests with official OAI-PMH
+arXivRaw metadata, filtered by first submission date (2023 onward), not OAI modified
+date. Last author version is pinned. Cached official responses are reused. Failed
+metadata and source requests remain pending; failed partitions are never complete.
+
+A same-process RLock now spans telemetry generation and route correction. This
+fixes a real concurrent `.tmp` rename race that stopped the single-node collector.
+The old source and PDF once ledgers and cumulative 512 GiB source budget remain.
+
+`arxiv_cluster_broker_v1.py` runs on HKUST3's campus IP, authenticated by a task
+private configuration under `conversion/private_arxiv_cluster_v1/` (never Git).
+Five contiguous SHA256(arxiv_id) intervals assign every paper/version to exactly
+one node. Each worker uses eight direct download threads and eight native import
+workers. The server grants a global fulltext request slot every .34 seconds and
+shared cooldown after 403/429/503. Metadata acquisition remains serial.
+
+A central SQLite PDF claim commits before any official invocation. Each node has
+its own local SQLite, never a shared database on NFS. A committed PDF claim is
+never reassigned automatically after interruption. Worker artifacts remain on the
+remote data disk until an authenticated LAN upload has verified every file hash,
+installed canonical relative paths, and committed the original HKUST3 ledger.
+Existing source-replay QA then consumes the unchanged official-import results.
+
+Source-body blocks reserve budget before receipt, conservatively including short
+reads and interrupted transfers. These reservations are cumulative, distinct from
+actual received bytes tracked in worker heartbeats. The resource guard includes
+the persistent cluster reservation counter without resetting older epochs.
+
+Runtime, pinned official draw.io WAR/JS, Chromium and fonts are distributed from
+HKUST3 over the campus LAN, never through VPS or Mac bulk relay. Node-specific
+greenlet wheels for Python 3.13 stay remote. Short owned /tmp symlinks point to
+remote data-disk temporary directories to avoid Chromium UNIX socket path limits.
+No system proxy, DNS, Mac app settings, or VPS configuration is changed.
+
+Entry points: `prepare_arxiv_cluster_runtime_v1.py`,
+`start_arxiv_cluster_broker_v1.py`, `deploy_arxiv_cluster_nodes_v1.py`,
+`transition_arxiv_cluster_v1.py`, `start_arxiv_cluster_nodes_v1.py`.
+The transition gracefully drains only the owned single-node collector and meters
+its final counters before creating a new launch epoch. It never clears queues.
+
+Reports on HKUST3:
+- `clean/arxiv_research_figures_v1/cluster_direct_v1/progress.json`
+- `clean/arxiv_research_figures_v1/goal500_progress_v1/current.json`
+- `clean/arxiv_research_figures_v1/goal500_progress_v1/baseline_plus_accepted_new.jsonl`
+
+The goal publisher deduplicates code SHA + actual dimension-prefixed RGBA pixels.
+Source-replay and registered-original-PDF quality views are counted separately.
+A structural policy never approves future figures: each accepted figure must be
+on the explicit visually reviewed allowlist. Two inspected method/framework
+figures are approved in this phase; one predates the sustained direct launch.
+Dialogue/story examples remain held. Final 500-pair acceptance and a new random100
+preview are outstanding.
+
+Validation: a temporary-root integration test exercises 50 concurrent requests for
+one global PDF claim, 50 retries of one byte reservation, preservation of old
+budget usage, idempotent enqueue and all five non-overlapping shard deliveries.
+Production validation additionally requires two measured byte/paper/result deltas
+and checks for actual errors. Startup or heartbeat alone is insufficient.

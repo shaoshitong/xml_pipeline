@@ -93,6 +93,12 @@ def run():
                 epoch=str(launch['pid'])+':'+launch['birth_ticks']+':'+profile
                 accumulate(state,epoch,metric['new_source_network_bytes'])
         state['observed_payload_bytes']=max(state['observed_payload_bytes'],state['initial_retained_payload_bytes'])
+        cluster=read(P/'cluster_direct_v1/network_bytes.json')
+        if cluster:
+            # Persistent reservations cover all five nodes and interrupted reads.
+            # The old cumulative budget and every prior launch cursor remain.
+            accumulate(state,'cluster_direct_v1:persistent_reservations',cluster['bytes'])
+            state['cluster_charged_bytes_included']=cluster['bytes']
         free=shutil.disk_usage(R).free
         reason=resource_reason(state,free)
         if reason and not state['stop']:
