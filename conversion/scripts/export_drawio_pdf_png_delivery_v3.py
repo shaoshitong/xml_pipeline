@@ -129,7 +129,10 @@ def one(item):
     out=D/f'{number:06d}';tmp=A/'work'/f'{number:06d}';tmp.mkdir(parents=True,exist_ok=True)
     if proof.exists():
         old=json.loads(proof.read_text())
-        if old.get('ok') and all((out/k).is_file() and sha((out/k).read_bytes())==v for k,v in old['output_sha256'].items()):return old
+        redo_mode=(old.get('renderer')=='verified_cached_official_native_SVG'
+                   and old.get('source_png_vs_native_screen',{}).get('ssim',0)<0.99
+                   and old.get('screenshot_document_mode')!='BackCompat')
+        if old.get('ok') and not redo_mode and all((out/k).is_file() and sha((out/k).read_bytes())==v for k,v in old['output_sha256'].items()):return old
     record=dict(number=number,id=row['id'],at_utc=now(),CPU_host='HKUST3',ok=False)
     try:
         source=R/row['code_file'];xml=source.read_bytes();png=(R/row['image_file']).read_bytes()
@@ -144,7 +147,9 @@ def one(item):
         page.emulate_media(media='screen',color_scheme='light')
         # Match the original verified SVG replay document mode. Switching its
         # foreignObject HTML to standards mode changes percentage line heights.
-        page.set_content('<html><head><base href="'+r.origin+'/"><style>html,body{margin:0;padding:0;background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}body>svg{display:block}</style></head><body>'+svg+'</body></html>',wait_until='load')
+        doctype='' if kind=='verified_cached_official_native_SVG' else '<!doctype html>'
+        page.set_content(doctype+'<html><head><base href="'+r.origin+'/"><style>html,body{margin:0;padding:0;background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}body>svg{display:block}</style></head><body>'+svg+'</body></html>',wait_until='load')
+        record['screenshot_document_mode']=page.evaluate('document.compatMode')
         page.evaluate('async()=>{await document.fonts.ready;const refs=[...document.querySelectorAll("svg image,svg img")].map(n=>n.getAttribute("href")||n.getAttribute("xlink:href")||n.getAttribute("src")).filter(Boolean);await Promise.all(refs.map(src=>new Promise((yes,no)=>{let i=new Image;i.onload=()=>i.naturalWidth?yes():no(Error("empty_image"));i.onerror=()=>no(Error("image_decode_failed"));i.src=src})));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))}')
         element=page.locator('body>svg').first;box=element.bounding_box()
         assert box and min(box['width'],box['height'])>0,'empty_svg'
