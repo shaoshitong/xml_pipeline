@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T10:27:33.472167+00:00",
+  "at_utc": "2026-11-03T10:30:23.410065+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Progress: individually accepted3 new figures; fixed official gradient-export GUID nondeterminism without changing strict comparator or source geometry. Versioned validator recovered33 failed validations; all PNGs identical to previous failed run and all old files immutable. Reviewed35 candidates against same-paper accepted references, accepted28/held7. Approvals177; confirm publisher current.json before reporting as indexed. Target +500 remains active.",
+  "previous_goal_turn": "Progress: individually accepted3 new figures; fixed official gradient-export GUID nondeterminism without changing strict comparator or source geometry. Versioned validator recovered33 failed validations; all PNGs identical to previous failed run and all old files immutable. Reviewed35 candidates against same-paper accepted references, accepted28/held7. Authoritative publisher verified177accepted /3936unified; accepted index SHA440f0bf81c40b2cdfcf46720dc2e387520b1a3a981c8a9927714f8c7ffac3598. Target +500 remains active.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -13,7 +13,7 @@
   "accepted_new_last_observation": 177,
   "unified_rows_last_observation": 3936,
   "target_new_pairs": 500,
-  "remaining_required": "Continue collection and strict source replay; individually review additional complex figures; meet +500 and produce final random100 preview and final verified index. Do not declare complete based on these partial counts.",
+  "remaining_required": "Continue unchanged collection and exact QA; next available unprocessed direct-author-XML inventory has10 structurally valuable graphs, requiring original source archive provenance, resource closure and versioned once validation before acceptance. Meet +500 and then refresh final random100 from the final accepted population. Current146-population milestone preview remains preserved.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
   "invariants": [
     "No VPS bulk transport or Mac bulk relay",
@@ -42,7 +42,7 @@
   ],
   "publication": {
     "branch": "codex/pipeline-repair-20261102",
-    "last_verified_pushed_commit": "a101039",
+    "last_verified_pushed_commit": "00da30d",
     "latest_publication_receipt_remote": "reports/arxiv_cluster_direct_v1/source_publication_latest.json",
     "note": "Use the publication receipt and current Git remote SHA for the reconciled latest commit; do not infer latest from an older handoff SHA."
   },

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T10:17:14.561989+00:00",
+  "at_utc": "2026-11-03T10:28:47.342611+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -799,6 +799,12 @@
       "sha256": "c729b816aa44365d8f5d5dcfaa42570a2dd0e96288304ef24dec6170679eaaec",
       "bytes": 6485,
       "mtime_ns": 1793700880373008193
+    },
+    {
+      "file": "conversion/scripts/arxiv_visual_review_references_v1.py",
+      "sha256": "026b80fc45fc91900fabb750b7bf63a2c2e1778cb79f8d1558dda73cb8b7b159",
+      "bytes": 1848,
+      "mtime_ns": 1793701214537406832
     },
     {
       "file": "conversion/scripts/audit_arxiv_cluster_progress_v1.py",
@@ -5551,6 +5557,12 @@
       "sha256": "4d99f8d76149c9d0507558e575b8c96036988ad8ad309d2eb669469afab9ee83",
       "bytes": 320,
       "mtime_ns": 1793387564204242706
+    },
+    {
+      "file": "conversion/scripts/inventory_arxiv_direct_author_XML_v1.py",
+      "sha256": "b8c6b4720e241549dab413eb08e1d2bc1a92be88a05c409982b10d794282ae0f",
+      "bytes": 3095,
+      "mtime_ns": 1793701099414540655
     },
     {
       "file": "conversion/scripts/inventory_literal_tikz.py",
