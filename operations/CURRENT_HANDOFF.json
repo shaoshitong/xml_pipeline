@@ -1,13 +1,13 @@
 {
-  "at_utc": "2026-11-03T00:05:11.055942+00:00",
+  "at_utc": "2026-11-03T00:12:43.112876+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "bytes": 4504238,
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T000431688135Z_review_batch_v8/paired_priority_complex.jsonl",
-    "rows": 987,
-    "sha256": "777f8082eb22d113c1fece2ab5244906d1923eb3c8240e4f4865fc6fdcaf7257"
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T001131736325Z_review_batch_v8/paired_priority_complex.jsonl",
+    "sha256": "e65b9e4330b66dcbb5a9c84feae15ce6953274a141710de9ab06e841a7619cef",
+    "bytes": 4531958,
+    "rows": 996
   },
-  "strict_main_rows": 987,
+  "strict_main_rows": 996,
   "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
     "run": "svg_complex_resolved_geometry_cached_unseen_20261102_v11",
@@ -299,7 +299,7 @@
       ]
     }
   },
-  "next_step": "Follow existing v11 839-case batch and six-worker 317-source admission without restart. Review only new full8 PNGs. After source admission finishes, use exact-source AST equivalence to retain prior 2730 source eligibility without repeating it; build a new sealed-global family/seen/reservation-safe cohort for immutable v24, run genuinely unseen validation and regression/semantic-negative controls, then gate the whole applicable batch. Development pass alone does not authorize rollout. Preserve old source/core attempts.",
+  "next_step": "Follow existing immutable whitespace chain and its child program, not the terminated source-admission owner. Runtime dispatch proof must preserve the manual normal and qualify the existing positive without converting it. Then the chain seals all 3047 source targets (2730 retained plus 317 flat additions), selects globally independent unseen families under atomic reservation, runs B/C, and gates the full applicable v24 batch. Before mass it waits for verified foreign pending conversions to finish so no overlapping originals are silently omitted. Continue v11 and review only new qualified PNGs. No restart solely because a launcher exited.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -1006,20 +1006,27 @@
     }
   },
   "latest_mass_progress": {
-    "at_utc": "2026-11-03T00:05:11.055942+00:00",
-    "source_admission_live": true,
-    "source_admission": {
+    "at_utc": "2026-11-03T00:11:59.861051+00:00",
+    "chain_live": true,
+    "chain_state": {
+      "stage": "real_once_safe_runtime_preflight",
+      "normal_conversion_calls": 0,
+      "goal_complete": false
+    },
+    "chain_failure": null,
+    "runtime_control_proof": false,
+    "admission": {
       "QA_calls": 0,
-      "at_utc": "2026-11-03T00:05:10.097915+00:00",
+      "at_utc": "2026-11-03T00:11:59.761425+00:00",
       "candidate_emissions": 0,
-      "completed": 51,
+      "completed": 316,
       "counts": {
-        "admitted": 27,
-        "queued": 260,
-        "running": 6,
-        "unsupported": 24
+        "admitted": 160,
+        "error": 7,
+        "running": 1,
+        "unsupported": 149
       },
-      "elapsed_seconds": 75.18394545838237,
+      "elapsed_seconds": 484.84745904803276,
       "finished": false,
       "goal_complete": false,
       "model_calls": 0,
@@ -1028,59 +1035,18 @@
       "source_core_configuration_sha256": "ef3a503764b65528ff9a64eadae53cef62770310a05fd3bde502673a71a996ca",
       "total": 317
     },
-    "mass_live": true,
-    "mass_counts": {
-      "abandoned": 154,
-      "qualified": 18,
-      "queued": 655,
-      "running": 12
+    "old_mass_counts": {
+      "abandoned": 237,
+      "qualified": 25,
+      "queued": 566,
+      "running": 11
     },
-    "mass_infrastructure_errors": 0,
-    "failure_clusters": [
-      [
-        "[{'reason': 'raster_anomaly:source_native_marker_contour_changed', 'type': 'ValueError'}]",
-        31
-      ],
-      [
-        "source_layer_interleaving_needs_compound_paint_representation",
-        30
-      ],
-      [
-        "source_native_physical_font_mismatch",
-        29
-      ],
-      [
-        "independent_full_source_native_quality_passed",
-        18
-      ],
-      [
-        "Native content requires full tight canvas",
-        17
-      ],
-      [
-        "source_interleaving_nesting_depth_bound",
-        10
-      ],
-      [
-        "source_marker_use_actual_pixel_replacement_unproven",
-        8
-      ],
-      [
-        "source_run_wrapper_changed_visible_source_pixels",
-        6
-      ]
-    ],
     "strict_main": {
-      "bytes": 4504238,
-      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T000431688135Z_review_batch_v8/paired_priority_complex.jsonl",
-      "rows": 987,
-      "sha256": "777f8082eb22d113c1fece2ab5244906d1923eb3c8240e4f4865fc6fdcaf7257"
-    },
-    "review_registry": {
-      "held": 30,
-      "published": 85
-    },
-    "goal_complete": false
+      "bytes": 4531958,
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T001131736325Z_review_batch_v8/paired_priority_complex.jsonl",
+      "rows": 996,
+      "sha256": "e65b9e4330b66dcbb5a9c84feae15ce6953274a141710de9ab06e841a7619cef"
+    }
   },
   "latest_value_publication": "operations/resolved-geometry-mass-publication1.json",
   "next_action": "Continue existing fixed v11 mass owner; review only newly qualified PNGs, group genuine failures after batch, preserve old outputs and do not rerun consumed source/core.",
@@ -1167,5 +1133,146 @@
       "source_core_configuration_sha256": "ef3a503764b65528ff9a64eadae53cef62770310a05fd3bde502673a71a996ca",
       "total": 317
     }
+  },
+  "whitespace_automatic_rollout": {
+    "chain": {
+      "root": "/backup/shaoshitong/img2code_20261029/conversion/svg_whitespace_validation_chain_v1/fc0979e151b74dbd97f9b296bd87fa29",
+      "pid": 264063,
+      "birth_ticks": "1145631596",
+      "finite": true,
+      "source_admission": {
+        "root": "/backup/shaoshitong/img2code_20261029/conversion/source_flat_whitespace_admission_v1/afbda812bb5049c1a8a81db34162223c",
+        "pid": 100519,
+        "birth_ticks": "1145595612",
+        "targets": 317,
+        "workers": 6,
+        "input_sha256": "cc842e979503ed044424d1521b67563ec1a1029c23c26d47af4d1d18be2a5beb",
+        "normal_calls": 0,
+        "candidate_emissions": 0,
+        "QA_calls": 0,
+        "model_calls": 0,
+        "goal_complete": false
+      },
+      "goal_complete": false
+    },
+    "latest": {
+      "at_utc": "2026-11-03T00:11:59.861051+00:00",
+      "chain_live": true,
+      "chain_state": {
+        "stage": "real_once_safe_runtime_preflight",
+        "normal_conversion_calls": 0,
+        "goal_complete": false
+      },
+      "chain_failure": null,
+      "runtime_control_proof": false,
+      "admission": {
+        "QA_calls": 0,
+        "at_utc": "2026-11-03T00:11:59.761425+00:00",
+        "candidate_emissions": 0,
+        "completed": 316,
+        "counts": {
+          "admitted": 160,
+          "error": 7,
+          "running": 1,
+          "unsupported": 149
+        },
+        "elapsed_seconds": 484.84745904803276,
+        "finished": false,
+        "goal_complete": false,
+        "model_calls": 0,
+        "normal_conversion_calls": 0,
+        "root": "/backup/shaoshitong/img2code_20261029/conversion/source_flat_whitespace_admission_v1/afbda812bb5049c1a8a81db34162223c",
+        "source_core_configuration_sha256": "ef3a503764b65528ff9a64eadae53cef62770310a05fd3bde502673a71a996ca",
+        "total": 317
+      },
+      "old_mass_counts": {
+        "abandoned": 237,
+        "qualified": 25,
+        "queued": 566,
+        "running": 11
+      },
+      "strict_main": {
+        "bytes": 4531958,
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T001131736325Z_review_batch_v8/paired_priority_complex.jsonl",
+        "rows": 996,
+        "sha256": "e65b9e4330b66dcbb5a9c84feae15ce6953274a141710de9ab06e841a7619cef"
+      }
+    },
+    "full8_controls": {
+      "proof": {
+        "file": "release/compiler_iterations/controls/svg_whitespace_20261103_v1/proof.json",
+        "sha256": "95b16a4b4d0717b6952fab12c523fbb2afbc9b674cebb54a5a7c0756de31c1dd"
+      },
+      "positive_cases": 2,
+      "negative_cases": 2,
+      "source_core": {
+        "schema": "frozen_source_core_identity_v3",
+        "unit": "general_svg_v20_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_whitespace_wrapper_owned_guard_v20",
+        "policy": "general_svg_v20_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_whitespace_wrapper_owned_guard_v20:218308b26e509bfdb85c",
+        "key": "190048fb8bc0e6eee862b0e0f43b55cda78c9820355151c76e8000e0657fd774"
+      },
+      "new_normal_calls": 0,
+      "new_QA_calls": 0
+    },
+    "manual_once_history": {
+      "catalog": {
+        "file": "release/compiler_iterations/source_core_attempts/manual_catalog_svg_source_whitespace_20261103_v14.json",
+        "sha256": "e09cef61ff596140408d38aff6cc8238a8d102b2c78f0d83937235c8642985ef"
+      },
+      "preserved_entries": 22,
+      "new_normals_preserved": 2,
+      "normal_calls": 0
+    },
+    "source_admission": {
+      "summary": {
+        "QA_calls": 0,
+        "at_utc": "2026-11-03T00:12:00.765755+00:00",
+        "candidate_emissions": 0,
+        "completed": 317,
+        "counts": {
+          "admitted": 161,
+          "error": 7,
+          "unsupported": 149
+        },
+        "elapsed_seconds": 485.8514666315168,
+        "files": {
+          "admitted.jsonl": {
+            "file": "conversion/source_flat_whitespace_admission_v1/afbda812bb5049c1a8a81db34162223c/admitted.jsonl",
+            "sha256": "c7635c6e3842a6616b0ac5a332d4f56e322ea420eaafa37d1989b18211d852c6"
+          },
+          "error.jsonl": {
+            "file": "conversion/source_flat_whitespace_admission_v1/afbda812bb5049c1a8a81db34162223c/error.jsonl",
+            "sha256": "61be8e733f0ea2bcd6fd66d0669ca5f9fc9f6c3a7b04067241070e29500057de"
+          },
+          "unsupported.jsonl": {
+            "file": "conversion/source_flat_whitespace_admission_v1/afbda812bb5049c1a8a81db34162223c/unsupported.jsonl",
+            "sha256": "a22512a9e37f65a8060568929a9062431d8873b76c5fa00d2e28766704fa0b09"
+          }
+        },
+        "finished": true,
+        "goal_complete": false,
+        "model_calls": 0,
+        "normal_conversion_calls": 0,
+        "root": "/backup/shaoshitong/img2code_20261029/conversion/source_flat_whitespace_admission_v1/afbda812bb5049c1a8a81db34162223c",
+        "source_core_configuration_sha256": "ef3a503764b65528ff9a64eadae53cef62770310a05fd3bde502673a71a996ca",
+        "total": 317
+      },
+      "error_reasons": {
+        "native_bezier_control_filter_would_change_source_curve": 3,
+        "compound_path_marker_or_use_requires_separate_ownership": 1,
+        "compound_path_cap_or_join_requires_another_native_mapping": 3
+      },
+      "infrastructure_typed_errors": [],
+      "new_normal_calls": 0,
+      "new_QA_calls": 0
+    },
+    "whole_batch_foreign_pending_wait": true,
+    "gates": {
+      "minimum_fraction": 0.2,
+      "minimum_new_qualified": 5,
+      "regressions": 0,
+      "infrastructure_errors": 0
+    },
+    "normal_calls_per_original_per_core": 1
   }
 }

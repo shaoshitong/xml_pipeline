@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:05:29.091180+00:00",
+  "at_utc": "2026-11-03T00:12:43.141669+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11851,6 +11851,90 @@
       "sha256": "1fc1d25defd182abc195a10b0996dc492deb3752a28605e62f86f37863d1832f",
       "bytes": 4859,
       "mtime_ns": 1793664114380811868
+    },
+    {
+      "file": "conversion/scripts/close_svg_whitespace_controls_v1.py",
+      "sha256": "eb2e58ce6e361233e694615cf1f2d60f0b28587f0754a5ac13ca541439966bb8",
+      "bytes": 3210,
+      "mtime_ns": 1793664469781086400
+    },
+    {
+      "file": "conversion/scripts/derive_svg_whitespace_source_pool_v1.py",
+      "sha256": "e333b634c2958b3b0db65bfa29c806cf0f440da1e40236de30f10ae542526381",
+      "bytes": 7208,
+      "mtime_ns": 1793664537651876189
+    },
+    {
+      "file": "conversion/scripts/launch_svg_whitespace_quality_controls_v1.py",
+      "sha256": "616a6c0bf9f28a287af3d2407a99a62536907e192d8a378e950e372924ddc653",
+      "bytes": 2045,
+      "mtime_ns": 1793664394046519208
+    },
+    {
+      "file": "conversion/scripts/launch_svg_whitespace_validation_chain_v1.py",
+      "sha256": "378ae5539853e549ba4b33e77d1a063112a5c22a0188c39873520e5df758447f",
+      "bytes": 5100,
+      "mtime_ns": 1793664581255131259
+    },
+    {
+      "file": "conversion/scripts/register_svg_whitespace_normal_history_v1.py",
+      "sha256": "dc0d1071622c2f9e53e076d13972f432988c89bee60b61c92fe3ec1c06d860cc",
+      "bytes": 3024,
+      "mtime_ns": 1793664410582198329
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_quality_control_v1.py",
+      "sha256": "e90f7b9c8f59214bb43c38cb3abc0a7f2a919a7b5e841256aedbf3fec792b3dc",
+      "bytes": 8810,
+      "mtime_ns": 1793664393998520146
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_cohort_refresh_v1.py",
+      "sha256": "54142f310611edcf6e7ace98f2a3cab6f8a80266ad0b6bf838373acbc6d566c7",
+      "bytes": 3682,
+      "mtime_ns": 1793664507252410242
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_batch_v1.py",
+      "sha256": "27eaf05730219e955b4e77a6d03a922adcff49282bfb0389515e6fd899d04cfc",
+      "bytes": 29137,
+      "mtime_ns": 1793664507544405052
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_case_v1.py",
+      "sha256": "7be11683e21dcf4d3604042a9b521eae2bea94f12155eb1b0864b1a03b7d9c03",
+      "bytes": 16874,
+      "mtime_ns": 1793664507588404269
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_chain_v1.py",
+      "sha256": "9b5a9f32e3aab054c8236839b18f85005b17e113091efbecb3548ac9945f49e0",
+      "bytes": 16730,
+      "mtime_ns": 1793664507368408179
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_controls_v1.py",
+      "sha256": "04fe907500d70c3591c014d9f35d3034688050be5a6ab0e3107d36aedcf1eba7",
+      "bytes": 157,
+      "mtime_ns": 1793664507412407397
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_pool_v1.py",
+      "sha256": "46699cb2deb6b405b6792600461acf0eb7f568db70e71edd892b59fc897aede8",
+      "bytes": 28632,
+      "mtime_ns": 1793664507308409246
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_program_v1.py",
+      "sha256": "a89579cbefb1e6b9f781140f6d234f1e3cb5fe3832516f7be8f99142596c2bb1",
+      "bytes": 36932,
+      "mtime_ns": 1793664507480406189
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_source_contract_v1.py",
+      "sha256": "abb83379a07c13f5dc6bae7fa950fc44336334b67e624975e5bbdbaf5e2a4fa4",
+      "bytes": 5649,
+      "mtime_ns": 1793664573651259454
     }
   ],
   "excluded_for_credential_review": []

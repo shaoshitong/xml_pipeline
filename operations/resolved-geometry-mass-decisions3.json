@@ -1,0 +1,57 @@
+[
+  [
+    "2d1a5b66",
+    true,
+    "Actual native PNG inspected: complete NMR-to-molecular-structure framework with spectra, chemical substructures and a separate fingerprint pretraining workflow."
+  ],
+  [
+    "2f1ee602",
+    true,
+    "Actual native PNG inspected: complete four-panel comparison of 2D VAE, 3D VAE, cascaded video VAE and RAE, with input/output and latent dimensions."
+  ],
+  [
+    "2f83c4e2",
+    true,
+    "Actual native PNG inspected: complete batch, environment and speaker training phases with losses, embeddings and frozen/trainable branches."
+  ],
+  [
+    "309db2c9",
+    true,
+    "Actual native PNG inspected: complete five-panel scientific model comparison, including convolutional, recurrent, bidirectional and attention architectures."
+  ],
+  [
+    "31e10469",
+    true,
+    "Actual native PNG inspected: complete dual-input GRU and character/POS encoding architecture with explicit merge and tensor-shape tables."
+  ],
+  [
+    "3637d13e",
+    true,
+    "Actual native PNG inspected: complete VGG-19, plain 34-layer and residual 34-layer comparison with all stacked layers and skip connections."
+  ],
+  [
+    "38acb8bc",
+    true,
+    "Actual native PNG inspected: complete prescription and patient-clustering scientific workflow with original EMR inputs, preprocessing, model and treatment-regimen outputs."
+  ],
+  [
+    "3bb42405",
+    false,
+    "Actual full native PNG inspected: broker node label and adjacent Control processes label are visually crowded across the node boundary. Preserve full8 qualification but hold from strict content-reviewed main pending source/native readability review."
+  ],
+  [
+    "3c3dbe49",
+    true,
+    "Actual native PNG inspected: complete multi-agent drug-discovery sequence diagram with alternative branches, evidence and recommendation outputs."
+  ],
+  [
+    "3fa94905",
+    true,
+    "Actual native PNG inspected: complete data preparation, inverse-reinforcement-learning modeling and interpretation panels with reward/policy branches."
+  ],
+  [
+    "410eccf1",
+    false,
+    "Actual native PNG inspected: vertical Conditional Prediction label intrudes into the Output P(A/B/C) table, impairing legibility. Preserve full8 qualification separately and hold from strict scientific-value main."
+  ]
+]

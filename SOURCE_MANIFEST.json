@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:05:29.082585+00:00",
+  "at_utc": "2026-11-03T00:12:43.132749+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "bb07c5925020cc54c1466f5096d9e14a7e266ec9d1b924a2db4e6615ddcab58a",
-      "bytes": 57000,
-      "mtime_ns": 1793664329065440948
+      "sha256": "7dc282bb70453257590a23d426b3cbb6264e30c5cb39d8a9d81a8deb47130aa0",
+      "bytes": 62012,
+      "mtime_ns": 1793664763115024732
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "bb07c5925020cc54c1466f5096d9e14a7e266ec9d1b924a2db4e6615ddcab58a",
-      "bytes": 57000,
-      "mtime_ns": 1793664329064401527
+      "sha256": "cac5386763cc02e3e42d5c108aa7ce15c0f153ff4259883b3b42fcc93a349398",
+      "bytes": 62012,
+      "mtime_ns": 1793664763113891639
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -15810,6 +15810,156 @@
       "sha256": "367bb12110f36c75bb749b6e5492387e268d2693e09fdbb16cb2e92cd0413add",
       "bytes": 390,
       "mtime_ns": 1793664329062495769
+    },
+    {
+      "file": "conversion/scripts/close_svg_whitespace_controls_v1.py",
+      "sha256": "eb2e58ce6e361233e694615cf1f2d60f0b28587f0754a5ac13ca541439966bb8",
+      "bytes": 3210,
+      "mtime_ns": 1793664469781086400
+    },
+    {
+      "file": "conversion/scripts/derive_svg_whitespace_source_pool_v1.py",
+      "sha256": "e333b634c2958b3b0db65bfa29c806cf0f440da1e40236de30f10ae542526381",
+      "bytes": 7208,
+      "mtime_ns": 1793664537651876189
+    },
+    {
+      "file": "conversion/scripts/launch_svg_whitespace_quality_controls_v1.py",
+      "sha256": "616a6c0bf9f28a287af3d2407a99a62536907e192d8a378e950e372924ddc653",
+      "bytes": 2045,
+      "mtime_ns": 1793664394046519208
+    },
+    {
+      "file": "conversion/scripts/launch_svg_whitespace_validation_chain_v1.py",
+      "sha256": "378ae5539853e549ba4b33e77d1a063112a5c22a0188c39873520e5df758447f",
+      "bytes": 5100,
+      "mtime_ns": 1793664581255131259
+    },
+    {
+      "file": "conversion/scripts/register_svg_whitespace_normal_history_v1.py",
+      "sha256": "dc0d1071622c2f9e53e076d13972f432988c89bee60b61c92fe3ec1c06d860cc",
+      "bytes": 3024,
+      "mtime_ns": 1793664410582198329
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_quality_control_v1.py",
+      "sha256": "e90f7b9c8f59214bb43c38cb3abc0a7f2a919a7b5e841256aedbf3fec792b3dc",
+      "bytes": 8810,
+      "mtime_ns": 1793664393998520146
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_cohort_refresh_v1.py",
+      "sha256": "54142f310611edcf6e7ace98f2a3cab6f8a80266ad0b6bf838373acbc6d566c7",
+      "bytes": 3682,
+      "mtime_ns": 1793664507252410242
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_batch_v1.py",
+      "sha256": "27eaf05730219e955b4e77a6d03a922adcff49282bfb0389515e6fd899d04cfc",
+      "bytes": 29137,
+      "mtime_ns": 1793664507544405052
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_case_v1.py",
+      "sha256": "7be11683e21dcf4d3604042a9b521eae2bea94f12155eb1b0864b1a03b7d9c03",
+      "bytes": 16874,
+      "mtime_ns": 1793664507588404269
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_chain_v1.py",
+      "sha256": "9b5a9f32e3aab054c8236839b18f85005b17e113091efbecb3548ac9945f49e0",
+      "bytes": 16730,
+      "mtime_ns": 1793664507368408179
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_controls_v1.py",
+      "sha256": "04fe907500d70c3591c014d9f35d3034688050be5a6ab0e3107d36aedcf1eba7",
+      "bytes": 157,
+      "mtime_ns": 1793664507412407397
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_pool_v1.py",
+      "sha256": "46699cb2deb6b405b6792600461acf0eb7f568db70e71edd892b59fc897aede8",
+      "bytes": 28632,
+      "mtime_ns": 1793664507308409246
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_iteration_program_v1.py",
+      "sha256": "a89579cbefb1e6b9f781140f6d234f1e3cb5fe3832516f7be8f99142596c2bb1",
+      "bytes": 36932,
+      "mtime_ns": 1793664507480406189
+    },
+    {
+      "file": "conversion/scripts/svg_whitespace_source_contract_v1.py",
+      "sha256": "abb83379a07c13f5dc6bae7fa950fc44336334b67e624975e5bbdbaf5e2a4fa4",
+      "bytes": 5649,
+      "mtime_ns": 1793664573651259454
+    },
+    {
+      "file": "operations/resolved-geometry-mass-value-review3.json",
+      "sha256": "58790decd07cc10c60a0c6729642fbafdd2a426a72a44740637057ee0fb6be27",
+      "bytes": 2954,
+      "mtime_ns": 1793664763112014832
+    },
+    {
+      "file": "operations/svg-whitespace-closed-controls-v1.json",
+      "sha256": "27052334344f4cb9d5d1fc6309ad7e30e253d0c3cb4e967efff8e6623e8dc047",
+      "bytes": 705,
+      "mtime_ns": 1793664763111289242
+    },
+    {
+      "file": "operations/resolved-geometry-mass-decisions3.json",
+      "sha256": "3d2706732334f6f5eb0a27cbbf7320af2a91ef91d2dde388927b2cb5d23684f2",
+      "bytes": 2272,
+      "mtime_ns": 1793664763112127791
+    },
+    {
+      "file": "operations/svg-whitespace-chain-progress2.json",
+      "sha256": "00d08a6357625720cc79176c76478b7cdd0acf49cdaa6a57eeb8efa45e384b1f",
+      "bytes": 1166,
+      "mtime_ns": 1793664763111707079
+    },
+    {
+      "file": "operations/svg-whitespace-validation-chain-launch-v1.json",
+      "sha256": "2fdac5495ea431cc7731dd56f9f2170f65c0bbb754b8aad498a32f4a56e48952",
+      "bytes": 624,
+      "mtime_ns": 1793664763111406785
+    },
+    {
+      "file": "operations/svg-whitespace-chain-progress1.json",
+      "sha256": "679014d29ced57ef460096f3aff22e17786622dcec35f69cd5415873c3e3fa83",
+      "bytes": 910,
+      "mtime_ns": 1793664763111600745
+    },
+    {
+      "file": "operations/publish_svg_whitespace_rollout_sources_v1.py",
+      "sha256": "ee0bfcb08d655aa4170cf086a817e2d5313b201f72e9190643d43beb08b50145",
+      "bytes": 4553,
+      "mtime_ns": 1793664763115220317
+    },
+    {
+      "file": "operations/svg-whitespace-manual-history-v1.json",
+      "sha256": "5afcacfd1d916bedec6aaaf970e4e6deb2f9ef50a10078ba322ff8432c95a0fb",
+      "bytes": 279,
+      "mtime_ns": 1793664763111078824
+    },
+    {
+      "file": "operations/resolved-geometry-mass-publication3.json",
+      "sha256": "28e155d735389245cdd82a4063a7498df602277214efdc6a3bb3fefc51b4bcf8",
+      "bytes": 4874,
+      "mtime_ns": 1793664763112345876
+    },
+    {
+      "file": "operations/svg-whitespace-quality-controls-launch-v1.json",
+      "sha256": "b7c588bf93c4d6dc4bf044a08315d58adb985b221c630681b25ac19a8252ec00",
+      "bytes": 699,
+      "mtime_ns": 1793664763110809447
+    },
+    {
+      "file": "operations/svg-whitespace-source-admission-terminal-audit-v1.json",
+      "sha256": "b89fc2d163baf6604b679e865cc0c543998adfeb8b95618428c2f32e2ebcc421",
+      "bytes": 1461,
+      "mtime_ns": 1793664763111817205
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

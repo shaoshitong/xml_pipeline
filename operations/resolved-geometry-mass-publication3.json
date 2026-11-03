@@ -1,0 +1,92 @@
+{
+  "review": {
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_ac05ee85eb1c4859acac4cbbbe8554a6",
+    "pairs": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_ac05ee85eb1c4859acac4cbbbe8554a6/reviewed_pairs.jsonl",
+      "sha256": "c6192ba65ed7a33f4c2dadccd6075345762e7d1366d9944985bdea00ac9bb6db",
+      "bytes": 57847
+    },
+    "occlusion": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_e86ce3eb4bea47aaaa204968d1bdd780/source_text_occlusion_reviews.jsonl",
+      "sha256": "8eb66676e88be7a7827a3cfbdf8289f2bb24f7a31a61f01764922e3ec598b3a1",
+      "bytes": 3883
+    },
+    "input_summary": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_e86ce3eb4bea47aaaa204968d1bdd780/summary.json",
+      "sha256": "21000f2b7abe18efb6cf4fc594068f246e043ae37f1c2cd9d9728252e39aad57",
+      "bytes": 3311
+    },
+    "decisions": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_ac05ee85eb1c4859acac4cbbbe8554a6/decisions.json",
+      "sha256": "db10667a99e7ab63c5d1a4493a0e4695be8ad028a841620d7bbbcff1e1312e0f",
+      "bytes": 3515
+    },
+    "approved_ids": [
+      "2d1a5b668a78e7c1ad8ae6232bec0bdd3bbf2b3e5b1b3af5f2fe8afe9ca6d831",
+      "2f1ee602a3cd97e2a142cc77c510075220561e0a41d04ba2ede6f5e07f838aa0",
+      "2f83c4e28136c4f84dd695142c3b6b6129af3a79b047edfb991c6aa4e7097035",
+      "309db2c9f5f405dcb65534e81e1eb8aa50f69ecf0120ab85aefd5b0f005a2b26",
+      "31e104692ded704bb25be1d4cfb535e5b3eb292b3b7993987821ebd0e3a49a7e",
+      "3637d13e7e553e462067403c35bd9085b14beceb89262c73759ae13415fd4360",
+      "38acb8bc1269025d767f7add6cfc0a8242a14f9caa7487cb50a9b86b1313e665",
+      "3c3dbe49ebc063927ca5684dea05dc4ac10840ca38684e4c15f4a12ebab34c8c",
+      "3fa949057136e0829e4e27c14d6b51a923282063300f5ac1b658009b19aab4ca"
+    ],
+    "held_ids": [
+      "3bb424059f5e3666e97140a96fe985573ceaf408e11a975ac5c483a8668458fe",
+      "410eccf17a98f1bf93ef6b3a5b5f05ee14e4a1947704dce1316fb200c237d3b8"
+    ],
+    "actual_native_PNG_inspected_ids": [
+      "2d1a5b668a78e7c1ad8ae6232bec0bdd3bbf2b3e5b1b3af5f2fe8afe9ca6d831",
+      "2f1ee602a3cd97e2a142cc77c510075220561e0a41d04ba2ede6f5e07f838aa0",
+      "2f83c4e28136c4f84dd695142c3b6b6129af3a79b047edfb991c6aa4e7097035",
+      "309db2c9f5f405dcb65534e81e1eb8aa50f69ecf0120ab85aefd5b0f005a2b26",
+      "31e104692ded704bb25be1d4cfb535e5b3eb292b3b7993987821ebd0e3a49a7e",
+      "3637d13e7e553e462067403c35bd9085b14beceb89262c73759ae13415fd4360",
+      "38acb8bc1269025d767f7add6cfc0a8242a14f9caa7487cb50a9b86b1313e665",
+      "3bb424059f5e3666e97140a96fe985573ceaf408e11a975ac5c483a8668458fe",
+      "3c3dbe49ebc063927ca5684dea05dc4ac10840ca38684e4c15f4a12ebab34c8c",
+      "3fa949057136e0829e4e27c14d6b51a923282063300f5ac1b658009b19aab4ca",
+      "410eccf17a98f1bf93ef6b3a5b5f05ee14e4a1947704dce1316fb200c237d3b8"
+    ],
+    "technical_qualifications_unchanged": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "model_calls": 0
+  },
+  "publication": {
+    "before": 987,
+    "after": 996,
+    "added_ids": [
+      "2d1a5b668a78e7c1ad8ae6232bec0bdd3bbf2b3e5b1b3af5f2fe8afe9ca6d831",
+      "2f1ee602a3cd97e2a142cc77c510075220561e0a41d04ba2ede6f5e07f838aa0",
+      "2f83c4e28136c4f84dd695142c3b6b6129af3a79b047edfb991c6aa4e7097035",
+      "309db2c9f5f405dcb65534e81e1eb8aa50f69ecf0120ab85aefd5b0f005a2b26",
+      "31e104692ded704bb25be1d4cfb535e5b3eb292b3b7993987821ebd0e3a49a7e",
+      "3637d13e7e553e462067403c35bd9085b14beceb89262c73759ae13415fd4360",
+      "38acb8bc1269025d767f7add6cfc0a8242a14f9caa7487cb50a9b86b1313e665",
+      "3c3dbe49ebc063927ca5684dea05dc4ac10840ca38684e4c15f4a12ebab34c8c",
+      "3fa949057136e0829e4e27c14d6b51a923282063300f5ac1b658009b19aab4ca"
+    ],
+    "held_ids": [
+      "3bb424059f5e3666e97140a96fe985573ceaf408e11a975ac5c483a8668458fe",
+      "410eccf17a98f1bf93ef6b3a5b5f05ee14e4a1947704dce1316fb200c237d3b8"
+    ],
+    "main": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T001131736325Z_review_batch_v8/paired_priority_complex.jsonl",
+      "sha256": "e65b9e4330b66dcbb5a9c84feae15ce6953274a141710de9ab06e841a7619cef",
+      "bytes": 4531958,
+      "rows": 996
+    },
+    "review": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T001131736325Z_review_batch_v8/value_review.json",
+      "sha256": "172baabfe2c88ae8a8f64d15fdfd84f42335642d5bcd5696d9d0a36b4d62ffda",
+      "bytes": 13854
+    },
+    "pointer": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+      "sha256": "6b352f4fadecbda69f583ee202052b93430be2d979ac9e14336ff9434cdb5fc6",
+      "bytes": 3514
+    }
+  }
+}
