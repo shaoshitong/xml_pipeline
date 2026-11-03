@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:26:31.234186+00:00",
+  "at_utc": "2026-11-03T00:32:57.374123+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11971,6 +11971,12 @@
       "sha256": "467998c5feee54a8aeacb84b23bd29c23bf6b5e4ec43d06b22e6cd54b92f64e3",
       "bytes": 9793,
       "mtime_ns": 1793665474999022337
+    },
+    {
+      "file": "conversion/scripts/launch_svg_whitespace_disjoint_mass_v1.py",
+      "sha256": "97dcd913d0625256fde545b83ea375a9f2c88ca0480c6f0b7fe95a33f8872f5f",
+      "bytes": 5648,
+      "mtime_ns": 1793665683432643391
     }
   ],
   "excluded_for_credential_review": []

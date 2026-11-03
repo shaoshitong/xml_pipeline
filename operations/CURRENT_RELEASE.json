@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:26:31.203536+00:00",
+  "at_utc": "2026-11-03T00:32:56.573263+00:00",
   "goal_complete": false,
   "authoritative_main": {
     "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T002308369688Z_review_batch_v8/paired_priority_complex.jsonl",
@@ -308,7 +308,7 @@
       ]
     }
   },
-  "next_step": "Continue existing birth-verified v11 mass and v12 validated foreign-pending wait; no new source-core normal or validation reruns. v12 passed 17/43 and automatically starts the full applicable batch after v11 releases overlapping pending originals. Current strict main1012; graded curated delivery1366=1012 main+92 complex charts+262 arXiv (99 native frameworks,163 labeled source composites;90 original-PDF visual,172 source-replay-only). One arXiv visual anomaly held; original qualifiers and all nonselected originals retained. Review newly qualified PNG increments, refresh graded delivery and seven-source audit, and perform final requirement audit after batch completion. Do not treat the current usable snapshot or validated gate as completion of the full goal.",
+  "next_step": "Follow existing v11 mass (PID3910048/start1145471490), v24 disjoint 566-case mass (wrapper PID800131/birth1145755784; controller PID800133/birth1145755791), and the unchanged v12 parent waiting on BOTH. Parent PID347847/start1145650317 passed17/43 and will automatically build the remaining full-population pass after these foreign pending IDs finish; global source-core journals preserve disjoint attempts and qualifications, including failures, so none are rerun. New disjoint run name deliberately does not share the parent run prefix, and its verified controller is visible to parent overlap detection. All1149 applicable originals remain retained. Current usable graded delivery1366 includes strict main1012,92 complex charts,262 arXiv. Review new qualified PNG increments; refresh delivery and full final audit after all batches finish. No launch-only completion, no reset/restart of existing handles.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -1571,6 +1571,57 @@
         }
       },
       "verified_foreign_pending_originals": 417
+    }
+  },
+  "active_disjoint_whitespace_batch": {
+    "launch": {
+      "root": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/disjoint_batches/svg_source_whitespace_disjoint_20261103_v1_mass",
+      "run": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_source_whitespace_disjoint_20261103_v1_mass",
+      "pid": 800131,
+      "birth_ticks": "1145755784",
+      "targets": 566,
+      "workers": 12,
+      "excluded_foreign_pending": 365,
+      "parent_full_catchup_unchanged": true,
+      "source_core_implementation_unchanged": true,
+      "model_calls": 0,
+      "goal_complete": false
+    },
+    "latest": {
+      "at_utc": "2026-11-03T00:32:56.573263+00:00",
+      "state": {
+        "goal_complete": false,
+        "stage": "approved_disjoint_mass"
+      },
+      "failure": null,
+      "wrapper": {
+        "pid": 800131,
+        "birth": "1145755784",
+        "live": true
+      },
+      "controller": {
+        "pid": 800133,
+        "birth": 1145755791,
+        "live": true
+      },
+      "counts": {
+        "abandoned": 12,
+        "queued": 542,
+        "running": 12
+      },
+      "attempts": {
+        "0": 542,
+        "1": 24
+      },
+      "infra": 0,
+      "parent_wait_observes_both_batches": true,
+      "parent_pending_originals": 880,
+      "old_batch": {
+        "abandoned": 467,
+        "qualified": 48,
+        "queued": 313,
+        "running": 11
+      }
     }
   }
 }
