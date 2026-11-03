@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T10:02:18.231537+00:00",
+  "at_utc": "2026-11-03T10:04:32.949176+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Produced accepted-only random100 milestone package; reviewed 25 new candidates, accepted20 and held5; corrected two earlier near-duplicate accepts (128-2+20=146). Fixed review-batch replay to preserve later corrections. Five node byte and paper counts continue increasing. Goal +500 remains incomplete.",
+  "previous_goal_turn": "Progress: accepted total146 (128-2 near variants+20 new), verified local accepted-only random100 from frozen146; corrected review replay semantics. Restored HKUST4 after public TCP egress failure via task-only HKUST3 direct-source LAN relay; two real observations16->28papers and12.3->24.4MB. Baseline3759 unchanged; +500 still incomplete.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -41,7 +41,7 @@
   ],
   "publication": {
     "branch": "codex/pipeline-repair-20261102",
-    "last_verified_pushed_commit": "b2ce239",
+    "last_verified_pushed_commit": "a101039",
     "latest_publication_receipt_remote": "reports/arxiv_cluster_direct_v1/source_publication_latest.json",
     "note": "Use the publication receipt and current Git remote SHA for the reconciled latest commit; do not infer latest from an older handoff SHA."
   },
@@ -64,6 +64,10 @@
     "relay_pid": 1458288,
     "source_relay_folder": "clean/arxiv_research_figures_v1/cluster_direct_v1/source_relay_v1",
     "system_network_configuration_changed": false,
-    "global_rate_cooldown_budget_and_PDF_once_preserved": true
+    "global_rate_cooldown_budget_and_PDF_once_preserved": true,
+    "second_observation_papers_ingested": 28,
+    "second_observation_source_bytes": 24440953,
+    "verified_delta_papers": 12,
+    "verified_delta_source_bytes": 12105667
   }
 }

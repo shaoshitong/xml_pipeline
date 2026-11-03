@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T09:45:47.449272+00:00",
+  "at_utc": "2026-11-03T10:02:50.868117+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -649,6 +649,12 @@
       "sha256": "68c61e16b9765c454660532f215e8bb402ffa612e083eed14a2698484b575659",
       "bytes": 14669,
       "mtime_ns": 1793696030192439602
+    },
+    {
+      "file": "conversion/scripts/arxiv_lan_source_relay_v1.py",
+      "sha256": "a86446db1200c85a3169b54d9e597cf8ba7bee82524879c066162f1668174a58",
+      "bytes": 3237,
+      "mtime_ns": 1793699856868633770
     },
     {
       "file": "conversion/scripts/arxiv_math_fresh_viewport_probe_v1.py",
@@ -5536,9 +5542,15 @@
     },
     {
       "file": "conversion/scripts/launch_arxiv_cluster_worker_v1.py",
-      "sha256": "de72f62cae49f942c02ffaba91345d1c125998259742282ecddf2e8b84f22e4d",
-      "bytes": 2149,
-      "mtime_ns": 1793692975687675928
+      "sha256": "6c7fcd2f670952982541ed56d2a9e4d3b1684fa564e618c4b1a6fabc06bce833",
+      "bytes": 2353,
+      "mtime_ns": 1793699857476632274
+    },
+    {
+      "file": "conversion/scripts/launch_arxiv_lan_source_relay_v1.py",
+      "sha256": "4ed649f3747982736b593404d6b8c4ad203bb10cfb9d1a219f4d9ce62d77e4db",
+      "bytes": 1023,
+      "mtime_ns": 1793699857168633032
     },
     {
       "file": "conversion/scripts/launch_arxiv_math_and_publisher_v1.py",
@@ -7810,9 +7822,9 @@
     },
     {
       "file": "conversion/scripts/restart_arxiv_idle_cluster_worker_v1.py",
-      "sha256": "230a4b85b70dc99f013a70a4ddadd4efcd8c48cabf513f9942f62ed7d85cd702",
-      "bytes": 2189,
-      "mtime_ns": 1793692976059679852
+      "sha256": "1e4ea527445e13946834109f69fa03cf8a24515a607e3230a467792b72a9908a",
+      "bytes": 2317,
+      "mtime_ns": 1793699857788631506
     },
     {
       "file": "conversion/scripts/restore_vee_record_metadata.py",
@@ -7963,6 +7975,12 @@
       "sha256": "4dc268724e25816fe8847f4af524a2e41c6da629e904e6900956873f733b2e44",
       "bytes": 1221,
       "mtime_ns": 1793514687536571137
+    },
+    {
+      "file": "conversion/scripts/run_arxiv_cluster_worker_with_lan_source_v1.py",
+      "sha256": "cb0d041a336088d3f122ce9f9abb58be2b40be943304d445fbd767dc3bbf2aac",
+      "bytes": 1258,
+      "mtime_ns": 1793699858136630649
     },
     {
       "file": "conversion/scripts/sandbox_runner.py",
@@ -8773,6 +8791,12 @@
       "sha256": "1f58fe941177fc2e0d739ae8a29e6d7cb050100fd24494467fde5d12987dfb7c",
       "bytes": 2039,
       "mtime_ns": 1793692976255681916
+    },
+    {
+      "file": "conversion/scripts/test_arxiv_lan_source_relay_v1.py",
+      "sha256": "4fcce05ba0d17e44bdb8a63e7f01ade1b887f4bcd6694a19d3ac4e28d6cd4323",
+      "bytes": 2732,
+      "mtime_ns": 1793699903732513788
     },
     {
       "file": "conversion/scripts/test_auto_quality_batch_v4.py",
@@ -11824,9 +11848,9 @@
     },
     {
       "file": "conversion/scripts/verify_arxiv_cluster_deployment_v1.py",
-      "sha256": "c2b38d4f9f1ccf8588666d6f7166d05e2062212191a51a308812b8c5df7ffc24",
-      "bytes": 5072,
-      "mtime_ns": 1793694470446279468
+      "sha256": "cc42c3a44eb1ce77560cd245333657624784bbd6af68e7e7c6c46009fca3f6a4",
+      "bytes": 5681,
+      "mtime_ns": 1793700138855792309
     },
     {
       "file": "conversion/scripts/verify_fontmix_publication.py",
