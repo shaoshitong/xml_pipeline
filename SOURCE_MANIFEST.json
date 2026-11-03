@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:45:39.280314+00:00",
+  "at_utc": "2026-11-03T00:50:24.830877+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "2bbcde10c081d2d3d35a3c9d0ea199cd7afac9cf517099a51be3dd97a8420f58",
-      "bytes": 84765,
-      "mtime_ns": 1793666739287226532
+      "sha256": "8034aae9cb7f14b4ccfd6799a8fc1958b6d29c2fe174ebcd75dd6be0cb59455d",
+      "bytes": 83367,
+      "mtime_ns": 1793667024836922585
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "2bbcde10c081d2d3d35a3c9d0ea199cd7afac9cf517099a51be3dd97a8420f58",
-      "bytes": 84765,
-      "mtime_ns": 1793666739284019412
+      "sha256": "8034aae9cb7f14b4ccfd6799a8fc1958b6d29c2fe174ebcd75dd6be0cb59455d",
+      "bytes": 83367,
+      "mtime_ns": 1793667024834190054
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -16023,9 +16023,9 @@
     },
     {
       "file": "operations/CURATED_RESEARCH_DELIVERY.md",
-      "sha256": "9227a0ddd7e81e152647baddb3c033eecb75dcd3b8b532759eeba23dea542509",
+      "sha256": "06e0fdb7bfb82d26859b36db8ae53310f56249a98a33975b496ed1cef9f4f5f6",
       "bytes": 1361,
-      "mtime_ns": 1793666739279473777
+      "mtime_ns": 1793667024830552554
     },
     {
       "file": "operations/complex-arxiv-native-curation-publication-v1.json",
@@ -16206,6 +16206,90 @@
       "sha256": "844529604607356b01c156d8d0ddbf67bd4712120354de40b4b4dd6901b94c28",
       "bytes": 627,
       "mtime_ns": 1793666739275046268
+    },
+    {
+      "file": "conversion/scripts/review_fixed_svg_whitespace_pairs_v2.py",
+      "sha256": "a35d81868182a4cb9969878488bf6a23edbe5d524ccdf09b5bafe68323e33cff",
+      "bytes": 6082,
+      "mtime_ns": 1793666774197773223
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v5.py",
+      "sha256": "5590dba5fce2ab6c10728a249bfcb84d37533e25d775352653684fc2dcbd6bcd",
+      "bytes": 11687,
+      "mtime_ns": 1793666991911519610
+    },
+    {
+      "file": "operations/resolved-geometry-mass-decisions5.json",
+      "sha256": "1a20291718ec0f4e45ad14479572d7db13e6d176f0cfc16e332b400474d1f807",
+      "bytes": 2063,
+      "mtime_ns": 1793667024828125527
+    },
+    {
+      "file": "operations/current-batch-runtime-progress4.json",
+      "sha256": "9aff50c90f1fe97f5491ff5be45f3db0a5a390f51275a4af89789fdda0813009",
+      "bytes": 1811,
+      "mtime_ns": 1793667024830054257
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-value-review1.json",
+      "sha256": "a56c614b8c7136666363b45610e70e47281b28b72d5b12c385a067891cc81656",
+      "bytes": 3608,
+      "mtime_ns": 1793667024828649824
+    },
+    {
+      "file": "operations/resolved-geometry-mass-value-review5.json",
+      "sha256": "1fe7d437da3bd21f870fce7335fc7d3bfa70b107bfa429f497ce83b671cd0692",
+      "bytes": 3744,
+      "mtime_ns": 1793667024827825398
+    },
+    {
+      "file": "operations/publish_disjoint_visual_results_v1.py",
+      "sha256": "0076ec0908c3d6777544ecb96d6c179912a3e816eff09e859e2e2f40161944f6",
+      "bytes": 4262,
+      "mtime_ns": 1793667024830818807
+    },
+    {
+      "file": "operations/current-batch-runtime-progress3.json",
+      "sha256": "5903a3518090234190141e712594b7ff571ed87b041c88f58fb9d64fa73e1582",
+      "bytes": 1761,
+      "mtime_ns": 1793667024829825421
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-publication1.json",
+      "sha256": "759dae1f25aee22c5201de395b4e4c327fc0a10c91126ecf1ded0c1784b9b929",
+      "bytes": 5783,
+      "mtime_ns": 1793667024829109455
+    },
+    {
+      "file": "operations/resolved-geometry-mass-publication5.json",
+      "sha256": "2676b1bd538ade79f885b7fe5a983162984875def1a575c2324ed97fd0880b5d",
+      "bytes": 5987,
+      "mtime_ns": 1793667024828404155
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v3.json",
+      "sha256": "6167c21e971650e383f42d3d6db9ea3d29872b53cd748e6b05f31855aba1f89e",
+      "bytes": 834,
+      "mtime_ns": 1793667024829357583
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-decisions1.json",
+      "sha256": "cc21dbc9405c86365ee459bf03790659d2f36cd07e2f8642e7c0e5117e4736cb",
+      "bytes": 1942,
+      "mtime_ns": 1793667024828868868
+    },
+    {
+      "file": "operations/seven-source-delivery-audit-v5.json",
+      "sha256": "0dd040149741f4887afd5d6a4865f2d39a70e7d3caee16697f870c3243166e2e",
+      "bytes": 4636,
+      "mtime_ns": 1793667024829602835
+    },
+    {
+      "file": "operations/current-batch-runtime-progress5.json",
+      "sha256": "ab18a53b72402b92ddd26b2b46a76e7bc178f79eb7ee0e92f0f226dde25872c7",
+      "bytes": 1780,
+      "mtime_ns": 1793667024830338885
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

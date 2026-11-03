@@ -1,0 +1,77 @@
+[
+  [
+    "03b11c0c4034",
+    true,
+    "Complete domain-specific MLM fine-tuning and disease classification architecture."
+  ],
+  [
+    "03e0e315d11a",
+    true,
+    "Complete graph input, learned edge weights and maximum-weight forest example."
+  ],
+  [
+    "065afa27d4f7",
+    true,
+    "Complete bounded model checking, SMT solving and report-generation workflow."
+  ],
+  [
+    "0a10fb9482cd",
+    true,
+    "Complete BiLSTM sentence embeddings, linguistic features and MLP classification architecture."
+  ],
+  [
+    "0ccf14a3ac4a",
+    true,
+    "Complete gaze architecture and offline/on-device training and calibration framework."
+  ],
+  [
+    "0fb156a250d6",
+    false,
+    "Hold: Event2vec title overlaps (x, y, p) input annotation; visible and confirmed by native glyph rectangles."
+  ],
+  [
+    "130738ec5ee0",
+    true,
+    "Complete four-panel residual, channel-change, downsample and upsample block comparison."
+  ],
+  [
+    "184c8ceddee1",
+    true,
+    "Complete feature generation, knowledge transfer and contrastive-learning framework."
+  ],
+  [
+    "1dea143f79a9",
+    true,
+    "Complete fine-tuning and denoising in-context-learning research comparison."
+  ],
+  [
+    "1ff3e289fea1",
+    true,
+    "Complete point classification, segmentation and amodal box-estimation architectures."
+  ],
+  [
+    "2321899d15d8",
+    false,
+    "Hold: cyan arrow covers part of Class2 label in penultimate-layer class-similarity diagram."
+  ],
+  [
+    "263be3cc2158",
+    true,
+    "Complete SQL/plan/log masked encoders and KPI reconstruction framework."
+  ],
+  [
+    "2b80e7f390e3",
+    true,
+    "Complete source-data person/vehicle validity filtering and export flowchart."
+  ],
+  [
+    "2dc1598e5597",
+    true,
+    "Complete encoder-decoder segmentation stages, operator parameters and legend."
+  ],
+  [
+    "2ece2e419c91",
+    true,
+    "Complete Bayesian graph-attention optimization and nested threshold tuning flowchart."
+  ]
+]

@@ -1,0 +1,82 @@
+[
+  [
+    "acf0534bfe4b",
+    true,
+    "Complete multi-label phenotype coding, feature table and label construction example."
+  ],
+  [
+    "ad7e9a6bff8e",
+    true,
+    "Complete FPGA, event buffering, DDR, drivers and inference control architecture."
+  ],
+  [
+    "adcdb43dcf54",
+    true,
+    "Complete convolutional classifier with layer parameters and return-path topology."
+  ],
+  [
+    "ae3720690fef",
+    true,
+    "Complete dataset, AI image/text analysis, annotation and exhibition research workflow."
+  ],
+  [
+    "ae50e454e50e",
+    true,
+    "Complete U-Net-like multiscale segmentation network with dimensions and operator legend."
+  ],
+  [
+    "b0f36b70e0e8",
+    true,
+    "Complete hierarchical knowledge graph, instance encoder and knowledge attention framework."
+  ],
+  [
+    "b120150e8af9",
+    true,
+    "Complete CNN-LSTM spatial-temporal extraction, feature selection and classifier workflow."
+  ],
+  [
+    "b3ddf2b82784",
+    true,
+    "Complete sparse GEMM representation and ten-step computational tile sequence."
+  ],
+  [
+    "b7309477044f",
+    true,
+    "Complete structured embedding-space contrastive pairing and augmentation figure."
+  ],
+  [
+    "bb3d8f4509e3",
+    false,
+    "Hold: decoder boundaries and internal connectors visibly cross Decoder1 and BatchNormalization labels."
+  ],
+  [
+    "bb822a811bdb",
+    true,
+    "Complete greenhouse sensing, cloud control and device actuation architecture."
+  ],
+  [
+    "bcb666a9981f",
+    true,
+    "Complete dual-input convolutional fusion architecture with tensor shapes."
+  ],
+  [
+    "bce517572c9c",
+    true,
+    "Complete four-row network-learning and edge-device processing comparison."
+  ],
+  [
+    "c2ea970482d2",
+    true,
+    "Complete candidate-item substitution, embedding and self-attention sequence example."
+  ],
+  [
+    "c48e81b2e03d",
+    true,
+    "Complete two-panel label-attribution and prediction probability matrix computation."
+  ],
+  [
+    "c58c2086a84c",
+    true,
+    "Complete comment moderation, queue, recheck and conversation-state flowchart."
+  ]
+]
