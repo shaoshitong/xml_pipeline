@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:12:43.141669+00:00",
+  "at_utc": "2026-11-03T00:26:31.234186+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11935,6 +11935,42 @@
       "sha256": "abb83379a07c13f5dc6bae7fa950fc44336334b67e624975e5bbdbaf5e2a4fa4",
       "bytes": 5649,
       "mtime_ns": 1793664573651259454
+    },
+    {
+      "file": "conversion/scripts/curate_complex_arxiv_native_sources_v1.py",
+      "sha256": "fb365b0eb1acc3289f9feb44594f2c521349b90821d5c9b40b6367dc4156646c",
+      "bytes": 4163,
+      "mtime_ns": 1793664995788969372
+    },
+    {
+      "file": "conversion/scripts/curate_complex_arxiv_native_sources_v2.py",
+      "sha256": "b9f61d823c5c18c7a13a0c6db7a90f0bea26c418a31b711aefadbe87b10f1df0",
+      "bytes": 4376,
+      "mtime_ns": 1793665153162924671
+    },
+    {
+      "file": "conversion/scripts/publish_complex_arxiv_native_curation_v1.py",
+      "sha256": "934d9f09fd8c4ff520961ac1d6e84b9304fe72288fec50a48fa63e6888899ba6",
+      "bytes": 4436,
+      "mtime_ns": 1793665279385357426
+    },
+    {
+      "file": "conversion/scripts/review_fixed_svg_whitespace_pairs_v1.py",
+      "sha256": "61a968e4e232b2e9280c13dc3f682f2758f2b024c3ccc934cb4951f2c879da9e",
+      "bytes": 5978,
+      "mtime_ns": 1793665211326195534
+    },
+    {
+      "file": "conversion/scripts/publish_curated_research_delivery_v1.py",
+      "sha256": "3f187f328b0cbd3d17cd838f43c78093c584d65b48b7d1c304f88f8d1e89f622",
+      "bytes": 6918,
+      "mtime_ns": 1793665440615425970
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v4.py",
+      "sha256": "467998c5feee54a8aeacb84b23bd29c23bf6b5e4ec43d06b22e6cd54b92f64e3",
+      "bytes": 9793,
+      "mtime_ns": 1793665474999022337
     }
   ],
   "excluded_for_credential_review": []

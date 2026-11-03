@@ -1,13 +1,13 @@
 {
-  "at_utc": "2026-11-03T00:14:22.876039+00:00",
+  "at_utc": "2026-11-03T00:26:31.203536+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "bytes": 4531958,
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T001131736325Z_review_batch_v8/paired_priority_complex.jsonl",
-    "rows": 996,
-    "sha256": "e65b9e4330b66dcbb5a9c84feae15ce6953274a141710de9ab06e841a7619cef"
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T002308369688Z_review_batch_v8/paired_priority_complex.jsonl",
+    "sha256": "a9a6dcfd975e5349e7161c928e1dd18df87ce569b3f77f864ad542cad05c5242",
+    "bytes": 4581665,
+    "rows": 1012
   },
-  "strict_main_rows": 996,
+  "strict_main_rows": 1012,
   "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
     "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
@@ -308,7 +308,7 @@
       ]
     }
   },
-  "next_step": "Follow birth-bound v12 owner PID347847/start_ticks1145650317. B finished 43/43 with zero qualified and no infrastructure errors; C has just started. Never restart the completed launcher, admissions, controls, B, or source-core normals. The fixed program computes the unchanged gate, waits for foreign v11 pending conversions before full v24 mass, and retains the entire 1149-applicable population from 3047 targets. Keep reviewing increments of newly qualified actual PNGs and preserve reference grades for seven-source/chart/arXiv final audit. Goal incomplete until batch results and final curated deliverables are verified.",
+  "next_step": "Continue existing birth-verified v11 mass and v12 validated foreign-pending wait; no new source-core normal or validation reruns. v12 passed 17/43 and automatically starts the full applicable batch after v11 releases overlapping pending originals. Current strict main1012; graded curated delivery1366=1012 main+92 complex charts+262 arXiv (99 native frameworks,163 labeled source composites;90 original-PDF visual,172 source-replay-only). One arXiv visual anomaly held; original qualifiers and all nonselected originals retained. Review newly qualified PNG increments, refresh graded delivery and seven-source audit, and perform final requirement audit after batch completion. Do not treat the current usable snapshot or validated gate as completion of the full goal.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -725,14 +725,14 @@
     "goal_complete": false
   },
   "seven_source_delivery_audit": {
-    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v3/26bc05de90854169b6c9b434a50efe5e",
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v4/9a458102a5834a699f0d1652337a63a7",
     "audit": {
-      "file": "clean/complex_research_delivery_audit_v3/26bc05de90854169b6c9b434a50efe5e/audit.json",
-      "sha256": "46570d371e8da454700fe99f18d9496e1aaf333d3acdb2dfb73ebb1ec71f2ccb",
-      "bytes": 10114
+      "file": "clean/complex_research_delivery_audit_v4/9a458102a5834a699f0d1652337a63a7/audit.json",
+      "sha256": "4c650d0149c75df2daa89caf2fadf3d5fe4802458d77f7d9d553f1a0306efb33",
+      "bytes": 15662
     },
     "strict_main_by_source": {
-      "QijiaHe--VFIG-Data": 193,
+      "QijiaHe--VFIG-Data": 232,
       "VincentHancoder--RAP": 780
     },
     "latest_chart_by_source": {
@@ -744,6 +744,129 @@
       "ChartMimic--ChartMimic": {
         "source_replay_aligned": 879,
         "source_svg_backend_replay_aligned": 605
+      }
+    },
+    "curated_delivery": {
+      "pairs": {
+        "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/pairs.jsonl",
+        "sha256": "cec9e69360f8ed793a41d4f02fc4733d277b7d28e73e31a2e83f68cc7c92ab92",
+        "bytes": 2248784
+      },
+      "summary": {
+        "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/summary.json",
+        "sha256": "241e4785ecfd756eaafeff3067f0344b442eb4001fcb179dcc14a8d4efa09945",
+        "bytes": 4341
+      },
+      "readme": {
+        "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/README.md",
+        "sha256": "ebbf00a012ab523e68d750a702312184962c5b7f9fa353bc5a5a64e9b24d9269",
+        "bytes": 1361
+      },
+      "unique_code_RGBA_pairs": 1366,
+      "curation_memberships": {
+        "complex_paper_diagrams_and_posters": 1012,
+        "complex_scientific_charts": 92,
+        "complex_arxiv_native": 262
+      },
+      "quality_views_overlap": true,
+      "goal_complete": false
+    },
+    "programs": {
+      "svg_complex_resolved_geometry_cached_unseen_20261102_v11": {
+        "run": "svg_complex_resolved_geometry_cached_unseen_20261102_v11",
+        "stage": "mass",
+        "owner": {
+          "pid": 3910048,
+          "start_ticks": 1145471490,
+          "live": true
+        },
+        "infrastructure_stop": null,
+        "B": {
+          "counts": {
+            "abandoned": 31
+          },
+          "infrastructure_errors": 0
+        },
+        "C": {
+          "counts": {
+            "abandoned": 19,
+            "qualified": 12
+          },
+          "infrastructure_errors": 0
+        },
+        "mass": {
+          "counts": {
+            "abandoned": 383,
+            "qualified": 40,
+            "queued": 404,
+            "running": 12
+          },
+          "infrastructure_errors": 0
+        },
+        "release_gate": {
+          "units": {
+            "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18": {
+              "B_qualified": 0,
+              "C_qualified": 12,
+              "full_qualified_rate": 0.3870967741935484,
+              "new_qualified": 12,
+              "passed": true,
+              "positive_regressions": 0,
+              "samples": 31
+            }
+          },
+          "infrastructure_errors": 0,
+          "controls_passed": true,
+          "reference": {
+            "file": "release/compiler_iterations/programs/svg_complex_resolved_geometry_cached_unseen_20261102_v11/release_gate.json",
+            "sha256": "a589dda86435449705dde6d63db45dceca7555b1070cb85d2f9016c6b6a233e0",
+            "bytes": 158390
+          }
+        }
+      },
+      "svg_complex_source_whitespace_cached_unseen_20261103_v12": {
+        "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
+        "stage": "validated_waiting_existing_foreign_batch",
+        "owner": {
+          "pid": 347847,
+          "start_ticks": 1145650317,
+          "live": true
+        },
+        "infrastructure_stop": null,
+        "B": {
+          "counts": {
+            "abandoned": 43
+          },
+          "infrastructure_errors": 0
+        },
+        "C": {
+          "counts": {
+            "abandoned": 26,
+            "qualified": 17
+          },
+          "infrastructure_errors": 0
+        },
+        "release_gate": {
+          "units": {
+            "general_svg_v20_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_whitespace_wrapper_owned_guard_v20": {
+              "B_qualified": 0,
+              "C_qualified": 17,
+              "full_qualified_rate": 0.3953488372093023,
+              "new_qualified": 17,
+              "passed": true,
+              "positive_regressions": 0,
+              "samples": 43
+            }
+          },
+          "infrastructure_errors": 0,
+          "controls_passed": true,
+          "reference": {
+            "file": "release/compiler_iterations/programs/svg_complex_source_whitespace_cached_unseen_20261103_v12/release_gate.json",
+            "sha256": "e2e4504d8af6d711edb7d69ac0eecbce91d53be8fb100d2d91b5eecddcd73b58",
+            "bytes": 161433
+          }
+        },
+        "verified_foreign_pending_originals": 417
       }
     },
     "goal_complete": false
@@ -1165,40 +1288,48 @@
       "goal_complete": false
     },
     "latest": {
-      "at_utc": "2026-11-03T00:14:22.876039+00:00",
-      "program": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
+      "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
+      "stage": "validated_waiting_existing_foreign_batch",
       "owner": {
         "pid": 347847,
-        "birth_ticks": 1145650317,
+        "start_ticks": 1145650317,
         "live": true
       },
-      "stage": "validation_C",
       "infrastructure_stop": null,
-      "goal_complete": false,
       "B": {
         "counts": {
           "abandoned": 43
-        },
-        "attempts": {
-          "1": 43
         },
         "infrastructure_errors": 0
       },
       "C": {
         "counts": {
-          "queued": 43
-        },
-        "attempts": {
-          "0": 43
+          "abandoned": 26,
+          "qualified": 17
         },
         "infrastructure_errors": 0
       },
-      "prior_mass_counts": {
-        "abandoned": 263,
-        "qualified": 26,
-        "queued": 538,
-        "running": 12
-      }
+      "release_gate": {
+        "units": {
+          "general_svg_v20_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_whitespace_wrapper_owned_guard_v20": {
+            "B_qualified": 0,
+            "C_qualified": 17,
+            "full_qualified_rate": 0.3953488372093023,
+            "new_qualified": 17,
+            "passed": true,
+            "positive_regressions": 0,
+            "samples": 43
+          }
+        },
+        "infrastructure_errors": 0,
+        "controls_passed": true,
+        "reference": {
+          "file": "release/compiler_iterations/programs/svg_complex_source_whitespace_cached_unseen_20261103_v12/release_gate.json",
+          "sha256": "e2e4504d8af6d711edb7d69ac0eecbce91d53be8fb100d2d91b5eecddcd73b58",
+          "bytes": 161433
+        }
+      },
+      "verified_foreign_pending_originals": 417
     },
     "full8_controls": {
       "proof": {
@@ -1292,6 +1423,154 @@
         "sha256": "49e76a23d331eea3c4be64d25aaa852df1f786153de33030dd06dc92b835624a"
       }
     },
-    "source_family_validation_samples": 43
+    "source_family_validation_samples": 43,
+    "gate_passed": true,
+    "unseen_samples": 43,
+    "qualified": 17,
+    "full_qualified_rate": 0.3953488372093023
+  },
+  "curated_delivery": {
+    "pairs": {
+      "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/pairs.jsonl",
+      "sha256": "cec9e69360f8ed793a41d4f02fc4733d277b7d28e73e31a2e83f68cc7c92ab92",
+      "bytes": 2248784
+    },
+    "summary": {
+      "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/summary.json",
+      "sha256": "241e4785ecfd756eaafeff3067f0344b442eb4001fcb179dcc14a8d4efa09945",
+      "bytes": 4341
+    },
+    "readme": {
+      "file": "clean/curated_complex_research_delivery_v1/cc53cfb43fb3481e803497704f68e883/README.md",
+      "sha256": "ebbf00a012ab523e68d750a702312184962c5b7f9fa353bc5a5a64e9b24d9269",
+      "bytes": 1361
+    },
+    "unique_code_RGBA_pairs": 1366,
+    "curation_memberships": {
+      "complex_paper_diagrams_and_posters": 1012,
+      "complex_scientific_charts": 92,
+      "complex_arxiv_native": 262
+    },
+    "quality_views_overlap": true,
+    "goal_complete": false
+  },
+  "complex_arxiv_curated": {
+    "rows": 262,
+    "curated_pairs": {
+      "file": "clean/complex_arxiv_native_source_curation_v2/54a34d8a731f4252b7e69d1332d85796/curated_pairs_by_reference_profile.jsonl",
+      "sha256": "47568fd71ae163e262d4e8b2603c029973a5e0762c54dad1701b263fe475078f",
+      "bytes": 435435
+    },
+    "acceptance": {
+      "file": "clean/complex_arxiv_native_source_curation_v2/54a34d8a731f4252b7e69d1332d85796/curation_acceptance.json",
+      "sha256": "de9bc9fe5f10bb9cc1aed4a938091e40b93ceb5c9461da0a642044926d294ef6",
+      "bytes": 4860
+    },
+    "curation_views": {
+      "complex_native_framework": 99,
+      "labeled_source_image_composite": 163
+    },
+    "original_PDF_visual_rows": 90,
+    "source_replay_only_rows": 172,
+    "strict_full8_main_unchanged": true,
+    "goal_complete": false
+  },
+  "active_programs": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11": {
+      "run": "svg_complex_resolved_geometry_cached_unseen_20261102_v11",
+      "stage": "mass",
+      "owner": {
+        "pid": 3910048,
+        "start_ticks": 1145471490,
+        "live": true
+      },
+      "infrastructure_stop": null,
+      "B": {
+        "counts": {
+          "abandoned": 31
+        },
+        "infrastructure_errors": 0
+      },
+      "C": {
+        "counts": {
+          "abandoned": 19,
+          "qualified": 12
+        },
+        "infrastructure_errors": 0
+      },
+      "mass": {
+        "counts": {
+          "abandoned": 383,
+          "qualified": 40,
+          "queued": 404,
+          "running": 12
+        },
+        "infrastructure_errors": 0
+      },
+      "release_gate": {
+        "units": {
+          "general_svg_v18_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_guard_v18": {
+            "B_qualified": 0,
+            "C_qualified": 12,
+            "full_qualified_rate": 0.3870967741935484,
+            "new_qualified": 12,
+            "passed": true,
+            "positive_regressions": 0,
+            "samples": 31
+          }
+        },
+        "infrastructure_errors": 0,
+        "controls_passed": true,
+        "reference": {
+          "file": "release/compiler_iterations/programs/svg_complex_resolved_geometry_cached_unseen_20261102_v11/release_gate.json",
+          "sha256": "a589dda86435449705dde6d63db45dceca7555b1070cb85d2f9016c6b6a233e0",
+          "bytes": 158390
+        }
+      }
+    },
+    "svg_complex_source_whitespace_cached_unseen_20261103_v12": {
+      "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
+      "stage": "validated_waiting_existing_foreign_batch",
+      "owner": {
+        "pid": 347847,
+        "start_ticks": 1145650317,
+        "live": true
+      },
+      "infrastructure_stop": null,
+      "B": {
+        "counts": {
+          "abandoned": 43
+        },
+        "infrastructure_errors": 0
+      },
+      "C": {
+        "counts": {
+          "abandoned": 26,
+          "qualified": 17
+        },
+        "infrastructure_errors": 0
+      },
+      "release_gate": {
+        "units": {
+          "general_svg_v20_source_background_interleaving_rotation_anchor_compound_linear_resolved_geometry_whitespace_wrapper_owned_guard_v20": {
+            "B_qualified": 0,
+            "C_qualified": 17,
+            "full_qualified_rate": 0.3953488372093023,
+            "new_qualified": 17,
+            "passed": true,
+            "positive_regressions": 0,
+            "samples": 43
+          }
+        },
+        "infrastructure_errors": 0,
+        "controls_passed": true,
+        "reference": {
+          "file": "release/compiler_iterations/programs/svg_complex_source_whitespace_cached_unseen_20261103_v12/release_gate.json",
+          "sha256": "e2e4504d8af6d711edb7d69ac0eecbce91d53be8fb100d2d91b5eecddcd73b58",
+          "bytes": 161433
+        }
+      },
+      "verified_foreign_pending_originals": 417
+    }
   }
 }

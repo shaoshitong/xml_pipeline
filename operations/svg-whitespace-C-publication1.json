@@ -1,0 +1,110 @@
+{
+  "review": {
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_fc5a6dcf420a49e4af98b544ae88f64c",
+    "pairs": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_fc5a6dcf420a49e4af98b544ae88f64c/reviewed_pairs.jsonl",
+      "sha256": "23086724a64505957a26b9ad7f4e0f1cac259cbce8a238d3781b924f135f392e",
+      "bytes": 88679
+    },
+    "occlusion": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_C_8d8c3b9d39424120a1eb66f2b71b1628/source_text_occlusion_reviews.jsonl",
+      "sha256": "674bb884cdc897ed9ce5afced7a96844294e3c3042961c2ba057ae3ee38726c3",
+      "bytes": 6001
+    },
+    "input_summary": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_C_8d8c3b9d39424120a1eb66f2b71b1628/summary.json",
+      "sha256": "b1e060e543f159b2cce41b918223a9f16bc345871d8426f36c5ed608b87b6de6",
+      "bytes": 4400
+    },
+    "decisions": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_fc5a6dcf420a49e4af98b544ae88f64c/decisions.json",
+      "sha256": "91e1ff85d7480402dd19dfbb09996c07cb8a840ddd09be90243b030974e36645",
+      "bytes": 5046
+    },
+    "approved_ids": [
+      "774298cf553baff07b2236e043edf26d3b35d83611467da2615973ce711a8a2f",
+      "7f5e672793a1ebcc6c40a81abde4e4ad30b95ff242050d1f45a13621aa6b66de",
+      "058ebc779d5a8a7ff7a27a543a0dc8f737cfd75773949fb307170079cb97cfad",
+      "4e671e247ea4d3dd9cc69a8d9e44b04746cb9f20ad203085091c46e03833b909",
+      "7b7aaf980e325522225e43919f4c4c39f609fe76c8bd49f8a89d4fe424502bbe",
+      "dc3a0812e2bea6fe0e7d722e4ae39111476b196395f9d7da626fb87ccc1f84a4",
+      "b3f274f4b9be2fd191a8beb35839dda5e0ecbe401bf71b2a7cfef40ccbbf2b5e",
+      "37be02e1ff74f0ec456fb38a1a8f47aa26257dfb041da79d39ff8fb2661e532b",
+      "b3c228c762b3fcad34069827f9f5a6870397069312a4996033eb9216bfbec409",
+      "2ba6a4f66a6262f43421a816d74865fd96045f3e0e72564f706d36f7b34d5012",
+      "0ae8773b4f956cf51895df8c62e31c3334323a9076b7d70942c1e2277fcb7e53",
+      "0d58d11640f8929482fdadc23c66def65ad87966902131c4663f39edc05565ad",
+      "0dba16ce0a1be0a2d60dc99d731f9144a2d8c55fbe79892459ae6d203476d9d2",
+      "f39fc32a53fc5041c94fcc378d882145f499fde17757c2718c825bf20ab0534c",
+      "37b45f6a4ccb6f0d22d362a70d7a10b2817e5a43bf3ddc3c6e0ebe44e3e4e8f4",
+      "94b37f8f4841530ce6cd7222be9833dc0bebc6033be65e000d55f1864b355d29"
+    ],
+    "held_ids": [
+      "1284d07568db975242779afbd5264fa5df870362d2f67dcbbae19f6e6cb80c92"
+    ],
+    "actual_native_PNG_inspected_ids": [
+      "774298cf553baff07b2236e043edf26d3b35d83611467da2615973ce711a8a2f",
+      "7f5e672793a1ebcc6c40a81abde4e4ad30b95ff242050d1f45a13621aa6b66de",
+      "058ebc779d5a8a7ff7a27a543a0dc8f737cfd75773949fb307170079cb97cfad",
+      "4e671e247ea4d3dd9cc69a8d9e44b04746cb9f20ad203085091c46e03833b909",
+      "7b7aaf980e325522225e43919f4c4c39f609fe76c8bd49f8a89d4fe424502bbe",
+      "dc3a0812e2bea6fe0e7d722e4ae39111476b196395f9d7da626fb87ccc1f84a4",
+      "b3f274f4b9be2fd191a8beb35839dda5e0ecbe401bf71b2a7cfef40ccbbf2b5e",
+      "37be02e1ff74f0ec456fb38a1a8f47aa26257dfb041da79d39ff8fb2661e532b",
+      "b3c228c762b3fcad34069827f9f5a6870397069312a4996033eb9216bfbec409",
+      "2ba6a4f66a6262f43421a816d74865fd96045f3e0e72564f706d36f7b34d5012",
+      "0ae8773b4f956cf51895df8c62e31c3334323a9076b7d70942c1e2277fcb7e53",
+      "1284d07568db975242779afbd5264fa5df870362d2f67dcbbae19f6e6cb80c92",
+      "0d58d11640f8929482fdadc23c66def65ad87966902131c4663f39edc05565ad",
+      "0dba16ce0a1be0a2d60dc99d731f9144a2d8c55fbe79892459ae6d203476d9d2",
+      "f39fc32a53fc5041c94fcc378d882145f499fde17757c2718c825bf20ab0534c",
+      "37b45f6a4ccb6f0d22d362a70d7a10b2817e5a43bf3ddc3c6e0ebe44e3e4e8f4",
+      "94b37f8f4841530ce6cd7222be9833dc0bebc6033be65e000d55f1864b355d29"
+    ],
+    "technical_qualifications_unchanged": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "model_calls": 0
+  },
+  "publication": {
+    "before": 996,
+    "after": 1012,
+    "added_ids": [
+      "774298cf553baff07b2236e043edf26d3b35d83611467da2615973ce711a8a2f",
+      "7f5e672793a1ebcc6c40a81abde4e4ad30b95ff242050d1f45a13621aa6b66de",
+      "058ebc779d5a8a7ff7a27a543a0dc8f737cfd75773949fb307170079cb97cfad",
+      "4e671e247ea4d3dd9cc69a8d9e44b04746cb9f20ad203085091c46e03833b909",
+      "7b7aaf980e325522225e43919f4c4c39f609fe76c8bd49f8a89d4fe424502bbe",
+      "dc3a0812e2bea6fe0e7d722e4ae39111476b196395f9d7da626fb87ccc1f84a4",
+      "b3f274f4b9be2fd191a8beb35839dda5e0ecbe401bf71b2a7cfef40ccbbf2b5e",
+      "37be02e1ff74f0ec456fb38a1a8f47aa26257dfb041da79d39ff8fb2661e532b",
+      "b3c228c762b3fcad34069827f9f5a6870397069312a4996033eb9216bfbec409",
+      "2ba6a4f66a6262f43421a816d74865fd96045f3e0e72564f706d36f7b34d5012",
+      "0ae8773b4f956cf51895df8c62e31c3334323a9076b7d70942c1e2277fcb7e53",
+      "0d58d11640f8929482fdadc23c66def65ad87966902131c4663f39edc05565ad",
+      "0dba16ce0a1be0a2d60dc99d731f9144a2d8c55fbe79892459ae6d203476d9d2",
+      "f39fc32a53fc5041c94fcc378d882145f499fde17757c2718c825bf20ab0534c",
+      "37b45f6a4ccb6f0d22d362a70d7a10b2817e5a43bf3ddc3c6e0ebe44e3e4e8f4",
+      "94b37f8f4841530ce6cd7222be9833dc0bebc6033be65e000d55f1864b355d29"
+    ],
+    "held_ids": [
+      "1284d07568db975242779afbd5264fa5df870362d2f67dcbbae19f6e6cb80c92"
+    ],
+    "main": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T002308369688Z_review_batch_v8/paired_priority_complex.jsonl",
+      "sha256": "a9a6dcfd975e5349e7161c928e1dd18df87ce569b3f77f864ad542cad05c5242",
+      "bytes": 4581665,
+      "rows": 1012
+    },
+    "review": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T002308369688Z_review_batch_v8/value_review.json",
+      "sha256": "58eeb3f471a489dde322d9cc475aea01bc4aafb2d26ec9d7a661451270440977",
+      "bytes": 20784
+    },
+    "pointer": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+      "sha256": "3936b682127c7351b37bfc605795ec3608e8da33f8bbdbe43d9caeb45ebebed7",
+      "bytes": 3516
+    }
+  }
+}

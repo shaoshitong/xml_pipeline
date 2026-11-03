@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:14:37.277354+00:00",
+  "at_utc": "2026-11-03T00:26:31.225443+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "c16e4d90c4c7e1f302133435616a9147b6899259d01353ad62a611cbafce4aed",
-      "bytes": 62170,
-      "mtime_ns": 1793664877275173523
+      "sha256": "59007085a2b32a70447f3e7139246fb414d7520aaca51f123a3ae36a1444d680",
+      "bytes": 72139,
+      "mtime_ns": 1793665591204568474
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "c16e4d90c4c7e1f302133435616a9147b6899259d01353ad62a611cbafce4aed",
-      "bytes": 62170,
-      "mtime_ns": 1793664877274100680
+      "sha256": "3ad65477f96aa73d8cc05f2dd1c6211364a7b14e5b2e40204a8b836695e60114",
+      "bytes": 72139,
+      "mtime_ns": 1793665591203133917
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -15978,6 +15978,126 @@
       "sha256": "e09cef61ff596140408d38aff6cc8238a8d102b2c78f0d83937235c8642985ef",
       "bytes": 78885,
       "mtime_ns": 1793664807255553458
+    },
+    {
+      "file": "conversion/scripts/curate_complex_arxiv_native_sources_v1.py",
+      "sha256": "fb365b0eb1acc3289f9feb44594f2c521349b90821d5c9b40b6367dc4156646c",
+      "bytes": 4163,
+      "mtime_ns": 1793664995788969372
+    },
+    {
+      "file": "conversion/scripts/curate_complex_arxiv_native_sources_v2.py",
+      "sha256": "b9f61d823c5c18c7a13a0c6db7a90f0bea26c418a31b711aefadbe87b10f1df0",
+      "bytes": 4376,
+      "mtime_ns": 1793665153162924671
+    },
+    {
+      "file": "conversion/scripts/publish_complex_arxiv_native_curation_v1.py",
+      "sha256": "934d9f09fd8c4ff520961ac1d6e84b9304fe72288fec50a48fa63e6888899ba6",
+      "bytes": 4436,
+      "mtime_ns": 1793665279385357426
+    },
+    {
+      "file": "conversion/scripts/review_fixed_svg_whitespace_pairs_v1.py",
+      "sha256": "61a968e4e232b2e9280c13dc3f682f2758f2b024c3ccc934cb4951f2c879da9e",
+      "bytes": 5978,
+      "mtime_ns": 1793665211326195534
+    },
+    {
+      "file": "conversion/scripts/publish_curated_research_delivery_v1.py",
+      "sha256": "3f187f328b0cbd3d17cd838f43c78093c584d65b48b7d1c304f88f8d1e89f622",
+      "bytes": 6918,
+      "mtime_ns": 1793665440615425970
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v4.py",
+      "sha256": "467998c5feee54a8aeacb84b23bd29c23bf6b5e4ec43d06b22e6cd54b92f64e3",
+      "bytes": 9793,
+      "mtime_ns": 1793665474999022337
+    },
+    {
+      "file": "operations/complex-arxiv-native-source-curation-v2.json",
+      "sha256": "2a911ba18c7d5400c93dca868c7b8cd1ca74996992e93e285d495cbb8d85a637",
+      "bytes": 1779,
+      "mtime_ns": 1793665591199255461
+    },
+    {
+      "file": "operations/CURATED_RESEARCH_DELIVERY.md",
+      "sha256": "ebbf00a012ab523e68d750a702312184962c5b7f9fa353bc5a5a64e9b24d9269",
+      "bytes": 1361,
+      "mtime_ns": 1793665591201336649
+    },
+    {
+      "file": "operations/complex-arxiv-native-curation-publication-v1.json",
+      "sha256": "ec14e12619583bc53c3d1bdaa65c24cfb872312bc9a5039f9d726189555c21ee",
+      "bytes": 699,
+      "mtime_ns": 1793665591199909926
+    },
+    {
+      "file": "operations/svg-whitespace-C-publication1.json",
+      "sha256": "a345033d52f18eca93d128acd20b0f95b6277d4eb4256ea312bbd3e5b5f72abd",
+      "bytes": 6202,
+      "mtime_ns": 1793665591200769602
+    },
+    {
+      "file": "operations/publish_curated_delivery_sources_v1.py",
+      "sha256": "dff24e33c4cfaff915e8aaeeb3b5714bd92f2bffbc560e3ee10120712f271c6e",
+      "bytes": 4445,
+      "mtime_ns": 1793665591204771476
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v1.json",
+      "sha256": "fc953e7477f91d6a16a7df3807928afc80159a0e31e64c51d443591f25564c24",
+      "bytes": 834,
+      "mtime_ns": 1793665591200956312
+    },
+    {
+      "file": "operations/arxiv-complex-graph-spot-selection-v1.json",
+      "sha256": "57fb715d710b61e62e9f432659a0477a062a81aeb3d8c147643c3d757af7df0f",
+      "bytes": 647,
+      "mtime_ns": 1793665591199464630
+    },
+    {
+      "file": "operations/svg-whitespace-C-decisions1.json",
+      "sha256": "c7664f37d79ff932807fdcb954c98b5ba3fcffdbec69d847c14e87a47826b037",
+      "bytes": 3125,
+      "mtime_ns": 1793665591200630767
+    },
+    {
+      "file": "operations/svg-whitespace-C-value-review1.json",
+      "sha256": "ab902dec8e05a29a3c4bf3afa00bc790211a34880bc9f7e2e4f5fcab4150264c",
+      "bytes": 3887,
+      "mtime_ns": 1793665591200369389
+    },
+    {
+      "file": "operations/arxiv-composite-spot-selection-v2.json",
+      "sha256": "9ab14d4237fd412a08fa55ad27e09b4ee7dc19ee85fab5561489b8ac92267a0e",
+      "bytes": 620,
+      "mtime_ns": 1793665591199663465
+    },
+    {
+      "file": "operations/seven-source-delivery-audit-v4.json",
+      "sha256": "a34b0e2107d96621b8cbb899ae286cce128ccf3174cd009db9bf2490f5b517d5",
+      "bytes": 3735,
+      "mtime_ns": 1793665591201147022
+    },
+    {
+      "file": "operations/complex-arxiv-native-source-curation-v1.json",
+      "sha256": "9ebd74483dfbe676069c2a5135dcf15fa626179b164f502beb1116610f77b15a",
+      "bytes": 1678,
+      "mtime_ns": 1793665591199024250
+    },
+    {
+      "file": "operations/development_seen/arxiv_composite_actual_PNG_spots_20261103_v2.jsonl",
+      "sha256": "d38f94fbfd14d81eae6f8114aaa18d7c2e57101969c7fd7828a3a0642cfefec8",
+      "bytes": 1664,
+      "mtime_ns": 1793665590241488955
+    },
+    {
+      "file": "operations/development_seen/arxiv_complex_graph_actual_PNG_spots_20261103_v1.jsonl",
+      "sha256": "96d3c4016ca3edd0ac0261b351886045c528cbda4b71f9991ad91ab57f822e83",
+      "bytes": 15235,
+      "mtime_ns": 1793665589324163738
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
