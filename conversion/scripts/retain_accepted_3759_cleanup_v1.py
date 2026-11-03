@@ -102,7 +102,11 @@ def prepare():
         frozen.append(new)
     manifest = A / 'pairs.jsonl'
     manifest.write_text(''.join(json.dumps(x, ensure_ascii=True, sort_keys=True) + '\n' for x in frozen))
-    shutil.copy2(R / SNAPSHOT / 'summary.json', A / 'original_catalogue_summary.json')
+    original_summary, saved_summary = R / SNAPSHOT / 'summary.json', A / 'original_catalogue_summary.json'
+    if saved_summary.exists():
+        assert digest(saved_summary) == digest(original_summary)
+    else:
+        shutil.copy2(original_summary, saved_summary)
     put(A / 'current.json', dict(pairs={'file': str(manifest.relative_to(R)), 'sha256': digest(manifest), 'rows': 3759}, accepted_baseline_frozen=True, source_snapshot=SNAPSHOT, source_index_sha256=INDEX_SHA, incremental_arxiv_catalogue='clean/research_pairs_catalog/current.json'))
     (A / 'README.md').write_text('# 用户确认保留的 3759 对成品\n\n固定基准：3759 对 = 框图/海报1151 + 科学图表2074 + arXiv534。\n\n`pairs.jsonl` 中路径相对 HKUST3 `/backup/shaoshitong/img2code_20261029`。每个 `pairs/编号/` 内是原字节 PNG 和可编辑 drawio。使用硬链接整理，不重复占用数据空间。来源和核验等级保留在记录中；不同等级不能混为原图保真。\n\narXiv 继续采集，新增合格结果由 `clean/research_pairs_catalog/current.json` 持续汇总；本目录基准固定不变。旧的其他数据集及未保留产物按用户授权清理。\n')
     protected = {'scripts', 'remote', 'conversion/scripts', 'conversion/prototype', 'conversion/private', 'conversion/private_arxiv_transport_v3', 'conversion/runtime', 'evaluation/assets', 'release/git', 'release/source_backups', 'release/source_publications', 'reports/retention_3759_v1', 'clean/arxiv_research_figures_v1', 'clean/accepted_3759_v1', 'clean/review_samples', SNAPSHOT, 'clean/curated_complex_research_delivery', 'clean/curated_complex_research_delivery_final_v2'}
