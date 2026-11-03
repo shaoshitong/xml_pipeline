@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T05:08:51.938561+00:00",
+  "at_utc": "2026-11-03T05:25:57.817308+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -17052,6 +17052,24 @@
       "sha256": "c36b98d3c70ec9bf869f7bc24e2eb667803d25b869bdd9b06a0687184be9a2fb",
       "bytes": 6810,
       "mtime_ns": 1793682494975780352
+    },
+    {
+      "file": "conversion/scripts/retain_accepted_3759_cleanup_v1.py",
+      "sha256": "a997ba9f7daac686eb25473ecfa662da9145782596fb0b4fe26e1ddd5bb276cb",
+      "bytes": 11919,
+      "mtime_ns": 1793683519203074374
+    },
+    {
+      "file": "conversion/scripts/arxiv_metadata_resume_v3_2.py",
+      "sha256": "7ff2f542de24dcd0e70b09bf43cc7cfda48fa12ba8cb908868fef054f251d93f",
+      "bytes": 3711,
+      "mtime_ns": 1793683467833986095
+    },
+    {
+      "file": "operations/DATA_RETENTION_POLICY.json",
+      "sha256": "465c5d311655a0b1c134ff9fa62125eed28a6b1a1578d01393f918b80c17b7b2",
+      "bytes": 1042,
+      "mtime_ns": 1793683557815066171
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

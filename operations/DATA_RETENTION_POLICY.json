@@ -1,0 +1,19 @@
+{
+  "recorded_at_utc": "2026-11-03T05:25:57.814574+00:00",
+  "user_instruction": "保留现在的3759，之前的玩意全部删除（那些乱七八糟的数据集和数据）",
+  "newer_user_clarification": [
+    "采集可以继续",
+    "就是如果是arxiv的采集，继续，我们需要更多数据"
+  ],
+  "accepted_baseline": 3759,
+  "baseline_index_sha256": "ff8be5a09c73f63b35c5e10fdf45c99101fb0b10ce128caf78fe1b2304e3bf43",
+  "preserve": [
+    "accepted pair payloads and declared dependencies/evidence",
+    "all active arxiv acquisition, work queues and once ledgers",
+    "100-pair user review sample",
+    "source code, credentials, Git histories and required runtimes"
+  ],
+  "cleanup": "only superseded project datasets and non-arxiv unsuccessful/intermediate output outside the frozen keep set",
+  "arxiv_metadata_recovery": "v3.2 splits failed monthly metadata pages into daily partitions and retries transient errors; unchanged original importer/render code and once claims",
+  "network_configuration_changes": false
+}
