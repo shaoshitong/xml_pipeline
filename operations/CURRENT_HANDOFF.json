@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T11:28:02.745997+00:00",
+  "at_utc": "2026-11-03T11:47:24.322625+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Progress: implemented direct author-XML branch with archive membership, original metadata, resource closure, original font and exact edit/restore gates. Ten previously unseen source graphs produced8 strictly verified and2 pending; candidate visual batch20 produced13accepts/7holds, authoritative publisher confirmed190accepted/3949unified. Main five-node collection continues; no new PDF imports, source downloads or model calls in the new branch.",
+  "previous_goal_turn": "Progress: authorized CLI harness completed raw PNG/SVG parse probes and continued persisted graph dedup analysis; added/deployed incremental native XML header discovery, preserving frozen v2 queue. Six local and remote tests pass; real header count14->25 and marker3946->3947, PID2076056 live with birth checked. Existing accepted190/unified3949 unchanged; compiler pilot still required.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -132,5 +132,58 @@
     "no_existing_index_changes": true,
     "runtime_audit": "clean/arxiv_research_figures_v1/pair_identity_admission_audit_v1/audit.json",
     "integration": "Available and verified; use for next publisher version, current publisher still manual190."
+  },
+  "embedded_XML_incremental_v3": {
+    "directory": "clean/arxiv_research_figures_v1/embedded_XML_image_inventory_incremental_v3",
+    "launch": {
+      "pid": 2076056,
+      "birth_ticks": "1149796909",
+      "at_utc": "2026-11-03T11:44:07.191430+00:00"
+    },
+    "current": {
+      "at_utc": "2026-11-03T11:47:23.909530+00:00",
+      "directory_walk_complete": true,
+      "scan_complete": false,
+      "completed_source_cohort_only": true,
+      "continuous_incremental": true,
+      "states": {
+        "checked": 242134,
+        "marker": 3947
+      },
+      "native_XML_markers": 3947,
+      "paper_states": {
+        "covered_by_frozen_v2": 8390,
+        "queued": 23315,
+        "scanned": 5411
+      },
+      "new_header_reads": 47,
+      "scan_scope": "v2 frozen headers plus once-per-completed-paper incremental SVG/PNG headers",
+      "not_parsed_or_accepted": true,
+      "new_PDF_import_calls": 0,
+      "new_source_downloads": 0,
+      "new_model_calls": 0,
+      "pixel_data_not_decoded": true
+    },
+    "source_files": [
+      {
+        "file": "conversion/scripts/inventory_arxiv_embedded_XML_images_incremental_v3.py",
+        "sha256": "9380de14861778aa6131d92d7c9a69d7ddd3932cfc6a60b744bc4ec550e21c49",
+        "bytes": 6054,
+        "mtime_ns": 1793706245122243784
+      },
+      {
+        "file": "conversion/scripts/test_inventory_arxiv_embedded_XML_images_incremental_v3.py",
+        "sha256": "f08d1aff78e08aa825da36bc138b8075cd5b84d61d9c29c8e8373bd55b7946bb",
+        "bytes": 3911,
+        "mtime_ns": 1793706246082231051
+      }
+    ],
+    "local_and_remote_tests": 6,
+    "observed_new_headers_first": 14,
+    "observed_new_headers_second": 25,
+    "new_markers_discovered": 1,
+    "original_v2_ledger_unchanged": true,
+    "not_new_accepted_pairs": true,
+    "known_pending": "Initial conservative per-paper bootstrap still processing queued completed papers. Once done, every120s only unseen completed papers are visited. Wire compiler to cumulative v3 after reviewed dpsk pilot; current dpsk task still frozen v2."
   }
 }

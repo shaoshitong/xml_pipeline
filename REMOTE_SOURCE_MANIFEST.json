@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T11:36:47.345080+00:00",
+  "at_utc": "2026-11-03T11:47:24.322625+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -5577,6 +5577,12 @@
       "mtime_ns": 1793701099414540655
     },
     {
+      "file": "conversion/scripts/inventory_arxiv_embedded_XML_images_incremental_v3.py",
+      "sha256": "9380de14861778aa6131d92d7c9a69d7ddd3932cfc6a60b744bc4ec550e21c49",
+      "bytes": 6054,
+      "mtime_ns": 1793706245122243784
+    },
+    {
       "file": "conversion/scripts/inventory_arxiv_embedded_XML_images_v1.py",
       "sha256": "59418e7fc0a32b2ead4eb778771269bba2999c8c824b8b1078d74110e4deab8b",
       "bytes": 2188,
@@ -10543,6 +10549,12 @@
       "sha256": "45b15cb9fb26cb6170d808d25870f21393682d0d4de2ef33dc561e006d97a700",
       "bytes": 2636,
       "mtime_ns": 1793459048988786024
+    },
+    {
+      "file": "conversion/scripts/test_inventory_arxiv_embedded_XML_images_incremental_v3.py",
+      "sha256": "f08d1aff78e08aa825da36bc138b8075cd5b84d61d9c29c8e8373bd55b7946bb",
+      "bytes": 3911,
+      "mtime_ns": 1793706246082231051
     },
     {
       "file": "conversion/scripts/test_marker_pixel_guards.py",
