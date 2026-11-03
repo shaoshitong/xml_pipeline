@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T09:44:48.495819+00:00",
+  "at_utc": "2026-11-03T09:48:05.765803+00:00",
   "goal_complete": false,
   "goal_status": "active",
   "previous_goal_turn": "Produced accepted-only random100 milestone package; reviewed 25 new candidates, accepted20 and held5; corrected two earlier near-duplicate accepts (128-2+20=146). Fixed review-batch replay to preserve later corrections. Five node byte and paper counts continue increasing. Goal +500 remains incomplete.",
@@ -41,7 +41,7 @@
   ],
   "publication": {
     "branch": "codex/pipeline-repair-20261102",
-    "last_verified_pushed_commit": "4583f490c3f0fb98b50c8db00348d23f6520ff2d",
+    "last_verified_pushed_commit": "b2ce239",
     "latest_publication_receipt_remote": "reports/arxiv_cluster_direct_v1/source_publication_latest.json",
     "note": "Use the publication receipt and current Git remote SHA for the reconciled latest commit; do not infer latest from an older handoff SHA."
   },
@@ -51,6 +51,8 @@
     "population": 146,
     "seed": 20261103100,
     "archive_sha256": "391a11e26db07b8aed2bf0a19bee747c4832a514c9ae5a6d8a4177b0ab306abe",
-    "not_final_goal_acceptance": true
+    "not_final_goal_acceptance": true,
+    "local_preview": "/Users/shaoshitong/Documents/Codex/2026-11-02/chat-thread-codex-threads-01a19ace-60f1/outputs/random100_new146_seed20261103100_v1/index.html",
+    "all_local_payload_hashes_verified": true
   }
 }
