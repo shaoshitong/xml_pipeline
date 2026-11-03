@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T12:11:21.062102+00:00",
+  "at_utc": "2026-11-03T12:36:05.125916+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -657,6 +657,12 @@
       "mtime_ns": 1793707371833973655
     },
     {
+      "file": "conversion/scripts/arxiv_goal500_automatic_admission_v2.py",
+      "sha256": "940e40802390ac773798dbd6235ae9ca43e0e47f2197c205dd8ac09f37fab338",
+      "bytes": 12231,
+      "mtime_ns": 1793708783672540802
+    },
+    {
       "file": "conversion/scripts/arxiv_goal500_progress_v1.py",
       "sha256": "234be1b81534d5ab2912a1f90014428f1d16021b0cbce0640c9553789cb00cca",
       "bytes": 14822,
@@ -715,6 +721,12 @@
       "sha256": "e70c2695394dd8521192359f6a8abe13e0a221512914452158cc461284d78651",
       "bytes": 6370,
       "mtime_ns": 1793696253231819295
+    },
+    {
+      "file": "conversion/scripts/arxiv_native_framework_layout_gate_v1.py",
+      "sha256": "62f34e19b127d5f9da5117689e3267127c34a23267a163c6a58ea91894483216",
+      "bytes": 4613,
+      "mtime_ns": 1793708634787972246
     },
     {
       "file": "conversion/scripts/arxiv_native_reference_audit_v1.py",
@@ -8893,6 +8905,12 @@
       "sha256": "4fcce05ba0d17e44bdb8a63e7f01ade1b887f4bcd6694a19d3ac4e28d6cd4323",
       "bytes": 2732,
       "mtime_ns": 1793699903732513788
+    },
+    {
+      "file": "conversion/scripts/test_arxiv_native_framework_layout_gate_v1.py",
+      "sha256": "2b367e8fb41e2a110788236cb9aeb7daf3d0d371c62b2e9a30126399a1393c7c",
+      "bytes": 2430,
+      "mtime_ns": 1793708636147966865
     },
     {
       "file": "conversion/scripts/test_arxiv_pair_identity_admission_v1.py",

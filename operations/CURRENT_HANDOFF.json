@@ -1,19 +1,19 @@
 {
-  "at_utc": "2026-11-03T12:11:21.062102+00:00",
+  "at_utc": "2026-11-03T12:36:05.125916+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Progress: authorized CLI harness completed raw PNG/SVG parse probes and continued persisted graph dedup analysis; added/deployed incremental native XML header discovery, preserving frozen v2 queue. Six local and remote tests pass; real header count14->25 and marker3946->3947, PID2076056 live with birth checked. Existing accepted190/unified3949 unchanged; compiler pilot still required.",
+  "previous_goal_turn": "Progress: dpsk completed frozen3946 job with246 strict verified candidates and23 remote tests. Independent actual payload/font/decoder/resource/archive/layout admission accepted224, increasing authoritative new190->414 and unified3949->4173;235->414 measured snapshots. Eight remote layout regressions preserve valid disconnected panels/ports and hold exact repeated drafts/extreme gaps. Existing original3759/190 unchanged. New metadata preflight8processes processed3989headers in~59s; same CLI coding session continued for remaining source/page work.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
     "rows": 3759,
     "sha256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2"
   },
-  "authoritative_current": "clean/arxiv_research_figures_v1/goal500_progress_v1/current.json",
-  "accepted_new_last_observation": 190,
-  "unified_rows_last_observation": 3949,
+  "authoritative_current": "clean/arxiv_research_figures_v1/goal500_automatic_admission_v2/current.json",
+  "accepted_new_last_observation": 414,
+  "unified_rows_last_observation": 4173,
   "target_new_pairs": 500,
-  "remaining_required": "Independently audit dpsk source and current verified candidates, strengthen disconnected-draft/large-gap automated layout check, integrate proof-backed unique candidates alongside immutable existing190 in a new publisher. Preserve baseline3759. Current compiler results reside under conversion/dpsk_svg_png_compiler_20261103/results/embedded_XML_compiler_dpsk_v1 (D follows script workspace); initial frozen3946 batch running with2 expensive replay workers. After batch finish, same CLI session can be continued for cumulative-v3 ingestion; consider exact native page isolation for513multi-page sources without lowering per-page gates. Final+500 unified index and random100 still required.",
+  "remaining_required": "Continue to500 accepted new (currently414). Same DeepSeek CLI session continuation is implementing cumulative-v3 inventory extension and exact complete native-page isolation from513multi-page docs, versioned adapters only; existing compiler core remains pinned by validator. Audit new page provenance/schema and unchanged full-page gates before integrating its separate manifest. Also consider automating remaining92 older strictly replay-verified pending rows without bypassing source/context/layout checks; none counted yet. All data/tests/compilation on HKUST3 CPU only. Final500 unified manifest and random100 remain required.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
   "invariants": [
     "No VPS bulk transport or Mac bulk relay",
@@ -93,7 +93,7 @@
     "new_model_calls": 0,
     "original_PDF_figure_usage_not_certified": true
   },
-  "accepted_new_index_SHA256": "44437f4b5e86006ad896829c003ff1061aeb5f0fe499cf674cf58a15c9e1f514",
+  "accepted_new_index_SHA256": "8edfc9064389b45d4b4e61ee7f5c69cb551a860887f46233569409632a6848f6",
   "embedded_source_candidate_discovery": {
     "partial_v1_directory": "clean/arxiv_research_figures_v1/embedded_XML_image_inventory_v1",
     "partial_marker_candidates": 141,
@@ -306,5 +306,113 @@
     "verified_candidates": 150,
     "verified_candidates_manifest": "conversion/dpsk_svg_png_compiler_20261103/results/embedded_XML_compiler_dpsk_v1/verified_candidates.jsonl",
     "verified_candidates_manifest_sha256": "bf973016d511f6ce4cf57c6256ff21abf5394b7c4deaf49ccd511d0ebc2af40a"
-  }
+  },
+  "historical_manual190_current": "clean/arxiv_research_figures_v1/goal500_progress_v1/current.json",
+  "automatic_admission_v2": {
+    "current": {
+      "accepted_new_pairs": {
+        "file": "clean/arxiv_research_figures_v1/goal500_automatic_admission_v2/accepted_new_pairs.jsonl",
+        "rows": 414,
+        "sha256": "8edfc9064389b45d4b4e61ee7f5c69cb551a860887f46233569409632a6848f6"
+      },
+      "all_processing_CPU_host": "HKUST3",
+      "at_utc": "2026-11-03T12:36:04.196895+00:00",
+      "automatic_new": 224,
+      "baseline_rows": 3759,
+      "duplicates": 0,
+      "embedded_candidates": 246,
+      "final_random100_still_required": true,
+      "goal_complete": false,
+      "held": 22,
+      "original_PDF_quality_view_not_inferred": true,
+      "policy": "independent_source_proof_payload_font_resource_repeated_draft_layout_code_OR_RGBA_admission_v3",
+      "retained_previously_reviewed_new": 190,
+      "source_compiler_manifest_SHA256": "35eacfa76dcd18a54c012d58f47317abbeddde38ebc7339298da2ab6adfac9f2",
+      "target_new": 500,
+      "unified_pairs": {
+        "file": "clean/arxiv_research_figures_v1/goal500_automatic_admission_v2/baseline_plus_accepted_new.jsonl",
+        "rows": 4173,
+        "sha256": "0c476fe95a602c3e14f695013038aa3d7d63c5cb6428926296a2914add085edc"
+      }
+    },
+    "launch": {
+      "CPU_host": "HKUST3",
+      "at_utc": "2026-11-03T12:26:25.646133+00:00",
+      "birth_ticks": "1150050720",
+      "pid": 2413517
+    },
+    "remote_layout_tests": 8,
+    "source": [
+      {
+        "file": "conversion/scripts/arxiv_native_framework_layout_gate_v1.py",
+        "sha256": "62f34e19b127d5f9da5117689e3267127c34a23267a163c6a58ea91894483216",
+        "bytes": 4613,
+        "mtime_ns": 1793708634787972246
+      },
+      {
+        "file": "conversion/scripts/test_arxiv_native_framework_layout_gate_v1.py",
+        "sha256": "2b367e8fb41e2a110788236cb9aeb7daf3d0d371c62b2e9a30126399a1393c7c",
+        "bytes": 2430,
+        "mtime_ns": 1793708636147966865
+      },
+      {
+        "file": "conversion/scripts/arxiv_goal500_automatic_admission_v2.py",
+        "sha256": "940e40802390ac773798dbd6235ae9ca43e0e47f2197c205dd8ac09f37fab338",
+        "bytes": 12231,
+        "mtime_ns": 1793708783672540802
+      }
+    ],
+    "prior190_retained_index_SHA": "44437f4b5e86006ad896829c003ff1061aeb5f0fe499cf674cf58a15c9e1f514",
+    "original_190_and3759_unchanged": true,
+    "admission_first_observation_new": 235,
+    "admission_second_observation_new": 414,
+    "gate_note": "Removed an initially over-restrictive connectedness-only hold. Current layout gate holds exact complete disconnected repeat graphs and extreme empty axis gaps; distinct multi-panel drawings and relative ports have explicit regression tests. Existing source/official/font/resource/exact-edit-restoration/identity rules unchanged. Earlier45 proof packets are preserved, new recipe-specific certificate directory prevents overwriting."
+  },
+  "DPSK_continuation": {
+    "started_utc": "2026-11-03T12:33:13.655674+00:00",
+    "launcher_pid": 2451941,
+    "session_id": "session-c807fd15-37dc-4ca0-b14a-99454c1c7bca",
+    "same_existing_harness_session": true,
+    "CPU_host": "HKUST3",
+    "command": [
+      "/usr/bin/node",
+      "/backup/shaoshitong/img2code_20261029/conversion/runtime/dsh/node_modules/@deepseek-ai/dsh/lib/bin.js",
+      "--profile",
+      "headless",
+      "--patch",
+      "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/headless.patch.yml",
+      "--json",
+      "--session-id",
+      "session-c807fd15-37dc-4ca0-b14a-99454c1c7bca",
+      "Read CONTINUE_TASK.md and implement the checkpointed cumulative-input and complete native-page compiler extension. Use HKUST3 CPU only; keep existing proof packets/ledgers and old compiler core untouched."
+    ],
+    "state": "running",
+    "child_pid": 2451942
+  },
+  "DPSK_source_backup_manifest": [
+    {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/embedded_xml_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/embedded_xml_compiler_v1.py",
+      "sha256": "bf0d3fdc13d0e14606237cc05b049148d3a156f20cbc12b142d48023d37d8c57",
+      "bytes": 29875
+    },
+    {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/run_embedded_xml_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/run_embedded_xml_compiler_v1.py",
+      "sha256": "533fc6ec0f2bea34cd91393cad1db682b713f45fc35aaf868f2e195c03cd0fe5",
+      "bytes": 30751
+    },
+    {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/test_embedded_xml_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/test_embedded_xml_compiler_v1.py",
+      "sha256": "53b9d0924e1c8b6966c294332c5b3fb75f3e354a82ea8c96c3dfa059a6d72fe2",
+      "bytes": 9403
+    },
+    {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/verify_embedded_xml_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/verify_embedded_xml_compiler_v1.py",
+      "sha256": "d066479d07eece16d5b5b9f9cf0408224fd16f135aee24aa67503eb0e135e398",
+      "bytes": 5444
+    }
+  ]
 }
