@@ -1,0 +1,240 @@
+{
+  "cases": 33,
+  "same_old_PNG": 33,
+  "same_old_geometry": 33,
+  "old_files_unchanged": 33,
+  "all_strict_pass": 33,
+  "rows": [
+    {
+      "id": "1b0b0ef047997def4a67bd59d3533865e9080408f25a6c3891ee7963b50a3f0a",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "0293a410a7ab89512709a38ecbde35453be9f540af107a5a9d5590783725b95c",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "73d3593ac39190680db9b96e49064525179b3debfbf1c7d2a382d8098c9b8d24",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "a3ff83d9cef0d0183bf8aaa2b99b97192c1276c312d3e51035a92ed1244e3c35",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "e02ec933bc4aaf8d17544b8f4938e0b9bffa94d5fb87141f6029aed476bcfc31",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "04947f105e1c45c8fa1b0ca641865512e52464285b3d2530744c56e255c98fea",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "4234647687a5af5e4fa5635bf09a92c660f9f35489e9f5e0301c05541ac42736",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "92bb945fddb4e95403b3fe7410b8419dcd94ee00436a757230d2bd116ee9c059",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "e332abd56fd169f706a56603871a9660bf1df973720e130d00922a79e29f47aa",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "018a7673ab5330067a9ac76b4b2f78c8fc24c885b0289527db4e5ba8ab2cba41",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "8012e5f9d52e2263a047169eb9f9257712d282ffde93195ef62723d716ba8e77",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "6bbe0fcce8bc03b1d87d97a01dee9696e62b298e3bc1fd90345aa2198654ad0d",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "e2205fc5fb05ceea1a107962f14ab10eae026fdcb9f679fd24eea563c4808b05",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "baaaab62e61e7b6abc424f51e700535a5887e23065de72efecd4760f43f40ece",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "5d29da4761fdfc04a8d4526e2e705abed37da845093438c007bbde74ef052a8d",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "812e2f93c1eaf20726e37839e8d81d258d3fc7c5b0fdfbae5efd8c3fcb5830d6",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "28e402e6a3374f10931240d621723f43a70b469c042d307ca3b67cdeae58ea9e",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "44ed091d74c11447bb19c2ba5fe24de8195b0b659e69d97bd63fb7a7c85bd8cd",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "b724333f2c2d86c5fc8b069ced5628435658c071447dc1e93ad0e3e96976b6e9",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "3ca06ec7f0f971be607fb472d89a55bf9d8a87e4a07c3c36ac0bc0706457ad68",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "5305691cba4564208b46632230008729e6ab9b888c90ddfa87d7df3b71847b7a",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "28dc8585763402be6ec3b34bbf8232d90ccee47e8e15cd25accb676625bbde15",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "92a1cb1bedf59ccd04d0d92f6eedb8e40f3b926458875a9b1c7e15d3ac3e84f3",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "97b6e584e11e188f225581ab396dda6856df1df82aa365fb52f377679752e684",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "7e11a0c8fb2f82dfe8ef73377bbb242a71c13fdfd9324043276ae09762747fd2",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "1a487e3d283996a5f1f5ce571db453e14b91e4d3817e83fb540018cb4edeec9c",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "48fecae0c0f2e743eaeb44c3e938f6d3e6b093689f3594af72b67254cb22fe7d",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "e9ac7c28810c3ca3c5d871194195d0b20e303979c5474d6934cd2c5f5fdb2d5b",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "065d473e4cec5236879fcda4b48fbc0260447f3ac6ec0601128ce259addd2e74",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "6f15aa207f2edc6f3276daa385644c675e0059d194151a54f3a4c2f36baa17a5",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "c71ef1c9ea8665eb6b9533c0f6401db6b1b27dfbdcb4e0a725bb641a1e5cc3e9",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "fdee634a3f4ef6d70ff2faaa28c668c98d3fb880e98564635c81535205e4ad55",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    },
+    {
+      "id": "277a156499c47b1b6209bb484b377cc888405de435ee6524cc43e1a792b9758f",
+      "source_geometry_same_as_previous": true,
+      "PNG_identical_to_previous_failed_validation": true,
+      "prior_files_SHA_unchanged": true,
+      "strict_proof_ok": true
+    }
+  ]
+}

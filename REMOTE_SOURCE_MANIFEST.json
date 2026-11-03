@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T10:02:50.868117+00:00",
+  "at_utc": "2026-11-03T10:17:14.561989+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -646,9 +646,9 @@
     },
     {
       "file": "conversion/scripts/arxiv_goal500_progress_v1.py",
-      "sha256": "68c61e16b9765c454660532f215e8bb402ffa612e083eed14a2698484b575659",
-      "bytes": 14669,
-      "mtime_ns": 1793696030192439602
+      "sha256": "96cbe00f6cb774c8d44bdb710fcb7afc4c22c9481210739ec14dbd8673ce7c30",
+      "bytes": 14746,
+      "mtime_ns": 1793700928852420062
     },
     {
       "file": "conversion/scripts/arxiv_lan_source_relay_v1.py",
@@ -673,6 +673,12 @@
       "sha256": "fff4372aef5d633d4e6bd1518b0c8e9ccc2b8e60f9fc11e7647f70d1a74498e9",
       "bytes": 9962,
       "mtime_ns": 1793692973211649737
+    },
+    {
+      "file": "conversion/scripts/arxiv_math_stable_export_renderer_v1.py",
+      "sha256": "ac210940ebc44cbf028ecfb972689f8ec09bd626183de447eeec2c545788f990",
+      "bytes": 1191,
+      "mtime_ns": 1793700649168254915
     },
     {
       "file": "conversion/scripts/arxiv_math_synced_renderer_v1.py",
@@ -781,6 +787,18 @@
       "sha256": "92f4b99c524eb653155ad81528d7dfdfa9c5ebed20af326d15043346bc427151",
       "bytes": 21332,
       "mtime_ns": 1793606871630784450
+    },
+    {
+      "file": "conversion/scripts/arxiv_stable_export_selftest_v1.py",
+      "sha256": "5e92402873e0040d2c239796cf4ee941be9406c8829769d02490dc445e45ced7",
+      "bytes": 2045,
+      "mtime_ns": 1793700649264253386
+    },
+    {
+      "file": "conversion/scripts/arxiv_stable_export_validation_v1.py",
+      "sha256": "c729b816aa44365d8f5d5dcfaa42570a2dd0e96288304ef24dec6170679eaaec",
+      "bytes": 6485,
+      "mtime_ns": 1793700880373008193
     },
     {
       "file": "conversion/scripts/audit_arxiv_cluster_progress_v1.py",
@@ -5581,6 +5599,12 @@
       "sha256": "3bd6b7753f7a534cf22d094439c434cdfcd46433be7ddda47de02a4b423c9f92",
       "bytes": 3289,
       "mtime_ns": 1793614031905324178
+    },
+    {
+      "file": "conversion/scripts/launch_arxiv_stable_export_validation_v1.py",
+      "sha256": "55537ba782f5c63afaf980d94409f559922b3f28e81f4f8e2e0a54c2ff05c7c5",
+      "bytes": 1760,
+      "mtime_ns": 1793700928960418781
     },
     {
       "file": "conversion/scripts/launch_arxiv_viewport_validation_v1.py",

@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T10:04:32.949176+00:00",
+  "at_utc": "2026-11-03T10:27:33.472167+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Progress: accepted total146 (128-2 near variants+20 new), verified local accepted-only random100 from frozen146; corrected review replay semantics. Restored HKUST4 after public TCP egress failure via task-only HKUST3 direct-source LAN relay; two real observations16->28papers and12.3->24.4MB. Baseline3759 unchanged; +500 still incomplete.",
+  "previous_goal_turn": "Progress: individually accepted3 new figures; fixed official gradient-export GUID nondeterminism without changing strict comparator or source geometry. Versioned validator recovered33 failed validations; all PNGs identical to previous failed run and all old files immutable. Reviewed35 candidates against same-paper accepted references, accepted28/held7. Approvals177; confirm publisher current.json before reporting as indexed. Target +500 remains active.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -10,8 +10,8 @@
     "sha256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2"
   },
   "authoritative_current": "clean/arxiv_research_figures_v1/goal500_progress_v1/current.json",
-  "accepted_new_last_observation": 146,
-  "unified_rows_last_observation": 3905,
+  "accepted_new_last_observation": 177,
+  "unified_rows_last_observation": 3936,
   "target_new_pairs": 500,
   "remaining_required": "Continue collection and strict source replay; individually review additional complex figures; meet +500 and produce final random100 preview and final verified index. Do not declare complete based on these partial counts.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
@@ -36,8 +36,9 @@
     "OAI intermittent 503 and slow full HTTP200 bodies; failed partitions remain pending",
     "Review snapshots may include deliberately held simple/low-resolution/near-variant figures",
     "An unused normalized-snapshot v2 probe failed and is not the deployed renderer",
-    "New uniform-viewport source validation preserves strict restore gates; old failed proof records remain immutable.",
-    "Target +500 remains incomplete; final +500 random100 preview remains pending; milestone new146 random100 has been produced remotely."
+    "Target +500 remains incomplete; final +500 random100 preview remains pending; milestone new146 random100 has been produced remotely.",
+    "Seven remaining viewport source failures are in other strict gates; do not retry them without an actual new fix.",
+    "Direct .drawio inventory125files:13 structurally valuable,3 already processed/deduplicated,10 unseen source graphs; these are inventory only, not converted/accepted. Original source archive provenance and unchanged strict replay remain required before counting."
   ],
   "publication": {
     "branch": "codex/pipeline-repair-20261102",
@@ -69,5 +70,15 @@
     "second_observation_source_bytes": 24440953,
     "verified_delta_papers": 12,
     "verified_delta_source_bytes": 12105667
+  },
+  "source_export_fix": {
+    "controller_pid": 1553700,
+    "publisher_pid": 1553807,
+    "directory": "clean/arxiv_research_figures_v1/stable_export_source_replay_v1",
+    "strictly_verified": 33,
+    "new_PDF_import_calls": 0,
+    "new_model_calls": 0,
+    "old_PNGs_byte_identical": 33,
+    "old_records_immutable": true
   }
 }

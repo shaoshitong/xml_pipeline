@@ -1,0 +1,20 @@
+{
+  "random_export_ids": {
+    "ok": false,
+    "normalized_model_exact_restore": true,
+    "restored_actual_RGBA_exact": true,
+    "restored_PNG_bytes_exact": true,
+    "restored_SVG_namespace_canonical_exact": false,
+    "source_geometry_topology_style_inventory_sha256": "82f0d9e374cc07354cf3f0202a288e837930e21299642b593bf48d554121901a",
+    "restored_geometry_topology_style_inventory_sha256": "82f0d9e374cc07354cf3f0202a288e837930e21299642b593bf48d554121901a"
+  },
+  "stable_export_ids": {
+    "ok": true,
+    "normalized_model_exact_restore": true,
+    "restored_actual_RGBA_exact": true,
+    "restored_PNG_bytes_exact": true,
+    "restored_SVG_namespace_canonical_exact": true,
+    "source_geometry_topology_style_inventory_sha256": "82f0d9e374cc07354cf3f0202a288e837930e21299642b593bf48d554121901a",
+    "restored_geometry_topology_style_inventory_sha256": "82f0d9e374cc07354cf3f0202a288e837930e21299642b593bf48d554121901a"
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "at_utc": "2026-11-03T10:25:18.683321+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T101856Z",
+  "contact_manifest_sha256": "8aa439bbe0404eff9affec2d97cbe7b5cf461d443637a3e403dfa61589f754a4",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "bc924b4f53a42da346762647eb9931e6468420f248207edcd05dcb672be3e1c7",
+    "contact_02.jpg": "78fbc66d314994fae1ff9f599beeb8e43a54681e73bcdff5df9f01d199d41265",
+    "contact_03.jpg": "b25d56c7e04b689dfaa570f5280c622613e16b2cec7c5e0ab87fbf3f8452b7bc",
+    "contact_04.jpg": "b0eda23273b29cfc7b8d8867fccbc0930e762120208803df9b8364f10d1ac3ea",
+    "contact_05.jpg": "2fd892f502103b12bf32d0b9f9921d2f29c6a4d21770e06648ff698f3132e1e3",
+    "contact_06.jpg": "9d8212308b77ea78377656c4259fb67069ae794851e7aa3d03c790576979d939",
+    "contact_07.jpg": "a3b4b47b85e3a995fcddc18bcae672988dbc4d7db8779865e7c849e1ca839f86",
+    "contact_08.jpg": "014327b4e310a2441415a51aeca8de72fa9323bfd269c669390148da2d9d5916",
+    "contact_09.jpg": "1da24e7f9d4f617c61eb5b9b729735216fc622f911103f77b9791e1b14d02fcb",
+    "reference_01.jpg": "186cf845be3e491260c0bda06cc9bff4b66a2f922d4e5f1b468456e4ab7e875e",
+    "reference_manifest.json": "ed7f5a725b0d48fe72fbd50038d18c4c5ac78241de8e9f49968b0438eb890d7c"
+  },
+  "decisions": [
+    {
+      "number": 1,
+      "id": "059131ac44fe0faffe9fe4a7955c5a02bf70a5cf7f2f00b4596863cf9d93c81f",
+      "paper": "2606.31804v2",
+      "accepted": true,
+      "reason": "Full spatiotemporal graph forecasting, calibration-feature engineering and residual-quantile method."
+    },
+    {
+      "number": 2,
+      "id": "0aeee2a6dd865b5b34cbd21a5c9eaf03c44c6995ae6e70e40e1d71df1fe3753d",
+      "paper": "2607.28257v1",
+      "accepted": true,
+      "reason": "Detailed packing candidate generation, xLSTM encoder and shared actor-critic architecture."
+    },
+    {
+      "number": 3,
+      "id": "0f94fb8f15f0be330b21c945dfc69da0c3103ce0cea8ad555a2eb58ace21fce9",
+      "paper": "2607.27843v1",
+      "accepted": true,
+      "reason": "Complete RGB/depth collaborative segmentation architecture and prototype loss construction; distinct from internal-module reference."
+    },
+    {
+      "number": 4,
+      "id": "113a7b267ad26936537ced3db141b5be71b3b680e1439183f71e6e73226da423",
+      "paper": "2508.00926v1",
+      "accepted": false,
+      "reason": "Hold apparent clipping of rightmost output labels; source replay success alone does not establish visual completeness."
+    },
+    {
+      "number": 5,
+      "id": "15a085cf7f1d3a26069e3f615232cc56ba6d13463c3b054750fdb89ef0e905cb",
+      "paper": "2608.30750v1",
+      "accepted": true,
+      "reason": "Detailed VLM safety-neuron discovery, iterative ablation, behavioral probing and activation-patching method."
+    },
+    {
+      "number": 6,
+      "id": "1d78d07a6efd92bf0bc7f399c3bebefd01fb5f9ab5ff5e8ab4de67b721433d23",
+      "paper": "2610.34137v1",
+      "accepted": true,
+      "reason": "Complete self-evolution policy optimization with teacher-guided exploration and on-policy explanation/distillation."
+    },
+    {
+      "number": 7,
+      "id": "243d3f97d1cd35560437e53389634f638190e10dfec7ea724344f0147444da63",
+      "paper": "2501.19055v1",
+      "accepted": true,
+      "reason": "Full rule-constrained label assignment with reinforcement-learning training and inference paths."
+    },
+    {
+      "number": 8,
+      "id": "2ac4a6f01fe571643fa492547156385038d109233cbb5c61d529762a618aed82",
+      "paper": "2306.17431v2",
+      "accepted": true,
+      "reason": "Complete saliency attack/defense architecture with explicit attack-generalization module and losses."
+    },
+    {
+      "number": 9,
+      "id": "2ad6e1fb3d89d3942d82f139a0cb8980c19a023d02fe26cb4f171cb740045d93",
+      "paper": "2603.00483v1",
+      "accepted": true,
+      "reason": "Detailed iterative analyzer/rewriter/refinement/verifier framework with explicit candidate feedback and stopping conditions."
+    },
+    {
+      "number": 10,
+      "id": "2c0440afcfa34440d21c242403425276d9de1275719eadc1325e716c633f8f86",
+      "paper": "2402.19101v2",
+      "accepted": false,
+      "reason": "Near variant of accepted multi-entity transfer/serving architecture from the same paper; retain one complete version."
+    },
+    {
+      "number": 11,
+      "id": "392752c216ca59a24c0c7b682170389c5532e492e0fedb3ba5a494d60a6291ef",
+      "paper": "2407.21640v3",
+      "accepted": true,
+      "reason": "Complete multiscale segmentation encoder-decoder and detailed adaptive spatial-attention gate."
+    },
+    {
+      "number": 12,
+      "id": "42632e84777037b2c60e9efa8a4b0492b54432f274c60f81e343693f3cc582b6",
+      "paper": "2302.14348v3",
+      "accepted": false,
+      "reason": "Near variant of the more complete same-paper occupancy framework in panel28, which explicitly includes per-hand conditioning."
+    },
+    {
+      "number": 13,
+      "id": "4dfb43b60b32dd70be7a15427c4a3eb46fbdc3df32e197fa8ba3f08351532bf8",
+      "paper": "2512.00368v2",
+      "accepted": true,
+      "reason": "Multiview reconstruction, shared representation and attention-kernel clustering architecture with explicit losses."
+    },
+    {
+      "number": 14,
+      "id": "568adc4f9a350684b59e1d5787532e908adb5451e4125040aaa34afdc1180d00",
+      "paper": "2407.01295v6",
+      "accepted": true,
+      "reason": "Detailed neural intersection/union/IoU computation circuit with all input and constraint paths."
+    },
+    {
+      "number": 15,
+      "id": "5b643d38650471b1a57ccae837ee330295259ae99967b569bb77460fe7107f55",
+      "paper": "2404.17930v1",
+      "accepted": true,
+      "reason": "Complete coupled fast-inference and slow-training architecture with explicit parameter-update routes."
+    },
+    {
+      "number": 16,
+      "id": "5f8d21468055d25177c660ab7babcc5d7c3756da7c77567bed92c8497b6a2a47",
+      "paper": "2405.20786v2",
+      "accepted": true,
+      "reason": "Full upper/lower disentangled VQ-VAE and stratified-diffusion human-motion synthesis architecture."
+    },
+    {
+      "number": 17,
+      "id": "624270a62396b266f2ba218a938972840726a810cf9f2dff5b8b8af8a428c51e",
+      "paper": "2506.00477v1",
+      "accepted": true,
+      "reason": "Complete multistage continual-learning training and stable/plastic parameter consolidation paths."
+    },
+    {
+      "number": 18,
+      "id": "6aea06296a8fd2d59aa23304f3ca669eaf617b49b1e91f3d709be3eff399251a",
+      "paper": "2601.22589v1",
+      "accepted": true,
+      "reason": "Full data-free generator, projected unlearning and federated global recovery architecture."
+    },
+    {
+      "number": 19,
+      "id": "6e699e98c8afb945c8aabb45d5ba7d1649b124d23cdbac6f82c2e9bc59f856b5",
+      "paper": "2610.05831v1",
+      "accepted": true,
+      "reason": "Dense scientific synthesis of training-horizon behavior, measured reliability/efficiency and error tradeoffs."
+    },
+    {
+      "number": 20,
+      "id": "7d8d1a49342892c5b1cd29e770fa9ea3f2c8db62d543545fe5f5daa071d693f3",
+      "paper": "2402.19101v2",
+      "accepted": false,
+      "reason": "Near duplicate of panel10 and an already accepted multi-entity serving architecture."
+    },
+    {
+      "number": 21,
+      "id": "8804278544b9ba5aca8697ccc93a6eca4e180c33aa6d1e96ef052476398126a9",
+      "paper": "2505.24630v2",
+      "accepted": true,
+      "reason": "Full factuality-aware stepwise policy optimization with generated groups, reward construction and advantage adjustment."
+    },
+    {
+      "number": 22,
+      "id": "9582b55d5f177ef121cef65b7594b75d0b4c7a4d77f64145f0fe1c6abf84f195",
+      "paper": "2407.19877v1",
+      "accepted": true,
+      "reason": "Complete text/ROI/segmentation grasping architecture with mask-guided attention and joint losses."
+    },
+    {
+      "number": 23,
+      "id": "a07a8f031095c9d65207dcedd71b3d7a8b1e7e8f444d1b1b6b5a20105002eead",
+      "paper": "2312.17517v1",
+      "accepted": true,
+      "reason": "Detailed event/feature-conditioned recurrent cell with explicit gate equations and state dependencies."
+    },
+    {
+      "number": 24,
+      "id": "ba17f82488ae6e42a598643a41d7700c24ed8d6d7c30d331d1915620f5e3c8a0",
+      "paper": "2606.30309v1",
+      "accepted": true,
+      "reason": "Complete rehabilitation-assessment comparison with handcrafted, CNN, GNN and point-curve transformer pipelines."
+    },
+    {
+      "number": 25,
+      "id": "bdc578b74d112af0e640a24390dba0c3c787caf8b9883d2355eddfb0d0500f7b",
+      "paper": "2306.17771v1",
+      "accepted": false,
+      "reason": "Coarse two-encoder plus scoring overview; vector/list decorations do not supply sufficient complex method detail."
+    },
+    {
+      "number": 26,
+      "id": "cbdb2b9970d44c2f5216e2c98644d167293253e7c895fe248b3a627984aa0bb9",
+      "paper": "2501.18439v1",
+      "accepted": true,
+      "reason": "Complete atom/motif hierarchical molecular architecture with GCN/xLSTM extraction and multi-head mixture-of-experts prediction."
+    },
+    {
+      "number": 27,
+      "id": "cfc1985afe1349a8a99265b12098963115a020af31c946fdc682eb56adaab385",
+      "paper": "2601.16753v2",
+      "accepted": false,
+      "reason": "Mostly annotation-error prose and two simple pie charts rather than a complex method or scientific visualization."
+    },
+    {
+      "number": 28,
+      "id": "d7222f42c4aa16081cac6730ec26f7054e90eeb4021c1080db14766b8e1ecb83",
+      "paper": "2302.14348v3",
+      "accepted": true,
+      "reason": "Complete pose-conditioned per-hand occupancy networks and explicit context-based residual refinement; retain this version over12."
+    },
+    {
+      "number": 29,
+      "id": "dff0c37fa2f4613f94edd650c73b58a3d12d6831c23de970cb7efdc297b772a1",
+      "paper": "2504.19646v1",
+      "accepted": true,
+      "reason": "Full staged medical vision encoder with frozen/adapted blocks and LoRA/prefix training controls."
+    },
+    {
+      "number": 30,
+      "id": "e6c625e805890477bf88105df8c363cc51e181e434792d3bffcdb926999f7d75",
+      "paper": "2607.28862v2",
+      "accepted": true,
+      "reason": "Complete generative unlearnable-example optimization with surrogate training, semantic/utility rewards and bilevel objectives."
+    },
+    {
+      "number": 31,
+      "id": "e72ac7ca8dea7aaca181f9d392a43f00ac71b60ecfc25b924517b3d98ddb8825",
+      "paper": "2309.00121v1",
+      "accepted": true,
+      "reason": "Complete 2D/3D large-kernel attention segmentation architectures with detailed residual block construction."
+    },
+    {
+      "number": 32,
+      "id": "eb14c8a6bc66029481b240a906e52ee776456b51a49e53d3409ea5448f176615",
+      "paper": "2405.19914v1",
+      "accepted": true,
+      "reason": "Full two-stage cross-modal annotation and coarse/fine homography construction with resulting sample validation."
+    },
+    {
+      "number": 33,
+      "id": "ecb268d5364c36520de6e431716a7f21cef10e9649e384dfe47603a47e6675ab",
+      "paper": "2410.22806v2",
+      "accepted": true,
+      "reason": "Complete MILP block decomposition, graph-structure library and instance sampling/manipulation framework."
+    },
+    {
+      "number": 34,
+      "id": "ef22554c9a718545b164782a1662dd8e1201fce039f207eb7bb06c89827c95d1",
+      "paper": "2412.01858v5",
+      "accepted": true,
+      "reason": "Complete MRI/DNA dual-branch quantum-attention architecture with explicit circuit encoding, measurement and optimization."
+    },
+    {
+      "number": 35,
+      "id": "f0e744936e1a4301d710f9f34d143edde7bf2fdae02ce83e5b09b11fea2719c3",
+      "paper": "2506.00477v1",
+      "accepted": false,
+      "reason": "Near variant of the continual-learning framework in panel17 with largely repeated layout and task-stage paths."
+    }
+  ],
+  "scope": "Actual individual visual review after strict replay; same-paper accepted references inspected; original PDF fidelity not certified."
+}
