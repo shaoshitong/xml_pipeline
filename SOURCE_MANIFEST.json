@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:50:24.830877+00:00",
+  "at_utc": "2026-11-03T01:01:15.421957+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "8034aae9cb7f14b4ccfd6799a8fc1958b6d29c2fe174ebcd75dd6be0cb59455d",
-      "bytes": 83367,
-      "mtime_ns": 1793667024836922585
+      "sha256": "9f5621e17b4a1cf075c439e10512a76201d1b21ed450508c636503fd2df35a29",
+      "bytes": 90442,
+      "mtime_ns": 1793667675425539667
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "8034aae9cb7f14b4ccfd6799a8fc1958b6d29c2fe174ebcd75dd6be0cb59455d",
-      "bytes": 83367,
-      "mtime_ns": 1793667024834190054
+      "sha256": "9f5621e17b4a1cf075c439e10512a76201d1b21ed450508c636503fd2df35a29",
+      "bytes": 90442,
+      "mtime_ns": 1793667675423968990
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -16023,9 +16023,9 @@
     },
     {
       "file": "operations/CURATED_RESEARCH_DELIVERY.md",
-      "sha256": "06e0fdb7bfb82d26859b36db8ae53310f56249a98a33975b496ed1cef9f4f5f6",
+      "sha256": "d70c916851a7066aadf5dcdc8dc0d04b1add98d9f530e02c0973122b9136271d",
       "bytes": 1361,
-      "mtime_ns": 1793667024830552554
+      "mtime_ns": 1793667675413766626
     },
     {
       "file": "operations/complex-arxiv-native-curation-publication-v1.json",
@@ -16290,6 +16290,198 @@
       "sha256": "ab18a53b72402b92ddd26b2b46a76e7bc178f79eb7ee0e92f0f226dde25872c7",
       "bytes": 1780,
       "mtime_ns": 1793667024830338885
+    },
+    {
+      "file": "conversion/scripts/audit_curated_delivery_payloads_v1.py",
+      "sha256": "0b226ef23d14c37050b12bc3f9e517cb909218e674a4bcee5b0f899a5730d005",
+      "bytes": 5174,
+      "mtime_ns": 1793667122318165265
+    },
+    {
+      "file": "conversion/scripts/launch_svg_whitespace_disjoint_mass_v2.py",
+      "sha256": "7833936ed70bd692f7fe7856e9116b6807909d78559e3fa6f9bbaeef8ae5f0d0",
+      "bytes": 5648,
+      "mtime_ns": 1793667318364124800
+    },
+    {
+      "file": "conversion/scripts/audit_seven_source_delivery_v6.py",
+      "sha256": "32ef84ff7152a75fa8c674cab037efce413513437076069f6bb01ceea461cbcb",
+      "bytes": 11976,
+      "mtime_ns": 1793667395115324857
+    },
+    {
+      "file": "operations/prove_disjoint_wave_identity_v1.py",
+      "sha256": "bd1c244a284026a6d0559066e3c605d7351f77884b12493efba073e83cbce83b",
+      "bytes": 3194,
+      "mtime_ns": 1793667661008861611
+    },
+    {
+      "file": "operations/seven-source-delivery-audit-v6.json",
+      "sha256": "1dd2a17a38ea144dc40a8462e9c88f02f21ec86d52404ee53cfbe2f773c24ee3",
+      "bytes": 6403,
+      "mtime_ns": 1793667675409699639
+    },
+    {
+      "file": "operations/current-batch-runtime-progress12.json",
+      "sha256": "70b9aa1569d19307da51cc1073f100d108fc7c8ffcb80294e155072a6070fa81",
+      "bytes": 2302,
+      "mtime_ns": 1793667675419786502
+    },
+    {
+      "file": "operations/current-batch-runtime-progress9.json",
+      "sha256": "74d15f3d79ecd8c47b75ab13c1c676f6572c6b4aed52bfd060a0032b8bd31f53",
+      "bytes": 1978,
+      "mtime_ns": 1793667675410946731
+    },
+    {
+      "file": "operations/current-batch-runtime-progress8.json",
+      "sha256": "071523c2230655dc23a9bcefb8858db0c877320873036735bd734c5df69ddaf9",
+      "bytes": 1781,
+      "mtime_ns": 1793667675420848176
+    },
+    {
+      "file": "operations/current-batch-runtime-progress13.json",
+      "sha256": "5b54cf48d4cece11e2d66d71bd880ea086a6e8217eff7016d6ce75385baa327d",
+      "bytes": 2275,
+      "mtime_ns": 1793667675417820863
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-decisions2.json",
+      "sha256": "3015a46f0f74661e68be83253e14a9c9f9d9bffe1966617ff0b462ec299c45ea",
+      "bytes": 1339,
+      "mtime_ns": 1793667675417410526
+    },
+    {
+      "file": "operations/resolved-geometry-mass-publication7.json",
+      "sha256": "1bc7584d6df2d29b40f8291309922153e4f31e519e188d561c7358199f0c6d1c",
+      "bytes": 3988,
+      "mtime_ns": 1793667675415571805
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-mass-launch-v2.json",
+      "sha256": "fc2c70cc3bff4ec87b9885f2db57daa5535d9f628c7cccc0b51eb5b6d74e5dda",
+      "bytes": 508,
+      "mtime_ns": 1793667675411400984
+    },
+    {
+      "file": "operations/current-batch-runtime-progress14.json",
+      "sha256": "e309356ae8f05861dbe7667a43f0ef50f64b073be458f55ac4d3cdc0eef823f4",
+      "bytes": 2377,
+      "mtime_ns": 1793667675411708694
+    },
+    {
+      "file": "operations/publish_task_checkpoint_v1.py",
+      "sha256": "53ab652a2b7781202d884e9fc01c6e03b617b76a5167cdcbe4ee17eda07484d4",
+      "bytes": 4041,
+      "mtime_ns": 1793667675421927808
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-v2-frozen-identity-proof.json",
+      "sha256": "479acf51e32f1644e7d91c726691836371dc4ed1d8ea491936fa421900182a09",
+      "bytes": 1450,
+      "mtime_ns": 1793667675418395617
+    },
+    {
+      "file": "operations/curated-delivery-payload-audit-v1.json",
+      "sha256": "71b70bb7352d1e51c0eabcbb7e742d92636623898fd382a575c5825481d0f327",
+      "bytes": 2975,
+      "mtime_ns": 1793667675414998634
+    },
+    {
+      "file": "operations/resolved-geometry-mass-publication6.json",
+      "sha256": "8404f54675f7f8f758c39171fb279237dc93ef302be9985b14b33b41bd5302ac",
+      "bytes": 4210,
+      "mtime_ns": 1793667675420408214
+    },
+    {
+      "file": "operations/resolved-geometry-mass-value-review7.json",
+      "sha256": "fca4acc81849e035a216be023529f8cf87a94cc65d6ad48bdbaa3ae8480cef5a",
+      "bytes": 2361,
+      "mtime_ns": 1793667675421487722
+    },
+    {
+      "file": "operations/curated-delivery-payload-audit-v2.json",
+      "sha256": "d84e16ff637080c6041ac49a722b57fd31e70206cc350e4b016951ebb5645b1f",
+      "bytes": 2975,
+      "mtime_ns": 1793667675409318011
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-publication2.json",
+      "sha256": "c70f89695dd62e78dc1b2a476de2388c61fd82b99cf120db99dc9b001be9c947",
+      "bytes": 4673,
+      "mtime_ns": 1793667675412099906
+    },
+    {
+      "file": "operations/curated-delivery-payload-audit-v3.json",
+      "sha256": "4a52a12a5e5609116507e6627d84078447222254c8abcc4c60e78b1ce7e6a17a",
+      "bytes": 2975,
+      "mtime_ns": 1793667675413269164
+    },
+    {
+      "file": "operations/resolved-geometry-mass-value-review6.json",
+      "sha256": "c535765813eb73518e2df9a424683fda4dd3da8449e9e7469e77d7e6947b47d0",
+      "bytes": 2479,
+      "mtime_ns": 1793667675421240012
+    },
+    {
+      "file": "operations/snapshot_current_batch_runtime_v2.py",
+      "sha256": "653989072a389808e1590942a1869793bb59d59c25ae5a6f8bc3aab8c0b1dcfa",
+      "bytes": 3271,
+      "mtime_ns": 1793667675421789432
+    },
+    {
+      "file": "operations/resolved-geometry-mass-decisions6.json",
+      "sha256": "4a285d08d8beae8175450797b709ef4eb6e3e72d874fae3610408d59adf052b7",
+      "bytes": 1022,
+      "mtime_ns": 1793667675416133143
+    },
+    {
+      "file": "operations/current-batch-runtime-progress7.json",
+      "sha256": "32214e34441d24564a7c996cd09d68282771b3bff23d27f02ffa4a74c1c68fc6",
+      "bytes": 1774,
+      "mtime_ns": 1793667675412943703
+    },
+    {
+      "file": "operations/current-batch-runtime-progress10.json",
+      "sha256": "115ef214b3a0bacf666ca208a89a423905b1019df6a2618302182713f32cb3d6",
+      "bytes": 1974,
+      "mtime_ns": 1793667675412475533
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-value-review2.json",
+      "sha256": "d8908f867794fd60f74b6c296685123b132327279299aee0f378f14cf1ed24f5",
+      "bytes": 2870,
+      "mtime_ns": 1793667675416803439
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v5.json",
+      "sha256": "66250194c4391fe895c5e1059055972998bac13ca7cca4d9ffb76d6ca32f2bb4",
+      "bytes": 834,
+      "mtime_ns": 1793667675415273553
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v4.json",
+      "sha256": "789daa96e6834197161cbcd5a597ea4db39a5748ce3717f9cc2996ad00535604",
+      "bytes": 834,
+      "mtime_ns": 1793667675414198754
+    },
+    {
+      "file": "operations/current-batch-runtime-progress11.json",
+      "sha256": "5ea1350e16293a5c0618a27b9d91b7aeb4deed113b436e009bb6fff71e60c232",
+      "bytes": 2187,
+      "mtime_ns": 1793667675414640257
+    },
+    {
+      "file": "operations/current-batch-runtime-progress6.json",
+      "sha256": "b3680f3b293ab1abb363cde42c6477ca4b5582d638b06a01239dcac9634d487e",
+      "bytes": 1779,
+      "mtime_ns": 1793667675419150289
+    },
+    {
+      "file": "operations/resolved-geometry-mass-decisions7.json",
+      "sha256": "f4341acc2db6ab614f66fdb023e0589f34e150866665085f825c15be2949c939",
+      "bytes": 984,
+      "mtime_ns": 1793667675410386768
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

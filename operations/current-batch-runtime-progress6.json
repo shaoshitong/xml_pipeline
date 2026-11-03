@@ -1,0 +1,79 @@
+{
+  "at_utc": "2026-11-03T00:50:48.719335+00:00",
+  "batches": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
+      "counts": {
+        "abandoned": 654,
+        "qualified": 74,
+        "queued": 100,
+        "running": 11
+      },
+      "total": 839,
+      "terminal": 728,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 4019247,
+        "birth": "1145518167",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 5,
+        "mean": 81.3462,
+        "median": 79.765,
+        "max": 88.509
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v1_mass": {
+      "counts": {
+        "abandoned": 185,
+        "qualified": 20,
+        "queued": 349,
+        "running": 12
+      },
+      "total": 566,
+      "terminal": 205,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 800133,
+        "birth": "1145755791",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 5,
+        "mean": 78.62100000000001,
+        "median": 84.92,
+        "max": 121.566
+      },
+      "infrastructure_stop": null
+    }
+  },
+  "cpu_count": 144,
+  "load_average": [
+    47.12353515625,
+    47.251953125,
+    41.85791015625
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "parent": {
+    "state": {
+      "elapsed_seconds": 1830.0227012634277,
+      "goal_complete": false,
+      "pending_originals": 476,
+      "stage": "validated_waiting_existing_foreign_batch"
+    },
+    "owner": {
+      "pid": 347847,
+      "birth": "1145650317",
+      "live": true
+    },
+    "foreign_pending_count": 476,
+    "failure": null
+  },
+  "review_registry": {
+    "held": 41,
+    "published": 160
+  },
+  "local_exec_wall_seconds": 0.926
+}

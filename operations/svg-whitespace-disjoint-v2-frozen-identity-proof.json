@@ -1,0 +1,38 @@
+{
+  "at_utc": "2026-11-03T01:00:37.064162+00:00",
+  "run": "svg_source_whitespace_disjoint_20261103_v2_mass",
+  "targets": 285,
+  "exact_parent_implementation_and_pins_preserved": true,
+  "approved_release_gate": {
+    "file": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/programs/svg_complex_source_whitespace_cached_unseen_20261103_v12/release_gate.json",
+    "sha256": "e2e4504d8af6d711edb7d69ac0eecbce91d53be8fb100d2d91b5eecddcd73b58"
+  },
+  "freeze": {
+    "file": "release/compiler_iterations/disjoint_batches/svg_source_whitespace_disjoint_20261103_v2_mass/freeze.json",
+    "sha256": "d26e6cc29665bfcf31dc0d4181951614d28bdc59f5253743b101ca0250b354cf",
+    "bytes": 234050
+  },
+  "producer": {
+    "file": "conversion/scripts/launch_svg_whitespace_disjoint_mass_v2.py",
+    "sha256": "7833936ed70bd692f7fe7856e9116b6807909d78559e3fa6f9bbaeef8ae5f0d0",
+    "bytes": 5648
+  },
+  "producer_differs_only_by_unique_batch_name": true,
+  "overlap_with_first_disjoint_batch": 0,
+  "overlap_with_same_core_prior_events": 0,
+  "overlap_with_launch_time_live_pending": 0,
+  "overlap_with_current_validation": 0,
+  "parent_observes_live_second_disjoint_batch": true,
+  "current_counts": {
+    "abandoned": 9,
+    "queued": 264,
+    "running": 12
+  },
+  "current_attempts": {
+    "0": 264,
+    "1": 21
+  },
+  "new_validation_calls": 0,
+  "normal_conversions_are_only_existing_approved_mass_dispatch": true,
+  "goal_complete": false
+}

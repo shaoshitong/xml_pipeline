@@ -1,0 +1,42 @@
+[
+  [
+    "c4196c71a575",
+    true,
+    "Complete KLO-Net, dynamic nearest-neighbor attention and partial block panels."
+  ],
+  [
+    "c967f9321d0a",
+    true,
+    "Complete grouped ML-at-the-edge survey taxonomy with detailed application branches."
+  ],
+  [
+    "cb17babbccba",
+    true,
+    "Complete MLP, SE, PVC, PVCNN, ResSE and adaptive group normalization block panels."
+  ],
+  [
+    "cc8aba5e49a2",
+    true,
+    "Complete EEG cohort, preprocessing, wavelet/feature extraction and classifier workflow."
+  ],
+  [
+    "d015fd79848f",
+    true,
+    "Complete traditional and multimedia-assisted retinal diagnosis comparison."
+  ],
+  [
+    "d4ec3f7d53eb",
+    false,
+    "Hold: Convolution Block annotation has native grapheme boxes outside declared canvas."
+  ],
+  [
+    "d69d3ae481ed",
+    true,
+    "Complete multi-reference and paired system-output recurrent ranking encoder comparison."
+  ],
+  [
+    "dc2355248ce0",
+    false,
+    "Hold: top channel-dimension labels have native glyph boxes outside canvas."
+  ]
+]

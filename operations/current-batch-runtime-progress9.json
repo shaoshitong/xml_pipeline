@@ -1,0 +1,85 @@
+{
+  "at_utc": "2026-11-03T00:55:45.455744+00:00",
+  "batches": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
+      "counts": {
+        "abandoned": 705,
+        "qualified": 80,
+        "queued": 42,
+        "running": 12
+      },
+      "total": 839,
+      "terminal": 785,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 4019247,
+        "birth": "1145518167",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 9,
+        "mean": 89.41577777777778,
+        "median": 94.828,
+        "max": 106.515
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v1_mass": {
+      "counts": {
+        "abandoned": 221,
+        "qualified": 28,
+        "queued": 305,
+        "running": 12
+      },
+      "total": 566,
+      "terminal": 249,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 800133,
+        "birth": "1145755791",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 9,
+        "mean": 74.55222222222223,
+        "median": 77.927,
+        "max": 112.013
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v2_mass": {
+      "created": false
+    },
+    "svg_complex_source_whitespace_cached_unseen_20261103_v12_mass": {
+      "created": false
+    }
+  },
+  "cpu_count": 144,
+  "load_average": [
+    45.6064453125,
+    47.58154296875,
+    43.6220703125
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "parent": {
+    "state": {
+      "elapsed_seconds": 2127.6886337120086,
+      "goal_complete": false,
+      "pending_originals": 374,
+      "stage": "validated_waiting_existing_foreign_batch"
+    },
+    "owner": {
+      "pid": 347847,
+      "birth": "1145650317",
+      "live": true
+    },
+    "foreign_pending_count": 374,
+    "failure": null
+  },
+  "review_registry": {
+    "held": 44,
+    "published": 175
+  },
+  "local_exec_wall_seconds": 1.382
+}

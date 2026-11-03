@@ -1,0 +1,52 @@
+[
+  [
+    "3382bca036f5",
+    true,
+    "Complete three-panel audio tagging, event detection and detailed CNN block comparison."
+  ],
+  [
+    "34d77117b08f",
+    true,
+    "Complete temporal CNN feature encoder with layer formulas and token/receptive-field example."
+  ],
+  [
+    "358d027b6cae",
+    true,
+    "Complete graph-to-node embedding, graph-level embedding and permeability prediction sequence."
+  ],
+  [
+    "382906a75bfd",
+    true,
+    "Complete prioritized graph partitioning, two-hop subgraph and skyline processing example."
+  ],
+  [
+    "39db4d6e27be",
+    true,
+    "Complete autoencoder, U-Net generator and discriminator with operation legend."
+  ],
+  [
+    "3a6b095a024d",
+    true,
+    "Complete grouped object detection, retrieval and contextual chatbot research framework."
+  ],
+  [
+    "3d575c7a188c",
+    true,
+    "Complete colored Petri-net job management, buffers, machine states and transitions legend."
+  ],
+  [
+    "3d5fe5651dd0",
+    true,
+    "Complete quadratic-versus-linear attention-path architecture and complexity annotations."
+  ],
+  [
+    "3db158b38bc1",
+    false,
+    "Hold: source Document vector label is covered by attention-distribution objects."
+  ],
+  [
+    "3fa7f2deb23c",
+    true,
+    "Complete spiking-network learning, template preprocessor, DNN inference and algorithm panels."
+  ]
+]
