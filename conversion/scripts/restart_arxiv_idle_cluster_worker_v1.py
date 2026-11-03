@@ -14,7 +14,8 @@ def birth(pid):
     except FileNotFoundError:return None
 if birth(pid)!=receipt['birth_ticks']:
     subprocess.run([sys.executable,str(root/'conversion/scripts/launch_arxiv_cluster_worker_v1.py'),'--root',str(root)],check=True);sys.exit()
-assert os.getpgid(pid)==pid and b'arxiv_cluster_worker_v1.py' in Path('/proc',str(pid),'cmdline').read_bytes()
+cmdline=Path('/proc',str(pid),'cmdline').read_bytes()
+assert os.getpgid(pid)==pid and any(str(root/'conversion/scripts'/name).encode() in cmdline for name in ['arxiv_cluster_worker_v1.py','run_arxiv_cluster_worker_with_lan_source_v1.py'])
 os.killpg(pid,signal.SIGSTOP)
 try:
     db=root/'clean/arxiv_research_figures_v1/recent_ai_source_expansion_v2/once.sqlite'

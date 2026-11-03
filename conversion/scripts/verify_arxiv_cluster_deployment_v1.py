@@ -11,6 +11,7 @@ settings={
 'hkust4':('/weka_3/shaoshitong/arxiv_cluster_direct_v1','/home/shaoshitong/miniconda3/bin/python'),
 'hkust5':('/mnt/95a003e2-1274-441f-88bf-ca7f5b636032/shaoshitong/arxiv_cluster_direct_v1','/home/shaoshitong/miniconda3/bin/python')}
 entry='conversion/scripts/arxiv_cluster_worker_v1.py';expected=hashlib.sha256((repo/entry).read_bytes()).hexdigest()
+relay_entry='conversion/scripts/run_arxiv_cluster_worker_with_lan_source_v1.py';relay_hash=hashlib.sha256((repo/relay_entry).read_bytes()).hexdigest()
 oldhelper=subprocess.check_output(['git','-C',str(repo),'show','4583f49:conversion/scripts/arxiv_oai_direct_pipeline_v1.py']);oldhash=hashlib.sha256(oldhelper).hexdigest()
 def remote(node,python,code):
  a=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8',node,shlex.join([python,'-'])],input=code.encode(),capture_output=True,timeout=90)
@@ -20,13 +21,13 @@ def worker(item):
  node,(root,python)=item
  code="""from pathlib import Path
 import datetime,hashlib,json
-root=Path(ROOT);r=json.loads((root/'launch.json').read_text());p=Path('/proc',str(r['pid']));stat=(p/'stat').read_text().rsplit(')',1)[1].split();assert stat[0]!='Z' and stat[19]==r['birth_ticks'];assert str(root/'conversion/scripts/arxiv_cluster_worker_v1.py').encode() in (p/'cmdline').read_bytes()
+root=Path(ROOT);r=json.loads((root/'launch.json').read_text());p=Path('/proc',str(r['pid']));stat=(p/'stat').read_text().rsplit(')',1)[1].split();assert stat[0]!='Z' and stat[19]==r['birth_ticks'];config=json.loads((root/'private_config.json').read_text());mode=config.get('source_transport','DIRECT');entrypoint='run_arxiv_cluster_worker_with_lan_source_v1.py' if mode=='HKUST3_DIRECT_LAN_RELAY' else 'arxiv_cluster_worker_v1.py';assert str(root/'conversion/scripts'/entrypoint).encode() in (p/'cmdline').read_bytes();assert mode!='HKUST3_DIRECT_LAN_RELAY' or (NODE=='hkust4' and hashlib.sha256((root/'conversion/scripts'/entrypoint).read_bytes()).hexdigest()==EXPECTED_RELAY)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 entry=sha(root/'conversion/scripts/arxiv_cluster_worker_v1.py');helper=sha(root/'conversion/scripts/arxiv_oai_direct_pipeline_v1.py');assert entry==EXPECTED_ENTRY and helper==EXPECTED_HELPER
 log=(root/'program.log').read_text(errors='replace');marker='"pid": '+str(r['pid']);start=log.rfind(marker);tail=log[start:] if start>=0 else log[-100000:];assert 'Exception in thread native-' not in tail
-print(json.dumps(dict(node=NODE,pid=r['pid'],birth_ticks=stat[19],process_alive_verified=True,task_threads=len(list((p/'task').iterdir())),worker_entry_sha256=entry,direct_worker_helper_sha256=helper,worker_helper_Git_revision='4583f49',status=json.loads((root/'status.json').read_text()))))
+print(json.dumps(dict(node=NODE,pid=r['pid'],birth_ticks=stat[19],process_alive_verified=True,task_threads=len(list((p/'task').iterdir())),worker_entry_sha256=entry,direct_worker_helper_sha256=helper,source_transport=mode,entrypoint=entrypoint,worker_helper_Git_revision='4583f49',status=json.loads((root/'status.json').read_text()))))
 """
- code='ROOT='+repr(root)+'\nNODE='+repr(node)+'\nEXPECTED_ENTRY='+repr(expected)+'\nEXPECTED_HELPER='+repr(oldhash)+'\n'+code
+ code='ROOT='+repr(root)+'\nNODE='+repr(node)+'\nEXPECTED_ENTRY='+repr(expected)+'\nEXPECTED_HELPER='+repr(oldhash)+'\nEXPECTED_RELAY='+repr(relay_hash)+'\n'+code
  return remote(node,python,code)
 with cf.ThreadPoolExecutor(max_workers=5) as pool:nodes=list(pool.map(worker,settings.items()))
 names=subprocess.check_output(['git','-C',str(repo),'diff','--name-only','df52a9f','HEAD','--','conversion/scripts'],text=True).splitlines()
