@@ -1,0 +1,918 @@
+{
+  "at_utc": "2026-11-03T09:30:30.042947+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T090632Z",
+  "contact_manifest_sha256": "5147cd1bae023eabb0f46ff4ca1a15841e836deb667c9786e5da653f81259f8c",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "2c62738e911c966cce1ea6aa3c03f4de8c46c5b9b36dd10384f5a28a57de0327",
+    "contact_02.jpg": "685d1e23acc2077bdaf57bae9911312e3748bcc58b3e37c0ff93cb9f3f237e8e",
+    "contact_03.jpg": "c99c2aef3f94ef31546836ea4ed60474499b7c3b4065a403eabd5389a892d42b",
+    "contact_04.jpg": "602d21f0b50707c2fe7bebc7ef75081aced38e3925cdab69a3a02c30f83a594e",
+    "contact_05.jpg": "bb3b26acb0d40cdf0b18b39397c2f63b8fa79e14e97677a04a75957f2123fe8e",
+    "contact_06.jpg": "757b913acf500a3e4247059ab2c62c058bbdda934aab8c43c06169da248a9a33",
+    "contact_07.jpg": "9acb1db59c7121a6bb9f40bdfe8b268def448aa7d99f88a9e7800210fd9aa068",
+    "contact_08.jpg": "16a9cc560b0d2fb9ded385344a201431699df38c3237f5c2be7576911c79a95a",
+    "contact_09.jpg": "a9cab9f3160de31c9353fc568dae76f8d32e2c9d77b1ca00ddf94fed01d5c848",
+    "contact_10.jpg": "0354c37a55256da3fbb52c88863abeac8842eddc702a2e9d7645af18a6808110",
+    "contact_11.jpg": "fff59df0831c5ace45d84af6972055ddb4e315fd7b4223a9c854a26ed0c32b01",
+    "contact_12.jpg": "e4d0c6107645eda5d2e00e1027c0edb804eced0785645f0f7156b563e4481ff4",
+    "contact_13.jpg": "e411c70178c2d4c9101d4ad68c70ff791a5dd8207f19956ccc8ac9e50f3ca83a",
+    "contact_14.jpg": "9d655378c16698002858b20981553bb1e8da3af8bbef1f4a7ba687b0f68a4d15",
+    "contact_15.jpg": "de3ba6c07582c1e4dc3744e2fcaa681f8804cf239417af84e13ade68489d9b3a",
+    "contact_16.jpg": "53397f137cb77fa36bc8fbacd3824349daa8aa089bd218ee52439ae12ba00cf6",
+    "contact_17.jpg": "853f9346fe1acfedd40717902a448f784c43880aeb5324914c255e66fd2389e2",
+    "contact_18.jpg": "6cd4d5001946bdbc768f87f253fb0cc919a06afd5304543dc5893b6c5c7e9184",
+    "contact_19.jpg": "7420dc1de6987c9a06bd624658802fc8b74842b4ce0a2a4c0bb054e5cd9d2ac5",
+    "contact_20.jpg": "254a7f38c761feee213aa613dad2434965e267f95e2fd7bd7d5f11927b82855d",
+    "contact_21.jpg": "8fb9ddc153af0f5dbdd9c2c660eccf063f0be6a17a07ca1832db8aab593fe791",
+    "contact_22.jpg": "421ff83bf9d4c3f923fa11d02690b578e0f8fbe5d34a71980caab4888e80483e",
+    "contact_23.jpg": "dee3f97b19ca2b736eeb98c4e60537b72e974ebb68d4242e5a41812be62d3038",
+    "contact_24.jpg": "991c150014f9a31c84bf2aadbb6a0b3909f5514bba68abc13afc75429eedd984",
+    "contact_25.jpg": "7d28ee21dcbe0921984ef41068924ddbe851e38b932b4a3e2cc2a9d79d1c6ebf",
+    "contact_26.jpg": "51e7e9f5d28b456804776deb281174dbaed86f1e47ff8b9ee85300dc4b6f8e7e",
+    "contact_27.jpg": "8ba719a0cf71d65eb44123452e366e13b74a46fca4af052727f14afe480506c0",
+    "contact_28.jpg": "9e3cdda3a5797b20eb691ea916918f542488664a18609d9a129443c5141fe198",
+    "contact_29.jpg": "b31c22a2fdcd0b49602ffef2abd717765b6e4427ca26937cb3fe42c5901b6c33",
+    "contact_30.jpg": "9bc78bb167391ee46c1f1621263165499b7e6d0444e0e9abc51c7bf6a880f71f",
+    "contact_31.jpg": "9d39247807772f9cd0b1bff37ecefd41f59e176e9bb6d3f305dc2642f83c5862",
+    "contact_32.jpg": "dc809c3481e4d29756e631a61211f83e0baa2dbed0489c4f0d9ab19cbabd0ac9"
+  },
+  "decisions": [
+    {
+      "number": 1,
+      "id": "02242d8fad806e9c5d4d184e225d2caa779bcf886a5c3b9470d5b4df3fb86ffb",
+      "paper": "2608.00102v1",
+      "accepted": true,
+      "reason": "Complete market-agent environment, auction and adaptive learning-loop protocol."
+    },
+    {
+      "number": 2,
+      "id": "02bddf156de011a88fdb91aa43d0ed3282b3fe9bd6865751859b5b70ebb56c78",
+      "paper": "2610.03888v1",
+      "accepted": true,
+      "reason": "Conservative transport, pH/source correction and chemical-inference architecture."
+    },
+    {
+      "number": 3,
+      "id": "04282b8f5a0f6dbdc37de49f2ec06b099ed0eee1bfe3b6ceb29b264e4d1dba23",
+      "paper": "2303.17815v1",
+      "accepted": true,
+      "reason": "Detailed multiscale encoder-decoder architecture for point/image dense prediction."
+    },
+    {
+      "number": 4,
+      "id": "051dac04910c067e8b18046161bd12a935beb4dcf1e32f668c645c356a770e9e",
+      "paper": "2604.26281v2",
+      "accepted": true,
+      "reason": "Speech anonymization diffusion training and inference with prosody conditioning."
+    },
+    {
+      "number": 5,
+      "id": "06365ef1049f326b4e0cdc14645a67daa8aa4763fb1e98a8fcaa30597b66e141",
+      "paper": "2302.13726v2",
+      "accepted": true,
+      "reason": "Distributed visual-RL simulation, representation, replay and asynchronous optimization."
+    },
+    {
+      "number": 6,
+      "id": "07845c0ad3f0ee44a2e048892414516a576f1e266123bd33bbd17cf55a361684",
+      "paper": "2503.00210v1",
+      "accepted": true,
+      "reason": "Foundation-model transfer and multimodal fMRI prediction architecture."
+    },
+    {
+      "number": 7,
+      "id": "096c9ef9684748b3291b0eca997ce9141de7184437ca0324f05171fa7601ca89",
+      "paper": "2609.08763v1",
+      "accepted": true,
+      "reason": "Federated watermark enrollment, dispatch, tracing and adjudication protocol."
+    },
+    {
+      "number": 8,
+      "id": "0b6c3f5cc8b8bb23b5557dccf93f0c924ee46a7e37f0e39bd4cf10f3b9291843",
+      "paper": "2407.19467v1",
+      "accepted": false,
+      "reason": "Hold: compact two-encoder/recommender schematic; insufficient method complexity."
+    },
+    {
+      "number": 9,
+      "id": "0c09f7ebf427306da441beb9de5805a79ee0e1997c3762c016e70b37c609f698",
+      "paper": "2602.00924v3",
+      "accepted": true,
+      "reason": "Full concept-embedding training, reconstruction and inference/editing pipeline."
+    },
+    {
+      "number": 10,
+      "id": "1629fcb1eb47e59b0b09e3ec16c8b041fc26d0f53997cdf94434a6bbba9f9775",
+      "paper": "2312.00834v2",
+      "accepted": true,
+      "reason": "Multimodal speech enhancement and room-impulse retrieval/generation framework."
+    },
+    {
+      "number": 11,
+      "id": "1633eded052281c9088d643e9504a40b32a7ef7ec475bf69a3d6d9c43c84262b",
+      "paper": "2409.20502v1",
+      "accepted": true,
+      "reason": "Hierarchical multi-entity motion codebooks, encoders/decoders and diffusion framework."
+    },
+    {
+      "number": 12,
+      "id": "1b91d9017f754e374f04a3e5b558f3430f399fc9048bdf4b4f8263770dcef5f4",
+      "paper": "2505.02258v1",
+      "accepted": true,
+      "reason": "Physics-informed circuit parameter estimation with neural/physical/data-loss coupling."
+    },
+    {
+      "number": 13,
+      "id": "1dcf2ba354d7e0743badff5cb2799cf095c1d934965e677ef46debf3ffec8c8d",
+      "paper": "2410.22927v1",
+      "accepted": true,
+      "reason": "Meta-network prompt learning with multi-view images and contrastive losses."
+    },
+    {
+      "number": 14,
+      "id": "1f9b44dbdccb8fe60756cf4f2cf0bd35eff52f3fc4b6affa754f7994d1d0d6f1",
+      "paper": "2610.02839v1",
+      "accepted": false,
+      "reason": "Hold: conceptual causal-vs-ELBO illustration; insufficient complete method detail."
+    },
+    {
+      "number": 15,
+      "id": "1f9f43e8e6c8cc50e168564be4154701a146fbed4a8774e946663b37b2398b31",
+      "paper": "2401.15814v2",
+      "accepted": true,
+      "reason": "Detailed differentiable logical-axiom aggregation graph with quantified operators."
+    },
+    {
+      "number": 16,
+      "id": "20223fd94f556795fbaa709b5bc2ff587377b802c2a2e2d8314f3a84ce7fa432",
+      "paper": "2409.18812v1",
+      "accepted": true,
+      "reason": "Research synthesis dataset construction, QLoRA training and reinforcement learning."
+    },
+    {
+      "number": 17,
+      "id": "242b825b799411a24d0a319c4ec2c8826789d8deaf4f68a234054563006dc3f7",
+      "paper": "2411.00843v2",
+      "accepted": true,
+      "reason": "Verilog model distillation with explicit auxiliary GNN and supervised/distillation loss paths."
+    },
+    {
+      "number": 18,
+      "id": "27f71dc8c91a18656fe88b8e981383cd029ae2e0fc28dcf25de37c8f60a0f5b3",
+      "paper": "2602.23945v1",
+      "accepted": true,
+      "reason": "Geometry-guided tri-modal perception, cross-attention and reasoning architecture."
+    },
+    {
+      "number": 19,
+      "id": "28f60065c7d90bd80af7f347c9b7c800cc2a6a1aa217fe7f7428d4ad27a51998",
+      "paper": "2507.23664v1",
+      "accepted": false,
+      "reason": "Hold: illustrative student-history/recommender example without a detailed model."
+    },
+    {
+      "number": 20,
+      "id": "294eabb023cf9e5ab6a99d0374bbff76e8f115e58a58254064f844ad671e7269",
+      "paper": "2305.19659v5",
+      "accepted": true,
+      "reason": "Pattern, local-count and global-count graph learning pipeline."
+    },
+    {
+      "number": 21,
+      "id": "2c3a3a1a281fc0d1e11cda6e0c8591bcc87ea2920ca5847bbc2ce2e0644b0112",
+      "paper": "2407.20518v1",
+      "accepted": true,
+      "reason": "Histology feature extraction, spatial transformer learning and gene projection framework."
+    },
+    {
+      "number": 22,
+      "id": "2d6bb1a89c9a6badd08eb3a958367c8b65ffa07e631f7223f4b4e3586d68e8ab",
+      "paper": "2403.19079v1",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained multiscale wavelet architecture in panel 2."
+    },
+    {
+      "number": 23,
+      "id": "301b139f476b11b96ce1daa8b55fccde65acc8709de8434b66f5bfc55848700e",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Hold: compact latent-sampling tree dominated by repeated tokens."
+    },
+    {
+      "number": 24,
+      "id": "3170c383093a34c31556d027cb7e2a29c120e66af367fc3dc057a4be6cfba375",
+      "paper": "2403.19079v1",
+      "accepted": true,
+      "reason": "Multi-domain image enhancement/detection training with distinct heads and augmentation paths."
+    },
+    {
+      "number": 25,
+      "id": "327ef43cb41506254b6709f9fa16669b0e85d4844c26449b2c5b5f9a6e6323ae",
+      "paper": "2408.15565v1",
+      "accepted": true,
+      "reason": "Teacher-seeded code/question generation and iterative critic-guided SFT/DPO loop."
+    },
+    {
+      "number": 26,
+      "id": "331283ab634dfb47f65ce9ea1da44d045446102d88cf9658afd26dada98c7710",
+      "paper": "2502.20795v4",
+      "accepted": true,
+      "reason": "Textual model-predictive control and hindsight subgoal regeneration framework."
+    },
+    {
+      "number": 27,
+      "id": "33a3147bbca953ac7c37d5527f1a3c4c87e677eb20a9fa8b13d6e0518ae5aa45",
+      "paper": "2608.00102v1",
+      "accepted": false,
+      "reason": "Hold near-variant of the fuller auction environment/learning protocol in panel 1."
+    },
+    {
+      "number": 28,
+      "id": "3455910584fdb3f7b73bb8bb9dc111907defd338be5e366b26ab74cd003d2e24",
+      "paper": "2302.13726v2",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained distributed-RL architecture in panel 5."
+    },
+    {
+      "number": 29,
+      "id": "34a60bb0b9c1c0e6827fb2ad90811e1cd862be740028c5f272e4ab9133507956",
+      "paper": "2403.19079v1",
+      "accepted": true,
+      "reason": "Physically guided underwater synthesis, shared restoration and adversarial generation pipeline."
+    },
+    {
+      "number": 30,
+      "id": "36c2a18fd0aedf3fb0b57c1f5babc3a1092361c242b23317631c0e310c4bf2cf",
+      "paper": "2601.23166v2",
+      "accepted": false,
+      "reason": "Hold: dense prompts/formulas too small in the source PNG for adequate readable review."
+    },
+    {
+      "number": 31,
+      "id": "41c85dfa5e84528b827bf5d425a6a8cc792e3a633238b3beaae7f70d520144ec",
+      "paper": "2606.31033v1",
+      "accepted": true,
+      "reason": "Complete reference/no-reference state features and token-level hallucination detector."
+    },
+    {
+      "number": 32,
+      "id": "428ea64574b0def94dfeeff11dda73b0275e89a6519c2e66fa13ccd09aa634a1",
+      "paper": "2411.00259v1",
+      "accepted": false,
+      "reason": "Hold: compact conditional layer/key-generation schematic; limited method detail."
+    },
+    {
+      "number": 33,
+      "id": "44b4152343f2fa01487a7d6f8fe1d726618bc135284b49155f0c76524554706f",
+      "paper": "2505.02258v1",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained physics-informed circuit-estimation diagram in panel 12."
+    },
+    {
+      "number": 34,
+      "id": "4684a33ece5a89b052d9f881b03d1d5a06ab1a230673cc0b15ba7263c9e70cdb",
+      "paper": "2407.00248v2",
+      "accepted": true,
+      "reason": "Classifier, diffusion training and multistep inference architecture with explicit latent/noise equations."
+    },
+    {
+      "number": 35,
+      "id": "47dcc7a96fa2938ff7a4ef5bca6bb9c9bd0e0f7cfbe43ed5ed1aff85a0deb28a",
+      "paper": "2405.19946v2",
+      "accepted": true,
+      "reason": "Detailed imperfect-information game tree with stages, information sets and terminal utilities."
+    },
+    {
+      "number": 36,
+      "id": "5018311192a6096a9a5bc0e212893668d3e6c813203e3b8a9389835587c6d853",
+      "paper": "2407.08752v1",
+      "accepted": true,
+      "reason": "Audio embedding and attractor-decoder architecture with enrolled-speaker estimation paths."
+    },
+    {
+      "number": 37,
+      "id": "540e8f0cd27d606bf58f0a6294809145f3ef16c18baf4850b480180f7e05e6df",
+      "paper": "2303.17835v2",
+      "accepted": true,
+      "reason": "Conditional image/SAR encoder-decoder with explicit downsample/upsample block structure."
+    },
+    {
+      "number": 38,
+      "id": "543806b2088613b47289652f685fe7c1d77c7a814bbf5a2b79249a9708600d51",
+      "paper": "2503.24057v1",
+      "accepted": true,
+      "reason": "Optical-flow magnification and dual spatial/temporal micro-expression classifier."
+    },
+    {
+      "number": 39,
+      "id": "54ba768929f5f8dc4eab2eb1c86351672d334b63624e876feac90cc9a2bca8ac",
+      "paper": "2303.00050v1",
+      "accepted": true,
+      "reason": "Multi-view human reconstruction with deformation, hyper-coordinate, SDF and radiance networks."
+    },
+    {
+      "number": 40,
+      "id": "55d4dec1500a104efcc9a170c399b65f110fce29c4e242d35554c6d5b951e5b5",
+      "paper": "2301.12132v3",
+      "accepted": true,
+      "reason": "Parameter-efficient tuning search space and concrete serial/parallel/prefix configurations."
+    },
+    {
+      "number": 41,
+      "id": "5610794095a0553e854f29868e2ea9dad1fcbab09f2316ef8cc40e6d4859fbf4",
+      "paper": "2409.19471v2",
+      "accepted": false,
+      "reason": "Hold: compact low-resolution safe-plan filtering schematic; insufficient detailed framework."
+    },
+    {
+      "number": 42,
+      "id": "5693e84e03ba7aa9f4109f1574faa0304f9723e12bc688a20de0cc21120489eb",
+      "paper": "2403.19882v1",
+      "accepted": true,
+      "reason": "Patch-based medical vision transformer with explicit attention and encoder decomposition."
+    },
+    {
+      "number": 43,
+      "id": "58a904140995c976bbec7ea8574a6a1b8baac6670d596aee7efc0bc29b6bc11a",
+      "paper": "2602.23271v1",
+      "accepted": true,
+      "reason": "Research-agent report decomposition, clustering, vectorization and stability-metric pipeline."
+    },
+    {
+      "number": 44,
+      "id": "5f1a2960a3863bdf906fee2152c51c7668884d6ac3196f642854347b1cc12c13",
+      "paper": "2404.17793v3",
+      "accepted": true,
+      "reason": "Multiscale camera/LiDAR transformer fusion and dense-output decoding."
+    },
+    {
+      "number": 45,
+      "id": "601b5304be2dcfbbd35570b5dd040964330186d749d2c7ab08294ed3a2437a5d",
+      "paper": "2606.30309v1",
+      "accepted": true,
+      "reason": "Detailed curve grouping/aggregation, attention and feed-forward submodules."
+    },
+    {
+      "number": 46,
+      "id": "61a8a6f0a6b727c57d24a0768753d40e0f1e8445abe76b2b517a8c11bb8ef7fe",
+      "paper": "2305.00386v4",
+      "accepted": true,
+      "reason": "Protein Markov-field prior, variational encoding and importance-weighted generative sampling."
+    },
+    {
+      "number": 47,
+      "id": "647e8715d1e30757de27096c4428228c907df44c7922536b8957d4a722976937",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Hold partial near-variant: fuller combined hierarchical/search framework is retained in panel 51."
+    },
+    {
+      "number": 48,
+      "id": "6860c8a5b336859b4dacb57c2c88885385389cceb4f8680d2c995fdf3e362e65",
+      "paper": "2312.16403v1",
+      "accepted": true,
+      "reason": "Spatiotemporal graph recurrent encoder-decoder with detailed gated-cell computation."
+    },
+    {
+      "number": 49,
+      "id": "6a3450356899ff362e15e311d32423cecbf8edaf36a103b7684d3e97657945f0",
+      "paper": "2410.00075v2",
+      "accepted": false,
+      "reason": "Hold: compact relational-treatment illustration with limited model/optimizer detail."
+    },
+    {
+      "number": 50,
+      "id": "6a4268a442094a0f3438ae55b9f329a48012c8ef913688d2385abe6c247fe711",
+      "paper": "2404.18911v1",
+      "accepted": true,
+      "reason": "Full speculative adapter/subnetwork decoding and verification architecture."
+    },
+    {
+      "number": 51,
+      "id": "6c222e55143a4e03d8384402b91586e1de865b729b821622f1f0de7642bb6c34",
+      "paper": "2502.21186v2",
+      "accepted": true,
+      "reason": "Combined hierarchical latent sampling and explicit selection/expansion/backpropagation search."
+    },
+    {
+      "number": 52,
+      "id": "6cf25191f9ae4b99f2e2f1c007f744dd73bdb04b352026165c240f04f16bb44d",
+      "paper": "2511.22664v1",
+      "accepted": true,
+      "reason": "Class-aware variational priors and multi-layer multimodal prompt adaptation."
+    },
+    {
+      "number": 53,
+      "id": "6d0b0888369fc8433f37188cd4b90d7d0e698df897567af3a45d1058594f263b",
+      "paper": "2308.01966v1",
+      "accepted": true,
+      "reason": "Comparative multimodal fusion with explicit gated-attention computation."
+    },
+    {
+      "number": 54,
+      "id": "6d3309c1087c006b9944538062ca0a52e065ee74dfb6cd06d27fd4cb94d0638f",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Hold: near-variant of the compact latent-sampling tree; fuller combined framework retained in 51."
+    },
+    {
+      "number": 55,
+      "id": "6d652a45a563fb6c54c68f3d6f2ad734a8e4681aea7db57b76539c092c58b0ac",
+      "paper": "2502.19983v1",
+      "accepted": true,
+      "reason": "Complete temporal Fourier decomposition, coupled reconstruction and inverse-transform forecasting."
+    },
+    {
+      "number": 56,
+      "id": "724f22963f5ec3ff30e0659e77a425a42a858ba305e3d7b2b0699a12926c6e8c",
+      "paper": "2308.00155v1",
+      "accepted": false,
+      "reason": "Hold: coarse federated distillation loop dominated by generic network icons."
+    },
+    {
+      "number": 57,
+      "id": "73b694c044f587769d6051a4fe5116e71e1b077bc1676325cf8a2ff0bc0beb03",
+      "paper": "2402.18099v3",
+      "accepted": true,
+      "reason": "Causal tracing, association measurement and editable-adapter knowledge update architecture."
+    },
+    {
+      "number": 58,
+      "id": "7418da874c3d9d8729f7bd0e1ba8d3c3721d25ed6ba017efe523f17ca142e41a",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Hold near-variant of the fuller combined search framework in panel 51."
+    },
+    {
+      "number": 59,
+      "id": "7648341c95cf2f0b59065ced0ac9a2499372323111376c3d6d96c213e1728c32",
+      "paper": "2409.18692v1",
+      "accepted": true,
+      "reason": "Two-stage learned quantum mixer/cost training and QAOA inference architecture."
+    },
+    {
+      "number": 60,
+      "id": "76fff1fe48d6c130e9fd95108cc4041ad3d41a80870d5ad99c3885bb8fc72c54",
+      "paper": "2502.20126v1",
+      "accepted": true,
+      "reason": "Detailed LoRA-based diffusion/patch training and merged/unmerged inference comparison."
+    },
+    {
+      "number": 61,
+      "id": "77bc756cfd76eef4ff25937a4e319f0b59ec6714de4c71fddd8f07ad4390aff0",
+      "paper": "2301.13271v1",
+      "accepted": true,
+      "reason": "Multi-fidelity probabilistic/deterministic latent mapping with Bayesian output modeling."
+    },
+    {
+      "number": 62,
+      "id": "78c3551ef402f210904710ce6a8b8c3c416f0bd36d2ec69e72ee29ca8c85edbd",
+      "paper": "2404.18106v1",
+      "accepted": false,
+      "reason": "Hold: dataset-labeling setting illustration and simple performance bars; no detailed method."
+    },
+    {
+      "number": 63,
+      "id": "7c3c195dc7d63916298ef8d2fb635b8ddf53c79acd6334dd091addb5176cf11f",
+      "paper": "2410.03719v2",
+      "accepted": true,
+      "reason": "Hierarchical acoustic consistency, word masking, reconstruction and prosody-contrastive TTS training."
+    },
+    {
+      "number": 64,
+      "id": "7c723b9b0858f24c7ea432bc8744c809db7fa80559aa1c47e2b6dbb11dd09a8e",
+      "paper": "2309.00143v1",
+      "accepted": true,
+      "reason": "Deformable/attention clustering model with explicit convolution, attention and large-kernel submodules."
+    },
+    {
+      "number": 65,
+      "id": "7e89585d702856b672984d394a3bf01ef62fcf73ac302524ec88eedbbc29ae28",
+      "paper": "2401.16764v5",
+      "accepted": true,
+      "reason": "Complete text-conditioned 3D initialization, multiview boosting and self-boost training architecture."
+    },
+    {
+      "number": 66,
+      "id": "8158eebd47c9a70a0f95c85dd7d6a04669b026a291fd39060f6d73a3ea4e12df",
+      "paper": "2301.13271v1",
+      "accepted": false,
+      "reason": "Hold simplified near-variant of the retained probabilistic multi-fidelity model in 61."
+    },
+    {
+      "number": 67,
+      "id": "822c7494cbaa056f9a794a42208174de676f8e4c62949f24ca8cd2a5e7ece281",
+      "paper": "2311.17921v3",
+      "accepted": false,
+      "reason": "Hold: compact token/transformer comparison with a coarse U-Net feedback block."
+    },
+    {
+      "number": 68,
+      "id": "837fd279063393b912225d2f7c9b2268b25a894f1c95c196c7c6be6a95da16e2",
+      "paper": "2410.22927v1",
+      "accepted": true,
+      "reason": "Distinct second-stage visual-prompt adaptation with trainable image encoder and additional losses."
+    },
+    {
+      "number": 69,
+      "id": "85a09bc1cf9e888e98ad81f1c51ad45d585704f9b247b26b1696d365fe98c96e",
+      "paper": "2411.19181v2",
+      "accepted": true,
+      "reason": "Multihorizon forecasting with shared ANN/LSTM, external regressors and separate target losses."
+    },
+    {
+      "number": 70,
+      "id": "85b8542c6e5eb3f73bf096670560487539c169cafe5226684099cc7c5cd91e5e",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained combined search framework in 51."
+    },
+    {
+      "number": 71,
+      "id": "8ab57504c1e469333b078891bc93aad3cfcc3d19b345a07de930a19238306e2d",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained combined search framework in 51."
+    },
+    {
+      "number": 72,
+      "id": "8ce8e9cabe39786f1d76825d39f0d1ffdf49bd0a2948afa7892e410aeb0ffd50",
+      "paper": "2306.17482v1",
+      "accepted": true,
+      "reason": "Graph-testing data conversion, WL hashing, label/metric computation and structural-feature evaluation."
+    },
+    {
+      "number": 73,
+      "id": "8e869308e08f737e1892b6c931add4e40eb2b0918b31f5bc857d9e622e8ebb21",
+      "paper": "2606.01425v1",
+      "accepted": true,
+      "reason": "Full subgraph/GNN training and iterative population/ranking optimization loops."
+    },
+    {
+      "number": 74,
+      "id": "968b6942668ef3b54fc6b09b298ca9300d9e83a0793e3b72631195fabbf81ae3",
+      "paper": "2401.16986v3",
+      "accepted": true,
+      "reason": "Balanced representation, counterfactual weighted generation and response-curve inference."
+    },
+    {
+      "number": 75,
+      "id": "96e9e186fd4ed87159592c60278f5cc45e9a9ae09a9fb470c49f08266d4cc767",
+      "paper": "2309.00108v1",
+      "accepted": true,
+      "reason": "Multiscale frequency-enhancement transformer segmentation with explicit matrix attention paths."
+    },
+    {
+      "number": 76,
+      "id": "a3491875caf548165a10705fa8d98b1383cefbf937c4c1ffc3b9a30a9cc3ec7c",
+      "paper": "2508.20597v1",
+      "accepted": false,
+      "reason": "Hold: training-only virtual-node illustration; insufficient detailed method architecture."
+    },
+    {
+      "number": 77,
+      "id": "a521a114df9f272d85406dfc781eb17a2806e7667dcbb77f98df6b5e11f4eeed",
+      "paper": "2308.15786v1",
+      "accepted": true,
+      "reason": "Federated representation aggregation, probabilistic distribution approximation and reparameterized local updates."
+    },
+    {
+      "number": 78,
+      "id": "a6529f83e07e9b3b3432ba40376858763397ffd9b9cfd6eaabe1145c6b939495",
+      "paper": "2503.24057v1",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained fuller magnification/classification architecture in 38."
+    },
+    {
+      "number": 79,
+      "id": "a67f03c3d54085aee8e5e7bd2fb9e088a9e4c3027d135314e89416425037c2dd",
+      "paper": "2503.01907v1",
+      "accepted": true,
+      "reason": "Complete tracking pipeline, motion-aware memory, re-identification and bounding-box refinement."
+    },
+    {
+      "number": 80,
+      "id": "a88005dbbf21f9abde4ef785ab3cef7bef4fed4839fb5c222eceea593763ccc8",
+      "paper": "2312.00834v2",
+      "accepted": false,
+      "reason": "Hold near-variant of the retained multimodal acoustic/RIR framework in 10."
+    },
+    {
+      "number": 81,
+      "id": "a987c3c266b27505b1a7ead9ca350d3999961fc6eb863260779b29ae73a227fe",
+      "paper": "2604.00050v3",
+      "accepted": true,
+      "reason": "Full federated embedding clustering, centroid/adapter aggregation and client personalization."
+    },
+    {
+      "number": 82,
+      "id": "ac7eb355cd19d711e7e81d473c62713e30bfa863e6429dcc1b47eff3a124d2fb",
+      "paper": "2411.00843v2",
+      "accepted": false,
+      "reason": "Hold older near-variant of retained Verilog/GNN distillation architecture in 17."
+    },
+    {
+      "number": 83,
+      "id": "af6b5fc53e0138acd6899f6a3f073b68684150f2033cb097aa468f509403c52a",
+      "paper": "2604.26370v2",
+      "accepted": true,
+      "reason": "Topological sublevel filtration and multimodal representation alignment with explicit persistence correspondences."
+    },
+    {
+      "number": 84,
+      "id": "b07ea9b61764dc4c95c3ab986162d7c2e6805ac4206ed5d9625259b0f9101b13",
+      "paper": "2312.16983v1",
+      "accepted": true,
+      "reason": "GP-guided variational optimization, weighted retraining and pseudo-label sampling framework."
+    },
+    {
+      "number": 85,
+      "id": "b214930644ac29c8c459b0659062a57c04e0c4ed7bae5481846af569a18b663d",
+      "paper": "2501.00190v2",
+      "accepted": true,
+      "reason": "Medical temporal graph framework with additional explicit convolution/attention and output-head decompositions."
+    },
+    {
+      "number": 86,
+      "id": "b3d47ab201d47f6f17d4d301eac6e438a49787ad01b0e18b1ef7da2f9a581e64",
+      "paper": "2610.09487v1",
+      "accepted": true,
+      "reason": "Schema-matching candidate localization, complementary evidence and conditional reranking/fusion."
+    },
+    {
+      "number": 87,
+      "id": "b42b342a4508909d4372fc1f85aa793db68c0404b57a4fdf2aea0cddb86b5c4f",
+      "paper": "2607.27843v1",
+      "accepted": true,
+      "reason": "Detailed multi-depth latent attention and adaptive deformable interaction modules."
+    },
+    {
+      "number": 88,
+      "id": "b60eeefc7c7a1c342f22430b6d6f1cbe574df938756583d84330bf005ba37752",
+      "paper": "2407.19467v1",
+      "accepted": false,
+      "reason": "Hold: compact recommender-module comparison dominated by repeated embeddings and coarse blocks."
+    },
+    {
+      "number": 89,
+      "id": "b6632e308c09b58927c1f3f19641023964390f8f80b3db76a15ea3638d0ee3cd",
+      "paper": "2503.04848v3",
+      "accepted": true,
+      "reason": "Nontrivial probabilistic grammar/state graph with recursive dependencies and weighted transitions."
+    },
+    {
+      "number": 90,
+      "id": "b7255cd97c598ba714e418c730629c7c5749088b5e66a32ad39981acb890f626",
+      "paper": "2610.06648v1",
+      "accepted": true,
+      "reason": "Discrete/continuous diffusion-LM training and representation-space MMD objective."
+    },
+    {
+      "number": 91,
+      "id": "b7a4d1fb0230ae21cd9d35cafa44199eb3ee31b06c9bcd2da447c615224a0f05",
+      "paper": "2405.19914v1",
+      "accepted": false,
+      "reason": "Hold: benchmark examples, small table and simple bars rather than a detailed method or complex visualization."
+    },
+    {
+      "number": 92,
+      "id": "b85e28147021a4b66c0c2aa2f60b54ba3e44b004d9b412edbb54198443f0250e",
+      "paper": "2402.17269v2",
+      "accepted": true,
+      "reason": "Multimodal utterance encoding and multilayer DAG attention/recurrent aggregation architecture."
+    },
+    {
+      "number": 93,
+      "id": "be256a0b9ecc59b75ca167cabd6259ca8e3584c529222866b78b2d51a0b35cbc",
+      "paper": "2412.20538v1",
+      "accepted": true,
+      "reason": "Three-stage domain-adaptive regression with explicit adversarial/maximization/minimization update roles."
+    },
+    {
+      "number": 94,
+      "id": "c08b56225b40e0e8e561a245494c5391f16b491db09df3e70557237c21fc18b9",
+      "paper": "2505.00733v1",
+      "accepted": false,
+      "reason": "Hold near-variant of previously retained robotic behavior tree; added legend only."
+    },
+    {
+      "number": 95,
+      "id": "c08dda5fc3160c95aba7007e7cdd64e45b416e5e116100f34cd8fdcf5333499c",
+      "paper": "2302.13726v2",
+      "accepted": false,
+      "reason": "Hold visually near-identical distributed-RL variant of retained panel 5."
+    },
+    {
+      "number": 96,
+      "id": "c0b294cad1fa9f9699324edee4b02782732a4b691ff6780dbb138d5081490974",
+      "paper": "2608.30320v1",
+      "accepted": true,
+      "reason": "Detailed QSA/GDN language-model architecture with global read/write state and MoE/residual paths."
+    },
+    {
+      "number": 97,
+      "id": "c1a5012642ea71855bcfddee6bca72945ef0f73b8a09c89021808a14ab5d120e",
+      "paper": "2411.18665v3",
+      "accepted": true,
+      "reason": "Conditioned indoor diffusion renderer with positive/negative intrinsic components, local guidance and DDIM/VAE output."
+    },
+    {
+      "number": 98,
+      "id": "c3b15f51cf4bc223d1718a08123d46b0bf5b91f80eb165c217805c58fdb52b1e",
+      "paper": "2409.19806v1",
+      "accepted": false,
+      "reason": "Hold: faint/low-contrast source PNG makes method labels insufficiently readable."
+    },
+    {
+      "number": 99,
+      "id": "c55ffeb7884c5d3e48ff912b9f10c666db9c19e469d155251bcb13ca850f1c2d",
+      "paper": "2402.19404v5",
+      "accepted": false,
+      "reason": "Hold: excessively separated canvas elements and tiny duplicated panels; poor complete-figure layout."
+    },
+    {
+      "number": 100,
+      "id": "c61e8327af322d986a5781b57fc496925594bc5d323b2cb6f599e7105604675b",
+      "paper": "2404.18199v1",
+      "accepted": true,
+      "reason": "Full multiresolution convolution/transformer segmentation architecture with explicit fusion and upsampling."
+    },
+    {
+      "number": 101,
+      "id": "cb5f6970cc189f9aadf3fec925f75246696437bb02bde1d15f68738421c948de",
+      "paper": "2608.31119v1",
+      "accepted": true,
+      "reason": "Rubric-data generation plus on-policy self-distillation and reward-based policy training."
+    },
+    {
+      "number": 102,
+      "id": "cff1a9f83e4f6b0a8b30898dcce9b15bc48475b892ed392bad780fb669b2c20a",
+      "paper": "2610.10302v1",
+      "accepted": false,
+      "reason": "Hold: tiny catalogue of small disconnected graph motifs, insufficient complete method detail."
+    },
+    {
+      "number": 103,
+      "id": "d05ecbd5d4eb0f79ab027970ad7296c9798e093d038583e110e75537e2a0024f",
+      "paper": "2312.17641v2",
+      "accepted": true,
+      "reason": "Full learned/traditional tracking fusion with explicit effectiveness and fusion submodules."
+    },
+    {
+      "number": 104,
+      "id": "d177129e0024ca027da8629852e88273c7eef996eb1c2ca7ea87018e67b8cd35",
+      "paper": "2409.00143v3",
+      "accepted": true,
+      "reason": "Multimodal private/shared feature extraction, adversarial temporal invariance and guided fusion."
+    },
+    {
+      "number": 105,
+      "id": "d5377846f18698e23c7988a06f1730fe53dbfa1b311199eeb7a50fba17ae5366",
+      "paper": "2607.27735v1",
+      "accepted": true,
+      "reason": "Detailed architectural comparison of speculative decoding context/cache/drafting/verification methods."
+    },
+    {
+      "number": 106,
+      "id": "d6d0433a2b93343f0f7b77ba6f65ca0595d0f1fc9ae6faa0276902632a3d19e2",
+      "paper": "2501.00190v2",
+      "accepted": true,
+      "reason": "Distinct medical graph construction/dynamics and prediction blueprint with convolution/attention detail."
+    },
+    {
+      "number": 107,
+      "id": "d86c1cf2ce1f51fb9819767b316a51f2f87c0c7c1c9e9f60f0b28fa87999e1b4",
+      "paper": "2502.19611v2",
+      "accepted": true,
+      "reason": "Complete forward/adjoint computational graph with explicit matrix and multistep dependencies."
+    },
+    {
+      "number": 108,
+      "id": "d872f17590805b813c51e82e9f33b34d7a3e4fdca7643f600e3b21ebe4e8836f",
+      "paper": "2503.23721v1",
+      "accepted": true,
+      "reason": "Sparse-dynamic multimodal teacher/student distillation with hierarchical cross-modal fusion."
+    },
+    {
+      "number": 109,
+      "id": "db15a063672120f7df689e0d2b5e53bb69d6db21e82fe9a886bde715ed4d7500",
+      "paper": "2401.15875v1",
+      "accepted": true,
+      "reason": "Satellite/weather spatiotemporal U-Net encoding, bidirectional recurrence and attention fusion."
+    },
+    {
+      "number": 110,
+      "id": "db3f4e5465f7e46aa3fb93ee8f4ee0aabc7f8025adc59690f4d279064e102b2b",
+      "paper": "2512.23441v2",
+      "accepted": true,
+      "reason": "Time-conditioned variational masked retinal reconstruction with explicit prior/posterior and decoder paths."
+    },
+    {
+      "number": 111,
+      "id": "de5f8618bd8b59ed55eca77d7e695f2eab42c10a97925050980fbf019716d158",
+      "paper": "2302.14261v1",
+      "accepted": true,
+      "reason": "N-gram scene-text recognition with primary/supplementary transformer and encoder decomposition."
+    },
+    {
+      "number": 112,
+      "id": "e253f992e3463813517935665b450cf22fe701658bcaf4e24281753cff9487f9",
+      "paper": "2308.15881v1",
+      "accepted": true,
+      "reason": "Center pretraining, Grad-CAM generation and explicit interpretability augmentation in two segmentation architectures."
+    },
+    {
+      "number": 113,
+      "id": "e32dc5a07fca976c6da5360fd5fabec31a2df337ec000675aa537e74a43de1cc",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Near variant of the clearer complete tree-search framework retained as 118."
+    },
+    {
+      "number": 114,
+      "id": "e6c11f4aa3fec3d5445aebfb992c34c1a8f161f7e1b9bb5943800604a11e125b",
+      "paper": "2404.18106v1",
+      "accepted": true,
+      "reason": "Complete image-text generation/retrieval framework, noise-guided training and hybrid channel masking."
+    },
+    {
+      "number": 115,
+      "id": "e7b09ebb1a2d0543ee339659fc2d41632abc4beed15e77819e001dadb08c3488",
+      "paper": "2406.19236v3",
+      "accepted": true,
+      "reason": "Detailed comparison of action-decoding and trajectory-transformer visual navigation with modality fusion."
+    },
+    {
+      "number": 116,
+      "id": "e7eea244710d30dc2fc5c73f9f18e0216a1caacac5da2c53481d5bf5949c03f6",
+      "paper": "2305.19857v1",
+      "accepted": false,
+      "reason": "Module-level head/generator overview is too coarse for the complex-figure collection."
+    },
+    {
+      "number": 117,
+      "id": "ea86cbb86042eb45eb06bda48faca4e4c2fba6e86a1fe1d399a551f4a142b17c",
+      "paper": "2411.00180v1",
+      "accepted": true,
+      "reason": "Detailed unrolled neural operator computation with projection branches and explicit loss couplings."
+    },
+    {
+      "number": 118,
+      "id": "ec1192e5221b51835e2111a231714c4169856cfd6ad4864d01a582acfe18a875",
+      "paper": "2502.21186v2",
+      "accepted": true,
+      "reason": "Complete top-k tree selection, expansion and backpropagation method with explicit search states."
+    },
+    {
+      "number": 119,
+      "id": "ec283bb2367c0096eeec3e47097ddf721338e83ac8f7ece5773f6bc0b1b3ae98",
+      "paper": "2606.31976v1",
+      "accepted": false,
+      "reason": "Large mostly empty canvas and comparatively coarse forestry deployment pipeline."
+    },
+    {
+      "number": 120,
+      "id": "ee1d28a0a6cfe90d4e841814376aebe2f3acb3eee716df7ba97e84ce211f3b3b",
+      "paper": "2512.23150v1",
+      "accepted": true,
+      "reason": "Complete restart, local-search and mutation control flow for random-key optimization."
+    },
+    {
+      "number": 121,
+      "id": "f356b77f0e834dbdde9842732a0e3f7497c706fd4905f9ad361674d069b58e05",
+      "paper": "2306.17602v3",
+      "accepted": true,
+      "reason": "Detailed multi-camera tracking decoder with geometric and latent motion prediction and losses."
+    },
+    {
+      "number": 122,
+      "id": "f657b62ad0ae7c968e29d708f35f511bca485440672cf65a8d96a07ce6eb2020",
+      "paper": "2407.19467v1",
+      "accepted": false,
+      "reason": "Coarse multimodal embedding overview with limited internal method detail."
+    },
+    {
+      "number": 123,
+      "id": "f67cf0dabf6c262793940f1780d49a7a29584d2ec258c33e3f1f663d7c30e368",
+      "paper": "2503.24057v1",
+      "accepted": true,
+      "reason": "Complete optical-flow magnification and multi-stage temporal/spatial micro-expression architecture."
+    },
+    {
+      "number": 124,
+      "id": "ff2abbe211268488a7b25d2a7b0796c496764df06869cc9e335b16a3a1e06434",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Near variant of tree-search figure retained as 118, with more cramped label placement."
+    },
+    {
+      "number": 125,
+      "id": "ffb4af56a059ac740ca7e2815b6757e837fa75aad2b3296b07d5aefba22e61d6",
+      "paper": "2604.16778v3",
+      "accepted": true,
+      "reason": "Detailed four-part federated agent evolution, domain aggregation and local-reasoning framework."
+    }
+  ],
+  "scope": "Complexity and visual utility review after strict source replay; original PDF fidelity is not certified by this visual review."
+}

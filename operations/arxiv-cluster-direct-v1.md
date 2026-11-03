@@ -142,3 +142,8 @@ Evidence paths:
 - `clean/arxiv_research_figures_v1/math_viewport_protocol_selftest_v1/results.json`
 - `clean/arxiv_research_figures_v1/math_uniform_viewport_probe_v1/`
 - `clean/arxiv_research_figures_v1/math_viewport_source_replay_v1/{policy,summary}.json`
+
+
+2026-11-03 09:32 UTC update: 125 individually inspected figures produced 88 explicit accepts and 37 holds; authoritative accepted-new index now has 128 rows, unified total 3887. This is source-replay acceptance; original-PDF fidelity remains a separate overlapping view. New random100 preview and +500 final acceptance remain outstanding.
+
+HKUST4 and HKUST5 stopped at 09:02 / 09:13 UTC on UnicodeEncodeError during performance JSON writes: archive member names contained surrogateescaped non-UTF8 bytes. Worker-local atomic JSON writer now uses JSON Unicode escapes (lossless Python string roundtrip) and unique temporary files. Existing PDF/paper ledgers and partial archives remain; completed PDF imports are skipped on recovery. Both stopped processes were relaunched from preserved state; other nodes use the existing verified idle-only handover, never interrupting an active paper/PDF import.

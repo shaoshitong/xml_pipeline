@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T09:06:23.110491+00:00",
+  "at_utc": "2026-11-03T09:32:36.564910+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -670,9 +670,9 @@
     },
     {
       "file": "conversion/scripts/arxiv_cluster_worker_v1.py",
-      "sha256": "2669cd571d2cfe5666f313a9d807c01abe1c817095a5581ff84997a4cd667555",
-      "bytes": 10393,
-      "mtime_ns": 1793692915002379977
+      "sha256": "04216ec033893a454675da3677c1b0903cd91cd4e435ff4a4ce47e0a75559999",
+      "bytes": 10914,
+      "mtime_ns": 1793698296727686595
     },
     {
       "file": "conversion/scripts/arxiv_complex_review_contacts_v1.py",

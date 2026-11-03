@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T08:18:07.446162+00:00",
+  "at_utc": "2026-11-03T09:32:36.567371+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "progress: restored collector telemetry, deployed five disjoint direct worker shards, measured actual byte/paper/native-result deltas, repaired official math initialization, individually accepted 31 additional figures, verified partial direct OAI recovery; target remains +500.",
+  "previous_goal_turn": "Reviewed 125 figures and explicitly accepted 88; total new accepted 128. Found HKUST4/5 stopped on surrogateescaped archive filenames in JSON performance save, deployed lossless escaped JSON writer and resumed from preserved ledgers. Source-only quality and original-PDF fidelity remain separately counted.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -10,8 +10,8 @@
     "sha256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2"
   },
   "authoritative_current": "clean/arxiv_research_figures_v1/goal500_progress_v1/current.json",
-  "accepted_new_last_observation": 33,
-  "unified_rows_last_observation": 3792,
+  "accepted_new_last_observation": 128,
+  "unified_rows_last_observation": 3887,
   "target_new_pairs": 500,
   "remaining_required": "Continue collection and strict source replay; individually review additional complex figures; meet +500 and produce final random100 preview and final verified index. Do not declare complete based on these partial counts.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
@@ -34,9 +34,10 @@
   ],
   "known_pending": [
     "OAI intermittent 503 and slow full HTTP200 bodies; failed partitions remain pending",
-    "190 mathematical author sources failed existing exact restore/closure gates; never silently retry or count them",
     "Review snapshots may include deliberately held simple/low-resolution/near-variant figures",
-    "An unused normalized-snapshot v2 probe failed and is not the deployed renderer"
+    "An unused normalized-snapshot v2 probe failed and is not the deployed renderer",
+    "New uniform-viewport source validation preserves strict restore gates; old failed proof records remain immutable.",
+    "Target +500 remains incomplete; new-accepted random100 preview still pending."
   ],
   "publication": {
     "branch": "codex/pipeline-repair-20261102",

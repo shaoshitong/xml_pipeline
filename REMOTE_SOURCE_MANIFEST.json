@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T08:32:05.600651+00:00",
+  "at_utc": "2026-11-03T09:32:48.362108+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -634,9 +634,9 @@
     },
     {
       "file": "conversion/scripts/arxiv_cluster_worker_v1.py",
-      "sha256": "2669cd571d2cfe5666f313a9d807c01abe1c817095a5581ff84997a4cd667555",
-      "bytes": 10393,
-      "mtime_ns": 1793692972535642560
+      "sha256": "04216ec033893a454675da3677c1b0903cd91cd4e435ff4a4ce47e0a75559999",
+      "bytes": 10914,
+      "mtime_ns": 1793698318073242387
     },
     {
       "file": "conversion/scripts/arxiv_complex_review_contacts_v1.py",
@@ -646,9 +646,15 @@
     },
     {
       "file": "conversion/scripts/arxiv_goal500_progress_v1.py",
-      "sha256": "3818f5f1c35632f7f8511e85e63fe0dac9377e21e1c53b562d2998d9de274ca1",
-      "bytes": 14592,
-      "mtime_ns": 1793692972759644940
+      "sha256": "68c61e16b9765c454660532f215e8bb402ffa612e083eed14a2698484b575659",
+      "bytes": 14669,
+      "mtime_ns": 1793696030192439602
+    },
+    {
+      "file": "conversion/scripts/arxiv_math_fresh_viewport_probe_v1.py",
+      "sha256": "e769cb53b1a38c10e371e002be741cc38e5680171f2f2b49d362badea43bd1fd",
+      "bytes": 2049,
+      "mtime_ns": 1793695643641558675
     },
     {
       "file": "conversion/scripts/arxiv_math_renderer_selftest_v1.py",
@@ -667,6 +673,24 @@
       "sha256": "d29c851b83b40c36285d9654a0e57ac102d09c1e08b7fefc5bac6d9e0122a210",
       "bytes": 1009,
       "mtime_ns": 1793692973871656734
+    },
+    {
+      "file": "conversion/scripts/arxiv_math_uniform_viewport_renderer_v1.py",
+      "sha256": "044732a01c9d248bdef8aa310aa3b44f9348dfc476e39a776dd708f11dd15e4c",
+      "bytes": 1028,
+      "mtime_ns": 1793696253151819516
+    },
+    {
+      "file": "conversion/scripts/arxiv_math_viewport_selftest_v1.py",
+      "sha256": "95131e94a8d51d4b0dd5cab2d55cc1fc5eb0fa8cb935ba0620157dace6d6a810",
+      "bytes": 2006,
+      "mtime_ns": 1793695366914421129
+    },
+    {
+      "file": "conversion/scripts/arxiv_math_viewport_validation_v1.py",
+      "sha256": "e70c2695394dd8521192359f6a8abe13e0a221512914452158cc461284d78651",
+      "bytes": 6370,
+      "mtime_ns": 1793696253231819295
     },
     {
       "file": "conversion/scripts/arxiv_native_reference_audit_v1.py",
@@ -5545,6 +5569,12 @@
       "sha256": "3bd6b7753f7a534cf22d094439c434cdfcd46433be7ddda47de02a4b423c9f92",
       "bytes": 3289,
       "mtime_ns": 1793614031905324178
+    },
+    {
+      "file": "conversion/scripts/launch_arxiv_viewport_validation_v1.py",
+      "sha256": "2c2bdf39c7c4071f68273f74e164ffa21606f7d3aaeefe409c9aa47617a83d58",
+      "bytes": 1595,
+      "mtime_ns": 1793696253307819086
     },
     {
       "file": "conversion/scripts/launch_compact_source_admission_v1.py",

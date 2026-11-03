@@ -11,6 +11,17 @@ import requests
 
 STOP = False
 
+def atomic_json(path, value):
+    # Archive member names can contain surrogateescaped non-UTF8 bytes.
+    # JSON escapes preserve them losslessly; direct UTF8 encoding aborts save().
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
+    try:
+        temp.write_text(json.dumps(value, ensure_ascii=True, indent=2)+'\n', encoding='utf-8')
+        os.replace(temp, path)
+    finally:
+        temp.unlink(missing_ok=True)
+
 def digest(p):
     h=hashlib.sha256()
     with p.open('rb') as f:
@@ -43,6 +54,7 @@ def main(root, config_path):
     import arxiv_oai_direct_pipeline_v1 as direct
     import arxiv_bulk_official_xml_png_v1 as render
     engine=direct.engine; native=engine.native
+    native.atomic=atomic_json
     engine.R=root;engine.S=root/'conversion/scripts';engine.P=root/'clean/arxiv_research_figures_v1'
     engine.CONTROL=engine.P/'transport_performance_v3';engine.CONTROL.mkdir(parents=True,exist_ok=True)
     engine.PROXY=None;engine.BUDGET=512*1024**3
