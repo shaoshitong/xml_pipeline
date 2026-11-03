@@ -1,0 +1,17 @@
+[
+  [
+    "943680ec3a0e",
+    true,
+    "Complete three-panel separable 3D convolution and channel-wise scale/bias operations."
+  ],
+  [
+    "9530626464b2",
+    true,
+    "Complete hierarchical buggy-code summarization, prompt evaluation and PEFT fine-tuning framework."
+  ],
+  [
+    "99847d649575",
+    false,
+    "Hold: source Document vector label is covered by the attention-distribution elements."
+  ]
+]

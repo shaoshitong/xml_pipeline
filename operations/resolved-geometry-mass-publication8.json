@@ -1,0 +1,63 @@
+{
+  "review": {
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19",
+    "pairs": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19/reviewed_pairs.jsonl",
+      "sha256": "64b6157c601df06800e6e607a75b97bb14eba91a69c0b2f286ae34d6af7cb216",
+      "bytes": 10300
+    },
+    "occlusion": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_666d1ca87569458780b0c2410044a878/source_text_occlusion_reviews.jsonl",
+      "sha256": "d367262644d5d58857d598e997f0f7fb46ab5854ac663206fad8032aeab161c7",
+      "bytes": 706
+    },
+    "input_summary": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_666d1ca87569458780b0c2410044a878/summary.json",
+      "sha256": "78fb21636bd4763cc62e7e2165e7895d7a6bbff286b14a5eb12a1820fbe95c0b",
+      "bytes": 1653
+    },
+    "decisions": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19/decisions.json",
+      "sha256": "251c83238517e3305c103311e063ca79aeaf3ee8247917f48238e7a8ef323461",
+      "bytes": 496
+    },
+    "approved_ids": [
+      "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
+      "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
+    ],
+    "held_ids": [],
+    "actual_native_PNG_inspected_ids": [
+      "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
+      "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
+    ],
+    "technical_qualifications_unchanged": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "model_calls": 0
+  },
+  "publication": {
+    "before": 1092,
+    "after": 1094,
+    "added_ids": [
+      "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
+      "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
+    ],
+    "held_ids": [],
+    "main": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/paired_priority_complex.jsonl",
+      "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
+      "bytes": 4835154,
+      "rows": 1094
+    },
+    "review": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/value_review.json",
+      "sha256": "2e1fc63a5013bc6d9ec2829eea581c768eb0962ad5d39c56b4939035468600f9",
+      "bytes": 3395
+    },
+    "pointer": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+      "sha256": "66e7d9858479ab4b5cab48f8469140cb902ba145185eac1424b6a6ffe084a1b6",
+      "bytes": 3516
+    }
+  }
+}

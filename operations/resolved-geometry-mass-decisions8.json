@@ -1,0 +1,12 @@
+[
+  [
+    "f3511930ed15",
+    true,
+    "Complete character/word/gaze embeddings, bidirectional LSTM and CRF sequence-labeling architecture."
+  ],
+  [
+    "f406a8ee98c1",
+    true,
+    "Complete network, layered node search and self-attention/identity node decomposition."
+  ]
+]

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T01:01:15.421957+00:00",
+  "at_utc": "2026-11-03T01:08:56.498436+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "9f5621e17b4a1cf075c439e10512a76201d1b21ed450508c636503fd2df35a29",
-      "bytes": 90442,
-      "mtime_ns": 1793667675425539667
+      "sha256": "97873b005decf9a241d6615d2b0c29aee8d302ab3137b6d288c03d81e7faff94",
+      "bytes": 92569,
+      "mtime_ns": 1793668136504274949
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "9f5621e17b4a1cf075c439e10512a76201d1b21ed450508c636503fd2df35a29",
-      "bytes": 90442,
-      "mtime_ns": 1793667675423968990
+      "sha256": "97873b005decf9a241d6615d2b0c29aee8d302ab3137b6d288c03d81e7faff94",
+      "bytes": 92569,
+      "mtime_ns": 1793668136502502013
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -16023,9 +16023,9 @@
     },
     {
       "file": "operations/CURATED_RESEARCH_DELIVERY.md",
-      "sha256": "d70c916851a7066aadf5dcdc8dc0d04b1add98d9f530e02c0973122b9136271d",
+      "sha256": "200fd089f34906ca54c3b7832ce818860879b9dbcc48c98a70697e2c53dbedba",
       "bytes": 1361,
-      "mtime_ns": 1793667675413766626
+      "mtime_ns": 1793668136491994064
     },
     {
       "file": "operations/complex-arxiv-native-curation-publication-v1.json",
@@ -16371,9 +16371,9 @@
     },
     {
       "file": "operations/publish_task_checkpoint_v1.py",
-      "sha256": "53ab652a2b7781202d884e9fc01c6e03b617b76a5167cdcbe4ee17eda07484d4",
-      "bytes": 4041,
-      "mtime_ns": 1793667675421927808
+      "sha256": "d49616e20f5ec98818da5980fdcd118de0f0a01a9b6a68943d12ac5324534214",
+      "bytes": 4115,
+      "mtime_ns": 1793668136498353467
     },
     {
       "file": "operations/svg-whitespace-disjoint-v2-frozen-identity-proof.json",
@@ -16427,7 +16427,7 @@
       "file": "operations/snapshot_current_batch_runtime_v2.py",
       "sha256": "653989072a389808e1590942a1869793bb59d59c25ae5a6f8bc3aab8c0b1dcfa",
       "bytes": 3271,
-      "mtime_ns": 1793667675421789432
+      "mtime_ns": 1793668136498031547
     },
     {
       "file": "operations/resolved-geometry-mass-decisions6.json",
@@ -16482,6 +16482,126 @@
       "sha256": "f4341acc2db6ab614f66fdb023e0589f34e150866665085f825c15be2949c939",
       "bytes": 984,
       "mtime_ns": 1793667675410386768
+    },
+    {
+      "file": "conversion/scripts/review_fixed_svg_whitespace_pairs_v3.py",
+      "sha256": "7b7283fa421a196325b5ba07e036933d016752fad1a6ede79e3a39aea312eebf",
+      "bytes": 6169,
+      "mtime_ns": 1793667729727908487
+    },
+    {
+      "file": "conversion/scripts/audit_completed_svg_round_v1.py",
+      "sha256": "14e0605b0b399ca576d316b12095718dfafce2967cc0cfacd4618d83b91d8cd5",
+      "bytes": 4067,
+      "mtime_ns": 1793668001047186248
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-decisions3.json",
+      "sha256": "2e6fae04b66159101540a48c96c154494852c01e353e37d9bd6a7f1a3aaaee5f",
+      "bytes": 1632,
+      "mtime_ns": 1793668136490147669
+    },
+    {
+      "file": "operations/resolved-geometry-mass-decisions8.json",
+      "sha256": "0283711b7870e6d747e36ac88abde154676c3e6229becd644eed294aa18ea56d",
+      "bytes": 278,
+      "mtime_ns": 1793668136497261914
+    },
+    {
+      "file": "operations/curated-complex-research-delivery-v6.json",
+      "sha256": "b85e1bd38eeda918db348fa69a3f173690cc346a0ea51789cbc1886c682e678c",
+      "bytes": 834,
+      "mtime_ns": 1793668136489619247
+    },
+    {
+      "file": "operations/seven-source-delivery-audit-v7.json",
+      "sha256": "1cde3539b7ad01d269e1227dae3b80e50bd0d6b6909a0ecd95cf68125853801b",
+      "bytes": 6437,
+      "mtime_ns": 1793668136491668478
+    },
+    {
+      "file": "operations/current-batch-runtime-progress18.json",
+      "sha256": "e9bbce091963b36db97d447f6d1374c8f4336b86fdcb6af2d155a4eb76a398df",
+      "bytes": 2343,
+      "mtime_ns": 1793668136496161360
+    },
+    {
+      "file": "operations/resolved-geometry-whole-round-completion-audit-v1.json",
+      "sha256": "c45c20ce5e7afac1f9dcbfbec67f787f3442eb6644f864ec700cd30c17812b8c",
+      "bytes": 1211,
+      "mtime_ns": 1793668136491393350
+    },
+    {
+      "file": "operations/current-batch-runtime-progress15.json",
+      "sha256": "b023cec479dca907d08468a61e98574c70a635929039938e888555c377b6c586",
+      "bytes": 2409,
+      "mtime_ns": 1793668136489169284
+    },
+    {
+      "file": "operations/resolved-geometry-mass-value-review8.json",
+      "sha256": "5805d291c1108ce8237e994785c364bf93355c8af20c1cabe79fed1ba547a0d0",
+      "bytes": 1530,
+      "mtime_ns": 1793668136496747908
+    },
+    {
+      "file": "operations/current-batch-runtime-progress19.json",
+      "sha256": "4da62b7ce786497f7034d403e3db7793f30a8c1a50dc0685814c801706b57303",
+      "bytes": 2348,
+      "mtime_ns": 1793668136497681543
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-decisions1.json",
+      "sha256": "c8d88388d6ffdf23b1f2574896bb235650623ad44ae8355d0fdbd25e1a623a22",
+      "bytes": 408,
+      "mtime_ns": 1793668136493588082
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-value-review1.json",
+      "sha256": "dca33d2aace2f997d97faa98439ff77557130835f93127f400433cd5600ea02b",
+      "bytes": 1775,
+      "mtime_ns": 1793668136492363235
+    },
+    {
+      "file": "operations/current-batch-runtime-progress16.json",
+      "sha256": "72c5e35a0c3d65f848fd50b2bf79e51476119c21dd8009d0d6fe1c0fd4f32e11",
+      "bytes": 2458,
+      "mtime_ns": 1793668136492852074
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-publication3.json",
+      "sha256": "2f298cba5b664df0d86f76f5c6af198504ab11716a2e172096de34b121a5e2d5",
+      "bytes": 5117,
+      "mtime_ns": 1793668136494095338
+    },
+    {
+      "file": "operations/current-batch-runtime-progress17.json",
+      "sha256": "f71baa104b44a89b2a0fe4d3343a838f8a4b0d852872a3a6fc67750e62832d11",
+      "bytes": 2379,
+      "mtime_ns": 1793668136494654802
+    },
+    {
+      "file": "operations/resolved-geometry-mass-publication8.json",
+      "sha256": "258d12856619b757b3afa92a9142b19cd1a53568d5515b06879b845020c2170e",
+      "bytes": 2868,
+      "mtime_ns": 1793668136490419089
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint2-publication1.json",
+      "sha256": "5d013244d42a582a6702822f3b0c9085a66e7e4bff6cdd5c89eed9c7463ee693",
+      "bytes": 3123,
+      "mtime_ns": 1793668136495336101
+    },
+    {
+      "file": "operations/curated-delivery-payload-audit-v4.json",
+      "sha256": "19ee91b1ab02f7bcd48346f0b36a7049eb43b0afac561564b2f4737a200cf390",
+      "bytes": 2976,
+      "mtime_ns": 1793668136495728814
+    },
+    {
+      "file": "operations/svg-whitespace-disjoint-value-review3.json",
+      "sha256": "1b3e928e4375eeb384c8c375f93f3a618f0c6a07fb09dd765bff0b71f0cc3fb1",
+      "bytes": 3339,
+      "mtime_ns": 1793668136491033471
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",

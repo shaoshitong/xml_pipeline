@@ -1,0 +1,103 @@
+{
+  "at_utc": "2026-11-03T01:05:41.329479+00:00",
+  "batches": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
+      "counts": {
+        "abandoned": 755,
+        "qualified": 84
+      },
+      "total": 839,
+      "terminal": 839,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 4019247,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 12,
+        "mean": 123.32225,
+        "median": 100.711,
+        "max": 408.268
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v1_mass": {
+      "counts": {
+        "abandoned": 306,
+        "qualified": 41,
+        "queued": 207,
+        "running": 12
+      },
+      "total": 566,
+      "terminal": 347,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 800133,
+        "birth": "1145755791",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 13,
+        "mean": 83.1993076923077,
+        "median": 79.28,
+        "max": 134.543
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v2_mass": {
+      "counts": {
+        "abandoned": 52,
+        "qualified": 4,
+        "queued": 217,
+        "running": 12
+      },
+      "total": 285,
+      "terminal": 56,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 1718674,
+        "birth": "1145919997",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 5,
+        "mean": 99.9212,
+        "median": 87.863,
+        "max": 228.411
+      },
+      "infrastructure_stop": null
+    },
+    "svg_complex_source_whitespace_cached_unseen_20261103_v12_mass": {
+      "created": false
+    }
+  },
+  "cpu_count": 144,
+  "load_average": [
+    47.080078125,
+    48.796875,
+    46.30712890625
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "parent": {
+    "state": {
+      "elapsed_seconds": 2722.5184471160173,
+      "goal_complete": false,
+      "pending_originals": 450,
+      "stage": "validated_waiting_existing_foreign_batch"
+    },
+    "owner": {
+      "pid": 347847,
+      "birth": "1145650317",
+      "live": true
+    },
+    "foreign_pending_count": 450,
+    "failure": null
+  },
+  "review_registry": {
+    "await_actual_PNG_review": 2,
+    "held": 51,
+    "published": 190
+  },
+  "local_exec_wall_seconds": 1.159
+}

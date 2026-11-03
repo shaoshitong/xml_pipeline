@@ -1,13 +1,13 @@
 {
-  "at_utc": "2026-11-03T01:01:15.421957+00:00",
+  "at_utc": "2026-11-03T01:08:56.498436+00:00",
   "goal_complete": false,
   "authoritative_main": {
-    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T005940830334Z_review_batch_v8/paired_priority_complex.jsonl",
-    "sha256": "2d913a4125a4409b086bd80b1771b49b025a21615f852e25a3b34716fa89d351",
-    "bytes": 4797906,
-    "rows": 1082
+    "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/paired_priority_complex.jsonl",
+    "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
+    "bytes": 4835154,
+    "rows": 1094
   },
-  "strict_main_rows": 1082,
+  "strict_main_rows": 1094,
   "previous_goal_turn": "progress: fresh validation passed 12/31; 839-case fixed whole-applicable batch launched and measured twice; nine scientifically complete SVG pairs published; exact TikZ node/glyph/Bezier-marker lowering emitted a real candidate, correctly held by original PDF/source-SVG raster gate.",
   "last_program": {
     "run": "svg_complex_source_whitespace_cached_unseen_20261103_v12",
@@ -68,8 +68,8 @@
     "source_only_not_qualification": true
   },
   "review_registry": {
-    "held": 46,
-    "published": 180
+    "held": 51,
+    "published": 192
   },
   "pending_reviews": 0,
   "next_generic_repair": {
@@ -308,7 +308,7 @@
       ]
     }
   },
-  "next_step": "Continue birth-verified old v11 mass, both approved disjoint v24 waves and unchanged parent v12 catchup. Second disjoint wave285 has exact original approved implementation/pins, no overlap with first wave, prior same-core events or launch-time live pending, and parent observes it; actual terminal progress0 to3 to10 with zero infrastructure failures. Current curated1436=1082 strict diagram/poster+92 scientific charts+262 arXiv with separate evidence grades; all1436 payloads audited, original1416 decoded/hashed in217.1sec and later15/5 additions checked in2.48/1.95sec with unchanged payload-stat reuse. This turn25 actual PNGs inspected,20 approved,5 held; no source or QA changes. Allow current fixed programs to finish, review only unseen new qualified PNG increments, refresh graded delivery and full final scope audit; no duplicate normals, no extra experiments or network changes.",
+  "next_step": "Old v11 whole batch is now terminal:839 originals each attempted exactly once,84 technically qualified,755 typed source/quality failures,all cleanup complete,zero infrastructure failures,final84 asset checks passed. All84 qualified originals accounted:72 in strict main and12 held after actual PNG content/layout review. Last case802 completed normally with unchanged source/native marker contour failure,full QA408.268sec; no timeout/restart. This turn17 actual PNGs inspected,12 approved and5 held. Current1448 curated=1094 strict diagrams/posters+92 chart+262 arXiv,all payloads audited; incremental12 took2.44sec,1436 unchanged reused. Continue both birth-verified disjoint v24 batches and parent v12 automatic final catchup; current disjoint terminal counts378/566 and87/285,0 infrastructure errors. Accumulate/review only new qualified increments,retain existing same-core normal history,refresh final delivery and complete whole-goal requirement audit after fixed applicable scope finishes. No further experiments or network changes.",
   "fixed_validation_chain": {
     "launch": {
       "root": "/backup/shaoshitong/img2code_20261029/conversion/resolved_geometry_validation_chain_v1/73bf4c1776ad416991eb36b4c201a3dc",
@@ -725,14 +725,14 @@
     "goal_complete": false
   },
   "seven_source_delivery_audit": {
-    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v6/9d724d2f39cb407e859904a42faa9e54",
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complex_research_delivery_audit_v6/89d6bef2aa194c759afbc62785949396",
     "audit": {
-      "file": "clean/complex_research_delivery_audit_v6/9d724d2f39cb407e859904a42faa9e54/audit.json",
-      "sha256": "37492fded5888f5fb83dd1d06863d14fc4ca11a3d1a4abe4ff60e130ca5ea3f2",
-      "bytes": 19378
+      "file": "clean/complex_research_delivery_audit_v6/89d6bef2aa194c759afbc62785949396/audit.json",
+      "sha256": "b51898d0fa2e2b593597adbe27cd6003bfc9683977c7bcbc70cf94a0ae04bc84",
+      "bytes": 19406
     },
     "strict_main_by_source": {
-      "QijiaHe--VFIG-Data": 302,
+      "QijiaHe--VFIG-Data": 314,
       "VincentHancoder--RAP": 780
     },
     "latest_chart_by_source": {
@@ -748,23 +748,23 @@
     },
     "curated_delivery": {
       "pairs": {
-        "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/pairs.jsonl",
-        "sha256": "9b404d047b1023d713ba7a16d8abdcd841626a0ad90f13cb5c30c7a2db3df82f",
-        "bytes": 2359103
+        "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/pairs.jsonl",
+        "sha256": "b4a155adf5503bdaeb9e85404913801233bf98c2bc47c567198cab5b8cfa3dab",
+        "bytes": 2378012
       },
       "summary": {
-        "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/summary.json",
-        "sha256": "923963d47b9f61ca32d5c668f30cba254493ad0c4b283f07348805ae8402d660",
+        "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/summary.json",
+        "sha256": "4d8b3fabd5a3ff348817d888afc64fd78f6113516d011b9e81a1b696e812ea0f",
         "bytes": 4341
       },
       "readme": {
-        "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/README.md",
-        "sha256": "d70c916851a7066aadf5dcdc8dc0d04b1add98d9f530e02c0973122b9136271d",
+        "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/README.md",
+        "sha256": "200fd089f34906ca54c3b7832ce818860879b9dbcc48c98a70697e2c53dbedba",
         "bytes": 1361
       },
-      "unique_code_RGBA_pairs": 1436,
+      "unique_code_RGBA_pairs": 1448,
       "curation_memberships": {
-        "complex_paper_diagrams_and_posters": 1082,
+        "complex_paper_diagrams_and_posters": 1094,
         "complex_scientific_charts": 92,
         "complex_arxiv_native": 262
       },
@@ -774,11 +774,11 @@
     "programs": {
       "svg_complex_resolved_geometry_cached_unseen_20261102_v11": {
         "run": "svg_complex_resolved_geometry_cached_unseen_20261102_v11",
-        "stage": "mass",
+        "stage": "round_complete_next_repair_required",
         "owner": {
           "pid": 3910048,
           "start_ticks": 1145471490,
-          "live": true
+          "live": false
         },
         "infrastructure_stop": null,
         "B": {
@@ -796,9 +796,8 @@
         },
         "mass": {
           "counts": {
-            "abandoned": 750,
-            "qualified": 84,
-            "running": 5
+            "abandoned": 755,
+            "qualified": 84
           },
           "infrastructure_errors": 0
         },
@@ -865,7 +864,7 @@
             "bytes": 161433
           }
         },
-        "verified_foreign_pending_originals": 546
+        "verified_foreign_pending_originals": 395
       }
     },
     "approved_disjoint_mass": {
@@ -875,9 +874,9 @@
         "stage": "approved_disjoint_mass"
       },
       "counts": {
-        "abandoned": 268,
-        "qualified": 35,
-        "queued": 251,
+        "abandoned": 330,
+        "qualified": 44,
+        "queued": 180,
         "running": 12
       },
       "targets": 566,
@@ -909,9 +908,9 @@
           "stage": "approved_disjoint_mass"
         },
         "counts": {
-          "abandoned": 268,
-          "qualified": 35,
-          "queued": 251,
+          "abandoned": 330,
+          "qualified": 44,
+          "queued": 180,
           "running": 12
         },
         "targets": 566,
@@ -942,8 +941,9 @@
           "stage": "approved_disjoint_mass"
         },
         "counts": {
-          "abandoned": 10,
-          "queued": 263,
+          "abandoned": 73,
+          "qualified": 9,
+          "queued": 191,
           "running": 12
         },
         "targets": 285,
@@ -1531,23 +1531,23 @@
   },
   "curated_delivery": {
     "pairs": {
-      "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/pairs.jsonl",
-      "sha256": "9b404d047b1023d713ba7a16d8abdcd841626a0ad90f13cb5c30c7a2db3df82f",
-      "bytes": 2359103
+      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/pairs.jsonl",
+      "sha256": "b4a155adf5503bdaeb9e85404913801233bf98c2bc47c567198cab5b8cfa3dab",
+      "bytes": 2378012
     },
     "summary": {
-      "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/summary.json",
-      "sha256": "923963d47b9f61ca32d5c668f30cba254493ad0c4b283f07348805ae8402d660",
+      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/summary.json",
+      "sha256": "4d8b3fabd5a3ff348817d888afc64fd78f6113516d011b9e81a1b696e812ea0f",
       "bytes": 4341
     },
     "readme": {
-      "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/README.md",
-      "sha256": "d70c916851a7066aadf5dcdc8dc0d04b1add98d9f530e02c0973122b9136271d",
+      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/README.md",
+      "sha256": "200fd089f34906ca54c3b7832ce818860879b9dbcc48c98a70697e2c53dbedba",
       "bytes": 1361
     },
-    "unique_code_RGBA_pairs": 1436,
+    "unique_code_RGBA_pairs": 1448,
     "curation_memberships": {
-      "complex_paper_diagrams_and_posters": 1082,
+      "complex_paper_diagrams_and_posters": 1094,
       "complex_scientific_charts": 92,
       "complex_arxiv_native": 262
     },
@@ -1726,46 +1726,35 @@
   },
   "latest_actual_PNG_publication": {
     "review": {
-      "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_2955fa69f22f4adcb2a8f6a12b6dfb82",
+      "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19",
       "pairs": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_2955fa69f22f4adcb2a8f6a12b6dfb82/reviewed_pairs.jsonl",
-        "sha256": "4ce1fccdf91ec8634f939bcd4ce932d76e1e9bb99225c7d7182218d13ac7c327",
-        "bytes": 37494
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19/reviewed_pairs.jsonl",
+        "sha256": "64b6157c601df06800e6e607a75b97bb14eba91a69c0b2f286ae34d6af7cb216",
+        "bytes": 10300
       },
       "occlusion": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_f5e7ee41f04f466b881f2694b94f7bf6/source_text_occlusion_reviews.jsonl",
-        "sha256": "54c3d00a43e6b3c684028c1b5deeb60c2eeadb1c7e52239c1202a3f582102f92",
-        "bytes": 3539
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_666d1ca87569458780b0c2410044a878/source_text_occlusion_reviews.jsonl",
+        "sha256": "d367262644d5d58857d598e997f0f7fb46ab5854ac663206fad8032aeab161c7",
+        "bytes": 706
       },
       "input_summary": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_f5e7ee41f04f466b881f2694b94f7bf6/summary.json",
-        "sha256": "cc63a0e42b11ecc144488464e8d5ddc3fb798423cb733002ca3523dd9b4f9271",
-        "bytes": 2660
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_mass_666d1ca87569458780b0c2410044a878/summary.json",
+        "sha256": "78fb21636bd4763cc62e7e2165e7895d7a6bbff286b14a5eb12a1820fbe95c0b",
+        "bytes": 1653
       },
       "decisions": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_2955fa69f22f4adcb2a8f6a12b6dfb82/decisions.json",
-        "sha256": "4273c0c60bbd6a64a2cc935a6911325030bb36438a7db24dcb7b17c7f2476614",
-        "bytes": 1747
+        "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a3b827fefa59494dbb166507b60a1f19/decisions.json",
+        "sha256": "251c83238517e3305c103311e063ca79aeaf3ee8247917f48238e7a8ef323461",
+        "bytes": 496
       },
       "approved_ids": [
-        "de854181ae7fbbb2214e02cc48e4064f77bf3af56fef366f6c03672dbd26feb1",
-        "e6decad86fbff149ebe3cdcea6937f027c1bbdda008c1a42edc77231e5665c83",
-        "e967a84038f954119bfc86495f41855f905895a7bfb43f0938d445d388180b3d",
-        "e99263f5c4b6270d48ae6892ef8440c3f3bb6a6280f13094d188f4327b5d6c84",
-        "f06bc06393d0049fb52fba4b6334e72553d266aa1430ef949e00ba0cb605b709"
+        "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
+        "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
       ],
-      "held_ids": [
-        "e558e9e40b85342aefdde8d08436818a572fed2756fb1177968299c516a99267",
-        "eaf10b425e6ab4cf63e70efc9c93d0e55ec29912844117ca84ea20d80bf1a6c4"
-      ],
+      "held_ids": [],
       "actual_native_PNG_inspected_ids": [
-        "de854181ae7fbbb2214e02cc48e4064f77bf3af56fef366f6c03672dbd26feb1",
-        "e558e9e40b85342aefdde8d08436818a572fed2756fb1177968299c516a99267",
-        "e6decad86fbff149ebe3cdcea6937f027c1bbdda008c1a42edc77231e5665c83",
-        "e967a84038f954119bfc86495f41855f905895a7bfb43f0938d445d388180b3d",
-        "e99263f5c4b6270d48ae6892ef8440c3f3bb6a6280f13094d188f4327b5d6c84",
-        "eaf10b425e6ab4cf63e70efc9c93d0e55ec29912844117ca84ea20d80bf1a6c4",
-        "f06bc06393d0049fb52fba4b6334e72553d266aa1430ef949e00ba0cb605b709"
+        "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
+        "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
       ],
       "technical_qualifications_unchanged": true,
       "new_normal_calls": 0,
@@ -1773,71 +1762,63 @@
       "model_calls": 0
     },
     "publication": {
-      "before": 1077,
-      "after": 1082,
+      "before": 1092,
+      "after": 1094,
       "added_ids": [
-        "de854181ae7fbbb2214e02cc48e4064f77bf3af56fef366f6c03672dbd26feb1",
-        "e6decad86fbff149ebe3cdcea6937f027c1bbdda008c1a42edc77231e5665c83",
-        "e967a84038f954119bfc86495f41855f905895a7bfb43f0938d445d388180b3d",
-        "e99263f5c4b6270d48ae6892ef8440c3f3bb6a6280f13094d188f4327b5d6c84",
-        "f06bc06393d0049fb52fba4b6334e72553d266aa1430ef949e00ba0cb605b709"
+        "f3511930ed15b102ddd4d0bc0dcecaf7facd42967ecfa9e4b8d4527954217d75",
+        "f406a8ee98c158299596e6b0efbdfd99e3dd280521a56cc5a06f9556f85ea70f"
       ],
-      "held_ids": [
-        "e558e9e40b85342aefdde8d08436818a572fed2756fb1177968299c516a99267",
-        "eaf10b425e6ab4cf63e70efc9c93d0e55ec29912844117ca84ea20d80bf1a6c4"
-      ],
+      "held_ids": [],
       "main": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T005940830334Z_review_batch_v8/paired_priority_complex.jsonl",
-        "sha256": "2d913a4125a4409b086bd80b1771b49b025a21615f852e25a3b34716fa89d351",
-        "bytes": 4797906,
-        "rows": 1082
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/paired_priority_complex.jsonl",
+        "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
+        "bytes": 4835154,
+        "rows": 1094
       },
       "review": {
-        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T005940830334Z_review_batch_v8/value_review.json",
-        "sha256": "e30d69c5e3a2ff2199971c2d31b5847a099176f7e0c3657a098ed215c7f1aa2c",
-        "bytes": 8000
+        "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T010613759713Z_review_batch_v8/value_review.json",
+        "sha256": "2e1fc63a5013bc6d9ec2829eea581c768eb0962ad5d39c56b4939035468600f9",
+        "bytes": 3395
       },
       "pointer": {
         "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
-        "sha256": "727b46310321ca9baea00111394c49739b2a501153ce680ee87315e91740b934",
+        "sha256": "66e7d9858479ab4b5cab48f8469140cb902ba145185eac1424b6a6ffe084a1b6",
         "bytes": 3516
       }
     }
   },
   "latest_runtime_progress": {
-    "at_utc": "2026-11-03T01:00:46.781539+00:00",
+    "at_utc": "2026-11-03T01:08:35.995581+00:00",
     "batches": {
       "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
         "counts": {
-          "abandoned": 750,
-          "qualified": 84,
-          "running": 5
+          "abandoned": 755,
+          "qualified": 84
         },
         "total": 839,
-        "terminal": 834,
+        "terminal": 839,
         "infrastructure_errors": 0,
         "controller": {
           "pid": 4019247,
-          "birth": "1145518167",
-          "live": true
+          "live": false
         },
         "recent_quality_seconds": {
-          "samples": 9,
-          "mean": 78.3921111111111,
-          "median": 74.705,
-          "max": 169.042
+          "samples": 12,
+          "mean": 123.32225,
+          "median": 100.711,
+          "max": 408.268
         },
         "infrastructure_stop": null
       },
       "svg_source_whitespace_disjoint_20261103_v1_mass": {
         "counts": {
-          "abandoned": 268,
-          "qualified": 35,
-          "queued": 251,
+          "abandoned": 334,
+          "qualified": 44,
+          "queued": 176,
           "running": 12
         },
         "total": 566,
-        "terminal": 303,
+        "terminal": 378,
         "infrastructure_errors": 0,
         "controller": {
           "pid": 800133,
@@ -1845,21 +1826,22 @@
           "live": true
         },
         "recent_quality_seconds": {
-          "samples": 9,
-          "mean": 87.81255555555555,
-          "median": 85.285,
-          "max": 132.61
+          "samples": 10,
+          "mean": 77.4209,
+          "median": 76.28399999999999,
+          "max": 136.372
         },
         "infrastructure_stop": null
       },
       "svg_source_whitespace_disjoint_20261103_v2_mass": {
         "counts": {
-          "abandoned": 10,
-          "queued": 263,
+          "abandoned": 78,
+          "qualified": 9,
+          "queued": 186,
           "running": 12
         },
         "total": 285,
-        "terminal": 10,
+        "terminal": 87,
         "infrastructure_errors": 0,
         "controller": {
           "pid": 1718674,
@@ -1867,10 +1849,10 @@
           "live": true
         },
         "recent_quality_seconds": {
-          "samples": 1,
-          "mean": 8.123,
-          "median": 8.123,
-          "max": 8.123
+          "samples": 8,
+          "mean": 87.6035,
+          "median": 84.5475,
+          "max": 117.9
         },
         "infrastructure_stop": null
       },
@@ -1880,17 +1862,17 @@
     },
     "cpu_count": 144,
     "load_average": [
-      53.52685546875,
-      49.763671875,
-      45.4599609375
+      50.0322265625,
+      49.35546875,
+      46.9716796875
     ],
     "new_normal_calls": 0,
     "new_QA_calls": 0,
     "parent": {
       "state": {
-        "elapsed_seconds": 2431.5416417084634,
+        "elapsed_seconds": 2896.918489780277,
         "goal_complete": false,
-        "pending_originals": 546,
+        "pending_originals": 390,
         "stage": "validated_waiting_existing_foreign_batch"
       },
       "owner": {
@@ -1898,14 +1880,14 @@
         "birth": "1145650317",
         "live": true
       },
-      "foreign_pending_count": 546,
+      "foreign_pending_count": 390,
       "failure": null
     },
     "review_registry": {
-      "held": 46,
-      "published": 180
+      "held": 51,
+      "published": 192
     },
-    "local_exec_wall_seconds": 1.193
+    "local_exec_wall_seconds": 1.258
   },
   "datikz_saved_source_raster_diagnostic": {
     "saved_source_only": true,
@@ -1925,67 +1907,67 @@
     }
   },
   "curated_payload_audit": {
-    "root": "/backup/shaoshitong/img2code_20261029/clean/curated_delivery_payload_audit_v1/46bd0372fb12457fb45655ff8cdf1969",
-    "at_utc": "2026-11-03T01:00:47.770539+00:00",
-    "rows": 1436,
+    "root": "/backup/shaoshitong/img2code_20261029/clean/curated_delivery_payload_audit_v1/1068b916e99b4832a3caa6cc76bfe12f",
+    "at_utc": "2026-11-03T01:08:19.382915+00:00",
+    "rows": 1448,
     "counts": {
-      "payload_valid": 1436
+      "payload_valid": 1448
     },
-    "fresh_payloads": 5,
-    "unchanged_payloads_reused": 1431,
+    "fresh_payloads": 12,
+    "unchanged_payloads_reused": 1436,
     "provenance_manifests": [
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/arxiv_author_native_incremental.jsonl",
-        "sha256": "4fda8a02666e7f7961b7b236eaf52bb4c695c5f238eb0fbf63a0b52daa1d795e",
-        "bytes": 3457135
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/arxiv_author_native_incremental.jsonl",
+        "sha256": "031b4c5c6d5829b19a2ccfef3773a20c32b907491841566881248fd575cd917c",
+        "bytes": 3464636
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/paper_diagrams_and_posters_full8.jsonl",
-        "sha256": "2d913a4125a4409b086bd80b1771b49b025a21615f852e25a3b34716fa89d351",
-        "bytes": 4797906
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/paper_diagrams_and_posters_full8.jsonl",
+        "sha256": "9525ebf8177cb842777cf676da3777ba62ce5932481753d67d7ea2aca9e7e308",
+        "bytes": 4835154
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/arxiv_registered_original_PDF_visual_v2.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/arxiv_registered_original_PDF_visual_v2.jsonl",
         "sha256": "db0cd17a049f29af8f0c9b9b42daad9db83f4f7ca091717252c97c30c7b55513",
         "bytes": 174809
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/scientific_chart_vector_SVG_backend.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/scientific_chart_vector_SVG_backend.jsonl",
         "sha256": "95a5ebd80ab7e3bd57986bb772ebb0d5c692406414db918b2a48064c5c9a1da1",
         "bytes": 12058425
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/scientific_chart_vector_source_replay.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/scientific_chart_vector_source_replay.jsonl",
         "sha256": "40d1786d41d9709c58eed617d94e309952773fe6dc4b981d6e1d291054935864",
         "bytes": 20108920
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/arxiv_author_native_frozen.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/arxiv_author_native_frozen.jsonl",
         "sha256": "8e1a635ec4532edebe8def1c333656efef0bb05ac2a19a807f5724684ef5b3fb",
         "bytes": 215044
       },
       {
-        "file": "clean/research_pairs_catalog/snapshot_20261103T005951592607Z_v5_d3dc72a2b310/input_manifests/scientific_chart_vector_provider_original.jsonl",
+        "file": "clean/research_pairs_catalog/snapshot_20261103T010732759170Z_v5_849da232b007/input_manifests/scientific_chart_vector_provider_original.jsonl",
         "sha256": "9227c4e65e00d2e2c1791a370c794cdf176964545712450ff89133c3d3c0212e",
         "bytes": 2023787
       }
     ],
     "source_pointer": {
-      "file": "clean/curated_delivery_payload_audit_v1/46bd0372fb12457fb45655ff8cdf1969/input_pointer.json",
-      "sha256": "7d37fd4c0b2b8d58cba85c459317b17ec71f1c94c57757eaad761f5af3f76118",
+      "file": "clean/curated_delivery_payload_audit_v1/1068b916e99b4832a3caa6cc76bfe12f/input_pointer.json",
+      "sha256": "e9f14919f7459acd8340db53c638f4841fc736d5506e89cfee067536c95a5307",
       "bytes": 914
     },
     "source_pairs": {
-      "file": "clean/curated_complex_research_delivery_v1/2ec16ac1f1b34c05b587ed0b7f289ea3/pairs.jsonl",
-      "sha256": "9b404d047b1023d713ba7a16d8abdcd841626a0ad90f13cb5c30c7a2db3df82f",
-      "bytes": 2359103
+      "file": "clean/curated_complex_research_delivery_v1/9e6ede22fe2643d184a484378ad5d74d/pairs.jsonl",
+      "sha256": "b4a155adf5503bdaeb9e85404913801233bf98c2bc47c567198cab5b8cfa3dab",
+      "bytes": 2378012
     },
     "audit_rows": {
-      "file": "clean/curated_delivery_payload_audit_v1/46bd0372fb12457fb45655ff8cdf1969/payload_audit.jsonl",
-      "sha256": "1f3cde8be34930d29ac98ab2c78441cccb736011f2aefc8a11eaa88fe0d4a36e",
-      "bytes": 3245979
+      "file": "clean/curated_delivery_payload_audit_v1/1068b916e99b4832a3caa6cc76bfe12f/payload_audit.jsonl",
+      "sha256": "0ee1bdda9aa0966f3f8912e9c428a6e1759b95338b495935bfa66a8e7195b6f9",
+      "bytes": 3272568
     },
-    "seconds": 1.9474961161613464,
+    "seconds": 2.4417065735906363,
     "producer": {
       "file": "conversion/scripts/audit_curated_delivery_payloads_v1.py",
       "sha256": "0b226ef23d14c37050b12bc3f9e517cb909218e674a4bcee5b0f899a5730d005",
@@ -2005,9 +1987,9 @@
         "stage": "approved_disjoint_mass"
       },
       "counts": {
-        "abandoned": 268,
-        "qualified": 35,
-        "queued": 251,
+        "abandoned": 330,
+        "qualified": 44,
+        "queued": 180,
         "running": 12
       },
       "targets": 566,
@@ -2038,8 +2020,9 @@
         "stage": "approved_disjoint_mass"
       },
       "counts": {
-        "abandoned": 10,
-        "queued": 263,
+        "abandoned": 73,
+        "qualified": 9,
+        "queued": 191,
         "running": 12
       },
       "targets": 285,
@@ -2063,5 +2046,53 @@
       },
       "parent_full_catchup_unchanged": true
     }
+  },
+  "checkpoint_receipts": [
+    "CURATED_RESEARCH_DELIVERY.md",
+    "curated-complex-research-delivery-v6.json",
+    "curated-delivery-payload-audit-v4.json",
+    "current-batch-runtime-progress15.json",
+    "current-batch-runtime-progress16.json",
+    "current-batch-runtime-progress17.json",
+    "current-batch-runtime-progress18.json",
+    "current-batch-runtime-progress19.json",
+    "resolved-geometry-mass-decisions8.json",
+    "resolved-geometry-mass-publication8.json",
+    "resolved-geometry-mass-value-review8.json",
+    "resolved-geometry-whole-round-completion-audit-v1.json",
+    "seven-source-delivery-audit-v7.json",
+    "svg-whitespace-disjoint-decisions3.json",
+    "svg-whitespace-disjoint-publication3.json",
+    "svg-whitespace-disjoint-value-review3.json",
+    "svg-whitespace-disjoint2-decisions1.json",
+    "svg-whitespace-disjoint2-publication1.json",
+    "svg-whitespace-disjoint2-value-review1.json"
+  ],
+  "checkpoint_arguments": {
+    "source": [
+      "review_fixed_svg_whitespace_pairs_v3.py",
+      "audit_completed_svg_round_v1.py"
+    ],
+    "receipt": [
+      "resolved-geometry-whole-round-completion-audit-v1.json",
+      "svg-whitespace-disjoint-value-review3.json",
+      "svg-whitespace-disjoint-decisions3.json",
+      "svg-whitespace-disjoint-publication3.json",
+      "svg-whitespace-disjoint2-value-review1.json",
+      "svg-whitespace-disjoint2-decisions1.json",
+      "svg-whitespace-disjoint2-publication1.json",
+      "resolved-geometry-mass-value-review8.json",
+      "resolved-geometry-mass-decisions8.json",
+      "current-batch-runtime-progress15.json",
+      "current-batch-runtime-progress16.json",
+      "current-batch-runtime-progress17.json",
+      "current-batch-runtime-progress18.json"
+    ],
+    "delivery": "curated-complex-research-delivery-v6.json",
+    "publication": "resolved-geometry-mass-publication8.json",
+    "runtime": "current-batch-runtime-progress19.json",
+    "scope": "seven-source-delivery-audit-v7.json",
+    "payload": "curated-delivery-payload-audit-v4.json",
+    "next_step": "Old v11 whole batch is now terminal:839 originals each attempted exactly once,84 technically qualified,755 typed source/quality failures,all cleanup complete,zero infrastructure failures,final84 asset checks passed. All84 qualified originals accounted:72 in strict main and12 held after actual PNG content/layout review. Last case802 completed normally with unchanged source/native marker contour failure,full QA408.268sec; no timeout/restart. This turn17 actual PNGs inspected,12 approved and5 held. Current1448 curated=1094 strict diagrams/posters+92 chart+262 arXiv,all payloads audited; incremental12 took2.44sec,1436 unchanged reused. Continue both birth-verified disjoint v24 batches and parent v12 automatic final catchup; current disjoint terminal counts378/566 and87/285,0 infrastructure errors. Accumulate/review only new qualified increments,retain existing same-core normal history,refresh final delivery and complete whole-goal requirement audit after fixed applicable scope finishes. No further experiments or network changes."
   }
 }

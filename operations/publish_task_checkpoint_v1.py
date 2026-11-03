@@ -28,6 +28,7 @@ now=datetime.datetime.now(datetime.timezone.utc).isoformat()
 for name in ['CURRENT_HANDOFF.json','CURRENT_RELEASE.json']:
  target=ops/name;x=json.loads(target.read_text());x.update(at_utc=now,strict_main_rows=publication['main']['rows'],authoritative_main=publication['main'],curated_delivery=delivery,latest_actual_PNG_publication=values['publication'],latest_runtime_progress=runtime,seven_source_delivery_audit=scope,curated_payload_audit=payload,review_registry=runtime['review_registry'],pending_reviews=runtime['review_registry'].get('await_actual_PNG_review',0),goal_complete=False,next_step=a.next_step)
  if scope.get('all_approved_disjoint_masses'):x['all_approved_disjoint_masses']=scope['all_approved_disjoint_masses']
+ x['checkpoint_receipts']=sorted(files);x['checkpoint_arguments']=vars(a)
  target.write_text(json.dumps(x,indent=2)+'\n')
 for name in ['SOURCE_MANIFEST.json','REMOTE_SOURCE_MANIFEST.json']:
  target=repo/name;m=json.loads(target.read_text());entries={r['file']:r for r in m['files']};entries.update({r['file']:r for r in remote})

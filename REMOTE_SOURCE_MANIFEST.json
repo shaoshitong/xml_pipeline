@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T01:01:15.421957+00:00",
+  "at_utc": "2026-11-03T01:08:56.498436+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -12025,6 +12025,18 @@
       "sha256": "32ef84ff7152a75fa8c674cab037efce413513437076069f6bb01ceea461cbcb",
       "bytes": 11976,
       "mtime_ns": 1793667395115324857
+    },
+    {
+      "file": "conversion/scripts/review_fixed_svg_whitespace_pairs_v3.py",
+      "sha256": "7b7283fa421a196325b5ba07e036933d016752fad1a6ede79e3a39aea312eebf",
+      "bytes": 6169,
+      "mtime_ns": 1793667729727908487
+    },
+    {
+      "file": "conversion/scripts/audit_completed_svg_round_v1.py",
+      "sha256": "14e0605b0b399ca576d316b12095718dfafce2967cc0cfacd4618d83b91d8cd5",
+      "bytes": 4067,
+      "mtime_ns": 1793668001047186248
     }
   ],
   "excluded_for_credential_review": []
