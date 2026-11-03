@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T01:24:41.654895+00:00",
+  "at_utc": "2026-11-03T01:48:10.535722+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -12049,6 +12049,30 @@
       "sha256": "a54acb2422ad8cc38feae5d7a6f6accc3a558685439f706ad9d72ead0d1fd46a",
       "bytes": 12645,
       "mtime_ns": 1793668993148115853
+    },
+    {
+      "file": "conversion/scripts/audit_completed_svg_round_v2.py",
+      "sha256": "5b8637940f38b4c6c0feafb05072049b24ea40a19d73b8f48abcc8fc8c56885b",
+      "bytes": 4551,
+      "mtime_ns": 1793669333209110296
+    },
+    {
+      "file": "conversion/scripts/audit_svg_whitespace_population_completion_v1.py",
+      "sha256": "99142d4fd7014af5f7b93e5cc3196a789e20af818fe7e529968497f1e2a9c071",
+      "bytes": 7921,
+      "mtime_ns": 1793669522563395102
+    },
+    {
+      "file": "conversion/scripts/publish_final_curated_research_delivery_v1.py",
+      "sha256": "650035467c57daca986cf182ff2a18712522f2d557bcfbe1778d6291a9729cd7",
+      "bytes": 12590,
+      "mtime_ns": 1793670258564956670
+    },
+    {
+      "file": "conversion/scripts/publish_final_curated_research_delivery_v2.py",
+      "sha256": "e9eda562562e14498f7b6312998e3005fbd25fada83e45c857801690f999e979",
+      "bytes": 12615,
+      "mtime_ns": 1793670300080808415
     }
   ],
   "excluded_for_credential_review": []

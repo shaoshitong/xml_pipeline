@@ -1,0 +1,32 @@
+[
+  [
+    "f1488ae27b60",
+    true,
+    "Complete free/nudged-phase neural network with loss and output-signal flow."
+  ],
+  [
+    "f735066bb555",
+    true,
+    "Complete GPU/CXL TRACE controller with metadata, bit-plane engine and scheduler blocks."
+  ],
+  [
+    "fbde8ce3401c",
+    false,
+    "Hold: source repeated-position annotation is covered in recurrent emotion/domain classifier."
+  ],
+  [
+    "fca9fdf1ff28",
+    true,
+    "Complete causal/computational evaluation decision tree and report/iteration endpoints."
+  ],
+  [
+    "fdf8c03d100f",
+    true,
+    "Complete mutable-feature counterfactual generator, classifier and discriminator losses."
+  ],
+  [
+    "ff797c3758e1",
+    true,
+    "Complete preprocessing, phrase extraction and candidate-scoring NLP architecture with interfaces."
+  ]
+]

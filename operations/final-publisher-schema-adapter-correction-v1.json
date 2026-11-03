@@ -1,0 +1,11 @@
+{
+  "failed_script": "publish_final_curated_research_delivery_v1.py",
+  "failed_script_sha256": "650035467c57daca986cf182ff2a18712522f2d557bcfbe1778d6291a9729cd7",
+  "phase": "read_source_census_schema_before_output_creation",
+  "error": "KeyError: programs",
+  "cause": "The source census report stores programs under seven_sources.VFIG.programs; only its stdout receipt has a top-level programs key.",
+  "fixed_script": "publish_final_curated_research_delivery_v2.py",
+  "canonical_delivery_pointer_changed": false,
+  "new_normal_calls": 0,
+  "new_QA_calls": 0
+}

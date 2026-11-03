@@ -1,0 +1,110 @@
+{
+  "at_utc": "2026-11-03T01:38:06.909687+00:00",
+  "batches": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
+      "counts": {
+        "abandoned": 755,
+        "qualified": 84
+      },
+      "total": 839,
+      "terminal": 839,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 4019247,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 12,
+        "mean": 123.32225,
+        "median": 100.711,
+        "max": 408.268
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v1_mass": {
+      "counts": {
+        "abandoned": 488,
+        "qualified": 78
+      },
+      "total": 566,
+      "terminal": 566,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 800133,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 17,
+        "mean": 70.08429411764706,
+        "median": 58.914,
+        "max": 139.523
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v2_mass": {
+      "counts": {
+        "abandoned": 261,
+        "qualified": 24
+      },
+      "total": 285,
+      "terminal": 285,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 1718674,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 7,
+        "mean": 81.03428571428572,
+        "median": 81.775,
+        "max": 93.714
+      },
+      "infrastructure_stop": null
+    },
+    "svg_complex_source_whitespace_cached_unseen_20261103_v12_mass": {
+      "counts": {
+        "abandoned": 34,
+        "qualified": 6
+      },
+      "total": 40,
+      "terminal": 40,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 2726028,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 15,
+        "mean": 106.49573333333333,
+        "median": 81.255,
+        "max": 329.73
+      },
+      "infrastructure_stop": null
+    }
+  },
+  "cpu_count": 144,
+  "load_average": [
+    5.54931640625,
+    15.93212890625,
+    29.20068359375
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "parent": {
+    "state": {
+      "stage": "round_complete_next_repair_required",
+      "goal_complete": false
+    },
+    "owner": {
+      "pid": 347847,
+      "live": false
+    },
+    "foreign_pending_count": 0,
+    "failure": null
+  },
+  "review_registry": {
+    "held": 62,
+    "published": 249
+  },
+  "local_exec_wall_seconds": 1.178
+}

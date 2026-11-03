@@ -1,0 +1,22 @@
+[
+  [
+    "e3bc4bb7d0be",
+    true,
+    "Complete shared key/value and hidden-state cache allocation example with request/token annotations."
+  ],
+  [
+    "e7b27719b80b",
+    true,
+    "Complete low-bit convolution architecture with six stages and input/output dimensions."
+  ],
+  [
+    "eaae176d4563",
+    true,
+    "Complete five-panel memory layout, pointer encoding, centroid IDs and hashed descriptor design."
+  ],
+  [
+    "f1480a027536",
+    true,
+    "Complete crossing quasi-recurrent question/answer encoders with tree products and pooled classifier."
+  ]
+]

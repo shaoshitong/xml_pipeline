@@ -1,0 +1,32 @@
+[
+  [
+    "e30d7a24e04b",
+    true,
+    "Complete multifeature subnetwork, primary classifier and explicit hyperparameter table."
+  ],
+  [
+    "e4af34119303",
+    true,
+    "Complete hierarchical recurrent encoder, retrieval model and response candidate selection architecture."
+  ],
+  [
+    "e594e1127365",
+    false,
+    "Hold: source entity-count branch label is covered in concept-network question answering."
+  ],
+  [
+    "ea7b64f660e2",
+    true,
+    "Complete asynchronous annotation/assistant server architecture with component notes and dataflow legend."
+  ],
+  [
+    "f42dabdca403",
+    true,
+    "Complete knowledge-based ad-hoc agent, behavior learning and external LLM verification framework."
+  ],
+  [
+    "f7fbe7682bbe",
+    true,
+    "Complete training/testing lesion-patch segmentation pipeline with structure/texture analysis and postprocessing."
+  ]
+]

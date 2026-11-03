@@ -1,0 +1,115 @@
+{
+  "at_utc": "2026-11-03T01:32:24.954800+00:00",
+  "batches": {
+    "svg_complex_resolved_geometry_cached_unseen_20261102_v11_mass": {
+      "counts": {
+        "abandoned": 755,
+        "qualified": 84
+      },
+      "total": 839,
+      "terminal": 839,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 4019247,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 12,
+        "mean": 123.32225,
+        "median": 100.711,
+        "max": 408.268
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v1_mass": {
+      "counts": {
+        "abandoned": 488,
+        "qualified": 78
+      },
+      "total": 566,
+      "terminal": 566,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 800133,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 17,
+        "mean": 70.08429411764706,
+        "median": 58.914,
+        "max": 139.523
+      },
+      "infrastructure_stop": null
+    },
+    "svg_source_whitespace_disjoint_20261103_v2_mass": {
+      "counts": {
+        "abandoned": 261,
+        "qualified": 24
+      },
+      "total": 285,
+      "terminal": 285,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 1718674,
+        "live": false
+      },
+      "recent_quality_seconds": {
+        "samples": 7,
+        "mean": 81.03428571428572,
+        "median": 81.775,
+        "max": 93.714
+      },
+      "infrastructure_stop": null
+    },
+    "svg_complex_source_whitespace_cached_unseen_20261103_v12_mass": {
+      "counts": {
+        "abandoned": 12,
+        "queued": 16,
+        "running": 12
+      },
+      "total": 40,
+      "terminal": 12,
+      "infrastructure_errors": 0,
+      "controller": {
+        "pid": 2726028,
+        "birth": "1146110420",
+        "live": true
+      },
+      "recent_quality_seconds": {
+        "samples": 2,
+        "mean": 45.756,
+        "median": 45.756,
+        "max": 60.277
+      },
+      "infrastructure_stop": null
+    }
+  },
+  "cpu_count": 144,
+  "load_average": [
+    22.06005859375,
+    24.85009765625,
+    36.1953125
+  ],
+  "new_normal_calls": 0,
+  "new_QA_calls": 0,
+  "parent": {
+    "state": {
+      "stage": "mass",
+      "mass": "/backup/shaoshitong/img2code_20261029/release/compiler_iterations/runs/svg_complex_source_whitespace_cached_unseen_20261103_v12_mass",
+      "goal_complete": false
+    },
+    "owner": {
+      "pid": 347847,
+      "birth": "1145650317",
+      "live": true
+    },
+    "foreign_pending_count": 0,
+    "failure": null
+  },
+  "review_registry": {
+    "await_actual_PNG_review": 6,
+    "held": 60,
+    "published": 239
+  },
+  "local_exec_wall_seconds": 1.141
+}

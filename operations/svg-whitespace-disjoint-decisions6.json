@@ -1,0 +1,57 @@
+[
+  [
+    "8360ad17c583",
+    false,
+    "Hold: partial article first page with small graph/table; not a complete complex research figure."
+  ],
+  [
+    "89dbf2efd951",
+    true,
+    "Complete two observation embedding variants with group encoder and positional tokenization."
+  ],
+  [
+    "8b861448bfc5",
+    true,
+    "Complete sensor convolution, transformer context and multi-head attention architecture."
+  ],
+  [
+    "8dcefec6672e",
+    false,
+    "Hold: temporal zero-subscript glyph rectangles extend outside native canvas."
+  ],
+  [
+    "91901eae3251",
+    true,
+    "Complete PETSc-specific knowledge, embedding, retrieval and fine-tuning dataflow."
+  ],
+  [
+    "95782a5ea8ee",
+    true,
+    "Complete gated encoder-decoder network and expanded attention-gate detail."
+  ],
+  [
+    "b145af2fd64e",
+    true,
+    "Complete categorical, continuous and user-sequence feature fusion with multitask outputs."
+  ],
+  [
+    "b97b6562f86a",
+    true,
+    "Complete span-based question answering, tokenization and coreference example."
+  ],
+  [
+    "c0a01b1758ad",
+    true,
+    "Complete small reasoning model taxonomy across model, training, inference and application branches."
+  ],
+  [
+    "c7f63303a19a",
+    true,
+    "Complete detection, GM-PHD filtering, track association, pruning and reinitialization workflow."
+  ],
+  [
+    "df3c3940a25d",
+    true,
+    "Complete cohort exclusions and grouped training/test split with documented counts."
+  ]
+]
