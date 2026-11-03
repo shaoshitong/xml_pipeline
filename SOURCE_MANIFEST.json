@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T00:12:43.132749+00:00",
+  "at_utc": "2026-11-03T00:14:37.277354+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -13843,9 +13843,9 @@
     },
     {
       "file": "operations/CURRENT_RELEASE.json",
-      "sha256": "7dc282bb70453257590a23d426b3cbb6264e30c5cb39d8a9d81a8deb47130aa0",
-      "bytes": 62012,
-      "mtime_ns": 1793664763115024732
+      "sha256": "c16e4d90c4c7e1f302133435616a9147b6899259d01353ad62a611cbafce4aed",
+      "bytes": 62170,
+      "mtime_ns": 1793664877275173523
     },
     {
       "file": "operations/DATIKZ_CLOSED_OUTLINE_DEVELOPMENT.json",
@@ -14961,9 +14961,9 @@
     },
     {
       "file": "operations/CURRENT_HANDOFF.json",
-      "sha256": "cac5386763cc02e3e42d5c108aa7ce15c0f153ff4259883b3b42fcc93a349398",
-      "bytes": 62012,
-      "mtime_ns": 1793664763113891639
+      "sha256": "c16e4d90c4c7e1f302133435616a9147b6899259d01353ad62a611cbafce4aed",
+      "bytes": 62170,
+      "mtime_ns": 1793664877274100680
     },
     {
       "file": "operations/BACKGROUND_REPAIR_PROGRESS.json",
@@ -15960,6 +15960,24 @@
       "sha256": "b89fc2d163baf6604b679e865cc0c543998adfeb8b95618428c2f32e2ebcc421",
       "bytes": 1461,
       "mtime_ns": 1793664763111817205
+    },
+    {
+      "file": "operations/svg-whitespace-program-progress1.json",
+      "sha256": "5067f8774cc69e8dd9638bd495ccd412ecd8c13f13cd596829ec8cd042acf588",
+      "bytes": 2046,
+      "mtime_ns": 1793664877272829003
+    },
+    {
+      "file": "operations/svg-whitespace-program-progress2.json",
+      "sha256": "c4e00d793577db104b67354cf39710b95b7ee5879cb48c39b8acc1a27363b4d3",
+      "bytes": 522,
+      "mtime_ns": 1793664877272969588
+    },
+    {
+      "file": "operations/source_core_attempts/manual_catalog_svg_source_whitespace_20261103_v14.json",
+      "sha256": "e09cef61ff596140408d38aff6cc8238a8d102b2c78f0d83937235c8642985ef",
+      "bytes": 78885,
+      "mtime_ns": 1793664807255553458
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
