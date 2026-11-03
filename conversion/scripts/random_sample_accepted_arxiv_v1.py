@@ -1,5 +1,6 @@
 """Uniform accepted-only sample; unchanged code/PNG bytes and resource closure."""
 from pathlib import Path
+from urllib.parse import quote
 import argparse,datetime,hashlib,html,json,random,shutil,struct,zipfile
 from PIL import Image,ImageDraw,ImageFont,ImageOps
 from arxiv_author_native_assets_v1 import dependencies
@@ -20,7 +21,7 @@ def main():
    code=R/row['code_file'];image=R/row['image_file'];xml=code.read_bytes();blob=image.read_bytes()
    assert sha(xml)==row['code_sha256'] and sha(blob)==row['image_sha256']
    proof=(R/row['native_replay_proof']).read_bytes();assert sha(proof)==row['native_replay_proof_sha256'] and json.loads(proof)['ok']
-   dep=dependencies(xml,code,R/row['original_PDF_file'],war)
+   dep=dependencies(xml,code,R/row['original_PDF_file'] if row.get('original_PDF_file') else code,war)
    assert not dep['issues'],'accepted resource closure missing'
    folder=out/'pairs'/f'{number:03d}';folder.mkdir(parents=True)
    if dep['asset_map']:
@@ -34,8 +35,8 @@ def main():
     rgba=im.convert('RGBA');w,h=rgba.size
     assert row['image_pixels']==dict(width=w,height=h,rgba_sha256=sha(struct.pack('>QQ',w,h)+rgba.tobytes()))
     white=Image.new('RGBA',rgba.size,'white');white.alpha_composite(rgba);thumbs.append(ImageOps.contain(white.convert('RGB'),(390,270)))
-   localcode=str(target.relative_to(out));localimage=str((folder/'image.png').relative_to(out));esc=html.escape
-   cards.append(f'<article><h2>#{number:03d} · {esc(row["paper"])}</h2><a href="{localimage}"><img loading="lazy" src="{localimage}" alt="#{number:03d}"></a><p><a href="{localimage}">原始 PNG</a> · <a download href="{localcode}">可编辑 drawio/XML</a> · <a href="pairs/{number:03d}/source_replay_proof.json">重放核验</a></p></article>')
+   localcode=str(target.relative_to(out));localimage=str((folder/'image.png').relative_to(out));esc=html.escape;codehref=esc(quote(localcode,safe='/'))
+   cards.append(f'<article><h2>#{number:03d} · {esc(row["paper"])}</h2><a href="{localimage}"><img loading="lazy" src="{localimage}" alt="#{number:03d}"></a><p><a href="{localimage}">原始 PNG</a> · <a download href="{codehref}">可编辑 drawio/XML</a> · <a href="pairs/{number:03d}/source_replay_proof.json">重放核验</a></p></article>')
    records.append(dict(number=number,local_code=localcode,local_image=localimage,resource_assets_copied=len(assets),portable_package=meta,source_record=row))
    if number%25==0:print(json.dumps(dict(copied_pairs=number)),flush=True)
  manifest=dict(at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),population=len(rows),sampled=100,seed=a.seed,sampling='uniform random without replacement; accepted-only frozen population; no visual replacements',index=a.index,index_sha256=a.expected_sha,milestone_preview_not_final_goal_acceptance=True,code_and_PNG_bytes_unchanged=True,source_replay_is_not_original_PDF_fidelity=True,font_dependencies_remain_runtime_declared_not_bundled=True,records=records)

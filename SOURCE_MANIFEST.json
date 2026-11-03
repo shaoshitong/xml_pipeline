@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T10:27:33.469037+00:00",
+  "at_utc": "2026-11-03T10:44:25.490898+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -681,10 +681,16 @@
       "mtime_ns": 1793694723021137937
     },
     {
+      "file": "conversion/scripts/arxiv_direct_author_XML_replay_v1.py",
+      "sha256": "925ca4f93e9a0bc6feb1a449fb9eda650c35ef3da3e708ab1d90d1b7c337cffb",
+      "bytes": 12725,
+      "mtime_ns": 1793702556743849708
+    },
+    {
       "file": "conversion/scripts/arxiv_goal500_progress_v1.py",
-      "sha256": "96cbe00f6cb774c8d44bdb710fcb7afc4c22c9481210739ec14dbd8673ce7c30",
-      "bytes": 14746,
-      "mtime_ns": 1793700928633845053
+      "sha256": "234be1b81534d5ab2912a1f90014428f1d16021b0cbce0640c9553789cb00cca",
+      "bytes": 14822,
+      "mtime_ns": 1793702556744906546
     },
     {
       "file": "conversion/scripts/arxiv_lan_source_relay_v1.py",
@@ -6546,6 +6552,12 @@
       "mtime_ns": 1793699981949956311
     },
     {
+      "file": "conversion/scripts/launch_arxiv_direct_author_XML_replay_v1.py",
+      "sha256": "426bc5b995029a400e8d9ff8f1e4a8a315503417b38c4df4153ac027e8845232",
+      "bytes": 1774,
+      "mtime_ns": 1793702556744544711
+    },
+    {
       "file": "conversion/scripts/launch_arxiv_lan_source_relay_v1.py",
       "sha256": "4ed649f3747982736b593404d6b8c4ad203bb10cfb9d1a219f4d9ce62d77e4db",
       "bytes": 1023,
@@ -9173,9 +9185,9 @@
     },
     {
       "file": "conversion/scripts/random_sample_accepted_arxiv_v1.py",
-      "sha256": "1764aca67133ff04cf6e1192836161437bf2b10ae382bdf0ed39758ebcc9550d",
-      "bytes": 6391,
-      "mtime_ns": 1793698596379812278
+      "sha256": "70f5ab6bce47ef86f810bd9915731c61d4e6285ffb15f6b6cb65b6fa18a04de0",
+      "bytes": 6503,
+      "mtime_ns": 1793702623782839534
     },
     {
       "file": "conversion/scripts/reaudit_restored_interval_v1.py",
@@ -11374,6 +11386,12 @@
       "sha256": "1f58fe941177fc2e0d739ae8a29e6d7cb050100fd24494467fde5d12987dfb7c",
       "bytes": 2039,
       "mtime_ns": 1793690701814173894
+    },
+    {
+      "file": "conversion/scripts/test_arxiv_direct_author_XML_archive_v1.py",
+      "sha256": "1bb569fa3939f2ba19455cccab4df246457a9a01bba2bbe561556de6737ef52d",
+      "bytes": 1240,
+      "mtime_ns": 1793702556744147584
     },
     {
       "file": "conversion/scripts/test_arxiv_lan_source_relay_v1.py",
