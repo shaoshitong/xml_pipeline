@@ -1,7 +1,7 @@
 {
-  "at_utc": "2026-11-03T13:22:09.592245+00:00",
-  "goal_complete": false,
-  "goal_status": "active",
+  "at_utc": "2026-11-03T13:31:13.521123+00:00",
+  "goal_complete": true,
+  "goal_status": "complete",
   "previous_goal_turn": "Progress: complete native-page identity and compiler integration exceeded500; froze540new/4299unified. All540 dated AI2023+; all8598 payload hashes and actual strict replay packets pass. Uniform final100 exported remotely, population540 seed20261103100, no visual replacements. Background native-page watcher completed real pass with134verified candidates and unchanged once ledgers. Final transport/source publication checks remain before marking goal complete.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
@@ -13,7 +13,7 @@
   "accepted_new_last_observation": 540,
   "unified_rows_last_observation": 4299,
   "target_new_pairs": 500,
-  "remaining_required": "Final540-pair snapshot and100 preview generated, full8598 payload-file and540 replay audits passed. Finish received preview stream checks, commit/push and verify all latest code/metadata including page compiler. Then run final requirement audit and mark existing goal complete. Continue already authorized five-node collection and deterministic no-model native-page watch; do not stop them when completing this stage. Future progress uses current automatic-admission index; final delivered snapshot is fixed540 additions/4299 total.",
+  "remaining_required": "No work remains for this fixed540-new-pair/4299-total delivery: final8598-file/540-pair audit, all540 standalone resource closures, uniform100 preview and actual local535-file+ZIP SHA checks passed. Complete the active goal after final Git remote SHA verification. Do not stop existing authorized collectors/watchers. Their live index can grow beyond the fixed540 delivery; future user status queries should distinguish both.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
   "invariants": [
     "No VPS bulk transport or Mac bulk relay",
@@ -505,7 +505,40 @@
       "all_archive_hashes_verified": true
     },
     "local_sample_preview": "/Users/shaoshitong/Documents/Codex/2026-11-02/chat-thread-codex-threads-01a19ace-60f1/outputs/random100_new540_final_seed20261103100_v1/index.html",
-    "local_received_artifact_verification": "HKUST3 hashes actual local archive/directory streams; receipts local_archive_verification.json and local_directory_verification.json pending collection."
+    "local_received_artifact_verification": {
+      "directory": {
+        "files_verified": 535,
+        "bytes": 153076008,
+        "all_file_SHA256_match": true,
+        "at_utc": "2026-11-03T13:20:50.820610+00:00",
+        "ok": true,
+        "mode": "directory",
+        "CPU_host": "HKUST3",
+        "input": "actual received local final artifact streamed back over SSH without local hashing/decoding",
+        "new_index_SHA256": "68830b5bafe40c4d96230ff547198b19e7cd214ebb3a1363f609d8b304d7eab8"
+      },
+      "archive": {
+        "archive_SHA256": "4359bc436db923656183799ba6256c477fc675826a13826b5b5601bf39e8ba34",
+        "bytes": 107485074,
+        "at_utc": "2026-11-03T13:20:43.485292+00:00",
+        "ok": true,
+        "mode": "archive",
+        "CPU_host": "HKUST3",
+        "input": "actual received local final artifact streamed back over SSH without local hashing/decoding",
+        "new_index_SHA256": "68830b5bafe40c4d96230ff547198b19e7cd214ebb3a1363f609d8b304d7eab8"
+      }
+    },
+    "resource_closure_final": {
+      "at_utc": "2026-11-03T13:26:03.499812+00:00",
+      "ok": true,
+      "pairs_checked": 540,
+      "dependency_records_checked": 12984,
+      "no_original_PDF_or_original_directory_fallback": true,
+      "errors": [],
+      "CPU_host": "HKUST3",
+      "new_PDF_import_calls": 0,
+      "new_model_calls": 0
+    }
   },
   "continuous_page_watch": {
     "directory": "clean/arxiv_research_figures_v1/embedded_native_page_watch_v1",
@@ -530,5 +563,15 @@
     "max_metadata_workers": 8,
     "max_native_replay_workers": 2,
     "CPU_host": "HKUST3"
+  },
+  "completion_audit_requirements": {
+    "baseline_3759_preserved": "full payload hash audit and exact baseline index SHA913624...",
+    "minimum500_new_complex_pairs": "frozen540 valid AI2023+ additions; full strict edit/restore/resource/font/source/provenance and code_OR_RGBA uniqueness checks",
+    "five_nodes_same_threads": "all five original PID/birth/entry/helper hashes verified;8download+8native-import each",
+    "network_and_retry_scope": "DIRECT arxiv egress; node4 task-only campus relay via3; source failures/OAI partitions stay pending; no Mac DNS/proxy/VPS changes or budget reset",
+    "runtime_progress": "repeated accepted counts190->235->414->505->540 and sustained source paper/received-byte growth",
+    "source_vs_original_PDF": "540 source replay,127 complete native-page subset,1 originalPDF-registered visual subset; views overlap",
+    "delivery": "frozen unified4299 index; uniform100 from540 seed20261103100; localindex+535payloadfiles and107485074byteZIP verified by HKUST3 SHA streams",
+    "source_publication": "latest root implementation plus8harness scripts in main+backupbranches; finalremote SHA to be verified before goal completion"
   }
 }

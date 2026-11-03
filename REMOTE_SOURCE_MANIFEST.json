@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T13:22:09.592245+00:00",
+  "at_utc": "2026-11-03T13:31:13.521123+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -847,6 +847,12 @@
       "sha256": "c123a9247284fc126aa266f79c3cb051a7b5bf0876f82e69e6db74bb20436495",
       "bytes": 2377,
       "mtime_ns": 1793692975047669174
+    },
+    {
+      "file": "conversion/scripts/audit_arxiv_final_resource_closure_v1.py",
+      "sha256": "88a7c7c2da38a151576a286cf68d0b0f9db0ce7d5eef8896f208121d4cfcadca",
+      "bytes": 1363,
+      "mtime_ns": 1793712338947122535
     },
     {
       "file": "conversion/scripts/audit_arxiv_goal500_final_delivery_v1.py",
