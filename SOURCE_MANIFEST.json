@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T01:48:10.604465+00:00",
+  "at_utc": "2026-11-03T05:08:51.938561+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -17046,6 +17046,12 @@
       "sha256": "81fb1271981a1f8668823491134e9911bd888c536d62fdf878ae128af166069c",
       "bytes": 834,
       "mtime_ns": 1793670490533290902
+    },
+    {
+      "file": "conversion/scripts/random_sample_100_v1.py",
+      "sha256": "c36b98d3c70ec9bf869f7bc24e2eb667803d25b869bdd9b06a0687184be9a2fb",
+      "bytes": 6810,
+      "mtime_ns": 1793682494975780352
     }
   ],
   "source_scope": "Authoritative task-owned top-level source modules on HKUST3 plus current versioned fixes and local tests. Runtime packages, datasets, model weights and credentials excluded.",
