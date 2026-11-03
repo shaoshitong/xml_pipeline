@@ -7,7 +7,7 @@ for _ in range(5):
  try:
   rows=[json.loads(l) for l in (D/'selected_pending_visual_policy_review.jsonl').read_text().splitlines()];break
  except (ValueError,FileNotFoundError):time.sleep(.2)
-approval=json.loads((D/'value_policy_approval.json').read_text());known=set(approval.get('reviewed_accepted_goal500_ids',[]))
+approval=json.loads((D/'value_policy_approval.json').read_text());known=set(approval.get('reviewed_accepted_goal500_ids',[]))|set(approval.get('reviewed_held_goal500_ids',[]))
 rows=[r for r in rows if r['goal500_pair_id'] not in known]
 stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out=D/('review_'+stamp);out.mkdir()
 font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',18)
