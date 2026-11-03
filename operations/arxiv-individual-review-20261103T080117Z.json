@@ -1,0 +1,338 @@
+{
+  "at_utc": "2026-11-03T08:07:21.497693+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T080117Z",
+  "contact_manifest_sha256": "640ded8a98e762c49bad62513c16870a6b793ea62ec4cce4cc25f62f4b06fb9f",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "a864b3e63b46fc3c5b4f76ebc5ef74d3e178fb3fed9078c48605aca58b586eef",
+    "contact_02.jpg": "99799a1d91c4fb506d694b0a17a7f7d1cb6309393265358300ea92b5217fdef9",
+    "contact_03.jpg": "302cc76871266de6a24e20641534a88d96f32c5dee2fd038045849f7db79562d",
+    "contact_04.jpg": "7a54c07748375837e82afa715d0b00ee829e9f381a97bba2fb9687f8d1ba4737",
+    "contact_05.jpg": "9b9b39fbefecbe13d3585c1bc9c911f87e31c7c2759e420a60151cf9814f1d99",
+    "contact_06.jpg": "0f89bded54a0b1afdbbfd659df4bd4a754f96b81b018cab7394e142e91146f1a",
+    "contact_07.jpg": "b0beaa8b84b73cb0b8bd084c24c9766cc9818ac35162d6b6df93e3b362cb12ab",
+    "contact_08.jpg": "adc4ede2dc8da1af96473a7a8c8c938d8801e82f82cb2838e02d8e3be8a2ea8f",
+    "contact_09.jpg": "9cfdc3bfd7de8a27d196ef40da71b1d3676313bc34d8b41c1e47e3d3bc291470",
+    "contact_10.jpg": "98586404325c051c6ab1e3175f71bf98fb18ac1f61f27f7148310b2d4b224947",
+    "contact_11.jpg": "cbaef32f9564197fb6f0497015a4d6d6003b9d90f53c7a75a2ab4465532aac8f",
+    "contact_12.jpg": "6e49cb7dd054b8e126d8e270b863e820ef5dc839a5efdf48434c9cdc4ed6b081"
+  },
+  "decisions": [
+    {
+      "number": 1,
+      "id": "00955f67054b67be3372fc90613c7a605426ffc05e17faf7988f12cad9dae560",
+      "paper": "2501.00190v2",
+      "accepted": false,
+      "reason": "Near-variant of the fuller medical temporal graph in panel 30; small raster text."
+    },
+    {
+      "number": 2,
+      "id": "09d8bf515aa50a69a83202694bb4156066977b8fca98d52b99d2ae4d7efad68d",
+      "paper": "2312.16002v1",
+      "accepted": true,
+      "reason": "ASR data simulation, enhancement and back-end modeling pipeline."
+    },
+    {
+      "number": 3,
+      "id": "09e1237af13ba0460d0ac8833cabf71b168d35232ebde820c905554bd8f91949",
+      "paper": "2603.29520v1",
+      "accepted": true,
+      "reason": "TrafficMoE pretraining and finetuning architecture."
+    },
+    {
+      "number": 4,
+      "id": "0af5d6bf26dc9e59b1592be1083fabbde9c7c785181893fc3f786bfaee590446",
+      "paper": "2606.30336v3",
+      "accepted": true,
+      "reason": "Encoder and multi-task relational inference framework."
+    },
+    {
+      "number": 5,
+      "id": "0e4729c02cd4ed327f12dd8c45cebe70b6ad38de39d2c93190f7b18c5c857c6e",
+      "paper": "2507.22101v2",
+      "accepted": true,
+      "reason": "Detailed AI agriculture scientific taxonomy."
+    },
+    {
+      "number": 6,
+      "id": "0f521a52bd41f6650a06bffa701df07fa727aa40d32b6b326bb2dbc517f41c97",
+      "paper": "2608.15763v5",
+      "accepted": true,
+      "reason": "Harness-aware SFT and RL training framework."
+    },
+    {
+      "number": 7,
+      "id": "0f86c362925266b47e2f1b01c67d013ef30fd3aacb5fe57b4f34ef0b29bbea3b",
+      "paper": "2409.19610v1",
+      "accepted": true,
+      "reason": "Federated multimodal prompt cooperation and signal decomposition."
+    },
+    {
+      "number": 8,
+      "id": "102f1fc834c0d179b621332915528999bb77fe30a4c5739edf01caef2697f750",
+      "paper": "2305.20062v2",
+      "accepted": true,
+      "reason": "Interactive image retrieval, embedding search and dialogue-building system."
+    },
+    {
+      "number": 9,
+      "id": "1196982b16e2978c37b8bbb884c19e99dfb311b2edba91ccd921d6c9c2deaee0",
+      "paper": "2405.20358v4",
+      "accepted": false,
+      "reason": "Small repeated medication-probability illustration/table, insufficient framework complexity."
+    },
+    {
+      "number": 10,
+      "id": "12338b9411f74d462def513fcadc7db34148218997d2f9232f249dc65911b51a",
+      "paper": "2606.31522v2",
+      "accepted": true,
+      "reason": "Synthetic market engine, agent framework and evaluation pipeline."
+    },
+    {
+      "number": 11,
+      "id": "13472ee650675e5673f667ce80bdc4eb2def20a3054801a77b32ea98390862f0",
+      "paper": "2502.20565v3",
+      "accepted": true,
+      "reason": "Federated embedding transmission and private zero-order optimization."
+    },
+    {
+      "number": 12,
+      "id": "1ca3e0f6696636451962f249e688cc0a47e46bafcb870eea8301392e11f9db6b",
+      "paper": "2501.00190v2",
+      "accepted": false,
+      "reason": "Simple clinical-vs-AI flow, insufficient complexity."
+    },
+    {
+      "number": 13,
+      "id": "1d459c4fd8be9d7b3f0f0af9367f819f2da31a1dee0c7b5e80a9855e8b29d584",
+      "paper": "2501.00190v2",
+      "accepted": false,
+      "reason": "Near-variant of the fuller message-passing framework in panel 40."
+    },
+    {
+      "number": 14,
+      "id": "1dd67696592efbc8fb50772a6b36fb7f5d062bb8313abc0d84f62fb817c97ead",
+      "paper": "2501.00190v2",
+      "accepted": false,
+      "reason": "Simple clinical-vs-AI flow, insufficient complexity."
+    },
+    {
+      "number": 15,
+      "id": "3aa1fcda909b40d0bbc8af04e8b69791e3a26f1a2fde0a09a0e198d56c31d456",
+      "paper": "2405.20279v2",
+      "accepted": true,
+      "reason": "Detailed encoder-decoder, discriminator and residual-block architecture."
+    },
+    {
+      "number": 16,
+      "id": "42cfeefd48ef7f6af3d460314d73428ef81ad7435bce577239cc688319cfc1e6",
+      "paper": "2603.00267v1",
+      "accepted": true,
+      "reason": "Multi-hop knowledge-graph retrieval and agentic inference system."
+    },
+    {
+      "number": 17,
+      "id": "5366fc4b21f1762ac592964022cef0505a42201514591a581c993294becb53ad",
+      "paper": "2602.23407v1",
+      "accepted": true,
+      "reason": "Vulnerability dataset construction and SFT/RL code-security framework."
+    },
+    {
+      "number": 18,
+      "id": "545aa072d8f840c9d1fd75eea84e8c253ea5b3d5939387c24210ad616ea842cc",
+      "paper": "2407.20083v1",
+      "accepted": false,
+      "reason": "Compact two-encoder comparison, repeated tokens dominate structural count."
+    },
+    {
+      "number": 19,
+      "id": "58217864f593671989db619c3b9950014d3a5fba0ef18223c5f974a7bc78507d",
+      "paper": "2610.05170v1",
+      "accepted": true,
+      "reason": "Generator-verifier shortcut coupling and coupled mitigation analysis."
+    },
+    {
+      "number": 20,
+      "id": "5ae0d06041fc63c1f167d34de7ee3a4e628a1be379f905a89e8ecf41e6221420",
+      "paper": "2610.06174v1",
+      "accepted": true,
+      "reason": "Quantization-awareness, self-report and training/comparative assessment framework."
+    },
+    {
+      "number": 21,
+      "id": "67fc6e28f588fd725e84502c8cf3fb4c77dc78bff8ce0d157c87c2c695442dd0",
+      "paper": "2408.16126v1",
+      "accepted": false,
+      "reason": "Small low-resolution compact pipeline; hold for readable detailed review."
+    },
+    {
+      "number": 22,
+      "id": "6f975a9b2f711d0d029cc9f00a887b835aaa406b266980debe1a4c2023e6613e",
+      "paper": "2407.21670v5",
+      "accepted": false,
+      "reason": "Repeated transformer blocks with limited method detail."
+    },
+    {
+      "number": 23,
+      "id": "73d47508b952288bdcac5ef5c10b5cc9446c76601d9f46ff7bc7fda598c709e4",
+      "paper": "2602.23864v1",
+      "accepted": true,
+      "reason": "Multi-agent topology generation and consensus pipeline."
+    },
+    {
+      "number": 24,
+      "id": "7929a4b68bbf0d119d6333b009b661ed7ff14a1d68b1b0744f47b3269fb7c2b4",
+      "paper": "2309.17368v2",
+      "accepted": true,
+      "reason": "Classical models and GNN message passing for circuit-device prediction."
+    },
+    {
+      "number": 25,
+      "id": "7f084b0197d319e60aba6f6cb788b61ac8a1554ed3b44828b17f54a0adc6b02c",
+      "paper": "2512.10966v3",
+      "accepted": true,
+      "reason": "Multimodal regional MoE fusion and interpretable brain-region mapping."
+    },
+    {
+      "number": 26,
+      "id": "831d3579757dbe2168ccec51dd2e9c814e6f9c8a9627a93a0d3c19514685a30f",
+      "paper": "2407.20083v1",
+      "accepted": false,
+      "reason": "Near-variant of the compact encoder comparison in panel 18."
+    },
+    {
+      "number": 27,
+      "id": "83927f53df9d549b58ba962a7e624ad776f0fc535aa8e0c6f21d8169b0c58067",
+      "paper": "2404.18758v1",
+      "accepted": true,
+      "reason": "Multimodal domain-prompt generator and transfer-learning framework."
+    },
+    {
+      "number": 28,
+      "id": "8f0866d69d73a243f89946ec51a2a6a6a86682c32f72ad9ec3fa4651de9c63db",
+      "paper": "2305.19857v1",
+      "accepted": false,
+      "reason": "Compact chain with token repeats; insufficient framework complexity."
+    },
+    {
+      "number": 29,
+      "id": "95a31fbcbafd0691e2109c15e015899d70e48728836fef8b22b94adeef0acaec",
+      "paper": "2404.18948v1",
+      "accepted": true,
+      "reason": "Sub-adjacent transformer with explicit block and attention decomposition."
+    },
+    {
+      "number": 30,
+      "id": "9de0f8e6fc2e050b02529b1423e735737091736392ed4a3b05e7dd074bf5f3af",
+      "paper": "2501.00190v2",
+      "accepted": true,
+      "reason": "Temporal clinical heterogeneous graph with organ/clinical-calculator relations."
+    },
+    {
+      "number": 31,
+      "id": "a0081c0d98a3f164a2d95fb26661c9ec5fbf74270545de497967f82b97ce612d",
+      "paper": "2608.15763v5",
+      "accepted": true,
+      "reason": "Digital-avatar deployment and detailed harness-agent runtime."
+    },
+    {
+      "number": 32,
+      "id": "a3ea53f6098584136d7bd97d53da434d59a4c2f352ba6c644cf0b547d72e8073",
+      "paper": "2506.23287v3",
+      "accepted": true,
+      "reason": "Hierarchical tree generation, diffusion decoding and lineage analysis."
+    },
+    {
+      "number": 33,
+      "id": "a55465fbc1d3949ae6c1d1f62bc9e0723ef0e8c48ca5e79a2fe20dfb564bea64",
+      "paper": "2501.19122v3",
+      "accepted": true,
+      "reason": "Probabilistic federated topology adjustment versus greedy baseline."
+    },
+    {
+      "number": 34,
+      "id": "a93afd5386c3f3fceda66c98916559940d6d73e264d3e2f85ce166635e69ac7d",
+      "paper": "2407.20083v1",
+      "accepted": false,
+      "reason": "Near-variant of the compact encoder comparison in panel 18."
+    },
+    {
+      "number": 35,
+      "id": "b2bb44a69006600828dd41732174c85046cbb972ba3d503a2185c32675dbdd25",
+      "paper": "2407.20083v1",
+      "accepted": false,
+      "reason": "Near-variant of the compact encoder comparison in panel 18."
+    },
+    {
+      "number": 36,
+      "id": "b5e530d9f3dad4cadf8cbdabd17ed831cae4272e13f45f5845efefece33995b6",
+      "paper": "2404.17670v1",
+      "accepted": true,
+      "reason": "Federated training and systematic corruption-domain test protocol."
+    },
+    {
+      "number": 37,
+      "id": "bd04f1b5ffe6554c0a5a6d4244d24e6d8d499dbc67eac69e792e728dc174537b",
+      "paper": "2505.00733v1",
+      "accepted": true,
+      "reason": "Branched robotic mission behavior tree with inspection and recharge logic."
+    },
+    {
+      "number": 38,
+      "id": "bd88528af75fd3b283a4e572f368e0c2b143b96ef311510ec756c6da807857ce",
+      "paper": "2409.18860v2",
+      "accepted": true,
+      "reason": "Continual prompt/task feature-space learning and geometric decision regions."
+    },
+    {
+      "number": 39,
+      "id": "c6ba7ea290a7c85a11a6e0604477dafed5e5c15b3a97278448cdbaed4e1b4bfa",
+      "paper": "2512.00706v1",
+      "accepted": true,
+      "reason": "Hallucination-judged preference construction and weighted iterative DPO."
+    },
+    {
+      "number": 40,
+      "id": "d8021510a02563a1ead3088dd7387a25e1389a656581713d4b59b12357cae4b2",
+      "paper": "2501.00190v2",
+      "accepted": true,
+      "reason": "Temporal heterogeneous message-passing, organ-risk and sepsis-risk framework."
+    },
+    {
+      "number": 41,
+      "id": "dafe0864f5189a6adabe5babe177f5294d1c6ebd951b1cfdc0df514652a042a9",
+      "paper": "2301.13340v2",
+      "accepted": true,
+      "reason": "Graph augmentation, contrastive learning and uncertainty-weighted affinity."
+    },
+    {
+      "number": 42,
+      "id": "eb47fdaf1ff773668ac29782710b2989522acdc08aa74dcc6e181d223060a790",
+      "paper": "2512.23675v2",
+      "accepted": true,
+      "reason": "Sliding-window/MLP adaptation architecture and prior-method comparison."
+    },
+    {
+      "number": 43,
+      "id": "f2f0d8e284c28060dfc479445b0b83196316a5ed2fc0d670999ffd66a39b677a",
+      "paper": "2509.26062v1",
+      "accepted": false,
+      "reason": "Very small source PNG; labels cannot be adequately checked."
+    },
+    {
+      "number": 44,
+      "id": "f850694aade880b2dd1778da71e7f06369cb543cbfd47df7ebe38b3a7ac7de6d",
+      "paper": "2405.20470v3",
+      "accepted": true,
+      "reason": "Data preparation and two-stage deep homography refinement pipeline."
+    },
+    {
+      "number": 45,
+      "id": "fb63cdfacf03bd088da467a0cfbe29d120c423931c01ca2ebd779a10e2f8a24e",
+      "paper": "2505.24165v1",
+      "accepted": false,
+      "reason": "Small schematic with insufficient readable method detail."
+    }
+  ],
+  "does_not_certify_original_PDF_fidelity": true
+}

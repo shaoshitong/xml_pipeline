@@ -63,6 +63,8 @@ def main():
     with (D / 'program.log').open('ab') as log:
         child = subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True, env=dict(os.environ, OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', PYTHONPATH=str(R / 'env')))
     row = dict(at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), pid=child.pid, birth_ticks=birth(child.pid), command=command, source_sha256=hashlib.sha256(script.read_bytes()).hexdigest(), route='arxiv -> HKUST3 DIRECT', VPS_used=False, Mac_in_data_path=False, download_workers=8, native_import_workers=8, metadata_connections=1, cumulative_guard_before=guard_before, existing_budget_not_reset=True, external_models=0)
+    if os.environ.get('ARXIV_CLUSTER_CONFIG'):
+        row.update(download_workers=0, native_import_workers=0, cluster_download_workers=40, cluster_native_import_workers=40, role='single_metadata_feeder')
     for path in [receipt, C / 'launch.json']:
         tmp = path.with_suffix('.tmp')
         tmp.write_text(json.dumps(row, indent=2) + '\n')

@@ -95,3 +95,23 @@ and remain pending; enabling math does not make them acceptable automatically.
 A snapshot-restore v2 prototype failed its fresh source probe and is not deployed
 as the production recipe. Final scientific-value review is still required for
 each newly accepted goal500 pair. The goal remains active and below +500.
+
+Update 2026-11-03 08:12 UTC: partial OAI recovery is now demonstrated by actual
+new direct XML page receipts. The CV partition enqueued 1047 then 1253 distinct
+jobs; cached/prefetched repeat enqueue attempts add zero. Another HTTP200 page
+hit the old 240-second body deadline before completion. The serial metadata
+transfer deadline is now 600 seconds, with a 100 B/s for 30 s stall guard and the
+same 16 MiB cap. Incomplete XML still never advances the cursor. The feeder now
+closes its unused converter pool; only the five workers supply the 40+40 pools.
+
+Forty-five complete source-replay figures were actually inspected in contact
+sheets `review_20261103T080117Z`. Thirty-one were individually accepted; fourteen
+small, simple, near-variant or unreadable figures were held. Together with the
+prior two figures, the fixed-baseline-relative accepted count is 33 and the
+unified index contains 3792 rows (not +500 complete). The exact source/PNG hashes,
+sheet hashes and per-figure rationale are in the individual review JSON. New
+future candidates remain unapproved until a later actual review.
+
+The math recovery ledger measured 34 verified source replays earlier, then 44
+verified and 190 pending. A pending result failing exact model/PNG restore is not
+counted. All these recoveries add zero PDF-import calls and zero model calls.

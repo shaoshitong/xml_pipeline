@@ -209,6 +209,16 @@ class DirectState(previous.UnicodeSafeState):
     def __init__(self, *args, **kwargs):
         self.access_denied = False
         super().__init__(*args, **kwargs)
+        if os.environ.get('ARXIV_CLUSTER_CONFIG'):
+            # The metadata feeder dispatches only; all forty import workers
+            # belong to the five node workers, including HKUST3's own worker.
+            for _ in self.workers:
+                self.pdf_queue.put(None)
+            for thread in self.workers:
+                thread.join()
+            self.workers.clear()
+            self.emit('cluster_metadata_feeder_ready', download_threads=0, native_import_workers=0, cluster_download_threads=40, cluster_native_import_workers=40)
+            return
         for index in range(len(self.workers), 8):
             thread = threading.Thread(target=self.worker_loop, name="native-" + str(index))
             thread.start()
@@ -229,6 +239,8 @@ class DirectState(previous.UnicodeSafeState):
             path = engine.CONTROL / (self.profile + '.performance.json')
             value = json.loads(path.read_text())
             value.update(route='arxiv -> HKUST3 DIRECT', VPS_used=False, Mac_in_data_path=False, download_threads=8, native_import_workers=8)
+            if os.environ.get('ARXIV_CLUSTER_CONFIG'):
+                value.update(download_threads=0, native_import_workers=0, metadata_connections=1, cluster_download_threads=40, cluster_native_import_workers=40)
             put(path, value)
 
     def download(self, paper):
@@ -318,7 +330,7 @@ def metadata(unit):
             path.write_bytes(blob)
             origin = 'preexisting_frozen_official_OAI_response_reused_no_network'
         else:
-            a = subprocess.run(['curl', '--noproxy', '*', '--compressed', '-L', '--connect-timeout', '8', '--max-time', '240', '--max-filesize', str(16 * 1024 ** 2), '-sS', '-D', str(path.with_suffix('.headers')), '-o', str(tmp), '-w', '%{http_code}', url], capture_output=True, text=True, timeout=250)
+            a = subprocess.run(['curl', '--noproxy', '*', '--compressed', '-L', '--connect-timeout', '8', '--max-time', '600', '--speed-limit', '100', '--speed-time', '30', '--max-filesize', str(16 * 1024 ** 2), '-sS', '-D', str(path.with_suffix('.headers')), '-o', str(tmp), '-w', '%{http_code}', url], capture_output=True, text=True, timeout=610)
             if a.returncode != 0 or a.stdout not in ['200', '206']:
                 raise RuntimeError('OAI_transfer_pending:curl=' + str(a.returncode) + ':HTTP=' + a.stdout)
             blob = tmp.read_bytes()
