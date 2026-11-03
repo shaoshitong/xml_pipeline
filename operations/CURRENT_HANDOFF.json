@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T12:36:05.125916+00:00",
+  "at_utc": "2026-11-03T13:22:09.592245+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Progress: dpsk completed frozen3946 job with246 strict verified candidates and23 remote tests. Independent actual payload/font/decoder/resource/archive/layout admission accepted224, increasing authoritative new190->414 and unified3949->4173;235->414 measured snapshots. Eight remote layout regressions preserve valid disconnected panels/ports and hold exact repeated drafts/extreme gaps. Existing original3759/190 unchanged. New metadata preflight8processes processed3989headers in~59s; same CLI coding session continued for remaining source/page work.",
+  "previous_goal_turn": "Progress: complete native-page identity and compiler integration exceeded500; froze540new/4299unified. All540 dated AI2023+; all8598 payload hashes and actual strict replay packets pass. Uniform final100 exported remotely, population540 seed20261103100, no visual replacements. Background native-page watcher completed real pass with134verified candidates and unchanged once ledgers. Final transport/source publication checks remain before marking goal complete.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -10,10 +10,10 @@
     "sha256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2"
   },
   "authoritative_current": "clean/arxiv_research_figures_v1/goal500_automatic_admission_v2/current.json",
-  "accepted_new_last_observation": 414,
-  "unified_rows_last_observation": 4173,
+  "accepted_new_last_observation": 540,
+  "unified_rows_last_observation": 4299,
   "target_new_pairs": 500,
-  "remaining_required": "Continue to500 accepted new (currently414). Same DeepSeek CLI session continuation is implementing cumulative-v3 inventory extension and exact complete native-page isolation from513multi-page docs, versioned adapters only; existing compiler core remains pinned by validator. Audit new page provenance/schema and unchanged full-page gates before integrating its separate manifest. Also consider automating remaining92 older strictly replay-verified pending rows without bypassing source/context/layout checks; none counted yet. All data/tests/compilation on HKUST3 CPU only. Final500 unified manifest and random100 remain required.",
+  "remaining_required": "Final540-pair snapshot and100 preview generated, full8598 payload-file and540 replay audits passed. Finish received preview stream checks, commit/push and verify all latest code/metadata including page compiler. Then run final requirement audit and mark existing goal complete. Continue already authorized five-node collection and deterministic no-model native-page watch; do not stop them when completing this stage. Future progress uses current automatic-admission index; final delivered snapshot is fixed540 additions/4299 total.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
   "invariants": [
     "No VPS bulk transport or Mac bulk relay",
@@ -93,7 +93,7 @@
     "new_model_calls": 0,
     "original_PDF_figure_usage_not_certified": true
   },
-  "accepted_new_index_SHA256": "8edfc9064389b45d4b4e61ee7f5c69cb551a860887f46233569409632a6848f6",
+  "accepted_new_index_SHA256": "68830b5bafe40c4d96230ff547198b19e7cd214ebb3a1363f609d8b304d7eab8",
   "embedded_source_candidate_discovery": {
     "partial_v1_directory": "clean/arxiv_research_figures_v1/embedded_XML_image_inventory_v1",
     "partial_marker_candidates": 141,
@@ -397,10 +397,22 @@
       "bytes": 29875
     },
     {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/embedded_xml_page_core_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/embedded_xml_page_core_v1.py",
+      "sha256": "f02b5872bfd05ddb323e8cdcd859e55b8af1f9c195cbbf75a9a208714c2e521b",
+      "bytes": 17207
+    },
+    {
       "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/run_embedded_xml_compiler_v1.py",
       "Git_file": "conversion/dpsk_embedded_compiler_v1/run_embedded_xml_compiler_v1.py",
       "sha256": "533fc6ec0f2bea34cd91393cad1db682b713f45fc35aaf868f2e195c03cd0fe5",
       "bytes": 30751
+    },
+    {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/run_embedded_xml_page_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/run_embedded_xml_page_compiler_v1.py",
+      "sha256": "edd09546f0efab89883051a67d0c71e77a433216e7fae3bc47d1e60d078b0ddc",
+      "bytes": 44630
     },
     {
       "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/test_embedded_xml_compiler_v1.py",
@@ -409,10 +421,114 @@
       "bytes": 9403
     },
     {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/test_embedded_xml_page_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/test_embedded_xml_page_compiler_v1.py",
+      "sha256": "0ba2e902d5b47a1b72693911d5ebe995d037379bf903335aa02d99821bf7fd5e",
+      "bytes": 7361
+    },
+    {
       "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/verify_embedded_xml_compiler_v1.py",
       "Git_file": "conversion/dpsk_embedded_compiler_v1/verify_embedded_xml_compiler_v1.py",
       "sha256": "d066479d07eece16d5b5b9f9cf0408224fd16f135aee24aa67503eb0e135e398",
       "bytes": 5444
+    },
+    {
+      "remote_file": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103/scripts/verify_embedded_xml_page_compiler_v1.py",
+      "Git_file": "conversion/dpsk_embedded_compiler_v1/verify_embedded_xml_page_compiler_v1.py",
+      "sha256": "88540df273c7ddf7c200b5ac5e11b0224fdc4bd8f36a558595fb4f54d2ff22c9",
+      "bytes": 8642
     }
-  ]
+  ],
+  "final_stage_snapshot": {
+    "directory": "clean/arxiv_research_figures_v1/goal500_final_delivery_v1",
+    "frozen": {
+      "at_utc": "2026-11-03T12:58:27.961721+00:00",
+      "population": 540,
+      "unified_rows": 4299,
+      "new_index": "clean/arxiv_research_figures_v1/goal500_final_delivery_v1/accepted_new_pairs.jsonl",
+      "new_index_SHA256": "68830b5bafe40c4d96230ff547198b19e7cd214ebb3a1363f609d8b304d7eab8",
+      "unified_index": "clean/arxiv_research_figures_v1/goal500_final_delivery_v1/baseline_plus_accepted_new.jsonl",
+      "unified_index_SHA256": "2b97aa5c6eaacd2a974bbeabba37503c0be023dcf9c68d2a821825c1b61d275f",
+      "baseline_rows": 3759,
+      "baseline_SHA256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2",
+      "quality_views": {
+        "arxiv_author_native_source_replay": 540,
+        "arxiv_complete_native_page_source_replay": 127,
+        "arxiv_registered_original_PDF_visual_v2": 1,
+        "automatic_native_framework_QA_v2": 350
+      },
+      "quality_views_overlap": true,
+      "CPU_host": "HKUST3",
+      "final_audit_and_sample_still_required": true
+    },
+    "final_audit": {
+      "at_utc": "2026-11-03T13:06:30.655594+00:00",
+      "ok": true,
+      "baseline_rows": 3759,
+      "new_pairs": 540,
+      "unified_rows": 4299,
+      "payload_files_checked": 8598,
+      "all_payload_hashes_match": true,
+      "new_code_OR_RGBA_unique_against_baseline": true,
+      "original_baseline_SHA256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2",
+      "prior190_preserved": true,
+      "new_index_SHA256": "68830b5bafe40c4d96230ff547198b19e7cd214ebb3a1363f609d8b304d7eab8",
+      "unified_index_SHA256": "2b97aa5c6eaacd2a974bbeabba37503c0be023dcf9c68d2a821825c1b61d275f",
+      "strict_native_replay_packets_checked": 540,
+      "metadata_context": {
+        "dated_AI_2023plus": 540
+      },
+      "quality_views": {
+        "arxiv_author_native_source_replay": 540,
+        "arxiv_registered_original_PDF_visual_v2": 1,
+        "automatic_native_framework_QA_v2": 350,
+        "arxiv_complete_native_page_source_replay": 127
+      },
+      "quality_views_overlap": true,
+      "original_PDF_fidelity_not_inferred": true,
+      "errors": [],
+      "CPU_host": "HKUST3",
+      "new_PDF_import_calls": 0,
+      "new_model_calls": 0,
+      "new_source_downloads": 0
+    },
+    "sample": {
+      "root": "/backup/shaoshitong/img2code_20261029/clean/review_samples/random100_new540_final_seed20261103100_v1",
+      "archive": "/backup/shaoshitong/img2code_20261029/clean/review_samples/random100_new540_final_seed20261103100_v1.zip",
+      "archive_bytes": 107485074,
+      "archive_sha256": "4359bc436db923656183799ba6256c477fc675826a13826b5b5601bf39e8ba34",
+      "population": 540,
+      "sampled": 100,
+      "seed": 20261103100,
+      "index_sha256": "68830b5bafe40c4d96230ff547198b19e7cd214ebb3a1363f609d8b304d7eab8",
+      "verified_payload_files": 534,
+      "all_archive_hashes_verified": true
+    },
+    "local_sample_preview": "/Users/shaoshitong/Documents/Codex/2026-11-02/chat-thread-codex-threads-01a19ace-60f1/outputs/random100_new540_final_seed20261103100_v1/index.html",
+    "local_received_artifact_verification": "HKUST3 hashes actual local archive/directory streams; receipts local_archive_verification.json and local_directory_verification.json pending collection."
+  },
+  "continuous_page_watch": {
+    "directory": "clean/arxiv_research_figures_v1/embedded_native_page_watch_v1",
+    "status": {
+      "at_utc": "2026-11-03T13:21:08.069628+00:00",
+      "state": "pass_completed_waiting_new_sources",
+      "exit_code": 0,
+      "verified_page_candidates": 134,
+      "page_states": {
+        "failed_page_replay": 32,
+        "held_below_value_policy": 3521,
+        "held_layout_gate": 4,
+        "skipped_duplicate_page_graph": 75,
+        "verified": 134
+      },
+      "CPU_host": "HKUST3",
+      "model_calls": 0,
+      "new_PDF_import_calls": 0
+    },
+    "no_model_calls": true,
+    "preserves_all_once_ledgers": true,
+    "max_metadata_workers": 8,
+    "max_native_replay_workers": 2,
+    "CPU_host": "HKUST3"
+  }
 }

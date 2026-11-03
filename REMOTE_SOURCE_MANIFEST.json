@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T12:39:38.074580+00:00",
+  "at_utc": "2026-11-03T13:22:09.592245+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -639,6 +639,12 @@
       "mtime_ns": 1793698318073242387
     },
     {
+      "file": "conversion/scripts/arxiv_complete_native_page_identity_v1.py",
+      "sha256": "49c230fa8d3f5fa71d1710ed9bf47f06e559a9238d7f5b3abd0834dfb8f9a7b1",
+      "bytes": 2582,
+      "mtime_ns": 1793710108541249438
+    },
+    {
       "file": "conversion/scripts/arxiv_complex_review_contacts_v1.py",
       "sha256": "aac57d7d5ca3e047e53844c95399a010ee0f8d52b71f908708d48675ae47485b",
       "bytes": 1941,
@@ -658,9 +664,9 @@
     },
     {
       "file": "conversion/scripts/arxiv_goal500_automatic_admission_v2.py",
-      "sha256": "940e40802390ac773798dbd6235ae9ca43e0e47f2197c205dd8ac09f37fab338",
-      "bytes": 12231,
-      "mtime_ns": 1793708783672540802
+      "sha256": "bbacf62c35119c86a1b57af31e201bce7f976a59463a8ba2ba0692755f6ac286",
+      "bytes": 15926,
+      "mtime_ns": 1793710293333009334
     },
     {
       "file": "conversion/scripts/arxiv_goal500_progress_v1.py",
@@ -841,6 +847,12 @@
       "sha256": "c123a9247284fc126aa266f79c3cb051a7b5bf0876f82e69e6db74bb20436495",
       "bytes": 2377,
       "mtime_ns": 1793692975047669174
+    },
+    {
+      "file": "conversion/scripts/audit_arxiv_goal500_final_delivery_v1.py",
+      "sha256": "6cb3031d7d60a6ee1bc918e16e8d84d5c93162dd63fad87b14fe1f87595093ef",
+      "bytes": 6251,
+      "mtime_ns": 1793711015675233080
     },
     {
       "file": "conversion/scripts/audit_completed_svg_round_v1.py",
@@ -7725,6 +7737,12 @@
       "mtime_ns": 1793702625136311384
     },
     {
+      "file": "conversion/scripts/random_sample_accepted_arxiv_v2.py",
+      "sha256": "71c32332a2c1dd20efa5aa885eb8f46c9392779c7e549556748af7803814ce24",
+      "bytes": 7860,
+      "mtime_ns": 1793710523392631228
+    },
+    {
       "file": "conversion/scripts/reaudit_restored_interval_v1.py",
       "sha256": "e39920fd2b0bb10c69d28d526ea620103c2aa7c676670373f1d8495d7cf99d8e",
       "bytes": 4038,
@@ -8887,6 +8905,12 @@
       "sha256": "1f58fe941177fc2e0d739ae8a29e6d7cb050100fd24494467fde5d12987dfb7c",
       "bytes": 2039,
       "mtime_ns": 1793692976255681916
+    },
+    {
+      "file": "conversion/scripts/test_arxiv_complete_native_page_identity_v1.py",
+      "sha256": "483d071679ef476d762902209dce0f3b50c6ba92b6dd03281b182765da93de0e",
+      "bytes": 1987,
+      "mtime_ns": 1793710109437248452
     },
     {
       "file": "conversion/scripts/test_arxiv_direct_author_XML_archive_v1.py",
@@ -11979,6 +12003,12 @@
       "mtime_ns": 1793709576101334687
     },
     {
+      "file": "conversion/scripts/verify_arxiv_final_preview_stream_v1.py",
+      "sha256": "909e827094f535d7b2f5b5c9b43220c03370bc7a968869d9991e9f22590279ec",
+      "bytes": 2304,
+      "mtime_ns": 1793711965594677862
+    },
+    {
       "file": "conversion/scripts/verify_fontmix_publication.py",
       "sha256": "1b6584608336af832e3174e5fbc49d3fc07de0f7d9cc89b3038e2332973534ae",
       "bytes": 2857,
@@ -12121,6 +12151,12 @@
       "sha256": "fd33e9d73933547d5a23939f091387c0da02ad40a2ff41545d16f122ef3c059a",
       "bytes": 20361,
       "mtime_ns": 1793462527991683256
+    },
+    {
+      "file": "conversion/scripts/watch_arxiv_embedded_native_pages_v1.py",
+      "sha256": "ce0d6dda782820384054625678d2ed60a4a503143490178562ff5544509f7f94",
+      "bytes": 2394,
+      "mtime_ns": 1793711221045909261
     },
     {
       "file": "evaluation/probe_browser.py",
