@@ -186,3 +186,8 @@ Archive fixture passes exact membership and rejects tampered/duplicate/escaping/
 
 
 2026-11-03 v2 actual progress: frozen cohort246,034source SVG/PNG filenames. At11:03:33UTC3500checked/37markers; at11:05:51UTC105,000checked/1712markers,141,034stillqueued. Same live PID1843921 verified by birth ticks1149548885. These remain unparsed marker candidates, not products. The scan performs no pixel decoding, network download, PDF import, source replay or model call.
+
+
+## Latest user-directed embedded XML compiler workflow (2026-11-03)
+
+User authorizes one DeepSeek Harness command-line coding session, using the already installed HKUST3 runtime, to implement deterministic SVG/PNG extraction, graph deduplication and automatic edit/render/restore gates. No virtual mouse, per-image LLM calls or further agents. This supersedes manual per-image visual review for this new branch; deterministic quality diagnostics and all existing strict replay/source/resource/font gates remain. Existing190 accepted pairs stay immutable until separately reviewed integration. Frozen inventory has completed246034 file checks with3946 metadata markers; those are not accepted pairs. The isolated remote workspace is `/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103`; CLI launch/inspection/brief source is on branch `codex/dpsk-svg-png-compiler`. Inspect `launcher_status.json`, actual tool events, generated source and `embedded_XML_compiler_dpsk_v1/status.json`; a launched or thinking process is not sufficient evidence.

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T11:06:49.856149+00:00",
+  "at_utc": "2026-11-03T11:28:02.745997+00:00",
   "goal_complete": false,
   "goal_status": "active",
   "previous_goal_turn": "Progress: implemented direct author-XML branch with archive membership, original metadata, resource closure, original font and exact edit/restore gates. Ten previously unseen source graphs produced8 strictly verified and2 pending; candidate visual batch20 produced13accepts/7holds, authoritative publisher confirmed190accepted/3949unified. Main five-node collection continues; no new PDF imports, source downloads or model calls in the new branch.",
@@ -13,12 +13,12 @@
   "accepted_new_last_observation": 190,
   "unified_rows_last_observation": 3949,
   "target_new_pairs": 500,
-  "remaining_required": "Continue toward500 accepted new complex pairs. Highest-priority next action: inspect persisted embedded_XML_image_inventory_v2 scanner (live pid1843921), already1712native markers after105000/246034image headers. Complete metadata extraction using official WAR PNG/SVG routines; prefilter original complexity and processed graph hashes; archive provenance+unchanged strict replay+visual review before counting. Keep190 accepted/3949 unified and preserve146-population random100 milestone; final500 random100 remains required.",
+  "remaining_required": "Verify authorized DeepSeek CLI coding session makes actual progress implementing deterministic embedded SVG/PNG extraction and compiler verification. Scan complete with3946 markers, not accepted pairs. Preserve baseline3759 + accepted190, integrate reviewed batch outputs toward +500, produce final random100.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
   "invariants": [
     "No VPS bulk transport or Mac bulk relay",
     "No Mac/Claude/Codex/Chrome network changes",
-    "No subagents or external models",
+    "No other subagents or external models; one user-authorized DeepSeek CLI coding session for embedded XML compiler tools",
     "One metadata connection, shared global rate gate",
     "Per-node eight download and eight native-import workers",
     "Central PDF once ledger, no shared NFS SQLite",
@@ -111,5 +111,16 @@
     "second_observed_queued": 141034,
     "still_scanning": true,
     "latest_observation_utc": "2026-11-03T11:05:51.004148+00:00"
+  },
+  "latest_user_override_20261103": {
+    "scope": "SVG/PNG embedded XML metadata branch",
+    "instruction": "Use existing local/HKUST dpsk harness via CLI, no virtual mouse. Delegate implementation of deterministic batch parsing/dedup/compiler edit/render/restore tools rather than manual inspection or per-image model calls.",
+    "authorized_model_sessions": 1,
+    "no_other_subagents": true,
+    "remote_workspace": "/backup/shaoshitong/img2code_20261029/conversion/dpsk_svg_png_compiler_20261103",
+    "code_branch": "codex/dpsk-svg-png-compiler",
+    "inventory_complete": true,
+    "metadata_markers": 3946,
+    "authoritative_acceptance_unchanged": true
   }
 }
