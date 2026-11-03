@@ -1,0 +1,28 @@
+"""Back up immutable source variants, exact remote hashes and compact evidence."""
+from pathlib import Path
+import datetime,hashlib,json,re,shutil,subprocess
+W=Path(__file__).resolve().parents[2];repo=W/'work/xml_pipeline';src=W/'work/catalog_refresh';O=W/'outputs'
+patterns=[r'compiler_svg_scene_frontend_v(23|24)\.py',r'compiler_svg_general_guard_v(19|20)\.py',r'compiler_svg_general_quality_adapter_v(26|27)\.py',r'compiler_svg_scene_quality_ro_v(30|31)\.py',r'svg_rotated_source_visual_scope_v(6|7)\.py',r'(svg_source_whitespace_native|svg_source_whitespace_normal_dev|launch_svg_source_whitespace_normal|test_svg_source_whitespace_browser)_v[12]\.py',r'(screen_flat_research_svg_sources|source_flat_whitespace_admission|launch_flat_whitespace_source_admission|svg_source_whitespace_quality_contract|review_svg_source_whitespace_qualified|prove_svg_whitespace_source_admission_equivalence)_v1\.py']
+names=sorted(p.name for p in src.iterdir()if any(re.fullmatch(t,p.name)for t in patterns)and not(repo/'conversion/scripts'/p.name).exists());assert names
+code="from pathlib import Path\nimport hashlib,json\nS=Path('/backup/shaoshitong/img2code_20261029/conversion/scripts')\nresult=[]\nfor name in "+repr(names)+":\n p=S/name;b=p.read_bytes();p.chmod(0o444);result.append(dict(file='conversion/scripts/'+name,sha256=hashlib.sha256(b).hexdigest(),bytes=len(b),mtime_ns=p.stat().st_mtime_ns))\nprint(json.dumps(result))"
+r=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8','hkust3','/home/shaoshitong/anaconda3/bin/python','-'],input=code,text=True,capture_output=True,check=True,timeout=30);remote=json.loads(r.stdout)
+for entry,name in zip(remote,names):
+    p=src/name;assert hashlib.sha256(p.read_bytes()).hexdigest()==entry['sha256'];shutil.copyfile(p,repo/entry['file'])
+files=['svg-physical-font-failure-diagnosis-v1.json','svg-source-whitespace-browser-controls-v1.json','svg-source-whitespace-browser-controls-v2.json','svg-source-whitespace-normal-launch-v1.json','svg-source-whitespace-normal-launch-v2.json','svg-source-whitespace-normal-progress2.json','svg-source-whitespace-normal-v2-progress4.json','resolved-geometry-mass-value-review2.json','resolved-geometry-mass-decisions2.json','resolved-geometry-mass-publication2.json','svg-source-whitespace-value-review1.json','svg-source-whitespace-decisions1.json','svg-source-whitespace-publication1.json','flat-research-svg-source-screen-v1.json','flat-whitespace-source-admission-launch-v1.json','svg-whitespace-source-admission-equivalence-v1.json','whitespace-source-and-mass-progress1.json','whitespace-source-and-mass-progress2.json']
+for name in files:shutil.copyfile(O/name,repo/'operations'/name)
+progress=json.loads((O/'whitespace-source-and-mass-progress2.json').read_text());normal=json.loads((O/'svg-source-whitespace-normal-v2-progress4.json').read_text());admission=json.loads((O/'flat-whitespace-source-admission-launch-v1.json').read_text())
+for name in ['CURRENT_HANDOFF.json','CURRENT_RELEASE.json']:
+    p=repo/'operations'/name;x=json.loads(p.read_text());x.update(at_utc=progress['at_utc'],strict_main_rows=progress['strict_main']['rows'],authoritative_main=progress['strict_main'],review_registry=progress['review_registry'],latest_mass_progress=progress,goal_complete=False)
+    x['whitespace_repair']=dict(frontend=24,guard=20,adapter=27,quality=31,source_core_key='190048fb8bc0e6eee862b0e0f43b55cda78c9820355151c76e8000e0657fd774',development_normal=normal['summary'],elapsed_seconds=normal['timing']['elapsed_seconds'],all_eight_checks_passed=True,fresh_unseen_validation_done=False,batch_rollout_started=False,browser_controls='operations/svg-source-whitespace-browser-controls-v2.json',source_admission_equivalence='operations/svg-whitespace-source-admission-equivalence-v1.json')
+    x['flat_source_expansion']=dict(prior_targets_retained=2730,additional_targets=317,total_source_targets=3047,screen='operations/flat-research-svg-source-screen-v1.json',admission=admission,observed=progress['source_admission'])
+    if 'last_program'in x:x['last_program'].update(counts=progress['mass_counts'],stage='mass',infrastructure_errors=progress['mass_infrastructure_errors'])
+    x['next_step']='Follow existing v11 839-case batch and six-worker 317-source admission without restart. Review only new full8 PNGs. After source admission finishes, use exact-source AST equivalence to retain prior 2730 source eligibility without repeating it; build a new sealed-global family/seen/reservation-safe cohort for immutable v24, run genuinely unseen validation and regression/semantic-negative controls, then gate the whole applicable batch. Development pass alone does not authorize rollout. Preserve old source/core attempts.'
+    p.write_text(json.dumps(x,indent=2)+'\n')
+shutil.copyfile(Path(__file__),repo/'operations'/Path(__file__).name)
+for name in ['SOURCE_MANIFEST.json','REMOTE_SOURCE_MANIFEST.json']:
+    p=repo/name;m=json.loads(p.read_text());entries={r['file']:r for r in m['files']};entries.update({r['file']:r for r in remote})
+    if name=='SOURCE_MANIFEST.json':
+        for f in(repo/'operations').iterdir():
+            if f.is_file():b=f.read_bytes();entries[str(f.relative_to(repo))]=dict(file=str(f.relative_to(repo)),sha256=hashlib.sha256(b).hexdigest(),bytes=len(b),mtime_ns=f.stat().st_mtime_ns)
+    m.update(at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),files=list(entries.values()));p.write_text(json.dumps(m,indent=2)+'\n')
+print(json.dumps(dict(new_source_files=len(names),source_files=names,strict_main=progress['strict_main']['rows'],mass_counts=progress['mass_counts'],additional_source_admission=progress['source_admission']['counts'],goal_complete=False)))

@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-02T23:56:23.631260+00:00",
+  "at_utc": "2026-11-03T00:05:29.091180+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -11707,6 +11707,150 @@
       "sha256": "ef312744d29758a8dfb4850d56421470af60b76249138eac56117445a2556633",
       "bytes": 5978,
       "mtime_ns": 1793663347115828857
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v19.py",
+      "sha256": "719fb5e69c965bb75160ae77a24e1fbb2a991d34f6389eb5d9989ae50f01fde0",
+      "bytes": 8645,
+      "mtime_ns": 1793664032835041251
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_guard_v20.py",
+      "sha256": "51fc4e2f9269321152c922bebbb7312e5bc1722b42e67faab6764dcd37004853",
+      "bytes": 8659,
+      "mtime_ns": 1793664105857034944
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v26.py",
+      "sha256": "f36bce931f892a377dc04431da5ef153f3e8309f0020e4a84fd86f0b94b8b991",
+      "bytes": 3840,
+      "mtime_ns": 1793664032883039872
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_general_quality_adapter_v27.py",
+      "sha256": "e072a6683852d3992a2982efbd79eef00606215711240da0608af316196aa3ed",
+      "bytes": 3854,
+      "mtime_ns": 1793664105905033681
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v23.py",
+      "sha256": "57007e0a076aeb4575c7774284541e115f4709f0b4ac2d94b8b7f46afa79a8c1",
+      "bytes": 55565,
+      "mtime_ns": 1793664032787042629
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_frontend_v24.py",
+      "sha256": "e0e0fb151bd207b03486794dc73a35fd33dfde0d6a758de60eab6f8ef28b5d43",
+      "bytes": 55519,
+      "mtime_ns": 1793664105809036207
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v30.py",
+      "sha256": "991e193e8f60d5506258f0f00e38c7ddae047b48401567045fc0b461eb27bb06",
+      "bytes": 13878,
+      "mtime_ns": 1793664032947038034
+    },
+    {
+      "file": "conversion/scripts/compiler_svg_scene_quality_ro_v31.py",
+      "sha256": "2941c63fa2d541c73b52250c49af66139b7ab3b6f375355da5021dbe7b38923a",
+      "bytes": 13892,
+      "mtime_ns": 1793664105997031260
+    },
+    {
+      "file": "conversion/scripts/launch_flat_whitespace_source_admission_v1.py",
+      "sha256": "6b931b564e52a23475153b03453827494770ac38c3a2262e81250f3fb3aa583d",
+      "bytes": 2142,
+      "mtime_ns": 1793664232617928101
+    },
+    {
+      "file": "conversion/scripts/launch_svg_source_whitespace_normal_v1.py",
+      "sha256": "1175acfa33edce89d0d33947b60d7bda5c351a8b32e24062d3c49a79124650df",
+      "bytes": 2959,
+      "mtime_ns": 1793664033127032869
+    },
+    {
+      "file": "conversion/scripts/launch_svg_source_whitespace_normal_v2.py",
+      "sha256": "3fcb40cf25cfe63c8b2fe01640bb2ced5e1e629dd87b26856029be8bd1999be5",
+      "bytes": 2959,
+      "mtime_ns": 1793664106157027055
+    },
+    {
+      "file": "conversion/scripts/prove_svg_whitespace_source_admission_equivalence_v1.py",
+      "sha256": "e3ebe31bbdf5411b1ce63787fabec9b5893672d890e94c7601be31d72d2d0fb8",
+      "bytes": 2388,
+      "mtime_ns": 1793664297792486939
+    },
+    {
+      "file": "conversion/scripts/review_svg_source_whitespace_qualified_v1.py",
+      "sha256": "192f92b253806f12b6fd56a7db04e7e8284736414169b35c00f3796bd9eba47c",
+      "bytes": 5896,
+      "mtime_ns": 1793664249477546056
+    },
+    {
+      "file": "conversion/scripts/screen_flat_research_svg_sources_v1.py",
+      "sha256": "5306ae511239b1cc56172a83087459c0c7e169f235327b4c650b2a10a99fa551",
+      "bytes": 4982,
+      "mtime_ns": 1793664201814643838
+    },
+    {
+      "file": "conversion/scripts/source_flat_whitespace_admission_v1.py",
+      "sha256": "36a8f54e75e9b59321df13c50c242e7e60117ad837f461e85fa667eef57fa9d6",
+      "bytes": 10170,
+      "mtime_ns": 1793664232569929199
+    },
+    {
+      "file": "conversion/scripts/svg_rotated_source_visual_scope_v6.py",
+      "sha256": "9d0bda4a138a4e30b9ad32a6922b245c6c91da974e613c83a4e802354345bc7b",
+      "bytes": 4523,
+      "mtime_ns": 1793664033019035968
+    },
+    {
+      "file": "conversion/scripts/svg_rotated_source_visual_scope_v7.py",
+      "sha256": "4ac5a7e64ca830b6ef615650e9f0e20a318272f0cf791a079158d83471cea180",
+      "bytes": 4523,
+      "mtime_ns": 1793664106045029999
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_native_v1.py",
+      "sha256": "9d0c0e9ed970c01a20b7c91a4bff1cb08ae30e940008ba8d2d750d997db8b5a9",
+      "bytes": 853,
+      "mtime_ns": 1793664032707044927
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_native_v2.py",
+      "sha256": "ea240380c14372b8614b49d0857a4e56a9b3f4528c7b504dd843ded8da83e1c2",
+      "bytes": 864,
+      "mtime_ns": 1793664105733038206
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_normal_dev_v1.py",
+      "sha256": "1c2d7787f5d497e83602849bd83182a6e6bcd0549bfd07873195c1616bee0b4d",
+      "bytes": 4718,
+      "mtime_ns": 1793664033075034361
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_normal_dev_v2.py",
+      "sha256": "f5805d338a721ed999f945abb174c1019cf74d6e6f6a3dbf44c2143a13e88796",
+      "bytes": 4718,
+      "mtime_ns": 1793664106105028422
+    },
+    {
+      "file": "conversion/scripts/svg_source_whitespace_quality_contract_v1.py",
+      "sha256": "b3a6be62c0de6a788713b983da61118d17060f01be99f7a559be2ef4b42c1117",
+      "bytes": 9925,
+      "mtime_ns": 1793664249429547134
+    },
+    {
+      "file": "conversion/scripts/test_svg_source_whitespace_browser_v1.py",
+      "sha256": "2c5f5ca643e1fe41f7b2577904c0c6f77f7471ef73bfbe310443c348bd095c6a",
+      "bytes": 3891,
+      "mtime_ns": 1793664050358543573
+    },
+    {
+      "file": "conversion/scripts/test_svg_source_whitespace_browser_v2.py",
+      "sha256": "1fc1d25defd182abc195a10b0996dc492deb3752a28605e62f86f37863d1832f",
+      "bytes": 4859,
+      "mtime_ns": 1793664114380811868
     }
   ],
   "excluded_for_credential_review": []

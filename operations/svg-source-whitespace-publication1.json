@@ -1,0 +1,60 @@
+{
+  "review": {
+    "root": "/backup/shaoshitong/img2code_20261029/clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a2ae64ba87f7450aa5d12aa90607ab38",
+    "pairs": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a2ae64ba87f7450aa5d12aa90607ab38/reviewed_pairs.jsonl",
+      "sha256": "5d5ae10d5df11e24760bf3c8921faa31452fd7c244ae3a9b1750e5e7c24e0077",
+      "bytes": 5298
+    },
+    "occlusion": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_source_whitespace_v24_6c181ccbd186471a9a56069f10ceaf3a/source_text_occlusion_reviews.jsonl",
+      "sha256": "0301b1e8a15700509d499599d50a455fc1cb09ce2f28377dd969ab378551d9d8",
+      "bytes": 353
+    },
+    "input_summary": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/background_incremental_source_whitespace_v24_6c181ccbd186471a9a56069f10ceaf3a/summary.json",
+      "sha256": "202edad15fa02c30f28cf47113035c53998dbe3a8b5178e65c864028762af6c7",
+      "bytes": 1635
+    },
+    "decisions": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/value_reviews/actual_PNG_incremental_a2ae64ba87f7450aa5d12aa90607ab38/decisions.json",
+      "sha256": "f0ab2bb445649c9921543aac20d5501cde1cf7da3b5798566cf39c7789f6beda",
+      "bytes": 462
+    },
+    "approved_ids": [
+      "02578ea8477157a809457e7a3d2b0514dca01ed9b2ac3fe51537f5b6b79d4024"
+    ],
+    "held_ids": [],
+    "actual_native_PNG_inspected_ids": [
+      "02578ea8477157a809457e7a3d2b0514dca01ed9b2ac3fe51537f5b6b79d4024"
+    ],
+    "technical_qualifications_unchanged": true,
+    "new_normal_calls": 0,
+    "new_QA_calls": 0,
+    "model_calls": 0
+  },
+  "publication": {
+    "before": 986,
+    "after": 987,
+    "added_ids": [
+      "02578ea8477157a809457e7a3d2b0514dca01ed9b2ac3fe51537f5b6b79d4024"
+    ],
+    "held_ids": [],
+    "main": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T000431688135Z_review_batch_v8/paired_priority_complex.jsonl",
+      "sha256": "777f8082eb22d113c1fece2ab5244906d1923eb3c8240e4f4865fc6fdcaf7257",
+      "bytes": 4504238,
+      "rows": 987
+    },
+    "review": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/published_current_20261103T000431688135Z_review_batch_v8/value_review.json",
+      "sha256": "28655dc3d4ef1889e1cc40dba3bd5bbdae89cb5fb96042c56c7114b48f1a29cf",
+      "bytes": 2531
+    },
+    "pointer": {
+      "file": "clean/complexity_curation_20261102T054553Z_v1/current.json",
+      "sha256": "08ce703caf5a0bc0c82dd4f02c8e2f74761cd270551161393f3594eeab2547a6",
+      "bytes": 3514
+    }
+  }
+}
