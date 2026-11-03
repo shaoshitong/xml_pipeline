@@ -162,3 +162,8 @@ Loopback fixture verified raw compressed bytes,206Range, authorization, URL rest
 
 
 Second recovery observation10:02UTC: HKUST4 new launch28papers /24,440,953source bytes, gains+12papers/+12,105,667bytes over the first observation. Broker1257 ingested. The sole relay BrokenPipe was traced to2610.20512v1: official/src returned PDF content type; the unchanged worker intentionally rejected it before reading body (typed_skip_source_attempt), not a transport retry. All five actual worker identities/core helper hashes and39 canonical source files verified.
+
+
+2026-11-03 10:16 UTC: three additional figures individually accepted; approvals149. Diagnosed33 of40 viewport-protocol pending cases: model/geometry/pixels/PNG restore exact, SVG differs solely in official random drawio-svg-<GUID>-gradient namespaces. New renderer gives the official Editor.guid a deterministic source-hash/ordinal allocator only during synchronous getSvg, restores it in finally, and leaves source XML/model and the exact original acceptance comparator unchanged.
+
+Fresh gradient+math synthetic A/B: random exporter fails only strict SVG; deterministic exporter passes model/SVG/RGBA/PNG gates with equal geometry inventory. New stable_export_source_replay_v1 controller selects only proven namespace-only old failures, pins old proof/record/SVG/PNG files and source recipes before/after, claims a new versioned source-validation once record, and never calls PDF import or models. Seven failures in other gates remain untouched. Main five collection workers and old ledgers are preserved. No new-source automatic acceptance: successful rows enter the unchanged individual visual policy.
