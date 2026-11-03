@@ -21,7 +21,7 @@ def verify(item):
         files[str(f.relative_to(D))]=dict(sha256=h,bytes=f.stat().st_size)
     assert files[f'{n:06d}/diagram.png']['sha256']==row['image_sha256']
     assert subprocess.run(['pdfinfo',str(directory/'diagram.pdf')],stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=30).returncode==0
-    return dict(number=n,id=row['id'],files=files,drawio_bytes_unchanged=proof['drawio_bytes_unchanged'])
+    return dict(number=n,id=row['id'],files=files,drawio_bytes_unchanged=proof['drawio_bytes_unchanged'],PDF_render_mode=proof.get('PDF_render_mode','native_vector_PDF'))
 def main():
     source=A/'input_snapshot.jsonl';rows=[json.loads(x) for x in source.read_text().splitlines()]
     assert len(rows)==4316 and {f.name for f in D.iterdir()}=={f'{n:06d}' for n in range(1,len(rows)+1)}
@@ -50,6 +50,7 @@ def main():
         archive_sha256=digest(archive),source_snapshot_sha256=digest(source),all_payload_checksums_verified=True,
         all_ZIP_member_checksums_verified=True,all_PDFs_reopened=True,PNG_bytes_unchanged=True,
         drawio_source_bytes_unchanged=sum(x['drawio_bytes_unchanged'] for x in records),
+        rasterized_filter_PDF_numbers=[x['number'] for x in records if 'lossless_raster' in x['PDF_render_mode']],
         font_note='Author font declarations retained; PDFs use fonts embedded by the pinned offline Chromium runtime.')
     (A/'completion.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt),flush=True)
 if __name__=='__main__':main()
