@@ -122,5 +122,15 @@
     "inventory_complete": true,
     "metadata_markers": 3946,
     "authoritative_acceptance_unchanged": true
+  },
+  "independent_duplicate_admission": {
+    "module": "conversion/scripts/arxiv_pair_identity_admission_v1.py",
+    "rule": "Reject new candidate when code SHA OR dimensions-prefixed RGBA SHA duplicates baseline or already admitted candidates; preserve baseline rows.",
+    "regression_tests": 5,
+    "local_and_remote_tests_passed": true,
+    "real_190_index_audit_passed": true,
+    "no_existing_index_changes": true,
+    "runtime_audit": "clean/arxiv_research_figures_v1/pair_identity_admission_audit_v1/audit.json",
+    "integration": "Available and verified; use for next publisher version, current publisher still manual190."
   }
 }

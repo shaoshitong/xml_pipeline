@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T11:03:36.078530+00:00",
+  "at_utc": "2026-11-03T11:36:47.345080+00:00",
   "scope": "authoritative task-owned top-level source modules; no environment packages or dataset payloads",
   "files": [
     {
@@ -727,6 +727,12 @@
       "sha256": "ebbed656ac9f29be325d857f8eaeb985d37398f3789a38dda51a2c32b5c5e9dd",
       "bytes": 25968,
       "mtime_ns": 1793693741623195484
+    },
+    {
+      "file": "conversion/scripts/arxiv_pair_identity_admission_v1.py",
+      "sha256": "d789ad15b150f92fe86775481b1c9ec10404df7e9b8f38201c680af9d6c26669",
+      "bytes": 2280,
+      "mtime_ns": 1793705709050402705
     },
     {
       "file": "conversion/scripts/arxiv_parallel_pipeline_v3.py",
@@ -8869,6 +8875,12 @@
       "sha256": "4fcce05ba0d17e44bdb8a63e7f01ade1b887f4bcd6694a19d3ac4e28d6cd4323",
       "bytes": 2732,
       "mtime_ns": 1793699903732513788
+    },
+    {
+      "file": "conversion/scripts/test_arxiv_pair_identity_admission_v1.py",
+      "sha256": "0c14de41cd895410fed1e6841dfb58c0a642fd319e93725f475ddcaa6bc3f2e7",
+      "bytes": 2016,
+      "mtime_ns": 1793705710210381857
     },
     {
       "file": "conversion/scripts/test_auto_quality_batch_v4.py",
