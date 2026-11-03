@@ -1,8 +1,8 @@
 {
-  "at_utc": "2026-11-03T09:32:36.567371+00:00",
+  "at_utc": "2026-11-03T09:44:48.495819+00:00",
   "goal_complete": false,
   "goal_status": "active",
-  "previous_goal_turn": "Reviewed 125 figures and explicitly accepted 88; total new accepted 128. Found HKUST4/5 stopped on surrogateescaped archive filenames in JSON performance save, deployed lossless escaped JSON writer and resumed from preserved ledgers. Source-only quality and original-PDF fidelity remain separately counted.",
+  "previous_goal_turn": "Produced accepted-only random100 milestone package; reviewed 25 new candidates, accepted20 and held5; corrected two earlier near-duplicate accepts (128-2+20=146). Fixed review-batch replay to preserve later corrections. Five node byte and paper counts continue increasing. Goal +500 remains incomplete.",
   "root": "/backup/shaoshitong/img2code_20261029",
   "baseline": {
     "file": "clean/accepted_3759_v1/pairs.jsonl",
@@ -10,8 +10,8 @@
     "sha256": "913624deb45c1f9b0e72bc25ba0c7b643700e7566e00ac27237f11ed7eb639f2"
   },
   "authoritative_current": "clean/arxiv_research_figures_v1/goal500_progress_v1/current.json",
-  "accepted_new_last_observation": 128,
-  "unified_rows_last_observation": 3887,
+  "accepted_new_last_observation": 146,
+  "unified_rows_last_observation": 3905,
   "target_new_pairs": 500,
   "remaining_required": "Continue collection and strict source replay; individually review additional complex figures; meet +500 and produce final random100 preview and final verified index. Do not declare complete based on these partial counts.",
   "operational_guide": "operations/arxiv-cluster-direct-v1.md",
@@ -37,7 +37,7 @@
     "Review snapshots may include deliberately held simple/low-resolution/near-variant figures",
     "An unused normalized-snapshot v2 probe failed and is not the deployed renderer",
     "New uniform-viewport source validation preserves strict restore gates; old failed proof records remain immutable.",
-    "Target +500 remains incomplete; new-accepted random100 preview still pending."
+    "Target +500 remains incomplete; final +500 random100 preview remains pending; milestone new146 random100 has been produced remotely."
   ],
   "publication": {
     "branch": "codex/pipeline-repair-20261102",
@@ -45,5 +45,12 @@
     "latest_publication_receipt_remote": "reports/arxiv_cluster_direct_v1/source_publication_latest.json",
     "note": "Use the publication receipt and current Git remote SHA for the reconciled latest commit; do not infer latest from an older handoff SHA."
   },
-  "superseded_handoff": "operations/CURRENT_HANDOFF.before-arxiv-cluster-20261103.json"
+  "superseded_handoff": "operations/CURRENT_HANDOFF.before-arxiv-cluster-20261103.json",
+  "random100_milestone": {
+    "remote": "clean/review_samples/random100_new146_seed20261103100_v1.zip",
+    "population": 146,
+    "seed": 20261103100,
+    "archive_sha256": "391a11e26db07b8aed2bf0a19bee747c4832a514c9ae5a6d8a4177b0ab306abe",
+    "not_final_goal_acceptance": true
+  }
 }

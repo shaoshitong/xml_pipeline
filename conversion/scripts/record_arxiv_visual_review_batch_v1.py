@@ -5,6 +5,11 @@ p=argparse.ArgumentParser();p.add_argument('--decisions',type=Path,required=True
 R=Path('/backup/shaoshitong/img2code_20261029');D=R/'clean/arxiv_research_figures_v1/goal500_progress_v1'
 review=json.loads(a.decisions.read_text());folder=R/review['remote_folder']
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+approval=json.loads((D/'value_policy_approval.json').read_text())
+seen=approval.get('review_evidence',{}).get('additional_individual_review_batches',[])
+if any(b['sha256']==sha(a.decisions) for b in seen):
+ print(json.dumps(dict(already_applied=True,total_approved_ids=len(approval['reviewed_accepted_goal500_ids']),later_review_decisions_preserved=True)))
+ raise SystemExit(0)
 assert sha(folder/'review_manifest.json')==review['contact_manifest_sha256']
 for f,digest in review['contact_sheets_sha256'].items():assert sha(folder/f)==digest
 manifest={r['number']:r for r in json.loads((folder/'review_manifest.json').read_text())}

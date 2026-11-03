@@ -1,0 +1,193 @@
+{
+  "at_utc": "2026-11-03T09:41:48.240921+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T093552Z",
+  "contact_manifest_sha256": "145f4794372a20493185994917e7dd800e4fef46f84f1c5f81afb7af9f8c099e",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "1f9c4df7ab52db639e1ba474ca1dad6c755a0a3b9ae75502a90674fc6916da3f",
+    "contact_02.jpg": "9dd37558fd4dfbf942131cc0b090135c65d1ac83d9ca57c25513701ae53d0a77",
+    "contact_03.jpg": "9a1c829585d0924c50c595ed3a50b2ef078201baba3675d2323369b1a082e53b",
+    "contact_04.jpg": "85fd98c9b1819982ef1245adf5c4b7149fda0e91f56f098e9c13cb21a59413f8",
+    "contact_05.jpg": "c5efcf1f6fe999c38c80c56cc7aa691f0b50ced93fa2984759ab8cc1b03e38c4",
+    "contact_06.jpg": "32c106e0d1a5b1efe26eb6f6bac18cf260aee1b827325f49714495ed19367ad7",
+    "contact_07.jpg": "d2acee1709ec26555fb434588c8fab2995d2fbc97a6438b430ff980de8fd28e8"
+  },
+  "decisions": [
+    {
+      "number": 1,
+      "id": "00c80b88299b7bb5209c83c3555278cce40fd9151d95d573976e644a419a6d5d",
+      "paper": "2610.05768v1",
+      "accepted": true,
+      "reason": "Relational alignment and waveform synthesis method with explicit comparison to pointwise concatenation."
+    },
+    {
+      "number": 2,
+      "id": "0a72ff7cda2283e088538d991623d602f94e1feaaccad345bf833d0cbfe690db",
+      "paper": "2402.19101v2",
+      "accepted": true,
+      "reason": "Detailed multi-entity transfer, heterogeneous feature alignment and gated serving framework."
+    },
+    {
+      "number": 3,
+      "id": "1072019b0c4987271fc76d52b0f7b1ee3bd2a1ec4a598b995fcad1e95e454b28",
+      "paper": "2506.23784v1",
+      "accepted": true,
+      "reason": "Complete rank/branch symbolic derivation tree with explicit rewrite rules and terminal constraints."
+    },
+    {
+      "number": 4,
+      "id": "109165f902a0885f0dd6e7a8a769623a2da4c133c191f33b9a24c86cd131dbbc",
+      "paper": "2609.05253v2",
+      "accepted": true,
+      "reason": "Complete graph-anomaly training and hyperspherical density scoring architecture."
+    },
+    {
+      "number": 5,
+      "id": "127036ecef1ef0eab5b362325666f6da598e88d46656818b3d854132ef6e3ef6",
+      "paper": "2512.00696v3",
+      "accepted": false,
+      "reason": "Generic multiscale graph-attention overview with coarse module detail."
+    },
+    {
+      "number": 6,
+      "id": "1427d902ce0ca73540871fad4b23fd0392eb82eb95bb99b54f0c4917bec23edd",
+      "paper": "2610.10933v1",
+      "accepted": true,
+      "reason": "Detailed unsigned/bipolar spiking conversion operators and gated neural block computations."
+    },
+    {
+      "number": 7,
+      "id": "1c4f80a786834bd6c7fcde2f01f2adb8a6ee9125ca05bfd154249f1d57be6ede",
+      "paper": "2610.09052v1",
+      "accepted": true,
+      "reason": "Time-conditioned convolutional encoder, attention transformer and decoder block decomposition."
+    },
+    {
+      "number": 8,
+      "id": "275eeb2114bd8c42bc8e071935db89ab408a21e51615869b52a6fa5710dbf69f",
+      "paper": "2602.00580v1",
+      "accepted": true,
+      "reason": "Complete learned TSP instance modification, traditional tour construction and refinement pipeline."
+    },
+    {
+      "number": 9,
+      "id": "427a14e88ec73fa6bef3bb43145fa95e00f69a63f5459db3badac2a8e614955c",
+      "paper": "2312.00834v2",
+      "accepted": false,
+      "reason": "Near duplicate of already accepted full architecture from the same paper; different exact hashes do not justify another product."
+    },
+    {
+      "number": 10,
+      "id": "57c2ca182ca9bd3f43816bb6a9a3efe732746b007e151b291a99dbdfa17c3845",
+      "paper": "2505.00733v1",
+      "accepted": false,
+      "reason": "Expanded variant of already accepted mission behavior tree; retain one version rather than inflate the count."
+    },
+    {
+      "number": 11,
+      "id": "60a6af26a67dff2c127dc34e98341851382beca8f5fab1e1918d4e0f2bb7b458",
+      "paper": "2505.24219v1",
+      "accepted": true,
+      "reason": "Complete phraseness/informativeness scoring procedure with explicit distributions and combined scoring."
+    },
+    {
+      "number": 12,
+      "id": "74e56e3e6aecba286e678ca3495b7909fb5cf5b829ff1b6ad9e964a74cd430b4",
+      "paper": "2610.05831v1",
+      "accepted": false,
+      "reason": "Four coarse dataset/training panels provide limited complex internal method structure."
+    },
+    {
+      "number": 13,
+      "id": "8117ed7d2a9ebc50ea845318d24e466e33b0513367e108dd774c70ac091e14c8",
+      "paper": "2610.02353v1",
+      "accepted": true,
+      "reason": "Two-stage shared factor composition and personalized user-code adaptation with frozen model integration."
+    },
+    {
+      "number": 14,
+      "id": "95b3eb7524e18e59cd6aa0ff057d46da4f2c165ebe8add5b73aaccc57c79d722",
+      "paper": "2301.13279v1",
+      "accepted": true,
+      "reason": "Full recurrent human-robot scheduling architecture with graph encoder and coupled agent/task LSTMs."
+    },
+    {
+      "number": 15,
+      "id": "9643405fca86567f5250292cbc57fa64a529883d578f73fb83acf6609a366c95",
+      "paper": "2606.07690v2",
+      "accepted": true,
+      "reason": "Complete hierarchical training-data utility estimation and budgeted surrogate selection workflow."
+    },
+    {
+      "number": 16,
+      "id": "a638bde76b7d35338dcb699d54b3b260c2c17828809ec185f2e4a5ee32c870f2",
+      "paper": "2610.09969v1",
+      "accepted": false,
+      "reason": "Hold until apparent cropped labels at lower edge of numerical operator diagram can be resolved."
+    },
+    {
+      "number": 17,
+      "id": "b75023b03bc83c4368b57c245a4d2f1ea29c90b322ee058b457d0971388f895e",
+      "paper": "2610.08457v1",
+      "accepted": true,
+      "reason": "Full cross-stage circuit timing training with successive GNN transfer mappings and stage-specific losses."
+    },
+    {
+      "number": 18,
+      "id": "c34a627c9f39953b1c3b6786b01df4622acbcc8ac4d1e1d7ed24b90089a6257f",
+      "paper": "2607.12111v2",
+      "accepted": true,
+      "reason": "Complete selective federated attention adapter architecture with shared/private projections and aggregation."
+    },
+    {
+      "number": 19,
+      "id": "d0f2bdb2747528deec736b4e3aaec9d468b0019e7ced40f6296b8a48e6d57130",
+      "paper": "2602.22817v1",
+      "accepted": true,
+      "reason": "Detailed comparison of trajectory and step-wise policy optimization and contextual advantage estimation."
+    },
+    {
+      "number": 20,
+      "id": "d388ee00ca85bec7106fdbc2df1bbdbe508be6814f6c81411c96a07eca55785f",
+      "paper": "2610.14074v1",
+      "accepted": true,
+      "reason": "Dense scientific comparison of varying compute multi-turn inference, measured tradeoffs and shared-model switching."
+    },
+    {
+      "number": 21,
+      "id": "d4bee8d89ca039e3254e0706f42b2fc898a9d4da7096e3a12b644f0d2a38f204",
+      "paper": "2311.18200v1",
+      "accepted": true,
+      "reason": "Complete instruction-conditioned opinion extraction transformer and iterative decoding procedure."
+    },
+    {
+      "number": 22,
+      "id": "df07d90a8d1594eadd82581cf8914746bcaefc32f4a098fdeb09fb8f1abe189d",
+      "paper": "2610.14238v1",
+      "accepted": true,
+      "reason": "Detailed experiment state machine, researcher workflow, immutable memory and external evaluation architecture."
+    },
+    {
+      "number": 23,
+      "id": "e8d5d82f4b17f6b725d8ee457871d5557d71ba5b68ae4cc6a18a0075ac6cd4d1",
+      "paper": "2604.17998v2",
+      "accepted": true,
+      "reason": "Full causal-prior variational encoder, auxiliary branch and residual distribution correction architecture."
+    },
+    {
+      "number": 24,
+      "id": "fb9825d2f4842c558a86e8275c386fdfc81c24aef849fce020642e84d6041d66",
+      "paper": "2610.09969v1",
+      "accepted": true,
+      "reason": "Detailed numerical approximation circuits for layer normalization, exponential and softmax operators."
+    },
+    {
+      "number": 25,
+      "id": "fc38d59a850c613cedc92cd719d34af75cac58043eaa9289e1d1e40fd9de649a",
+      "paper": "2610.09487v1",
+      "accepted": true,
+      "reason": "Distinct generative-ranking versus direct pairwise matching comparison, complementary to the accepted full fusion architecture."
+    }
+  ],
+  "scope": "Complexity and visual utility after strict source replay; includes same-paper comparison; not original PDF fidelity certification."
+}

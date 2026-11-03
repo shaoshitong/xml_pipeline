@@ -1,5 +1,5 @@
 {
-  "at_utc": "2026-11-03T09:32:36.564910+00:00",
+  "at_utc": "2026-11-03T09:44:48.493559+00:00",
   "authoritative_remote_snapshot": {
     "archive_sha256": "6a1e230c9c46342920dc8ccaa99577485596b5cef6f5d40d56b37783cff24fc9",
     "remote_source_files": 1875,
@@ -9124,6 +9124,12 @@
       "mtime_ns": 1793682494975780352
     },
     {
+      "file": "conversion/scripts/random_sample_accepted_arxiv_v1.py",
+      "sha256": "1764aca67133ff04cf6e1192836161437bf2b10ae382bdf0ed39758ebcc9550d",
+      "bytes": 6391,
+      "mtime_ns": 1793698596379812278
+    },
+    {
       "file": "conversion/scripts/reaudit_restored_interval_v1.py",
       "sha256": "e39920fd2b0bb10c69d28d526ea620103c2aa7c676670373f1d8495d7cf99d8e",
       "bytes": 4038,
@@ -9131,9 +9137,9 @@
     },
     {
       "file": "conversion/scripts/record_arxiv_visual_review_batch_v1.py",
-      "sha256": "875419cb39f171526ea7dc55741b4c1de1f2ffbcb59f7732308535c2d31f6e57",
-      "bytes": 2337,
-      "mtime_ns": 1793694723020738560
+      "sha256": "002e12f43e0179fd749b3e5428cb2e0415f0b220ad951b08bf92f11688a9a483",
+      "bytes": 2715,
+      "mtime_ns": 1793698928886647125
     },
     {
       "file": "conversion/scripts/record_harness_root_review.py",

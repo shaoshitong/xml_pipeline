@@ -1,0 +1,57 @@
+{
+  "at_utc": "2026-11-03T09:40:20.769033+00:00",
+  "reviewer": "current_primary_agent_actual_visual_inspection_no_external_models",
+  "remote_folder": "clean/arxiv_research_figures_v1/goal500_progress_v1/review_20261103T090632Z",
+  "contact_manifest_sha256": "5147cd1bae023eabb0f46ff4ca1a15841e836deb667c9786e5da653f81259f8c",
+  "contact_sheets_sha256": {
+    "contact_01.jpg": "2c62738e911c966cce1ea6aa3c03f4de8c46c5b9b36dd10384f5a28a57de0327",
+    "contact_02.jpg": "685d1e23acc2077bdaf57bae9911312e3748bcc58b3e37c0ff93cb9f3f237e8e",
+    "contact_03.jpg": "c99c2aef3f94ef31546836ea4ed60474499b7c3b4065a403eabd5389a892d42b",
+    "contact_04.jpg": "602d21f0b50707c2fe7bebc7ef75081aced38e3925cdab69a3a02c30f83a594e",
+    "contact_05.jpg": "bb3b26acb0d40cdf0b18b39397c2f63b8fa79e14e97677a04a75957f2123fe8e",
+    "contact_06.jpg": "757b913acf500a3e4247059ab2c62c058bbdda934aab8c43c06169da248a9a33",
+    "contact_07.jpg": "9acb1db59c7121a6bb9f40bdfe8b268def448aa7d99f88a9e7800210fd9aa068",
+    "contact_08.jpg": "16a9cc560b0d2fb9ded385344a201431699df38c3237f5c2be7576911c79a95a",
+    "contact_09.jpg": "a9cab9f3160de31c9353fc568dae76f8d32e2c9d77b1ca00ddf94fed01d5c848",
+    "contact_10.jpg": "0354c37a55256da3fbb52c88863abeac8842eddc702a2e9d7645af18a6808110",
+    "contact_11.jpg": "fff59df0831c5ace45d84af6972055ddb4e315fd7b4223a9c854a26ed0c32b01",
+    "contact_12.jpg": "e4d0c6107645eda5d2e00e1027c0edb804eced0785645f0f7156b563e4481ff4",
+    "contact_13.jpg": "e411c70178c2d4c9101d4ad68c70ff791a5dd8207f19956ccc8ac9e50f3ca83a",
+    "contact_14.jpg": "9d655378c16698002858b20981553bb1e8da3af8bbef1f4a7ba687b0f68a4d15",
+    "contact_15.jpg": "de3ba6c07582c1e4dc3744e2fcaa681f8804cf239417af84e13ade68489d9b3a",
+    "contact_16.jpg": "53397f137cb77fa36bc8fbacd3824349daa8aa089bd218ee52439ae12ba00cf6",
+    "contact_17.jpg": "853f9346fe1acfedd40717902a448f784c43880aeb5324914c255e66fd2389e2",
+    "contact_18.jpg": "6cd4d5001946bdbc768f87f253fb0cc919a06afd5304543dc5893b6c5c7e9184",
+    "contact_19.jpg": "7420dc1de6987c9a06bd624658802fc8b74842b4ce0a2a4c0bb054e5cd9d2ac5",
+    "contact_20.jpg": "254a7f38c761feee213aa613dad2434965e267f95e2fd7bd7d5f11927b82855d",
+    "contact_21.jpg": "8fb9ddc153af0f5dbdd9c2c660eccf063f0be6a17a07ca1832db8aab593fe791",
+    "contact_22.jpg": "421ff83bf9d4c3f923fa11d02690b578e0f8fbe5d34a71980caab4888e80483e",
+    "contact_23.jpg": "dee3f97b19ca2b736eeb98c4e60537b72e974ebb68d4242e5a41812be62d3038",
+    "contact_24.jpg": "991c150014f9a31c84bf2aadbb6a0b3909f5514bba68abc13afc75429eedd984",
+    "contact_25.jpg": "7d28ee21dcbe0921984ef41068924ddbe851e38b932b4a3e2cc2a9d79d1c6ebf",
+    "contact_26.jpg": "51e7e9f5d28b456804776deb281174dbaed86f1e47ff8b9ee85300dc4b6f8e7e",
+    "contact_27.jpg": "8ba719a0cf71d65eb44123452e366e13b74a46fca4af052727f14afe480506c0",
+    "contact_28.jpg": "9e3cdda3a5797b20eb691ea916918f542488664a18609d9a129443c5141fe198",
+    "contact_29.jpg": "b31c22a2fdcd0b49602ffef2abd717765b6e4427ca26937cb3fe42c5901b6c33",
+    "contact_30.jpg": "9bc78bb167391ee46c1f1621263165499b7e6d0444e0e9abc51c7bf6a880f71f",
+    "contact_31.jpg": "9d39247807772f9cd0b1bff37ecefd41f59e176e9bb6d3f305dc2642f83c5862",
+    "contact_32.jpg": "dc809c3481e4d29756e631a61211f83e0baa2dbed0489c4f0d9ab19cbabd0ac9"
+  },
+  "decisions": [
+    {
+      "number": 38,
+      "id": "543806b2088613b47289652f685fe7c1d77c7a814bbf5a2b79249a9708600d51",
+      "paper": "2503.24057v1",
+      "accepted": false,
+      "reason": "Final overview cross-check found a near duplicate of retained figure 123 from the same paper; retain one complete version."
+    },
+    {
+      "number": 51,
+      "id": "6c222e55143a4e03d8384402b91586e1de865b729b821622f1f0de7642bb6c34",
+      "paper": "2502.21186v2",
+      "accepted": false,
+      "reason": "Final overview cross-check found a near duplicate of retained figure 118 from the same paper; retain one complete version."
+    }
+  ],
+  "scope": "Correct prior individual review after cross-figure comparison; preserve artifacts but remove two near variants from accepted index."
+}
