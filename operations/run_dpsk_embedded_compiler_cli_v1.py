@@ -14,6 +14,8 @@ def run():
   config:
     path: /backup/shaoshitong/img2code_20261029/conversion/private/credentials.yaml
     watch: false
+- id: authorization
+  disabled: false
 - id: deepseek-account
   disabled: false
 - id: agent-default-model
