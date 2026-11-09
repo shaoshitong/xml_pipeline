@@ -47,7 +47,7 @@ def pdf_check(pdf: Path, png: Path):
     info = subprocess.check_output(['pdfinfo', str(pdf)], text=True, timeout=30)
     if 'Pages:           1' not in info and 'Pages:          1' not in info:
         raise ValueError('pdf_not_single_page')
-    stem = pdf.with_suffix('.pdfcheck')
+    stem = pdf.parent / (pdf.stem + '.pdfcheck')
     subprocess.run(['pdftoppm','-singlefile','-r','96','-png',str(pdf),str(stem)],
                    check=True, timeout=90, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
     with Image.open(png) as a, Image.open(stem.with_suffix('.png')) as b:
@@ -57,7 +57,7 @@ def pdf_check(pdf: Path, png: Path):
         # remain the same page and foreground must not disappear.
         if abs(a.width - b.width) > 4 or abs(a.height - b.height) > 4:
             raise ValueError(f'pdf_page_size_mismatch:{a.size}:{b.size}')
-    stem.with_suffix('.png').unlink(missing_ok=True)
+    (stem.parent / (stem.name + '.png')).unlink(missing_ok=True)
     return {'pdfinfo_pages': 1, 'pdf_raster_dimensions_match': True}
 
 def process(row, source_root: Path, audit: Path, delivery: Path):
@@ -94,13 +94,35 @@ def process(row, source_root: Path, audit: Path, delivery: Path):
         rec['render'] = render
         if not render.get('ok'): raise ValueError('render_not_ok')
         if render.get('browser_trace'): raise ValueError('browser_trace:' + json.dumps(render['browser_trace'])[:1000])
-        if render.get('content_outside_declared_canvas'): raise ValueError('content_outside_declared_canvas')
-        png = work / 'render.png'; svg = work / 'render.svg'
+        outside = bool(render.get('content_outside_declared_canvas'))
+        png = work / ('render.tight.png' if outside else 'render.png')
+        svg = work / 'render.svg'
         if not png.is_file() or not svg.is_file(): raise ValueError('render_artifact_missing')
         with Image.open(png) as im:
             im.verify()
             rec['image_pixels'] = {'width': im.width, 'height': im.height, 'sha256': sha(png.read_bytes())}
-        pdf = work / 'diagram.pdf'; rec['pdf'] = pdf_from_svg(svg, pdf); rec['pdf'].update(pdf_check(pdf, png))
+        pdf = work / 'diagram.pdf'
+        if outside:
+            # The official viewer provides a tight diagnostic when author page
+            # bounds are stale. Preserve all pixels in a lossless one-page PDF;
+            # the editable source remains the original drawio XML.
+            from PIL import Image
+            im = Image.open(png).convert('RGB'); rawpix = im.tobytes(); import zlib
+            data = zlib.compress(rawpix, 3); w, h = im.size; pw, ph = w*72/96, h*72/96
+            content = f'q {pw:.4f} 0 0 {ph:.4f} 0 0 cm /I Do Q\n'.encode()
+            objs = [b'<< /Type /Catalog /Pages 2 0 R >>', b'<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+                    f'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {pw:.4f} {ph:.4f}] /Resources << /XObject << /I 4 0 R >> >> /Contents 5 0 R >>'.encode(),
+                    f'<< /Type /XObject /Subtype /Image /Width {w} /Height {h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /FlateDecode /Length {len(data)} >>\nstream\n'.encode()+data+b'\nendstream',
+                    f'<< /Length {len(content)} >>\nstream\n'.encode()+content+b'endstream']
+            buf=bytearray(b'%PDF-1.4\n%\xe2\xe3\xcf\xd3\n'); offs=[0]
+            for i,obj in enumerate(objs,1): offs.append(len(buf)); buf.extend(f'{i} 0 obj\n'.encode()+obj+b'\nendobj\n')
+            xref=len(buf); buf.extend(f'xref\n0 {len(objs)+1}\n0000000000 65535 f \n'.encode())
+            for pos in offs[1:]: buf.extend(f'{pos:010d} 00000 n \n'.encode())
+            buf.extend(f'trailer\n<< /Size {len(objs)+1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n'.encode()); pdf.write_bytes(buf)
+            rec['pdf']={'renderer':'lossless_tight_viewer_raster_fallback','width':w,'height':h}
+        else:
+            rec['pdf'] = pdf_from_svg(svg, pdf)
+        rec['pdf'].update(pdf_check(pdf, png)); rec['tight_view_used'] = outside
         out.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, out / 'diagram.drawio')
         shutil.copyfile(png, out / 'diagram.png')
