@@ -106,7 +106,6 @@ def process(row, source_root: Path, audit: Path, delivery: Path):
             # The official viewer provides a tight diagnostic when author page
             # bounds are stale. Preserve all pixels in a lossless one-page PDF;
             # the editable source remains the original drawio XML.
-            from PIL import Image
             im = Image.open(png).convert('RGB'); rawpix = im.tobytes(); import zlib
             data = zlib.compress(rawpix, 3); w, h = im.size; pw, ph = w*72/96, h*72/96
             content = f'q {pw:.4f} 0 0 {ph:.4f} 0 0 cm /I Do Q\n'.encode()
