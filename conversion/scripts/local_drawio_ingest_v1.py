@@ -6,7 +6,7 @@ on HKUST3. Original source files are copied byte-for-byte into each accepted
 pair; failures remain in the audit area and never enter the dataset index.
 """
 from __future__ import annotations
-import argparse, concurrent.futures, datetime, hashlib, json, os, shutil, subprocess, time
+import argparse, concurrent.futures, datetime, hashlib, json, os, shutil, subprocess, sys, time
 from pathlib import Path
 import xml.etree.ElementTree as ET
 from PIL import Image
@@ -84,7 +84,7 @@ def process(row, source_root: Path, audit: Path, delivery: Path):
         if row.get('prefilter_score', -999) < 25: raise ValueError('prefilter_below_quality_floor')
         work.mkdir(parents=True, exist_ok=True)
         source = work / 'source.drawio'; source.write_bytes(raw)
-        cmd = ['python3', str(RENDER), '--kind','drawio','--source',str(source),
+        cmd = [sys.executable, str(RENDER), '--kind','drawio','--source',str(source),
                '--width','8192','--height','8192','--allow-embedded-raster']
         run = subprocess.run(cmd, text=True, capture_output=True, timeout=240)
         render_json = work / 'render.json'
