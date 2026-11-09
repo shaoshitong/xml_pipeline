@@ -18,14 +18,15 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
 
-def drawio_embed_png(source, output, width, proxy):
+def drawio_embed_png(source, output, width, proxy, allow_embedded_raster=False):
     """Use the actual diagrams.net embed renderer, never a cell approximation."""
     from playwright.sync_api import sync_playwright
     xml = source.read_text()
     root = ET.fromstring(xml)
     if root.tag not in ('mxfile', 'mxGraphModel'):
         raise ValueError('drawio requires mxfile or mxGraphModel root')
-    if re.search(r'data:image|https?://[^;"\s]+\.(?:png|jpe?g|webp)', xml, re.I):
+    if (not allow_embedded_raster and
+            re.search(r'data:image|https?://[^;"\s]+\.(?:png|jpe?g|webp)', xml, re.I)):
         raise ValueError('embedded raster or external raster reference is disallowed')
     opts = dict(headless=True, args=['--disable-dev-shm-usage'])
     installed = sorted(Path('/home/shaoshitong/.cache/ms-playwright').glob('chromium-*/chrome-linux*/chrome'),
@@ -72,7 +73,7 @@ def drawio_embed_png(source, output, width, proxy):
             'protocol_source': 'https://www.drawio.com/docs/reference/embed-mode/'}
 
 
-def drawio_png(source, output, width, height, proxy):
+def drawio_png(source, output, width, height, proxy, allow_embedded_raster=False):
     """Render with the real official static GraphViewer, cached on HKUST.
 
     No full editor, iframe init or network fetch is needed in the browser for
@@ -81,12 +82,13 @@ def drawio_png(source, output, width, height, proxy):
     outside its declared page; it never silently replaces the page render.
     """
     if os.environ.get('IMG2CODE_DRAWIO_BACKEND')=='embed':
-        return drawio_embed_png(source,output,width,proxy)
+        return drawio_embed_png(source,output,width,proxy,allow_embedded_raster)
     from playwright.sync_api import sync_playwright
     xml=source.read_text();root=ET.fromstring(xml)
     if root.tag not in ('mxfile','mxGraphModel'):
         raise ValueError('drawio requires mxfile or mxGraphModel root')
-    if re.search(r'data:image|https?://[^;"\s]+\.(?:png|jpe?g|webp)',xml,re.I):
+    if (not allow_embedded_raster and
+            re.search(r'data:image|https?://[^;"\s]+\.(?:png|jpe?g|webp)',xml,re.I)):
         raise ValueError('embedded raster or external raster reference is disallowed')
     assets=Path(__file__).resolve().parent/'assets';assets.mkdir(exist_ok=True)
     bundle=assets/'viewer-static.min.js'
@@ -336,12 +338,14 @@ def main():
     ap.add_argument('--width',type=int,required=True)
     ap.add_argument('--height',type=int,required=True)
     ap.add_argument('--proxy',default=os.environ.get('IMG2CODE_DRAWIO_PROXY',''))
+    ap.add_argument('--allow-embedded-raster',action='store_true',
+                    help='allow data:image assets already embedded in a local drawio source')
     args=ap.parse_args()
     source=Path(args.source).resolve(); output=source.parent/'render.png'
     result={'ok':False,'kind':args.kind,'source':str(source),'output':str(output)}
     started=time.monotonic()
     try:
-        if args.kind=='drawio': result.update(drawio_png(source,output,args.width,args.height,args.proxy))
+        if args.kind=='drawio': result.update(drawio_png(source,output,args.width,args.height,args.proxy,args.allow_embedded_raster))
         elif args.kind=='svg': result.update(svg_png(source,output,args.width,args.height))
         elif args.kind=='html': result.update(html_png(source,output,args.width,args.height))
         else: result.update(chart_png(source,output))
