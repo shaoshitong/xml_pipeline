@@ -50,7 +50,8 @@ def pdf_check(pdf: Path, png: Path):
     stem = pdf.parent / (pdf.stem + '.pdfcheck')
     subprocess.run(['pdftoppm','-singlefile','-r','96','-png',str(pdf),str(stem)],
                    check=True, timeout=90, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
-    with Image.open(png) as a, Image.open(stem.with_suffix('.png')) as b:
+    raster = stem.parent / (stem.name + '.png')
+    with Image.open(png) as a, Image.open(raster) as b:
         if a.width <= 0 or a.height <= 0 or b.width <= 0 or b.height <= 0:
             raise ValueError('empty_image')
         # PDF rasterization may differ in font antialiasing, but dimensions must
