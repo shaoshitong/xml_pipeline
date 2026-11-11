@@ -394,9 +394,26 @@ def arrows(obj):
     return [obj.style.get(k, "none") for k in ("startArrow", "endArrow")]
 
 
+def ordered_native_correspondence(a, b):
+    before, after = a["cells"], b["cells"]
+    if a.get("bounds") != b.get("bounds") or len(before) != len(after):
+        return None
+    # The editor exposes tree traversal order. Accept positional correspondence
+    # only when the entire native snapshot agrees under the proposed ID map.
+    ids = {x["id"]: y["id"] for x, y in zip(before, after, strict=True)}
+    for x, y in zip(before, after, strict=True):
+        renamed = {**x, **{key: ids.get(x[key], x[key]) for key in ("id", "parent", "source", "target")}}
+        if renamed != y:
+            return None
+    return ids
+
+
 def compare_page(snap_a, snap_b, span):
     a, owners_a = objects(snap_a)
     b, owners_b = objects(snap_b)
+    native_ids = ordered_native_correspondence(snap_a, snap_b)
+    if native_ids is not None and {native_ids[key] for key in a} == b.keys():
+        return [(obj, b[native_ids[key]], "confirmed", 1.0) for key, obj in a.items()], []
     vertices = match_vertices(a, b, span)
     mapping = {x.id: y.id for x, y, status, _ in vertices if status == "confirmed"}
     edges_a = [o for o in a.values() if o.kind == "edge"]

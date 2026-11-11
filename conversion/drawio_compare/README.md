@@ -102,3 +102,18 @@ installed command, and drives the blind case queue through both renders and a
 revision comparison. The queue test uses HKUST3-local transport and the actual
 renderer. The release receipt appears after these checks and rejection of an
 unmeasured checkpoint.
+
+## Held-out transformations
+
+`generalization.py select DATASET SOURCES` takes twelve draw.io sources from
+`DATASET/pairs/*/author.drawio` using a fixed seed and four diagram strata.
+It excludes the five pilot IDs. A separate generator writes transformed inputs
+and a manifest to `VARIANTS`. Run
+`generalization.py verify SOURCES VARIANTS RESULTS` on HKUST3 with
+`PYTHONPATH=conversion/scripts`.
+
+The verifier renders the original and transformed XML directly in one coordinate
+frame, then compares that result with the compiler's pixel verdict. It retains
+per-variant normalization proofs, diffs, overlays and crops. The summary tracks
+skips, render equivalence, identical normalized XML and structural diagnostics
+independently.
