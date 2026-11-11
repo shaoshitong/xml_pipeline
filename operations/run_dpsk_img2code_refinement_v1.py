@@ -77,6 +77,12 @@ def verify(d, record, n, remote_case, gold=False):
         failure = {'native_gate':False,'error':'no candidate file was written by harness'}
         feedback.write_text(json.dumps(failure,indent=2)+'\n')
         return failure
+    if not gold and feedback.exists():
+        previous = json.loads(feedback.read_text())
+        if (previous.get('native_gate') and previous.get('code_sha256')==hashlib.sha256(local_code.read_bytes()).hexdigest()
+                and (d/f'round{n}.png').is_file()
+                and previous['render']['png_sha256']==hashlib.sha256((d/f'round{n}.png').read_bytes()).hexdigest()):
+            return previous
     ssh('mkdir','-p',stage)
     scp(local_code,f'hkust3:{stage}/candidate.drawio')
     flags = ['--compare-only','--gold',R+'/'+record['code_file'],'--gold-sha256',record['code_sha256']] if gold else []
@@ -92,14 +98,16 @@ def verify(d, record, n, remote_case, gold=False):
     return json.loads(feedback.read_text())
 
 
-def run(d, record, rounds):
+def run(d, record, rounds, verify_only=False):
     if hashlib.sha256((d/'target.png').read_bytes()).hexdigest()!=record['image_sha256']:
         raise ValueError('local reference bytes do not match verified snapshot')
     remote_case = f'{REMOTE}/{d.name}'
-    rows = model_round(d,1,INITIAL)
-    sid = next(r['sessionId'] for r in rows if r.get('type')=='session')
+    rows = model_round(d,1,INITIAL) if not verify_only else []
+    sid = next((r['sessionId'] for r in rows if r.get('type')=='session'),None)
     for n in range(1,rounds+1):
-        if n>1:
+        if verify_only and not any(e.get('type')=='final' for e in events(d/f'round{n}.events.jsonl')):
+            continue
+        if n>1 and not verify_only:
             prev = n-1
             prompt = f'''Blind reconstruction refinement round {n}. Read target.png and, if available, round{prev}.png as images, read round{prev}.feedback.json for measured errors, and inspect round{prev}.drawio if present. Use only these case files. Identify 2–5 concrete discrepancies, including visible evidence by region, and fix their editable XML elements. Preserve correct parts; prioritize missing or mislabelled nodes, misdirected edges, panel positions and font sizing over cosmetic tweaking. Scores are diagnostics, not objectives to game. If previous render failed, fix its actual XML/renderer error. Write the complete updated native XML as round{n}.drawio without overwriting previous rounds. Do not embed images, read gold XML, or use the web. Stop after writing; state what changed, which cell IDs you changed and what remains uncertain.'''
             model_round(d,n,prompt,sid)
@@ -107,7 +115,7 @@ def run(d, record, rounds):
         print(json.dumps(dict(case=d.name, round=n, native_gate=metrics.get('native_gate'),
                               visual=metrics.get('visual'),error=metrics.get('error'))),flush=True)
     for n in range(1,rounds+1):
-        if (d/f'round{n}.drawio').is_file():
+        if (d/f'round{n}.drawio').is_file() and any(e.get('type')=='final' for e in events(d/f'round{n}.events.jsonl')):
             verify(d,record,n,remote_case,gold=True)
 
 
@@ -116,6 +124,8 @@ def main():
     parser.add_argument('run_root',type=Path)
     parser.add_argument('sample_manifest',type=Path)
     parser.add_argument('--rounds',type=int,default=3)
+    parser.add_argument('--case',action='append',choices=('002','012','013','017','022'))
+    parser.add_argument('--verify-only',action='store_true')
     args = parser.parse_args()
     records = {f"{r['number']:03d}":r['source_record'] for r in json.loads(args.sample_manifest.read_text())['records']}
     ssh('mkdir','-p',REMOTE)
@@ -123,10 +133,10 @@ def main():
     want = hashlib.sha256((REPO/'conversion/scripts/verify_dpsk_img2code_round_v1.py').read_bytes()).hexdigest()
     if ssh('sha256sum',SCRIPT).stdout.split()[0]!=want:
         raise ValueError('deployed verifier differs from local source')
-    dirs = [args.run_root.resolve()/case for case in ('002','012','013','017','022')]
+    dirs = [args.run_root.resolve()/case for case in dict.fromkeys(args.case or ('002','012','013','017','022'))]
     fails = []
     with ThreadPoolExecutor(max_workers=len(dirs)) as pool:
-        jobs = {pool.submit(run,d,records[d.name],args.rounds):d for d in dirs}
+        jobs = {pool.submit(run,d,records[d.name],args.rounds,args.verify_only):d for d in dirs}
         for job in as_completed(jobs):
             try:
                 job.result()
