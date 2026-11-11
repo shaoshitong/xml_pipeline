@@ -37,21 +37,25 @@ class LabelParser(HTMLParser):
         self.text = []
         self.tables = []
         self.current_table = None
+        self.simple_table = False
 
     def handle_starttag(self, tag, attrs):
         if tag in {"br", "div", "p", "tr", "td", "th", "li"}:
             self.text.append(" ")
         if tag == "table" and self.current_table is None:
             self.current_table = []
+            self.simple_table = dict(attrs).get("role") != "presentation"
         if tag == "tr" and self.current_table is not None:
             self.current_table.append(0)
         if tag in {"td", "th"} and self.current_table:
-            span = dict(attrs).get("colspan", "1")
-            self.current_table[-1] += int(span) if span.isdecimal() and len(span) < 4 else 1
+            attrs = dict(attrs)
+            self.simple_table &= attrs.get("colspan", "1") == attrs.get("rowspan", "1") == "1"
+            self.current_table[-1] += 1
 
     def handle_endtag(self, tag):
         if tag == "table" and self.current_table:
-            self.tables.append(self.current_table)
+            if self.simple_table and len(self.current_table) >= 2 and min(self.current_table) >= 2:
+                self.tables.append(self.current_table)
             self.current_table = None
         if tag in {"div", "p", "tr", "td", "th", "li"}:
             self.text.append(" ")
@@ -113,13 +117,15 @@ def object_type(cell, children, html_tables):
     tokens = cell["raw_style"].split(";")
     if cell["kind"] == "edge":
         return "edge"
-    if html_tables or style.get("shape") == "table" or "table" in tokens:
+    if (html_tables or style.get("shape") == "table" or "table" in tokens
+            or any(child["style"].get("shape") == "tableRow" for child in children)):
         return "table"
     if (style.get("shape") == "swimlane" or style.get("container") == "1"
             or "group" in tokens or any(child["kind"] == "vertex" for child in children)):
         return "panel"
+    raw_style = dict(token.split("=", 1) for token in tokens if "=" in token)
     if ("text" in tokens or style.get("shape") == "text" or
-            (style.get("fillColor") == "none" and style.get("strokeColor") == "none")):
+            raw_style.get("fillColor") == raw_style.get("strokeColor") == "none"):
         return "label"
     return "shape"
 
@@ -133,6 +139,71 @@ def table_grid(table, descendants, labels):
                 "method": "native_row_cells",
                 "labels": [[labels[c["id"]][0] for c in cells] for cells in row_cells]}
     return None
+
+
+def drawn_grid(panel, descendants, labels):
+    cells = descendants[panel.id]
+    if not panel.bbox or len(cells) < 4 or any(
+            not c.get("bbox") or c["kind"] != "vertex" or descendants.get(c["id"])
+            or c["style"].get("shape", "rectangle") not in {"rectangle", "label"}
+            or c["style"].get("rotation", "0") != "0"
+            or labels[c["id"]][1] for c in cells):
+        return None
+    rows = defaultdict(list)
+    for c in cells:
+        rows[round(c["bbox"][1], 1)].append(c)
+    ordered = [sorted(row, key=lambda c: c["bbox"][0]) for _, row in sorted(rows.items())]
+    cols = len(ordered[0])
+    if len(ordered) < 2 or cols < 2 or any(len(row) != cols for row in ordered):
+        return None
+    origin_x, origin_y, width, height = panel.bbox
+    expected_columns = [c["bbox"][::2] for c in ordered[0]]
+    y = origin_y
+    for row in ordered:
+        x = origin_x
+        row_height = row[0]["bbox"][3]
+        for cell, (col_x, col_w) in zip(row, expected_columns, strict=True):
+            cx, cy, cw, ch = cell["bbox"]
+            if min(cw, ch) < 3 or max(abs(cx - x), abs(cy - y), abs(cw - col_w),
+                                      abs(cx - col_x), abs(ch - row_height)) > .6:
+                return None
+            x += cw
+        if abs(x - origin_x - width) > .6:
+            return None
+        y += row_height
+    if abs(y - origin_y - height) > .6:
+        return None
+    panel.members = [c for row in ordered for c in row]
+    return {"rows": len(ordered), "columns_by_row": [cols] * len(ordered),
+            "method": "adjacent_rectangles_fill_group",
+            "labels": [[labels[c["id"]][0] for c in row] for row in ordered]}
+
+
+def table_captions(output, absorbed):
+    tables = [o for o in output.values() if o.kind == "table" and o.table and o.bbox and not o.label]
+    candidates = defaultdict(list)
+    for label in output.values():
+        if (label.kind != "label" or not label.bbox or label.id in absorbed
+                or not re.search(r"\btable\b", label.label, re.IGNORECASE)):
+            continue
+        for table in tables:
+            if table.cell["parent"] != label.cell["parent"]:
+                continue
+            gap = label.bbox[1] - (table.bbox[1] + table.bbox[3])
+            offset = abs(center(label.bbox)[0] - center(table.bbox)[0])
+            if -2 <= gap <= max(26, table.bbox[3] * .6) and offset <= min(label.bbox[2] / 2, 24):
+                candidates[label.id].append((abs(gap) + offset, table.id))
+    proposed = defaultdict(list)
+    for label_id, nearby in candidates.items():
+        nearby.sort()
+        if len(nearby) == 1 or nearby[1][0] - nearby[0][0] >= 5:
+            proposed[nearby[0][1]].append(label_id)
+    for table_id, labels in proposed.items():
+        if len(labels) == 1:
+            table, label = output[table_id], output[labels[0]]
+            table.label = label.label
+            table.members.append(label.cell)
+            absorbed.add(label.id)
 
 
 def objects(snapshot):
@@ -157,12 +228,19 @@ def objects(snapshot):
             else:
                 obj.table = table_grid(obj, children, labels)
             absorbed.update(obj.ids[1:])
+        elif kind == "panel" and obj.bbox and not obj.label:
+            obj.table = drawn_grid(obj, children, labels)
+            if obj.table:
+                obj.kind = "table"
+                absorbed.update(obj.ids[1:])
         output[key] = obj
 
+    table_captions(output, absorbed)
     # Associate a single centered text cell with an otherwise unlabeled box.
     # Keep both cells in the evidence and check their edit behavior separately.
     boxes = [o for o in output.values() if o.kind == "shape" and o.bbox and not o.label
-             and o.style.get("shape", "rectangle") in {"rectangle", "rect"} and o.id not in absorbed]
+             and o.style.get("shape", "rectangle") in {"rectangle", "rect", "label"}
+             and "image=" not in o.cell["raw_style"] and o.id not in absorbed]
     assignments = defaultdict(list)
     for text in output.values():
         if text.kind != "label" or not text.label or text.id in absorbed:

@@ -11,7 +11,10 @@
             const page = [...root.children].filter(child => child.nodeName === "diagram")[pageNumber - 1];
             if (!page) throw Error("Missing native draw.io page");
             root = [...page.children].find(child => child.nodeName === "mxGraphModel");
-            if (!root) {
+            if (root) {
+                // Each page has its own ID namespace, even when pages reuse 0 and 1.
+                root = parse(mxUtils.getXml(root));
+            } else {
                 const body = mxUtils.getTextContent(page).trim();
                 root = parse(body.startsWith("<") ? body : Graph.decompress(body.replace(/\s+/g, "")));
             }
@@ -19,6 +22,10 @@
         if (root.nodeName !== "mxGraphModel") throw Error("Invalid native draw.io model");
         editor.setGraphXml(root);
         graph.clearSelection();
+        // The interactive UI adds page padding when the editor has scrollbars.
+        // Disable only that viewport behavior so page coordinates stay stable.
+        graph.container.style.overflow = "hidden";
+        graph.autoTranslate = true;
         view.scaleAndTranslate(1, 0, 0);
         graph.refresh();
         view.validate();

@@ -15,7 +15,7 @@ import numpy as np
 from PIL import Image, ImageChops, ImageDraw
 from playwright.sync_api import Error as PlaywrightError
 
-from compare import compare_page, union
+from compare import compare_page
 from model import decode, load_schema, repair_changes, serialize
 from patch_mse_focus_v1 import features, locate
 from runtime import Runtime, digest, project_box, shared_frame
@@ -116,8 +116,9 @@ def clip_box(box, size, padding=12):
     if box is None:
         return None
     x, y, w, h = box
-    return (max(0, floor(x) - padding), max(0, floor(y) - padding),
+    rect = (max(0, floor(x) - padding), max(0, floor(y) - padding),
             min(size[0], ceil(x + w) + padding), min(size[1], ceil(y + h) + padding))
+    return rect if rect[0] < rect[2] and rect[1] < rect[3] else None
 
 
 def two_up(a, b, headings):
@@ -148,18 +149,26 @@ def write_images(folder, prefix, a, b, diagnostics, mode):
                 draw.rectangle((x0 + offset, y0 + 20, x1 + offset, y1 + 20), outline=color, width=2)
                 draw.text((x0 + offset + 2, y0 + 21), item["id"].rsplit("-", 1)[-1],
                           fill=color, stroke_fill="white", stroke_width=1)
-        rect = clip_box(union(sides), a.size)
-        if rect is None or rect[0] >= rect[2] or rect[1] >= rect[3]:
+        regions = tuple(clip_box(box, a.size) for box in sides)
+        if not any(regions):
             continue
-        if rect not in saved:
+        if regions not in saved:
             crops.mkdir(exist_ok=True)
             name = f"crops/{item['id']}.png"
-            left, right = a.crop(rect), b.crop(rect)
-            left.thumbnail((800, 800))
-            right.thumbnail((800, 800))
-            two_up(left, right, headings).save(folder / name)
-            saved[rect] = name
-        item["crop"] = {"path": saved[rect], "shared_bbox_png_xyxy": list(rect)}
+            pieces = [image.crop(region or other) for image, region, other in
+                      zip((a, b), regions, reversed(regions), strict=True)]
+            crop_scale = min(1, 800 / max(max(p.size) for p in pieces))
+            scaled = [p.resize(tuple(max(1, round(s * crop_scale)) for s in p.size),
+                               Image.Resampling.LANCZOS) if crop_scale < 1 else p for p in pieces]
+            tile_size = tuple(max(lengths) for lengths in zip(*(p.size for p in scaled), strict=True))
+            tiles = [Image.new("RGB", tile_size, "white") for _ in scaled]
+            for tile, piece in zip(tiles, scaled, strict=True):
+                tile.paste(piece, (0, 0))
+            labels = [heading if region else heading + " (same viewport)"
+                      for heading, region in zip(headings, regions, strict=True)]
+            two_up(*tiles, labels).save(folder / name)
+            saved[regions] = name
+        item["crop"] = {"path": saved[regions], "a_bbox_png_xyxy": regions[0], "b_bbox_png_xyxy": regions[1]}
     path = f"{prefix}_overlay.png"
     overview.save(folder / path)
     return path

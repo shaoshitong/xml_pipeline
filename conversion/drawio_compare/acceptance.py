@@ -65,7 +65,7 @@ def labels(split):
     node(root, "box", "" if split else "Input", (10, 10, 100, 40))
     if split:
         node(root, "text", "Input", (10, 10, 100, 40),
-             style="text;html=0;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;")
+             style=BOX + "fillColor=none;strokeColor=none;")
     return ET.tostring(doc)
 
 
@@ -179,6 +179,7 @@ def accept(folder, fixtures):
             if key == "redundant_defaults":
                 assert report["normalized_xml_equal"] and report["normalization"]["B"]["simplifications"]
             if key == "split_merge":
+                assert page["render"]["pixel_exact"], page["render"]
                 assert all(d["kind"] in {"label_edit_binding_changed", "visual_patch"} for d in page["diagnostics"])
                 diagnostic, = differences(report, "label_edit_binding_changed")
                 assert diagnostic["edit_probe"]["status"] == "different_motion_class", diagnostic
@@ -235,6 +236,12 @@ def accept(folder, fixtures):
                 report = run(a, b, case, "reference", runtime=runtime)
                 verify(report, case)
                 assert report["pages"][0]["diagnostics"]
+                if key == "022":
+                    table, = [d for d in differences(report, "table_grid_changed")
+                              if d["a"]["label"] == d["b"]["label"] == "Related Table A"]
+                    assert table["expected"]["columns_by_row"] == [2] * 4
+                    assert table["actual"]["columns_by_row"] == [4] * 3
+                    assert table["a"]["cell_ids"][0] == "224" and table["b"]["cell_ids"][0] == "r_tableA"
                 summary[f"pilot_{key}"] = {"summary": report["summary"],
                                            "pages": len(report["pages"]),
                                            "render": report["pages"][0]["render"],

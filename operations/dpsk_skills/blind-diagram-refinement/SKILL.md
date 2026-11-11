@@ -14,3 +14,10 @@ Work independently inside this case directory. The target image is the visual sp
 5. **Record the trajectory.** Keep attempted checkpoints and write `decisions.jsonl` with one row per attempt: `from`, `candidate`, target-pixel bbox or patch ID, visual evidence, affected cell IDs, actual measured outcome, and `accept`/`revert` with reason. At the end write `selected.json` with the relative filename of your best already-rendered checkpoint and the unresolved discrepancies.
 
 Use the tool report's file paths to open the PNGs with the image reader. It prints only visual and structural diagnostics; all choices and edits are yours.
+
+To inspect what changed between two already rendered checkpoints, optionally run
+`python3 visual_check.py compare before.drawio after.drawio`. Read the revision
+report and overlays. The service compares only these two unchanged case-local
+checkpoints. A comparison gives native cell IDs, coordinates, and observable
+differences for you to interpret alongside the target PNG. Use the target-image
+checks to decide whether to keep an edit.

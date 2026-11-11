@@ -81,7 +81,7 @@ class Runtime:
         exported = self.call("render", xml, frame=frame, pageNumber=page_number)
         transform = exported["transform"]
         if (transform["pixel_ratio"], transform["view_scale"], transform["view_translate"]) != (1, 1, [0, 0]):
-            raise ValueError("unexpected draw.io view scale, translation or browser pixel ratio")
+            raise ValueError(f"unexpected draw.io view scale, translation or browser pixel ratio: {transform}")
         page = renderer.render_page
         page.bring_to_front()
         w, h = frame["dimensions"]

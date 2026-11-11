@@ -53,8 +53,9 @@ outputs and are never fed back into the comparison.
 Matching uses page order, normalized label text, object kind, panel membership,
 neighbor labels, and geometry. A single centered text object can match the label
 of a rectangle while its original cell and drag behavior remain observable.
-Native editable tables and simple HTML tables are supported. Arbitrary drawn grids,
-complex HTML table spans and ambiguous repeated objects can require review.
+Native editable tables, simple HTML tables, and regular grids of adjacent rectangles
+inside one group are supported. Complex spans and ambiguous repeated objects can
+require review.
 The edge probe moves an actual vertex in draw.io and measures the endpoint before
 and after restoring the original model. The report includes both binding attributes
 and observed motion.
@@ -78,3 +79,10 @@ differences, render-safe normalization, and coordinate projection. To also run
 the five recorded img2code cases, pass `--fixtures` with a directory containing
 the staged `outputs/random100_new540_final_seed20261103100_v1/pairs/*/author.drawio`
 and `outputs/dpsk_img2code_max_pilot_20261111/*/round1.drawio` inputs.
+
+The blind DPSK service can call this CLI through
+`python3 visual_check.py compare before.drawio after.drawio`. It checks the hashes
+of both previously rendered case checkpoints, then invokes revision mode on
+HKUST3. It returns the revision report and overlays to the case directory. The
+full artifact folder stays on HKUST3. The bridge's `--drawio-compare` argument
+selects the installed CLI if the deployment path changes.

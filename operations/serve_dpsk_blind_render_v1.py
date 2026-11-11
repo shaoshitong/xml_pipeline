@@ -12,6 +12,7 @@ import time
 R='/backup/shaoshitong/img2code_20261029'
 PY='/home/shaoshitong/anaconda3/bin/python'
 S=R+'/conversion/scripts'
+COMPARE=R+'/conversion/drawio_compare_20261111/conversion/scripts/drawio-compare'
 SSH=['ssh','-o','BatchMode=yes','-o','ConnectTimeout=6','hkust3']
 SCP=['scp','-q','-o','BatchMode=yes','-o','ConnectTimeout=6']
 
@@ -38,6 +39,47 @@ def name_ok(name):
     return isinstance(name,str) and re.fullmatch(r'[a-zA-Z0-9_-]{1,40}\.drawio',name) is not None
 
 
+def compare_checkpoints(case, queue, remote, token, request, accepted_hashes, command):
+    checkpoints = request.get('checkpoints')
+    if not isinstance(checkpoints, list) or len(checkpoints) != 2:
+        raise ValueError('compare requires two previously rendered checkpoints')
+    sources = []
+    for checkpoint in checkpoints:
+        if not isinstance(checkpoint, dict):
+            raise ValueError('invalid checkpoint')
+        name = checkpoint.get('name')
+        expected = checkpoint.get('sha256')
+        if not name_ok(name) or name not in accepted_hashes or accepted_hashes[name] != expected:
+            raise ValueError('compare inputs must be unchanged, previously rendered case checkpoints')
+        path = case / name
+        if path.is_symlink() or path.stat().st_size > 2_000_000 or sha(path) != expected:
+            raise ValueError('comparison checkpoint changed')
+        sources.append(path)
+    stage = f'{remote}/compare_{token}'
+    ssh('mkdir', '-p', stage)
+    inputs = [stage + '/A.drawio', stage + '/B.drawio']
+    for source, dest in zip(sources, inputs):
+        scp(source, 'hkust3:' + dest)
+    staged_hashes = [line.split()[0] for line in ssh('sha256sum', *inputs).splitlines()]
+    if staged_hashes != [checkpoint['sha256'] for checkpoint in checkpoints]:
+        raise ValueError('comparison transfer changed a checkpoint')
+    out = stage + '/report'
+    ssh(PY, command, *inputs, '--mode', 'revision', '--out', out)
+    folder = queue / token
+    folder.mkdir(exist_ok=True)
+    report_file = folder / 'diff.json'
+    scp('hkust3:' + out + '/diff.json', report_file)
+    report = json.loads(report_file.read_text())
+    overlays = []
+    for page in report['pages']:
+        name = f"page_{page['page']:03d}_overlay.png"
+        local = folder / name
+        scp('hkust3:' + out + '/' + name, local)
+        overlays.append(str(local.relative_to(case)))
+    return {'ok': True, 'operation': 'compare', 'mode': 'revision', 'summary': report['summary'],
+            'report_path': str(report_file.relative_to(case)), 'overlays': overlays}
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('case',type=Path)
@@ -45,6 +87,7 @@ def main():
     p.add_argument('--limit',type=int,default=6)
     p.add_argument('--idle-timeout',type=int,default=1200)
     p.add_argument('--cached-seed',type=Path,help='seed proof, render and precomputed localization from HKUST3')
+    p.add_argument('--drawio-compare', default=COMPARE, help='HKUST3 path to the verified comparison CLI')
     args=p.parse_args()
     c=args.case.resolve()
     q=c/'visual_checks'; q.mkdir(exist_ok=True)
@@ -79,9 +122,7 @@ def main():
             scp(cache/'patch_feedback.json','hkust3:'+remote+'/cached_seed/locate/patch_feedback.json')
         setup_complete=True
 
-    if not cache:
-        setup()
-    done={}; used=0; deadline=time.monotonic()+args.idle_timeout
+    done={}; accepted_hashes={}; used=0; deadline=time.monotonic()+args.idle_timeout
     print(json.dumps({'state':'ready','limit':args.limit,'target_sha256':target_sha}),flush=True)
     while time.monotonic()<deadline:
         if (c/'service.stop').is_file():
@@ -92,6 +133,15 @@ def main():
             if reply.exists() or not re.fullmatch(r'[a-f0-9]{20}',token):
                 continue
             request=json.loads(job.read_text()); candidate=request.get('candidate'); against=request.get('against')
+            if request.get('operation') == 'compare':
+                try:
+                    outcome = compare_checkpoints(c, q, remote, token, request, accepted_hashes, args.drawio_compare)
+                except (OSError, ValueError, subprocess.SubprocessError) as exc:
+                    outcome = {'ok': False, 'operation': 'compare', 'error': str(exc)[:500]}
+                put(reply, outcome)
+                print(json.dumps(outcome), flush=True)
+                deadline = time.monotonic() + args.idle_timeout
+                continue
             outcome={'ok':False,'candidate':candidate,'against':against}
             try:
                 if not name_ok(candidate) or (against is not None and (not name_ok(against) or against not in done)):
@@ -136,6 +186,7 @@ def main():
                     scp('hkust3:'+stage+'/render/official.png',folder/'candidate.png')
                 put(folder/'metrics.json',dict(current=fresh,against_previous=previous,native=proof))
                 done[candidate]=stage
+                accepted_hashes[candidate]=request['sha256']
                 outcome.update(ok=True,native_gate=True,metrics_path=str((folder/'metrics.json').relative_to(c)),
                     render_path=str((folder/'candidate.png').relative_to(c)),overview_path=str((folder/'overview.png').relative_to(c)),
                     crops=[str((folder/(x['id']+'.png')).relative_to(c)) for x in fresh['patches']],
