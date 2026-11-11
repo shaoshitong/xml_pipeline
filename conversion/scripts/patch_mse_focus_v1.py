@@ -140,12 +140,15 @@ def main():
     p.add_argument('target',type=Path)
     p.add_argument('candidate',type=Path)
     p.add_argument('output',type=Path)
-    p.add_argument('--freeze',type=Path,help='reuse baseline transform and identical patch boxes for after scoring')
+    alignment = p.add_mutually_exclusive_group()
+    alignment.add_argument('--freeze',type=Path,help='reuse baseline transform and identical patch boxes for after scoring')
+    alignment.add_argument('--alignment-from',type=Path,help='reuse baseline transform but locate fresh patches')
     p.add_argument('--baseline-image',type=Path,help='with --freeze, measure changes outside P1 and an expanded ROI')
     args = p.parse_args()
     target,candidate = on_white(args.target),on_white(args.candidate)
     before = json.loads(args.freeze.read_text()) if args.freeze else None
-    transform = before['transform'] if before else registration(target,candidate)
+    transform = (before['transform'] if before else json.loads(args.alignment_from.read_text())['transform']
+                 if args.alignment_from else registration(target,candidate))
     frame,*metrics = features(target,candidate,transform)
     regions = ([dict(id=old['id'],**score(old['bbox'],*metrics)) for old in before['patches']]
                if before else locate(*target.size,metrics))
@@ -155,7 +158,7 @@ def main():
     result = dict(target_size=target.size,candidate_size=candidate.size,transform=transform,
                   warning='Pixel differences are diagnostic, not semantic checks. Pink/blue also appear on shifted edges.',
                   coordinates='zero-based [x0,y0,x1,y1), target PNG pixels, not XML canvas coordinates',
-                  transform_frozen=bool(before),global_metrics=score((0,0,*target.size),*metrics),patches=regions,
+                  transform_frozen=bool(before or args.alignment_from),global_metrics=score((0,0,*target.size),*metrics),patches=regions,
                   seconds=round(time.monotonic()-start,3))
     if args.baseline_image:
         if not before or not regions:

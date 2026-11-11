@@ -1,0 +1,5 @@
+- id: tool-bash
+  disabled: false
+- id: bash-sandbox
+  config:
+    timeoutMs: 60000
