@@ -326,10 +326,12 @@ def assign(left, right, scorer, threshold, margin=.055):
     return found
 
 
-def same_cell_except_parent(a, b):
+def same_cell_except_parent(a, b, *, allow_label_edit=False):
     coordinates = {"bbox", "paint_bbox", "label_bbox", "points"}
     for key, value in a.items():
         if key == "parent" or value == b[key]:
+            continue
+        if allow_label_edit and key in {"label", "label_bbox"}:
             continue
         other = b[key]
         if key not in coordinates or value is None or other is None or len(value) != len(other):
@@ -343,16 +345,21 @@ def same_cell_except_parent(a, b):
     return True
 
 
-def anchored_matches(left, right):
+def anchored_matches(left, right, *, compare_labels=False):
     # An ID is useful across revisions only when its observed native fields
     # corroborate the match. Parent changes can come from inserting a group.
     by_id = {o.id: o for o in right}
     matches = []
     for a in left:
         b = by_id.get(a.id)
-        if (b is not None and a.kind == b.kind and a.label == b.label and a.ids == b.ids
-                and all(same_cell_except_parent(x, y) for x, y in
-                        zip([a.cell, *a.members], [b.cell, *b.members], strict=True))):
+        if b is None or a.kind != b.kind or a.ids != b.ids:
+            continue
+        # A complete label replacement can have no lexical overlap. A stable
+        # ID and unchanged native bounds and style still identify the cell.
+        label_edit = compare_labels and a.bbox is not None and a.bbox == b.bbox
+        if (a.label == b.label or label_edit) and all(
+                same_cell_except_parent(x, y, allow_label_edit=label_edit)
+                for x, y in zip([a.cell, *a.members], [b.cell, *b.members], strict=True)):
             matches.append((a, b, "confirmed", 1.0))
     return matches
 
@@ -362,7 +369,7 @@ def match_vertices(left, right, span):
     # labels go through geometry, adjacency and matched panel context.
     a = [o for o in left.values() if o.kind != "edge"]
     b = [o for o in right.values() if o.kind != "edge"]
-    exact = anchored_matches(a, b)
+    exact = anchored_matches(a, b, compare_labels=True)
     used_a, used_b = {x.id for x, *_ in exact}, {y.id for _, y, *_ in exact}
     a, b = [o for o in a if o.id not in used_a], [o for o in b if o.id not in used_b]
     a_labels = Counter((o.kind, o.label) for o in a)

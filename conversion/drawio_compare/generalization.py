@@ -142,6 +142,20 @@ def raw_render_agrees(runtime, source, variant, report, cache):
     return matches
 
 
+def localized_negative(record, diagnostics):
+    changed = re.search(r"id='([^']+)'", record.get("detail", ""))
+    if changed is None:
+        return None
+    cell_id = changed.group(1)
+    geometry = record["variant"] == "negative_geometry_shift"
+    return any(
+        d["status"] == "confirmed"
+        and (d["kind"].endswith("_moved") if geometry else d["kind"] == "label_changed")
+        and all(d[side] and cell_id in d[side]["cell_ids"] for side in ("a", "b"))
+        for d in diagnostics
+    )
+
+
 def check_shard(cases, sources, variants, out):
     result = []
     with Runtime() as runtime:
@@ -178,6 +192,8 @@ def check_shard(cases, sources, variants, out):
                     positive = record["category"] != "negative"
                     item["expected_pixels"] = positive
                     item["pass"] = item["input_changed"] and item["comparator_agrees"] and item["pixel_exact"] == positive
+                    if not positive:
+                        item["changed_cell_localized"] = localized_negative(record, diagnostics)
                 except (OSError, ValueError, ET.ParseError, PlaywrightError) as error:
                     item["error"] = str(error)
                     item["pass"] = False
@@ -238,6 +254,8 @@ def verify(sources, variants, out, workers, one_per_source=False):
             "normalized_xml_equal": sum(bool(r.get("normalized_xml_equal")) for r in generated),
             "no_diagnostics": sum(r.get("diagnostic_counts") == {} for r in generated),
         }
+        if kind == "negative":
+            summary[kind]["changed_cell_localized"] = sum(r.get("changed_cell_localized") is True for r in generated)
     write_json(out / "generalization.json", {"summary": summary, "source_hashes_unchanged": True,
                                              "records": sorted(records, key=lambda r: (r["case"], r["variant"]))})
     print(json.dumps(summary), flush=True)
