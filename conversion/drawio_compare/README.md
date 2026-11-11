@@ -26,7 +26,9 @@ Drawings with different IDs can still have equivalent pixels and logical objects
 The compiler verifies byte idempotence, exact native cell state and codec output, and exact RGB pixels
 between each source and its own normalized output at a fixed viewport. For compressed
 inputs, the source render uses draw.io's independent `Graph.decompress`. Unresolved
-assets fail the render proof. The official XSD provides advisory diagnostics because
+assets fail the render proof. If a normalization gate fails, the compiler replays
+the intermediate form to identify whether XML reserialization or omission of
+native defaults first changed the evidence. The official XSD provides advisory diagnostics because
 some editor-authored XML features extend the generated XML schema.
 
 `--official-repairs` also runs the editor's `Graph.normalizeModel()`. Its optional

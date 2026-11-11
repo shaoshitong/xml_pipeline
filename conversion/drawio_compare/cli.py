@@ -39,7 +39,28 @@ class Page:
     original: str
     compressed: bool
     snapshot: dict
+    simplifications: list
     proof: dict | None = None
+
+
+def native_snapshot(runtime, document, number):
+    snapshot = runtime.call("snapshot", document, pageNumber=number)
+    editor_xml = serialize(ET.fromstring(snapshot.pop("editor_xml")))
+    return editor_xml, snapshot
+
+
+def normalization_error(source, number, simplifications, preserves_original, evidence):
+    # Only replay the intermediate output when the final lossless gate fails.
+    # It contains the same XML rewrite with the cell default attributes intact.
+    rule = "decode_and_reserialize"
+    if simplifications:
+        intermediate = decode(source.encode(), omit_defaults=False).xml
+        if preserves_original(intermediate):
+            cells = ", ".join(change["cell_id"] for change in simplifications[:8])
+            remaining = len(simplifications) - 8
+            suffix = f" and {remaining} more" if remaining > 0 else ""
+            rule = f"omit_native_defaults (cells {cells}{suffix})"
+    return ValueError(f"page {number}: normalization rule {rule} changed {evidence}")
 
 
 def load_pages(runtime, diagram):
@@ -47,22 +68,22 @@ def load_pages(runtime, diagram):
         raise ValueError("normalization is not byte-idempotent")
     pages = []
     for metadata, compressed in zip(diagram.pages, diagram.compressed_pages, strict=True):
+        number = metadata["number"]
         normalized = metadata["xml"]
-        original_snapshot = runtime.call("snapshot", diagram.source_xml, pageNumber=metadata["number"])
-        snapshot = runtime.call("snapshot", diagram.xml, pageNumber=metadata["number"])
-        editor_xmls = [serialize(ET.fromstring(s.pop("editor_xml"))) for s in (original_snapshot, snapshot)]
-        if editor_xmls[0] != editor_xmls[1]:
-            raise ValueError(f"page {metadata['number']}: normalization changed the editor's serialized model")
-        expected = [r["normalized_id"] for r in diagram.cell_ids if r["page"] == metadata["number"]]
+        original = native_snapshot(runtime, diagram.source_xml, number)
+        editor_xml, snapshot = native_snapshot(runtime, diagram.xml, number)
+        simplifications = [change for change in diagram.simplifications if change["page"] == number]
+        # Includes sibling order, relationships, visibility, style, and native positions.
+        if original != (editor_xml, snapshot):
+            evidence = "the editor's serialized model" if original[0] != editor_xml else "native cell state"
+            raise normalization_error(diagram.source_xml, number, simplifications,
+                                      lambda xml: native_snapshot(runtime, xml, number) == original, evidence)
+        expected = [r["normalized_id"] for r in diagram.cell_ids if r["page"] == number]
         actual = [c["id"] for c in snapshot["cells"]]
         if Counter(expected) != Counter(actual):
-            raise ValueError(f"page {metadata['number']}: draw.io changed or discarded cell IDs")
-        # This includes sibling order, relationships, visibility, style, and
-        # native absolute positions in both versions of the page.
-        if original_snapshot != snapshot:
-            raise ValueError(f"page {metadata['number']}: normalization changed native cell state")
-        pages.append(Page(metadata["number"], metadata["name"], metadata["id"], normalized,
-                          diagram.xml, diagram.source_xml, compressed, snapshot))
+            raise ValueError(f"page {number}: draw.io changed or discarded source cell IDs")
+        pages.append(Page(number, metadata["name"], metadata["id"], normalized,
+                          diagram.xml, diagram.source_xml, compressed, snapshot, simplifications))
     return pages
 
 
@@ -75,7 +96,11 @@ def checked_render(runtime, page, frame):
         raise ValueError(f"page {page.number}: cannot prove render equality with unresolved assets: "
                          f"{sorted(set(original.unresolved + normalized.unresolved))}")
     if original.pixel_sha256 != normalized.pixel_sha256:
-        raise ValueError(f"page {page.number}: normalization changed rendered pixels")
+        def same_pixels(document):
+            intermediate = runtime.render(document, proof_frame, page_number=page.number)
+            return not intermediate.unresolved and intermediate.pixel_sha256 == original.pixel_sha256
+
+        raise normalization_error(page.original, page.number, page.simplifications, same_pixels, "rendered pixels")
     page.proof = {"page": page.number, "name": page.name, "page_id": page.page_id,
                   "original_pixel_sha256": original.pixel_sha256,
                   "normalized_pixel_sha256": normalized.pixel_sha256, "pixel_exact": True,

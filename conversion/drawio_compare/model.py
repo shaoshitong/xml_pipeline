@@ -67,7 +67,7 @@ class Diagram:
     simplifications: list
 
 
-def decode(blob, schema=None):
+def decode(blob, schema=None, *, omit_defaults=True):
     # Reuse the pipeline's bounded deflate/URI decoder. Decode UTF-8 first so
     # alternate encodings cannot bypass its DTD guard.
     source = blob.decode("utf-8-sig")
@@ -94,7 +94,7 @@ def decode(blob, schema=None):
         page.insert(index, model)
         for cell_id, (_, cell, _) in cell_index(model).items():
             dropped = [key for key, value in CELL_DEFAULTS.items() if cell.get(key) == value]
-            if dropped:
+            if omit_defaults and dropped:
                 for key in dropped:
                     del cell.attrib[key]
                 simplifications.append({"page": number, "cell_id": cell_id,

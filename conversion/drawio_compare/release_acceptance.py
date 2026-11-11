@@ -66,6 +66,23 @@ def audit_suite(suite):
     return {"cases": len(expected), "source_page_proofs": proof_count}
 
 
+def audit_failure_attribution():
+    sys.path.insert(0, str(REPO / "conversion/scripts"))
+    from acceptance import explicit_defaults, flow
+    from cli import normalization_error
+    from model import decode
+
+    source = explicit_defaults(flow()).decode()
+    diagram = decode(source.encode())
+    assert diagram.simplifications
+    # Inject a failed comparison whose intermediate still preserves the source.
+    preserves = lambda intermediate: 'visible="1"' in intermediate
+    assert "omit_native_defaults (cells" in str(
+        normalization_error(source, 1, diagram.simplifications, preserves, "native cell state"))
+    assert "decode_and_reserialize" in str(
+        normalization_error(source, 1, diagram.simplifications, lambda _: False, "native cell state"))
+
+
 def test_skill(fixture, out):
     case = out / "skill_case"
     case.mkdir()
@@ -135,6 +152,8 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     result = audit_suite(args.suite)
     print("suite audit passed", result, flush=True)
+    audit_failure_attribution()
+    result["failed_rule_attribution"] = True
 
     a = args.fixtures / "outputs/random100_new540_final_seed20261103100_v1/pairs/022/author.drawio"
     b = args.fixtures / "outputs/dpsk_img2code_max_pilot_20261111/022/round1.drawio"
