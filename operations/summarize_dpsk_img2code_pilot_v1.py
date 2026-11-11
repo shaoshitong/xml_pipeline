@@ -18,7 +18,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def collect(case, round_no, out):
+def collect(case, round_no, out, persisted):
     prefix = f'round{round_no}'
     log = case/f'{prefix}.events.jsonl'
     if not log.is_file():
@@ -52,7 +52,12 @@ def collect(case, round_no, out):
             failures.append(e['result'])
         elif kind=='final':
             final = e.get('text')
-    out.writelines(dump(t)+'\n' for t in thoughts)
+    full = [dict(case=case.name,round=round_no,step=t['step'],seq=t['seq'],part=t['part'],text=t['text'])
+            for t in persisted.get('reasoning',[]) if t['turn']==round_no]
+    if persisted and (session!=persisted['session_id'] or len(full)!=len(thoughts)):
+        raise ValueError(f'{case.name}/{prefix}: persisted session and stdout events disagree')
+    source = 'persisted_assistant_message_reasoning' if persisted else 'headless_stdout_may_truncate'
+    out.writelines(dump({**t,'source':source})+'\n' for t in (full if persisted else thoughts))
     feedback = take(case/f'{prefix}.feedback.json')
     gold = take(case/f'{prefix}.gold_diagnostic.json')
     raw_hash = sha(log)
@@ -61,7 +66,9 @@ def collect(case, round_no, out):
     if feedback.get('native_gate') and (sha(code)!=feedback['code_sha256'] or sha(image)!=feedback['render']['png_sha256']):
         raise ValueError(f'{case.name}/{prefix}: artifacts not bound to verification evidence')
     return dict(round=round_no,session_id=session,final_received=final is not None,turn_end_count=status['turn_end'],
-                thinking_events=len(thoughts),thinking_chars=sum(len(t['text']) for t in thoughts),
+                thinking_source=source,thinking_events=len(full if persisted else thoughts),
+                thinking_chars=sum(len(t['text']) for t in (full if persisted else thoughts)),
+                cli_thinking_chars=sum(len(t['text']) for t in thoughts),
                 raw_log=str(log.relative_to(case.parent)),raw_log_sha256=raw_hash,non_json_cli_lines=non_events,
                 tool_calls=dict(tools),tool_errors=failures,usage=dict(usage),final=final,
                 xml_sha256=sha(code) if code.is_file() else None,png_sha256=sha(image) if image.is_file() else None,
@@ -75,18 +82,24 @@ def main():
     p.add_argument('root',type=Path)
     p.add_argument('--rounds',type=int,default=3)
     p.add_argument('--partial',action='store_true')
+    p.add_argument('--require-persisted',action='store_true')
     args = p.parse_args()
     records = []
     with (args.root/'thinking.jsonl').open('w') as out:
         for case in ('002','012','013','017','022'):
-            records.append(dict(case=case,rounds=[r for n in range(1,args.rounds+1)
-                            if (r:=collect(args.root/case,n,out)) is not None]))
+            persisted = take(args.root/case/'reasoning.persisted.json')
+            if args.require_persisted and (persisted.get('turns_ended')!=list(range(1,args.rounds+1)) or
+                                           persisted.get('request_models')!=[{'model':'deepseek-flash','provider':'deepseek-account'}]):
+                raise ValueError(f'{case}: persisted turn completeness/model check failed')
+            records.append(dict(case=case,model_metadata=persisted.get('request_models'),rounds=[r for n in range(1,args.rounds+1)
+                            if (r:=collect(args.root/case,n,out,persisted)) is not None]))
     rounds = [r for rec in records for r in rec['rounds']]
     complete = (len(rounds)==args.rounds*len(records) and
                 all(r['final_received'] and r['turn_end_count']==1 and r['thinking_events'] for r in rounds))
     result = dict(complete=complete,expected_rounds=len(records)*args.rounds,observed_rounds=len(rounds),
                   native_gate_passes=sum(r['native_gate'] is True for r in rounds),
                   thinking_sha256=sha(args.root/'thinking.jsonl'),
+                  persisted_verified=all(r['thinking_source']=='persisted_assistant_message_reasoning' for r in rounds),
                   thinking_events=sum(r['thinking_events'] for r in rounds),
                   thinking_chars=sum(r['thinking_chars'] for r in rounds),cases=records)
     (args.root/'review.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
