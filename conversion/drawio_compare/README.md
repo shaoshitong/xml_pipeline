@@ -107,10 +107,15 @@ unmeasured checkpoint.
 
 `generalization.py select DATASET SOURCES` takes twelve draw.io sources from
 `DATASET/pairs/*/author.drawio` using a fixed seed and four diagram strata.
-It excludes the five pilot IDs. A separate generator writes transformed inputs
-and a manifest to `VARIANTS`. Run
+It excludes the five pilot IDs. Run `python3 conversion/drawio_compare/dpsk_transform.py
+SOURCES VARIANTS` to apply the frozen DPSK generator and write its manifest. Run
 `generalization.py verify SOURCES VARIANTS RESULTS` on HKUST3 with
 `PYTHONPATH=conversion/scripts`.
+
+For the larger sample, use `select --count 100 --retained RETAINED_DATASET` to
+take 40 recent author sources and 60 retained sources with distinct XML hashes.
+`verify --one-per-source` freezes one actual transformation per source before
+rendering and balances the selection across the available transformation types.
 
 The verifier renders the original and transformed XML directly in one coordinate
 frame, then compares that result with the compiler's pixel verdict. It retains

@@ -141,10 +141,18 @@ def table_grid(table, descendants, labels):
     return None
 
 
-def drawn_grid(panel, descendants, labels):
+def drawn_grid(panel, descendants, labels, absorbed):
     cells = descendants[panel.id]
+    # Transparent groups can wrap a complete grid without changing its rows
+    # or columns. Keep those group cells as separate editable objects.
+    while len(cells) == 1:
+        group, = cells
+        if (group["kind"] != "vertex" or group["raw_style"].rstrip(";") != "group"
+                or labels[group["id"]][0] or group["collapsed"]):
+            break
+        cells = descendants[group["id"]]
     if not panel.bbox or len(cells) < 4 or any(
-            not c.get("bbox") or c["kind"] != "vertex" or descendants.get(c["id"])
+            c["id"] in absorbed or not c.get("bbox") or c["kind"] != "vertex" or descendants.get(c["id"])
             or c["style"].get("shape", "rectangle") not in {"rectangle", "label"}
             or c["style"].get("rotation", "0") != "0"
             or labels[c["id"]][1] for c in cells):
@@ -229,7 +237,7 @@ def objects(snapshot):
                 obj.table = table_grid(obj, children, labels)
             absorbed.update(obj.ids[1:])
         elif kind == "panel" and obj.bbox and not obj.label:
-            obj.table = drawn_grid(obj, children, labels)
+            obj.table = drawn_grid(obj, children, labels, absorbed)
             if obj.table:
                 obj.kind = "table"
                 absorbed.update(obj.ids[1:])
@@ -318,16 +326,50 @@ def assign(left, right, scorer, threshold, margin=.055):
     return found
 
 
+def same_cell_except_parent(a, b):
+    coordinates = {"bbox", "paint_bbox", "label_bbox", "points"}
+    for key, value in a.items():
+        if key == "parent" or value == b[key]:
+            continue
+        other = b[key]
+        if key not in coordinates or value is None or other is None or len(value) != len(other):
+            return False
+        if key == "points":
+            if any(p != q and (p is None or q is None or distance(p, q) > 1e-6)
+                   for p, q in zip(value, other, strict=True)):
+                return False
+        elif any(abs(p - q) > 1e-6 for p, q in zip(value, other, strict=True)):
+            return False
+    return True
+
+
+def anchored_matches(left, right):
+    # An ID is useful across revisions only when its observed native fields
+    # corroborate the match. Parent changes can come from inserting a group.
+    by_id = {o.id: o for o in right}
+    matches = []
+    for a in left:
+        b = by_id.get(a.id)
+        if (b is not None and a.kind == b.kind and a.label == b.label and a.ids == b.ids
+                and all(same_cell_except_parent(x, y) for x, y in
+                        zip([a.cell, *a.members], [b.cell, *b.members], strict=True))):
+            matches.append((a, b, "confirmed", 1.0))
+    return matches
+
+
 def match_vertices(left, right, span):
     # Exact unique labels can survive a large absolute movement. Repeated
     # labels go through geometry, adjacency and matched panel context.
     a = [o for o in left.values() if o.kind != "edge"]
     b = [o for o in right.values() if o.kind != "edge"]
+    exact = anchored_matches(a, b)
+    used_a, used_b = {x.id for x, *_ in exact}, {y.id for _, y, *_ in exact}
+    a, b = [o for o in a if o.id not in used_a], [o for o in b if o.id not in used_b]
     a_labels = Counter((o.kind, o.label) for o in a)
     b_labels = Counter((o.kind, o.label) for o in b)
     unique = {(o.kind, o.label): o for o in b if o.label and b_labels[o.kind, o.label] == 1}
-    exact = [(o, unique[o.kind, o.label], "confirmed", 1.0) for o in a if
-             a_labels[o.kind, o.label] == 1 and (o.kind, o.label) in unique]
+    exact.extend((o, unique[o.kind, o.label], "confirmed", 1.0) for o in a if
+                 a_labels[o.kind, o.label] == 1 and (o.kind, o.label) in unique)
     used_a, used_b = {x.id for x, *_ in exact}, {y.id for _, y, *_ in exact}
     panels = {x.id: y.id for x, y, *_ in exact if x.kind in {"panel", "table"}}
 
@@ -420,7 +462,11 @@ def compare_page(snap_a, snap_b, span):
     edges_b = [o for o in b.values() if o.kind == "edge"]
     terminal_a = {o.id: [terminal_at(o, end, a, owners_a) for end in ("source", "target")] for o in edges_a}
     terminal_b = {o.id: [terminal_at(o, end, b, owners_b) for end in ("source", "target")] for o in edges_b}
-    edges = assign(edges_a, edges_b, lambda x, y: edge_score(x, y, terminal_a, terminal_b, mapping, span), .56)
+    edges = anchored_matches(edges_a, edges_b)
+    anchored_a, anchored_b = {x.id for x, *_ in edges}, {y.id for _, y, *_ in edges}
+    edges += assign([o for o in edges_a if o.id not in anchored_a],
+                    [o for o in edges_b if o.id not in anchored_b],
+                    lambda x, y: edge_score(x, y, terminal_a, terminal_b, mapping, span), .56)
     diagnostics = []
     matches = vertices + edges
 
@@ -473,7 +519,9 @@ def compare_page(snap_a, snap_b, span):
         old_arrows, new_arrows = arrows(x), arrows(y)
         semantic_arrows = new_arrows[::-1] if reversed_order else new_arrows
         route_a, route_b = x.cell["points"], y.cell["points"]
-        if reversed_order and ((old_arrows[0] == "none") != (old_arrows[1] == "none")) and +                ((semantic_arrows[0] == "none") != (semantic_arrows[1] == "none")) and +                (old_arrows[0] == "none") != (semantic_arrows[0] == "none"):
+        if (reversed_order and ((old_arrows[0] == "none") != (old_arrows[1] == "none"))
+                and ((semantic_arrows[0] == "none") != (semantic_arrows[1] == "none"))
+                and (old_arrows[0] == "none") != (semantic_arrows[0] == "none")):
             add("edge_direction_reversed", status, x, y,
                 [key for key, _ in ax] + [old_arrows], order + [new_arrows])
         elif all(mapped) and all(order) and mapped != order and not reversed_order:

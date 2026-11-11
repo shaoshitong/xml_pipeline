@@ -22,7 +22,9 @@ def serialize(element):
             attributes = sorted(node.attrib.items())
             node.attrib.clear()
             node.attrib.update(attributes)
-        if node.tag in {"mxfile", "diagram", "mxGraphModel", "root"}:
+        native_container = node.tag in {"mxfile", "diagram", "mxGraphModel", "root", "mxCell", "mxGeometry"}
+        edge_points = node.tag == "Array" and node.get("as") == "points"
+        if native_container or edge_points:
             if node.text is not None and not node.text.strip():
                 node.text = None
             for child in node:

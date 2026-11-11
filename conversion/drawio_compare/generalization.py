@@ -41,35 +41,56 @@ def profile(blob):
     }
 
 
-def select(dataset, out, seed):
+def select(dataset, out, seed, count=12, retained=None):
     profiles = {}
-    for path in sorted(dataset.glob("pairs/*/author.drawio")):
+    paths = sorted(dataset.glob("pairs/*/author.drawio"))
+    seen_hashes = {digest(path.read_bytes()) for path in paths if path.parent.name in HOLDOUT_EXCLUSIONS}
+    rng = random.Random(seed)
+    if retained is not None:
+        additional = sorted(retained.glob("pairs/*/editable.drawio"))
+        rng.shuffle(additional)
+        paths.extend(additional[:count * 3])
+    for path in paths:
         case = path.parent.name
         if not TOKEN.fullmatch(case) or case in HOLDOUT_EXCLUSIONS:
             continue
+        origin = "author" if path.name == "author.drawio" else "retained"
+        if retained is not None:
+            case = f"{origin}_{case}"
         try:
             stats = profile(path.read_bytes())
         except (ValueError, ET.ParseError):
             continue
-        profiles[case] = {"path": str(path), **stats}
-    if len(profiles) < 12:
-        raise ValueError("at least twelve held-out source files are required")
-    rng = random.Random(seed)
-    order = sorted(profiles)
-    rng.shuffle(order)
-    chosen = {}
-    for stratum, applicable in (
-        ("table", lambda p: p["table"]),
-        ("math", lambda p: p["math"]),
-        ("nested", lambda p: p["nested"] >= 5),
-        ("flow", lambda p: p["edges"] >= 5),
-    ):
-        for case in [c for c in order if c not in chosen and applicable(profiles[c])][:3]:
-            chosen[case] = stratum
-    for case in order:
-        if len(chosen) == 12:
-            break
-        chosen.setdefault(case, "other")
+        if stats["sha256"] in seen_hashes:
+            continue
+        seen_hashes.add(stats["sha256"])
+        profiles[case] = {"path": str(path), "origin": origin, **stats}
+
+    def choose(bucket, quota):
+        if len(bucket) < quota:
+            raise ValueError(f"only {len(bucket)} source candidates for a quota of {quota}")
+        rng.shuffle(bucket)
+        picked = {}
+        for stratum, applicable in (
+            ("table", lambda p: p["table"]),
+            ("math", lambda p: p["math"]),
+            ("nested", lambda p: p["nested"] >= 5),
+            ("flow", lambda p: p["edges"] >= 5),
+        ):
+            for case in [c for c in bucket if c not in picked and applicable(profiles[c])][:quota // 4]:
+                picked[case] = stratum
+        for case in bucket:
+            if len(picked) == quota:
+                break
+            picked.setdefault(case, "other")
+        return picked
+
+    author = [case for case, info in profiles.items() if info["origin"] == "author"]
+    author_quota = count if retained is None else count * 2 // 5
+    chosen = choose(author, author_quota)
+    if retained is not None:
+        chosen.update(choose([case for case, info in profiles.items() if info["origin"] == "retained"],
+                             count - author_quota))
     out.mkdir(parents=True, exist_ok=False)
     records = []
     for case, stratum in sorted(chosen.items()):
@@ -166,13 +187,36 @@ def check_shard(cases, sources, variants, out):
     return result
 
 
-def verify(sources, variants, out, workers):
+def balance_one_per_source(cases, sources, variants):
+    counts = Counter()
+    available = []
+    for case, items in cases:
+        source_hash = digest((sources / f"{case}.drawio").read_bytes())
+        choices = [r for r in items if r["status"] == "generated"
+                   and digest((variants / case / f"{r['variant']}.drawio").read_bytes()) != source_hash]
+        if not choices:
+            raise ValueError(f"generator produced no transformed XML for {case}")
+        available.append((case, choices))
+    rng = random.Random(2026111107)
+    rng.shuffle(available)
+    plan = []
+    for case, choices in sorted(available, key=lambda item: len(item[1])):
+        selected = min(choices, key=lambda r: (counts[r["variant"]], r["variant"]))
+        counts[selected["variant"]] += 1
+        plan.append((case, [selected]))
+    return sorted(plan)
+
+
+def verify(sources, variants, out, workers, one_per_source=False):
     cases = work_items(sources, variants)
     input_hashes = {p.stem: digest(p.read_bytes()) for p in sources.glob("*.drawio")}
     frozen = json.loads((sources / "sources.json").read_text())["records"]
     if input_hashes != {r["case"]: r["sha256"] for r in frozen}:
         raise ValueError("held-out inputs changed since sampling")
     out.mkdir(parents=True, exist_ok=False)
+    if one_per_source:
+        cases = balance_one_per_source(cases, sources, variants)
+    write_json(out / "test_plan.json", [r for _, items in cases for r in items])
     n = min(workers, len(cases))
     records = []
     with ProcessPoolExecutor(max_workers=n) as pool:
@@ -206,16 +250,19 @@ def main():
     choose.add_argument("dataset", type=Path)
     choose.add_argument("out", type=Path)
     choose.add_argument("--seed", type=int, default=2026111107)
+    choose.add_argument("--count", type=int, default=12, choices=range(4, 101))
+    choose.add_argument("--retained", type=Path, help="add editable sources from the retained dataset")
     check = commands.add_parser("verify")
     check.add_argument("sources", type=Path)
     check.add_argument("variants", type=Path)
     check.add_argument("out", type=Path)
     check.add_argument("--workers", type=int, default=4, choices=range(1, 9))
+    check.add_argument("--one-per-source", action="store_true")
     args = parser.parse_args()
     if args.action == "select":
-        select(args.dataset, args.out, args.seed)
+        select(args.dataset, args.out, args.seed, args.count, args.retained)
     else:
-        verify(args.sources, args.variants, args.out, args.workers)
+        verify(args.sources, args.variants, args.out, args.workers, args.one_per_source)
 
 
 if __name__ == "__main__":
