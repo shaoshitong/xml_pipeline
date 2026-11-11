@@ -80,7 +80,7 @@ def compare_checkpoints(case, queue, remote, token, request, accepted_hashes, co
             'report_path': str(report_file.relative_to(case)), 'overlays': overlays}
 
 
-def main():
+def main(argv=None):
     p=argparse.ArgumentParser()
     p.add_argument('case',type=Path)
     p.add_argument('remote',help='isolated run directory below conversion')
@@ -88,7 +88,7 @@ def main():
     p.add_argument('--idle-timeout',type=int,default=1200)
     p.add_argument('--cached-seed',type=Path,help='seed proof, render and precomputed localization from HKUST3')
     p.add_argument('--drawio-compare', default=COMPARE, help='HKUST3 path to the verified comparison CLI')
-    args=p.parse_args()
+    args=p.parse_args(argv)
     c=args.case.resolve()
     q=c/'visual_checks'; q.mkdir(exist_ok=True)
     remote=args.remote
@@ -175,6 +175,8 @@ def main():
                         '--reference',remote+'/target.png','--image-sha256',target_sha,'--out',stage+'/render'))
                     if not proof.get('native_gate'):
                         raise ValueError('native renderer rejected XML: '+proof.get('error','unknown error'))
+                    if proof['code_sha256'] != request['sha256']:
+                        raise ValueError('renderer measured a different checkpoint than requested')
                     alignment=['--alignment-from',done['seed.drawio']+'/locate/patch_feedback.json'] if done else []
                     fresh=json.loads(ssh(PY,remote+'/'+locate_src.name,remote+'/target.png',stage+'/render/official.png',stage+'/locate',*alignment))
                     if against:

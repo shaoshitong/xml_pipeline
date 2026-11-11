@@ -86,3 +86,17 @@ of both previously rendered case checkpoints, then invokes revision mode on
 HKUST3. It returns the revision report and overlays to the case directory. The
 full artifact folder stays on HKUST3. The bridge's `--drawio-compare` argument
 selects the installed CLI if the deployment path changes.
+
+Run the release check on HKUST3 after the full acceptance suite:
+
+```sh
+/home/shaoshitong/anaconda3/bin/python conversion/drawio_compare/release_acceptance.py \
+  --suite /path/to/compare-acceptance --fixtures /path/to/fixtures \
+  --out /path/to/new-release-check
+```
+
+It audits the page proofs and artifact links, repeats case 022 through the
+installed command, and drives the blind case queue through both renders and a
+revision comparison. The queue test uses HKUST3-local transport and the actual
+renderer. The release receipt appears after these checks and rejection of an
+unmeasured checkpoint.
