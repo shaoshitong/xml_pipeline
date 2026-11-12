@@ -21,6 +21,7 @@ MAX_SIZE = 8 * 1024 * 1024
 MAX_FILES = 160
 SOURCE_ROOTS = ("conversion/", "operations/drawio-semantic-compiler/", "tests/")
 SUFFIXES = {".py", ".js", ".mjs", ".ts", ".sh", ".md", ".toml", ".json", ".yaml", ".yml"}
+SOURCE_ENTRY = "conversion/scripts/drawio-compile"
 REMOTE_STAGE = """
 import hashlib, io, json, os, pathlib, sys, tarfile, tempfile
 os.umask(0o077)
@@ -68,7 +69,7 @@ def open_source(project, value):
     if (str(path) != value or not re.fullmatch(r"[A-Za-z0-9_/.-]+", value)
             or any(part.startswith('.') for part in path.parts)
             or (not value.startswith(SOURCE_ROOTS) and value != "pyproject.toml")
-            or path.suffix not in SUFFIXES):
+            or (path.suffix not in SUFFIXES and value != SOURCE_ENTRY)):
         raise ValueError(f"Not an allowed source path: {value}")
     directory = os.open(project, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
     try:
@@ -91,7 +92,8 @@ def deploy(project, ssh_alias, remote_directory, files):
     with tarfile.open(fileobj=data, mode="w") as archive:
         for name in sorted(files):
             with open_source(project, name) as stream:
-                if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                mode = os.fstat(stream.fileno()).st_mode
+                if not stat.S_ISREG(mode):
                     raise ValueError(f"Expected a regular source file: {name}")
                 payload = stream.read(remaining + 1)
             remaining -= len(payload)
@@ -99,7 +101,7 @@ def deploy(project, ssh_alias, remote_directory, files):
                 raise ValueError("Source deployment exceeds 8 MiB")
             member = tarfile.TarInfo(name)
             member.size = len(payload)
-            member.mode = 0o644
+            member.mode = 0o755 if mode & stat.S_IXUSR else 0o644
             archive.addfile(member, io.BytesIO(payload))
     digest = hashlib.sha256(data.getbuffer()).hexdigest()
     command = shlex.join(["/home/shaoshitong/anaconda3/bin/python", "-c", REMOTE_STAGE,
