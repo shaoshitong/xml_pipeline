@@ -4,16 +4,15 @@ from collections import Counter
 from hashlib import sha256
 import json
 from math import ceil, floor
-import os
 import re
 import socketserver
-import stat
 from threading import Thread
 from tempfile import TemporaryDirectory
 from uuid import uuid4
 
 from PIL import Image
 
+from checkpoint import read_candidate
 from compare import compare_page
 from compiler import compile_bytes
 from patch_mse_focus_v1 import on_white, registration
@@ -21,8 +20,6 @@ from runtime import Runtime, project_box, shared_frame
 from source import CompileError
 
 CHECKS = 4
-MAX_BYTES = 1024 * 1024
-CHECKPOINT = re.compile(r"[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}\.drawio")
 EMBED = re.compile(r"(?:&lt;|<)(?:img|svg)\b|data\s*:\s*image/|(?:[;\"]image=)", re.I)
 PRIORITY = {
     "label_changed": 0, "edge_direction_reversed": 0, "edge_terminals_changed": 0,
@@ -32,19 +29,6 @@ PRIORITY = {
     "appearance_style_changed": 3, "ambiguous_correspondence": 5,
 }
 COLOR_FIELDS = {"fillColor", "strokeColor", "fontColor"}
-
-
-def read_candidate(case, name):
-    if not isinstance(name, str) or not CHECKPOINT.fullmatch(name):
-        raise ValueError("Use a case-local .drawio filename")
-    fd = os.open(case / name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
-    with os.fdopen(fd, "rb") as source:
-        if not stat.S_ISREG(os.fstat(source.fileno()).st_mode):
-            raise ValueError("Checkpoint must be a regular file")
-        data = source.read(MAX_BYTES + 1)
-    if len(data) > MAX_BYTES:
-        raise ValueError("Checkpoint exceeds 1 MiB")
-    return data
 
 
 def native(runtime, compiled, target):

@@ -24,17 +24,20 @@ def check(arguments):
             return json.loads(stream.readline(128 * 1024))
 
 
-def dispatch(method, params):
+def dispatch(method, params, invoke, instructions):
     if method == "initialize":
-        return {"protocolVersion": "2025-11-25", "capabilities": {"tools": {}},
-                "serverInfo": {"name": "drawio-check", "version": "1.0"}}
+        result = {"protocolVersion": "2025-11-25", "capabilities": {"tools": {}},
+                  "serverInfo": {"name": "drawio-check", "version": "1.0"}}
+        if instructions:
+            result["instructions"] = instructions
+        return result
     if method == "ping":
         return {}
     if method == "tools/list":
         return {"tools": [TOOL]}
     if method == "tools/call" and params.get("name") == "check":
         try:
-            value = check(params.get("arguments", {}))
+            value = invoke(params.get("arguments", {}))
         except (OSError, ValueError):
             value = {"ok": False, "error": "Verifier connection failed"}
         return {"content": [{"type": "text", "text": json.dumps(value, ensure_ascii=False)}],
@@ -42,14 +45,18 @@ def dispatch(method, params):
     raise KeyError(method)
 
 
-if __name__ == "__main__":
+def serve(invoke, instructions=None):
     for line in sys.stdin:
         request = json.loads(line)
         if "id" not in request:
             continue
         response = {"jsonrpc": "2.0", "id": request["id"]}
         try:
-            response["result"] = dispatch(request["method"], request.get("params", {}))
+            response["result"] = dispatch(request["method"], request.get("params", {}), invoke, instructions)
         except KeyError:
             response["error"] = {"code": -32601, "message": "Method not found"}
         print(json.dumps(response), flush=True)
+
+
+if __name__ == "__main__":
+    serve(check)
