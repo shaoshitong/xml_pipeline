@@ -63,7 +63,7 @@ def write_new(path, data):
     with tempfile.NamedTemporaryFile(dir=path.parent) as temp:
         temp.write(data)
         temp.flush()
-        Path(temp.name).hardlink_to(path)
+        path.hardlink_to(temp.name)
 
 
 def main():
