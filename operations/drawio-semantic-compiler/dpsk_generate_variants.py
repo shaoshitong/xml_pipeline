@@ -29,9 +29,6 @@ from pathlib import Path
 EXPECTED_INPUTS = 50
 CELL_TAGS = frozenset(("mxCell", "object", "UserObject", "userobject"))
 NATIVE_REFERENCE_ATTRIBUTES = ("parent", "source", "target")
-FRAME_STYLE = (
-    "group;selectable=0;connectable=0;resizable=0;rotatable=0;"
-)
 SAFE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
 PRETTY_XML_RE = re.compile(r"\n[ \t]*<")
 SKETCH_STYLE_RE = re.compile(
@@ -303,8 +300,7 @@ def _encode_compressed_payload(model_xml, level):
     uri_encoded = urllib.parse.quote(model_xml, safe="")
     compressor = zlib.compressobj(level, zlib.DEFLATED, -15)
     raw = compressor.compress(uri_encoded.encode("utf-8")) + compressor.flush()
-    encoded = base64.b64encode(raw).decode("ascii")
-    return urllib.parse.quote(encoded, safe="")
+    return base64.b64encode(raw).decode("ascii")
 
 
 # ---------------------------------------------------------------------------
@@ -620,6 +616,15 @@ def _contains_token(text, token):
     return re.search(pattern, text) is not None
 
 
+def _referenced_ids(text, ids):
+    """Find standalone ID references with the same boundaries in one scan."""
+    run = re.compile(r"[A-Za-z0-9_.-]+")
+    ordinary = {identifier for identifier in ids if run.fullmatch(identifier)}
+    found = {match[0] for match in run.finditer(text) if match[0] in ordinary}
+    found.update(identifier for identifier in ids - ordinary if _contains_token(text, identifier))
+    return found
+
+
 # ---------------------------------------------------------------------------
 # ID rewriting
 # ---------------------------------------------------------------------------
@@ -679,10 +684,7 @@ def _collect_protected_ids(models):
     # The caller adds document-level attributes and all model attribute values
     # (including geometry/custom fields) to this blob before matching.
     blob = "\n".join(external_chunks)
-    protected = set()
-    for record_id in all_ids:
-        if _contains_token(blob, record_id):
-            protected.add(record_id)
+    protected = _referenced_ids(blob, all_ids)
 
     for cells in model_cells:
         for element in cells:
@@ -769,10 +771,6 @@ def _make_frame_cell(
         _tag_in_namespace(namespace_sample, "mxCell"),
         {
             "id": frame_id,
-            "value": "",
-            "style": FRAME_STYLE,
-            "vertex": "1",
-            "connectable": "0",
             "parent": parent_id,
         },
     )
@@ -842,7 +840,6 @@ def _wrap_branch(
     seed_material,
     used_ids,
     frame_counter,
-    random_source,
 ):
     element = element_by_id.get(record_id)
     if element is None:
@@ -857,8 +854,7 @@ def _wrap_branch(
     if origin is None:
         return None
     absolute_parent = _absolute_xy(parent_id, parent_by_id, geometry_by_id)
-    absolute_branch = _absolute_xy(record_id, parent_by_id, geometry_by_id)
-    if absolute_parent is None or absolute_branch is None:
+    if absolute_parent is None:
         return None
 
     bbox = _subtree_bbox(
@@ -869,35 +865,15 @@ def _wrap_branch(
         children_by_id,
     )
 
-    dxs = [
-        random_source.choice((-13, -11, -9, -7, -5, 5, 7, 9, 11, 13))
-        for _ in range(frame_count)
-    ]
-    dys = [
-        random_source.choice((-13, -11, -9, -7, -5, 5, 7, 9, 11, 13))
-        for _ in range(frame_count)
-    ]
-    if not any(dxs):
-        dxs[-1] = 7
-    if not any(dys):
-        dys[-1] = -7
-
     frames = []
-    frame_absolutes = []
     current_parent = parent_id
     current_absolute = absolute_parent
     for index in range(frame_count):
-        if index == 0:
-            local_x = origin[0] + dxs[index]
-            local_y = origin[1] + dys[index]
-        else:
-            local_x = dxs[index]
-            local_y = dys[index]
+        local_x, local_y = origin if index == 0 else (0, 0)
         current_absolute = (
             current_absolute[0] + local_x,
             current_absolute[1] + local_y,
         )
-        frame_absolutes.append(current_absolute)
         if bbox is not None:
             width = max(24.0, bbox[2] - current_absolute[0] + 12.0)
             height = max(24.0, bbox[3] - current_absolute[1] + 12.0)
@@ -914,13 +890,16 @@ def _wrap_branch(
             width,
             height,
         )
+        if index == 0:
+            # Move the original tokens verbatim. Adding and subtracting float
+            # offsets can round coordinates and move a painted pixel.
+            _record_geometry(frame).set("x", geometry.get("x"))
+            _record_geometry(frame).set("y", geometry.get("y"))
         frames.append(frame)
         current_parent = frame_id
 
-    new_x = absolute_branch[0] - current_absolute[0]
-    new_y = absolute_branch[1] - current_absolute[1]
-    geometry.set("x", _format_number(new_x))
-    geometry.set("y", _format_number(new_y))
+    geometry.set("x", "0")
+    geometry.set("y", "0")
     _set_record_parent(element, current_parent)
 
     insertion_index = list(graph_root).index(element)
@@ -1077,7 +1056,6 @@ def _insert_coordinate_frames(
             seed_material,
             used_ids,
             frame_counter,
-            random_source,
         )
         if result is None:
             continue
@@ -1561,10 +1539,7 @@ def _generate_candidate(source_bytes, row, row_index, seed_text):
                 all_ids.add(record_id)
     used_ids.update(all_ids)
 
-    protected = set()
-    for record_id in all_ids:
-        if _contains_token(external_blob, record_id):
-            protected.add(record_id)
+    protected = _referenced_ids(external_blob, all_ids)
     for cells in cells_by_model:
         for element in cells:
             record_id = element.get("id")
