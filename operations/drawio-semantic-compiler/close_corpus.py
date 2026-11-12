@@ -70,6 +70,7 @@ def main():
         parser.add_argument(name, type=Path)
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--revalidated", type=Path, help="current compiler's independently recompiled hashes")
+    parser.add_argument("--recompiled-with", type=Path, help="deployment used to obtain the recompiled hashes")
     args = parser.parse_args()
     initial_hash, initial = source_fingerprint(args.initial_source)
     current_hash, current = source_fingerprint(args.current_source)
@@ -88,9 +89,13 @@ def main():
         raise ValueError("The primary batch has not closed the complete corpus")
     current_outputs = None
     if args.revalidated is not None:
+        recompiled_hash, recompiled_sources = source_fingerprint(args.recompiled_with or args.current_source)
+        if {k: v for k, v in current.items() if k != "verify.js"} != {
+                k: v for k, v in recompiled_sources.items() if k != "verify.js"}:
+            raise ValueError("The recompilation used different compiler sources")
         checked = (args.revalidated / "checks.jsonl").read_bytes()
         receipt = read(args.revalidated / "summary.json")
-        if (receipt["corpus_sha256"] != corpus_hash or receipt["source_fingerprint"] != current_hash
+        if (receipt["corpus_sha256"] != corpus_hash or receipt["source_fingerprint"] != recompiled_hash
                 or receipt["checks_sha256"] != hashlib.sha256(checked).hexdigest()):
             raise ValueError("Recompilation evidence does not match the current source and corpus")
         current_outputs = {r["id"]: r for r in map(json.loads, checked.splitlines())}

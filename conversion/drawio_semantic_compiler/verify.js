@@ -31,6 +31,11 @@
     };
     const rect = r => r ? [r.x, r.y, r.width, r.height] : null;
     const points = state => state?.absolutePoints?.map(p => p && [p.x, p.y]) ?? null;
+    // Some native view states expose unavailable measurements as NaN. Keep
+    // them distinct from null and finite measurements in the JSON proof.
+    const measurement = (_, value) => typeof value === "number" && !Number.isFinite(value)
+        ? {nonfinite: String(value)} : value;
+    const json = value => JSON.stringify(value, measurement);
     const settle = async () => {
         await document.fonts.ready;
         graph.refresh();
@@ -160,20 +165,20 @@
             view.validate();
         }
         const restored = cellXml(cell) === beforeXml &&
-            JSON.stringify(observe(cells, item.watch)) === JSON.stringify(before);
+            json(observe(cells, item.watch)) === json(before);
         const delta = item.operation === "move" ? after.map((value, i) =>
             value && before[i] ? value.map((v, k) => v - before[i][k]) : null) : after;
         return {status: "done", changed_model: changed, restored, observed: delta};
     };
     return (async () => {
         load(request.xml, request.pageNumber ?? 1);
-        if (request.operation === "snapshot") return snapshot();
+        if (request.operation === "snapshot") return JSON.parse(json(await snapshot()));
         if (request.operation === "probe") {
             await settle();
             const cells = walk();
             const modelXml = mxUtils.getXml(editor.getGraphXml());
             const results = request.probes.map(item => probe(cells, item));
-            return {probes: results, model_restored: mxUtils.getXml(editor.getGraphXml()) === modelXml};
+            return JSON.parse(json({probes: results, model_restored: mxUtils.getXml(editor.getGraphXml()) === modelXml}));
         }
         throw Error("Unknown verification operation");
     })();
