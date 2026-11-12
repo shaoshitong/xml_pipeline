@@ -115,52 +115,49 @@
         const cell = cells[item.cell];
         const beforeXml = cellXml(cell);
         const before = observe(cells, item.watch);
+        if (item.operation === "move" && !cell.geometry) return {status: "no_geometry"};
+        const edits = [];
+        const capture = (_, event) => edits.push(event.getProperty("edit"));
+        model.addListener(mxEvent.UNDO, capture);
         let after, changed;
-        if (item.operation === "move") {
-            const original = cell.geometry;
-            if (!original) return {status: "no_geometry"};
-            const moved = original.clone();
-            if (moved.relative) {
-                moved.offset = moved.offset?.clone() ?? new mxPoint();
-                moved.offset.x += 23;
-                moved.offset.y += 17;
-            } else {
-                moved.x += 23;
-                moved.y += 17;
-            }
+        try {
+            model.beginUpdate();
             try {
-                model.setGeometry(cell, moved);
-                view.validate();
-                after = observe(cells, item.watch);
-                changed = cellXml(cell) !== beforeXml;
+                if (item.operation === "move") {
+                    const moved = cell.geometry.clone();
+                    if (moved.relative) {
+                        moved.offset = moved.offset?.clone() ?? new mxPoint();
+                        moved.offset.x += 23;
+                        moved.offset.y += 17;
+                    } else {
+                        moved.x += 23;
+                        moved.y += 17;
+                    }
+                    model.setGeometry(cell, moved);
+                } else if (item.operation === "relabel") {
+                    graph.cellLabelChanged(cell, "edit probe ✓", false);
+                } else if (item.operation === "fold") {
+                    model.setCollapsed(cell, !cell.isCollapsed());
+                } else {
+                    throw Error("Unknown probe operation");
+                }
             } finally {
-                model.setGeometry(cell, original);
-                view.validate();
+                model.endUpdate();
             }
-        } else if (item.operation === "relabel") {
-            const original = cell.value;
-            try {
-                graph.cellLabelChanged(cell, "edit probe ✓", false);
-                view.validate();
+            view.validate();
+            if (item.operation === "relabel") {
                 after = [String(graph.convertValueToString(cell))];
-                changed = cellXml(cell) !== beforeXml;
-            } finally {
-                model.setValue(cell, original);
-                view.validate();
+            } else {
+                after = observe(cells, item.watch);
+                if (item.operation === "fold") after = after.map(value => value != null);
             }
-        } else if (item.operation === "fold") {
-            const original = cell.isCollapsed();
-            try {
-                model.setCollapsed(cell, !original);
-                view.validate();
-                after = observe(cells, item.watch).map(value => value != null);
-                changed = cellXml(cell) !== beforeXml;
-            } finally {
-                model.setCollapsed(cell, original);
-                view.validate();
-            }
-        } else {
-            throw Error("Unknown probe operation");
+            changed = cellXml(cell) !== beforeXml;
+        } finally {
+            model.removeListener(capture);
+            // Layouts can change other cells during the edit. Undo the whole
+            // native transaction, including those recorded changes.
+            for (let i = edits.length - 1; i >= 0; i--) edits[i].undo();
+            view.validate();
         }
         const restored = cellXml(cell) === beforeXml &&
             JSON.stringify(observe(cells, item.watch)) === JSON.stringify(before);
