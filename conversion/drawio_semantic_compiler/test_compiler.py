@@ -138,6 +138,14 @@ class Syntax(unittest.TestCase):
         text = "shape=image;image=data:image/png,iVBOR=;fontFamily=Noto Sans 中文;a = b"
         self.assertEqual(syntax.format_style(syntax.parse_style(text)), text)
 
+    def test_style_leading_semicolon_keeps_the_default_style_reset(self):
+        tokens, _ = syntax.canonical_style(syntax.parse_style(";;strokeColor=red;fillColor=blue;"))
+        self.assertEqual(syntax.format_style(tokens), ";fillColor=blue;strokeColor=red")
+        data = mxfile(model('<mxCell id="0" style=";"/><mxCell id="1" parent="0" style=";;"/>'))
+        result = compile_bytes(data)
+        self.assertEqual(result.xml.count(b'style=";"'), 2)
+        self.assertTrue(result.report["checks"]["recompilation_byte_stable"])
+
 
 class Semantics(unittest.TestCase):
     def test_invalid_references_are_located(self):

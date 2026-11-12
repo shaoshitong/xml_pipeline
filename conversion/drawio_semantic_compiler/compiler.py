@@ -10,7 +10,7 @@ import ir
 from normalize import normalize
 from source import CompileError, Diagnostic, unpack
 
-COMPILER_VERSION = "drawio-semantic-compiler/1.1.0"
+COMPILER_VERSION = "drawio-semantic-compiler/1.1.1"
 
 
 @dataclass

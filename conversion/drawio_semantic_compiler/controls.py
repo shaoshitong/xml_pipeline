@@ -95,7 +95,8 @@ def safe(base, compiled):
                 tokens = [token for token in style.split(";") if token]
                 keys = [token.partition("=")[0] for token in tokens]
                 if all("=" in token for token in tokens) and len(set(keys)) == len(keys):
-                    element.set("style", ";".join(reversed(tokens)))
+                    prefix = ";" if style.startswith(";") else ""
+                    element.set("style", prefix + ";".join(reversed(tokens)))
             items = list(element.attrib.items())
             element.attrib.clear()
             element.attrib.update(reversed(items))

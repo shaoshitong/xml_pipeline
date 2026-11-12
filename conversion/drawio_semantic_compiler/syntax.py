@@ -73,7 +73,9 @@ def canonical_number(value):
 
 def parse_style(text):
     """Split a style into ordered tokens: (key, value) or (None, stylename)."""
-    tokens = []
+    # mxStylesheet reads a leading semicolon as an instruction to start with
+    # an empty style instead of inheriting the editor's default style.
+    tokens = [(None, "")] if text.startswith(";") else []
     for token in text.split(";"):
         if not token:
             continue
@@ -107,6 +109,8 @@ def canonical_style(tokens):
 
 
 def format_style(tokens):
+    if tokens == ((None, ""),):
+        return ";"
     return ";".join(value if key is None else f"{key}={value}" for key, value in tokens)
 
 
