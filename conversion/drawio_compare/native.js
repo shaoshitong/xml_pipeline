@@ -1,5 +1,5 @@
 // Runs inside the pinned, offline draw.io editor.
-(request) => {
+(request, observe) => {
     const editor = window.__bulkUi.editor;
     const graph = editor.graph;
     const model = graph.getModel();
@@ -163,6 +163,7 @@
     };
     return (async () => {
         load(request.xml, request.pageNumber ?? 1);
+        if (observe) return observe({request, editor, graph, model, view, points, settle});
         switch (request.operation) {
             case "snapshot":
                 return snapshot();
