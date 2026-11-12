@@ -1,0 +1,10 @@
+- insert:
+    - id: mcp-drawio
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        transport: stdio
+        serverName: drawio
+        command: /usr/bin/python3
+        args: [/integration/mcp_bridge.py]
+        failOnStartupError: true
+        toolCallTimeoutMs: 150000
