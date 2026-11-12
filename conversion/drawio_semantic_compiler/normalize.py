@@ -3,7 +3,7 @@
 Every rule states the equivalence it relies on and checks its preconditions on
 the IR before rewriting. Rules run to a fixed point. Anything a rule cannot
 prove redundant stays: draw order, layers, selectable groups, ports, user data,
-stylenames and extension content.
+stylenames, extension content and the cell IDs the editor observes.
 """
 
 from decimal import Decimal
@@ -147,6 +147,8 @@ NOT_APPLIED = {
     "merge_or_drop_layers": "layers are visible in the editor and control locking and visibility",
     "bind_or_free_edge_ends": "a bound end follows its terminal and a free end does not",
     "rename_anchor_ids": "IDs addressed by custom links are names, not storage",
+    "rename_observed_ids": "the rough canvas seeds a sketch cell's strokes from a hash of its ID and a %id% "
+                           "placeholder prints it; renaming either changes the drawing",
     "round_coordinates": "any rounding moves geometry",
 }
 
@@ -159,7 +161,13 @@ def state(page):
 
 
 def assign_names(page, origin):
-    """Name cells by draw order, or keep anchor names on pinned pages."""
+    """Name cells by draw order; keep the IDs the editor observes.
+
+    On a pinned page every ID is an anchor. Elsewhere a cell keeps its ID only
+    when it has an ID role, and the others count up in draw order, stepping
+    over the kept names. The kept names are semantic content, so the numbering
+    is a function of the IR alone and any renaming of unobserved IDs converges.
+    """
     if page.pinned:
         used = {origin[uid]["original_id"] for uid in page.cells} - {None}
         counter = 0
@@ -171,8 +179,16 @@ def assign_names(page, origin):
                     cell.name = f"c{counter}"
                     used.add(cell.name)
     else:
-        for index, cell in enumerate(page.walk()):
-            cell.name = str(index)
+        kept = {cell.uid: origin[cell.uid]["original_id"] for cell in page.cells.values()
+                if cell.id_roles and origin[cell.uid]["original_id"] is not None}
+        used = set(kept.values())
+        counter = 0
+        for cell in page.walk():
+            cell.name = kept.get(cell.uid)
+            while cell.name is None:
+                if str(counter) not in used:
+                    cell.name = str(counter)
+                counter += 1
     for cell in page.cells.values():
         origin[cell.uid]["id"] = cell.name
     folded = {uid: record["folded_into"] for uid, record in origin.items() if "folded_into" in record}
@@ -228,4 +244,6 @@ def retained(page, number):
                                                                                     or c.geometry.extras)))
                                      for c in cells),
         "cell_ids_are_anchors": page.pinned,
+        "observed_cell_ids": {role: sum(role in c.id_roles for c in cells) for role in ir.ID_ROLES
+                              if any(role in c.id_roles for c in cells)},
     }

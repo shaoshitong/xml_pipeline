@@ -6,6 +6,7 @@
 import base64
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -21,6 +22,9 @@ from source import CompileError  # noqa: E402
 import syntax  # noqa: E402
 
 CLI = Path(__file__).resolve().parents[1] / "scripts" / "drawio-compile"
+if not CLI.exists():
+    # A lab deployment stages this package without the wrapper script.
+    CLI = Path(__file__).with_name("cli.py")
 
 
 def model(cells, attrs='grid="1" page="1"'):
@@ -37,6 +41,9 @@ def deflate(text):
     raw = packer.compress(urllib.parse.quote(text, safe="~()*!.'").encode()) + packer.flush()
     return base64.b64encode(raw).decode()
 
+
+# (l << 5) - l + charCode, wrapped to int32 at every step, as RoughCanvas.getStyle computes it.
+SEEDS = [1, 128, 81, -2009078292, 1065528]
 
 BASE = ('<mxCell id="0"/><mxCell id="1" parent="0"/>'
         '<mxCell id="a" value="A" style="rounded=1;html=1;" vertex="1" parent="1">'
@@ -329,6 +336,68 @@ class Normalization(unittest.TestCase):
                     .replace('</mxCell><mxCell id="b"', '</mxCell></object><mxCell id="b"')
         out = xml(mxfile(model(paged), model(BASE)))
         self.assertIn('<diagram id="d2" name="P2">', out)
+
+    def test_observed_cell_ids_keep_their_names(self):
+        # RoughCanvas.getStyle seeds every stroke from a hash of the cell ID.
+        self.assertEqual([syntax.rough_seed(i) for i in ("", "a", "2", "VJmkmMmNDr8svSAsHePi-12", "节点")],
+                         SEEDS)
+        sketch = BASE.replace('style="rounded=1;html=1;"', 'style="rounded=1;sketch=1;html=1;"')
+        result = compile_bytes(mxfile(model(sketch)))
+        out = result.xml.decode()
+        self.assertIn('<mxCell id="a" value="A" style="html=1;rounded=1;sketch=1" vertex="1" parent="1">', out)
+        self.assertIn('<mxCell id="2" value="B"', out)
+        self.assertIn('edge="1" parent="1" source="a" target="2">', out)
+        cells = result.ir_json["pages"][0]["cells"]
+        self.assertEqual([c.get("id_roles") for c in cells], [None, None, ["sketch_seed"], None, None])
+        self.assertEqual(result.report["reducibility_audit"]["retained"][0]["observed_cell_ids"], {"sketch_seed": 1})
+        self.assertIn("cell_id_is_observed", [d["code"] for d in result.report["diagnostics"]])
+        self.assertEqual(result.source_map["pages"][0]["cells"][2]["id_roles"], ["sketch_seed"])
+        self.assertEqual(xml(result.xml), out)
+
+        def rename(cells, pairs):
+            names = dict(pairs)
+            return re.sub(r'\b(id|parent|source|target)="([^"]*)"',
+                          lambda m: f'{m.group(1)}="{names.get(m.group(2), m.group(2))}"', cells)
+
+        # Unobserved IDs are storage: any renaming of them converges.
+        self.assertEqual(xml(mxfile(model(rename(sketch, (("b", "q-7"), ("e", "edge"), ("1", "L"), ("0", "root")))))), out)
+        # The observed ID is content: renaming it is a different drawing.
+        self.assertNotEqual(xml(mxfile(model(rename(sketch, (("a", "a2"),))))), out)
+        # Counted names step over a kept name, in whatever position it sits.
+        clash = xml(mxfile(model(rename(sketch, (("a", "1"), ("1", "L"))))))
+        self.assertIn('<mxCell id="0"/><mxCell id="2" parent="0"/><mxCell id="1" value="A" ', clash)
+        self.assertIn('<mxCell id="3" value="B"', clash)
+        self.assertEqual(xml(clash.encode()), clash)
+        self.assertEqual(xml(mxfile(model(rename(sketch, (("a", "1"), ("1", "zz"), ("b", "0x0"), ("0", "r")))))), clash)
+
+        def roles(style):
+            cells = compile_bytes(mxfile(model(BASE.replace('style="rounded=1;html=1;"', f'style="{style}"'))))
+            return cells.ir_json["pages"][0]["cells"][2].get("id_roles")
+
+        # createHandJiggle: sketch != 0 takes the rough canvas unless sketchStyle is comic.
+        for style in ("sketch=1", "sketch=0;sketch=1", "sketch=true", "sketch=", "sketch=2;sketchStyle=rough",
+                      "sketch=1;curveFitting=1;jiggle=2"):
+            self.assertEqual(roles(style), ["sketch_seed"], style)
+        for style in ("sketch=0", "sketch=1;sketch=0", "sketch=0.0", "sketch=none", "sketch=1;sketchStyle=comic",
+                      "comic=1", "sketchStyle=rough"):
+            self.assertIsNone(roles(style), style)
+
+        # Graph.replacePlaceholders prints the cell ID for %id%.
+        def placeholder(label, extra):
+            cells = BASE.replace('<mxCell id="a" value="A" ', f'<object label="{label}" {extra} id="a"><mxCell ') \
+                        .replace('</mxCell><mxCell id="b"', '</mxCell></object><mxCell id="b"')
+            return compile_bytes(mxfile(model(cells)))
+
+        printed = placeholder("Node %id%", 'placeholders="1"')
+        self.assertIn('<object label="Node %id%" placeholders="1" id="a">', printed.xml.decode())
+        self.assertEqual(printed.ir_json["pages"][0]["cells"][2]["id_roles"], ["placeholder"])
+        self.assertIn(' id="a">', placeholder("Node", 'placeholders="1" tooltip="cell %id%"').xml.decode())
+        for label, extra in (("Node %id%", 'placeholders="0"'), ("Node %id%", 'tag="x"'), ("Node %name%", 'placeholders="1"')):
+            self.assertIn(' id="2">', placeholder(label, extra).xml.decode(), (label, extra))
+
+        # An observed ID the file leaves to the editor's counter cannot be kept by name.
+        implicit = compile_bytes(mxfile(model(sketch.replace('<mxCell id="a" ', "<mxCell "))))
+        self.assertIn("implicit_semantic_id", [d["code"] for d in implicit.report["diagnostics"]])
 
     def test_extension_content_is_carried_through(self):
         cells = BASE.replace('<mxCell id="b" ', '<mxCell id="b" zeta="1" data-name="n&amp;m" ') \

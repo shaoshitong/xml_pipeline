@@ -21,8 +21,9 @@ TOLERANCE = 1e-6      # only used where folded frames re-associate float sums
 MOVE_PROBES = 12
 LABEL_PROBES = 3
 FOLD_PROBES = 2
-STATE_FIELDS = ("kind", "parent", "source", "target", "connectable", "visible", "collapsed", "label", "data",
-                "style", "shown", "bbox", "paint_bbox", "label_bbox", "points")
+STATE_FIELDS = ("kind", "parent", "source", "target", "connectable", "visible", "collapsed", "label",
+                "painted_label", "data", "style", "id_seeds_sketch", "shown", "bbox", "paint_bbox", "label_bbox",
+                "points")
 
 
 def open_runtime():
@@ -41,13 +42,18 @@ def close(a, b, tolerance):
         return a == b or abs(a - b) <= tolerance
     if isinstance(a, list) and isinstance(b, list):
         return len(a) == len(b) and all(close(x, y, tolerance) for x, y in zip(a, b))
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(close(a[key], b[key], tolerance) for key in a)
     return a == b
 
 
-def align(original, compiled, folded_ids):
-    """Pair the editor's cells of both documents by draw-order position."""
+def align(original, compiled, folded):
+    """Pair the editor's cells of both documents by draw-order position.
+
+    ``folded`` holds the draw-order positions of the source cells the compiler
+    folded away; both the editor and the IR walk parents first in child order.
+    """
     cells = original["cells"]
-    folded = {i for i, cell in enumerate(cells) if cell["id"] in folded_ids}
     kept = [i for i in range(len(cells)) if i not in folded]
     position = {old: new for new, old in enumerate(kept)}
 
@@ -59,15 +65,19 @@ def align(original, compiled, folded_ids):
     return kept, translate, bool(folded)
 
 
-def compare_states(original, compiled, folded_ids):
+def compare_states(original, compiled, folded):
     """Differences between two editor snapshots; empty when equivalent."""
-    kept, translate, has_folds = align(original, compiled, folded_ids)
+    kept, translate, has_folds = align(original, compiled, folded)
     tolerance = TOLERANCE if has_folds else 0
     differences = []
     if len(kept) != len(compiled["cells"]):
         return [{"field": "cell_count", "original": len(kept), "compiled": len(compiled["cells"])}], kept
     for new, old in enumerate(kept):
         a, b = original["cells"][old], compiled["cells"][new]
+        if a["id_seeds_sketch"] and a["id"] != b["id"]:
+            # The editor paints this cell from its ID; the compiled file must keep the name.
+            differences.append({"field": "observed_id", "original_id": a["id"], "compiled_id": b["id"],
+                                "original": a["id"], "compiled": b["id"]})
         for field in STATE_FIELDS:
             x, y = a[field], b[field]
             if field in ("parent", "source", "target"):
@@ -147,13 +157,14 @@ def json_value(snapshot, position, key):
     return json.loads(snapshot["styles"][snapshot["cells"][position]["style"]]).get(key)
 
 
-def verify_page(runtime, source_xml, compiled_xml, number, folded_ids, folder=None):
+def verify_page(runtime, source_xml, compiled_xml, number, folded, folder=None):
     from runtime import shared_frame
     original = call(runtime, "snapshot", source_xml, pageNumber=number)
     compiled = call(runtime, "snapshot", compiled_xml, pageNumber=number)
-    differences, kept = compare_states(original, compiled, folded_ids)
+    differences, kept = compare_states(original, compiled, folded)
     result = {"page": number, "cells": len(compiled["cells"]), "model_equal": not differences,
-              "model_differences": differences}
+              "model_differences": differences,
+              "sketch_seeded_cells": sum(cell["id_seeds_sketch"] for cell in original["cells"])}
 
     frame = shared_frame(original, compiled)
     renders = [runtime.render(xml, frame, page_number=number) for xml in (source_xml, compiled_xml)]
@@ -167,18 +178,25 @@ def verify_page(runtime, source_xml, compiled_xml, number, folded_ids, folder=No
             render.image.save(Path(folder) / f"page_{number:03d}_{name}.png")
         result["changed_bbox_png_xyxy"] = ImageChops.difference(renders[0].image, renders[1].image).getbbox()
 
-    edit = {"equal": None, "probes": 0, "classes": {}}
+    edit = {"equal": None, "probes": 0, "inert": 0, "classes": {}}
     if not differences:
         probes = plan_probes(compiled)
         back = {new: old for new, old in enumerate(kept)}
         mirrored = [{**p, "cell": back[p["cell"]], "watch": [[back[i], what] for i, what in p["watch"]]}
                     for p in probes]
-        after = call(runtime, "probe", compiled_xml, pageNumber=number, probes=probes) if probes else []
-        before = call(runtime, "probe", source_xml, pageNumber=number, probes=mirrored) if probes else []
+        none = {"probes": [], "model_restored": True}
+        after = call(runtime, "probe", compiled_xml, pageNumber=number, probes=probes) if probes else none
+        before = call(runtime, "probe", source_xml, pageNumber=number, probes=mirrored) if probes else none
         mismatches = []
-        for item, x, y in zip(probes, before, after):
+        if not (before["model_restored"] and after["model_restored"]):
+            mismatches.append({"probe": None, "original": {"model_restored": before["model_restored"]},
+                               "compiled": {"model_restored": after["model_restored"]}})
+        for item, x, y in zip(probes, before["probes"], after["probes"]):
             edit["classes"][item["class"]] = edit["classes"].get(item["class"], 0) + 1
-            sound = y.get("status") == "done" and y.get("restored") and y.get("changed_model")
+            # The editor may undo an edit itself (a table lays its rows out again);
+            # such a probe is inert, and must be inert in both documents.
+            edit["inert"] += not y.get("changed_model")
+            sound = y.get("status") == "done" and y.get("restored")
             if not sound or not close(x, y, TOLERANCE):
                 mismatches.append({"probe": item, "compiled_id": compiled["cells"][item["cell"]]["id"],
                                    "original": x, "compiled": y})
@@ -189,12 +207,14 @@ def verify_page(runtime, source_xml, compiled_xml, number, folded_ids, folder=No
     return result
 
 
-def verify_documents(runtime, source_bytes, compilation, folder=None):
+def verify_documents(runtime, source_bytes, compilation, folder=None, target=None):
+    """Compare the source with its compilation, or with ``target`` bytes that
+    the compilation is meant to equal (the canonical base of a variant)."""
     source_xml = source_bytes.decode("utf-8-sig")
-    compiled_xml = compilation.xml.decode("utf-8")
+    compiled_xml = (compilation.xml if target is None else target).decode("utf-8")
     pages = []
     for page in compilation.source_map["pages"]:
-        folded = {c["original_id"] for c in page["cells"] if "folded_into" in c}
+        folded = {c["draw_index"] for c in page["cells"] if "folded_into" in c}
         pages.append(verify_page(runtime, source_xml, compiled_xml, page["page"], folded, folder))
     return {"schema": "drawio-semantic-native-acceptance/1", "runtime": runtime.metadata,
             "equal": all(page["equal"] for page in pages),

@@ -110,6 +110,30 @@ def format_style(tokens):
     return ";".join(value if key is None else f"{key}={value}" for key, value in tokens)
 
 
+def id_seeds_sketch(tokens):
+    """Whether the editor paints the cell with a rough canvas seeded by the cell ID.
+
+    ``mxShape.createHandJiggle`` takes the rough canvas when ``sketch`` is not
+    0 and ``sketchStyle`` is not ``comic``; ``RoughCanvas.getStyle`` hashes the
+    cell ID into the seed of every stroke and fill. Only explicit keys are
+    read here; the native acceptance checks the editor's resolved style.
+    """
+    style = style_map(tokens or ())
+    sketch = style.get("sketch")
+    if sketch is None or sketch == "none" or (is_numeric(sketch) and parse_float(sketch) == 0):
+        return False
+    return style.get("sketchStyle") != "comic"
+
+
+def rough_seed(cell_id):
+    """The seed ``RoughCanvas.getStyle`` derives from a cell ID: a signed 32-bit hash."""
+    seed = 1
+    units = cell_id.encode("utf-16-le")
+    for index in range(0, len(units), 2):
+        seed = (seed * 31 + int.from_bytes(units[index:index + 2], "little")) & 0xFFFFFFFF
+    return seed - (1 << 32) if seed & 0x80000000 else seed
+
+
 def style_map(tokens):
     """Explicit keys of a style in effect after all tokens are applied."""
     return {key: value for key, value in tokens if key is not None}

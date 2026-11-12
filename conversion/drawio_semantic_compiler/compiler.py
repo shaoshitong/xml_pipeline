@@ -10,7 +10,7 @@ import ir
 from normalize import normalize
 from source import CompileError, Diagnostic, unpack
 
-COMPILER_VERSION = "drawio-semantic-compiler/1.0.0"
+COMPILER_VERSION = "drawio-semantic-compiler/1.1.0"
 
 
 @dataclass
@@ -27,6 +27,9 @@ def front(data):
     source = unpack(data)
     document, origins, diagnostics, representation = build(source)
     before = [len(page.cells) for page in document.pages]
+    for page, origin in zip(document.pages, origins, strict=True):
+        for index, cell in enumerate(page.walk()):
+            origin[cell.uid]["draw_index"] = index
     rules, audit = normalize(document, origins)
     encodings = [page.encoding for page in source.pages]
     return document, origins, diagnostics, representation, rules, audit, encodings, before

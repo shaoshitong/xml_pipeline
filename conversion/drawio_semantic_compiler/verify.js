@@ -68,12 +68,20 @@
                 for (const a of value.attributes) if (a.name !== "label") data[a.name] = a.value;
             }
             const g = cell.geometry;
+            // mxShape.createHandJiggle: this shape paints through the rough
+            // canvas, whose seed is a hash of the cell ID.
+            const shape = state?.shape;
+            const seeded = !!shape && !shape.outline && shape.style != null &&
+                "0" != mxUtils.getValue(shape.style, "sketch", "0") &&
+                "comic" != mxUtils.getValue(shape.style, "sketchStyle", "rough");
             return {
                 id: cell.id, parent: at(cell.parent),
                 kind: model.isVertex(cell) ? "vertex" : model.isEdge(cell) ? "edge" : "plain",
                 source: at(cell.source), target: at(cell.target),
                 connectable: !!cell.isConnectable(), visible: !!cell.isVisible(), collapsed: !!cell.isCollapsed(),
                 label: String(graph.convertValueToString(cell) ?? ""), data,
+                // The label as painted, after placeholders such as %id%.
+                painted_label: String(graph.getLabel(cell) ?? ""), id_seeds_sketch: seeded,
                 style: intern(JSON.stringify(resolved)),
                 geometry: g ? [g.x, g.y, g.width, g.height, !!g.relative] : null,
                 shown: !!state, bbox: rect(state), paint_bbox: rect(state?.shape?.boundingBox),
@@ -100,9 +108,12 @@
         return p ? p[what === "source" ? 0 : p.length - 1] : null;
     });
     // Each probe edits through the model, observes, and must restore exactly.
+    // The edited cell is serialized per probe and the whole model once around
+    // all probes, so files with large embedded assets stay affordable.
+    const cellXml = cell => mxUtils.getXml(new mxCodec().encode(cell));
     const probe = (cells, item) => {
         const cell = cells[item.cell];
-        const beforeXml = mxUtils.getXml(editor.getGraphXml());
+        const beforeXml = cellXml(cell);
         const before = observe(cells, item.watch);
         let after, changed;
         if (item.operation === "move") {
@@ -121,7 +132,7 @@
                 model.setGeometry(cell, moved);
                 view.validate();
                 after = observe(cells, item.watch);
-                changed = mxUtils.getXml(editor.getGraphXml()) !== beforeXml;
+                changed = cellXml(cell) !== beforeXml;
             } finally {
                 model.setGeometry(cell, original);
                 view.validate();
@@ -132,7 +143,7 @@
                 graph.cellLabelChanged(cell, "edit probe ✓", false);
                 view.validate();
                 after = [String(graph.convertValueToString(cell))];
-                changed = mxUtils.getXml(editor.getGraphXml()) !== beforeXml;
+                changed = cellXml(cell) !== beforeXml;
             } finally {
                 model.setValue(cell, original);
                 view.validate();
@@ -143,7 +154,7 @@
                 model.setCollapsed(cell, !original);
                 view.validate();
                 after = observe(cells, item.watch).map(value => value != null);
-                changed = mxUtils.getXml(editor.getGraphXml()) !== beforeXml;
+                changed = cellXml(cell) !== beforeXml;
             } finally {
                 model.setCollapsed(cell, original);
                 view.validate();
@@ -151,7 +162,7 @@
         } else {
             throw Error("Unknown probe operation");
         }
-        const restored = mxUtils.getXml(editor.getGraphXml()) === beforeXml &&
+        const restored = cellXml(cell) === beforeXml &&
             JSON.stringify(observe(cells, item.watch)) === JSON.stringify(before);
         const delta = item.operation === "move" ? after.map((value, i) =>
             value && before[i] ? value.map((v, k) => v - before[i][k]) : null) : after;
@@ -163,7 +174,9 @@
         if (request.operation === "probe") {
             await settle();
             const cells = walk();
-            return request.probes.map(item => probe(cells, item));
+            const modelXml = mxUtils.getXml(editor.getGraphXml());
+            const results = request.probes.map(item => probe(cells, item));
+            return {probes: results, model_restored: mxUtils.getXml(editor.getGraphXml()) === modelXml};
         }
         throw Error("Unknown verification operation");
     })();

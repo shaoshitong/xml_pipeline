@@ -20,6 +20,7 @@ CELL_FIELDS = frozenset({"id", "value", "style", "parent", "source", "target", "
                          "connectable", "visible", "collapsed"})
 GEOMETRY_FIELDS = frozenset({"x", "y", "width", "height", "relative", "as"})
 EXAMPLES = 8
+ID_PLACEHOLDER = "%id%"
 POINT_ROLES = {"sourcePoint": "source_point", "targetPoint": "target_point", "offset": "offset"}
 
 
@@ -129,7 +130,16 @@ class Builder:
             raw[record.uid] = inner
             origin[record.uid] = {"original_id": cell_id, "element": outer.tag, "root_child_index": index,
                                   "location": outer.loc.to_json()}
+            if record.id_roles:
+                origin[record.uid]["id_roles"] = list(record.id_roles)
         self.source_map.append(origin)
+        observed = {}
+        for record in cells.values():
+            for role in record.id_roles:
+                observed[role] = observed.get(role, 0) + 1
+        for role, count in sorted(observed.items()):
+            self.note("info", "cell_id_is_observed", f"{count} cell ID(s) on this page are observed by the "
+                      f"editor as {role} and keep their names", model)
 
         def where(uid):
             return raw[uid], origin[uid]["original_id"]
@@ -253,6 +263,17 @@ class Builder:
                 if key in syntax.COLOR_KEYS and not syntax.valid_color(value):
                     self.note("warning", "invalid_color", f"{key}={value!r} is not a colour the editor can "
                               "paint", inner, cell_id, "style", data)
+        roles = []
+        if syntax.id_seeds_sketch(cell.style):
+            roles.append(ir.SKETCH_SEED)
+        if cell.wrapper is not None and ("placeholders", "1") in cell.data and any(
+                ID_PLACEHOLDER in text for text in (cell.label or "", *(value for _, value in cell.data))):
+            roles.append(ir.PLACEHOLDER)
+        cell.id_roles = tuple(roles)
+        if roles and cell_id is None:
+            self.note("warning", "implicit_semantic_id", "the editor observes this cell's ID ("
+                      + ", ".join(roles) + ") but the file leaves the ID to the editor's counter",
+                      outer, None)
         cell.attrs = tuple(sorted((k, v) for k, v in inner.attrs.items() if k not in CELL_FIELDS))
         extras = []
         for child in inner.children:

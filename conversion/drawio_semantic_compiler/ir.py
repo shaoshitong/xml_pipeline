@@ -5,6 +5,10 @@ either bound to a cell (``source``/``target``) or free geometry
 (``source_point``/``target_point``); the two stay distinct because the editor
 moves bound ends with their terminals. Geometry is local to the parent; page
 coordinates are derived by :func:`page_origins`.
+
+A cell ID is storage unless the editor observes it. ``id_roles`` names how it
+does: ``sketch_seed`` (the rough canvas seeds its strokes from the ID) and
+``placeholder`` (a ``%id%`` placeholder prints it). Such a cell keeps its ID.
 """
 
 from dataclasses import dataclass, field
@@ -12,10 +16,12 @@ from decimal import Decimal
 
 from syntax import format_number, format_style
 
-IR_VERSION = "drawio-semantic-ir/1"
+IR_VERSION = "drawio-semantic-ir/2"
 
 ROOT, LAYER, FRAME, VERTEX, EDGE = "root", "layer", "frame", "vertex", "edge"
 KINDS = (ROOT, LAYER, FRAME, VERTEX, EDGE)
+SKETCH_SEED, PLACEHOLDER = "sketch_seed", "placeholder"
+ID_ROLES = (SKETCH_SEED, PLACEHOLDER)
 
 
 class IRError(Exception):
@@ -75,6 +81,7 @@ class Cell:
     collapsed: bool = False
     attrs: tuple = ()                    # unrecognized mxCell attributes, sorted
     extras: tuple = ()                   # unrecognized mxCell children, canonical XML
+    id_roles: tuple = ()                 # how the editor observes the ID; non-empty keeps the ID
     name: str | None = None              # the ID in emitted XML
 
 
@@ -133,6 +140,8 @@ class Document:
                     record["attributes"] = [list(item) for item in cell.attrs]
                 if cell.extras:
                     record["extensions"] = list(cell.extras)
+                if cell.id_roles:
+                    record["id_roles"] = list(cell.id_roles)
                 cells.append(record)
             record = {"name": page.name, "id": page.anchor, "settings": [list(i) for i in page.model_attrs],
                       "cell_ids_are_anchors": page.pinned, "cells": cells}
@@ -205,6 +214,8 @@ def verify(document, named=False):
                 bad(cell, "empty style must be absent")
             if cell.label == "":
                 bad(cell, "empty label must be absent")
+            if set(cell.id_roles) - set(ID_ROLES):
+                bad(cell, f"unknown ID role in {cell.id_roles!r}")
         for cell in cells.values():
             if cell.uid not in reached:
                 bad(cell, "is not reachable from the root")
