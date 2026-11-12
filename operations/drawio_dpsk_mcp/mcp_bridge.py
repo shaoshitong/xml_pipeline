@@ -7,7 +7,8 @@ import sys
 TOOL = {
     "name": "check",
     "description": "Compile and check an editable draw.io checkpoint. Returns a candidate render, "
-                   "image metrics and any available diagnostics with candidate cell IDs and target-image regions.",
+                   "and, when available, structural and field-level reports with candidate cell IDs "
+                   "and target-image regions. Read the case-local reports using their line ranges.",
     "inputSchema": {"type": "object", "properties": {"candidate": {"type": "string",
                     "description": "A case-local .drawio filename"}}, "required": ["candidate"],
                     "additionalProperties": False},

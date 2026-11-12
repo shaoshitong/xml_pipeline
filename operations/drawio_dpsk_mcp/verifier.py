@@ -12,9 +12,11 @@ from threading import Thread
 from tempfile import TemporaryDirectory
 from uuid import uuid4
 
+from PIL import Image
+
 from compare import compare_page
 from compiler import compile_bytes
-from patch_mse_focus_v1 import features, locate, on_white, registration, score
+from patch_mse_focus_v1 import on_white, registration
 from runtime import Runtime, project_box, shared_frame
 from source import CompileError
 
@@ -29,6 +31,7 @@ PRIORITY = {
     "table_grid_changed": 1, "table_cell_text_changed": 1, "edge_binding_changed": 2,
     "appearance_style_changed": 3, "ambiguous_correspondence": 5,
 }
+COLOR_FIELDS = {"fillColor", "strokeColor", "fontColor"}
 
 
 def read_candidate(case, name):
@@ -79,30 +82,112 @@ def target_region(obj, size):
     return region if region[0] < region[2] and region[1] < region[3] else None
 
 
+def origin_refs(origins, ids):
+    refs = [origins[key] for key in ids if key in origins]
+    return [{"id": ref["original_id"], "line": ref["location"]["line"]} for ref in refs]
+
+
+def edge_details(obj):
+    points = obj.cell.get("points") or []
+    return {
+        "route_xy": [list(map(round, point)) if point else None for point in points],
+        "arrowheads": {key: obj.style.get(key) for key in ("startArrow", "endArrow")},
+    }
+
+
 def diagnostics(differences, source_map, size):
     origins = {cell["id"]: cell for cell in source_map["pages"][0]["cells"]}
-    ordered = sorted(differences, key=lambda diff: (diff["status"] in ("suspected", "unknown"),
-                                                   PRIORITY.get(diff["kind"], 2)))
+    ordered = sorted(differences, key=lambda diff: (PRIORITY.get(diff["kind"], 2), diff["kind"],
+                                                   diff["status"] in ("suspected", "unknown")))
     issues = []
-    emitted = Counter()
     for diff in ordered:
         kind = diff["kind"]
-        if emitted[kind] >= 3:
-            continue
         gold, candidate = diff["a_object"], diff["b_object"]
-        refs = [origins[key] for key in candidate.ids if key in origins] if candidate else []
         location = target_region(gold or candidate, size)
-        cells = [{"id": ref["original_id"], "line": ref["location"]["line"]} for ref in refs[:5]]
+        cells = origin_refs(origins, candidate.ids) if candidate else []
         side = "both" if gold and candidate else ("target_only" if gold else "candidate_only")
         issue = {"kind": kind, "confidence": diff["status"], "side": side,
                  "candidate_cells": cells, "target_region_xyxy": location}
+        if kind.endswith(("_moved", "_resized")):
+            issue["candidate_bbox_xywh"] = list(map(round, candidate.bbox))
+            issue["target_bbox_xywh"] = list(map(round, gold.bbox))
+        if kind == "label_changed":
+            issue["candidate_label"] = candidate.label
+        if kind.startswith("edge_") and gold and candidate:
+            issue["candidate_edge"] = edge_details(candidate)
+            issue["candidate_edge"]["bound_cells"] = {
+                end: origins.get(candidate.cell[end], {}).get("original_id")
+                for end in ("source", "target")
+            }
+            issue["target_edge"] = edge_details(gold)
         if kind == "appearance_style_changed":
-            issue["style_fields"] = sorted(diff["b_value"])
+            values = diff["b_value"]
+            issue["style_fields"] = sorted(values)
+            issue["candidate_style"] = values
+            colors = sorted(COLOR_FIELDS & values.keys())
+            if colors:
+                issue["candidate_colors"] = {key: values[key] for key in colors}
+                issue["target_colors"] = {key: diff["a_value"][key] for key in colors}
         issues.append(issue)
-        emitted[kind] += 1
-        if len(issues) == 18:
-            break
     return issues
+
+
+def field_values(cell):
+    values = {k: v for k, v in cell.items() if k not in ("id", "style", "geometry")}
+    for key, value in cell.get("geometry", {}).items():
+        values["geometry." + key] = value
+    style = cell.get("style", ())
+    values.update(("style." + key, value) for key, value in style if key is not None)
+    named = [value for key, value in style if key is None]
+    if named:
+        values["style.named"] = named
+    return values
+
+
+def audit_fields(gold, candidate, matches):
+    left, right = ({cell["id"]: cell for cell in compilation.ir_json["pages"][0]["cells"]}
+                   for compilation in (gold, candidate))
+    origins = {cell["id"]: cell for cell in candidate.source_map["pages"][0]["cells"]}
+    pairs = {x.id: (y.id, status) for x, y, status, _ in matches}
+    for kind in ("root", "layer"):
+        roots = [[key for key, cell in cells.items() if cell["kind"] == kind] for cells in (left, right)]
+        if len(roots[0]) == len(roots[1]) == 1:
+            pairs[roots[0][0]] = roots[1][0], "confirmed"
+    mapping = {x: y for x, (y, status) in pairs.items() if status == "confirmed"}
+    right_used = {y for y, _ in pairs.values()}
+    findings = []
+    for x, (y, status) in pairs.items():
+        a, b = field_values(left[x]), field_values(right[y])
+        for field in sorted(a.keys() | b.keys()):
+            before, current = a.get(field), b.get(field)
+            relation = field in ("parent", "source", "target")
+            unresolved = relation and before is not None and current is not None and before not in mapping
+            expected = mapping.get(before, before) if relation else before
+            if unresolved or expected != current:
+                row = {"kind": "field_unresolved" if unresolved else "field_changed", "field": field,
+                       "confidence": status, "candidate_cells": origin_refs(origins, [y])}
+                if relation:
+                    row["candidate_value"] = origins.get(current, {}).get("original_id")
+                elif len(json.dumps(current)) <= 240:
+                    row["candidate_value"] = current
+                findings.append(row)
+    for side, unpaired in (("target_only", left.keys() - pairs.keys()), ("candidate_only", right.keys() - right_used)):
+        for key in sorted(unpaired):
+            own = side == "candidate_only"
+            findings.append({"kind": "unpaired_ir_cell", "side": side,
+                             "cell_kind": (right if own else left)[key]["kind"],
+                             "candidate_cells": origin_refs(origins, [key]) if own else []})
+    return sorted(findings, key=lambda row: (row["kind"], row.get("field", "")))
+
+
+def write_diagnostics(case, name, issues):
+    ranges = {}
+    with (case / name).open("x", encoding="utf-8") as report:
+        for line, issue in enumerate(issues, 1):
+            key = issue["kind"] + (":" + issue["field"] if "field" in issue else "")
+            ranges.setdefault(key, {"start_line": line, "count": 0})["count"] += 1
+            print(json.dumps(issue, ensure_ascii=False), file=report)
+    return ranges
 
 
 class Verifier:
@@ -131,28 +216,35 @@ class Verifier:
             raise ValueError("Candidate has no visible editable vertices")
         aligned = aligned_snapshot(snapshot, render.transform, fit)
         matches, differences = compare_page(self.gold_snapshot, aligned, max(self.target.size))
-        frame, *metrics = features(self.target, render.image, fit)
-        visual = score((0, 0, *self.target.size), *metrics)
-        patches = locate(*self.target.size, metrics)
-        filename = f"preview-{uuid4().hex[:12]}.png"
+        token = uuid4().hex[:12]
+        filename = f"preview-{token}.png"
+        frame = Image.new("RGB", self.target.size, "white")
+        dimensions = tuple(max(1, round(side * fit["scale"])) for side in render.image.size)
+        frame.paste(render.image.resize(dimensions, Image.Resampling.LANCZOS), (fit["dx"], fit["dy"]))
         with (self.case / filename).open("xb") as preview:
             frame.save(preview, format="PNG")
         counts = dict(Counter(d["kind"] for d in differences))
+        color_counts = Counter(key for d in differences if d["kind"] == "appearance_style_changed"
+                               for key in COLOR_FIELDS & d["b_value"].keys())
         private = {
-            "mse": visual["mse"], "foreground_iou": visual["foreground_iou"],
             "canonical_exact": candidate.xml == self.gold.xml, "issues": counts,
             "confirmed_matches": sum(status == "confirmed" for _, _, status, _ in matches),
             "target_only": sum(d["b_object"] is None for d in differences),
             "candidate_only": sum(d["a_object"] is None for d in differences),
             "structural_issues": len(differences), "render_path": filename,
-            "fit": fit, "pixels_exact_after_alignment": visual["mse"] == 0,
+            "color_fields": dict(sorted(color_counts.items())),
         }
-        result = {"ok": True, "candidate_png": filename, "mse": round(visual["mse"], 6),
-                  "foreground_iou": round(visual["foreground_iou"], 4),
-                  "image_regions_xyxy": [patch["bbox"] for patch in patches[:5]]}
+        result = {"ok": True, "candidate_png": filename}
         if self.reveal_structure:
-            result.update(structural_counts=counts,
-                          issues=diagnostics(differences, candidate.source_map, self.target.size))
+            issues = diagnostics(differences, candidate.source_map, self.target.size)
+            report_name = f"structure-{token}.jsonl"
+            ranges = write_diagnostics(self.case, report_name, issues)
+            fields = audit_fields(self.gold, candidate, matches)
+            field_name = f"fields-{token}.jsonl"
+            field_ranges = write_diagnostics(self.case, field_name, fields)
+            result.update(structural_counts=counts, color_fields=private["color_fields"],
+                          diagnostics_file=report_name, diagnostic_ranges=ranges,
+                          field_diagnostics_file=field_name, field_diagnostic_ranges=field_ranges)
         return result, private
 
     def check(self, request):

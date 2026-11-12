@@ -490,6 +490,19 @@ def compare_page(snap_a, snap_b, span):
             add("visibility_changed", status, x, y, x.cell["visible"], y.cell["visible"])
         if x.cell["collapsed"] != y.cell["collapsed"]:
             add("collapsed_state_changed", status, x, y, x.cell["collapsed"], y.cell["collapsed"])
+        if x.kind == "edge":
+            appearance = ("strokeColor", "fontColor")
+        else:
+            appearance = ("shape", "rotation", "fillColor", "strokeColor", "strokeWidth",
+                          "dashed", "opacity", "fontSize", "fontColor", "fontFamily")
+            if x.members or y.members:
+                appearance = appearance[:-3]
+        styles = [x.style, y.style]
+        if x.kind == "shape" and (x.members or y.members):
+            appearance += ("fontColor",)
+            styles = [{**obj.style, "fontColor": obj.members[0]["style"].get("fontColor")}
+                      if obj.members else obj.style for obj in (x, y)]
+        changed = [key for key in appearance if styles[0].get(key) != styles[1].get(key)]
         if x.kind != "edge":
             if x.bbox and y.bbox:
                 if distance(x.bbox[:2], y.bbox[:2]) > 2:
@@ -509,16 +522,14 @@ def compare_page(snap_a, snap_b, span):
                     "separate_cell" if y.members else "node_value",
                     [{"label": obj.members[0]["id"] if obj.members else obj.id, "node": obj.id}
                      for obj in (x, y)])
-            appearance = ("shape", "rotation", "fillColor", "strokeColor", "strokeWidth",
-                          "dashed", "opacity", "fontSize", "fontColor", "fontFamily")
-            if x.members or y.members:
-                appearance = appearance[:-3]
-            changes = [key for key in appearance if x.style.get(key) != y.style.get(key)]
-            if changes:
+            if changed:
                 add("appearance_style_changed", status, x, y,
-                    {k: x.style.get(k) for k in changes}, {k: y.style.get(k) for k in changes})
+                    *({key: style.get(key) for key in changed} for style in styles))
             continue
 
+        if changed:
+            add("appearance_style_changed", status, x, y,
+                *({key: style.get(key) for key in changed} for style in styles))
         ax, bx = terminal_a[x.id], terminal_b[y.id]
         mapped = [mapping.get(key) for key, _ in ax]
         order = [key for key, _ in bx]

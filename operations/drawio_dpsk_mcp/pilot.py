@@ -20,10 +20,13 @@ INITIAL = (
 REFINE = (
     "Use the drawio-reconstruction skill. Read target.png and start from seed.drawio. "
     "Call the drawio check MCP on seed.drawio, then open the returned preview as an image. "
-    "Independently improve the diagram using the target, candidate renders and any diagnostics. "
+    "Check objects, text and directed connections first. If the tool returns a diagnostics file, "
+    "read its relevant ranges, including the reported color differences. "
+    "Independently improve the diagram using the target, candidate renders and those findings. "
     "You have up to three new checkpoints after the seed. Verify each checkpoint with the MCP. "
     "Write selected.json as {\"candidate\": \"filename.drawio\"} for the best checked checkpoint, "
-    "including seed.drawio if it remains best. Report visible fixes and unresolved uncertainties."
+    "including seed.drawio if it remains best. Report which structures and colors you checked, "
+    "the cells you corrected and the remaining uncertainties."
 )
 
 
