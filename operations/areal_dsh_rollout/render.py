@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+from xml.etree import ElementTree
 
 
 def render(source: Path, output: Path, resources: Path, source_root: Path | None = None) -> dict:
@@ -39,6 +40,7 @@ def render_editor(source: Path, output: Path, resources: Path, source_root: Path
     official.WAR = runtime.WAR = war
     official.CHROME = runtime.CHROME = str(chrome)
     xml = source.read_text()
+    ElementTree.fromstring(xml)
     with runtime.Runtime() as editor:
         snapshot = editor.call("snapshot", xml, pageNumber=1)
         rendered = editor.render(xml, runtime.shared_frame(snapshot))
