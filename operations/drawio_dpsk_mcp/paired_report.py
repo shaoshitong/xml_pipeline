@@ -63,7 +63,7 @@ def collect(run, arm, target, gold):
         feedback, score = verifier.evaluate(data)
         row = {"round": n, "xml": str(xml), "sha256": digest,
                "png": str(analysis / feedback["candidate_png"]), "counts": feedback["structural_counts"],
-               "score": score}
+               "native_png": str(folder / "case" / f"round{n}.png"), "score": score}
         if n < 4:
             row["review"] = read_json(folder / "case" / f"review{n}.json")
         rounds.append(row)
@@ -77,7 +77,26 @@ def uri(data, media):
 
 def picture(path, label):
     return (f'<figure><figcaption>{escape(label)}</figcaption>'
-            f'<img alt="{escape(label)}" src="{uri(path.read_bytes(), "image/png")}"></figure>')
+            f'<img tabindex="0" alt="{escape(label)}" src="{uri(path.read_bytes(), "image/png")}"></figure>')
+
+
+def panels(folder, target, experiment):
+    from PIL import Image
+
+    sources = [("target", "目标图", target)] + [
+        (arm, label, Path(experiment[arm]["rounds"][-1]["png"]))
+        for arm, label in (("self", "自查"), ("mcp", "使用 MCP"))]
+    body = ['<section><h2>最终版分区放大</h2><p>此处将候选渲染配准到目标图后裁剪；上方及各轮全图保留原始渲染边界。</p>']
+    cuts = (0, .235, .565, .785, 1)
+    for n, (left, right) in enumerate(zip(cuts, cuts[1:]), 1):
+        body.append(f'<h3>分区 {n}</h3><div class="grid panels">')
+        for arm, label, path in sources:
+            output = folder / f"{arm}-panel{n}.png"
+            with Image.open(path) as image:
+                image.crop((round(left * image.width), 0, round(right * image.width), image.height)).save(output)
+            body.append(picture(output, label))
+        body.append('</div>')
+    return ''.join(body) + '</section>'
 
 
 def details(label, value):
@@ -92,18 +111,21 @@ def page(folder, target, experiment):
 <style>body{font:16px/1.6 system-ui,sans-serif;background:#eef3f4;color:#17262e;margin:0}
 main{max-width:1450px;margin:auto;padding:24px}section{background:white;margin:18px 0;padding:18px;border:1px solid #d6e0e3;border-radius:10px}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}figure{margin:0}figcaption{font-weight:650}
-img{width:100%;height:230px;object-fit:contain}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:450px;overflow:auto;background:#f3f6f6;padding:10px}
+img{width:100%;height:230px;object-fit:contain;cursor:zoom-in}.panels img{height:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:450px;overflow:auto;background:#f3f6f6;padding:10px}
 summary{cursor:pointer}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:8px;border-bottom:1px solid #d6e0e3}
+dialog{max-width:96vw;width:96vw;height:90vh;padding:8px;border:1px solid #789;box-sizing:border-box}dialog::backdrop{background:#000b}.zoom{height:calc(100% - 42px);overflow:auto}.zoom img{width:auto;height:auto;max-width:none;cursor:default}button{padding:7px 16px;margin:0 4px 6px 0}
 a{color:#005d54}@media(max-width:850px){.grid{grid-template-columns:1fr}img{height:auto}main{padding:12px}}
 </style></head><body><main><h1>DPSK 四轮重建对照</h1>
 <p>两路分别从原图开始，各生成四版并 review 三次。自查一路只看目标和自己的历史版本，MCP 一路在 review 阶段额外读取结构报告。</p>
 <p>执行中，自查首版触发过单回合超时，MCP 首次 review 曾返回空回答且缺少文件。两路均在原 session 内续跑并补齐产物。</p>
 <p>以下自动诊断按对象匹配计算，包含配准和匹配不确定项。数字需要结合具体图像及 XML 判断。</p>
+<p>点击任意图片可放大、横向滚动；下载包包含每版 XML、原始渲染、配准预览及三次 review。</p>
 <section><h2>最终结果</h2><div class="grid">''', picture(target, "目标图")]
     labels = {"self": "自查", "mcp": "使用 MCP"}
     for arm in ("self", "mcp"):
-        body.append(picture(Path(experiment[arm]["rounds"][-1]["png"]), labels[arm]))
+        body.append(picture(Path(experiment[arm]["rounds"][-1]["native_png"]), labels[arm]))
     body.append("</div></section>")
+    body.append(panels(folder, target, experiment))
     keys = ("label_changed", "edge_direction_reversed", "edge_binding_changed",
             "edge_arrowheads_changed", "edge_route_changed", "ambiguous_correspondence")
     body.append("<section><h2>结构诊断</h2><table><tr><th>版本</th><th>标签</th><th>方向</th>"
@@ -118,7 +140,7 @@ a{color:#005d54}@media(max-width:850px){.grid{grid-template-columns:1fr}img{heig
         body.append(f'<section><h2>第 {n + 1} 版</h2><div class="grid">' + picture(target, "目标图"))
         for arm in ("self", "mcp"):
             row = experiment[arm]["rounds"][n]
-            body.append(picture(Path(row["png"]), labels[arm]))
+            body.append(picture(Path(row["native_png"]), labels[arm]))
         body.append("</div>")
         for arm in ("self", "mcp"):
             row = experiment[arm]["rounds"][n]
@@ -133,7 +155,12 @@ a{color:#005d54}@media(max-width:850px){.grid{grid-template-columns:1fr}img{heig
                     + details("DPSK 最终回答", experiment[arm]["audit"]["final_answer"])
                     + details("会话与工具计数", {"session_id": experiment[arm]["session_id"],
                                               "audit": experiment[arm]["audit"]}) + "</section>")
-    body.append("</main></body></html>")
+    body.append('''</main><dialog id="viewer"><button id="close">关闭</button><button id="fit">适应宽度</button><button id="actual">原始尺寸</button><div class="zoom"><img id="large" alt="放大预览"></div></dialog>
+<script>const viewer=document.getElementById('viewer'),large=document.getElementById('large');
+function openImage(image){large.src=image.src;large.alt=image.alt;large.style.width='auto';viewer.showModal()}
+document.querySelectorAll('figure img').forEach(image=>{image.onclick=()=>openImage(image);image.onkeydown=e=>{if(e.key==='Enter')openImage(image)}});
+document.getElementById('close').onclick=()=>viewer.close();document.getElementById('fit').onclick=()=>large.style.width='100%';document.getElementById('actual').onclick=()=>large.style.width='auto';
+</script></body></html>''')
     (folder / "index.html").write_text("".join(body), encoding="utf-8")
 
 
@@ -166,10 +193,13 @@ def main():
         for arm in ("self", "mcp"):
             for row in experiment[arm]["rounds"]:
                 archive.write(row["xml"], f"{arm}/round{row['round']}.drawio")
-                archive.write(row["png"], f"{arm}/round{row['round']}.png")
+                archive.write(row["native_png"], f"{arm}/round{row['round']}.png")
+                archive.write(row["png"], f"{arm}/aligned-round{row['round']}.png")
                 if "review" in row:
                     archive.writestr(f"{arm}/review{row['round']}.json",
                                      json.dumps(row["review"], ensure_ascii=False, indent=2))
+        for path in output.glob("*-panel*.png"):
+            archive.write(path, "panels/" + path.name)
     print(output, flush=True)
 
 
