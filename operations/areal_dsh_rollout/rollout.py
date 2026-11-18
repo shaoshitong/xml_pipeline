@@ -21,9 +21,27 @@ def save(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
 
 
+def read_events(path):
+    return [json.loads(line) for line in path.read_text().splitlines()
+            if line.startswith("{") and line.endswith("}")]
+
+
 def run_turn(args, role, number, session):
     root = args.out / role
-    logs = root / f"round{number}"
+    checkpoint = root / f"round{number}"
+    logs = checkpoint
+    continuing = args.resume and checkpoint.exists()
+    if continuing:
+        state_file = checkpoint / "status.json"
+        state = json.loads(state_file.read_text()) if state_file.exists() else {}
+        previous = root / state.get("log_dir", checkpoint.name) / "events.jsonl"
+        events = read_events(previous) if previous.exists() else []
+        session = state.get("session_id") or next(
+            (e["sessionId"] for e in events if e.get("type") == "session"), session)
+        if state.get("completed"):
+            return session, next(e for e in reversed(events) if e.get("type") == "final")
+        sequence = len(list(root.glob(f"round{number}-continuation-*"))) + 1
+        logs = root / f"round{number}-continuation-{sequence}"
     logs.mkdir(parents=True)
     home = root / "home"
     home.mkdir(exist_ok=True)
@@ -38,6 +56,8 @@ def run_turn(args, role, number, session):
         prompt += ("\nContinue the interrupted first generation in this session. Reuse the image inspection "
                    "and inventory already completed. Write the native XML with tools now instead of "
                    "repeating the inventory. Preserve any work already saved.\n")
+    elif continuing:
+        prompt += "\nContinue this interrupted stage using this session's own saved work.\n"
     if role == "generator":
         renderer = [str(args.renderer_python), "/integration/render.py", f"round{number}.drawio",
                     f"round{number}.png", "--runtime", str(args.render_runtime)]
@@ -75,15 +95,17 @@ def run_turn(args, role, number, session):
     with (logs / "events.jsonl").open("wb") as out, (logs / "stderr.log").open("wb") as err:
         result = subprocess.run(command, stdout=out, stderr=err, timeout=args.turn_timeout,
                                 env={"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8"})
-    events = [json.loads(line) for line in (logs / "events.jsonl").read_text().splitlines()
-              if line.startswith("{")]
+    events = read_events(logs / "events.jsonl")
     final = next((e for e in reversed(events) if e.get("type") == "final"), None)
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
     status = {"role": role, "round": number, "exit": result.returncode,
               "completed": result.returncode == 0 and final is not None, "session_id": sid,
+              "log_dir": logs.name,
               "seconds": round(time.monotonic() - started, 2),
               "tool_calls": sum(e.get("type") == "tool_call" for e in events)}
     save(logs / "status.json", status)
+    if logs != checkpoint:
+        save(checkpoint / "status.json", status)
     print(json.dumps(status), flush=True)
     if result.returncode or final is None:
         raise RuntimeError(f"DSH {role} round {number} failed; inspect {logs}")
@@ -110,13 +132,14 @@ def main():
     parser.add_argument("--reviewer-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--rounds", default=4, type=int)
     parser.add_argument("--generator-session-id")
+    parser.add_argument("--resume", action="store_true")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=16384, type=int)
     parser.add_argument("--turn-timeout", default=900, type=int)
     args = parser.parse_args()
     args.out = args.out.resolve()
     case = args.out / "case"
-    case.mkdir(parents=True, exist_ok=args.generator_session_id is not None)
+    case.mkdir(parents=True, exist_ok=args.resume or args.generator_session_id is not None)
     shutil.copyfile(args.reference, case / "reference.png")
     skill = case / ".agents/skills/drawio-reconstruction"
     skill.mkdir(parents=True, exist_ok=True)
@@ -131,8 +154,10 @@ def main():
     for n in range(1, args.rounds + 1):
         generator, _ = run_turn(args, "generator", n, generator)
         xml = case / f"round{n}.drawio"
-        subprocess.run([str(args.renderer_python), str(HERE / "render.py"), str(xml),
-                        str(case / f"round{n}.png"), "--runtime", str(args.render_runtime)], check=True)
+        preview = case / f"round{n}.png"
+        if not (args.resume and preview.exists()):
+            subprocess.run([str(args.renderer_python), str(HERE / "render.py"), str(xml),
+                            str(preview), "--runtime", str(args.render_runtime)], check=True)
         save(args.out / "progress.json", {"completed_generation": n,
              "xml_bytes": xml.stat().st_size, "xml_sha256": sha256(xml.read_bytes()).hexdigest(),
              "timestamp": time.time()})

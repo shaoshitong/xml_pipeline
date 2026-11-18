@@ -37,7 +37,7 @@ def main():
     parser.add_argument("--generator", choices=("4B", "9B"), default="4B")
     parser.add_argument("--rounds", type=int, default=4)
     parser.add_argument("--resume-from", type=Path,
-                        help="Continue a failed first generation using its own DSH session and workspace")
+                        help="Continue this model's episode without rerunning completed stages")
     parser.add_argument("--context-window", type=int, default=65536)
     parser.add_argument("--max-tokens", type=int, default=16384)
     args = parser.parse_args()
@@ -83,12 +83,13 @@ def main():
         if args.resume_from:
             previous = args.resume_from / "episode"
             protocol = json.loads((previous / "protocol.json").read_text())
-            state = json.loads((previous / "generator/round1/status.json").read_text())
-            if protocol["generator"] != f"Qwen/Qwen3.5-{args.generator}" or state["completed"]:
-                raise ValueError("Continuation requires this model's failed initial generation")
+            if protocol["generator"] != f"Qwen/Qwen3.5-{args.generator}":
+                raise ValueError("Continue only the same generator model's episode")
             shutil.copytree(previous / "case", args.out / "episode/case")
-            shutil.copytree(previous / "generator/home", args.out / "episode/generator/home")
-            command.extend(("--generator-session-id", state["session_id"]))
+            for role in ("generator", "reviewer"):
+                if (previous / role).exists():
+                    shutil.copytree(previous / role, args.out / "episode" / role)
+            command.append("--resume")
         result = subprocess.run(command, env=environment)
         (args.out / "launch-result.json").write_text(json.dumps({"exit": result.returncode,
              "generator": args.generator, "reviewer": "4B", "separate_processes": True,
