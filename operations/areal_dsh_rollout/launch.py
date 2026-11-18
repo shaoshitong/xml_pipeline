@@ -41,6 +41,7 @@ def main():
     logs = []
     environment = dict(os.environ, OMP_NUM_THREADS="4", TOKENIZERS_PARALLELISM="false",
                        HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1")
+    environment["PATH"] = str(Path(sys.executable).parent) + os.pathsep + environment.get("PATH", "/usr/bin:/bin")
     try:
         gpu_log = (args.out / "gpu.csv").open("wb")
         logs.append(gpu_log)

@@ -10,6 +10,7 @@ export TRITON_CACHE_DIR="$base/cache/triton" CUDA_CACHE_PATH="$base/cache/cuda"
 export FLASHINFER_WORKSPACE_BASE="$base/cache/flashinfer"
 export TORCH_EXTENSIONS_DIR="$base/cache/torch-extensions"
 export NUMBA_CACHE_DIR="$base/cache/numba"
+export TVM_FFI_CACHE_DIR="$base/cache/tvm-ffi"
 export PYTHONNOUSERSITE=1 PIP_DISABLE_PIP_VERSION_CHECK=1
 unset PYTHONPATH PYTHONHOME
 mkdir -p "$TMPDIR"
@@ -18,6 +19,13 @@ if [[ ! -x "$base/env/bin/python" ]]; then
   "$bootstrap" -m venv --system-site-packages "$base/env"
 fi
 python="$base/env/bin/python"
+export CUDA_HOME=${DSH_CUDA_HOME:-/usr/local/cuda-12.8}
+export CUDACXX="$CUDA_HOME/bin/nvcc"
+export CC=${DSH_CC:-/data/apps/gcc/13.3/bin/gcc}
+export CXX=${DSH_CXX:-/data/apps/gcc/13.3/bin/g++}
+export CUDAHOSTCXX="$CXX" NVCC_CCBIN="$CXX"
+export NVCC_PREPEND_FLAGS="--compiler-bindir=$(dirname "$CXX")"
+export PATH="$base/env/bin:$(dirname "$CXX"):$CUDA_HOME/bin:$(dirname "$bootstrap"):$PATH"
 
 # Qwen3.5 is present in this release. Its compiled stack pins torch 2.9.1;
 # pip installs that version inside the venv, leaving shared torch unchanged.
@@ -32,10 +40,17 @@ import sys
 print(":".join(path for root in sys.path for path in glob.glob(root + "/nvidia/*/lib")))
 PY
 )
-export LD_LIBRARY_PATH="$libraries${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+compiler_lib=$(dirname "$("$CXX" -print-file-name=libstdc++.so.6)")
+export LD_LIBRARY_PATH="$compiler_lib:$libraries${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 declare -px PIP_CACHE_DIR XDG_CACHE_HOME TMPDIR HF_HOME TRITON_CACHE_DIR \
   CUDA_CACHE_PATH FLASHINFER_WORKSPACE_BASE TORCH_EXTENSIONS_DIR NUMBA_CACHE_DIR \
-  PYTHONNOUSERSITE LD_LIBRARY_PATH > "$base/env-setup-runtime.sh"
+  PYTHONNOUSERSITE LD_LIBRARY_PATH PATH CUDA_HOME CUDACXX CC CXX \
+  CUDAHOSTCXX NVCC_CCBIN NVCC_PREPEND_FLAGS TVM_FFI_CACHE_DIR \
+  > "$base/env-setup-runtime.sh"
+command -v ninja > "$base/env-setup-toolchain.log"
+ninja --version >> "$base/env-setup-toolchain.log"
+"$CXX" --version >> "$base/env-setup-toolchain.log"
+"$CUDACXX" --version >> "$base/env-setup-toolchain.log"
 
 "$python" - <<'PY' > "$base/env-setup-imports.json"
 import importlib
