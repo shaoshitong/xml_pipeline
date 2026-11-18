@@ -56,13 +56,17 @@ def main():
         for role, size, port, fraction in [("generator", args.generator, 30000, "0.45"),
                                             ("reviewer", "4B", 30001, "0.35")]:
             model = f"Qwen/Qwen3.5-{size}"
-            serving = args.root / "serving" / f"Qwen3.5-{size}-precise-coding-v1"
+            mode = "instruct" if args.reasoning_effort == "off" else "precise-coding"
+            serving = args.root / "serving" / f"Qwen3.5-{size}-{mode}-v1"
             command = [sys.executable, "-m", "sglang.launch_server", "--model-path",
                        str(serving), "--sampling-defaults", "model", "--served-model-name", model,
                        "--host", "127.0.0.1", "--port", str(port), "--tp", "1",
                        "--dtype", "bfloat16", "--context-length", str(args.context_window),
                        "--max-total-tokens", str(args.context_window), "--max-running-requests", "1",
                        "--mem-fraction-static", fraction, "--cuda-graph-max-bs", "1",
+                       "--preferred-sampling-params", json.dumps({"min_p": 0.0,
+                           "presence_penalty": 1.5 if mode == "instruct" else 0.0,
+                           "repetition_penalty": 1.0}),
                        "--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder"]
             log = (args.out / f"{role}-server.log").open("wb")
             logs.append(log)

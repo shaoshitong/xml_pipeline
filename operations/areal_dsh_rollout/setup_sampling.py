@@ -8,9 +8,10 @@ from pathlib import Path
 
 SAMPLING = {"temperature": 0.6, "top_p": 0.95, "top_k": 20, "min_p": 0.0,
             "presence_penalty": 0.0, "repetition_penalty": 1.0}
+INSTRUCT_SAMPLING = dict(SAMPLING, temperature=0.7, top_p=0.8, presence_penalty=1.5)
 
 
-def create_overlay(model, output):
+def create_overlay(model, output, mode="precise-coding"):
     model, output = model.resolve(), output.resolve()
     if output == model or model in output.parents:
         raise ValueError("Serving overlay must be outside the original model directory")
@@ -22,7 +23,8 @@ def create_overlay(model, output):
         token = text_config.get(key, config.get(key))
         if key not in generation and token is not None:
             generation[key] = token
-    generation.update(SAMPLING, do_sample=True)
+    sampling = INSTRUCT_SAMPLING if mode == "instruct" else SAMPLING
+    generation.update(sampling, do_sample=True)
     output.mkdir(parents=True, exist_ok=False)
     for path in model.iterdir():
         if path.name != "generation_config.json":
@@ -33,7 +35,8 @@ def create_overlay(model, output):
             "generation_config_sha256": sha256(data).hexdigest(),
             "generation_config": generation,
             "loading": "SGLang --sampling-defaults model; explicit request values take priority",
-            "presence_penalty": "SGLang 0.5.10.post1 API default is 0; not read from this file",
+            "presence_penalty": "Not read from generation_config by SGLang; pass --preferred-sampling-params",
+            "mode": mode,
             "output_budget": "Set DSH model maxTokens separately; this file does not set it"}
 
 
@@ -41,8 +44,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--mode", choices=("precise-coding", "instruct"), default="precise-coding")
     args = parser.parse_args()
-    print(json.dumps(create_overlay(args.model, args.output), ensure_ascii=False, indent=2))
+    print(json.dumps(create_overlay(args.model, args.output, args.mode), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

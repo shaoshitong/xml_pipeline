@@ -56,7 +56,11 @@ def build_patch(
         "apiKeyEnv": api_key_env,
         "retryPolicy": {"mode": "normal", "maxRetries": 0},
         "compat": {
-            "thinkingFormat": "qwen-chat-template",
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+                "enable_thinking": {"$var": "thinking.enabled"},
+                "preserve_thinking": False,
+            },
             "maxTokensField": "max_tokens",
             "supportsDeveloperRole": False,
             "supportsReasoningEffort": False,
