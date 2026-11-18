@@ -160,11 +160,13 @@ def main():
     (output / "summary.json").write_text(json.dumps(experiment, ensure_ascii=False, indent=2))
     page(output, target, experiment)
     with ZipFile(output / "dpsk-four-round-review.zip", "w", ZIP_DEFLATED) as archive:
+        archive.write(target, "target.png")
         for name in ("index.html", "summary.json"):
             archive.write(output / name, name)
         for arm in ("self", "mcp"):
             for row in experiment[arm]["rounds"]:
                 archive.write(row["xml"], f"{arm}/round{row['round']}.drawio")
+                archive.write(row["png"], f"{arm}/round{row['round']}.png")
                 if "review" in row:
                     archive.writestr(f"{arm}/review{row['round']}.json",
                                      json.dumps(row["review"], ensure_ascii=False, indent=2))
