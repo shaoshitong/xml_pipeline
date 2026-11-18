@@ -50,7 +50,8 @@ def run_turn(args, role, number, session):
     patch = root / "profile.yml"
     patch.write_text(profile_yaml(base_url=endpoint, model=model, role=role,
                                   context_window=args.context_window,
-                                  max_tokens=args.max_tokens))
+                                  max_tokens=args.max_tokens,
+                                  reasoning_effort=args.reasoning_effort))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     if role == "generator" and number == 1 and session:
         prompt += ("\nContinue the interrupted first generation in this session. Reuse the image inspection "
@@ -134,7 +135,8 @@ def main():
     parser.add_argument("--generator-session-id")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--context-window", default=65536, type=int)
-    parser.add_argument("--max-tokens", default=16384, type=int)
+    parser.add_argument("--max-tokens", default=32768, type=int)
+    parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     parser.add_argument("--turn-timeout", default=900, type=int)
     args = parser.parse_args()
     args.out = args.out.resolve()
@@ -148,6 +150,7 @@ def main():
          "reviewer": args.reviewer_model, "reviewer_frozen": True,
          "separate_model_instances": True, "gold_feedback": False, "rounds": args.rounds,
          "context_window": args.context_window, "max_tokens": args.max_tokens,
+         "reasoning_effort": args.reasoning_effort,
          "continued_generator_session": args.generator_session_id,
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None

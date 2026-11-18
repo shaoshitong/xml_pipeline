@@ -39,7 +39,8 @@ def main():
     parser.add_argument("--resume-from", type=Path,
                         help="Continue this model's episode without rerunning completed stages")
     parser.add_argument("--context-window", type=int, default=65536)
-    parser.add_argument("--max-tokens", type=int, default=16384)
+    parser.add_argument("--max-tokens", type=int, default=32768)
+    parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     args = parser.parse_args()
     args.out.mkdir(parents=True)
     processes = []
@@ -55,12 +56,13 @@ def main():
         for role, size, port, fraction in [("generator", args.generator, 30000, "0.45"),
                                             ("reviewer", "4B", 30001, "0.35")]:
             model = f"Qwen/Qwen3.5-{size}"
+            serving = args.root / "serving" / f"Qwen3.5-{size}-precise-coding-v1"
             command = [sys.executable, "-m", "sglang.launch_server", "--model-path",
-                       str(args.root / "models" / f"Qwen3.5-{size}"), "--served-model-name", model,
+                       str(serving), "--sampling-defaults", "model", "--served-model-name", model,
                        "--host", "127.0.0.1", "--port", str(port), "--tp", "1",
                        "--dtype", "bfloat16", "--context-length", str(args.context_window),
                        "--max-total-tokens", str(args.context_window), "--max-running-requests", "1",
-                       "--mem-fraction-static", fraction, "--disable-cuda-graph",
+                       "--mem-fraction-static", fraction, "--cuda-graph-max-bs", "1",
                        "--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder"]
             log = (args.out / f"{role}-server.log").open("wb")
             logs.append(log)
@@ -79,7 +81,8 @@ def main():
                    "--renderer-python", str(args.root / "renderer/venv/bin/python"),
                    "--render-runtime", str(args.root / "renderer"),
                    "--generator-model", f"Qwen/Qwen3.5-{args.generator}", "--rounds", str(args.rounds),
-                   "--context-window", str(args.context_window), "--max-tokens", str(args.max_tokens)]
+                   "--context-window", str(args.context_window), "--max-tokens", str(args.max_tokens),
+                   "--reasoning-effort", args.reasoning_effort]
         if args.resume_from:
             previous = args.resume_from / "episode"
             protocol = json.loads((previous / "protocol.json").read_text())
