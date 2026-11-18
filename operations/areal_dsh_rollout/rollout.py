@@ -14,17 +14,20 @@ import time
 
 from dsh_profiles import profile_yaml
 from prompts import generation_prompt, review_prompt
+from ablate_skill import prompt_for_mode
+from setup_sampling import INSTRUCT_SAMPLING, SAMPLING
 
 
 HERE = Path(__file__).resolve().parent
 
 
-def isolated_turn(command, endpoint, auth_file, logs, timeout):
+def isolated_turn(command, endpoint, auth_file, logs, timeout, sampling=None):
     """Keep host inference/control ports outside the model's network namespace."""
     headers = json.loads(auth_file.read_text())["headers"] if auth_file else {}
     with tempfile.TemporaryDirectory(prefix="dsh-gateway-") as directory:
         socket = Path(directory) / "generation.sock"
         gateway_env = dict(os.environ, SANDBOX_GATEWAY_HEADERS=json.dumps(headers))
+        gateway_env["SANDBOX_GATEWAY_SAMPLING"] = json.dumps(sampling or {})
         with (logs / "gateway.log").open("wb") as gateway_log:
             gateway = subprocess.Popen([
                 sys.executable,
@@ -82,6 +85,7 @@ def run_turn(args, role, number, session):
                                   max_tokens=args.max_tokens,
                                   reasoning_effort=args.reasoning_effort))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
+    prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)
     if role == "generator" and number == 1 and args.seeded:
         prompt += ("\nround1.drawio is your own previous candidate, not a reference answer. "
                    "Inspect it and reference.png afresh, repair its technical validity as needed, "
@@ -133,7 +137,11 @@ def run_turn(args, role, number, session):
     command.append(prompt)
     started = time.monotonic()
     auth_file = args.generator_auth_file if role == "generator" else None
-    result = isolated_turn(command, endpoint, auth_file, logs, args.turn_timeout)
+    sampling = dict({"model": {}, "instruct": INSTRUCT_SAMPLING,
+                     "precise-coding": SAMPLING}[args.sampling_preset])
+    if args.seed is not None:
+        sampling["seed"] = args.seed
+    result = isolated_turn(command, endpoint, auth_file, logs, args.turn_timeout, sampling)
     events = read_events(logs / "events.jsonl")
     final = next((e for e in reversed(events) if e.get("type") == "final"), None)
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
@@ -175,6 +183,10 @@ def main():
     parser.add_argument("--generator-session-id")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--seeded", action="store_true")
+    parser.add_argument("--skill-mode", choices=("full", "no-skill", "minimal"), default="full")
+    parser.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding"),
+                        default="model", help="Explicit wire parameters; model preserves legacy behavior")
+    parser.add_argument("--seed", type=int)
     parser.add_argument("--resume-note", default="")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
@@ -186,8 +198,11 @@ def main():
     case.mkdir(parents=True, exist_ok=args.resume or args.seeded or args.generator_session_id is not None)
     shutil.copyfile(args.reference, case / "reference.png")
     skill = case / ".agents/skills/drawio-reconstruction"
-    skill.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(HERE / "reconstruction_skill.txt", skill / "SKILL.md")
+    if args.skill_mode == "full":
+        skill.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(HERE / "reconstruction_skill.txt", skill / "SKILL.md")
+    elif skill.exists():
+        shutil.rmtree(skill)
     save(args.out / "protocol.json", {"generator": args.generator_model,
          "reviewer": args.reviewer_model, "reviewer_frozen": True,
          "separate_model_instances": True, "gold_feedback": False, "rounds": args.rounds,
@@ -196,6 +211,9 @@ def main():
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
          "fresh_context_from_own_candidate": args.seeded,
+         "skill_mode": args.skill_mode,
+         "sampling_preset": args.sampling_preset,
+         "seed": args.seed,
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None
     for n in range(1, args.rounds + 1):

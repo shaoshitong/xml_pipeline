@@ -63,7 +63,15 @@ class Proxy(BaseHTTPRequestHandler):
                   "tool_definitions": len(data.get("tools", []))}
         record["sampling"] = {key: data[key] for key in (
             "temperature", "top_p", "top_k", "presence_penalty", "max_tokens",
-            "chat_template_kwargs") if key in data}
+            "repetition_penalty", "min_p", "seed", "chat_template_kwargs") if key in data}
+        capture = None
+        if self.server.capture_raw:
+            directory = self.server.audit.parent / (self.server.audit.stem + "-raw")
+            directory.mkdir(exist_ok=True)
+            name = str(time.time_ns())
+            (directory / (name + ".request.json")).write_bytes(body)
+            record["raw_request"] = str(directory / (name + ".request.json"))
+            capture = (directory / (name + ".response.bin")).open("wb")
         with self.server.audit.open("a") as log:
             log.write(json.dumps(record) + "\n")
         upstream = HTTPConnection(self.server.upstream.hostname, self.server.upstream.port, timeout=900)
@@ -76,16 +84,25 @@ class Proxy(BaseHTTPRequestHandler):
         self.send_header("Connection", "close")
         self.end_headers()
         chunks = []
-        while chunk := response.read1(65536):
-            chunks.append(chunk)
-            self.wfile.write(chunk)
-            self.wfile.flush()
-        upstream.close()
-        self.close_connection = True
-        with self.server.audit.open("a") as log:
-            log.write(json.dumps({"response_to": record["timestamp"], "status": response.status,
-                                  "seconds": round(time.time() - record["timestamp"], 3),
-                                  **response_summary(chunks)}) + "\n")
+        stream_error = None
+        try:
+            while chunk := response.read1(65536):
+                chunks.append(chunk)
+                if capture:
+                    capture.write(chunk)
+                self.wfile.write(chunk)
+                self.wfile.flush()
+        except OSError as error:
+            stream_error = type(error).__name__
+        finally:
+            if capture:
+                capture.close()
+            upstream.close()
+            self.close_connection = True
+            with self.server.audit.open("a") as log:
+                log.write(json.dumps({"response_to": record["timestamp"], "status": response.status,
+                                      "seconds": round(time.time() - record["timestamp"], 3),
+                                      "stream_error": stream_error, **response_summary(chunks)}) + "\n")
 
 
 def main():
@@ -93,10 +110,12 @@ def main():
     parser.add_argument("--port", required=True, type=int)
     parser.add_argument("--upstream", required=True)
     parser.add_argument("--audit", required=True, type=Path)
+    parser.add_argument("--capture-raw", action="store_true")
     args = parser.parse_args()
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Proxy)
     server.upstream = urlsplit(args.upstream)
     server.audit = args.audit
+    server.capture_raw = args.capture_raw
     server.serve_forever()
 
 

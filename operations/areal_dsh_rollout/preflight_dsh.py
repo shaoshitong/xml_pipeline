@@ -9,6 +9,7 @@ import threading
 from types import SimpleNamespace
 
 from rollout import run_turn
+from setup_sampling import INSTRUCT_SAMPLING, SAMPLING
 
 
 class Capture(BaseHTTPRequestHandler):
@@ -19,6 +20,7 @@ class Capture(BaseHTTPRequestHandler):
             "max_tokens": body.get("max_tokens"),
             "chat_template_kwargs": body.get("chat_template_kwargs"),
             "tools": [tool["function"]["name"] for tool in body.get("tools", [])],
+            "sampling": {key: body.get(key) for key in INSTRUCT_SAMPLING},
         })
         response = json.dumps({"error": {"message": "Deliberate protocol preflight 503",
                                         "type": "preflight"}}).encode()
@@ -55,6 +57,8 @@ def main():
             endpoint = f"http://127.0.0.1:{args.port}/v1"
             options = SimpleNamespace(
                 out=output, runtime=args.runtime, resume=False, resume_note="", rounds=4,
+                seeded=False, skill_mode="full", seed=None,
+                sampling_preset="precise-coding" if effort == "high" else "instruct",
                 generator_model="Qwen/Qwen3.5-4B", reviewer_model="Qwen/Qwen3.5-4B",
                 generator_url=endpoint, reviewer_url=endpoint,
                 generator_auth_file=None,
@@ -78,6 +82,7 @@ def main():
                 and request["chat_template_kwargs"] == {
                     "enable_thinking": effort == "high", "preserve_thinking": False}
                 and "read_image" in request["tools"]
+                and request["sampling"] == (SAMPLING if effort == "high" else INSTRUCT_SAMPLING)
                 for request in requests)
             status = json.loads((output / "generator/round1/status.json").read_text())
             results.append({"reasoning_effort": effort, "passed": passed,

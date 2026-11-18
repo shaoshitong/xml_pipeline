@@ -109,6 +109,7 @@ def validate_images(body):
             url = image.get("url") if isinstance(image, dict) else image
             if kind != "image_url" or not isinstance(url, str) or not url.startswith(IMAGE_PREFIXES):
                 raise ValueError("Only inline raster images are allowed")
+    return data
 
 
 class Relay(BaseHTTPRequestHandler):
@@ -134,7 +135,10 @@ class Relay(BaseHTTPRequestHandler):
             self.connection.settimeout(self.server.timeout_seconds)
             body = request_body(self)
             if self.server.validate_images and self.command == "POST":
-                validate_images(body)
+                data = validate_images(body)
+                if self.server.sampling:
+                    data.update(self.server.sampling)
+                    body = json.dumps(data, separators=(",", ":")).encode()
         except (OSError, ValueError, TypeError):
             self.send_error(400)
             return
@@ -168,11 +172,12 @@ class Relay(BaseHTTPRequestHandler):
                 upstream.close()
 
 
-def configure(server, connection_factory, headers=None, validate=True, timeout=900):
+def configure(server, connection_factory, headers=None, validate=True, timeout=900, sampling=None):
     server.connection_factory = connection_factory
     server.upstream_headers = headers or {}
     server.validate_images = validate
     server.timeout_seconds = timeout
+    server.sampling = sampling or {}
     return server
 
 
@@ -183,6 +188,7 @@ def main():
     parser.add_argument("--headers-env", default="SANDBOX_GATEWAY_HEADERS",
                         help="Host-only JSON object with upstream auth/session headers")
     parser.add_argument("--timeout", type=float, default=900)
+    parser.add_argument("--sampling-env", default="SANDBOX_GATEWAY_SAMPLING")
     args = parser.parse_args()
     target = urlsplit(args.upstream)
     if target.scheme not in ("http", "https") or not target.hostname or target.path not in ("", "/", "/v1"):
@@ -192,13 +198,17 @@ def main():
     headers = json.loads(os.environ.get(args.headers_env, "{}"))
     if not isinstance(headers, dict) or any(not isinstance(value, str) or key.lower() in HOP_HEADERS | {"host", "content-length"} for key, value in headers.items()):
         parser.error("invalid upstream headers")
+    sampling = json.loads(os.environ.get(args.sampling_env, "{}"))
+    if not isinstance(sampling, dict) or sampling.keys() - {
+            "temperature", "top_p", "top_k", "min_p", "presence_penalty", "repetition_penalty", "seed"}:
+        parser.error("invalid explicit sampling fields")
     args.socket.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     if args.socket.parent.stat().st_mode & 0o077:
         parser.error("socket directory must be private (mode 0700)")
     connection = http.client.HTTPSConnection if target.scheme == "https" else http.client.HTTPConnection
     server = configure(UnixHTTPServer(str(args.socket), Relay),
                        lambda: connection(target.hostname, target.port, timeout=args.timeout),
-                       headers, timeout=args.timeout)
+                       headers, timeout=args.timeout, sampling=sampling)
     os.chmod(str(args.socket), 0o600)
     marker = args.socket.with_name(args.socket.name + ".netns")
     marker.write_text(str(os.stat("/proc/self/ns/net").st_ino))
