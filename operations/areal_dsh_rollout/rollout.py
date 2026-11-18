@@ -8,6 +8,8 @@ from pathlib import Path
 import shutil
 import shlex
 import subprocess
+import sys
+import tempfile
 import time
 
 from dsh_profiles import profile_yaml
@@ -15,6 +17,33 @@ from prompts import generation_prompt, review_prompt
 
 
 HERE = Path(__file__).resolve().parent
+
+
+def isolated_turn(command, endpoint, auth_file, logs, timeout):
+    """Keep host inference/control ports outside the model's network namespace."""
+    headers = json.loads(auth_file.read_text())["headers"] if auth_file else {}
+    with tempfile.TemporaryDirectory(prefix="dsh-gateway-") as directory:
+        socket = Path(directory) / "generation.sock"
+        gateway_env = dict(os.environ, SANDBOX_GATEWAY_HEADERS=json.dumps(headers))
+        with (logs / "gateway.log").open("wb") as gateway_log:
+            gateway = subprocess.Popen([
+                sys.executable,
+                str(HERE / "sandbox_gateway.py"), "--socket", str(socket),
+                "--upstream", endpoint], stdout=gateway_log, stderr=gateway_log,
+                env=gateway_env)
+            try:
+                deadline = time.monotonic() + 10
+                while not socket.exists():
+                    if gateway.poll() is not None or time.monotonic() > deadline:
+                        raise RuntimeError("Generation gateway failed to start")
+                    time.sleep(0.05)
+                command[1:1] = ["--ro-bind", directory, "/gateway"]
+                with (logs / "events.jsonl").open("wb") as out, (logs / "stderr.log").open("wb") as err:
+                    return subprocess.run(command, stdout=out, stderr=err, timeout=timeout,
+                                          env={"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8"})
+            finally:
+                gateway.terminate()
+                gateway.wait(timeout=10)
 
 
 def save(path, value):
@@ -48,7 +77,7 @@ def run_turn(args, role, number, session):
     model = args.generator_model if role == "generator" else args.reviewer_model
     endpoint = args.generator_url if role == "generator" else args.reviewer_url
     patch = root / "profile.yml"
-    patch.write_text(profile_yaml(base_url=endpoint, model=model, role=role,
+    patch.write_text(profile_yaml(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
                                   context_window=args.context_window,
                                   max_tokens=args.max_tokens,
                                   reasoning_effort=args.reasoning_effort))
@@ -59,6 +88,8 @@ def run_turn(args, role, number, session):
                    "repeating the inventory. Preserve any work already saved.\n")
     elif continuing:
         prompt += "\nContinue this interrupted stage using this session's own saved work.\n"
+    if args.resume_note:
+        prompt += "\nHost runtime recovery note: " + args.resume_note + "\n"
     if role == "generator":
         renderer = [str(args.renderer_python), "/integration/render.py", f"round{number}.drawio",
                     f"round{number}.png", "--runtime", str(args.render_runtime)]
@@ -66,7 +97,7 @@ def run_turn(args, role, number, session):
     runtime = args.runtime.resolve()
     case = (args.out / "case").resolve()
     mounts = ["--bind" if role == "generator" else "--ro-bind", str(case), "/case"]
-    command = ["bwrap", "--unshare-all", "--share-net", "--new-session", "--die-with-parent",
+    command = ["bwrap", "--unshare-all", "--new-session", "--die-with-parent",
                "--ro-bind", "/usr", "/usr", "--symlink", "usr/bin", "/bin",
                "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64",
                "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp",
@@ -79,6 +110,8 @@ def run_turn(args, role, number, session):
                "--setenv", "LANG", "C.UTF-8", "--setenv", "ROLLOUT_API_KEY", "EMPTY",
                "--setenv", "DSH_TELEMETRY_DISABLED", "1", "--chdir", "/case"]
     command.extend(("--ro-bind", str(HERE / "render.py"), "/integration/render.py",
+                    "--ro-bind", str(HERE / "sandbox_entry.py"), "/integration/sandbox_entry.py",
+                    "--ro-bind", str(HERE / "sandbox_gateway.py"), "/integration/sandbox_gateway.py",
                     "--ro-bind", "/share/anaconda3/envs/vllm017", "/share/anaconda3/envs/vllm017"))
     for name in ("venv", "source", "chrome-linux64", "draw.war", "lib", "fonts", "fonts.conf"):
         path = args.render_runtime / name
@@ -86,16 +119,17 @@ def run_turn(args, role, number, session):
     for name in ("resolv.conf", "hosts", "nsswitch.conf", "ssl/certs", "fonts", "ld.so.cache"):
         path = f"/etc/{name}"
         command.extend(("--ro-bind", path, path))
-    command.extend(("--", str(runtime / "node/bin/node"),
+    command.extend(("--", str(args.renderer_python), "/integration/sandbox_entry.py",
+                    "--socket", "/gateway/generation.sock", "--",
+                    str(runtime / "node/bin/node"),
                     str(runtime / "dsh/node_modules/@deepseek-ai/dsh/lib/bin.js"),
                     "--profile", "headless", "--patch", "/profile.yml", "--json"))
     if session:
         command.extend(("--session-id", session))
     command.append(prompt)
     started = time.monotonic()
-    with (logs / "events.jsonl").open("wb") as out, (logs / "stderr.log").open("wb") as err:
-        result = subprocess.run(command, stdout=out, stderr=err, timeout=args.turn_timeout,
-                                env={"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8"})
+    auth_file = args.generator_auth_file if role == "generator" else None
+    result = isolated_turn(command, endpoint, auth_file, logs, args.turn_timeout)
     events = read_events(logs / "events.jsonl")
     final = next((e for e in reversed(events) if e.get("type") == "final"), None)
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
@@ -128,12 +162,15 @@ def main():
     for name in ("runtime", "reference", "out", "renderer_python", "render_runtime"):
         parser.add_argument("--" + name.replace("_", "-"), required=True, type=Path)
     parser.add_argument("--generator-url", default="http://127.0.0.1:30101/v1")
+    parser.add_argument("--generator-auth-file", type=Path,
+                        help="Host-private generation credentials; never mounted into DSH")
     parser.add_argument("--reviewer-url", default="http://127.0.0.1:30102/v1")
     parser.add_argument("--generator-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--reviewer-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--rounds", default=4, type=int)
     parser.add_argument("--generator-session-id")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--resume-note", default="")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
@@ -152,6 +189,7 @@ def main():
          "context_window": args.context_window, "max_tokens": args.max_tokens,
          "reasoning_effort": args.reasoning_effort,
          "continued_generator_session": args.generator_session_id,
+         "runtime_recovery_note": args.resume_note,
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None
     for n in range(1, args.rounds + 1):

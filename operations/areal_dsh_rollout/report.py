@@ -39,6 +39,8 @@ def audit(path, warnings):
         except ValueError:
             warnings.append(f"{path.name} 有未完成的审计行，未计入统计")
             continue
+        if "response_to" in record:
+            continue
         requests += 1
         images = record.get("image_inputs", [])
         image_requests += bool(images)

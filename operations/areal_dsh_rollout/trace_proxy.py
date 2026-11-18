@@ -27,6 +27,29 @@ def images(value):
             yield from images(item)
 
 
+def response_summary(chunks):
+    summary = {"content_characters": 0, "reasoning_characters": 0, "tool_calls": {}}
+    for line in b"".join(chunks).splitlines():
+        if not line.startswith(b"data: ") or line == b"data: [DONE]":
+            continue
+        event = json.loads(line[6:])
+        if event.get("usage"):
+            summary["usage"] = event["usage"]
+        for choice in event.get("choices", []):
+            if choice.get("finish_reason"):
+                summary["finish_reason"] = choice["finish_reason"]
+            delta = choice.get("delta", {})
+            summary["content_characters"] += len(delta.get("content") or "")
+            summary["reasoning_characters"] += len(delta.get("reasoning_content") or "")
+            for call in delta.get("tool_calls", []):
+                tool = summary["tool_calls"].setdefault(str(call.get("index", 0)),
+                                                       {"name": "", "argument_characters": 0})
+                function = call.get("function", {})
+                tool["name"] += function.get("name") or ""
+                tool["argument_characters"] += len(function.get("arguments") or "")
+    return summary
+
+
 class Proxy(BaseHTTPRequestHandler):
     def log_message(self, *_):
         pass
@@ -38,6 +61,9 @@ class Proxy(BaseHTTPRequestHandler):
                   "image_inputs": list(images(data)), "messages": len(data.get("messages", [])),
                   "tool_observations": sum(m.get("role") == "tool" for m in data.get("messages", [])),
                   "tool_definitions": len(data.get("tools", []))}
+        record["sampling"] = {key: data[key] for key in (
+            "temperature", "top_p", "top_k", "presence_penalty", "max_tokens",
+            "chat_template_kwargs") if key in data}
         with self.server.audit.open("a") as log:
             log.write(json.dumps(record) + "\n")
         upstream = HTTPConnection(self.server.upstream.hostname, self.server.upstream.port, timeout=900)
@@ -49,11 +75,17 @@ class Proxy(BaseHTTPRequestHandler):
                 self.send_header(key, value)
         self.send_header("Connection", "close")
         self.end_headers()
+        chunks = []
         while chunk := response.read1(65536):
+            chunks.append(chunk)
             self.wfile.write(chunk)
             self.wfile.flush()
         upstream.close()
         self.close_connection = True
+        with self.server.audit.open("a") as log:
+            log.write(json.dumps({"response_to": record["timestamp"], "status": response.status,
+                                  "seconds": round(time.time() - record["timestamp"], 3),
+                                  **response_summary(chunks)}) + "\n")
 
 
 def main():

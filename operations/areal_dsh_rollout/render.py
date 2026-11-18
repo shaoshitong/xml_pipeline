@@ -6,9 +6,27 @@ import json
 import os
 from pathlib import Path
 import sys
+import tempfile
 
 
 def render(source: Path, output: Path, resources: Path, source_root: Path | None = None) -> dict:
+    # The DSH bash sandbox keeps its session home read-only. Chrome crashpad
+    # needs a writable config home even when browser crash reporting is off.
+    keys = ("HOME", "XDG_CONFIG_HOME", "XDG_CACHE_HOME")
+    previous = {key: os.environ.get(key) for key in keys}
+    with tempfile.TemporaryDirectory(prefix="drawio-chrome-") as home:
+        os.environ.update({key: home for key in keys})
+        try:
+            return render_editor(source, output, resources, source_root)
+        finally:
+            for key, value in previous.items():
+                if value is None:
+                    os.environ.pop(key, None)
+                else:
+                    os.environ[key] = value
+
+
+def render_editor(source: Path, output: Path, resources: Path, source_root: Path | None = None) -> dict:
     os.environ["FONTCONFIG_FILE"] = str(resources / "fonts.conf")
     os.environ["LD_LIBRARY_PATH"] = str(resources / "lib") + ":" + os.environ.get("LD_LIBRARY_PATH", "")
     conversion = (source_root or resources / "source") / "conversion"

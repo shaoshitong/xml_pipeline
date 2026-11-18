@@ -38,10 +38,15 @@ def main():
     parser.add_argument("--rounds", type=int, default=4)
     parser.add_argument("--resume-from", type=Path,
                         help="Continue this model's episode without rerunning completed stages")
+    parser.add_argument("--resume-note", default="")
     parser.add_argument("--context-window", type=int, default=65536)
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
+    parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
     args = parser.parse_args()
+    if args.areal and (args.reasoning_effort != "off" or args.resume_from or
+                      (args.context_window, args.max_tokens) != (65536, 32768)):
+        parser.error("The native collector currently requires a fresh instruct 64K/32K episode")
     args.out.mkdir(parents=True)
     processes = []
     logs = []
@@ -87,6 +92,8 @@ def main():
                    "--generator-model", f"Qwen/Qwen3.5-{args.generator}", "--rounds", str(args.rounds),
                    "--context-window", str(args.context_window), "--max-tokens", str(args.max_tokens),
                    "--reasoning-effort", args.reasoning_effort]
+        if args.resume_note:
+            command.extend(("--resume-note", args.resume_note))
         if args.resume_from:
             previous = args.resume_from / "episode"
             protocol = json.loads((previous / "protocol.json").read_text())
@@ -97,6 +104,14 @@ def main():
                 if (previous / role).exists():
                     shutil.copytree(previous / role, args.out / "episode" / role)
             command.append("--resume")
+        if args.areal:
+            command = [str(args.root / "controller/env/bin/python"), str(HERE / "collect.py"),
+                       "--root", str(args.root), "--runtime", str(args.runtime),
+                       "--reference", str(args.reference), "--tokenizer", str(
+                           args.root / "serving" / f"Qwen3.5-{args.generator}-instruct-v1"),
+                       "--out", str(args.out / "collector"),
+                       "--generator-model", f"Qwen/Qwen3.5-{args.generator}",
+                       "--rounds", str(args.rounds)]
         result = subprocess.run(command, env=environment)
         (args.out / "launch-result.json").write_text(json.dumps({"exit": result.returncode,
              "generator": args.generator, "reviewer": "4B", "separate_processes": True,
