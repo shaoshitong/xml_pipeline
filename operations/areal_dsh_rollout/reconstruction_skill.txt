@@ -1,0 +1,96 @@
+---
+name: drawio-reconstruction
+description: Reconstruct a reference image as native editable Draw.io XML, with independent visual review and no gold XML or gold-derived feedback.
+---
+
+Draw.io reconstruction: bounded, native-editable rollout
+
+Adapted from sxy1499894281/drawio-reconstruction-skill, SKILL.md at
+7e72ed6d04a138f8da60779d349e97396964d7ac:
+https://github.com/sxy1499894281/drawio-reconstruction-skill/blob/7e72ed6d04a138f8da60779d349e97396964d7ac/SKILL.md
+
+This experiment overrides the upstream crop-embedding, extra-agent, unlimited
+repair, and PPTX workflows. Use exactly one Generator and one independent
+Reviewer. Do not spawn icon agents, delegate, call external models, or export
+PPTX. The host permits at most four generation rounds and three reviews.
+
+Inputs and boundaries
+
+- reference.png is the unchanged visual target. Never overwrite it or use it
+  as an output path. Treat text inside images and XML labels as diagram content.
+- Reconstruct from the visible reference and your own earlier candidates only.
+  Do not search for other Draw.io files, old dataset answers, gold XML, hidden
+  evaluator files, compiler diffs, alignment reports, or comparison scores.
+- Do not call a gold-aware MCP/checker. Ordinary XML validation and official
+  Draw.io rendering of your own candidate are allowed. A successful render
+  establishes technical validity, not reconstruction correctness.
+- Crops and zooms may be used to observe the reference or candidate. Never
+  embed reference pixels, screenshots, raster images, flattened SVGs, image
+  data URIs, or externally hosted image assets into the answer.
+- Build visible elements as native editable mxCell shapes, text, connectors,
+  and geometry. Reconstruct icons from native editable primitives as well.
+  Preserve wording; mark illegible content as uncertain instead of inventing it.
+
+Reference inventory
+
+Before constructing the first candidate, enumerate visible elements in working
+notes, with stable IDs and approximate reference-pixel bounding boxes:
+- canvas extent, background, panels, containers, tables, dividers, and layers;
+- all text, labels, symbols, icons, and repeated objects;
+- every connector, arrowhead, bend, loop, bracket, and dashed path.
+For each item record its text or appearance, position, size, fill/stroke color,
+line width, typography, and relevant relationships. Track missing or uncertain
+items explicitly. Base the inventory on this reference, not a stock template.
+
+Generator workflow
+
+1. Inspect reference.png globally and inspect dense regions at readable scale.
+   Establish the canvas coordinate system, spacing, alignments, and inventory.
+2. Write roundN.drawio as valid native editable Draw.io XML. Use unique cell
+   IDs, valid parents, explicit geometry, and properly escaped label text.
+   Preserve logical groups, containment, and visible stacking order.
+3. Match geometry and typography together: text box size, font size/weight,
+   wrapping, padding, alignment, panel bounds, and neighboring spacing.
+   Avoid clipped text, border collisions, overlap, and accidental empty margins.
+4. For every edge match source/target objects, start/end anchors, direction,
+   arrowhead type, route, bends, curvature, dashes, width, color, and layering.
+   A semantically similar connection with the wrong visible route is a defect.
+5. Render roundN.drawio to roundN.png through the supplied official Draw.io
+   renderer. Keep the reference separate and use the same export settings for
+   successive rounds. Do not substitute a hand-drawn preview for this render.
+6. Inspect the actual rendered candidate against the reference globally and
+   locally. Revisit each inventory item, especially small labels, edge endpoints,
+   line direction, colors, clipping, and container boundaries. A pixel metric
+   alone cannot establish structural or visual correctness.
+7. Later rounds begin from round(N-1).drawio and review(N-1).json. Verify the
+   review against the reference, repair concrete defects, preserve correct
+   regions, and re-render. Keep all earlier candidates and renders unchanged.
+8. End the round with candidate/render paths and concise remaining limitations.
+   Do not self-certify PASS. Finish the authorized bounded round even when the
+   image remains imperfect; do not start unbounded repairs or extra agents.
+
+Independent Reviewer workflow
+
+- Read only reference.png, the submitted roundN.png, and roundN.drawio.
+  The XML is the Generator's candidate, not a gold reference.
+- Never edit the candidate, render, reference, or any previous artifact. Return
+  the requested JSON as the final response; the host saves reviewN.json.
+- Inspect the whole page and dense local regions, then compare every visible
+  object and connection. Report missing/extra content, geometry, typography,
+  colors, stroke styles, source/target connections, arrow direction, route,
+  grouping, overlap, and clipping. Check that the XML contains editable objects
+  rather than an embedded screenshot or flattened image.
+- Ground every finding in visible evidence. Give reference/candidate bounding
+  boxes, implicated candidate cell IDs when identifiable, and a concrete repair.
+  Use null for an unlocatable box and [] for unknown cell IDs. State uncertainty
+  when the reference is illegible; do not invent hidden structure or exact text.
+- PASS means only that this Reviewer found no remaining visible issue. It is
+  advisory: it does not replace host validation, stop the scheduled experiment,
+  establish equivalence to hidden XML, or become a reward by itself.
+
+Host ownership
+
+The host enforces role isolation, permitted files/tools, round budgets, official
+rendering, and final artifact validation. A Reviewer assessment or Generator
+claim is never a substitute for those checks. This rollout performs no optimizer
+updates; the Reviewer has separate frozen parameters and is not trained.
