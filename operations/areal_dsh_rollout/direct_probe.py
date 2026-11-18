@@ -39,6 +39,7 @@ def receive_event(data, state, files, started):
     elapsed = time.monotonic() - started
     if data == b"[DONE]":
         state["stream_done"] = True
+        state["response_complete"] = True
         return
     try:
         event = json.loads(data)
@@ -47,11 +48,13 @@ def receive_event(data, state, files, started):
         return
     files["events"].write(json.dumps({"seconds": elapsed, "event": event}, ensure_ascii=False) + "\n")
     files["events"].flush()
+    if event.get("error") is not None:
+        state["error"] = {"type": "upstream_response_error", "value": event["error"]}
     if event.get("usage") is not None:
         state["usage"] = event["usage"]
     for choice in event.get("choices", []):
         index = choice.get("index", 0)
-        delta = choice.get("delta") or {}
+        delta = choice.get("delta") or choice.get("message") or {}
         if choice.get("finish_reason") is not None:
             state["finish_reasons"][str(index)] = choice["finish_reason"]
         content = delta.get("content")
@@ -76,11 +79,13 @@ def receive_event(data, state, files, started):
                 state[output + "_chunks"] += 1
 
 
-def stream_request(endpoint, body, out, api_key, timeout):
-    headers = {"Content-Type": "application/json", "Accept": "text/event-stream"}
+def stream_request(endpoint, body, out, api_key, timeout, nonstream=False):
+    headers = {"Content-Type": "application/json",
+               "Accept": "application/json" if nonstream else "text/event-stream"}
     if api_key:
         headers["Authorization"] = "Bearer " + api_key
-    state = {"http_status": None, "stream_done": False, "finish_reasons": {},
+    state = {"http_status": None, "stream_done": False, "response_complete": False,
+             "mode": "nonstream" if nonstream else "stream", "finish_reasons": {},
              "usage": None, "content_characters": 0, "first_byte_seconds": None,
              "first_content_seconds": None, "reasoning_characters": {
                  "reasoning_content": 0, "reasoning": 0},
@@ -92,7 +97,7 @@ def stream_request(endpoint, body, out, api_key, timeout):
     state["started_utc"] = datetime.now(timezone.utc).isoformat()
     with ExitStack() as stack:
         files = {key: stack.enter_context((out / name).open("w")) for key, name in names.items()}
-        raw = stack.enter_context((out / "response.sse").open("wb"))
+        raw = stack.enter_context((out / ("response.json" if nonstream else "response.sse")).open("wb"))
         data = []
         try:
             opener = build_opener(ProxyHandler({}))
@@ -106,13 +111,17 @@ def stream_request(endpoint, body, out, api_key, timeout):
                     raw.flush()
                     if state["first_byte_seconds"] is None:
                         state["first_byte_seconds"] = time.monotonic() - started
-                    if not line.strip() and data:
+                    if nonstream:
+                        data.append(line)
+                    elif not line.strip() and data:
                         receive_event(b"\n".join(data), state, files, started)
                         data = []
                     elif line.startswith(b"data:"):
                         data.append(line[5:].lstrip(b" ").rstrip(b"\r\n"))
                 if data:
-                    receive_event(b"\n".join(data), state, files, started)
+                    receive_event((b"" if nonstream else b"\n").join(data), state, files, started)
+                if nonstream:
+                    state["response_complete"] = not state["parse_errors"]
         except HTTPError as error:
             state["http_status"] = error.code
             (out / "http-error-body.bin").write_bytes(error.read())
@@ -174,6 +183,8 @@ def main():
     parser.add_argument("--timeout", type=float, default=900)
     parser.add_argument("--api-key-env", default="ROLLOUT_API_KEY")
     parser.add_argument("--logprobs", "--return-logprob", action="store_true")
+    parser.add_argument("--nonstream", action="store_true",
+                        help="Independent JSON/logprob protocol control; default preserves native SSE")
     args = parser.parse_args()
     os.umask(0o077)
     root, out = args.root.resolve(), args.out.resolve()
@@ -183,13 +194,15 @@ def main():
     endpoint = args.base_url.rstrip("/")
     endpoint += "/chat/completions" if endpoint.endswith("/v1") else "/v1/chat/completions"
     payload = {"model": args.generator_model, **SAMPLING, "seed": args.seed,
-               "stream": True, "stream_options": {"include_usage": True}, "n": 1,
+               "stream": not args.nonstream, "n": 1,
                "tools": [], "tool_choice": "none",
                "chat_template_kwargs": {"enable_thinking": False, "preserve_thinking": False},
                "messages": [{"role": "user", "content": [
                    {"type": "text", "text": PROMPT},
                    {"type": "image_url", "image_url": {
                        "url": "data:image/png;base64," + base64.b64encode(image).decode()}}]}]}
+    if not args.nonstream:
+        payload["stream_options"] = {"include_usage": True}
     if args.logprobs:
         payload.update(logprobs=True, top_logprobs=0)
     body = json.dumps(payload, ensure_ascii=False).encode()
@@ -202,10 +215,12 @@ def main():
                 "request_body_sha256": sha256(body).hexdigest(),
                 "probe_source_sha256": sha256(Path(__file__).read_bytes()).hexdigest(),
                 "harness_loaded": False, "skill_loaded": False, "gold_loaded": False,
+                "response_mode": "nonstream" if args.nonstream else "stream",
                 "tool_definitions": 0, "logprobs_requested": args.logprobs,
                 "scope": "Single-case baseline; no generalization conclusion."}
     write_json(out / "protocol.json", protocol)
-    stream = stream_request(endpoint, body, out, os.environ.get(args.api_key_env), args.timeout)
+    stream = stream_request(endpoint, body, out, os.environ.get(args.api_key_env), args.timeout,
+                            args.nonstream)
     validation = validate_and_render(root, out)
     summary = {"protocol": protocol, "stream": stream, "validation": validation}
     write_json(out / "summary.json", summary)

@@ -45,7 +45,12 @@ def main():
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
+    parser.add_argument("--diagnose-mode", choices=("full", "no-skill", "minimal"))
+    parser.add_argument("--direct-first", action="store_true")
     args = parser.parse_args()
+    if args.diagnose_mode and (args.areal or args.resume_from or args.seed_from or
+                              args.reasoning_effort != "off"):
+        parser.error("Matched diagnostics require fresh instruct episodes without AReaL")
     if args.resume_from and args.seed_from:
         parser.error("Choose session continuation or a fresh context seeded from own work")
     if args.areal and (args.reasoning_effort != "off" or args.resume_from or args.seed_from or
@@ -84,11 +89,12 @@ def main():
             ready(process, port)
             print(json.dumps({"role": role, "server_ready": True, "port": port,
                               "model": model, "pid": process.pid}), flush=True)
-            audit = args.out / f"{role}-requests.jsonl"
-            proxy = subprocess.Popen([sys.executable, str(HERE / "trace_proxy.py"), "--port", str(port + 101),
-                                      "--upstream", f"http://127.0.0.1:{port}", "--audit", str(audit)],
-                                     stdout=log, stderr=subprocess.STDOUT, env=environment)
-            processes.append(proxy)
+            if not args.diagnose_mode:
+                audit = args.out / f"{role}-requests.jsonl"
+                proxy = subprocess.Popen([sys.executable, str(HERE / "trace_proxy.py"), "--port", str(port + 101),
+                                          "--upstream", f"http://127.0.0.1:{port}", "--audit", str(audit)],
+                                         stdout=log, stderr=subprocess.STDOUT, env=environment)
+                processes.append(proxy)
         command = [sys.executable, str(HERE / "rollout.py"), "--runtime", str(args.runtime or args.root / "runtime"),
                    "--reference", str(args.reference), "--out", str(args.out / "episode"),
                    "--renderer-python", str(args.root / "renderer/venv/bin/python"),
@@ -119,6 +125,18 @@ def main():
                        "--out", str(args.out / "collector"),
                        "--generator-model", f"Qwen/Qwen3.5-{args.generator}",
                        "--rounds", str(args.rounds)]
+        if args.diagnose_mode:
+            if args.direct_first:
+                subprocess.run([sys.executable, str(HERE / "direct_probe.py"),
+                    "--root", str(args.root), "--reference", str(args.reference),
+                    "--out", str(args.out / "direct"), "--base-url", "http://127.0.0.1:30000/v1",
+                    "--generator-model", f"Qwen/Qwen3.5-{args.generator}", "--seed", "42"],
+                    check=True, env=environment)
+            command = [sys.executable, str(HERE / "audit_episode.py"),
+                       "--root", str(args.root), "--runtime", str(args.runtime),
+                       "--reference", str(args.reference), "--out", str(args.out / "condition"),
+                       "--mode", args.diagnose_mode,
+                       "--generator-model", f"Qwen/Qwen3.5-{args.generator}", "--seed", "42"]
         result = subprocess.run(command, env=environment)
         (args.out / "launch-result.json").write_text(json.dumps({"exit": result.returncode,
              "generator": args.generator, "reviewer": "4B", "separate_processes": True,
