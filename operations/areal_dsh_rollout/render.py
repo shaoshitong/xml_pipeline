@@ -10,6 +10,7 @@ import sys
 
 def render(source: Path, output: Path, resources: Path, source_root: Path | None = None) -> dict:
     os.environ["FONTCONFIG_FILE"] = str(resources / "fonts.conf")
+    os.environ["LD_LIBRARY_PATH"] = str(resources / "lib") + ":" + os.environ.get("LD_LIBRARY_PATH", "")
     conversion = (source_root or resources / "source") / "conversion"
     sys.path[:0] = [str(conversion / "drawio_compare"), str(conversion / "scripts")]
     import arxiv_bulk_official_xml_png_math_v1 as official

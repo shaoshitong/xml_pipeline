@@ -42,7 +42,7 @@ def run_turn(args, role, number, session):
     case = (args.out / "case").resolve()
     mounts = ["--bind" if role == "generator" else "--ro-bind", str(case), "/case"]
     command = ["bwrap", "--unshare-all", "--share-net", "--new-session", "--die-with-parent",
-               "--clearenv", "--ro-bind", "/usr", "/usr", "--symlink", "usr/bin", "/bin",
+               "--ro-bind", "/usr", "/usr", "--symlink", "usr/bin", "/bin",
                "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64",
                "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp",
                "--ro-bind", str(runtime), str(runtime),
@@ -55,10 +55,10 @@ def run_turn(args, role, number, session):
                "--setenv", "DSH_TELEMETRY_DISABLED", "1", "--chdir", "/case"]
     command.extend(("--ro-bind", str(HERE / "render.py"), "/integration/render.py",
                     "--ro-bind", "/share/anaconda3/envs/vllm017", "/share/anaconda3/envs/vllm017"))
-    for name in ("venv", "source", "chrome-linux64", "draw.war"):
+    for name in ("venv", "source", "chrome-linux64", "draw.war", "lib", "fonts", "fonts.conf"):
         path = args.render_runtime / name
         command.extend(("--ro-bind", str(path), str(path)))
-    for name in ("resolv.conf", "hosts", "nsswitch.conf", "ssl/certs"):
+    for name in ("resolv.conf", "hosts", "nsswitch.conf", "ssl/certs", "fonts", "ld.so.cache"):
         path = f"/etc/{name}"
         command.extend(("--ro-bind", path, path))
     command.extend(("--", str(runtime / "node/bin/node"),
@@ -69,13 +69,14 @@ def run_turn(args, role, number, session):
     command.append(prompt)
     started = time.monotonic()
     with (logs / "events.jsonl").open("wb") as out, (logs / "stderr.log").open("wb") as err:
-        result = subprocess.run(command, stdout=out, stderr=err, timeout=args.turn_timeout)
+        result = subprocess.run(command, stdout=out, stderr=err, timeout=args.turn_timeout,
+                                env={"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8"})
     events = [json.loads(line) for line in (logs / "events.jsonl").read_text().splitlines()
               if line.startswith("{")]
     final = next((e for e in reversed(events) if e.get("type") == "final"), None)
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
     status = {"role": role, "round": number, "exit": result.returncode,
-              "completed": final is not None, "session_id": sid,
+              "completed": result.returncode == 0 and final is not None, "session_id": sid,
               "seconds": round(time.monotonic() - started, 2),
               "tool_calls": sum(e.get("type") == "tool_call" for e in events)}
     save(logs / "status.json", status)

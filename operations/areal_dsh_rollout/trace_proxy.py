@@ -1,6 +1,7 @@
 """Transparent local inference audit proxy; no reward or gold endpoint exists."""
 
 import argparse
+import base64
 from hashlib import sha256
 from http.client import HTTPConnection
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -14,7 +15,11 @@ def images(value):
     if isinstance(value, dict):
         if value.get("type") == "image_url":
             url = value["image_url"]["url"]
-            yield {"bytes": len(url), "sha256": sha256(url.encode()).hexdigest()}
+            if url.startswith("data:"):
+                payload = base64.b64decode(url.split(",", 1)[1])
+                yield {"bytes": len(payload), "sha256": sha256(payload).hexdigest(), "inline": True}
+            else:
+                yield {"url_sha256": sha256(url.encode()).hexdigest(), "inline": False}
         for item in value.values():
             yield from images(item)
     elif isinstance(value, list):

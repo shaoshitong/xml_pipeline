@@ -30,6 +30,7 @@ def ready(process, port, timeout=600):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", required=True, type=Path)
+    parser.add_argument("--runtime", type=Path)
     parser.add_argument("--reference", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--generator", choices=("4B", "9B"), default="4B")
@@ -41,6 +42,10 @@ def main():
     environment = dict(os.environ, OMP_NUM_THREADS="4", TOKENIZERS_PARALLELISM="false",
                        HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1")
     try:
+        gpu_log = (args.out / "gpu.csv").open("wb")
+        logs.append(gpu_log)
+        processes.append(subprocess.Popen(["nvidia-smi", "--query-gpu=timestamp,index,name,memory.used,utilization.gpu",
+                                           "--format=csv", "-l", "2"], stdout=gpu_log, stderr=subprocess.STDOUT))
         for role, size, port, fraction in [("generator", args.generator, 30000, "0.45"),
                                             ("reviewer", "4B", 30001, "0.35")]:
             model = f"Qwen/Qwen3.5-{size}"
@@ -56,12 +61,14 @@ def main():
             process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, env=environment)
             processes.append(process)
             ready(process, port)
+            print(json.dumps({"role": role, "server_ready": True, "port": port,
+                              "model": model, "pid": process.pid}), flush=True)
             audit = args.out / f"{role}-requests.jsonl"
             proxy = subprocess.Popen([sys.executable, str(HERE / "trace_proxy.py"), "--port", str(port + 101),
                                       "--upstream", f"http://127.0.0.1:{port}", "--audit", str(audit)],
                                      stdout=log, stderr=subprocess.STDOUT, env=environment)
             processes.append(proxy)
-        command = [sys.executable, str(HERE / "rollout.py"), "--runtime", str(args.root / "runtime"),
+        command = [sys.executable, str(HERE / "rollout.py"), "--runtime", str(args.runtime or args.root / "runtime"),
                    "--reference", str(args.reference), "--out", str(args.out / "episode"),
                    "--renderer-python", str(args.root / "renderer/venv/bin/python"),
                    "--render-runtime", str(args.root / "renderer"),
@@ -71,6 +78,10 @@ def main():
              "generator": args.generator, "reviewer": "4B", "separate_processes": True,
              "reviewer_updated": False, "gpu_visibility": environment.get("CUDA_VISIBLE_DEVICES")}) + "\n")
         raise SystemExit(result.returncode)
+    except Exception as error:
+        (args.out / "failure.json").write_text(json.dumps({"error": type(error).__name__,
+             "message": str(error), "timestamp": time.time()}) + "\n")
+        raise
     finally:
         for process in reversed(processes):
             if process.poll() is None:
