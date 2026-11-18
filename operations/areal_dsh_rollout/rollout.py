@@ -34,6 +34,10 @@ def run_turn(args, role, number, session):
                                   context_window=args.context_window,
                                   max_tokens=args.max_tokens))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
+    if role == "generator" and number == 1 and session:
+        prompt += ("\nContinue the interrupted first generation in this session. Reuse the image inspection "
+                   "and inventory already completed. Write the native XML with tools now instead of "
+                   "repeating the inventory. Preserve any work already saved.\n")
     if role == "generator":
         renderer = [str(args.renderer_python), "/integration/render.py", f"round{number}.drawio",
                     f"round{number}.png", "--runtime", str(args.render_runtime)]
@@ -105,22 +109,25 @@ def main():
     parser.add_argument("--generator-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--reviewer-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--rounds", default=4, type=int)
-    parser.add_argument("--context-window", default=32768, type=int)
-    parser.add_argument("--max-tokens", default=8192, type=int)
+    parser.add_argument("--generator-session-id")
+    parser.add_argument("--context-window", default=65536, type=int)
+    parser.add_argument("--max-tokens", default=16384, type=int)
     parser.add_argument("--turn-timeout", default=900, type=int)
     args = parser.parse_args()
     args.out = args.out.resolve()
     case = args.out / "case"
-    case.mkdir(parents=True)
+    case.mkdir(parents=True, exist_ok=args.generator_session_id is not None)
     shutil.copyfile(args.reference, case / "reference.png")
     skill = case / ".agents/skills/drawio-reconstruction"
-    skill.mkdir(parents=True)
+    skill.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(HERE / "reconstruction_skill.txt", skill / "SKILL.md")
     save(args.out / "protocol.json", {"generator": args.generator_model,
          "reviewer": args.reviewer_model, "reviewer_frozen": True,
          "separate_model_instances": True, "gold_feedback": False, "rounds": args.rounds,
+         "context_window": args.context_window, "max_tokens": args.max_tokens,
+         "continued_generator_session": args.generator_session_id,
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
-    generator = reviewer = None
+    generator, reviewer = args.generator_session_id, None
     for n in range(1, args.rounds + 1):
         generator, _ = run_turn(args, "generator", n, generator)
         xml = case / f"round{n}.drawio"

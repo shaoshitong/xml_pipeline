@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import time
@@ -35,6 +36,10 @@ def main():
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--generator", choices=("4B", "9B"), default="4B")
     parser.add_argument("--rounds", type=int, default=4)
+    parser.add_argument("--resume-from", type=Path,
+                        help="Continue a failed first generation using its own DSH session and workspace")
+    parser.add_argument("--context-window", type=int, default=65536)
+    parser.add_argument("--max-tokens", type=int, default=16384)
     args = parser.parse_args()
     args.out.mkdir(parents=True)
     processes = []
@@ -53,8 +58,8 @@ def main():
             command = [sys.executable, "-m", "sglang.launch_server", "--model-path",
                        str(args.root / "models" / f"Qwen3.5-{size}"), "--served-model-name", model,
                        "--host", "127.0.0.1", "--port", str(port), "--tp", "1",
-                       "--dtype", "bfloat16", "--context-length", "32768",
-                       "--max-total-tokens", "32768", "--max-running-requests", "1",
+                       "--dtype", "bfloat16", "--context-length", str(args.context_window),
+                       "--max-total-tokens", str(args.context_window), "--max-running-requests", "1",
                        "--mem-fraction-static", fraction, "--disable-cuda-graph",
                        "--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder"]
             log = (args.out / f"{role}-server.log").open("wb")
@@ -73,7 +78,17 @@ def main():
                    "--reference", str(args.reference), "--out", str(args.out / "episode"),
                    "--renderer-python", str(args.root / "renderer/venv/bin/python"),
                    "--render-runtime", str(args.root / "renderer"),
-                   "--generator-model", f"Qwen/Qwen3.5-{args.generator}", "--rounds", str(args.rounds)]
+                   "--generator-model", f"Qwen/Qwen3.5-{args.generator}", "--rounds", str(args.rounds),
+                   "--context-window", str(args.context_window), "--max-tokens", str(args.max_tokens)]
+        if args.resume_from:
+            previous = args.resume_from / "episode"
+            protocol = json.loads((previous / "protocol.json").read_text())
+            state = json.loads((previous / "generator/round1/status.json").read_text())
+            if protocol["generator"] != f"Qwen/Qwen3.5-{args.generator}" or state["completed"]:
+                raise ValueError("Continuation requires this model's failed initial generation")
+            shutil.copytree(previous / "case", args.out / "episode/case")
+            shutil.copytree(previous / "generator/home", args.out / "episode/generator/home")
+            command.extend(("--generator-session-id", state["session_id"]))
         result = subprocess.run(command, env=environment)
         (args.out / "launch-result.json").write_text(json.dumps({"exit": result.returncode,
              "generator": args.generator, "reviewer": "4B", "separate_processes": True,
