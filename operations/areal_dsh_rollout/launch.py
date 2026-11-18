@@ -39,12 +39,16 @@ def main():
     parser.add_argument("--resume-from", type=Path,
                         help="Continue this model's episode without rerunning completed stages")
     parser.add_argument("--resume-note", default="")
+    parser.add_argument("--seed-from", type=Path,
+                        help="Start a fresh DSH context from this model's own saved candidate")
     parser.add_argument("--context-window", type=int, default=65536)
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
     args = parser.parse_args()
-    if args.areal and (args.reasoning_effort != "off" or args.resume_from or
+    if args.resume_from and args.seed_from:
+        parser.error("Choose session continuation or a fresh context seeded from own work")
+    if args.areal and (args.reasoning_effort != "off" or args.resume_from or args.seed_from or
                       (args.context_window, args.max_tokens) != (65536, 32768)):
         parser.error("The native collector currently requires a fresh instruct 64K/32K episode")
     args.out.mkdir(parents=True)
@@ -94,16 +98,19 @@ def main():
                    "--reasoning-effort", args.reasoning_effort]
         if args.resume_note:
             command.extend(("--resume-note", args.resume_note))
-        if args.resume_from:
-            previous = args.resume_from / "episode"
+        if args.resume_from or args.seed_from:
+            previous = (args.resume_from or args.seed_from) / "episode"
             protocol = json.loads((previous / "protocol.json").read_text())
             if protocol["generator"] != f"Qwen/Qwen3.5-{args.generator}":
                 raise ValueError("Continue only the same generator model's episode")
             shutil.copytree(previous / "case", args.out / "episode/case")
-            for role in ("generator", "reviewer"):
-                if (previous / role).exists():
-                    shutil.copytree(previous / role, args.out / "episode" / role)
-            command.append("--resume")
+            if args.resume_from:
+                for role in ("generator", "reviewer"):
+                    if (previous / role).exists():
+                        shutil.copytree(previous / role, args.out / "episode" / role)
+                command.append("--resume")
+            else:
+                command.append("--seeded")
         if args.areal:
             command = [str(args.root / "controller/env/bin/python"), str(HERE / "collect.py"),
                        "--root", str(args.root), "--runtime", str(args.runtime),

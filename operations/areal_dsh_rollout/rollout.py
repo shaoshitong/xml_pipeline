@@ -33,7 +33,7 @@ def isolated_turn(command, endpoint, auth_file, logs, timeout):
                 env=gateway_env)
             try:
                 deadline = time.monotonic() + 10
-                while not socket.exists():
+                while not (socket.exists() and socket.with_name(socket.name + ".netns").exists()):
                     if gateway.poll() is not None or time.monotonic() > deadline:
                         raise RuntimeError("Generation gateway failed to start")
                     time.sleep(0.05)
@@ -82,6 +82,10 @@ def run_turn(args, role, number, session):
                                   max_tokens=args.max_tokens,
                                   reasoning_effort=args.reasoning_effort))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
+    if role == "generator" and number == 1 and args.seeded:
+        prompt += ("\nround1.drawio is your own previous candidate, not a reference answer. "
+                   "Inspect it and reference.png afresh, repair its technical validity as needed, "
+                   "then render, inspect, and finish this round.\n")
     if role == "generator" and number == 1 and session:
         prompt += ("\nContinue the interrupted first generation in this session. Reuse the image inspection "
                    "and inventory already completed. Write the native XML with tools now instead of "
@@ -170,6 +174,7 @@ def main():
     parser.add_argument("--rounds", default=4, type=int)
     parser.add_argument("--generator-session-id")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--seeded", action="store_true")
     parser.add_argument("--resume-note", default="")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
@@ -178,7 +183,7 @@ def main():
     args = parser.parse_args()
     args.out = args.out.resolve()
     case = args.out / "case"
-    case.mkdir(parents=True, exist_ok=args.resume or args.generator_session_id is not None)
+    case.mkdir(parents=True, exist_ok=args.resume or args.seeded or args.generator_session_id is not None)
     shutil.copyfile(args.reference, case / "reference.png")
     skill = case / ".agents/skills/drawio-reconstruction"
     skill.mkdir(parents=True, exist_ok=True)
@@ -190,6 +195,7 @@ def main():
          "reasoning_effort": args.reasoning_effort,
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
+         "fresh_context_from_own_candidate": args.seeded,
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None
     for n in range(1, args.rounds + 1):

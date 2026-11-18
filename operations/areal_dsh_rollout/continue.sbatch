@@ -20,7 +20,8 @@ if [[ ! -f "$previous/episode/completed.json" ]]; then
   "$root/env/bin/python" -u "$source_dir/launch.py" \
     --root "$root" --runtime "$runtime" --reference "$root/inputs/022/reference.png" \
     --out "$root/runs/4B-022-instruct-$SLURM_JOB_ID" --generator 4B --rounds 2 \
-    --reasoning-effort off --resume-from "$previous"
+    --reasoning-effort off --seed-from "$previous" \
+    --resume-note "The previous session exhausted context during renderer troubleshooting. The official renderer now works. Keep and inspect your own saved candidate and the reference; repair validity, render and review."
 fi
 
 exec "$root/env/bin/python" -u "$source_dir/launch.py" \
