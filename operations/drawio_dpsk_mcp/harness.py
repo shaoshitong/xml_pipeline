@@ -8,9 +8,10 @@ HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent / "dpsk_skills/drawio-reconstruction"
 
 
-def run(runtime, credentials, profile, case, output, prompt, *, socket_dir=None, timeout=1200):
+def run(runtime, credentials, profile, case, output, prompt, *, socket_dir=None, timeout=1200,
+        session_home=None, session_id=None, config=None, python_home=None):
     output.mkdir(parents=True, exist_ok=True)
-    home = output / "home"
+    home = session_home or output / "home"
     profile_home = home / ".dsh/profiles/headless"
     if not profile_home.exists():
         shutil.copytree(profile, profile_home)
@@ -23,10 +24,11 @@ def run(runtime, credentials, profile, case, output, prompt, *, socket_dir=None,
         "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64",
         "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp",
         "--ro-bind", str(runtime), "/runtime", "--ro-bind", str(credentials), "/account.yml",
-        "--ro-bind", str(HERE / "headless.yml"), "/integration/headless.yml",
+        "--ro-bind", str(config or HERE / "headless.yml"), "/integration/headless.yml",
         "--bind", str(case), "/case",
         "--bind", str(home), "/session", "--setenv", "HOME", "/session",
-        "--setenv", "PATH", "/usr/bin:/bin", "--setenv", "LANG", "C.UTF-8",
+        "--setenv", "PATH", (str(python_home / "bin") + ":" if python_home else "") + "/usr/bin:/bin",
+        "--setenv", "LANG", "C.UTF-8",
         "--setenv", "DSH_HOME", "/session/.dsh", "--setenv", "DSH_PERMISSION_MODE", "workspace-write",
         "--setenv", "DSH_TELEMETRY_DISABLED", "1", "--chdir", "/case",
     ]
@@ -34,13 +36,16 @@ def run(runtime, credentials, profile, case, output, prompt, *, socket_dir=None,
         path = f"/etc/{name}"
         command.extend(("--ro-bind", path, path))
     patches = ["--patch", "/integration/headless.yml"]
+    if python_home:
+        command.extend(("--ro-bind", str(python_home), str(python_home)))
     if socket_dir:
         command.extend(("--ro-bind", str(socket_dir), "/verifier",
                         "--ro-bind", str(HERE / "mcp.yml"), "/integration/mcp.yml",
                         "--ro-bind", str(HERE / "mcp_bridge.py"), "/integration/mcp_bridge.py"))
         patches.extend(("--patch", "/integration/mcp.yml"))
     command.extend(("--", "/usr/bin/node", "/runtime/node_modules/@deepseek-ai/dsh/lib/bin.js",
-                    "--profile", "headless", *patches, "--json", prompt))
+                    "--profile", "headless", *patches, "--json",
+                    *(["--session-id", session_id] if session_id else []), prompt))
     with (output / "events.jsonl").open("xb") as events, (output / "stderr.log").open("xb") as errors:
         return subprocess.run(command, stdin=subprocess.DEVNULL, stdout=events, stderr=errors,
                               timeout=timeout, check=False).returncode
