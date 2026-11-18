@@ -15,11 +15,13 @@ SGLANG_PARSERS = ("--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_co
 DISABLED = (
     "credentials", "authorization", "deepseek-account", "llm-deepseek",
     "llm-deepseek-account", "deepseek-llm-api-extensions", "settings", "hmr",
+    "session-log-deepseek", "plugin-package-inventory-deepseek", "typert-gateway",
     "session-title-llm", "otel", "session-telemetry-otel", "remote-access",
     "tool-plugin-manager", "web-search-deepseek", "web-deepseek-api", "tool-web",
     "mcp-resources", "tool-subagent", "tool-subagent-fork",
     "tool-subagent-control", "tool-subagent-list-agents", "subagent-spawn-in-process",
     "subagent-fork-in-process", "workflow-ptc", "tool-workflow",
+    "tool-goal", "goal-round-driver",
 )
 
 
@@ -52,6 +54,7 @@ def build_patch(
         "api": "openai-completions",
         "baseURL": endpoint,
         "apiKeyEnv": api_key_env,
+        "retryPolicy": {"mode": "normal", "maxRetries": 0},
         "compat": {
             "thinkingFormat": "qwen-chat-template",
             "maxTokensField": "max_tokens",
@@ -79,7 +82,11 @@ def build_patch(
         {"id": "tool-fs-search", "disabled": False},
         {"id": "tool-bash", "disabled": False},
         {"id": "bash-sandbox", "config": {"timeoutMs": 60000}},
+        {"id": "sandbox-policy", "config": {"mode": "workspace-write", "workspaceRoot": "/case"}},
         {"id": "approval", "config": {"policy": "never"}},
+        {"id": "permission", "config": {
+            "defaultPreset": "workspace-write",
+            "presets": {"workspace-write": {"sandbox": "workspace-write", "approval": "never"}}}},
     ])
     return patch
 
