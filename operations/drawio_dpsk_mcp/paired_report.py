@@ -4,10 +4,12 @@ import argparse
 from base64 import b64encode
 from collections import Counter
 from hashlib import sha256
-from html import escape
+from html import escape, unescape
 import json
 from pathlib import Path
+import re
 import sys
+import xml.etree.ElementTree as ET
 from zipfile import ZIP_DEFLATED, ZipFile
 
 
@@ -41,6 +43,24 @@ def audit(folder):
                 p.parent.name for p in folder.glob("*-continuation-*/events.jsonl")]}
 
 
+def xml_integrity(data, reference):
+    def content(xml):
+        cells = ET.fromstring(xml).findall(".//mxCell")
+        labels = Counter(" ".join(unescape(re.sub("<[^>]+>", " ", c.get("value", ""))).split())
+                         for c in cells if c.get("value"))
+        return cells, labels
+
+    cells, labels = content(data)
+    _, expected = content(reference)
+    ids = [c.get("id") for c in cells]
+    return {"vertices": sum(c.get("vertex") == "1" for c in cells),
+            "edges": sum(c.get("edge") == "1" for c in cells),
+            "text_labels": sum(labels.values()), "text_multiset_matches_reference": labels == expected,
+            "duplicate_ids": len(ids) - len(set(ids)),
+            "dangling_references": sum(c.get(key) not in ids for c in cells
+                                       for key in ("parent", "source", "target") if c.get(key))}
+
+
 def collect(run, arm, target, gold):
     from verifier import Verifier
 
@@ -63,7 +83,8 @@ def collect(run, arm, target, gold):
         feedback, score = verifier.evaluate(data)
         row = {"round": n, "xml": str(xml), "sha256": digest,
                "png": str(analysis / feedback["candidate_png"]), "counts": feedback["structural_counts"],
-               "native_png": str(folder / "case" / f"round{n}.png"), "score": score}
+               "native_png": str(folder / "case" / f"round{n}.png"), "score": score,
+               "integrity": xml_integrity(data, gold.xml)}
         if n < 4:
             row["review"] = read_json(folder / "case" / f"review{n}.json")
         rounds.append(row)
@@ -128,7 +149,7 @@ a{color:#005d54}@media(max-width:850px){.grid{grid-template-columns:1fr}img{heig
     body.append(panels(folder, target, experiment))
     keys = ("label_changed", "edge_direction_reversed", "edge_binding_changed",
             "edge_arrowheads_changed", "edge_route_changed", "ambiguous_correspondence")
-    body.append("<section><h2>结构诊断</h2><table><tr><th>版本</th><th>标签</th><th>方向</th>"
+    body.append("<section><h2>结构诊断（包含疑似项）</h2><p>标签检查另以文本多重集合核对，详见各版完整性记录。把框内文字拆为独立文本等表示变化，也可能触发标签诊断；诊断数不等于实际错误数。</p><table><tr><th>版本</th><th>标签诊断</th><th>方向</th>"
                 "<th>端点绑定</th><th>箭头样式</th><th>走线</th><th>匹配不确定</th></tr>")
     for n in range(4):
         for arm in ("self", "mcp"):
@@ -147,6 +168,7 @@ a{color:#005d54}@media(max-width:850px){.grid{grid-template-columns:1fr}img{heig
             name = f"{arm}-round{n + 1}.drawio"
             body.append(f'<p><a download="{name}" href="{uri(Path(row["xml"]).read_bytes(), "application/xml")}">'
                         f"下载 {labels[arm]} 第 {n + 1} 版 XML</a></p>")
+            body.append(details(labels[arm] + " · XML 完整性及标签内容核对", row["integrity"]))
             if "review" in row:
                 body.append(details(labels[arm] + " · 本版 review 原文", row["review"]))
         body.append("</section>")
