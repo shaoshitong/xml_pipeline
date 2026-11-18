@@ -24,21 +24,30 @@ def audit(folder):
         if state["exit"] or not state["completed"]:
             raise ValueError(f"Incomplete stage: {folder.name}/{stage}")
     calls = []
+    responses = {}
     finals = {}
     for path in sorted(folder.glob("*/events.jsonl")):
         rows = [json.loads(line) for line in path.read_text().splitlines()
                 if line.startswith("{") and line.endswith("}")]
         calls.extend({**row, "stage": path.parent.name} for row in rows if row["type"] == "tool_call")
+        responses.update(((path.parent.name, row["callId"]), row) for row in rows
+                         if row["type"] == "tool_result")
         finals[path.parent.name] = next((r["text"] for r in reversed(rows) if r["type"] == "final"), "")
     tool_counts = dict(Counter(call["tool"] for call in calls))
     checks = [call for call in calls if call["tool"] == "mcp__drawio__check"]
+    rejected = [{"stage": call["stage"], "input": call["input"],
+                 "result": responses[call["stage"], call["callId"]]["result"]}
+                for call in checks if responses[call["stage"], call["callId"]]["status"] == "error"]
+    completed = [call for call in checks
+                 if responses[call["stage"], call["callId"]]["status"] == "completed"]
     expected = 0 if folder.name == "self" else 3
-    if len(checks) != expected:
-        raise ValueError(f"Unexpected MCP call count: {folder.name} {len(checks)}")
-    if folder.name == "mcp" and [call["input"]["candidate"] for call in checks] != [
+    if len(completed) != expected:
+        raise ValueError(f"Unexpected completed MCP call count: {folder.name} {len(completed)}")
+    if folder.name == "mcp" and [call["input"]["candidate"] for call in completed] != [
             f"round{n}.drawio" for n in range(1, 4)]:
         raise ValueError("MCP checks did not follow the three review rounds")
-    return {"tool_counts": tool_counts, "mcp_calls": len(checks),
+    return {"tool_counts": tool_counts, "mcp_calls": len(completed),
+            "mcp_attempts": len(checks), "rejected_mcp_attempts": rejected,
             "final_answer": finals["gen-4"], "continuations": [
                 p.parent.name for p in folder.glob("*-continuation-*/events.jsonl")]}
 
@@ -139,6 +148,7 @@ a{color:#005d54}@media(max-width:850px){.grid{grid-template-columns:1fr}img{heig
 </style></head><body><main><h1>DPSK 四轮重建对照</h1>
 <p>两路分别从原图开始，各生成四版并 review 三次。自查一路只看目标和自己的历史版本，MCP 一路在 review 阶段额外读取结构报告。</p>
 <p>执行中，自查首版触发过单回合超时，MCP 首次 review 曾返回空回答且缺少文件。两路均在原 session 内续跑并补齐产物。</p>
+<p>MCP 只在三次 review 中开放。MCP 组最终生成时曾额外尝试调用，工具返回 unknown tool，没有提供第四次反馈。</p>
 <p>以下自动诊断按对象匹配计算，包含配准和匹配不确定项。数字需要结合具体图像及 XML 判断。</p>
 <p>点击任意图片可放大、横向滚动；下载包包含每版 XML、原始渲染、配准预览及三次 review。</p>
 <section><h2>最终结果</h2><div class="grid">''', picture(target, "目标图")]
