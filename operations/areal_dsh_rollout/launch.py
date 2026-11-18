@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -47,6 +48,8 @@ def main():
     parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
     parser.add_argument("--diagnose-mode", choices=("full", "no-skill", "minimal"))
     parser.add_argument("--direct-first", action="store_true")
+    parser.add_argument("--serve-only", action="store_true",
+                        help="Keep owned model services alive across independent diagnostic episodes")
     args = parser.parse_args()
     if args.diagnose_mode and (args.areal or args.resume_from or args.seed_from or
                               args.reasoning_effort != "off"):
@@ -89,12 +92,25 @@ def main():
             ready(process, port)
             print(json.dumps({"role": role, "server_ready": True, "port": port,
                               "model": model, "pid": process.pid}), flush=True)
-            if not args.diagnose_mode:
+            if not (args.diagnose_mode or args.serve_only):
                 audit = args.out / f"{role}-requests.jsonl"
                 proxy = subprocess.Popen([sys.executable, str(HERE / "trace_proxy.py"), "--port", str(port + 101),
                                           "--upstream", f"http://127.0.0.1:{port}", "--audit", str(audit)],
                                          stdout=log, stderr=subprocess.STDOUT, env=environment)
                 processes.append(proxy)
+        if args.serve_only:
+            def terminate(signum, _):
+                raise SystemExit(128 + signum)
+            signal.signal(signal.SIGTERM, terminate)
+            (args.out / "services-ready.json").write_text(json.dumps({
+                "generator": f"Qwen/Qwen3.5-{args.generator}", "reviewer": "Qwen/Qwen3.5-4B",
+                "independent_processes": True, "training": False,
+                "stop_file": str(args.out / "STOP")}) + "\n")
+            while not (args.out / "STOP").exists():
+                if any(process.poll() is not None for process in processes):
+                    raise RuntimeError("An owned model service exited during diagnostics")
+                time.sleep(1)
+            return
         command = [sys.executable, str(HERE / "rollout.py"), "--runtime", str(args.runtime or args.root / "runtime"),
                    "--reference", str(args.reference), "--out", str(args.out / "episode"),
                    "--renderer-python", str(args.root / "renderer/venv/bin/python"),
