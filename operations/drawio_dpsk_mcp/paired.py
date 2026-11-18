@@ -39,7 +39,9 @@ def turn(args, arm, phase, prompt, sid, socket_dir=None):
     logs = folder / phase
     if args.resume and (logs / "status.json").is_file():
         previous = json.loads((logs / "status.json").read_text())
-        if previous["completed"] and previous["exit"] == 0:
+        stage, number = phase.split("-")
+        artifact = f"round{number}.drawio" if stage == "gen" else f"review{number}.json"
+        if previous["completed"] and previous["exit"] == 0 and (folder / "case" / artifact).is_file():
             return previous["session_id"]
     if logs.exists():
         events = [json.loads(line) for line in (logs / "events.jsonl").read_text().splitlines()
@@ -49,6 +51,10 @@ def turn(args, arm, phase, prompt, sid, socket_dir=None):
         logs = folder / f"{phase}-continuation-{number}"
         prompt = ("Continue the interrupted turn in this same session using your own saved work. "
                   "Finish the requested artifact and leave further polishing to the following reviews. " + prompt)
+        if phase.startswith("review-") and arm == "mcp":
+            prompt = prompt.replace(
+                "Call mcp__drawio__check on round" + phase.split("-")[1] + ".drawio exactly once,",
+                "The MCP check for this review already returned. Reuse its saved reports without another check,")
     code = run(args.runtime, args.credentials, args.profile, folder / "case", logs, prompt,
                socket_dir=socket_dir, timeout=5400, session_home=folder / "home",
                session_id=sid, config=args.out / "paired.yml", python_home=args.python_home)
@@ -82,6 +88,14 @@ def run_arm(args, arm, record):
                                                    record["code_sha256"])), reveal_structure=True)
     if args.resume and (folder / "verifier-calls.json").exists():
         verifier.calls = json.loads((folder / "verifier-calls.json").read_text())
+    elif args.resume and arm == "mcp":
+        for events_file in sorted(folder.glob("review-*/events.jsonl")):
+            events = [json.loads(line) for line in events_file.read_text().splitlines()
+                      if line.startswith("{") and line.endswith("}")]
+            calls = {e["callId"] for e in events if e["type"] == "tool_call"
+                     and e.get("tool") == "mcp__drawio__check"}
+            verifier.calls.extend(json.loads(e["result"]) for e in events
+                                  if e["type"] == "tool_result" and e["callId"] in calls)
     for n in range(1, 5):
         prompt = GENERATION.format(n=n)
         if n > 1:
