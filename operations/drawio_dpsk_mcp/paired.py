@@ -37,8 +37,20 @@ def write_json(path, data):
 def turn(args, arm, phase, prompt, sid, socket_dir=None):
     folder = args.out / arm
     logs = folder / phase
+    if args.resume and (logs / "status.json").is_file():
+        previous = json.loads((logs / "status.json").read_text())
+        if previous["completed"] and previous["exit"] == 0:
+            return previous["session_id"]
+    if logs.exists():
+        events = [json.loads(line) for line in (logs / "events.jsonl").read_text().splitlines()
+                  if line.startswith("{") and line.endswith("}")]
+        sid = next((e["sessionId"] for e in events if e["type"] == "session"), sid)
+        number = len(list(folder.glob(phase + "-continuation-*"))) + 1
+        logs = folder / f"{phase}-continuation-{number}"
+        prompt = ("Continue the interrupted turn in this same session using your own saved work. "
+                  "Finish the requested artifact and leave further polishing to the following reviews. " + prompt)
     code = run(args.runtime, args.credentials, args.profile, folder / "case", logs, prompt,
-               socket_dir=socket_dir, timeout=1800, session_home=folder / "home",
+               socket_dir=socket_dir, timeout=5400, session_home=folder / "home",
                session_id=sid, config=args.out / "paired.yml", python_home=args.python_home)
     events = [json.loads(line) for line in (logs / "events.jsonl").read_text().splitlines()
               if line.startswith("{")]
@@ -47,6 +59,8 @@ def turn(args, arm, phase, prompt, sid, socket_dir=None):
               "completed": any(e["type"] == "final" for e in events),
               "tool_calls": sum(e["type"] == "tool_call" for e in events)}
     write_json(logs / "status.json", status)
+    if logs != folder / phase:
+        write_json(folder / phase / "status.json", status)
     print(json.dumps(status), flush=True)
     if code or not status["completed"] or not session:
         raise RuntimeError(f"Harness turn failed: {arm}/{phase}")
@@ -58,7 +72,7 @@ def run_arm(args, arm, record):
 
     folder = args.out / arm
     case = folder / "case"
-    case.mkdir(parents=True)
+    case.mkdir(parents=True, exist_ok=args.resume)
     (case / "target.png").write_bytes(verified(args.dataset / record["image_file"], record["image_sha256"]))
     target = on_white(case / "target.png")
     sid = None
@@ -66,6 +80,8 @@ def run_arm(args, arm, record):
     started = time.monotonic()
     verifier = Verifier(case, compile_bytes(verified(args.dataset / record["code_file"],
                                                    record["code_sha256"])), reveal_structure=True)
+    if args.resume and (folder / "verifier-calls.json").exists():
+        verifier.calls = json.loads((folder / "verifier-calls.json").read_text())
     for n in range(1, 5):
         prompt = GENERATION.format(n=n)
         if n > 1:
@@ -93,6 +109,7 @@ def run_arm(args, arm, record):
                            "object and field diagnostic ranges, and use those findings to guide your own review. ")
                 with Service(verifier) as directory:
                     sid = turn(args, arm, f"review-{n}", prompt, sid, directory)
+                write_json(folder / "verifier-calls.json", verifier.calls)
             else:
                 prompt += "Perform this review yourself using the target and your own rendered image. "
                 sid = turn(args, arm, f"review-{n}", prompt, sid)
@@ -115,23 +132,33 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("dataset", "manifest", "runtime", "credentials", "profile", "compiler", "python-home", "out"):
         parser.add_argument("--" + name, required=True, type=Path)
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--arms", nargs="+", choices=("self", "mcp"), default=("self", "mcp"))
     args = parser.parse_args()
     for key, value in vars(args).items():
-        setattr(args, key, value.resolve())
+        if isinstance(value, Path):
+            setattr(args, key, value.resolve())
     os.umask(0o077)
-    args.out.mkdir(parents=True)
+    args.out.mkdir(parents=True, exist_ok=args.resume)
     sys.path[:0] = [str(args.compiler / name) for name in
                     ("drawio_semantic_compiler", "drawio_compare", "scripts")]
     records = json.loads(args.manifest.read_text())
     record, = records.values()
     config = (HERE / "headless.yml").read_text()
     config += "\n- id: tool-bash\n  disabled: false\n- id: tool-pwsh\n  disabled: true\n"
-    (args.out / "paired.yml").write_text(config)
-    write_json(args.out / "protocol.json", {"model": "deepseek-flash", "reasoningEffort": "max",
-        "generations_per_arm": 4, "reviews_per_arm": 3, "seconds_per_turn": 1800,
+    config_path = args.out / "paired.yml"
+    if args.resume:
+        if config_path.read_text() != config:
+            raise ValueError("Harness configuration changed since this run")
+    else:
+        config_path.write_text(config)
+    protocol_name = "resume-" + "-".join(args.arms) + "-protocol.json" if args.resume else "protocol.json"
+    write_json(args.out / protocol_name,
+        {"model": "deepseek-flash", "reasoningEffort": "max",
+        "generations_per_arm": 4, "reviews_per_arm": 3, "seconds_per_turn": 5400,
         "independent_sessions": True, "image_sha256": record["image_sha256"]})
     with ThreadPoolExecutor(max_workers=2) as pool:
-        jobs = {pool.submit(run_arm, args, arm, record): arm for arm in ("self", "mcp")}
+        jobs = {pool.submit(run_arm, args, arm, record): arm for arm in args.arms}
         results = []
         for future in as_completed(jobs):
             arm = jobs[future]
@@ -141,7 +168,10 @@ def main():
                 write_json(args.out / arm / "failure.json", {"arm": arm, "error": type(error).__name__,
                                                              "message": str(error)[:400]})
                 raise
-    write_json(args.out / "results.json", results)
+    results = [json.loads(path.read_text()) for path in
+               (args.out / arm / "result.json" for arm in ("self", "mcp")) if path.exists()]
+    if len(args.arms) == 2:
+        write_json(args.out / "results.json", results)
 
 
 if __name__ == "__main__":
