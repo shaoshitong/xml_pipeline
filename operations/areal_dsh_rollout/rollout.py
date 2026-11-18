@@ -80,10 +80,17 @@ def run_turn(args, role, number, session):
     model = args.generator_model if role == "generator" else args.reviewer_model
     endpoint = args.generator_url if role == "generator" else args.reviewer_url
     patch = root / "profile.yml"
-    patch.write_text(profile_yaml(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
-                                  context_window=args.context_window,
-                                  max_tokens=args.max_tokens,
-                                  reasoning_effort=args.reasoning_effort))
+    builder = profile_yaml
+    effort = args.reasoning_effort
+    context_window = args.context_window
+    if model == "deepseek-flash":
+        from deepseek_profile import profile_yaml as builder
+    elif role == "reviewer" and args.generator_model == "deepseek-flash":
+        effort = "off"
+        context_window = min(context_window, 65536)
+    patch.write_text(builder(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
+                             context_window=context_window, max_tokens=args.max_tokens,
+                             reasoning_effort=effort))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)
     if role == "generator" and number == 1 and args.seeded:
@@ -139,8 +146,10 @@ def run_turn(args, role, number, session):
     command.append(prompt)
     started = time.monotonic()
     auth_file = args.generator_auth_file if role == "generator" else None
+    preset = getattr(args, "reviewer_sampling_preset", None) if role == "reviewer" else None
+    preset = preset or args.sampling_preset
     sampling = dict({"model": {}, "instruct": INSTRUCT_SAMPLING,
-                     "precise-coding": SAMPLING}[args.sampling_preset])
+                     "precise-coding": SAMPLING}[preset])
     if args.seed is not None:
         sampling["seed"] = args.seed
     result = isolated_turn(command, endpoint, auth_file, logs, args.turn_timeout, sampling)
@@ -189,10 +198,11 @@ def main():
     parser.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding"),
                         default="model", help="Explicit wire parameters; model preserves legacy behavior")
     parser.add_argument("--seed", type=int)
+    parser.add_argument("--reviewer-sampling-preset", choices=("model", "instruct", "precise-coding"))
     parser.add_argument("--resume-note", default="")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
-    parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
+    parser.add_argument("--reasoning-effort", choices=("off", "low", "high", "max"), default="high")
     parser.add_argument("--turn-timeout", default=900, type=int)
     args = parser.parse_args()
     args.out = args.out.resolve()
@@ -207,7 +217,9 @@ def main():
         shutil.rmtree(skill)
     save(args.out / "protocol.json", {"generator": args.generator_model,
          "reviewer": args.reviewer_model, "reviewer_frozen": True,
-         "separate_model_instances": True, "gold_feedback": False, "rounds": args.rounds,
+         "separate_model_instances": args.generator_model.startswith("Qwen/"),
+         "external_api_generator": args.generator_model == "deepseek-flash",
+         "training": False, "gold_feedback": False, "rounds": args.rounds,
          "context_window": args.context_window, "max_tokens": args.max_tokens,
          "reasoning_effort": args.reasoning_effort,
          "continued_generator_session": args.generator_session_id,
@@ -215,6 +227,7 @@ def main():
          "fresh_context_from_own_candidate": args.seeded,
          "skill_mode": args.skill_mode,
          "sampling_preset": args.sampling_preset,
+         "reviewer_sampling_preset": args.reviewer_sampling_preset,
          "seed": args.seed,
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None

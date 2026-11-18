@@ -1,6 +1,7 @@
 """Render a candidate with the pinned official offline Draw.io editor."""
 
 import argparse
+from collections import Counter
 from hashlib import sha256
 import json
 import os
@@ -41,7 +42,13 @@ def render_editor(source: Path, output: Path, resources: Path, source_root: Path
     official.WAR = runtime.WAR = war
     official.CHROME = runtime.CHROME = str(chrome)
     xml = source.read_text()
-    ElementTree.fromstring(xml)
+    document = ElementTree.fromstring(xml)
+    models = [document] if document.tag == "mxGraphModel" else document.iter("mxGraphModel")
+    for model in models:
+        counts = Counter(cell.get("id") for cell in model.iter("mxCell") if cell.get("id"))
+        duplicates = [name for name, count in counts.items() if count > 1]
+        if duplicates:
+            raise ValueError("Duplicate mxCell IDs: " + ", ".join(duplicates[:10]))
     with runtime.Runtime() as editor:
         snapshot = editor.call("snapshot", xml, pageNumber=1)
         rendered = editor.render(xml, runtime.shared_frame(snapshot))

@@ -189,6 +189,7 @@ def main():
                         help="Host-only JSON object with upstream auth/session headers")
     parser.add_argument("--timeout", type=float, default=900)
     parser.add_argument("--sampling-env", default="SANDBOX_GATEWAY_SAMPLING")
+    parser.add_argument("--connect-proxy-env", default="ROLLOUT_HTTPS_CONNECT_PROXY")
     args = parser.parse_args()
     target = urlsplit(args.upstream)
     if target.scheme not in ("http", "https") or not target.hostname or target.path not in ("", "/", "/v1"):
@@ -205,9 +206,16 @@ def main():
     args.socket.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     if args.socket.parent.stat().st_mode & 0o077:
         parser.error("socket directory must be private (mode 0700)")
-    connection = http.client.HTTPSConnection if target.scheme == "https" else http.client.HTTPConnection
+    proxy = urlsplit(os.environ.get(args.connect_proxy_env, ""))
+    def connection():
+        if target.scheme == "https" and proxy.hostname:
+            client = http.client.HTTPSConnection(proxy.hostname, proxy.port, timeout=args.timeout)
+            client.set_tunnel(target.hostname, target.port or 443)
+            return client
+        cls = http.client.HTTPSConnection if target.scheme == "https" else http.client.HTTPConnection
+        return cls(target.hostname, target.port, timeout=args.timeout)
     server = configure(UnixHTTPServer(str(args.socket), Relay),
-                       lambda: connection(target.hostname, target.port, timeout=args.timeout),
+                       connection,
                        headers, timeout=args.timeout, sampling=sampling)
     os.chmod(str(args.socket), 0o600)
     marker = args.socket.with_name(args.socket.name + ".netns")

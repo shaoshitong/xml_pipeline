@@ -50,6 +50,7 @@ def main():
     parser.add_argument("--direct-first", action="store_true")
     parser.add_argument("--serve-only", action="store_true",
                         help="Keep owned model services alive across independent diagnostic episodes")
+    parser.add_argument("--reviewer-only", action="store_true")
     args = parser.parse_args()
     if args.diagnose_mode and (args.areal or args.resume_from or args.seed_from or
                               args.reasoning_effort != "off"):
@@ -70,8 +71,13 @@ def main():
         logs.append(gpu_log)
         processes.append(subprocess.Popen(["nvidia-smi", "--query-gpu=timestamp,index,name,memory.used,utilization.gpu",
                                            "--format=csv", "-l", "2"], stdout=gpu_log, stderr=subprocess.STDOUT))
-        for role, size, port, fraction in [("generator", args.generator, 30000, "0.45"),
-                                            ("reviewer", "4B", 30001, "0.35")]:
+        services = [("generator", args.generator, 30000, "0.45"),
+                    ("reviewer", "4B", 30001, "0.35")]
+        if args.reviewer_only:
+            if not args.serve_only:
+                parser.error("reviewer-only requires the independent model service lifecycle")
+            services = services[1:]
+        for role, size, port, fraction in services:
             model = f"Qwen/Qwen3.5-{size}"
             mode = "instruct" if args.reasoning_effort == "off" else "precise-coding"
             serving = args.root / "serving" / f"Qwen3.5-{size}-{mode}-v1"
@@ -103,7 +109,8 @@ def main():
                 raise SystemExit(128 + signum)
             signal.signal(signal.SIGTERM, terminate)
             (args.out / "services-ready.json").write_text(json.dumps({
-                "generator": f"Qwen/Qwen3.5-{args.generator}", "reviewer": "Qwen/Qwen3.5-4B",
+                "generator": None if args.reviewer_only else f"Qwen/Qwen3.5-{args.generator}",
+                "reviewer": "Qwen/Qwen3.5-4B",
                 "independent_processes": True, "training": False,
                 "stop_file": str(args.out / "STOP")}) + "\n")
             while not (args.out / "STOP").exists():
