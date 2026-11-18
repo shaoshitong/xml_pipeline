@@ -32,7 +32,11 @@ def response_summary(chunks):
     for line in b"".join(chunks).splitlines():
         if not line.startswith(b"data: ") or line == b"data: [DONE]":
             continue
-        event = json.loads(line[6:])
+        try:
+            event = json.loads(line[6:])
+        except ValueError:
+            summary["incomplete_sse_records"] = summary.get("incomplete_sse_records", 0) + 1
+            continue
         if event.get("usage"):
             summary["usage"] = event["usage"]
         for choice in event.get("choices", []):
@@ -85,8 +89,11 @@ class Proxy(BaseHTTPRequestHandler):
         self.end_headers()
         chunks = []
         stream_error = None
+        first_byte_seconds = None
         try:
             while chunk := response.read1(65536):
+                if first_byte_seconds is None:
+                    first_byte_seconds = time.time() - record["timestamp"]
                 chunks.append(chunk)
                 if capture:
                     capture.write(chunk)
@@ -102,6 +109,7 @@ class Proxy(BaseHTTPRequestHandler):
             with self.server.audit.open("a") as log:
                 log.write(json.dumps({"response_to": record["timestamp"], "status": response.status,
                                       "seconds": round(time.time() - record["timestamp"], 3),
+                                      "first_byte_seconds": first_byte_seconds,
                                       "stream_error": stream_error, **response_summary(chunks)}) + "\n")
 
 

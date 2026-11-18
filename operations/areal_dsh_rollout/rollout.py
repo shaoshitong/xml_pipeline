@@ -98,9 +98,11 @@ def run_turn(args, role, number, session):
         prompt += "\nContinue this interrupted stage using this session's own saved work.\n"
     if args.resume_note:
         prompt += "\nHost runtime recovery note: " + args.resume_note + "\n"
+    prompt += (f"\nWorkspace paths: /case/reference.png; /case/round{number}.drawio; "
+               f"/case/round{number}.png. Use these absolute paths for file tools.\n")
     if role == "generator":
-        renderer = [str(args.renderer_python), "/integration/render.py", f"round{number}.drawio",
-                    f"round{number}.png", "--runtime", str(args.render_runtime)]
+        renderer = [str(args.renderer_python), "/integration/render.py", f"/case/round{number}.drawio",
+                    f"/case/round{number}.png", "--runtime", str(args.render_runtime)]
         prompt += "\nOfficial renderer command: " + shlex.join(renderer) + "\n"
     runtime = args.runtime.resolve()
     case = (args.out / "case").resolve()

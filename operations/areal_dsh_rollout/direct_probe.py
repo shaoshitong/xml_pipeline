@@ -180,6 +180,8 @@ def main():
     parser.add_argument("--generator-model", required=True,
                         choices=("Qwen/Qwen3.5-4B", "Qwen/Qwen3.5-9B"))
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--max-tokens", type=int, default=32768,
+                        help="Keep 32768 for matched quality tests; smaller values label protocol fixtures")
     parser.add_argument("--timeout", type=float, default=900)
     parser.add_argument("--api-key-env", default="ROLLOUT_API_KEY")
     parser.add_argument("--logprobs", "--return-logprob", action="store_true")
@@ -193,7 +195,8 @@ def main():
     (out / "reference.png").write_bytes(image)
     endpoint = args.base_url.rstrip("/")
     endpoint += "/chat/completions" if endpoint.endswith("/v1") else "/v1/chat/completions"
-    payload = {"model": args.generator_model, **SAMPLING, "seed": args.seed,
+    sampling = dict(SAMPLING, max_tokens=args.max_tokens)
+    payload = {"model": args.generator_model, **sampling, "seed": args.seed,
                "stream": not args.nonstream, "n": 1,
                "tools": [], "tool_choice": "none",
                "chat_template_kwargs": {"enable_thinking": False, "preserve_thinking": False},
@@ -208,7 +211,7 @@ def main():
     body = json.dumps(payload, ensure_ascii=False).encode()
     (out / "request-body.json").write_bytes(body)
     protocol = {"mode": "direct_openai_image_chat", "endpoint": endpoint,
-                "generator_model": args.generator_model, "sampling": SAMPLING,
+                "generator_model": args.generator_model, "sampling": sampling,
                 "seed": args.seed, "expected_server_context_tokens": 65536,
                 "context_enforced_by": "existing SGLang server, not this client",
                 "host": socket.gethostname(), "reference_sha256": sha256(image).hexdigest(),
