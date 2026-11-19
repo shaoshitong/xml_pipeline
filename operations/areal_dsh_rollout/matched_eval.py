@@ -74,7 +74,7 @@ def main():
                "--root", str(args.root), "--runtime", str(args.runtime), "--reference", str(reference),
                "--out", str(service_out), "--serve-only", "--generator", args.model if local else "4B",
                "--context-window", str(CONTEXT if local else 65536), "--reviewer-context-window", "65536",
-               "--generator-mem-fraction", "0.70", "--reviewer-mem-fraction", "0.18",
+               "--generator-mem-fraction", "0.70", "--reviewer-mem-fraction", "0.45",
                "--generator-port", str(generator_port), "--reviewer-port", str(reviewer_port),
                "--reasoning-effort", "high" if local else "off"]
     service += ["--long-context-yarn"] if local else ["--reviewer-only"]
