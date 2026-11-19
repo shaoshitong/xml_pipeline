@@ -109,6 +109,7 @@ def collect_run(name, root):
     case = episode / "case"
     protocol = read_json(episode / "protocol.json", warnings) or {}
     native = native_summary(root, warnings)
+    completion = read_json(episode / "completed.json", warnings) or {}
     found = set()
     for pattern in ("round*.*", "review*.json"):
         for path in case.glob(pattern):
@@ -157,7 +158,7 @@ def collect_run(name, root):
             "rounds": rounds, "grade": grade,
             "grade_caveat": reward_audit.get("reward_invalid_for_cropped_img2code") is True,
             "native_eval": native,
-            "completed_marker": (episode / "completed.json").is_file(),
+            "completed_marker": bool(planned and Path(completion.get("candidate", "")).name == f"round{planned}.drawio"),
             "launch": read_json(root / "launch-result.json", warnings),
             "audits": audits,
             "gpu": gpu_summary(root / "gpu.csv"), "warnings": warnings}
