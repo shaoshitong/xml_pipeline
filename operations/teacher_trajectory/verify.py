@@ -147,7 +147,8 @@ def verify(root, episode=None, qwen_template=None):
         sample_requested = len(materialized) < 3 or number == rows[-1][0]
         if sample_requested or template is not None:
             row = materialize(store, {"call_id": number, "episode": ident,
-                                     "request_ref": request_ref, "response_ref": response_ref})
+                                     "request_ref": request_ref, "response_ref": response_ref},
+                              decode_images=sample_requested)
         if template is not None and response["choices"][0].get("finish_reason") in ("stop", "tool_calls"):
             template_counts.update(check_qwen_template(template, row))
         if sample_requested:
