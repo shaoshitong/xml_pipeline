@@ -29,7 +29,8 @@ def encode_completion(tokenizer, prefix, full):
 
 def normalize(messages, decode_images=True):
     from PIL import Image
-    output, images = deepcopy(messages), []
+    # Cached archive nodes may alias identical content across history messages.
+    output, images = [deepcopy(message) for message in messages], []
     for message in output:
         for call in message.get("tool_calls", []):
             function = call["function"]
