@@ -1,6 +1,7 @@
 """Lossless JSON DAG and image/blob storage for independent teacher decisions."""
 
 import base64
+import binascii
 import gzip
 from hashlib import sha256
 import json
@@ -69,8 +70,11 @@ class Store:
             node = ["list", [self.put(item) for item in value]]
         elif isinstance(value, str) and value.startswith("data:image/") and ";base64," in value:
             prefix, payload = value.split(",", 1)
-            raw = base64.b64decode(payload, validate=True)
-            if base64.b64encode(raw).decode() == payload:
+            try:
+                raw = base64.b64decode(payload, validate=True)
+            except (binascii.Error, ValueError):
+                raw = None
+            if raw is not None and base64.b64encode(raw).decode() == payload:
                 node = ["image", prefix, self.blob(raw)]
             else:
                 node = ["value", value]

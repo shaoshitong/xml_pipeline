@@ -28,7 +28,8 @@ def normalize(messages):
                 if not url.startswith("data:image/"):
                     raise ValueError("Training image is not archived inline")
                 image = Image.open(BytesIO(base64.b64decode(url.split(",", 1)[1])))
-                images.append(image.convert("RGB"))
+                image.load()
+                images.append(image.copy())
                 content[index] = {"type": "image"}
     return output, images
 
