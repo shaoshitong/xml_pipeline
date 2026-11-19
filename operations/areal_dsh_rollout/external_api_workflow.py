@@ -238,7 +238,7 @@ def evaluate(args):
     args.out.mkdir(mode=0o700, parents=True)
     template = json.loads(args.episode_command.read_text()) if args.episode_command else default_episode(args)
     episode_command(template, {})
-    admin_key = secrets.token_urlsafe(32)
+    admin_key = "admin-" + secrets.token_urlsafe(32)
     trial = "external-eval-" + secrets.token_hex(6)
     config = InferenceEngineConfig(
         _version="v2", api_url=args.api_url, model=args.model, provider_api_key=task_token,
