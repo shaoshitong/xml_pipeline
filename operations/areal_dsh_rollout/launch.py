@@ -61,6 +61,7 @@ def main():
     parser.add_argument("--long-context-yarn", action="store_true")
     parser.add_argument("--generator-port", type=int, default=30000)
     parser.add_argument("--reviewer-port", type=int, default=30001)
+    parser.add_argument("--mamba-cache-size", type=int)
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
@@ -113,6 +114,8 @@ def main():
                            "presence_penalty": 1.5 if mode == "instruct" else 0.0,
                            "repetition_penalty": 1.0}),
                        "--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder"]
+            if args.mamba_cache_size is not None:
+                command.extend(("--max-mamba-cache-size", str(args.mamba_cache_size)))
             log = (args.out / f"{role}-server.log").open("wb")
             logs.append(log)
             process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, env=environment)

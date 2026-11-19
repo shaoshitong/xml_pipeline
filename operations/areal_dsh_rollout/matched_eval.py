@@ -50,7 +50,10 @@ def main():
     parser.add_argument("--batch", required=True)
     parser.add_argument("--model", choices=("4B", "9B", "deepseek-flash"), required=True)
     parser.add_argument("--phase", type=int, choices=(1, 2), required=True)
+    parser.add_argument("--api-only", action="store_true")
     args = parser.parse_args()
+    if args.api_only and (args.model != "deepseek-flash" or args.phase != 1):
+        parser.error("api-only is for the API Generator's first phase without a review")
     out = args.root / "matched" / args.batch / args.model / f"phase{args.phase}"
     out.mkdir(parents=True)
     reference = args.root / "inputs/022/reference.png"
@@ -76,20 +79,23 @@ def main():
                "--context-window", str(CONTEXT if local else 65536), "--reviewer-context-window", "65536",
                "--generator-mem-fraction", "0.70", "--reviewer-mem-fraction", "0.45",
                "--generator-port", str(generator_port), "--reviewer-port", str(reviewer_port),
+               "--mamba-cache-size", "16",
                "--reasoning-effort", "high" if local else "off"]
     service += ["--long-context-yarn"] if local else ["--reviewer-only"]
     process = None
     try:
-        with (out / "services.log").open("wb") as log:
-            process = subprocess.Popen(service, stdout=log, stderr=log, env=env)
-        deadline = time.monotonic() + 600
-        while not (service_out / "services-ready.json").exists():
-            if process.poll() is not None or time.monotonic() > deadline:
-                raise RuntimeError("Matched model services did not become ready")
-            time.sleep(1)
-        contract["reviewer_backend"] = verify_server(reviewer_port, 65536, out / "reviewer-backend.json")
-        if local:
-            contract["generator_backend"] = verify_server(generator_port, CONTEXT, out / "generator-backend.json")
+        if not args.api_only:
+            with (out / "services.log").open("wb") as log:
+                process = subprocess.Popen(service, stdout=log, stderr=log, env=env)
+            deadline = time.monotonic() + 600
+            while not (service_out / "services-ready.json").exists():
+                if process.poll() is not None or time.monotonic() > deadline:
+                    raise RuntimeError("Matched model services did not become ready")
+                time.sleep(1)
+            contract["reviewer_backend"] = verify_server(reviewer_port, 65536, out / "reviewer-backend.json")
+            if local:
+                contract["generator_backend"] = verify_server(generator_port, CONTEXT, out / "generator-backend.json")
+        contract["api_only_first_generation"] = args.api_only
         save(out / "matched-contract.json", contract)
         print(json.dumps({"phase": "backend_verified", "model": args.model,
                           "context": CONTEXT, "max_output": OUTPUT}), flush=True)
