@@ -8,6 +8,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import re
+from urllib.parse import urlsplit
 
 
 def read_json(path, warnings):
@@ -30,25 +31,55 @@ def asset(path):
             "sha256": sha256(data).hexdigest()}
 
 
-def audit(path, warnings):
+def audit(path, warnings, final_upstream=None, shared=False):
     requests = image_requests = image_inputs = 0
-    models = set()
+    models, max_tokens, seen = set(), set(), set()
     for line in path.read_text().splitlines():
         try:
             record = json.loads(line)
         except ValueError:
             warnings.append(f"{path.name} 有未完成的审计行，未计入统计")
             continue
-        if "response_to" in record:
+        if "response_to" in record or record.get("phase") == "response_headers":
             continue
+        if final_upstream:
+            upstream = record.get("upstream", "")
+            host = urlsplit(upstream if "://" in upstream else "//" + upstream).hostname
+            if record.get("phase") != "request" or host != final_upstream:
+                continue
+            identity = (record.get("time"), host, record.get("model"))
+            if identity[0] is not None and identity in seen:
+                continue
+            seen.add(identity)
         requests += 1
         images = record.get("image_inputs", [])
         image_requests += bool(images)
         image_inputs += len(images)
         if record.get("model"):
             models.add(record["model"])
+        if type(record.get("max_tokens")) is int:
+            max_tokens.add(record["max_tokens"])
     return {"file": path.name, "requests": requests, "image_requests": image_requests,
-            "image_inputs": image_inputs, "models": sorted(models)}
+            "image_inputs": image_inputs, "models": sorted(models),
+            "final_upstream": final_upstream, "shared": shared, "max_tokens": sorted(max_tokens)}
+
+
+def native_summary(root, warnings):
+    result = read_json(root / "eval-result.json", warnings)
+    record = result or read_json(root / "eval-contract.json", warnings) or {}
+    if record.get("kind") != "native_areal_external_api_eval":
+        return None
+    fields = {"native_interactions": int, "image_bearing_interactions": int,
+              "episode_success": bool, "valid_visual_benchmark": bool,
+              "training_eligible": bool, "optimizer_started": bool}
+    summary = {key: record.get(key) if type(record.get(key)) is kind else None
+               for key, kind in fields.items()}
+    process = record.get("dsh_process", {})
+    summary.update(result_available=result is not None,
+                   status=record.get("status") if record.get("status") in ("completed", "failed") else None,
+                   dsh_exit=process.get("exit") if type(process.get("exit")) is int else None,
+                   timed_out=process.get("timed_out") if type(process.get("timed_out")) is bool else None)
+    return summary
 
 
 def gpu_summary(path):
@@ -77,6 +108,7 @@ def collect_run(name, root):
     episode = root / "episode"
     case = episode / "case"
     protocol = read_json(episode / "protocol.json", warnings) or {}
+    native = native_summary(root, warnings)
     found = set()
     for pattern in ("round*.*", "review*.json"):
         for path in case.glob(pattern):
@@ -104,18 +136,28 @@ def collect_run(name, root):
     grade_path = next((p for p in (root / "host-grade.json", episode / "host-grade.json")
                        if p.is_file()), root / "host-grade.json")
     grade = read_json(grade_path, warnings)
+    reward_audit = read_json(root / "reward-contract-audit.json", warnings) or {}
     # Keep gold object labels, normalized gold XML, and raw comparator pages private.
     if grade is not None:
         grade = {"counts": {key: grade.get("counts", {}).get(key) for key in "ABC"},
                  "metric": {key: grade.get("metric", {}).get(key)
                             for key in ("weights", "weights_status", "E", "R", "formula")}}
+    audits = [audit(p, warnings) for p in sorted(root.glob("*-requests.jsonl"))]
+    wire = next((p for p in (root / "api-wire.jsonl", root.with_name(root.name + ".api-wire.jsonl"),
+                            root.parent / "api-wire.jsonl") if p.is_file()), None)
+    if wire:
+        audits.append(audit(wire, warnings, final_upstream="api.deepseek.com",
+                            shared=wire == root.parent / "api-wire.jsonl"))
     return {"name": name, "path": str(root), "protocol": {
                 key: protocol.get(key) for key in
-                ("generator", "reviewer", "reviewer_frozen", "separate_model_instances", "rounds")},
+                ("generator", "reviewer", "reviewer_frozen", "separate_model_instances", "rounds",
+                 "external_api_generator", "context_window", "max_tokens")},
             "rounds": rounds, "grade": grade,
+            "grade_caveat": reward_audit.get("reward_invalid_for_cropped_img2code") is True,
+            "native_eval": native,
             "completed_marker": (episode / "completed.json").is_file(),
             "launch": read_json(root / "launch-result.json", warnings),
-            "audits": [audit(p, warnings) for p in sorted(root.glob("*-requests.jsonl"))],
+            "audits": audits,
             "gpu": gpu_summary(root / "gpu.csv"), "warnings": warnings}
 
 
@@ -130,36 +172,42 @@ PAGE = r"""<!doctype html>
 <h1>Draw.io rollout 产物对照</h1>
 <div class="muted">实验阶段：rollout，无参数更新。Reviewer 按实验协议使用独立冻结模型；下方单独显示协议记录是否齐全。阶段完成、Reviewer 的 PASS 和宿主对象统计均不代表质量合格。</div>
 <div class="bar"><label>模型 / 运行<select id="runs"></select></label><label>轮次<select id="rounds"></select></label><a id="xml" class="download">下载本轮 XML</a></div>
-<section class="card"><h2 id="run-title"></h2><div id="protocol"></div><div id="run-status"></div><div id="source" class="muted"></div></section>
+<section class="card"><h2 id="run-title"></h2><div id="protocol"></div><div id="run-status"></div><div id="native" class="muted"></div><div id="source" class="muted"></div></section>
 <section class="pair"><div class="card"><h2>原图</h2><div id="reference" class="image-box"></div></div><div class="card"><h2 id="candidate-title">候选</h2><div id="candidate" class="image-box"></div><div id="artifact" class="muted"></div></div></section>
 <section class="card"><h2>本轮阶段记录</h2><div class="scroll"><table><thead><tr><th>角色</th><th>阶段状态</th><th>退出码</th><th>工具调用</th><th>耗时 / 秒</th></tr></thead><tbody id="stages"></tbody></table></div><div class="muted">工具次数取自 status.json；缺失记录显示“未记录”。PNG / XML 文件存在不等于模型阶段成功。</div></section>
 <section class="card"><details><summary>Reviewer JSON 原文</summary><pre id="review"></pre></details></section>
 <section class="card"><h2>请求与 GPU 审计</h2><div id="audit"></div><div id="gpu" class="muted"></div><div class="muted">图片请求为含图片输入的请求；图片输入次数包含历史重放。请求记录不表示请求成功或模型已正确理解图像。</div></section>
-<section class="card"><h2>运行级宿主对象评分</h2><div class="muted">仅显示已存在的 host-grade.json，不将其归因于当前所选轮次。对象级标记受比较器覆盖范围和容差限制。</div><div id="grade"></div></section>
+<section class="card"><h2>运行级宿主对象评分</h2><div id="grade-caveat" class="fail"></div><div class="muted">仅显示已存在的 host-grade.json，不将其归因于当前所选轮次。对象级标记受比较器覆盖范围和容差限制。</div><div id="grade"></div></section>
 <div id="notes" class="muted"></div><footer id="footer"></footer>
 </main><dialog id="zoom"><button id="close">关闭大图</button><div class="zoom-scroll"><img id="zoom-image" alt="原始分辨率图像"></div></dialog>
 <script id="data" type="application/json">__DATA__</script>
 <script>
 const data=JSON.parse(document.getElementById('data').textContent),$=id=>document.getElementById(id);
 const value=(x,missing='未记录')=>x===null||x===undefined?missing:String(x);
+const flag=x=>x===true?'是':x===false?'否':'未记录';
 function text(id,x){$(id).textContent=x}
 function option(select,label,v){const el=document.createElement('option');el.textContent=label;el.value=v;select.append(el)}
 function image(id,file,label){const box=$(id);box.replaceChildren();if(!file){const p=document.createElement('div');p.className='missing';p.textContent='未完成：缺少可展示的 PNG';box.append(p);return}const img=document.createElement('img');img.src='data:image/png;base64,'+file.data;img.alt=label;img.onerror=()=>{box.textContent='PNG 文件存在，但浏览器无法解码'};img.onclick=()=>{$('zoom-image').src=img.src;$('zoom').showModal()};box.append(img)}
 function stage(s,expected){if(!expected&&!s)return '末轮无 Review 阶段';if(!s)return '未完成：缺少状态文件';if(s.exit!==null&&s.exit!==undefined&&s.exit!==0)return '失败';return s.exit===0&&s.completed===true?'阶段完成':'未完成'}
 function row(table,values){const tr=document.createElement('tr');for(const v of values){const td=document.createElement('td');td.textContent=v;tr.append(td)}table.append(tr)}
 function draw(){
- const run=data.runs[Number($('runs').value)],round=run.rounds.find(r=>r.number===Number($('rounds').value)),p=run.protocol;
+ const run=data.runs[Number($('runs').value)],round=run.rounds.find(r=>r.number===Number($('rounds').value)),p=run.protocol,n=run.native_eval,external=p.external_api_generator===true||!!n;
  text('run-title',run.name);text('source','产物来源：'+run.path);
- text('protocol','Generator：'+value(p.generator)+'；Reviewer：'+value(p.reviewer)+'；独立模型实例：'+(p.separate_model_instances===true?'协议已记录':'未记录')+'；Reviewer 冻结：'+(p.reviewer_frozen===true?'协议已记录':'未记录'));
- const exit=run.launch?.exit;text('run-status','主机完成标记：'+(run.completed_marker?'存在':'未完成 / 未发现')+'；launch 退出码：'+value(exit));
+ const services=external?'Generator 使用外部 API，本地双模型实例字段不适用':'本地独立模型实例：'+(p.separate_model_instances===true?'协议已记录':'未记录');
+ const limits=p.context_window!=null||p.max_tokens!=null?'；Generator 协议上下文 / 单次最大输出：'+value(p.context_window)+' / '+value(p.max_tokens):'';
+ text('protocol','Generator：'+value(p.generator)+'；Reviewer：'+value(p.reviewer)+'；'+services+'；Reviewer 参数冻结：'+(p.reviewer_frozen===true?'协议已记录':'未记录')+limits);
+ const marker='主机完成标记：'+(run.completed_marker?'存在':'未完成 / 未发现');
+ text('run-status',n?marker+'；AReaL 原生评测：'+(n.result_available?value(n.status):'eval-result.json 尚未写入')+'；DSH 退出码：'+value(n.dsh_exit)+'；超时：'+flag(n.timed_out):marker+'；launch 退出码：'+value(run.launch?.exit,external?'外部 API 流程不要求此记录':'未记录'));
+ text('native',n?'原生 Generator 交互：'+value(n.native_interactions)+'；含图交互：'+value(n.image_bearing_interactions)+'；episode 成功标记：'+flag(n.episode_success)+'；图像流程有效标记：'+flag(n.valid_visual_benchmark)+'；训练资格：'+flag(n.training_eligible)+'；优化器启动：'+flag(n.optimizer_started)+'。流程标记不代表绘图质量通过，原生生命周期占位奖励不作质量分显示。':'');
  image('reference',data.reference,'原图');image('candidate',round?.png,'候选图');text('candidate-title',round?'候选 · 第 '+round.number+' 轮':'候选 · 暂无轮次产物');
  text('artifact',round?'PNG：'+(round.png?'已有文件':'未完成')+'；XML：'+(round.xml?round.xml.bytes+' 字节，SHA256 '+round.xml.sha256:'未完成'):'未完成：未发现任何轮次文件或协议轮次记录');
  const link=$('xml');link.removeAttribute('href');link.setAttribute('aria-disabled',!round?.xml);link.textContent=round?.xml?'下载本轮 XML':'XML 未完成';if(round?.xml){link.href='data:application/xml;base64,'+round.xml.data;link.download=run.name+'-round'+round.number+'.drawio'}
  $('stages').replaceChildren();for(const role of ['generator','reviewer']){const s=round?.statuses[role];row($('stages'),[role==='generator'?'Generator':'Reviewer',stage(s,role==='generator'||round?.review_expected!==false),value(s?.exit),value(s?.tool_calls),value(s?.seconds)])}
  text('review',round?.review??(round?.review_expected===false?'末轮无 Review 阶段；未发现 Reviewer JSON。':'未完成：未发现 Reviewer JSON。'));
- const a=$('audit');a.replaceChildren();if(!run.audits.length){a.textContent='未完成：未发现请求审计文件。'}else{const table=document.createElement('table');row(table,['审计文件 / 模型','请求数','含图请求','图片输入次数']);for(const item of run.audits)row(table,[item.file+' / '+item.models.join(', '),item.requests,item.image_requests,item.image_inputs]);a.append(table)}
- text('gpu',run.gpu?'GPU：'+(run.gpu.names.join(', ')||'名称未记录')+'；采样行数 '+run.gpu.samples+'；峰值显存 '+value(run.gpu.peak_memory_mib)+' MiB；峰值利用率 '+value(run.gpu.peak_utilization)+'%':'未完成：未发现 GPU 采样文件。');
- const g=$('grade');g.replaceChildren();if(!run.grade){g.textContent='未完成：未发现可读取的 host-grade.json。'}else{const metric=run.grade.metric,weights=metric.weights||{},unset=metric.weights_status==='unset'||['a','b','c'].some(k=>weights[k]===null||weights[k]===undefined);const stats=document.createElement('div');stats.className='stats';for(const [label,num]of [...'ABC'].map(k=>[k,run.grade.counts[k]]).concat([['E',unset?'未定':value(metric.E,'未定义')],['R',unset?'未定':value(metric.R,'未定义')]])){const part=document.createElement('div');part.className='stat';const strong=document.createElement('strong');strong.textContent=value(num);part.append(strong,document.createTextNode(label));stats.append(part)}g.append(stats);const p=document.createElement('p');p.className='muted';p.textContent='权重 a / b / c：'+['a','b','c'].map(k=>value(weights[k],'未定')).join(' / ')+'；'+value(metric.formula,'公式未记录');g.append(p)}
+ const a=$('audit');a.replaceChildren();if(!run.audits.length){a.textContent='未发现请求审计文件。'}else{const table=document.createElement('table');row(table,['审计文件 / 模型','请求数','含图请求','图片输入次数']);for(const item of run.audits)row(table,[item.file+' / '+item.models.join(', ')+(item.final_upstream?' → '+item.final_upstream+'（最终上游）':'')+(item.shared?'（共享文件范围，非本 run）':'')+(item.max_tokens?.length?'；请求最大输出 '+item.max_tokens.join(', '):''),item.requests,item.image_requests,item.image_inputs]);a.append(table)}
+ text('gpu',run.gpu?'GPU：'+(run.gpu.names.join(', ')||'名称未记录')+'；采样行数 '+run.gpu.samples+'；峰值显存 '+value(run.gpu.peak_memory_mib)+' MiB；峰值利用率 '+value(run.gpu.peak_utilization)+'%':external?'外部 API 评测目录未记录 GPU 采样；冻结 Reviewer 可以由独立服务提供。':'未完成：未发现 GPU 采样文件。');
+ text('grade-caveat',run.grade_caveat?'⚠ 此次 reward 契约审计未通过：下列 ABC 仅为当前比较器原始计数，不能视为有效视觉误差或奖励。':'');
+ const g=$('grade');g.replaceChildren();if(!run.grade){g.textContent='未完成：未发现可读取的 host-grade.json。'}else{const metric=run.grade.metric,weights=metric.weights||{},unset=metric.weights_status==='unset'||['a','b','c'].some(k=>weights[k]===null||weights[k]===undefined);const stats=document.createElement('div');stats.className='stats';for(const [label,num]of [...'ABC'].map(k=>[k,run.grade.counts[k]]).concat([['E',run.grade_caveat?'不可用':unset?'未定':value(metric.E,'未定义')],['R',run.grade_caveat?'不可用':unset?'未定':value(metric.R,'未定义')]])){const part=document.createElement('div');part.className='stat';const strong=document.createElement('strong');strong.textContent=value(num);part.append(strong,document.createTextNode(label));stats.append(part)}g.append(stats);const p=document.createElement('p');p.className='muted';p.textContent='权重 a / b / c：'+['a','b','c'].map(k=>value(weights[k],'未定')).join(' / ')+'；'+value(metric.formula,'公式未记录');g.append(p)}
  text('notes',run.warnings.join('；'));text('footer','离线自包含报告 · 生成时间 '+data.generated+' · 不包含原始模型 reasoning 或隐藏思维。');
 }
 function selectRun(){const run=data.runs[Number($('runs').value)],select=$('rounds');select.replaceChildren();for(const r of run.rounds)option(select,'第 '+r.number+' 轮'+(r.png?'':' · PNG 未完成'),r.number);if(!run.rounds.length)option(select,'暂无轮次',0);const ready=run.rounds.filter(r=>r.png);if(ready.length)select.value=ready.at(-1).number;draw()}
