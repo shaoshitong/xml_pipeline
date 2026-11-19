@@ -110,6 +110,24 @@ def deduplicate_attachments(store, folder):
     return {"verified": checked, "shared_image_links": linked}
 
 
+def run_generation(config, number, session):
+    try:
+        return run_turn(config, "generator", number, session)
+    except RuntimeError:
+        path = config.out / "generator" / f"round{number}" / "status.json"
+        state = json.loads(path.read_text()) if path.exists() else {}
+        if not state.get("timed_out") or not state.get("session_id"):
+            raise
+    previous = config.resume_note
+    config.resume_note = (previous + "\nThe previous turn reached its wall-clock limit. Continue in the same "
+                          "session using your existing draft and observations. Finish the requested artifact "
+                          "and final response; do not restart the drawing from scratch.")
+    try:
+        return run_turn(config, "generator", number, state["session_id"])
+    finally:
+        config.resume_note = previous
+
+
 def run_review(config, number, session):
     try:
         return run_turn(config, "reviewer", number, session)
@@ -176,6 +194,7 @@ def episode(args, record, store, provider, runtime, resources):
                 "reviewer_context": 1048576, "reviewer_max_output": 32768,
                 "reviewer_training_loss": False, "generation_rounds": 2, "reviews": 1,
                 "generator_context": 1048576, "max_output": 131072,
+                "stage_timeout_seconds": 1350, "generator_timeout_continuations_per_attempt": 1,
                 "gold_available": False, "gold_feedback": False, "mcp": False,
                 "external_areal_string_export": False,
                 "lossless_wire_capture": True, "source_commit": args.source_commit,
@@ -190,7 +209,7 @@ def episode(args, record, store, provider, runtime, resources):
     try:
         for number in (1, 2):
             services["generator"].stage = number
-            generator, _ = run_turn(config, "generator", number, generator)
+            generator, _ = run_generation(config, number, generator)
             xml = case / f"round{number}.drawio"
             validity = validate_xml(xml)
             metadata = render(xml, case / f"round{number}.png", resources)
