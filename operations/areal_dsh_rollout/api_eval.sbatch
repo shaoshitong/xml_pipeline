@@ -39,11 +39,15 @@ while not ready.exists():
     time.sleep(1)
 PY
 
+resume_args=()
+if [[ -n "${RESUME_FROM:-}" ]]; then
+  resume_args=(--resume-from "$RESUME_FROM")
+fi
 for case_id in ${CASE_IDS:-sanity3 022}; do
   "$root/controller/env/bin/python" -u "$source_dir/external_api_workflow.py" run \
     --root "$root" --runtime "$runtime" --reference "$root/inputs/$case_id/reference.png" \
     --out "$output/$case_id" --key-file "$root/private-auth/deepseek-api.key" \
     --proxy http://10.120.48.31:30444 --rounds 2 --skill-mode full \
     --context-window 1048576 --max-tokens 131072 --reasoning-effort max \
-    --timeout 2700 --turn-timeout 900
+    --timeout 2700 --turn-timeout "${TURN_TIMEOUT:-900}" "${resume_args[@]}"
 done

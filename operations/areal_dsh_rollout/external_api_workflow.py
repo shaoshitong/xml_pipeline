@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import secrets
 import selectors
+import shutil
 import signal
 import subprocess
 import sys
@@ -25,6 +26,9 @@ from urllib.request import ProxyHandler, Request, build_opener
 
 AREAL_COMMIT = "64a7fcca3936ddf2ab16bb1dd3e776d66ced31ff"
 HERE = Path(__file__).resolve().parent
+RECOVERY_POLICY = ("Previous host time limit interrupted this stage. Reuse your saved work. "
+                   "Complete at most one render-and-inspect cycle in each remaining generation stage, "
+                   "then return artifact paths and remaining limitations so scheduled independent review can proceed.")
 
 
 def serve_credential_gateway(args):
@@ -129,6 +133,7 @@ def add_evaluation_arguments(evaluation):
     for name in ("root", "runtime", "reference", "out"):
         evaluation.add_argument("--" + name, type=Path, required=True)
     evaluation.add_argument("--episode-command", type=Path)
+    evaluation.add_argument("--resume-from", type=Path, help="Previous evaluation root containing this DSH episode")
     evaluation.add_argument("--api-url", default="http://127.0.0.1:30555/v1")
     evaluation.add_argument("--model", default="deepseek-flash")
     evaluation.add_argument("--reviewer-url", default="http://127.0.0.1:30001/v1")
@@ -236,7 +241,17 @@ def evaluate(args):
     task_token = os.environ.pop(args.provider_token_env)
     args.out = args.out.resolve()
     args.out.mkdir(mode=0o700, parents=True)
+    reference_sha256 = sha256(args.reference.read_bytes()).hexdigest()
+    resumed_from = args.resume_from.resolve() if args.resume_from else None
+    if resumed_from:
+        previous_episode = resumed_from / "episode"
+        previous_protocol = json.loads((previous_episode / "protocol.json").read_text())
+        if previous_protocol["reference_sha256"] != reference_sha256:
+            raise ValueError("Resume reference SHA256 does not match the previous DSH episode")
+        shutil.copytree(previous_episode, args.out / "episode", symlinks=True)
     template = json.loads(args.episode_command.read_text()) if args.episode_command else default_episode(args)
+    if resumed_from:
+        template += ["--resume", "--resume-note", RECOVERY_POLICY]
     episode_command(template, {})
     admin_key = "admin-" + secrets.token_urlsafe(32)
     trial = "external-eval-" + secrets.token_hex(6)
@@ -268,7 +283,8 @@ def evaluate(args):
              "captured_role": "generator",
              "reviewer": {"model": "Qwen/Qwen3.5-4B", "url": args.reviewer_url,
                           "frozen": True, "native_capture": False},
-             "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()}
+             "reference_sha256": reference_sha256, "resumed_from": str(resumed_from) if resumed_from else None,
+             "recovery_policy": RECOVERY_POLICY if resumed_from else None}
     save(args.out / "eval-contract.json", audit)
     try:
         controller.initialize(role="external-eval", wait=True)

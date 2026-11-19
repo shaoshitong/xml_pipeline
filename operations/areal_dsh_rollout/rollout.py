@@ -154,12 +154,16 @@ def run_turn(args, role, number, session):
                      "precise-coding": SAMPLING}[preset])
     if args.seed is not None:
         sampling["seed"] = args.seed
-    result = isolated_turn(command, endpoint, auth_file, logs, args.turn_timeout, sampling)
+    try:
+        result = isolated_turn(command, endpoint, auth_file, logs, args.turn_timeout, sampling)
+        exit_code, timed_out = result.returncode, False
+    except subprocess.TimeoutExpired:
+        exit_code, timed_out = 124, True
     events = read_events(logs / "events.jsonl")
     final = next((e for e in reversed(events) if e.get("type") == "final"), None)
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
-    status = {"role": role, "round": number, "exit": result.returncode,
-              "completed": result.returncode == 0 and final is not None, "session_id": sid,
+    status = {"role": role, "round": number, "exit": exit_code, "timed_out": timed_out,
+              "completed": exit_code == 0 and final is not None, "session_id": sid,
               "log_dir": logs.name,
               "seconds": round(time.monotonic() - started, 2),
               "tool_calls": sum(e.get("type") == "tool_call" for e in events)}
@@ -167,7 +171,7 @@ def run_turn(args, role, number, session):
     if logs != checkpoint:
         save(checkpoint / "status.json", status)
     print(json.dumps(status), flush=True)
-    if result.returncode or final is None:
+    if exit_code or final is None:
         raise RuntimeError(f"DSH {role} round {number} failed; inspect {logs}")
     return sid, final
 
@@ -237,9 +241,8 @@ def main():
         generator, _ = run_turn(args, "generator", n, generator)
         xml = case / f"round{n}.drawio"
         preview = case / f"round{n}.png"
-        if not (args.resume and preview.exists()):
-            subprocess.run([str(args.renderer_python), str(HERE / "render.py"), str(xml),
-                            str(preview), "--runtime", str(args.render_runtime)], check=True)
+        subprocess.run([str(args.renderer_python), str(HERE / "render.py"), str(xml),
+                        str(preview), "--runtime", str(args.render_runtime)], check=True)
         save(args.out / "progress.json", {"completed_generation": n,
              "xml_bytes": xml.stat().st_size, "xml_sha256": sha256(xml.read_bytes()).hexdigest(),
              "timestamp": time.time()})
