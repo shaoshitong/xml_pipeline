@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 
 
 DSH_VERSION = "0.2.1-rc.2"
-MODELS = ("Qwen/Qwen3.5-4B", "Qwen/Qwen3.5-9B")
+MODELS = ("Qwen/Qwen3.5-4B", "Qwen/Qwen3.5-9B", "Qwen/Qwen3.8-27B")
 SGLANG_PARSERS = ("--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder")
 
 # These IDs come from the installed dsh-base/headless 0.2.1-rc.2 bundles.
@@ -45,7 +45,7 @@ def build_patch(
     if parsed.scheme not in ("http", "https") or not parsed.netloc or not endpoint.endswith("/v1"):
         raise ValueError("base_url must be the SGLang API root ending in /v1")
     if model not in MODELS or role not in ("generator", "reviewer"):
-        raise ValueError("Select Qwen3.5-4B/9B and generator/reviewer explicitly")
+        raise ValueError("Select a supported Qwen model and generator/reviewer explicitly")
     if reasoning_effort not in ("off", "high") or not 0 < max_tokens < context_window:
         raise ValueError("Invalid reasoning effort or output/context token limits")
 
@@ -74,6 +74,8 @@ def build_patch(
             "reasoningEfforts": {"off": None, "high": "high"},
         }],
     }
+    if model == "Qwen/Qwen3.8-27B":
+        route["compat"]["chatTemplateKwargs"]["reasoning_effort"] = "xhigh"
     patch = [{"id": name, "disabled": True} for name in DISABLED]
     patch.extend([
         {"id": "llm-pi-ai", "disabled": False,

@@ -147,7 +147,7 @@ def run_turn(args, role, number, session):
     command.extend(("--ro-bind", str(HERE / "render.py"), "/integration/render.py",
                     "--ro-bind", str(HERE / "sandbox_entry.py"), "/integration/sandbox_entry.py",
                     "--ro-bind", str(HERE / "sandbox_gateway.py"), "/integration/sandbox_gateway.py",
-                    "--ro-bind", "/share/anaconda3/envs/vllm017", "/share/anaconda3/envs/vllm017"))
+                    "--ro-bind", str(args.python_runtime_root), str(args.python_runtime_root)))
     for name in ("venv", "source", "chrome-linux64", "draw.war", "lib", "fonts", "fonts.conf"):
         path = args.render_runtime / name
         command.extend(("--ro-bind", str(path), str(path)))
@@ -226,6 +226,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("runtime", "reference", "out", "renderer_python", "render_runtime"):
         parser.add_argument("--" + name.replace("_", "-"), required=True, type=Path)
+    parser.add_argument("--python-runtime-root", type=Path,
+                        default=Path("/share/anaconda3/envs/vllm017"))
     parser.add_argument("--generator-url", default="http://127.0.0.1:30101/v1")
     parser.add_argument("--generator-auth-file", type=Path,
                         help="Host-private generation credentials; never mounted into DSH")

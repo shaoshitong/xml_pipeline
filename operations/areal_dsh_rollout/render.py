@@ -17,7 +17,8 @@ def render(source: Path, output: Path, resources: Path, source_root: Path | None
     keys = ("HOME", "XDG_CONFIG_HOME", "XDG_CACHE_HOME", "TMPDIR")
     previous = {key: os.environ.get(key) for key in keys}
     # Chrome uses Unix sockets: a shared-storage TMPDIR may exceed sun_path.
-    with tempfile.TemporaryDirectory(prefix="drawio-chrome-", dir="/tmp") as home:
+    with tempfile.TemporaryDirectory(prefix="drawio-chrome-",
+                                     dir=os.environ.get("DSH_CHROME_TMPDIR", "/tmp")) as home:
         os.environ.update({key: home for key in keys})
         try:
             return render_editor(source, output, resources, source_root)
