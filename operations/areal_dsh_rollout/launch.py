@@ -47,6 +47,8 @@ def main():
     parser.add_argument("--generator-mem-fraction", type=float, default=0.45)
     parser.add_argument("--reviewer-mem-fraction", type=float, default=0.35)
     parser.add_argument("--long-context-yarn", action="store_true")
+    parser.add_argument("--generator-port", type=int, default=30000)
+    parser.add_argument("--reviewer-port", type=int, default=30001)
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
@@ -75,8 +77,8 @@ def main():
         logs.append(gpu_log)
         processes.append(subprocess.Popen(["nvidia-smi", "--query-gpu=timestamp,index,name,memory.used,utilization.gpu",
                                            "--format=csv", "-l", "2"], stdout=gpu_log, stderr=subprocess.STDOUT))
-        services = [("generator", args.generator, 30000, args.generator_mem_fraction, args.context_window),
-                    ("reviewer", "4B", 30001, args.reviewer_mem_fraction,
+        services = [("generator", args.generator, args.generator_port, args.generator_mem_fraction, args.context_window),
+                    ("reviewer", "4B", args.reviewer_port, args.reviewer_mem_fraction,
                      args.reviewer_context_window or args.context_window)]
         if args.reviewer_only:
             if not args.serve_only:

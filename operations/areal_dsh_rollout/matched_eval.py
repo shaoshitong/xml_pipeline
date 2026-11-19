@@ -29,10 +29,9 @@ def get_json(port, endpoint):
 def verify_server(port, context, output):
     info = get_json(port, "server_info")
     model = get_json(port, "model_info")
-    capacity = info.get("max_total_num_tokens")
-    if capacity is None:
-        capacity = next((state["max_total_num_tokens"] for state in info.get("internal_states", [])
-                         if "max_total_num_tokens" in state), None)
+    capacities = [state.get("memory_usage", {}).get("token_capacity")
+                  for state in info.get("internal_states", [])]
+    capacity = min((value for value in capacities if value is not None), default=None)
     save(output, {"server": info, "model": model})
     if info["context_length"] != context or capacity is None or capacity < context:
         raise RuntimeError(f"Port {port} did not provision the requested context: {context}, KV capacity: {capacity}")
@@ -67,12 +66,15 @@ def main():
     save(out / "matched-contract.json", contract)
     env = dict(os.environ, ROLLOUT_API_WIRE_AUDIT=str(out / "api-wire.jsonl"))
     local = args.model != "deepseek-flash"
+    generator_port = 34000 + int(os.environ["SLURM_JOB_ID"]) % 12000 * 2
+    reviewer_port = generator_port + 1
     service_out = out / "services"
     service = [str(args.root / "env/bin/python"), str(HERE / "launch.py"),
                "--root", str(args.root), "--runtime", str(args.runtime), "--reference", str(reference),
                "--out", str(service_out), "--serve-only", "--generator", args.model if local else "4B",
                "--context-window", str(CONTEXT if local else 65536), "--reviewer-context-window", "65536",
                "--generator-mem-fraction", "0.70", "--reviewer-mem-fraction", "0.18",
+               "--generator-port", str(generator_port), "--reviewer-port", str(reviewer_port),
                "--reasoning-effort", "high" if local else "off"]
     service += ["--long-context-yarn"] if local else ["--reviewer-only"]
     process = None
@@ -84,9 +86,9 @@ def main():
             if process.poll() is not None or time.monotonic() > deadline:
                 raise RuntimeError("Matched model services did not become ready")
             time.sleep(1)
-        contract["reviewer_backend"] = verify_server(30001, 65536, out / "reviewer-backend.json")
+        contract["reviewer_backend"] = verify_server(reviewer_port, 65536, out / "reviewer-backend.json")
         if local:
-            contract["generator_backend"] = verify_server(30000, CONTEXT, out / "generator-backend.json")
+            contract["generator_backend"] = verify_server(generator_port, CONTEXT, out / "generator-backend.json")
         save(out / "matched-contract.json", contract)
         print(json.dumps({"phase": "backend_verified", "model": args.model,
                           "context": CONTEXT, "max_output": OUTPUT}), flush=True)
@@ -96,11 +98,12 @@ def main():
                    "--out", str(out / "evaluation"), "--model", f"Qwen/Qwen3.5-{args.model}" if local else args.model,
                    "--rounds", str(args.phase), "--context-window", str(CONTEXT), "--max-tokens", str(OUTPUT),
                    "--reasoning-effort", "high" if local else "max", "--skill-mode", "full",
+                   "--reviewer-url", f"http://127.0.0.1:{reviewer_port}/v1",
                    "--sampling-preset", "precise-coding" if local else "model", "--single-self-review",
                    "--timeout", "1500", "--turn-timeout", "1350", "--recovery-policy", ""]
         if local:
             env["AREAL_EXTERNAL_TASK_TOKEN"] = secrets.token_urlsafe(32)
-            command += ["--api-url", "http://127.0.0.1:30000/v1"]
+            command += ["--api-url", f"http://127.0.0.1:{generator_port}/v1"]
         else:
             command += ["--key-file", str(args.root / "private-auth/deepseek-api.key"),
                         "--proxy", "http://10.120.48.31:30444"]
