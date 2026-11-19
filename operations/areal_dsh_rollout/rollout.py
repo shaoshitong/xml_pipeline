@@ -5,6 +5,7 @@ from hashlib import sha256
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import shlex
 import subprocess
@@ -58,6 +59,17 @@ def read_events(path):
             if line.startswith("{") and line.endswith("}")]
 
 
+def saved_final(state, events, role):
+    final = next((event for event in reversed(events) if event.get("type") == "final"), None)
+    if final is not None and role == "reviewer" and state.get("exit") == 0:
+        try:
+            review_payload(final)
+        except ValueError:
+            return None
+        state.update(completed=True, validation_error=None, revalidated_saved_final=True)
+    return final if state.get("completed") else None
+
+
 def run_turn(args, role, number, session):
     root = args.out / role
     checkpoint = root / f"round{number}"
@@ -70,8 +82,10 @@ def run_turn(args, role, number, session):
         events = read_events(previous) if previous.exists() else []
         session = state.get("session_id") or next(
             (e["sessionId"] for e in events if e.get("type") == "session"), session)
-        if state.get("completed"):
-            return session, next(e for e in reversed(events) if e.get("type") == "final")
+        final = saved_final(state, events, role)
+        if final is not None:
+            save(state_file, state)
+            return session, final
         sequence = len(list(root.glob(f"round{number}-continuation-*"))) + 1
         logs = root / f"round{number}-continuation-{sequence}"
     logs.mkdir(parents=True)
@@ -195,8 +209,10 @@ def final_text(event):
 
 def review_payload(event):
     text = final_text(event).strip()
-    if text.startswith("```"):
-        text = text.split("\n", 1)[1].rsplit("```", 1)[0]
+    if not text.startswith("{"):
+        blocks = re.findall(r"```(?:json)?[ \t]*\n(.*?)\n```", text, re.DOTALL)
+        if len(blocks) == 1:
+            text = blocks[0]
     review = json.loads(text)
     if (not isinstance(review, dict) or review.get("status") not in ("PASS", "FIX", "UNCERTAIN")
             or not isinstance(review.get("issues"), list)):
