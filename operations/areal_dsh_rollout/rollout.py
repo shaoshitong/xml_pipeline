@@ -148,6 +148,8 @@ def run_turn(args, role, number, session):
                     "--ro-bind", str(HERE / "sandbox_entry.py"), "/integration/sandbox_entry.py",
                     "--ro-bind", str(HERE / "sandbox_gateway.py"), "/integration/sandbox_gateway.py",
                     "--ro-bind", str(args.python_runtime_root), str(args.python_runtime_root)))
+    for path in getattr(args, "extra_runtime_mounts", ()):
+        command.extend(("--ro-bind", str(path), str(path)))
     for name in ("venv", "source", "chrome-linux64", "draw.war", "lib", "fonts", "fonts.conf"):
         path = args.render_runtime / name
         command.extend(("--ro-bind", str(path), str(path)))
@@ -163,7 +165,7 @@ def run_turn(args, role, number, session):
         command.extend(("--session-id", session))
     command.append(prompt)
     started = time.monotonic()
-    auth_file = args.generator_auth_file if role == "generator" else None
+    auth_file = args.generator_auth_file if role == "generator" else getattr(args, "reviewer_auth_file", None)
     preset = getattr(args, "reviewer_sampling_preset", None) if role == "reviewer" else None
     preset = preset or args.sampling_preset
     sampling = dict({"model": {}, "instruct": INSTRUCT_SAMPLING,
@@ -231,6 +233,8 @@ def main():
     parser.add_argument("--generator-url", default="http://127.0.0.1:30101/v1")
     parser.add_argument("--generator-auth-file", type=Path,
                         help="Host-private generation credentials; never mounted into DSH")
+    parser.add_argument("--reviewer-auth-file", type=Path,
+                        help="Separate host-private credentials for an external frozen reviewer")
     parser.add_argument("--reviewer-url", default="http://127.0.0.1:30102/v1")
     parser.add_argument("--generator-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--reviewer-model", default="Qwen/Qwen3.5-4B")
