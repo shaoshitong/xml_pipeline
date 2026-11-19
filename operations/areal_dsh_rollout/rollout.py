@@ -217,6 +217,7 @@ def review_payload(event):
         blocks = re.findall(r"```(?:json)?[ \t]*\n(.*?)\n```", text, re.DOTALL)
         if len(blocks) == 1:
             text = blocks[0]
+    repair = None
     try:
         review = json.loads(text)
     except json.JSONDecodeError as error:
@@ -224,13 +225,15 @@ def review_payload(event):
             raise
         normalized = text[:error.pos] + text[error.pos + 1:]
         review = json.loads(normalized)
-        review["_host_json_repair"] = {
+        repair = {
             "operation": "remove_one_unexpected_array_closer", "offset": error.pos,
             "removed_character": "]", "original_sha256": sha256(text.encode()).hexdigest(),
             "normalized_sha256": sha256(normalized.encode()).hexdigest()}
     if (not isinstance(review, dict) or review.get("status") not in ("PASS", "FIX", "UNCERTAIN")
             or not isinstance(review.get("issues"), list)):
         raise ValueError("Reviewer must return a JSON object with status and issues")
+    if repair:
+        review["_host_json_repair"] = repair
     return review
 
 
