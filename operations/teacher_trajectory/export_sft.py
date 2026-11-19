@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 from store import Store
+from interruption import annotation
 
 
 def encode_completion(tokenizer, prefix, full):
@@ -59,9 +60,11 @@ def materialize(store, row, decode_images=True):
     completion, response_images = normalize([response["choices"][0]["message"]], decode_images)
     if response_images:
         raise ValueError("Unexpected teacher-generated image output")
+    eligibility = annotation(store, row)
     return {"prompt": prompt, "completion": completion, "images": images,
             "tools": request.get("tools", []), "teacher_call_id": row["call_id"],
-            "episode": row["episode"], "training_loss": "completion_only"}
+            "episode": row["episode"], **eligibility,
+            "training_loss": "completion_only" if eligibility["supervision_eligible"] else "none"}
 
 
 def export(store, destination, episode=None):
@@ -93,6 +96,9 @@ def export(store, destination, episode=None):
                       "usage": json.loads(usage), "target": "this completion only",
                       "reviewer_is_observation": True, "fidelity_label": "unverified_without_gold",
                       "images_and_history": "lossless DAG references; resolved by materialize()"}
+            record.update(annotation(store, record))
+            counts["sft_eligible_generator_decisions"] += record["supervision_eligible"]
+            counts["interrupted_replies_excluded_from_sft"] += not record["supervision_eligible"]
             stream.write(json.dumps(record) + "\n")
     return dict(counts)
 

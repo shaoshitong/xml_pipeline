@@ -11,6 +11,8 @@ import sys
 import time
 
 from collect import save
+from export_sft import export
+from verify import open_archive
 
 
 def collector_alive(receipt):
@@ -43,12 +45,16 @@ def audit(args, folder):
         context = json.loads((target / "context.json").read_text())
         expected = sum(bool(x.strip()) for x in (folder / "sft-decisions.jsonl").read_text().splitlines())
         tools = integrity["tool_execution"][folder.name]
-        if not tools["model_and_execution_match"] or not tools["all_execution_results_present"]:
+        accounted = tools.get("all_model_tools_accounted", tools["model_and_execution_match"])
+        if not accounted or not tools["all_execution_results_present"]:
             raise ValueError("Recorded model tools do not match executed tools and results")
         if expected != context["calls"] or expected != integrity["qwen_template"]["calls"]:
             raise ValueError("SFT targets differ from context or template audit coverage")
+        indexed = export(open_archive(args.root), folder / "sft-decisions.jsonl", folder.name)
         save(target / "passed.json", {"at": time.time(), "episode": folder.name,
              "source_commit": args.source_commit, "generator_decisions": expected,
+             "sft_eligible_generator_decisions": indexed["sft_eligible_generator_decisions"],
+             "interrupted_replies_excluded_from_sft": indexed["interrupted_replies_excluded_from_sft"],
              "fits_64k": context["fits_64k"], "fits_native_context": context["fits_native_context"],
              "fidelity_verified": False})
     except Exception as error:
@@ -78,6 +84,10 @@ def main():
         summary = {"at": time.time(), "collector_alive": alive, "completed_episodes": len(completed),
                    "audited_episodes": len(passed), "failed_audits": failed,
                    "generator_decisions": sum(x["generator_decisions"] for x in passed),
+                   "sft_eligible_generator_decisions": sum(
+                       x.get("sft_eligible_generator_decisions", x["generator_decisions"]) for x in passed),
+                   "interrupted_replies_excluded_from_sft": sum(
+                       x.get("interrupted_replies_excluded_from_sft", 0) for x in passed),
                    "fits_64k": sum(x["fits_64k"] for x in passed),
                    "fits_native_context": sum(x["fits_native_context"] for x in passed),
                    "fidelity_verified": False}

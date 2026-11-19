@@ -10,6 +10,7 @@ import threading
 import time
 
 from export_sft import encode_completion, materialize
+from interruption import interrupted_replies, write_annotations
 from gateway import parse_reply
 from store import Store, canonical
 
@@ -85,8 +86,10 @@ def qwen_contexts(root, processor_path, episode=None, limit=None):
                         "qwen_prompt_tokens": prompt_tokens, "qwen_target_tokens": target_tokens,
                         "images": len(sizes), "vision_tokens": vision_tokens,
                         "masked_boundary_whitespace_tokens": shared_whitespace,
-                        "fits_64k": total <= 65536, "fits_native_context": total <= native_context})
+                        "fits_64k": total <= 65536, "fits_native_context": total <= native_context,
+                        "supervision_eligible": row.get("supervision_eligible", True)})
     return {"at": time.time(), "calls": len(records), "episodes": len({x["episode"] for x in records}),
+            "sft_eligible_calls": sum(x["supervision_eligible"] for x in records),
             "processor": str(processor_path), "native_context": native_context,
             "fits_64k": sum(x["fits_64k"] for x in records),
             "fits_native_context": sum(x["fits_native_context"] for x in records),
@@ -168,8 +171,15 @@ def verify(root, episode=None, qwen_template=None):
                     actual.add(event["callId"])
                 if event.get("type") == "tool_result":
                     returned.add(event["callId"])
+        proofs = interrupted_replies(root, store, ident, model_calls - actual)
+        interrupted = {t for proof in proofs for t in proof["tool_ids"]}
+        accounted = model_calls == actual | interrupted
+        if accounted and actual == returned:
+            write_annotations(root, proofs)
         execution[ident] = {"model_tool_ids": len(model_calls), "executed_tool_ids": len(actual),
                             "returned_tool_ids": len(returned), "model_and_execution_match": model_calls == actual,
+                            "all_model_tools_accounted": accounted,
+                            "interrupted_replies": proofs,
                             "all_execution_results_present": actual == returned}
     counts["object_count"], raw_bytes, packed_bytes = store.db.execute(
         "select count(*),sum(bytes),sum(stored_bytes) from objects").fetchone()
