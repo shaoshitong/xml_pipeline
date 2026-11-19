@@ -110,6 +110,24 @@ def deduplicate_attachments(store, folder):
     return {"verified": checked, "shared_image_links": linked}
 
 
+def run_review(config, number, session):
+    try:
+        return run_turn(config, "reviewer", number, session)
+    except RuntimeError:
+        path = config.out / "reviewer" / f"round{number}" / "status.json"
+        state = json.loads(path.read_text()) if path.exists() else {}
+        if state.get("validation_error") != "invalid_reviewer_json":
+            raise
+    previous = config.resume_note
+    config.resume_note = (previous + "\nYour previous review was not valid JSON. Re-emit the complete "
+                          "review as one valid JSON object, preserving the same assessment and findings. "
+                          "Do not redo the drawing or add new findings for this formatting retry.")
+    try:
+        return run_turn(config, "reviewer", number, session)
+    finally:
+        config.resume_note = previous
+
+
 def episode(args, record, store, provider, runtime, resources):
     ident = record["id"]
     folder = args.root / "episodes" / ident
@@ -180,7 +198,7 @@ def episode(args, record, store, provider, runtime, resources):
             save(folder / "progress.json", {"at": time.time(), "generation": number, **validity})
             if number == 1:
                 frozen = sha256(xml.read_bytes()).hexdigest()
-                reviewer, event = run_turn(config, "reviewer", number, reviewer)
+                reviewer, event = run_review(config, number, reviewer)
                 review = review_payload(event)
                 save(case / "review1.json", review)
                 if sha256(xml.read_bytes()).hexdigest() != frozen:
