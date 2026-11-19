@@ -134,6 +134,7 @@ def add_evaluation_arguments(evaluation):
         evaluation.add_argument("--" + name, type=Path, required=True)
     evaluation.add_argument("--episode-command", type=Path)
     evaluation.add_argument("--resume-from", type=Path, help="Previous evaluation root containing this DSH episode")
+    evaluation.add_argument("--restart-reviewer", action="store_true", help="Resume Generator with a fresh Reviewer session")
     evaluation.add_argument("--api-url", default="http://127.0.0.1:30555/v1")
     evaluation.add_argument("--model", default="deepseek-flash")
     evaluation.add_argument("--reviewer-url", default="http://127.0.0.1:30001/v1")
@@ -218,6 +219,8 @@ def main():
 
 
 def evaluate(args):
+    if args.restart_reviewer and not args.resume_from:
+        raise ValueError("restart-reviewer requires resume-from")
     target = urlsplit(args.api_url)
     if target.scheme != "http" or target.hostname not in ("127.0.0.1", "localhost", "::1"):
         raise ValueError("api-url must point to the local credential gateway, not directly to the provider")
@@ -249,6 +252,9 @@ def evaluate(args):
         if previous_protocol["reference_sha256"] != reference_sha256:
             raise ValueError("Resume reference SHA256 does not match the previous DSH episode")
         shutil.copytree(previous_episode, args.out / "episode", symlinks=True)
+        reviewer = args.out / "episode/reviewer"
+        if args.restart_reviewer and reviewer.exists():
+            reviewer.rename(reviewer.with_name("reviewer-before-restart-" + secrets.token_hex(4)))
     template = json.loads(args.episode_command.read_text()) if args.episode_command else default_episode(args)
     if resumed_from:
         template += ["--resume", "--resume-note", RECOVERY_POLICY]
@@ -284,7 +290,8 @@ def evaluate(args):
              "reviewer": {"model": "Qwen/Qwen3.5-4B", "url": args.reviewer_url,
                           "frozen": True, "native_capture": False},
              "reference_sha256": reference_sha256, "resumed_from": str(resumed_from) if resumed_from else None,
-             "recovery_policy": RECOVERY_POLICY if resumed_from else None}
+             "recovery_policy": RECOVERY_POLICY if resumed_from else None,
+             "reviewer_restarted": args.restart_reviewer}
     save(args.out / "eval-contract.json", audit)
     try:
         controller.initialize(role="external-eval", wait=True)

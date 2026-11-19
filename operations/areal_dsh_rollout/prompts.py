@@ -33,6 +33,8 @@ round{n}.png, and the Generator's own round{n}.drawio. You have no gold XML,
 gold-aware MCP, compiler diff, comparison score, other answers, or external model.
 Do not edit XML, render images, or modify any file. The host saves your final
 JSON as review{n}.json and gives it to the Generator for the next round.
+Use the supplied file/image read tools. Do not try shell commands or save a
+JSON file yourself; return the JSON directly as your final response.
 
 Compare the whole page and readable local regions. Check every visible element,
 exact readable wording, geometry, typography, colors, strokes, containment,

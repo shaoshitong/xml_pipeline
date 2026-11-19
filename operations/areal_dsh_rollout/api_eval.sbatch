@@ -43,6 +43,9 @@ resume_args=()
 if [[ -n "${RESUME_FROM:-}" ]]; then
   resume_args=(--resume-from "$RESUME_FROM")
 fi
+if [[ "${RESTART_REVIEWER:-0}" == "1" ]]; then
+  resume_args+=(--restart-reviewer)
+fi
 for case_id in ${CASE_IDS:-sanity3 022}; do
   "$root/controller/env/bin/python" -u "$source_dir/external_api_workflow.py" run \
     --root "$root" --runtime "$runtime" --reference "$root/inputs/$case_id/reference.png" \

@@ -164,6 +164,7 @@ class Relay(BaseHTTPRequestHandler):
                 record = {key: data[key] for key in ("model", "max_tokens", "thinking",
                           "reasoning_effort", "temperature", "presence_penalty") if key in data}
                 record.update(phase="request", time=request_time, image_inputs=images,
+                              tool_names=[tool.get("function", {}).get("name") for tool in data.get("tools", [])],
                               upstream=getattr(upstream, "_tunnel_host", None) or upstream.host)
                 with self.server.audit_path.open("a") as log:
                     log.write(json.dumps(record) + "\n")

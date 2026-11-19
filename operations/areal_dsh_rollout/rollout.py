@@ -161,9 +161,16 @@ def run_turn(args, role, number, session):
         exit_code, timed_out = 124, True
     events = read_events(logs / "events.jsonl")
     final = next((e for e in reversed(events) if e.get("type") == "final"), None)
+    validation_error = None
+    if role == "reviewer" and exit_code == 0 and final is not None:
+        try:
+            review_payload(final)
+        except ValueError:
+            validation_error = "invalid_reviewer_json"
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
     status = {"role": role, "round": number, "exit": exit_code, "timed_out": timed_out,
-              "completed": exit_code == 0 and final is not None, "session_id": sid,
+              "completed": exit_code == 0 and final is not None and validation_error is None,
+              "validation_error": validation_error, "session_id": sid,
               "log_dir": logs.name,
               "seconds": round(time.monotonic() - started, 2),
               "tool_calls": sum(e.get("type") == "tool_call" for e in events)}
@@ -171,7 +178,7 @@ def run_turn(args, role, number, session):
     if logs != checkpoint:
         save(checkpoint / "status.json", status)
     print(json.dumps(status), flush=True)
-    if exit_code or final is None:
+    if exit_code or final is None or validation_error:
         raise RuntimeError(f"DSH {role} round {number} failed; inspect {logs}")
     return sid, final
 
@@ -184,6 +191,17 @@ def final_text(event):
         if isinstance(value, dict):
             return final_text(value)
     raise ValueError("DSH final event has no textual payload")
+
+
+def review_payload(event):
+    text = final_text(event).strip()
+    if text.startswith("```"):
+        text = text.split("\n", 1)[1].rsplit("```", 1)[0]
+    review = json.loads(text)
+    if (not isinstance(review, dict) or review.get("status") not in ("PASS", "FIX", "UNCERTAIN")
+            or not isinstance(review.get("issues"), list)):
+        raise ValueError("Reviewer must return a JSON object with status and issues")
+    return review
 
 
 def main():
@@ -249,10 +267,7 @@ def main():
         if n < args.rounds:
             digest = sha256(xml.read_bytes()).hexdigest()
             reviewer, event = run_turn(args, "reviewer", n, reviewer)
-            text = final_text(event).strip()
-            if text.startswith("```"):
-                text = text.split("\n", 1)[1].rsplit("```", 1)[0]
-            save(case / f"review{n}.json", json.loads(text))
+            save(case / f"review{n}.json", review_payload(event))
             if sha256(xml.read_bytes()).hexdigest() != digest:
                 raise RuntimeError("Reviewer modified the frozen candidate")
     save(args.out / "completed.json", {"candidate": str(case / f"round{args.rounds}.drawio"),
