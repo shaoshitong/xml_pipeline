@@ -40,11 +40,14 @@ def environment(root):
     paths = {"TMPDIR": "tmp", "HF_HOME": "huggingface", "XDG_CACHE_HOME": "xdg",
              "TRITON_CACHE_DIR": "triton", "CUDA_CACHE_PATH": "cuda",
              "FLASHINFER_WORKSPACE_BASE": "flashinfer", "TORCH_EXTENSIONS_DIR": "torch-extensions",
-             "DSH_CHROME_TMPDIR": "tmp", "TVM_FFI_CACHE_DIR": "tvm-ffi", "NUMBA_CACHE_DIR": "numba"}
+             "TVM_FFI_CACHE_DIR": "tvm-ffi", "NUMBA_CACHE_DIR": "numba"}
     for key, name in paths.items():
         path = root / "cache" / name
         path.mkdir(parents=True, exist_ok=True)
         env[key] = str(path)
+    chrome_tmp = root.parent / "dio-tmp"
+    chrome_tmp.mkdir(exist_ok=True)
+    env["DSH_CHROME_TMPDIR"] = str(chrome_tmp)
     return env
 
 
