@@ -182,6 +182,10 @@ def select(args):
     query = "select record from pdfs where status='unsupported_builtin_import' and (" + predicate + ") limit ?"
     rows = db.execute(query, ["%" + name + "%" for name in NAMES] + [args.scan_limit])
     counts, chosen, seen_papers = Counter(), [], set()
+    for manifest in args.exclude_manifest:
+        for previous in records(manifest):
+            seen_papers.add(previous["paper_id"])
+            hashes.append(int(previous["phash"]))
     for (text,) in rows:
         row = json.loads(text)
         counts["examined"] += 1
@@ -272,6 +276,7 @@ def main():
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--limit", type=int, default=200)
     parser.add_argument("--scan-limit", type=int, default=12000)
+    parser.add_argument("--exclude-manifest", action="append", type=Path, default=[])
     select(parser.parse_args())
 
 
