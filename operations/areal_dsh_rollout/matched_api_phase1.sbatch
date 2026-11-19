@@ -12,5 +12,7 @@ runtime=/tmp/drawio-mou176-20261118/runtime
 source "$root/env-setup-runtime.sh"
 source_dir=${MATCHED_SOURCE:-$root/source/operations/areal_dsh_rollout}
 bash "$source_dir/stage_runtime.sh" "$root" "$runtime"
+reviewer_args=()
+if [[ -n "${REVIEWER_URL:-}" ]]; then reviewer_args=(--reviewer-url "$REVIEWER_URL"); fi
 exec "$root/env/bin/python" -u "$source_dir/matched_eval.py" --root "$root" --runtime "$runtime" \
-  --batch "$MATCHED_BATCH" --model deepseek-flash --phase 1 --api-only
+  --batch "$MATCHED_BATCH" --model deepseek-flash --phase "${MATCHED_PHASE:-1}" --api-only "${reviewer_args[@]}"

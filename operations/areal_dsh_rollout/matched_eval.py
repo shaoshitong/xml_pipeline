@@ -10,6 +10,7 @@ import subprocess
 import sys
 import time
 from urllib.request import ProxyHandler, build_opener
+from urllib.parse import urlsplit
 
 
 HERE = Path(__file__).resolve().parent
@@ -51,9 +52,10 @@ def main():
     parser.add_argument("--model", choices=("4B", "9B", "deepseek-flash"), required=True)
     parser.add_argument("--phase", type=int, choices=(1, 2), required=True)
     parser.add_argument("--api-only", action="store_true")
+    parser.add_argument("--reviewer-url", help="Reuse an owned frozen Reviewer service for an API-only second phase")
     args = parser.parse_args()
-    if args.api_only and (args.model != "deepseek-flash" or args.phase != 1):
-        parser.error("api-only is for the API Generator's first phase without a review")
+    if args.api_only and (args.model != "deepseek-flash" or args.phase == 2 and not args.reviewer_url):
+        parser.error("API-only phase two requires the existing frozen Reviewer URL")
     out = args.root / "matched" / args.batch / args.model / f"phase{args.phase}"
     out.mkdir(parents=True)
     reference = args.root / "inputs/022/reference.png"
@@ -95,7 +97,13 @@ def main():
             contract["reviewer_backend"] = verify_server(reviewer_port, 65536, out / "reviewer-backend.json")
             if local:
                 contract["generator_backend"] = verify_server(generator_port, CONTEXT, out / "generator-backend.json")
-        contract["api_only_first_generation"] = args.api_only
+        if args.api_only and args.phase == 2:
+            reviewer = urlsplit(args.reviewer_url)
+            if reviewer.hostname != "127.0.0.1" or reviewer.path != "/v1":
+                raise ValueError("The reused Reviewer must be the owned loopback API")
+            contract["reviewer_backend"] = verify_server(reviewer.port, 65536, out / "reviewer-backend.json")
+            contract["reused_reviewer_url"] = args.reviewer_url
+        contract["api_only_first_generation"] = args.api_only and args.phase == 1
         save(out / "matched-contract.json", contract)
         print(json.dumps({"phase": "backend_verified", "model": args.model,
                           "context": CONTEXT, "max_output": OUTPUT}), flush=True)
@@ -105,7 +113,7 @@ def main():
                    "--out", str(out / "evaluation"), "--model", f"Qwen/Qwen3.5-{args.model}" if local else args.model,
                    "--rounds", str(args.phase), "--context-window", str(CONTEXT), "--max-tokens", str(OUTPUT),
                    "--reasoning-effort", "high" if local else "max", "--skill-mode", "full",
-                   "--reviewer-url", f"http://127.0.0.1:{reviewer_port}/v1",
+                   "--reviewer-url", args.reviewer_url or f"http://127.0.0.1:{reviewer_port}/v1",
                    "--sampling-preset", "precise-coding" if local else "model", "--single-self-review",
                    "--timeout", "1500", "--turn-timeout", "1350", "--recovery-policy", ""]
         if local:
