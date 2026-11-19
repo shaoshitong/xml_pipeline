@@ -83,7 +83,10 @@ def main():
         save(args.out / "summary.json", summary)
         print(json.dumps(summary), flush=True)
         if not alive:
-            break
+            latest = {p.parent.name for p in (args.root / "episodes").glob("*/completed.json")}
+            if latest == {p.name for p in completed}:
+                break
+            continue
         time.sleep(15)
 
 
