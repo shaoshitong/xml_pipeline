@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import secrets
 import shutil
+import subprocess
 from types import SimpleNamespace
 import sys
 import time
@@ -23,13 +24,23 @@ HERE = Path(__file__).resolve().parent
 INTEGRATION = HERE.parent / "areal_dsh_rollout"
 sys.path.insert(0, str(INTEGRATION))
 from rollout import run_turn, review_payload
-from render import render
 
 
 def save(path, value):
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
     temporary.replace(path)
+
+
+def render(source, output, resources):
+    # The renderer changes process-wide Chrome environment and tempfile state.
+    # Keep those changes outside the concurrent collector and its gateways.
+    result = subprocess.run([sys.executable, str(INTEGRATION / "render.py"), str(source),
+                             str(output), "--runtime", str(resources)],
+                            capture_output=True, text=True, timeout=180)
+    if result.returncode:
+        raise RuntimeError("Official renderer failed: " + result.stderr[-1200:])
+    return json.loads(result.stdout)
 
 
 def link(source, destination):
