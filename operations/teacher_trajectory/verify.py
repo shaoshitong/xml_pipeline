@@ -40,12 +40,65 @@ def check_qwen_template(template, sample):
             "target_tool_calls": len(message.get("tool_calls", []))}
 
 
-def verify(root, episode=None, qwen_template=None):
+def open_archive(root):
     root = Path(root)
     store = Store.__new__(Store)
     store.root, store.objects = root / "archive", root / "archive/objects"
     store.lock = threading.RLock()
     store.db = sqlite3.connect("file:" + str(store.root / "ledger.sqlite") + "?mode=ro", uri=True)
+    return store
+
+
+def qwen_contexts(root, processor_path, episode=None, limit=None):
+    from transformers import Qwen3VLProcessor
+    root, processor_path = Path(root), Path(processor_path)
+    store = open_archive(root)
+    processor = Qwen3VLProcessor.from_pretrained(processor_path, local_files_only=True)
+    native_context = json.loads((processor_path / "config.json").read_text())["text_config"]["max_position_embeddings"]
+    completed = {path.parent.name for path in (root / "episodes").glob("*/completed.json")}
+    rows = store.db.execute("""select id,episode,request,response,json_extract(usage,'$.prompt_tokens')
+        from calls where completed=1 and role='generator' and status=200 and error is null
+        order by json_extract(usage,'$.prompt_tokens') desc""").fetchall()
+    rows = [row for row in rows if row[1] in completed and (episode is None or row[1] == episode)]
+    if limit:
+        rows = rows[:limit]
+    records = []
+    for number, ident, request, response, teacher_tokens in rows:
+        reply = store.get(response)
+        if reply["choices"][0].get("finish_reason") not in ("stop", "tool_calls"):
+            continue
+        row = materialize(store, {"call_id": number, "episode": ident,
+                                 "request_ref": request, "response_ref": response})
+        kwargs = {"tools": row["tools"], "enable_thinking": True, "tokenize": False}
+        prefix = processor.tokenizer.apply_chat_template(row["prompt"], add_generation_prompt=True, **kwargs)
+        full = processor.tokenizer.apply_chat_template(row["prompt"] + row["completion"],
+                                                       add_generation_prompt=False, **kwargs)
+        prefix_ids = processor.tokenizer.encode(prefix, add_special_tokens=False, truncation=False)
+        full_ids = processor.tokenizer.encode(full, add_special_tokens=False, truncation=False)
+        if full_ids[:len(prefix_ids)] != prefix_ids:
+            raise ValueError(f"Qwen tokenized completion boundary changed at call {number}")
+        sizes = [(image.height, image.width) for image in row["images"]]
+        vision_tokens = sum(processor._get_num_multimodal_tokens(image_sizes=sizes).num_image_tokens)
+        prompt_tokens = len(prefix_ids) + vision_tokens - len(sizes)
+        target_tokens = len(full_ids) - len(prefix_ids)
+        total = prompt_tokens + target_tokens
+        records.append({"call_id": number, "episode": ident, "teacher_prompt_tokens": teacher_tokens,
+                        "qwen_prompt_tokens": prompt_tokens, "qwen_target_tokens": target_tokens,
+                        "images": len(sizes), "vision_tokens": vision_tokens,
+                        "fits_64k": total <= 65536, "fits_native_context": total <= native_context})
+    return {"at": time.time(), "calls": len(records), "episodes": len({x["episode"] for x in records}),
+            "processor": str(processor_path), "native_context": native_context,
+            "fits_64k": sum(x["fits_64k"] for x in records),
+            "fits_native_context": sum(x["fits_native_context"] for x in records),
+            "max_qwen_prompt_tokens": max((x["qwen_prompt_tokens"] for x in records), default=0),
+            "tokenized_completion_boundaries_verified": True,
+            "vision_count_method": "Official processor image sizes and placeholder expansion; no model weights loaded",
+            "truncation": False, "training_run": False, "records": records}
+
+
+def verify(root, episode=None, qwen_template=None):
+    root = Path(root)
+    store = open_archive(root)
     query = "select id,episode,role,stage,request,response,wire,status,error,completed from calls"
     rows = store.db.execute(query + (" where episode=?" if episode else "") + " order by id",
                             (episode,) if episode else ()).fetchall()
@@ -138,9 +191,12 @@ def main():
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--episode")
     parser.add_argument("--qwen-template", type=Path)
+    parser.add_argument("--qwen-processor", type=Path)
+    parser.add_argument("--context-limit", type=int)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    result = verify(args.root, args.episode, args.qwen_template)
+    result = (qwen_contexts(args.root, args.qwen_processor, args.episode, args.context_limit)
+              if args.qwen_processor else verify(args.root, args.episode, args.qwen_template))
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
 
