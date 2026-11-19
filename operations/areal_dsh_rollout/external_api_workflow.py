@@ -272,6 +272,7 @@ def evaluate(args):
     config = InferenceEngineConfig(
         _version="v2", api_url=args.api_url, model=args.model, provider_api_key=task_token,
         experiment_name="drawio-external-eval", trial_name=trial, fileroot=str(args.out),
+        workers_ready_timeout=180,
         max_concurrent_rollouts=1, consumer_batch_size=1, request_retries=1,
         agent=AgentConfig(agent_cls_path="areal.experimental.openai.proxy.online_agent._OnlineAgent",
                           mode="online", admin_api_key=admin_key,
@@ -281,6 +282,7 @@ def evaluate(args):
     name_resolve_root = args.out / "name-resolve"
     name_resolve_root.mkdir()
     scheduler = LocalScheduler(log_dir=str(args.out / "native-logs"),
+                               startup_timeout=120,
                                experiment_name=config.experiment_name, trial_name=trial,
                                fileroot=str(args.out), enable_tms_offload=False,
                                nfs_record_root=str(name_resolve_root))
