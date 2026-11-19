@@ -102,7 +102,7 @@ def run_turn(args, role, number, session):
         from deepseek_profile import profile_yaml as builder
     if role == "reviewer":
         effort = "off"
-        context_window = min(context_window, 65536)
+        context_window = min(context_window, getattr(args, "reviewer_context_window", 65536))
         max_tokens = min(max_tokens, 32768)
     patch.write_text(builder(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
                              context_window=context_window, max_tokens=max_tokens,
@@ -235,6 +235,7 @@ def main():
                         help="Host-private generation credentials; never mounted into DSH")
     parser.add_argument("--reviewer-auth-file", type=Path,
                         help="Separate host-private credentials for an external frozen reviewer")
+    parser.add_argument("--reviewer-context-window", type=int, default=65536)
     parser.add_argument("--reviewer-url", default="http://127.0.0.1:30102/v1")
     parser.add_argument("--generator-model", default="Qwen/Qwen3.5-4B")
     parser.add_argument("--reviewer-model", default="Qwen/Qwen3.5-4B")

@@ -130,6 +130,7 @@ def episode(args, record, store, provider, runtime, resources):
         generator_url=f"http://127.0.0.1:{services['generator'].server_port}/v1",
         reviewer_url=f"http://127.0.0.1:{services['reviewer'].server_port}/v1",
         generator_auth_file=auth, reviewer_auth_file=auth, resume=True,
+        reviewer_context_window=1048576,
         generator_session_id=None, seeded=False, resume_note="", skill_mode="full",
         rounds=2, single_self_review=True, reasoning_effort="max", context_window=1048576,
         max_tokens=131072, sampling_preset="model", reviewer_sampling_preset="model",
@@ -137,6 +138,7 @@ def episode(args, record, store, provider, runtime, resources):
         extra_runtime_mounts=[args.dataset / "conversion/runtime/dsh"])
     protocol = {"source": record, "generator": "deepseek-flash", "reasoning_effort": "max",
                 "reviewer": "independent DeepSeek DSH session, no parameter updates",
+                "reviewer_context": 1048576, "reviewer_max_output": 32768,
                 "reviewer_training_loss": False, "generation_rounds": 2, "reviews": 1,
                 "generator_context": 1048576, "max_output": 131072,
                 "gold_available": False, "gold_feedback": False, "mcp": False,

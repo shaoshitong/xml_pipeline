@@ -145,6 +145,10 @@ class Handler(BaseHTTPRequestHandler):
             self.send_error(402, "Authorized experiment budget reached")
             return
         started, raw, status, error = time.time(), bytearray(), 0, None
+        journal = server.store.root / "streams"
+        journal.mkdir(exist_ok=True)
+        partial = journal / f"{number}.sse.part"
+        stream = partial.open("xb")
         connection = server.provider.connection()
         try:
             connection.request("POST", "/chat/completions", body, {
@@ -159,6 +163,8 @@ class Handler(BaseHTTPRequestHandler):
             connected = True
             while chunk := upstream.read1(65536):
                 raw.extend(chunk)
+                stream.write(chunk)
+                stream.flush()
                 if connected:
                     try:
                         self.wfile.write(chunk)
@@ -169,6 +175,7 @@ class Handler(BaseHTTPRequestHandler):
             error = type(failure).__name__
         finally:
             connection.close()
+            stream.close()
             wire = server.store.blob(bytes(raw))
             try:
                 reply, usage = parse_reply(bytes(raw))
@@ -178,6 +185,7 @@ class Handler(BaseHTTPRequestHandler):
                 error = error or "IncompleteProviderReply"
             response_ref = server.store.put(reply)
             server.store.finish(number, response_ref, wire, status, usage, cost, error)
+            partial.unlink()
             progress = server.store.root / f"progress.{number}.tmp"
             progress.write_text(json.dumps({"at": time.time(), **server.store.summary()}, indent=2))
             os.replace(progress, server.store.root / "progress.json")
@@ -185,6 +193,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def gateway(store, provider, episode, role, case, token, total_cap, episode_cap):
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+    server.daemon_threads = False
     server.store, server.provider, server.episode = store, provider, episode
     server.role, server.stage, server.case = role, 1, Path(case)
     server.task_token, server.total_cap, server.episode_cap = token, total_cap, episode_cap
