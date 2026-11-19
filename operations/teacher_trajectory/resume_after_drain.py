@@ -29,16 +29,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--source-commit", required=True)
+    parser.add_argument("--additional-manifest", type=Path, action="append", default=[])
+    parser.add_argument("--name", default="resume-after-drain")
     args = parser.parse_args()
     root = args.root.resolve()
-    coordinator = (root / "resume-after-drain.lock").open("a")
+    coordinator = (root / (args.name + ".lock")).open("a")
     fcntl.flock(coordinator, fcntl.LOCK_EX | fcntl.LOCK_NB)
     receipt = root / "main-launch.json"
     previous = json.loads(receipt.read_text())
     frozen = root / f"main-launch-{previous['pid']}-drained.json"
     save(frozen, previous)
     while collector_alive(frozen):
-        save(root / "resume-after-drain-status.json", {"at": time.time(), "phase": "waiting_for_active_episodes",
+        save(root / (args.name + "-status.json"), {"at": time.time(), "phase": "waiting_for_active_episodes",
              "previous_pid": previous["pid"], "source_commit": args.source_commit})
         time.sleep(5)
     if json.loads(receipt.read_text())["pid"] != previous["pid"]:
@@ -50,6 +52,12 @@ def main():
     db = sqlite3.connect("file:" + str(run / "archive/ledger.sqlite") + "?mode=ro", uri=True)
     if db.execute("select count(*) from calls where completed=0").fetchone()[0]:
         raise RuntimeError("Unfinished provider calls remain; inspect their journals before resuming")
+    budget = float(argv[argv.index("--budget") + 1])
+    cost = db.execute("select coalesce(sum(cost_upper),0) from calls").fetchone()[0]
+    if cost >= budget - 3.2:
+        save(root / (args.name + "-status.json"), {"at": time.time(), "phase": "budget_exhausted",
+             "previous_pid": previous["pid"], "source_commit": args.source_commit})
+        return
     paid = {row[0] for row in db.execute("select distinct episode from calls where role='generator'")}
     failed = set()
     for path in (run / "episodes").glob("*/status.json"):
@@ -57,7 +65,13 @@ def main():
         if value.get("error_type") and path.parent.name in paid and not (path.parent / "completed.json").exists():
             failed.add(path.parent.name)
     original = Path(argv[argv.index("--manifest") + 1])
-    records = [json.loads(line) for line in original.read_text().splitlines() if line]
+    records = {}
+    for path in [original, *args.additional_manifest]:
+        for line in path.read_text().splitlines():
+            if line.strip():
+                row = json.loads(line)
+                records.setdefault(row["id"], row)
+    records = list(records.values())
     records.sort(key=lambda row: row["id"] not in failed)
     manifest = root / "selection" / f"resume-{args.source_commit[:7]}.jsonl"
     manifest.write_text("".join(json.dumps(row) + "\n" for row in records))
@@ -84,9 +98,11 @@ def main():
         launch(root, "audit-follower-launch.json", audit_argv, env, "audit-follower.log")
     status = {"at": time.time(), "phase": "resumed", "previous_pid": previous["pid"],
               "current": current, "prioritized_failed_episodes": sorted(failed),
+              "manifest_records": len(records), "additional_manifests": [str(p) for p in args.additional_manifest],
               "same_archive_and_budget": True, "source_commit": args.source_commit}
-    save(root / "resume-after-drain-status.json", status)
-    save(root / "collector-drain-completion.json", status)
+    save(root / (args.name + "-status.json"), status)
+    if args.name == "resume-after-drain":
+        save(root / "collector-drain-completion.json", status)
     print(json.dumps(status), flush=True)
 
 
