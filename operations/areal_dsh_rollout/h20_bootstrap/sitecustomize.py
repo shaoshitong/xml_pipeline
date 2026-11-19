@@ -12,3 +12,8 @@ if os.environ.get("DSH_MASK_PROCESS_TITLE") == "1":
 
     setproctitle.setproctitle = task_title
     task_title("python")
+
+if os.environ.get("DSH_QWEN38_PARSER_COMPAT") == "1":
+    from qwen38_parser import install
+
+    install()

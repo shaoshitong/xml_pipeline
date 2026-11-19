@@ -107,6 +107,7 @@ def main():
         "gold_feedback": False, "fresh_from_image": True, "full_skill": True,
         "single_self_review": True, "preserve_thinking": False,
         "model_template_reasoning_effort": "xhigh", "generator_tensor_parallel": 2,
+        "qwen38_tool_boundary": "tokenizer-declared <tool_call> interruption of reasoning",
         "generator_gpus": [4, 5], "reviewer_gpus": [6], "authorized_gpus": [4, 5, 6, 7],
         "gpu_inventory_before": inventory, "source_commit": args.source_commit,
         "reference_sha256": sha256((args.root / "inputs/022/reference.png").read_bytes()).hexdigest(),
@@ -139,7 +140,8 @@ def main():
             log = (folder / "server.log").open("wb")
             logs.append(log)
             process = subprocess.Popen(command, stdout=log, stderr=log, start_new_session=True,
-                env=dict(env, CUDA_VISIBLE_DEVICES=devices, SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN="1"))
+                env=dict(env, CUDA_VISIBLE_DEVICES=devices, SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN="1",
+                         DSH_QWEN38_PARSER_COMPAT="1" if role == "generator" else "0"))
             processes.append(process)
             ready(process, port, timeout=900)
             contract[role + "_backend"] = verify_server(port, context, folder / "backend.json")
