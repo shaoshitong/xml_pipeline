@@ -37,9 +37,10 @@ def verify_server(port, context, output):
         raise RuntimeError(f"Port {port} did not provision the requested context: {context}, KV capacity: {capacity}")
     if not model["has_image_understanding"]:
         raise RuntimeError(f"Port {port} did not enable vision")
+    config = json.loads((Path(model["model_path"]) / "config.json").read_text())
     return {"context_length": info["context_length"], "kv_capacity": capacity,
             "has_image_understanding": True, "model_path": model["model_path"],
-            "model_override": info.get("json_model_override_args")}
+            "rope_parameters": config["text_config"]["rope_parameters"]}
 
 
 def main():

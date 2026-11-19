@@ -15,6 +15,18 @@ from urllib.request import urlopen
 HERE = Path(__file__).resolve().parent
 
 
+def long_context_overlay(source, output):
+    config = json.loads((source / "config.json").read_text())
+    config["text_config"]["rope_parameters"].update(
+        rope_type="yarn", factor=4.0, original_max_position_embeddings=262144)
+    output.mkdir()
+    for path in source.iterdir():
+        if path.name != "config.json":
+            (output / path.name).symlink_to(path.resolve(), target_is_directory=path.is_dir())
+    (output / "config.json").write_text(json.dumps(config, indent=2) + "\n")
+    return output
+
+
 def ready(process, port, timeout=600):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -88,6 +100,9 @@ def main():
             model = f"Qwen/Qwen3.5-{size}"
             mode = "instruct" if role == "reviewer" or args.reasoning_effort == "off" else "precise-coding"
             serving = args.root / "serving" / f"Qwen3.5-{size}-{mode}-v1"
+            if args.long_context_yarn and role == "generator":
+                serving = long_context_overlay(serving, args.out / "generator-serving")
+                environment["SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN"] = "1"
             command = [sys.executable, "-m", "sglang.launch_server", "--model-path",
                        str(serving), "--sampling-defaults", "model", "--served-model-name", model,
                        "--host", "127.0.0.1", "--port", str(port), "--tp", "1",
@@ -98,12 +113,6 @@ def main():
                            "presence_penalty": 1.5 if mode == "instruct" else 0.0,
                            "repetition_penalty": 1.0}),
                        "--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder"]
-            if args.long_context_yarn and role == "generator":
-                config = json.loads((serving / "config.json").read_text())
-                rope = dict(config["text_config"]["rope_parameters"], rope_type="yarn",
-                            factor=4.0, original_max_position_embeddings=262144)
-                command.extend(("--json-model-override-args", json.dumps({"text_config": {"rope_parameters": rope}})))
-                environment["SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN"] = "1"
             log = (args.out / f"{role}-server.log").open("wb")
             logs.append(log)
             process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, env=environment)

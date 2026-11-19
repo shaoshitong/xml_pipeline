@@ -3,7 +3,7 @@
 #SBATCH --partition=debug
 #SBATCH --nodelist=ACD1-63
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=2
 #SBATCH --mem=80G
 #SBATCH --time=00:29:00
 #SBATCH --job-name=drawio-matched-budget
