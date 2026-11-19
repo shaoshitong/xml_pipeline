@@ -341,7 +341,7 @@ def evaluate(args):
         if args.host_evaluation:
             audit["host_evaluation"] = json.loads(args.host_evaluation.read_text())
         save(args.out / "native-string-trajectory.json", trajectory)
-        audit["status"] = "completed"
+        audit["status"] = "completed" if audit["episode_success"] else "failed"
         save(args.out / "eval-result.json", audit)
         print(json.dumps({key: audit[key] for key in ("native_interactions", "episode_success",
                                                      "valid_visual_benchmark", "training_eligible")}), flush=True)

@@ -76,7 +76,8 @@ def native_summary(root, warnings):
                for key, kind in fields.items()}
     process = record.get("dsh_process", {})
     summary.update(result_available=result is not None, resumed=bool(record.get("resumed_from")),
-                   status=record.get("status") if record.get("status") in ("completed", "failed") else None,
+                   status="failed" if record.get("episode_success") is False else
+                   record.get("status") if record.get("status") in ("completed", "failed") else None,
                    dsh_exit=process.get("exit") if type(process.get("exit")) is int else None,
                    timed_out=process.get("timed_out") if type(process.get("timed_out")) is bool else None)
     return summary
@@ -203,6 +204,7 @@ function draw(){
  text('run-status',n?marker+'；AReaL 原生评测：'+(n.result_available?value(n.status):'eval-result.json 尚未写入')+'；DSH 退出码：'+value(n.dsh_exit)+'；超时：'+flag(n.timed_out):marker+'；launch 退出码：'+value(run.launch?.exit,external?'外部 API 流程不要求此记录':'未记录'));
  text('native',n?(n.resumed?'本次沿用保留的 DSH 会话；原生交互数仅计本次运行，阶段工具数仅计对应续跑日志。':'')+'原生 Generator 交互：'+value(n.native_interactions)+'；含图交互：'+value(n.image_bearing_interactions)+'；episode 成功标记：'+flag(n.episode_success)+'；图像流程有效标记：'+flag(n.valid_visual_benchmark)+'；训练资格：'+flag(n.training_eligible)+'；优化器启动：'+flag(n.optimizer_started)+'。流程标记不代表绘图质量通过，原生生命周期占位奖励不作质量分显示。':'');
  image('reference',data.reference,'原图');image('candidate',round?.png,'候选图');text('candidate-title',round?'候选 · 第 '+round.number+' 轮':'候选 · 暂无轮次产物');
+ if(round&&round.statuses.generator?.completed!==true)text('candidate-title','候选 · 第 '+round.number+' 轮 · 未完成中间产物');
  text('artifact',round?'PNG：'+(round.png?'已有文件':'未完成')+'；XML：'+(round.xml?round.xml.bytes+' 字节，SHA256 '+round.xml.sha256:'未完成'):'未完成：未发现任何轮次文件或协议轮次记录');
  const link=$('xml');link.removeAttribute('href');link.setAttribute('aria-disabled',!round?.xml);link.textContent=round?.xml?'下载本轮 XML':'XML 未完成';if(round?.xml){link.href='data:application/xml;base64,'+round.xml.data;link.download=run.name+'-round'+round.number+'.drawio'}
  $('stages').replaceChildren();for(const role of ['generator','reviewer']){const s=round?.statuses[role];row($('stages'),[role==='generator'?'Generator':'Reviewer',stage(s,role==='generator'||round?.review_expected!==false),value(s?.exit),value(s?.tool_calls),value(s?.seconds)])}
