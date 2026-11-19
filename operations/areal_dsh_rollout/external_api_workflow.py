@@ -90,16 +90,19 @@ def episode_command(template, replacements):
 
 
 def default_episode(args):
-    return [sys.executable, str(HERE / "rollout.py"), "--runtime", str(args.runtime.resolve()),
+    command = [sys.executable, str(HERE / "rollout.py"), "--runtime", str(args.runtime.resolve()),
             "--reference", "@REFERENCE@", "--out", "@EPISODE_OUT@",
             "--renderer-python", str(args.root / "renderer/venv/bin/python"),
             "--render-runtime", str(args.root / "renderer"), "--generator-model", args.model,
             "--generator-url", "@AREAL_BASE_URL@", "--generator-auth-file", "@AREAL_AUTH_FILE@",
             "--reviewer-model", "Qwen/Qwen3.5-4B", "--reviewer-url", args.reviewer_url,
             "--rounds", str(args.rounds), "--skill-mode", args.skill_mode,
-            "--sampling-preset", "model", "--reviewer-sampling-preset", "instruct",
+            "--sampling-preset", args.sampling_preset, "--reviewer-sampling-preset", "instruct",
             "--context-window", str(args.context_window), "--max-tokens", str(args.max_tokens),
             "--reasoning-effort", args.reasoning_effort, "--turn-timeout", str(args.turn_timeout)]
+    if args.single_self_review:
+        command.append("--single-self-review")
+    return command
 
 
 def run_dsh(command, output, timeout, token_env):
@@ -142,6 +145,9 @@ def add_evaluation_arguments(evaluation):
     evaluation.add_argument("--host-evaluation", type=Path)
     evaluation.add_argument("--rounds", type=int, default=4)
     evaluation.add_argument("--skill-mode", choices=("full", "no-skill", "minimal"), default="full")
+    evaluation.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding"), default="model")
+    evaluation.add_argument("--single-self-review", action="store_true")
+    evaluation.add_argument("--recovery-policy", default=RECOVERY_POLICY)
     evaluation.add_argument("--context-window", type=int, default=1048576)
     evaluation.add_argument("--max-tokens", type=int, default=131072)
     evaluation.add_argument("--reasoning-effort", choices=("low", "high", "max"), default="max")
@@ -257,7 +263,9 @@ def evaluate(args):
             reviewer.rename(reviewer.with_name("reviewer-before-restart-" + secrets.token_hex(4)))
     template = json.loads(args.episode_command.read_text()) if args.episode_command else default_episode(args)
     if resumed_from:
-        template += ["--resume", "--resume-note", RECOVERY_POLICY]
+        template.append("--resume")
+        if args.recovery_policy:
+            template += ["--resume-note", args.recovery_policy]
     episode_command(template, {})
     admin_key = "admin-" + secrets.token_urlsafe(32)
     trial = "external-eval-" + secrets.token_hex(6)
@@ -290,7 +298,7 @@ def evaluate(args):
              "reviewer": {"model": "Qwen/Qwen3.5-4B", "url": args.reviewer_url,
                           "frozen": True, "native_capture": False},
              "reference_sha256": reference_sha256, "resumed_from": str(resumed_from) if resumed_from else None,
-             "recovery_policy": RECOVERY_POLICY if resumed_from else None,
+             "recovery_policy": args.recovery_policy if resumed_from else None,
              "reviewer_restarted": args.restart_reviewer}
     save(args.out / "eval-contract.json", audit)
     try:

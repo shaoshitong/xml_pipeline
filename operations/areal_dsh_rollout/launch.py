@@ -43,6 +43,10 @@ def main():
     parser.add_argument("--seed-from", type=Path,
                         help="Start a fresh DSH context from this model's own saved candidate")
     parser.add_argument("--context-window", type=int, default=65536)
+    parser.add_argument("--reviewer-context-window", type=int)
+    parser.add_argument("--generator-mem-fraction", type=float, default=0.45)
+    parser.add_argument("--reviewer-mem-fraction", type=float, default=0.35)
+    parser.add_argument("--long-context-yarn", action="store_true")
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--reasoning-effort", choices=("high", "off"), default="high")
     parser.add_argument("--areal", action="store_true", help="Capture native unscored AReaL tensors")
@@ -71,26 +75,33 @@ def main():
         logs.append(gpu_log)
         processes.append(subprocess.Popen(["nvidia-smi", "--query-gpu=timestamp,index,name,memory.used,utilization.gpu",
                                            "--format=csv", "-l", "2"], stdout=gpu_log, stderr=subprocess.STDOUT))
-        services = [("generator", args.generator, 30000, "0.45"),
-                    ("reviewer", "4B", 30001, "0.35")]
+        services = [("generator", args.generator, 30000, args.generator_mem_fraction, args.context_window),
+                    ("reviewer", "4B", 30001, args.reviewer_mem_fraction,
+                     args.reviewer_context_window or args.context_window)]
         if args.reviewer_only:
             if not args.serve_only:
                 parser.error("reviewer-only requires the independent model service lifecycle")
             services = services[1:]
-        for role, size, port, fraction in services:
+        for role, size, port, fraction, context in services:
             model = f"Qwen/Qwen3.5-{size}"
-            mode = "instruct" if args.reasoning_effort == "off" else "precise-coding"
+            mode = "instruct" if role == "reviewer" or args.reasoning_effort == "off" else "precise-coding"
             serving = args.root / "serving" / f"Qwen3.5-{size}-{mode}-v1"
             command = [sys.executable, "-m", "sglang.launch_server", "--model-path",
                        str(serving), "--sampling-defaults", "model", "--served-model-name", model,
                        "--host", "127.0.0.1", "--port", str(port), "--tp", "1",
-                       "--dtype", "bfloat16", "--context-length", str(args.context_window),
-                       "--max-total-tokens", str(args.context_window), "--max-running-requests", "1",
-                       "--mem-fraction-static", fraction, "--cuda-graph-max-bs", "1",
+                       "--dtype", "bfloat16", "--context-length", str(context),
+                       "--max-total-tokens", str(context), "--max-running-requests", "1",
+                       "--mem-fraction-static", str(fraction), "--cuda-graph-max-bs", "1",
                        "--preferred-sampling-params", json.dumps({"min_p": 0.0,
                            "presence_penalty": 1.5 if mode == "instruct" else 0.0,
                            "repetition_penalty": 1.0}),
                        "--reasoning-parser", "qwen3", "--tool-call-parser", "qwen3_coder"]
+            if args.long_context_yarn and role == "generator":
+                config = json.loads((serving / "config.json").read_text())
+                rope = dict(config["text_config"]["rope_parameters"], rope_type="yarn",
+                            factor=4.0, original_max_position_embeddings=262144)
+                command.extend(("--json-model-override-args", json.dumps({"text_config": {"rope_parameters": rope}})))
+                environment["SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN"] = "1"
             log = (args.out / f"{role}-server.log").open("wb")
             logs.append(log)
             process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, env=environment)

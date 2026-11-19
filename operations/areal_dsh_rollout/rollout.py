@@ -100,7 +100,7 @@ def run_turn(args, role, number, session):
     max_tokens = args.max_tokens
     if model == "deepseek-flash":
         from deepseek_profile import profile_yaml as builder
-    elif role == "reviewer" and args.generator_model == "deepseek-flash":
+    if role == "reviewer":
         effort = "off"
         context_window = min(context_window, 65536)
         max_tokens = min(max_tokens, 32768)
@@ -121,6 +121,8 @@ def run_turn(args, role, number, session):
         prompt += "\nContinue this interrupted stage using this session's own saved work.\n"
     if args.resume_note:
         prompt += "\nHost runtime recovery note: " + args.resume_note + "\n"
+    if role == "generator" and args.single_self_review:
+        prompt += "\nPerform at most one render-and-inspect cycle in this generation stage. Return artifact paths and remaining limitations afterward; the independent Reviewer performs the next review.\n"
     prompt += (f"\nWorkspace paths: /case/reference.png; /case/round{number}.drawio; "
                f"/case/round{number}.png. Use these absolute paths for file tools.\n")
     if role == "generator":
@@ -240,6 +242,7 @@ def main():
     parser.add_argument("--seed", type=int)
     parser.add_argument("--reviewer-sampling-preset", choices=("model", "instruct", "precise-coding"))
     parser.add_argument("--resume-note", default="")
+    parser.add_argument("--single-self-review", action="store_true")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
     parser.add_argument("--reasoning-effort", choices=("off", "low", "high", "max"), default="high")
@@ -262,6 +265,7 @@ def main():
          "training": False, "gold_feedback": False, "rounds": args.rounds,
          "context_window": args.context_window, "max_tokens": args.max_tokens,
          "reasoning_effort": args.reasoning_effort,
+         "single_self_review": args.single_self_review,
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
          "fresh_context_from_own_candidate": args.seeded,
