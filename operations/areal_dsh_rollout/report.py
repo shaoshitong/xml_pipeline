@@ -150,9 +150,24 @@ def collect_run(name, root):
     wire = next((p for p in (root / "api-wire.jsonl", root.with_name(root.name + ".api-wire.jsonl"),
                             root.parent / "api-wire.jsonl") if p.is_file()), None)
     if wire:
-        audits.append(audit(wire, warnings, final_upstream="api.deepseek.com",
+        hosts = set()
+        for line in wire.read_text().splitlines():
+            try:
+                record = json.loads(line)
+            except ValueError:
+                continue  # audit() reports incomplete lines below.
+            upstream = record.get("upstream", "")
+            if record.get("phase") == "request" and upstream:
+                hosts.add(urlsplit(upstream if "://" in upstream else "//" + upstream).hostname)
+        destinations = hosts - {"127.0.0.1", "localhost", "::1"}
+        destination = "api.deepseek.com" if "api.deepseek.com" in hosts else (
+            next(iter(destinations)) if len(destinations) == 1 else
+            next(iter(hosts)) if len(hosts) == 1 else None)
+        audits.append(audit(wire, warnings, final_upstream=destination,
                             shared=wire == root.parent / "api-wire.jsonl"))
-    return {"name": name, "path": str(root), "protocol": {
+    outcome = read_json(root / "host-outcome.json", warnings) or {}
+    return {"name": name, "path": str(root),
+            "outcome": {key: outcome.get(key) for key in ("kind", "summary")}, "protocol": {
                 key: protocol.get(key) for key in
                 ("generator", "reviewer", "reviewer_frozen", "separate_model_instances", "rounds",
                  "external_api_generator", "context_window", "max_tokens")},
@@ -176,12 +191,12 @@ PAGE = r"""<!doctype html>
 <h1>Draw.io rollout 产物对照</h1>
 <div class="muted">实验阶段：rollout，无参数更新。Reviewer 按实验协议使用独立冻结模型；下方单独显示协议记录是否齐全。阶段完成、Reviewer 的 PASS 和宿主对象统计均不代表质量合格。</div>
 <div class="bar"><label>模型 / 运行<select id="runs"></select></label><label>轮次<select id="rounds"></select></label><a id="xml" class="download">下载本轮 XML</a></div>
-<section class="card"><h2 id="run-title"></h2><div id="protocol"></div><div id="run-status"></div><div id="native" class="muted"></div><div id="source" class="muted"></div></section>
+<section class="card"><h2 id="run-title"></h2><div id="protocol"></div><div id="run-status"></div><div id="native" class="muted"></div><div id="source" class="muted"></div><div id="outcome" class="fail"></div></section>
 <section class="pair"><div class="card"><h2>原图</h2><div id="reference" class="image-box"></div></div><div class="card"><h2 id="candidate-title">候选</h2><div id="candidate" class="image-box"></div><div id="artifact" class="muted"></div></div></section>
 <section class="card"><h2>本轮阶段记录</h2><div class="scroll"><table><thead><tr><th>角色</th><th>阶段状态</th><th>退出码</th><th>工具调用</th><th>耗时 / 秒</th></tr></thead><tbody id="stages"></tbody></table></div><div class="muted">工具次数取自 status.json；缺失记录显示“未记录”。PNG / XML 文件存在不等于模型阶段成功。</div></section>
 <section class="card"><details><summary>Reviewer JSON 原文</summary><pre id="review"></pre></details></section>
 <section class="card"><h2>请求与 GPU 审计</h2><div id="audit"></div><div id="gpu" class="muted"></div><div class="muted">图片请求为含图片输入的请求；图片输入次数包含历史重放。请求记录不表示请求成功或模型已正确理解图像。</div></section>
-<section class="card"><h2>运行级宿主对象评分</h2><div id="grade-caveat" class="fail"></div><div class="muted">仅显示已存在的 host-grade.json，不将其归因于当前所选轮次。对象级标记受比较器覆盖范围和容差限制。</div><div id="grade"></div></section>
+<section id="grade-panel" class="card"><h2>运行级宿主对象评分</h2><div id="grade-caveat" class="fail"></div><div class="muted">仅显示已存在的 host-grade.json，不将其归因于当前所选轮次。对象级标记受比较器覆盖范围和容差限制。</div><div id="grade"></div></section>
 <div id="notes" class="muted"></div><footer id="footer"></footer>
 </main><dialog id="zoom"><button id="close">关闭大图</button><div class="zoom-scroll"><img id="zoom-image" alt="原始分辨率图像"></div></dialog>
 <script id="data" type="application/json">__DATA__</script>
@@ -196,7 +211,7 @@ function stage(s,expected){if(!expected&&!s)return '末轮无 Review 阶段';if(
 function row(table,values){const tr=document.createElement('tr');for(const v of values){const td=document.createElement('td');td.textContent=v;tr.append(td)}table.append(tr)}
 function draw(){
  const run=data.runs[Number($('runs').value)],round=run.rounds.find(r=>r.number===Number($('rounds').value)),p=run.protocol,n=run.native_eval,external=p.external_api_generator===true;
- text('run-title',run.name);text('source','产物来源：'+run.path);
+ text('run-title',run.name);text('source','产物来源：'+run.path);text('outcome',run.outcome?.summary??'');
  const services=external?'Generator 使用外部 API，本地双模型实例字段不适用':'本地独立模型实例：'+(p.separate_model_instances===true?'协议已记录':'未记录');
  const limits=p.context_window!=null||p.max_tokens!=null?'；Generator 协议上下文 / 单次最大输出：'+value(p.context_window)+' / '+value(p.max_tokens):'';
  text('protocol','Generator：'+value(p.generator)+'；Reviewer：'+value(p.reviewer)+'；'+services+'；Reviewer 参数冻结：'+(p.reviewer_frozen===true?'协议已记录':'未记录')+limits);
@@ -212,11 +227,12 @@ function draw(){
  const a=$('audit');a.replaceChildren();if(!run.audits.length){a.textContent='未发现请求审计文件。'}else{const table=document.createElement('table');row(table,['审计文件 / 模型','请求数','含图请求','图片输入次数']);for(const item of run.audits)row(table,[item.file+' / '+item.models.join(', ')+(item.final_upstream?' → '+item.final_upstream+'（最终上游）':'')+(item.shared?'（共享文件范围，非本 run）':'')+(item.max_tokens?.length?'；请求最大输出 '+item.max_tokens.join(', '):''),item.requests,item.image_requests,item.image_inputs]);a.append(table)}
  text('gpu',run.gpu?'GPU：'+(run.gpu.names.join(', ')||'名称未记录')+'；采样行数 '+run.gpu.samples+'；峰值显存 '+value(run.gpu.peak_memory_mib)+' MiB；峰值利用率 '+value(run.gpu.peak_utilization)+'%':n?'本评测目录未收集 GPU 采样；本地 SGLang 部署和实际缓存容量单独记录于 matched-contract.json。':'未完成：未发现 GPU 采样文件。');
  text('grade-caveat',run.grade_caveat?'⚠ 此次 reward 契约审计未通过：下列 ABC 仅为当前比较器原始计数，不能视为有效视觉误差或奖励。':'');
- const g=$('grade');g.replaceChildren();if(!run.grade){g.textContent='未完成：未发现可读取的 host-grade.json。'}else{const metric=run.grade.metric,weights=metric.weights||{},unset=metric.weights_status==='unset'||['a','b','c'].some(k=>weights[k]===null||weights[k]===undefined);const stats=document.createElement('div');stats.className='stats';for(const [label,num]of [...'ABC'].map(k=>[k,run.grade.counts[k]]).concat([['E',run.grade_caveat?'不可用':unset?'未定':value(metric.E,'未定义')],['R',run.grade_caveat?'不可用':unset?'未定':value(metric.R,'未定义')]])){const part=document.createElement('div');part.className='stat';const strong=document.createElement('strong');strong.textContent=value(num);part.append(strong,document.createTextNode(label));stats.append(part)}g.append(stats);const p=document.createElement('p');p.className='muted';p.textContent='权重 a / b / c：'+['a','b','c'].map(k=>value(weights[k],'未定')).join(' / ')+'；'+value(metric.formula,'公式未记录');g.append(p)}
+ $('grade-panel').hidden=!run.grade;
+ const g=$('grade');g.replaceChildren();if(run.grade){const metric=run.grade.metric,weights=metric.weights||{},unset=metric.weights_status==='unset'||['a','b','c'].some(k=>weights[k]===null||weights[k]===undefined);const stats=document.createElement('div');stats.className='stats';for(const [label,num]of [...'ABC'].map(k=>[k,run.grade.counts[k]]).concat([['E',run.grade_caveat?'不可用':unset?'未定':value(metric.E,'未定义')],['R',run.grade_caveat?'不可用':unset?'未定':value(metric.R,'未定义')]])){const part=document.createElement('div');part.className='stat';const strong=document.createElement('strong');strong.textContent=value(num);part.append(strong,document.createTextNode(label));stats.append(part)}g.append(stats);const p=document.createElement('p');p.className='muted';p.textContent='权重 a / b / c：'+['a','b','c'].map(k=>value(weights[k],'未定')).join(' / ')+'；'+value(metric.formula,'公式未记录');g.append(p)}
  text('notes',run.warnings.join('；'));text('footer','离线自包含报告 · 生成时间 '+data.generated+' · 不包含原始模型 reasoning 或隐藏思维。');
 }
 function selectRun(){const run=data.runs[Number($('runs').value)],select=$('rounds');select.replaceChildren();for(const r of run.rounds)option(select,'第 '+r.number+' 轮'+(r.png?'':' · PNG 未完成'),r.number);if(!run.rounds.length)option(select,'暂无轮次',0);const ready=run.rounds.filter(r=>r.png);if(ready.length)select.value=ready.at(-1).number;draw()}
-for(const [i,run]of data.runs.entries())option($('runs'),run.name,i);$('runs').onchange=selectRun;$('rounds').onchange=draw;$('close').onclick=()=>$('zoom').close();selectRun();
+for(const [i,run]of data.runs.entries())option($('runs'),run.name,i);$('runs').onchange=selectRun;$('rounds').onchange=draw;$('close').onclick=()=>$('zoom').close();$('runs').value=data.runs.length-1;selectRun();
 </script></html>"""
 
 
@@ -232,10 +248,18 @@ def main():
     parser.add_argument("--reference", required=True, type=Path)
     parser.add_argument("--run", action="append", required=True, metavar="NAME=PATH")
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--baseline-html", type=Path)
     args = parser.parse_args()
     if not args.reference.is_file():
         parser.error("--reference PNG 文件不存在")
     runs = []
+    if args.baseline_html:
+        payload = re.search(r'<script id="data" type="application/json">(.*?)</script>',
+                            args.baseline_html.read_text(), re.S)
+        baseline = json.loads(payload.group(1))
+        if baseline["reference"]["sha256"] != asset(args.reference)["sha256"]:
+            parser.error("baseline HTML 与本次 reference PNG 不同")
+        runs.extend(baseline["runs"])
     for entry in args.run:
         name, separator, path = entry.partition("=")
         if not separator or not name or not path:
