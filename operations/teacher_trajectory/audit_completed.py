@@ -16,9 +16,10 @@ from collect import save
 def collector_alive(receipt):
     value = json.loads(receipt.read_text())
     path = Path(f"/proc/{value['pid']}/stat")
-    if not path.exists():
+    try:
+        fields = path.read_text().split()
+    except FileNotFoundError:
         return False
-    fields = path.read_text().split()
     return fields[2] != "Z" and fields[21] == value["startticks"]
 
 
