@@ -9,7 +9,7 @@ import sqlite3
 import threading
 import time
 
-from export_sft import materialize
+from export_sft import encode_completion, materialize
 from gateway import parse_reply
 from store import Store, canonical
 
@@ -73,24 +73,23 @@ def qwen_contexts(root, processor_path, episode=None, limit=None):
         prefix = processor.tokenizer.apply_chat_template(row["prompt"], add_generation_prompt=True, **kwargs)
         full = processor.tokenizer.apply_chat_template(row["prompt"] + row["completion"],
                                                        add_generation_prompt=False, **kwargs)
-        prefix_ids = processor.tokenizer.encode(prefix, add_special_tokens=False, truncation=False)
-        full_ids = processor.tokenizer.encode(full, add_special_tokens=False, truncation=False)
-        if full_ids[:len(prefix_ids)] != prefix_ids:
-            raise ValueError(f"Qwen tokenized completion boundary changed at call {number}")
+        full_ids, loss_mask, shared_whitespace = encode_completion(processor.tokenizer, prefix, full)
         sizes = [(image.height, image.width) for image in row["images"]]
         vision_tokens = sum(processor._get_num_multimodal_tokens(image_sizes=sizes).num_image_tokens)
-        prompt_tokens = len(prefix_ids) + vision_tokens - len(sizes)
-        target_tokens = len(full_ids) - len(prefix_ids)
+        target_tokens = sum(loss_mask)
+        prompt_tokens = len(full_ids) - target_tokens + vision_tokens - len(sizes)
         total = prompt_tokens + target_tokens
         records.append({"call_id": number, "episode": ident, "teacher_prompt_tokens": teacher_tokens,
                         "qwen_prompt_tokens": prompt_tokens, "qwen_target_tokens": target_tokens,
                         "images": len(sizes), "vision_tokens": vision_tokens,
+                        "masked_boundary_whitespace_tokens": shared_whitespace,
                         "fits_64k": total <= 65536, "fits_native_context": total <= native_context})
     return {"at": time.time(), "calls": len(records), "episodes": len({x["episode"] for x in records}),
             "processor": str(processor_path), "native_context": native_context,
             "fits_64k": sum(x["fits_64k"] for x in records),
             "fits_native_context": sum(x["fits_native_context"] for x in records),
             "max_qwen_prompt_tokens": max((x["qwen_prompt_tokens"] for x in records), default=0),
+            "masked_boundary_whitespace_tokens": sum(x["masked_boundary_whitespace_tokens"] for x in records),
             "tokenized_completion_boundaries_verified": True,
             "vision_count_method": "Official processor image sizes and placeholder expansion; no model weights loaded",
             "truncation": False, "training_run": False, "records": records}

@@ -11,6 +11,22 @@ from pathlib import Path
 from store import Store
 
 
+def encode_completion(tokenizer, prefix, full):
+    """Mask a jointly encoded decision, including BPE whitespace at its boundary."""
+    if not full.startswith(prefix):
+        raise ValueError("Rendered completion does not extend its prompt")
+    encoded = tokenizer(full, add_special_tokens=False, return_offsets_mapping=True, truncation=False)
+    boundary, shared_whitespace = len(prefix), 0
+    mask = []
+    for start, end in encoded["offset_mapping"]:
+        if start < boundary < end:
+            if not full[start:end].isspace():
+                raise ValueError("Completion boundary crosses a non-whitespace token")
+            shared_whitespace += 1
+        mask.append(int(start >= boundary and end > start))
+    return encoded["input_ids"], mask, shared_whitespace
+
+
 def normalize(messages):
     from PIL import Image
     output, images = deepcopy(messages), []
