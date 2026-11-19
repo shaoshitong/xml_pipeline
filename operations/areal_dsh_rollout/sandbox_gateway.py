@@ -1,6 +1,8 @@
 """Allow only OpenAI generation requests through a private host Unix socket."""
 
 import argparse
+import base64
+from hashlib import sha256
 import http.client
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
@@ -9,6 +11,7 @@ from pathlib import Path
 import signal
 import socket
 import socketserver
+import time
 from urllib.parse import urlsplit
 
 
@@ -147,8 +150,30 @@ class Relay(BaseHTTPRequestHandler):
                        "Accept": self.headers.get("Accept", "application/json")}
             headers.update(self.server.upstream_headers)
             upstream = self.server.connection_factory()
+            request_time = time.time()
+            if self.server.audit_path and self.command == "POST":
+                data = json.loads(body)
+                images = []
+                for message in data.get("messages", []):
+                    content = message.get("content")
+                    for part in content if isinstance(content, list) else []:
+                        if part.get("type") == "image_url":
+                            url = part["image_url"]["url"]
+                            pixels = base64.b64decode(url.split(",", 1)[1])
+                            images.append({"bytes": len(pixels), "sha256": sha256(pixels).hexdigest()})
+                record = {key: data[key] for key in ("model", "max_tokens", "thinking",
+                          "reasoning_effort", "temperature", "presence_penalty") if key in data}
+                record.update(phase="request", time=request_time, image_inputs=images,
+                              upstream=getattr(upstream, "_tunnel_host", None) or upstream.host)
+                with self.server.audit_path.open("a") as log:
+                    log.write(json.dumps(record) + "\n")
             upstream.request(self.command, self.path, body if body else None, headers)
             response = upstream.getresponse()
+            if self.server.audit_path:
+                with self.server.audit_path.open("a") as log:
+                    log.write(json.dumps({"phase": "response_headers", "request_time": request_time,
+                                          "status": response.status,
+                                          "seconds": time.time() - request_time}) + "\n")
             self.send_response(response.status)
             responding = True
             blocked = HOP_HEADERS | SECRET_HEADERS
@@ -178,6 +203,8 @@ def configure(server, connection_factory, headers=None, validate=True, timeout=9
     server.validate_images = validate
     server.timeout_seconds = timeout
     server.sampling = sampling or {}
+    audit = os.environ.get("ROLLOUT_API_WIRE_AUDIT")
+    server.audit_path = Path(audit) if audit else None
     return server
 
 

@@ -11,6 +11,7 @@ root=${TASK_ROOT:-/data/user/mou176/experiments/drawio-areal-dsh-20261118}
 source_dir="$root/source/operations/areal_dsh_rollout"
 runtime=/tmp/drawio-mou176-20261118/runtime
 source "$root/env-setup-runtime.sh"
+export ROLLOUT_API_WIRE_AUDIT="$root/api-eval/probe-$SLURM_JOB_ID.api-wire.jsonl"
 bash "$source_dir/stage_runtime.sh" "$root" "$runtime"
 exec "$root/controller/env/bin/python" -u "$source_dir/external_api_workflow.py" run \
   --root "$root" --runtime "$runtime" --reference "$root/inputs/sanity3/reference.png" \

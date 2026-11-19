@@ -244,7 +244,8 @@ def evaluate(args):
         _version="v2", api_url=args.api_url, model=args.model, provider_api_key=task_token,
         experiment_name="drawio-external-eval", trial_name=trial, fileroot=str(args.out),
         max_concurrent_rollouts=1, consumer_batch_size=1, request_retries=1,
-        agent=AgentConfig(mode="online", admin_api_key=admin_key,
+        agent=AgentConfig(agent_cls_path="areal.experimental.openai.proxy.online_agent._OnlineAgent",
+                          mode="online", admin_api_key=admin_key,
                           export_style="individual", turn_discount=1.0),
         admin_api_key=admin_key,
     )

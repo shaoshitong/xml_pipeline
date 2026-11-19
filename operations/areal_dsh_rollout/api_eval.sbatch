@@ -16,6 +16,7 @@ output="$root/api-eval/job-$SLURM_JOB_ID"
 source "$root/env-setup-runtime.sh"
 bash "$source_dir/stage_runtime.sh" "$root" "$runtime"
 mkdir -p "$output"
+export ROLLOUT_API_WIRE_AUDIT="$output/api-wire.jsonl"
 "$root/env/bin/python" -u "$source_dir/launch.py" \
   --root "$root" --runtime "$runtime" --reference "$root/inputs/022/reference.png" \
   --out "$output/reviewer" --generator 4B --reasoning-effort off \
