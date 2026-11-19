@@ -132,7 +132,7 @@ def run_turn(args, role, number, session):
     runtime = args.runtime.resolve()
     case = (args.out / "case").resolve()
     mounts = ["--bind" if role == "generator" else "--ro-bind", str(case), "/case"]
-    command = ["bwrap", "--unshare-all", "--new-session", "--die-with-parent",
+    command = [shutil.which("bwrap") or "bwrap", "--unshare-all", "--new-session", "--die-with-parent",
                "--ro-bind", "/usr", "/usr", "--symlink", "usr/bin", "/bin",
                "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64",
                "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp",
