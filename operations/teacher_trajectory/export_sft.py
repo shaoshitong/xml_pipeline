@@ -27,7 +27,7 @@ def encode_completion(tokenizer, prefix, full):
     return encoded["input_ids"], mask, shared_whitespace
 
 
-def normalize(messages):
+def normalize(messages, decode_images=True):
     from PIL import Image
     output, images = deepcopy(messages), []
     for message in output:
@@ -44,16 +44,18 @@ def normalize(messages):
                 if not url.startswith("data:image/"):
                     raise ValueError("Training image is not archived inline")
                 image = Image.open(BytesIO(base64.b64decode(url.split(",", 1)[1])))
-                image.load()
-                images.append(image.copy())
+                if decode_images:
+                    image.load()
+                    image = image.copy()
+                images.append(image)
                 content[index] = {"type": "image"}
     return output, images
 
 
-def materialize(store, row):
+def materialize(store, row, decode_images=True):
     request, response = store.get(row["request_ref"]), store.get(row["response_ref"])
-    prompt, images = normalize(request["messages"])
-    completion, response_images = normalize([response["choices"][0]["message"]])
+    prompt, images = normalize(request["messages"], decode_images)
+    completion, response_images = normalize([response["choices"][0]["message"]], decode_images)
     if response_images:
         raise ValueError("Unexpected teacher-generated image output")
     return {"prompt": prompt, "completion": completion, "images": images,

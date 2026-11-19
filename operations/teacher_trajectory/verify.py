@@ -46,6 +46,8 @@ def open_archive(root):
     store.root, store.objects = root / "archive", root / "archive/objects"
     store.lock = threading.RLock()
     store.db = sqlite3.connect("file:" + str(store.root / "ledger.sqlite") + "?mode=ro", uri=True)
+    # Audits only read immutable nodes; materialize() copies message structures.
+    store.get = lru_cache(maxsize=32768)(store.get)
     return store
 
 
@@ -68,7 +70,7 @@ def qwen_contexts(root, processor_path, episode=None, limit=None):
         if reply["choices"][0].get("finish_reason") not in ("stop", "tool_calls"):
             continue
         row = materialize(store, {"call_id": number, "episode": ident,
-                                 "request_ref": request, "response_ref": response})
+                                 "request_ref": request, "response_ref": response}, decode_images=False)
         kwargs = {"tools": row["tools"], "enable_thinking": True, "tokenize": False}
         prefix = processor.tokenizer.apply_chat_template(row["prompt"], add_generation_prompt=True, **kwargs)
         full = processor.tokenizer.apply_chat_template(row["prompt"] + row["completion"],
@@ -90,6 +92,7 @@ def qwen_contexts(root, processor_path, episode=None, limit=None):
             "fits_native_context": sum(x["fits_native_context"] for x in records),
             "max_qwen_prompt_tokens": max((x["qwen_prompt_tokens"] for x in records), default=0),
             "masked_boundary_whitespace_tokens": sum(x["masked_boundary_whitespace_tokens"] for x in records),
+            "archive_node_cache": store.get.cache_info()._asdict(),
             "tokenized_completion_boundaries_verified": True,
             "vision_count_method": "Official processor image sizes and placeholder expansion; no model weights loaded",
             "truncation": False, "training_run": False, "records": records}
