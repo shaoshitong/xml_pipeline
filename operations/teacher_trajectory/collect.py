@@ -106,6 +106,12 @@ def episode(args, record, store, provider, runtime, resources):
     if completed.is_file():
         return json.loads(completed.read_text())
     folder.mkdir(parents=True, exist_ok=True)
+    attempts = folder / "attempts"
+    attempts.mkdir(exist_ok=True)
+    if (folder / "protocol.json").is_file() and not any(attempts.iterdir()):
+        save(attempts / "legacy.json", {"protocol": json.loads((folder / "protocol.json").read_text()),
+             "status": json.loads((folder / "status.json").read_text())})
+    attempt_file = attempts / f"attempt-{len(list(attempts.glob('attempt-*.json'))) + 1:03d}.json"
     case = folder / "case"
     case.mkdir(exist_ok=True)
     reference = Path(record["reference"])
@@ -147,6 +153,9 @@ def episode(args, record, store, provider, runtime, resources):
                 "complete_trace_does_not_imply_every_step_is_correct": True}
     save(folder / "protocol.json", protocol)
     status = {"id": ident, "paper": record["paper"], "started": time.time(), "completed": False}
+    with store.lock:
+        first_call = store.db.execute("select coalesce(max(id),0) from calls").fetchone()[0] + 1
+    status["first_call_id_this_attempt"] = first_call
     save(folder / "status.json", status)
     generator, reviewer = None, None
     try:
@@ -185,6 +194,7 @@ def episode(args, record, store, provider, runtime, resources):
                 "completion_messages": len(row["completion"]), "images": len(row["images"]),
                 "tools": len(row["tools"]), "loss": row["training_loss"]}
         save(folder / "status.json", status)
+        save(attempt_file, {"protocol": protocol, "status": status})
         if status["completed"]:
             save(completed, status)
     return status
@@ -209,11 +219,17 @@ def main():
     store = Store(args.root / "archive")
     provider = Provider(args.key_file.read_text().strip(), args.proxy)
     balance = provider.balance()
+    original = store.db.execute("select value from metadata where key='balance_at_start'").fetchone()
+    if not store.db.execute("select 1 from metadata where key='first_balance'").fetchone():
+        store.metadata("first_balance", json.loads(original[0]) if original else balance)
     store.metadata("pricing", PRICING)
     store.metadata("authorized_budget_cny", args.budget)
     store.metadata("balance_at_start", balance)
     if not balance["is_available"]:
         raise RuntimeError("Provider reports no usable balance")
+    terminal = args.root / "terminal.json"
+    if terminal.is_file():
+        terminal.rename(args.root / f"terminal-{int(time.time())}.json")
     runtime, resources = prepare(args.root, args.dataset)
     records = [json.loads(x) for x in args.manifest.read_text().splitlines() if x]
     records = [x for x in records if x.get("visual_approval") == "approved"]
