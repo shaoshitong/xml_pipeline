@@ -147,6 +147,27 @@ def assess(path):
         return image, stats
 
 
+def source_context(record):
+    source = Path(record["source_pdf"])
+    paper_root = Path(str(source).split("/source/")[0])
+    metadata = paper_root / "provenance.json"
+    if not metadata.is_file():
+        raise ValueError("No archived arXiv provenance")
+    provenance = json.loads(metadata.read_text())
+    if paper_id(provenance.get("arxiv_id", provenance.get("abs_url"))) != record["paper_id"]:
+        raise ValueError("arXiv provenance paper ID mismatch")
+    pattern = re.compile(r"\\includegraphics\s*(?:\[[^\]]*\]\s*)?\{[^}]*" + re.escape(source.stem) + r"(?:\.pdf)?\}")
+    for tex in (paper_root / "source").rglob("*.tex"):
+        text = tex.read_text(errors="replace")
+        match = pattern.search(text)
+        if match:
+            return {"paper_metadata": provenance, "tex_file": str(tex),
+                    "tex_sha256": sha256(tex.read_bytes()).hexdigest(),
+                    "includegraphics": match.group(),
+                    "tex_context": text[max(0, match.start() - 250):match.end() + 1000]}
+    raise ValueError("Source figure is not linked from the archived paper TeX")
+
+
 def select(args):
     root, out = args.dataset.resolve(), args.out.resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -216,6 +237,11 @@ def select(args):
                   "complexity": features, "native_xml_absence_evidence": row,
                   "visual_approval": "pending", "gold_paper_overlap": False,
                   "gold_near_image_threshold_bits": 7}
+        try:
+            record.update(source_context(record))
+        except ValueError:
+            counts["missing_paper_figure_link"] += 1
+            continue
         (folder / "provenance.json").write_text(json.dumps(record, indent=2) + "\n")
         chosen.append(record)
         seen_papers.add(paper)

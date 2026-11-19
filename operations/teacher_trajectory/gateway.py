@@ -6,6 +6,7 @@ import hmac
 import http.client
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 import threading
 import time
@@ -36,7 +37,7 @@ def charge(usage, started, ended):
 
 def parse_reply(raw):
     frames, choices, usage, metadata = [], {}, {}, {}
-    lines = raw.splitlines() if raw.startswith((b"data:", b":", b"\n")) else []
+    lines = raw.splitlines() if raw.lstrip().startswith((b"data:", b":")) else []
     if not lines:
         value = json.loads(raw)
         return value, value.get("usage", {})
@@ -122,6 +123,9 @@ class Handler(BaseHTTPRequestHandler):
         if request.get("model") != "deepseek-flash":
             self.send_error(400, "Only the authorized teacher model is available")
             return
+        if request.get("stream"):
+            request.setdefault("stream_options", {})["include_usage"] = True
+        body = canonical(request)
         request_ref = server.store.put(request)
         if canonical(server.store.get(request_ref)) != canonical(request):
             raise ValueError("Request round-trip verification failed")
@@ -174,8 +178,9 @@ class Handler(BaseHTTPRequestHandler):
                 error = error or "IncompleteProviderReply"
             response_ref = server.store.put(reply)
             server.store.finish(number, response_ref, wire, status, usage, cost, error)
-            with (server.store.root / "progress.json").open("w") as stream:
-                json.dump({"at": time.time(), **server.store.summary()}, stream, indent=2)
+            progress = server.store.root / f"progress.{number}.tmp"
+            progress.write_text(json.dumps({"at": time.time(), **server.store.summary()}, indent=2))
+            os.replace(progress, server.store.root / "progress.json")
 
 
 def gateway(store, provider, episode, role, case, token, total_cap, episode_cap):

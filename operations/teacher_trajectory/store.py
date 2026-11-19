@@ -4,6 +4,7 @@ import base64
 import gzip
 from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import sqlite3
 import threading
@@ -41,11 +42,14 @@ class Store:
         if not path.exists():
             path.parent.mkdir(exist_ok=True)
             packed = raw if image else gzip.compress(raw, compresslevel=3, mtime=0)
+            temporary = path.with_name(path.name + f".{os.getpid()}.{threading.get_ident()}.tmp")
+            temporary.write_bytes(packed)
             try:
-                with path.open("xb") as stream:
-                    stream.write(packed)
+                os.link(temporary, path)
             except FileExistsError:
                 pass
+            finally:
+                temporary.unlink()
             with self.lock:
                 self.db.execute("insert or ignore into objects values(?,?,?)",
                                 (digest, len(raw), len(packed)))
