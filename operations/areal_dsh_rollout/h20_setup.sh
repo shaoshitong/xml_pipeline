@@ -21,6 +21,11 @@ controller="$root/controller/env/bin/python"
 if [[ ! -x "$controller" ]]; then
     "$serving" -m venv --system-site-packages "$root/controller/env"
 fi
+export PATH="$root/controller/env/bin:$root/envs/serving/bin:$PATH"
+libraries=$("$serving" -c 'import glob,sys; print(":".join(p for base in sys.path for p in glob.glob(base+"/nvidia/*/lib")))')
+export LD_LIBRARY_PATH="$libraries${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export DSH_CHROME_TMPDIR="$TMPDIR"
+declare -px PATH LD_LIBRARY_PATH TMPDIR XDG_CACHE_HOME HF_HOME PYTHONNOUSERSITE PYTHONDONTWRITEBYTECODE DSH_CHROME_TMPDIR > "$root/runtime-env.sh"
 site=$("$controller" -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
 shared=$("$serving" -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
 printf '%s\n' "$shared" > "$site/drawio_serving.pth"

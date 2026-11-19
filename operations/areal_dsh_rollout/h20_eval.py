@@ -1,6 +1,7 @@
 """Run the existing gold-blind matched DSH evaluation on the authorized H20 GPUs."""
 
 import argparse
+from glob import glob
 from hashlib import sha256
 import json
 import os
@@ -34,6 +35,8 @@ def environment(root):
                OMP_NUM_THREADS="4", DSH_MASK_PROCESS_TITLE="1")
     env["PYTHONPATH"] = str(HERE / "h20_bootstrap") + ":" + str(HERE)
     env["PATH"] = str(root / "envs/serving/bin") + ":" + str(root / "runtime/node/bin") + ":" + str(root / "bin") + ":" + env["PATH"]
+    libraries = [path for base in sys.path for path in glob(base + "/nvidia/*/lib")]
+    env["LD_LIBRARY_PATH"] = ":".join(libraries + [env.get("LD_LIBRARY_PATH", "")])
     paths = {"TMPDIR": "tmp", "HF_HOME": "huggingface", "XDG_CACHE_HOME": "xdg",
              "TRITON_CACHE_DIR": "triton", "CUDA_CACHE_PATH": "cuda",
              "FLASHINFER_WORKSPACE_BASE": "flashinfer", "TORCH_EXTENSIONS_DIR": "torch-extensions",
