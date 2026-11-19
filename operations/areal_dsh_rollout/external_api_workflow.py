@@ -249,10 +249,12 @@ def evaluate(args):
                           export_style="individual", turn_discount=1.0),
         admin_api_key=admin_key,
     )
+    name_resolve_root = args.out / "name-resolve"
+    name_resolve_root.mkdir()
     scheduler = LocalScheduler(log_dir=str(args.out / "native-logs"),
                                experiment_name=config.experiment_name, trial_name=trial,
                                fileroot=str(args.out), enable_tms_offload=False,
-                               nfs_record_root=str(args.out / "name-resolve"))
+                               nfs_record_root=str(name_resolve_root))
     controller = RolloutControllerV2(config=config, scheduler=scheduler)
     audit = {"kind": "native_areal_external_api_eval", "areal_commit": AREAL_COMMIT,
              "model": args.model, "training_eligible": False, "optimizer_started": False,
