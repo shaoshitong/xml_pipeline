@@ -43,6 +43,6 @@ for case_id in ${CASE_IDS:-sanity3 022}; do
     --root "$root" --runtime "$runtime" --reference "$root/inputs/$case_id/reference.png" \
     --out "$output/$case_id" --key-file "$root/private-auth/deepseek-api.key" \
     --proxy http://10.120.48.31:30444 --rounds 2 --skill-mode full \
-    --context-window 65536 --max-tokens 32768 --reasoning-effort max \
+    --context-window 1048576 --max-tokens 131072 --reasoning-effort max \
     --timeout 2700 --turn-timeout 900
 done

@@ -83,13 +83,15 @@ def run_turn(args, role, number, session):
     builder = profile_yaml
     effort = args.reasoning_effort
     context_window = args.context_window
+    max_tokens = args.max_tokens
     if model == "deepseek-flash":
         from deepseek_profile import profile_yaml as builder
     elif role == "reviewer" and args.generator_model == "deepseek-flash":
         effort = "off"
         context_window = min(context_window, 65536)
+        max_tokens = min(max_tokens, 32768)
     patch.write_text(builder(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
-                             context_window=context_window, max_tokens=args.max_tokens,
+                             context_window=context_window, max_tokens=max_tokens,
                              reasoning_effort=effort))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)
