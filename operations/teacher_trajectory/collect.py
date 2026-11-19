@@ -78,6 +78,27 @@ def validate_xml(path):
     return {"xml_sha256": sha256(raw).hexdigest(), "cells": len(cells)}
 
 
+def deduplicate_attachments(store, folder):
+    checked, linked = 0, 0
+    for role in ("generator", "reviewer"):
+        objects = folder / role / "home/.dsh/attachments/v1/objects"
+        for path in objects.rglob("*"):
+            if not path.is_file():
+                continue
+            raw = path.read_bytes()
+            digest = store.blob(raw)
+            if digest != path.name:
+                raise ValueError("DSH attachment content hash mismatch")
+            checked += 1
+            canonical = store.objects / digest[:2] / (digest[2:] + ".bin")
+            if canonical.is_file() and not os.path.samefile(path, canonical):
+                temporary = path.with_suffix(".link")
+                os.link(canonical, temporary)
+                temporary.replace(path)
+                linked += 1
+    return {"verified": checked, "shared_image_links": linked}
+
+
 def episode(args, record, store, provider, runtime, resources):
     ident = record["id"]
     folder = args.root / "episodes" / ident
@@ -153,6 +174,7 @@ def episode(args, record, store, provider, runtime, resources):
             service.server_close()
         auth.unlink(missing_ok=True)
         status["ended"] = time.time()
+        status["attachment_deduplication"] = deduplicate_attachments(store, folder)
         status["decision_export"] = export(store, folder / "sft-decisions.jsonl", ident)
         if status["decision_export"].get("generator_decisions"):
             first = json.loads((folder / "sft-decisions.jsonl").read_text().splitlines()[0])

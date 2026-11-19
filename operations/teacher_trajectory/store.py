@@ -35,10 +35,12 @@ class Store:
 
     def blob(self, raw):
         digest = sha256(raw).hexdigest()
-        path = self.objects / digest[:2] / (digest[2:] + ".gz")
+        image = raw.startswith((b"\x89PNG\r\n\x1a\n", b"\xff\xd8\xff", b"GIF87a", b"GIF89a"))
+        image = image or raw.startswith(b"RIFF") and raw[8:12] == b"WEBP"
+        path = self.objects / digest[:2] / (digest[2:] + (".bin" if image else ".gz"))
         if not path.exists():
             path.parent.mkdir(exist_ok=True)
-            packed = gzip.compress(raw, compresslevel=3, mtime=0)
+            packed = raw if image else gzip.compress(raw, compresslevel=3, mtime=0)
             try:
                 with path.open("xb") as stream:
                     stream.write(packed)
@@ -50,8 +52,8 @@ class Store:
         return digest
 
     def raw(self, digest):
-        path = self.objects / digest[:2] / (digest[2:] + ".gz")
-        raw = gzip.decompress(path.read_bytes())
+        path = self.objects / digest[:2] / (digest[2:] + ".bin")
+        raw = path.read_bytes() if path.is_file() else gzip.decompress(path.with_suffix(".gz").read_bytes())
         if sha256(raw).hexdigest() != digest:
             raise ValueError("Corrupt content-addressed object: " + digest)
         return raw
