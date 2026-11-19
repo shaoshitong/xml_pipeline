@@ -31,6 +31,10 @@ def check_qwen_template(template, sample):
     for tool in message.get("tool_calls", []):
         if "<function=" + tool["function"]["name"] + ">" not in target:
             raise ValueError(f"Qwen template dropped a target tool at call {sample['teacher_call_id']}")
+        for name, value in tool["function"].get("arguments", {}).items():
+            rendered = template.environment.filters["tojson"](value) if isinstance(value, (dict, list)) else str(value)
+            if f"<parameter={name}>\n{rendered}\n</parameter>" not in target:
+                raise ValueError(f"Qwen template changed tool arguments at call {sample['teacher_call_id']}")
     return {"calls": 1, "target_reasoning_records": bool(reasoning),
             "image_attachments": len(sample["images"]),
             "target_tool_calls": len(message.get("tool_calls", []))}
