@@ -31,6 +31,7 @@ def main():
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--additional-manifest", type=Path, action="append", default=[])
     parser.add_argument("--name", default="resume-after-drain")
+    parser.add_argument("--episode-cap", type=float)
     args = parser.parse_args()
     root = args.root.resolve()
     coordinator = (root / (args.name + ".lock")).open("a")
@@ -78,6 +79,10 @@ def main():
     argv[2] = str(Path(__file__).with_name("collect.py"))
     argv[argv.index("--manifest") + 1] = str(manifest)
     argv[argv.index("--source-commit") + 1] = args.source_commit
+    if args.episode_cap is not None:
+        if "--episode-cap" not in argv:
+            argv.extend(("--episode-cap", ""))
+        argv[argv.index("--episode-cap") + 1] = str(args.episode_cap)
     lock.close()
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OPENBLAS_NUM_THREADS="1", OMP_NUM_THREADS="1",
                MKL_NUM_THREADS="1", NUMEXPR_NUM_THREADS="1", TOKENIZERS_PARALLELISM="false")
