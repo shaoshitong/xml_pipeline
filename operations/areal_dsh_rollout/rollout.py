@@ -161,6 +161,11 @@ def run_turn(args, role, number, session):
                "--setenv", "PATH", str(runtime / "node/bin") + ":" + str(args.renderer_python.parent) + ":/usr/bin:/bin",
                "--setenv", "LANG", "C.UTF-8", "--setenv", "ROLLOUT_API_KEY", "EMPTY",
                "--setenv", "DSH_TELEMETRY_DISABLED", "1", "--chdir", "/case"]
+    if role == "generator":
+        previous = [f"{stem}{n}.{suffix}" for n in range(1, number)
+                    for stem, suffix in (("round", "drawio"), ("round", "png"), ("review", "json"))]
+        for name in previous:
+            command.extend(("--ro-bind", str(case / name), "/case/" + name))
     command.extend(("--ro-bind", str(HERE / "render.py"), "/integration/render.py",
                     "--ro-bind", str(HERE / "sandbox_entry.py"), "/integration/sandbox_entry.py",
                     "--ro-bind", str(HERE / "sandbox_gateway.py"), "/integration/sandbox_gateway.py",
