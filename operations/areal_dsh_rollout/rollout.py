@@ -121,6 +121,8 @@ def run_turn(args, role, number, session):
         profile["qwen38_effort"] = args.qwen38_effort
         if role == "generator" and model == "Qwen/Qwen3.8-27B":
             profile["stream_idle_timeout_ms"] = args.turn_timeout * 1000
+        if role == "generator" and args.compaction_headroom_tokens is not None:
+            profile["compaction_headroom_tokens"] = args.compaction_headroom_tokens
     patch.write_text(builder(**profile))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)
@@ -131,7 +133,9 @@ def run_turn(args, role, number, session):
     if role == "generator" and number == 1 and session:
         prompt += ("\nContinue the interrupted first generation in this session. Reuse the image inspection "
                    "and inventory already completed. Write the native XML with tools now instead of "
-                   "repeating the inventory. Preserve any work already saved.\n")
+                   "repeating the inventory. Preserve any work already saved. "
+                   "If you already wrote a generation script, inspect and execute your own script "
+                   "to create the XML before making further crops or measurements.\n")
     elif continuing:
         prompt += "\nContinue this interrupted stage using this session's own saved work.\n"
         if role == "reviewer":
@@ -301,6 +305,7 @@ def main():
     parser.add_argument("--preserve-thinking", action="store_true")
     parser.add_argument("--qwen38-effort", choices=("xhigh", "medium", "low"), default="xhigh")
     parser.add_argument("--completion-retries", type=int, default=0)
+    parser.add_argument("--compaction-headroom-tokens", type=int)
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
     parser.add_argument("--reasoning-effort", choices=("off", "low", "high", "max"), default="high")
@@ -327,6 +332,7 @@ def main():
          "preserve_thinking": args.preserve_thinking,
          "qwen38_effort": args.qwen38_effort,
          "completion_retries": args.completion_retries,
+         "compaction_headroom_tokens": args.compaction_headroom_tokens,
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
          "fresh_context_from_own_candidate": args.seeded,
