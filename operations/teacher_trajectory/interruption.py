@@ -256,11 +256,14 @@ def write_annotations(root, proofs):
         temporary.replace(path)
 
 
-def annotation(store, row):
-    path = Path(store.root).parent / 'annotations' / f"{row['call_id']}.json"
-    if not path.exists():
+def annotation(store, row, proofs=None):
+    if proofs is None:
+        path = Path(store.root).parent / 'annotations' / f"{row['call_id']}.json"
+        proof = json.loads(path.read_text()) if path.exists() else None
+    else:
+        proof = proofs.get(row['call_id'])
+    if proof is None:
         return {'supervision_eligible': True}
-    proof = json.loads(path.read_text())
     if any(proof[key] != row[key] for key in ('call_id', 'request_ref', 'response_ref')):
         raise ValueError('Interruption annotation does not match its archived call')
     return {'supervision_eligible': False, 'execution_annotation': proof}

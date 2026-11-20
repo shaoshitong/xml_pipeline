@@ -67,14 +67,25 @@ def materialize(store, row, decode_images=True):
             "training_loss": "completion_only" if eligibility["supervision_eligible"] else "none"}
 
 
-def export(store, destination, episode=None):
-    query = "select id,episode,role,stage,request,response,status,error,usage from calls where completed=1"
-    parameters = ()
-    if episode:
-        query += " and episode=?"
-        parameters = (episode,)
-    with store.lock:
-        rows = store.db.execute(query + " order by id", parameters).fetchall()
+def decision_record(store, number, ident, stage, request_ref, response_ref, usage):
+    record = {"schema": "qwen-teacher-decision/1", "call_id": number, "episode": ident,
+              "stage": stage, "request_ref": request_ref, "response_ref": response_ref,
+              "usage": json.loads(usage), "target": "this completion only",
+              "reviewer_is_observation": True, "fidelity_label": "unverified_without_gold",
+              "images_and_history": "lossless DAG references; resolved by materialize()"}
+    record.update(annotation(store, record))
+    return record
+
+
+def export(store, destination, episode=None, *, rows=None):
+    if rows is None:
+        query = "select id,episode,role,stage,request,response,status,error,usage from calls where completed=1"
+        parameters = ()
+        if episode:
+            query += " and episode=?"
+            parameters = (episode,)
+        with store.lock:
+            rows = store.db.execute(query + " order by id", parameters).fetchall()
     counts = Counter()
     destination = Path(destination)
     with destination.open("w") as stream:
@@ -91,12 +102,7 @@ def export(store, destination, episode=None):
             counts["generator_decisions"] += 1
             counts["with_reasoning"] += bool(message.get("reasoning_content"))
             counts["tool_calls"] += len(message.get("tool_calls", []))
-            record = {"schema": "qwen-teacher-decision/1", "call_id": number, "episode": ident,
-                      "stage": stage, "request_ref": request_ref, "response_ref": response_ref,
-                      "usage": json.loads(usage), "target": "this completion only",
-                      "reviewer_is_observation": True, "fidelity_label": "unverified_without_gold",
-                      "images_and_history": "lossless DAG references; resolved by materialize()"}
-            record.update(annotation(store, record))
+            record = decision_record(store, number, ident, stage, request_ref, response_ref, usage)
             counts["sft_eligible_generator_decisions"] += record["supervision_eligible"]
             counts["interrupted_replies_excluded_from_sft"] += not record["supervision_eligible"]
             stream.write(json.dumps(record) + "\n")
