@@ -83,7 +83,7 @@ def build_patch(
         route["streamIdleTimeoutMs"] = stream_idle_timeout_ms
     patch = [{"id": name, "disabled": True} for name in DISABLED]
     if role == "reviewer":
-        patch.append({"id": "tool-todo", "disabled": True})
+        patch.extend({"id": name, "disabled": True} for name in ("tool-todo", "plan-mode"))
     patch.extend([
         {"id": "llm-pi-ai", "disabled": False,
          "config": {"providers": {provider: route}}},

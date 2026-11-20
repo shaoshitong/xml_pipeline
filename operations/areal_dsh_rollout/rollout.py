@@ -240,6 +240,9 @@ def review_payload(event):
         if len(blocks) == 1:
             text = blocks[0]
     review = json.loads(text)
+    if isinstance(review, dict) and isinstance(review.get("issues"), list) and "status" not in review:
+        review = dict(review, status="FIX" if review["issues"] else "UNCERTAIN",
+                      status_source="host-format-default")
     if (not isinstance(review, dict) or review.get("status") not in ("PASS", "FIX", "UNCERTAIN")
             or not isinstance(review.get("issues"), list)):
         raise ValueError("Reviewer must return a JSON object with status and issues")
