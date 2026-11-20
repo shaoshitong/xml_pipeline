@@ -120,6 +120,8 @@ class Handler(BaseHTTPRequestHandler):
         tools = [{"model_call": call, "executed_events": events.get(call["id"], [])}
                  for call in message.get("tool_calls", [])]
         eligibility = annotation(store, {"call_id": int(parts[1]), "request_ref": request, "response_ref": response})
+        if role != "generator" or status != 200 or error:
+            eligibility["supervision_eligible"] = False
         return self.send(display({"id": int(parts[1]), "episode": episode, "role": role, "stage": stage,
             "status": status, "error": error, "completed": bool(completed), "request_ref": request,
             "response_ref": response, "response": payload, "tool_execution": tools, **eligibility}, self.server.images))
