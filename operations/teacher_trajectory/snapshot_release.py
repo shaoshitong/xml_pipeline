@@ -80,6 +80,9 @@ def build(args):
     source.db.backup(db)
     db.execute("create temp table selected(id text primary key)")
     db.executemany("insert into selected values(?)", [(x,) for x in selected])
+    pending_calls = db.execute("select id from calls where episode in (select id from selected) and completed!=1").fetchall()
+    if pending_calls:
+        raise RuntimeError(f"Cannot freeze episodes with pending provider replies: {pending_calls}")
     db.execute("delete from calls where episode not in (select id from selected) or completed!=1")
     db.execute("delete from metadata where key in ('first_balance','balance_at_start')")
     db.commit()
