@@ -20,7 +20,7 @@ env = environment(root)
 inventory = gpu_inventory()
 reuse_review = len(sys.argv) > 4 and sys.argv[4] == 'reuse-review'
 medium = len(sys.argv) > 5 and sys.argv[5] == 'medium'
-gpu, port, context, fraction = (7, 32444, 262144, .85) if medium else (5, 32424, 1048576, .94)
+gpu, generator_port, generator_context, generator_fraction = (7, 32444, 262144, .85) if medium else (5, 32424, 1048576, .94)
 assert all(row['memory_used_mib'] < 1024 for row in inventory if row['index'] in ({gpu} if reuse_review else {gpu, 6}))
 contract = {'source_commit': commit, 'gpu_inventory_before': inventory,
     'resumed_from': sys.argv[3] if len(sys.argv) > 3 else str(root / 'runs/qwen38-yarn-review-resume-fc8756d-r5/phase2/evaluation'),
@@ -30,7 +30,7 @@ contract['reuse_saved_review_response'] = reuse_review
 services = []
 try:
     specifications = (
-        ('generator', 'generator', 'Qwen3.8-27B', str(gpu), port, context, fraction, not medium),
+        ('generator', 'generator', 'Qwen3.8-27B', str(gpu), generator_port, generator_context, generator_fraction, not medium),
         ('reviewer', 'reviewer', 'Qwen3.5-4B', '6', 32435, 65536, .40, False))
     for name, role, model, devices, port, context, fraction, yarn in specifications[:1] if reuse_review else specifications:
         process, log = start_server(root, out / (name + '-server'), role, model,
@@ -42,7 +42,7 @@ try:
         contract[name + '_pid'] = process.pid
         (out / 'contract.json').write_text(json.dumps(contract, indent=2))
         print(json.dumps({'ready': name, 'pid': process.pid}), flush=True)
-    args = SimpleNamespace(root=root, port=port, context_window=context,
+    args = SimpleNamespace(root=root, port=generator_port, context_window=generator_context,
         sampling_preset='qwen38', preserve_thinking=True, turn_timeout=21600,
         completion_retries=3, qwen38_effort='medium' if medium else 'xhigh',
         python_runtime_root=Path('/DATA/disk1/zbw_tmp4/rdm-sets/envs/rdm'))
