@@ -32,6 +32,8 @@ def main():
     parser.add_argument("--additional-manifest", type=Path, action="append", default=[])
     parser.add_argument("--name", default="resume-after-drain")
     parser.add_argument("--episode-cap", type=float)
+    parser.add_argument("--budget", type=float)
+    parser.add_argument("--workers", type=int)
     args = parser.parse_args()
     root = args.root.resolve()
     coordinator = (root / (args.name + ".lock")).open("a")
@@ -47,6 +49,11 @@ def main():
     if json.loads(receipt.read_text())["pid"] != previous["pid"]:
         raise RuntimeError("A different owner already replaced the collector receipt")
     argv = previous["argv"][:]
+    previous_budget = float(argv[argv.index("--budget") + 1])
+    for option in ("budget", "workers"):
+        value = getattr(args, option)
+        if value is not None:
+            argv[argv.index("--" + option) + 1] = str(value)
     run = Path(argv[argv.index("--root") + 1])
     lock = (run / "collector.lock").open("a")
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -104,7 +111,9 @@ def main():
     status = {"at": time.time(), "phase": "resumed", "previous_pid": previous["pid"],
               "current": current, "prioritized_failed_episodes": sorted(failed),
               "manifest_records": len(records), "additional_manifests": [str(p) for p in args.additional_manifest],
-              "same_archive_and_budget": True, "source_commit": args.source_commit}
+              "same_archive_and_budget": budget == previous_budget,
+              "previous_budget_cny": previous_budget, "budget_cny": budget,
+              "workers": int(argv[argv.index("--workers") + 1]), "source_commit": args.source_commit}
     save(root / (args.name + "-status.json"), status)
     if args.name == "resume-after-drain":
         save(root / "collector-drain-completion.json", status)
