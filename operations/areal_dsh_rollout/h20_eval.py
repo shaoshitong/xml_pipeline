@@ -73,6 +73,8 @@ def run_phase(args, phase, out, reviewer_port, env, *, resume_from=None):
         episode += ["--completion-retries", str(args.completion_retries)]
     if getattr(args, "compaction_headroom_tokens", None) is not None:
         episode += ["--compaction-headroom-tokens", str(args.compaction_headroom_tokens)]
+    if getattr(args, "resume_note", ""):
+        episode += ["--resume-note", args.resume_note]
     command_file = target / "episode-template.json"
     save(command_file, episode)
     command = [str(args.root / "controller/env/bin/python"), str(HERE / "external_api_workflow.py"),
