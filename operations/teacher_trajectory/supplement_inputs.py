@@ -75,7 +75,7 @@ def prepare(args):
     reviews = [json.loads(path.read_text()) for path in args.visual_review]
     rejected = {ident for review in reviews for ident in review["excluded_ids"]}
     reviewed = {ident for review in reviews for ident in review["reviewed_ids"]}
-    source_rows = [row for path in selections for row in records(path)]
+    source_rows = [row for path in selections for row in sorted(records(path), key=lambda item: item["id"])]
     papers = set(gold["paper_ids"]) | {row["paper_id"] for row in previous.values()}
     pdfs = set(gold["pdf_sha256"]) | {row["source_pdf_sha256"] for row in previous.values()}
     hashes = set(gold["image_sha256"]) | {row["sha256"] for row in gold["gold_images"]}
@@ -132,6 +132,7 @@ def prepare(args):
                "phash_hamming_exclusion_threshold": 7, "scan_counts": dict(counts), "scan_passes": scans,
                "current_figure_types_reviewed": len(reviewed), "non_framework_figures_rejected": len(rejected),
                "candidate_images_not_published": len(source_rows) - len(result),
+               "unused_readable_candidates_after_target": len(source_rows) - len(rejected) - len(result),
                "shortfall": max(0, args.limit - len(result)), "complexity_used_for_filtering": False,
                "gold_xml_included": False, "full_source_pdfs_included": False, "transcripts_included": False,
                "model_calls": 0, "source": "Existing cached arXiv framework/architecture/pipeline figures with verified paper provenance and TeX figure links"}
