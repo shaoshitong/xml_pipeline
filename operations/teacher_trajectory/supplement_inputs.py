@@ -1,6 +1,7 @@
 """Mine a disjoint reference supplement from the project's existing arXiv cache."""
 
 import argparse
+from collections import Counter
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -67,15 +68,35 @@ def prepare(args):
     assert {row["case_id"] for row in six}.isdisjoint(row["episode"] for row in two)
     assert {row["case_id"] for row in six} | {row["episode"] for row in two} == previous.keys()
     assert all(row["sha256"] == previous[row["case_id"]]["reference_sha256"] for row in six)
-    select(SimpleNamespace(dataset=dataset, out=selection, limit=args.limit, scan_limit=args.scan_limit,
-                           exclude_manifest=manifests, reference_pool=True))
+    if not args.selection:
+        select(SimpleNamespace(dataset=dataset, out=selection, limit=args.limit, scan_limit=args.scan_limit,
+                               exclude_manifest=manifests, reference_pool=True))
+    selections = args.selection or [selection / "candidates.jsonl"]
+    reviews = [json.loads(path.read_text()) for path in args.visual_review]
+    rejected = {ident for review in reviews for ident in review["excluded_ids"]}
+    reviewed = {ident for review in reviews for ident in review["reviewed_ids"]}
+    source_rows = [row for path in selections for row in records(path)]
+    papers = set(gold["paper_ids"]) | {row["paper_id"] for row in previous.values()}
+    pdfs = set(gold["pdf_sha256"]) | {row["source_pdf_sha256"] for row in previous.values()}
+    hashes = set(gold["image_sha256"]) | {row["sha256"] for row in gold["gold_images"]}
+    hashes.update(row["reference_sha256"] for row in previous.values())
+    pixels = {row["pixel_sha256"] for row in gold["gold_images"]}
+    pixels.update(row["reference_pixels_sha256"] for row in previous.values())
+    near = [int(row["phash"]) for row in gold["gold_images"]] + [int(row["phash"]) for row in previous.values()]
     public = args.out / "public"
     (public / "images").mkdir(parents=True)
     result = []
-    for row in records(selection / "candidates.jsonl"):
+    for row in source_rows:
+        if row["id"] in rejected:
+            continue
+        assert not reviews or row["id"] in reviewed
         image = Path(row["reference"])
         digest = sha256(image.read_bytes()).hexdigest()
         assert digest == row["reference_sha256"]
+        assert row["paper_id"] not in papers and row["source_pdf_sha256"] not in pdfs
+        assert digest not in hashes and row["reference_pixels_sha256"] not in pixels
+        phash = int(row["phash"])
+        assert all((phash ^ value).bit_count() > 7 for value in near)
         name = "images/" + row["id"] + ".png"
         shutil.copy2(image, public / name)
         attempted = any((teacher / run / "episodes" / row["id"]).exists()
@@ -89,15 +110,28 @@ def prepare(args):
                        "license_urls": row["paper_metadata"].get("license_urls", []),
                        "complexity": row["complexity"], "historical_review": None,
                        "previous_rollout_attempted": attempted, "tex_figure_link_verified": True,
-                       "historical_review_or_complexity_used_for_exclusion": False})
+                       "historical_review_or_complexity_used_for_exclusion": False,
+                       "current_figure_type_reviewed": row["id"] in reviewed})
+        papers.add(row["paper_id"])
+        pdfs.add(row["source_pdf_sha256"])
+        hashes.add(digest)
+        pixels.add(row["reference_pixels_sha256"])
+        near.append(phash)
+        if len(result) == args.limit:
+            break
     (public / "manifest.jsonl").write_text("".join(json.dumps(row) + "\n" for row in result))
-    stats = json.loads((selection / "selection-summary.json").read_text())
+    scans = [json.loads((path.parent / "selection-summary.json").read_text()) for path in selections]
+    counts = Counter()
+    for scan in scans:
+        counts.update(scan["counts"])
     summary = {"at": time.time(), "requested_images": args.limit, "verified_image_count": len(result),
                "distinct_papers": len({row["paper_id"] for row in result}), "previous_accepted_cases": 200,
                "previous_reference_images": 600, "prior_reference_revision": "412a9e49cafe1701befb56a2de40dcbc46ecc8e1",
                "gold_manifest_rows": gold["gold_records_seen"], "gold_papers": len(gold["paper_ids"]),
                "gold_images": len(gold["gold_images"]), "gold_image_read_failures": 0,
-               "phash_hamming_exclusion_threshold": 7, "scan_counts": stats["counts"],
+               "phash_hamming_exclusion_threshold": 7, "scan_counts": dict(counts), "scan_passes": scans,
+               "current_figure_types_reviewed": len(reviewed), "non_framework_figures_rejected": len(rejected),
+               "candidate_images_not_published": len(source_rows) - len(result),
                "shortfall": max(0, args.limit - len(result)), "complexity_used_for_filtering": False,
                "gold_xml_included": False, "full_source_pdfs_included": False, "transcripts_included": False,
                "model_calls": 0, "source": "Existing cached arXiv framework/architecture/pipeline figures with verified paper provenance and TeX figure links"}
@@ -115,6 +149,8 @@ def main():
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--limit", type=int, default=200)
     parser.add_argument("--scan-limit", type=int, default=12000)
+    parser.add_argument("--selection", action="append", type=Path)
+    parser.add_argument("--visual-review", action="append", type=Path, default=[])
     prepare(parser.parse_args())
 
 
