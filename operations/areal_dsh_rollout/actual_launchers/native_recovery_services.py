@@ -1,5 +1,6 @@
 """Resume native-context generation, then own a Reviewer after the shared GPU is free."""
 from pathlib import Path
+from hashlib import sha256
 from types import SimpleNamespace
 import json
 import os
@@ -26,6 +27,16 @@ contract = {'source_commit': commit, 'native_goal': False, 'gold_feedback': Fals
     'preserve_thinking': True, 'temperature': 1.0, 'completion_retries': 3,
     'compaction_headroom_tokens': headroom,
     'resume_from': sys.argv[4] if len(sys.argv) > 4 else str(root / 'runs/qwen38-controls-09298e7-r3/native/phase1/evaluation')}
+note = ''
+if len(sys.argv) > 5:
+    diagnostic = json.loads(Path(sys.argv[5]).read_text())
+    script = Path(contract['resume_from']) / 'episode/case/gen_round1.py'
+    assert sha256(script.read_bytes()).hexdigest() == diagnostic['script_sha256']
+    contract['host_compile_diagnostic'] = sys.argv[5]
+    note = ('The host executed an unchanged copy of your own gen_round1.py in an isolated build workspace. '
+        'It failed before producing XML. Here is the raw runtime diagnostic:\n' + diagnostic['stderr'] +
+        '\nUse tools to inspect and fix your own program, execute it to create round1.drawio, then render '
+        'and inspect the actual result. Complete the build before further reference-image measurements.')
 services = []
 code = 1
 phase = 1
@@ -40,10 +51,11 @@ try:
     print(json.dumps({'ready': 'generator', 'pid': process.pid}), flush=True)
     args = SimpleNamespace(root=root, port=32414, context_window=262144,
         sampling_preset='qwen38', preserve_thinking=True, turn_timeout=21600,
-        completion_retries=3, compaction_headroom_tokens=headroom,
+        completion_retries=3, compaction_headroom_tokens=headroom, resume_note=note,
         python_runtime_root=Path('/DATA/disk1/zbw_tmp4/rdm-sets/envs/rdm'))
     code = run_phase(args, 1, out, 32415, env, resume_from=Path(contract['resume_from']))
     if code == 0:
+        args.resume_note = ''
         while next(row['memory_used_mib'] for row in gpu_inventory() if row['index'] == 6) >= 1024:
             time.sleep(5)
         process, log = start_server(root, out / 'reviewer-server', 'reviewer',
