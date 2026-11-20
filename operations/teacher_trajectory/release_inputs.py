@@ -1,4 +1,4 @@
-"""Release unused, approved reference PNGs without teacher outputs or gold XML."""
+"""Release unused candidate reference PNGs without teacher outputs or gold XML."""
 
 import argparse
 from collections import Counter
@@ -25,24 +25,24 @@ def release(args):
     args.out.mkdir(parents=True)
     audit = args.out / "private-audit"
     audit.mkdir()
-    gold = exclusions(args.dataset, audit)
+    gold = json.loads(args.exclusions_cache.read_text()) if args.exclusions_cache else exclusions(args.dataset, audit)
     assert not gold["gold_image_read_failures"]
     papers, pdfs = set(gold["paper_ids"]), set(gold["pdf_sha256"])
     hashes = set(gold["image_sha256"]) | {x["sha256"] for x in gold["gold_images"]}
     pixels = {x["pixel_sha256"] for x in gold["gold_images"]}
     near = [int(x["phash"]) for x in gold["gold_images"]]
-    approved, candidates = {}, set()
+    approved, candidates = {}, {}
     for name in ("selection", "selection-batch2", "selection-batch3"):
         folder = args.teacher_root / name
-        candidates.update(row["id"] for row in records(folder / "candidates.jsonl"))
+        candidates.update((row["id"], row) for row in records(folder / "candidates.jsonl"))
         for row in records(folder / "approved.jsonl"):
             assert row["visual_approval"] == "approved" and row["id"] not in approved
             approved[row["id"]] = row
     previous = {row["episode"] for row in records(args.previous)}
-    assert len(previous) == 200 and previous <= approved.keys()
-    avoided = previous | set(args.exclude_attempted_case)
+    assert len(previous) == 200 and previous <= candidates.keys()
+    avoided = previous
     for ident in avoided:
-        row = approved[ident]
+        row = candidates[ident]
         _, _, digest, pixel, phash = image_record(Path(row["reference"]))
         assert digest == row["reference_sha256"] and pixel == row["reference_pixels_sha256"]
         papers.add(row["paper_id"])
@@ -53,7 +53,7 @@ def release(args):
     counts, selected = Counter(), []
     public = args.out / "public"
     (public / "images").mkdir(parents=True)
-    for row in sorted(approved.values(), key=lambda x: (-x["complexity"]["score"], x["id"])):
+    for row in sorted(candidates.values(), key=lambda x: (-x["complexity"]["score"], x["id"])):
         if row["id"] in avoided:
             counts["previous_or_attempted_case"] += 1
             continue
@@ -80,7 +80,8 @@ def release(args):
                          "size": list(image.size), "source_pdf_sha256": row["source_pdf_sha256"],
                          "source_figure": source, "title": row["paper_metadata"]["title"],
                          "license_urls": row["paper_metadata"].get("license_urls", []),
-                         "complexity": row["complexity"], "visual_approval": "approved"})
+                         "complexity": row["complexity"], "visual_approval": approved.get(row["id"], {}).get("visual_approval", "not_previously_approved"),
+                         "historical_review_used_for_exclusion": False})
         papers.add(row["paper_id"])
         hashes.add(digest)
         pixels.add(pixel)
@@ -88,8 +89,8 @@ def release(args):
     for name, rows in (("manifest.jsonl", selected), ("pilot.jsonl", selected[:5])):
         (public / name).write_text("".join(json.dumps(row) + "\n" for row in rows))
     summary = {"at": time.time(), "original_candidates": len(candidates), "original_approved": len(approved),
-               "prior_rejected_or_unapproved": len(candidates - approved.keys()),
-               "previous_accepted_cases": len(previous), "extra_attempted_cases_avoided": args.exclude_attempted_case,
+               "prior_rejected_or_unapproved": len(candidates.keys() - approved.keys()),
+               "previous_accepted_cases": len(previous), "previous_rollout_failure_is_excluded": False,
                "gold_manifest_rows": gold["gold_records_seen"], "gold_papers": len(gold["paper_ids"]),
                "gold_images": len(gold["gold_images"]), "gold_image_read_failures": 0,
                "near_image_hamming_threshold": 7, "exclusion_counts": dict(counts),
@@ -98,7 +99,7 @@ def release(args):
                "gold_xml_included": False, "teacher_outputs_included": False,
                "full_source_pdfs_included": False, "transcripts_included": False,
                "requested_new_inputs": 800, "shortfall": max(0, 800 - len(selected)),
-               "scope": "Whole remaining approved pool from the three original selection batches; no new mining or model calls"}
+               "scope": "Whole remaining readable candidate pool from all three original selection batches; historical review does not filter; no new mining or model calls"}
     (public / "exclusion-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     files = [{"file": str(path.relative_to(public)), "bytes": path.stat().st_size,
               "sha256": sha256(path.read_bytes()).hexdigest()} for path in sorted(public.rglob("*")) if path.is_file()]
@@ -111,7 +112,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("dataset", "teacher-root", "previous", "out"):
         parser.add_argument("--" + name, type=Path, required=True)
-    parser.add_argument("--exclude-attempted-case", action="append", default=[])
+    parser.add_argument("--exclusions-cache", type=Path)
     release(parser.parse_args())
 
 
