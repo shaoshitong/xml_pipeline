@@ -91,7 +91,7 @@ def run_phase(args, phase, out, reviewer_port, env, *, resume_from=None):
 
 
 def start_server(root, folder, role, model, devices, port, context, fraction, env,
-                 *, yarn=False, sampling="precise-coding"):
+                 *, yarn=False, sampling="precise-coding", extra_args=()):
     folder.mkdir()
     serving = folder / "serving"
     create_overlay(root / "models" / model, serving, sampling)
@@ -108,6 +108,7 @@ def start_server(root, folder, role, model, devices, port, context, fraction, en
         json.dumps({"min_p": 0.0, "presence_penalty": 0.0 if role == "generator" else 1.5,
                     "repetition_penalty": 1.0})]
     log = (folder / "server.log").open("wb")
+    command.extend(extra_args)
     process = subprocess.Popen(command, stdout=log, stderr=log, start_new_session=True,
         env=dict(env, CUDA_VISIBLE_DEVICES=devices, SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN="1",
                  DSH_QWEN38_PARSER_COMPAT="1" if role == "generator" else "0"))
