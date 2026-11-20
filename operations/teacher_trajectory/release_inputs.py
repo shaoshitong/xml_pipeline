@@ -9,7 +9,7 @@ import time
 
 from PIL import Image
 
-from select_figures import exclusions, fingerprint, records, source_context
+from select_figures import exclusions, fingerprint, records, paper_id
 
 
 def image_record(path):
@@ -37,7 +37,13 @@ def release(args):
         review = folder / "visual-decisions.jsonl"
         if review.exists():
             reviews.update((row["id"], row) for row in records(review))
-        candidates.update((row["id"], row) for row in records(folder / "candidates.jsonl"))
+        batch = list(records(folder / "candidates.jsonl"))
+        candidates.update((row["id"], row) for row in batch)
+        for path in folder.glob("visual-review-*.json"):
+            review = json.loads(path.read_text())
+            for label in ("approved", "rejected"):
+                for index in review.get(label + "_indices", []):
+                    reviews[batch[index]["id"]] = {"visual_approval": label, "basis": review.get("basis")}
         for row in records(folder / "approved.jsonl"):
             assert row["visual_approval"] == "approved" and row["id"] not in approved
             approved[row["id"]] = row
@@ -70,9 +76,11 @@ def release(args):
             counts["exact_pixel_or_near_duplicate"] += 1
             continue
         assert sha256(Path(row["source_pdf"]).read_bytes()).hexdigest() == row["source_pdf_sha256"]
-        assert sha256(Path(row["tex_file"]).read_bytes()).hexdigest() == row["tex_sha256"]
-        context = source_context(row)
-        assert context["paper_metadata"] == row["paper_metadata"]
+        tex_link = bool(row.get("tex_file"))
+        if tex_link:
+            assert sha256(Path(row["tex_file"]).read_bytes()).hexdigest() == row["tex_sha256"]
+        metadata = json.loads(Path(row["metadata_file"]).read_text())
+        assert paper_id(metadata.get("arxiv_id", metadata.get("abs_url"))) == row["paper_id"]
         assert row["native_xml_absence_evidence"]["reason"] == "official_returned_no_embedded_diagram"
         name = "images/" + row["id"] + ".png"
         (public / name).write_bytes(raw)
@@ -81,10 +89,10 @@ def release(args):
                          "arxiv_url": row["arxiv_url"], "sha256": digest,
                          "decoded_pixel_sha256": pixel, "phash": str(phash),
                          "size": list(image.size), "source_pdf_sha256": row["source_pdf_sha256"],
-                         "source_figure": source, "title": row["paper_metadata"]["title"],
-                         "license_urls": row["paper_metadata"].get("license_urls", []),
+                         "source_figure": source, "title": metadata["title"],
+                         "license_urls": metadata.get("license_urls", []),
                          "complexity": row["complexity"], "visual_approval": approved.get(row["id"], {}).get("visual_approval", "not_previously_approved"),
-                         "historical_review": reviews.get(row["id"]),
+                         "historical_review": reviews.get(row["id"]), "tex_figure_link_verified": tex_link,
                          "historical_review_used_for_exclusion": False})
         papers.add(row["paper_id"])
         hashes.add(digest)
