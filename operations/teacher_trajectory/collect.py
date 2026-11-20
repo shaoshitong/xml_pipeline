@@ -111,21 +111,36 @@ def deduplicate_attachments(store, folder):
 
 
 def run_generation(config, number, session):
-    try:
-        return run_turn(config, "generator", number, session)
-    except RuntimeError:
-        path = config.out / "generator" / f"round{number}" / "status.json"
-        state = json.loads(path.read_text()) if path.exists() else {}
-        if not state.get("timed_out") or not state.get("session_id"):
-            raise
     previous = config.resume_note
-    config.resume_note = (previous + "\nThe previous turn reached its wall-clock limit. Continue in the same "
-                          "session using your existing draft and observations. Finish the requested artifact "
-                          "and final response; do not restart the drawing from scratch.")
+    remaining = {"timeout": 1, "gateway": 1}
+    notes = {"timeout": "The previous turn reached its wall-clock limit.",
+             "gateway": "The previous turn was interrupted by a gateway connection failure."}
     try:
-        return run_turn(config, "generator", number, state["session_id"])
+        while True:
+            try:
+                return run_turn(config, "generator", number, session)
+            except RuntimeError:
+                path = config.out / "generator" / f"round{number}" / "status.json"
+                state = json.loads(path.read_text()) if path.exists() else {}
+                reason = generation_retry_reason(config.out, state)
+                if not state.get("session_id") or not remaining.get(reason):
+                    raise
+                remaining[reason] -= 1
+                session = state["session_id"]
+                config.resume_note = (previous + "\n" + notes[reason] +
+                    " Continue in the same session using your existing draft and observations. "
+                    "Finish the requested artifact and final response; do not restart the drawing from scratch.")
     finally:
         config.resume_note = previous
+
+
+def generation_retry_reason(folder, state):
+    if state.get("timed_out"):
+        return "timeout"
+    log = folder / "generator" / state.get("log_dir", "") / "stderr.log"
+    if log.is_file() and log.read_text().startswith("dsh: SERVER: 502 "):
+        return "gateway"
+    return None
 
 
 def run_review(config, number, session):
@@ -195,6 +210,7 @@ def episode(args, record, store, provider, runtime, resources):
                 "reviewer_training_loss": False, "generation_rounds": 2, "reviews": 1,
                 "generator_context": 1048576, "max_output": 131072,
                 "stage_timeout_seconds": 1350, "generator_timeout_continuations_per_attempt": 1,
+                "generator_gateway_continuations_per_attempt": 1,
                 "gold_available": False, "gold_feedback": False, "mcp": False,
                 "external_areal_string_export": False,
                 "lossless_wire_capture": True, "source_commit": args.source_commit,
