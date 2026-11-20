@@ -12,6 +12,7 @@ import time
 from urllib.parse import urlsplit
 
 from huggingface_hub import HfApi, configure_http_backend, get_token
+from huggingface_hub.errors import RepositoryNotFoundError
 import requests
 
 
@@ -60,8 +61,12 @@ def publish(args):
     account = api.whoami()["name"]
     if account.lower() != args.repo_id.split("/")[0].lower():
         raise RuntimeError("Logged-in HF account differs from the requested repository owner")
-    api.create_repo(args.repo_id, repo_type="dataset", private=True, exist_ok=True, token=token)
-    if not api.repo_info(args.repo_id, repo_type="dataset", token=token).private:
+    try:
+        info = api.repo_info(args.repo_id, repo_type="dataset", token=token)
+    except RepositoryNotFoundError:
+        api.create_repo(args.repo_id, repo_type="dataset", private=True, exist_ok=True, token=token)
+        info = api.repo_info(args.repo_id, repo_type="dataset", token=token)
+    if not info.private:
         raise RuntimeError("Refusing to upload to a public repository")
     progress.update(account=account, private=True, phase="checked" if args.check else "uploading")
     save(args.state, progress)
