@@ -31,9 +31,12 @@ def release(args):
     hashes = set(gold["image_sha256"]) | {x["sha256"] for x in gold["gold_images"]}
     pixels = {x["pixel_sha256"] for x in gold["gold_images"]}
     near = [int(x["phash"]) for x in gold["gold_images"]]
-    approved, candidates = {}, {}
+    approved, candidates, reviews = {}, {}, {}
     for name in ("selection", "selection-batch2", "selection-batch3"):
         folder = args.teacher_root / name
+        review = folder / "visual-decisions.jsonl"
+        if review.exists():
+            reviews.update((row["id"], row) for row in records(review))
         candidates.update((row["id"], row) for row in records(folder / "candidates.jsonl"))
         for row in records(folder / "approved.jsonl"):
             assert row["visual_approval"] == "approved" and row["id"] not in approved
@@ -81,6 +84,7 @@ def release(args):
                          "source_figure": source, "title": row["paper_metadata"]["title"],
                          "license_urls": row["paper_metadata"].get("license_urls", []),
                          "complexity": row["complexity"], "visual_approval": approved.get(row["id"], {}).get("visual_approval", "not_previously_approved"),
+                         "historical_review": reviews.get(row["id"]),
                          "historical_review_used_for_exclusion": False})
         papers.add(row["paper_id"])
         hashes.add(digest)
