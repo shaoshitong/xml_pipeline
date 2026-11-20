@@ -29,13 +29,17 @@ def publish(args):
     before = api.repo_info(args.repo_id, repo_type="dataset", files_metadata=True)
     assert before.private and not any(item.rfilename.startswith(args.prefix + "/") for item in before.siblings)
     baseline = {item.rfilename: signature(item) for item in before.siblings}
-    pilot = [json.loads(line) for line in (args.folder / "pilot.jsonl").read_text().splitlines()]
-    commit = api.upload_folder(repo_id=args.repo_id, repo_type="dataset", folder_path=args.folder,
-                               path_in_repo=args.prefix, allow_patterns=[row["file"] for row in pilot] + ["pilot.jsonl"],
-                               commit_message="Publish five verified unused reference images")
-    print(json.dumps({"pilot_ready": True, "repo_id": args.repo_id, "revision": commit.oid,
-                      "files": [args.prefix + "/" + row["file"] for row in pilot]}), flush=True)
-    (args.audit / "pilot-upload.json").write_text(json.dumps({"revision": commit.oid, "files": pilot}, indent=2) + "\n")
+    pilot_file = args.folder / "pilot.jsonl"
+    pilot, pilot_revision = [], None
+    if pilot_file.exists():
+        pilot = [json.loads(line) for line in pilot_file.read_text().splitlines()]
+        commit = api.upload_folder(repo_id=args.repo_id, repo_type="dataset", folder_path=args.folder,
+                                   path_in_repo=args.prefix, allow_patterns=[row["file"] for row in pilot] + ["pilot.jsonl"],
+                                   commit_message="Publish five verified unused reference images")
+        pilot_revision = commit.oid
+        print(json.dumps({"pilot_ready": True, "repo_id": args.repo_id, "revision": pilot_revision,
+                          "files": [args.prefix + "/" + row["file"] for row in pilot]}), flush=True)
+        (args.audit / "pilot-upload.json").write_text(json.dumps({"revision": pilot_revision, "files": pilot}, indent=2) + "\n")
     commit = api.upload_folder(repo_id=args.repo_id, repo_type="dataset", folder_path=args.folder,
                                path_in_repo=args.prefix, commit_message="Publish all verified unused reference inputs")
     after = api.repo_info(args.repo_id, repo_type="dataset", revision=commit.oid, files_metadata=True)
@@ -55,7 +59,7 @@ def publish(args):
     result = {"at": time.time(), "repo_id": args.repo_id, "private": after.private,
               "revision": commit.oid, "prefix": args.prefix, "verified_files": len(files),
               "verified_image_count": summary["verified_image_count"], "total_bytes": sum(x["bytes"] for x in files),
-              "prior_release_files_preserved": len(baseline), "pilot_revision": json.loads((args.audit / "pilot-upload.json").read_text())["revision"],
+              "prior_release_files_preserved": len(baseline), "pilot_revision": pilot_revision,
               "pilot_files": [args.prefix + "/" + row["file"] for row in pilot],
               "exclusion_summary": summary, "temporary_token_revocation_pending": True}
     (args.audit / "hf-upload-verification.json").write_text(json.dumps(result, indent=2) + "\n")

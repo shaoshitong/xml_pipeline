@@ -115,7 +115,7 @@ def exclusions(root, out):
     return result
 
 
-def assess(path):
+def assess(path, complexity_gate=True):
     import fitz
     with fitz.open(path) as document:
         if len(document) != 1:
@@ -135,7 +135,8 @@ def assess(path):
                 elif item[0] == "l" and abs(item[1] - item[2]) >= 8:
                     lines += 1
         raster = sum(fitz.Rect(x["bbox"]).get_area() for x in page.get_image_info()) / page.rect.get_area()
-        if len(rectangles) < 8 or lines < 15 or len(words) < 30 or len(text) < 120 or numeric > .25 or raster > .35:
+        if complexity_gate and (len(rectangles) < 8 or lines < 15 or len(words) < 30
+                                or len(text) < 120 or numeric > .25 or raster > .35):
             return None
         scale = min(2.5, 2200 / max(width, height))
         pixmap = page.get_pixmap(matrix=fitz.Matrix(scale, scale), alpha=False)
@@ -185,6 +186,9 @@ def select(args):
     for manifest in args.exclude_manifest:
         for previous in records(manifest):
             seen_papers.add(previous["paper_id"])
+            pdfs.add(previous["source_pdf_sha256"])
+            images.add(previous["reference_sha256"])
+            pixels.add(previous["reference_pixels_sha256"])
             hashes.append(int(previous["phash"]))
     for (text,) in rows:
         row = json.loads(text)
@@ -210,7 +214,7 @@ def select(args):
             counts["source_hash_mismatch"] += 1
             continue
         try:
-            result = assess(source)
+            result = assess(source, not getattr(args, "reference_pool", False))
         except Exception as error:
             counts["pdf_error_" + type(error).__name__] += 1
             continue
@@ -249,6 +253,9 @@ def select(args):
         (folder / "provenance.json").write_text(json.dumps(record, indent=2) + "\n")
         chosen.append(record)
         seen_papers.add(paper)
+        pdfs.add(row["id"])
+        images.add(image_sha)
+        pixels.add(record["reference_pixels_sha256"])
         hashes.append(phash)
         if len(chosen) % 10 == 0:
             print(json.dumps({"selected": len(chosen), "counts": dict(counts)}), flush=True)
@@ -277,6 +284,8 @@ def main():
     parser.add_argument("--limit", type=int, default=200)
     parser.add_argument("--scan-limit", type=int, default=12000)
     parser.add_argument("--exclude-manifest", action="append", type=Path, default=[])
+    parser.add_argument("--reference-pool", action="store_true",
+                        help="Record complexity without filtering by its thresholds")
     select(parser.parse_args())
 
 
