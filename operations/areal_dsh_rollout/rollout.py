@@ -22,6 +22,10 @@ from setup_sampling import INSTRUCT_SAMPLING, SAMPLING, QWEN38_SAMPLING
 HERE = Path(__file__).resolve().parent
 
 
+class MissingCandidateError(RuntimeError):
+    pass
+
+
 def isolated_turn(command, endpoint, auth_file, logs, timeout, sampling=None):
     """Keep host inference/control ports outside the model's network namespace."""
     headers = json.loads(auth_file.read_text())["headers"] if auth_file else {}
@@ -202,6 +206,8 @@ def run_turn(args, role, number, session):
     if logs != checkpoint:
         save(checkpoint / "status.json", status)
     print(json.dumps(status), flush=True)
+    if validation_error == "missing_candidate_xml":
+        raise MissingCandidateError(f"DSH generator round {number} returned without XML; inspect {logs}")
     if exit_code or final is None or validation_error:
         raise RuntimeError(f"DSH {role} round {number} failed; inspect {logs}")
     return sid, final
@@ -230,6 +236,27 @@ def review_payload(event):
     return review
 
 
+def generate(args, number, session):
+    """Optionally continue the same DSH session after an artifact-free answer."""
+    if not args.completion_retries:
+        return run_turn(args, "generator", number, session)
+    deadline = time.monotonic() + args.turn_timeout
+    for attempt in range(args.completion_retries + 1):
+        options = argparse.Namespace(**vars(args))
+        options.turn_timeout = max(1, int(deadline - time.monotonic()))
+        options.resume = args.resume or attempt > 0
+        try:
+            return run_turn(options, "generator", number, session)
+        except MissingCandidateError:
+            checkpoint = args.out / "generator" / f"round{number}"
+            status = json.loads((checkpoint / "status.json").read_text())
+            if attempt == args.completion_retries:
+                raise
+            with (checkpoint / "recovery.jsonl").open("a") as log:
+                log.write(json.dumps({"attempt": attempt + 1, "session_id": status["session_id"],
+                                      "reason": "missing_candidate_xml"}) + "\n")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("runtime", "reference", "out", "renderer_python", "render_runtime"):
@@ -255,6 +282,7 @@ def main():
     parser.add_argument("--single-self-review", action="store_true")
     parser.add_argument("--preserve-thinking", action="store_true")
     parser.add_argument("--qwen38-effort", choices=("xhigh", "medium", "low"), default="xhigh")
+    parser.add_argument("--completion-retries", type=int, default=0)
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
     parser.add_argument("--reasoning-effort", choices=("off", "low", "high", "max"), default="high")
@@ -280,6 +308,7 @@ def main():
          "single_self_review": args.single_self_review,
          "preserve_thinking": args.preserve_thinking,
          "qwen38_effort": args.qwen38_effort,
+         "completion_retries": args.completion_retries,
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
          "fresh_context_from_own_candidate": args.seeded,
@@ -290,7 +319,7 @@ def main():
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None
     for n in range(1, args.rounds + 1):
-        generator, _ = run_turn(args, "generator", n, generator)
+        generator, _ = generate(args, n, generator)
         xml = case / f"round{n}.drawio"
         preview = case / f"round{n}.png"
         subprocess.run([str(args.renderer_python), str(HERE / "render.py"), str(xml),

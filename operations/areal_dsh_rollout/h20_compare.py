@@ -49,6 +49,7 @@ def evaluate(args, name, port, context, env):
     options = argparse.Namespace(root=args.root, port=port, context_window=context,
         sampling_preset="qwen38", preserve_thinking=True, turn_timeout=args.turn_timeout,
         qwen38_effort=getattr(args, "qwen38_effort", "xhigh"),
+        completion_retries=getattr(args, "completion_retries", 0),
         python_runtime_root=args.python_runtime_root)
     prior, start = None, 1
     if args.resume_from:
@@ -85,6 +86,7 @@ def main():
     parser.add_argument("--turn-timeout", type=int, default=1350)
     parser.add_argument("--resume-from", type=Path)
     parser.add_argument("--qwen38-effort", choices=("xhigh", "medium", "low"), default="xhigh")
+    parser.add_argument("--completion-retries", type=int, default=0)
     args = parser.parse_args()
     args.root = args.root.resolve()
     args.out.mkdir(parents=True)
@@ -98,6 +100,7 @@ def main():
         "artifact_completion_gate": "candidate XML required before stage success",
         "preserve_thinking": True, "temperature": 1.0, "max_output": OUTPUT,
         "model_template_reasoning_effort": args.qwen38_effort,
+        "completion_retries": args.completion_retries,
         "stage_limit_seconds": args.turn_timeout, "rounds": 2, "reviews": 1,
         "resumed_from": str(args.resume_from) if args.resume_from else None,
         "training": False, "gold_feedback": False, "full_skill": True,

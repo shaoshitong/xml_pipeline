@@ -69,6 +69,8 @@ def run_phase(args, phase, out, reviewer_port, env, *, resume_from=None):
         episode.append("--preserve-thinking")
     if getattr(args, "qwen38_effort", "xhigh") != "xhigh":
         episode += ["--qwen38-effort", args.qwen38_effort]
+    if getattr(args, "completion_retries", 0):
+        episode += ["--completion-retries", str(args.completion_retries)]
     command_file = target / "episode-template.json"
     save(command_file, episode)
     command = [str(args.root / "controller/env/bin/python"), str(HERE / "external_api_workflow.py"),
