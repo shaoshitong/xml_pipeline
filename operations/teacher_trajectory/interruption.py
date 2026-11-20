@@ -1,8 +1,96 @@
-"""Account for provider replies completed after their DSH turn timed out."""
+"""Account for interrupted provider replies and native DSH tool outcomes."""
 
+import io
 import json
 from hashlib import sha256
 from pathlib import Path
+
+from store import canonical
+
+
+def native_unknown_results(root, episode, missing):
+    import zstandard
+
+    results = {}
+    home = Path(root) / 'episodes' / episode / 'generator/home/.dsh/sessions'
+    for path in home.rglob('session.v4.jsonl.zstd'):
+        calls = {}
+        raw = path.read_bytes()
+        digest = sha256(raw).hexdigest()
+        with zstandard.ZstdDecompressor().stream_reader(io.BytesIO(raw)) as stream:
+            for line_number, line in enumerate(io.TextIOWrapper(stream, encoding='utf-8', newline=''), 1):
+                event = json.loads(line)
+                data = event.get('data', {})
+                if event.get('type') == 'tool/call' and data['callId'] in missing:
+                    calls[data['callId']] = event
+                message = data.get('message', {})
+                ident = message.get('toolCallId')
+                if event.get('type') != 'tool/result' or ident not in calls:
+                    continue
+                call = calls[ident]
+                if (data.get('error', {}).get('code') != 'TOOL_OUTCOME_UNKNOWN'
+                        or not message.get('isError') or call['seq'] not in event.get('sourceEventSeqs', [])):
+                    continue
+                results[ident] = {'file': str(path), 'file_sha256': digest, 'line': line_number,
+                                 'event_sha256': sha256(line.encode()).hexdigest(),
+                                 'call_event': call, 'result_event': event}
+    return results
+
+
+def recorded_tool_result(store, reference, tool_id):
+    """Find a tool message without expanding unrelated history or images."""
+    fields = dict(json.loads(store.raw(reference))[1])
+    messages = json.loads(store.raw(fields['messages']))[1]
+    needle = sha256(canonical(['value', tool_id])).hexdigest()
+    for message_ref in reversed(messages):
+        fields = dict(json.loads(store.raw(message_ref))[1])
+        if fields.get('tool_call_id') == needle:
+            return message_ref, store.get(message_ref)
+    return None
+
+
+def unknown_tool_outcomes(root, store, episode, missing):
+    if not missing:
+        return []
+    native = native_unknown_results(root, episode, missing)
+    if not native:
+        return []
+    rows = store.db.execute("""select id,request,response from calls where episode=?
+        and role='generator' and completed=1 and status=200 and error is null order by id""",
+        (episode,)).fetchall()
+    proofs = []
+    for number, request, response in rows:
+        tools = store.get(response)['choices'][0]['message'].get('tool_calls', [])
+        matched = []
+        for tool in tools:
+            evidence = native.get(tool['id'])
+            if evidence is None:
+                continue
+            call = evidence['call_event']['data']
+            function = tool['function']
+            if call['name'] != function['name'] or json.loads(call['arguments']) != json.loads(function['arguments']):
+                continue
+            native_message = evidence['result_event']['data']['message']
+            text = ''.join(part['text'] for part in native_message['content'] if part['type'] == 'text')
+            observed = None
+            for later, later_request, _ in rows:
+                if later <= number:
+                    continue
+                message = recorded_tool_result(store, later_request, tool['id'])
+                if message and message[1]['role'] == 'tool' and message[1]['content'] == text:
+                    observed = {'call_id': later, 'request_ref': later_request, 'message_ref': message[0]}
+                    break
+            if observed is not None:
+                matched.append({**evidence, 'tool_id': tool['id'], 'observed_by_later_request': observed})
+                native.pop(tool['id'])
+        if matched:
+            proofs.append({'call_id': number, 'request_ref': request, 'response_ref': response,
+                           'supervision_eligible': False, 'tool_ids': sorted(x['tool_id'] for x in matched),
+                           'reason': 'native_tool_outcome_unknown_after_interruption',
+                           'native_tool_outcomes': matched})
+        if not native:
+            break
+    return proofs
 
 
 def interrupted_replies(root, store, episode, missing):

@@ -186,7 +186,8 @@ def replay(args):
         shutil.copy2(path, args.output / path.name)
     result = verify(run, episode, args.snapshot / "environment/qwen-processor/chat_template.jinja")
     tools = result["tool_execution"][episode]
-    if not tools["all_model_tools_accounted"] or not tools["all_execution_results_present"]:
+    results_accounted = tools.get("all_execution_results_accounted", tools["all_execution_results_present"])
+    if not tools["all_model_tools_accounted"] or not results_accounted:
         raise ValueError("Offline replay has unmatched tools or results")
     net = Path("/proc/self/ns/net")
     result.update(episode=episode, model_calls=0, training_started=False,

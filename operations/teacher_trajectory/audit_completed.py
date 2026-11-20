@@ -46,7 +46,8 @@ def audit(args, folder):
         expected = sum(bool(x.strip()) for x in (folder / "sft-decisions.jsonl").read_text().splitlines())
         tools = integrity["tool_execution"][folder.name]
         accounted = tools.get("all_model_tools_accounted", tools["model_and_execution_match"])
-        if not accounted or not tools["all_execution_results_present"]:
+        results_accounted = tools.get("all_execution_results_accounted", tools["all_execution_results_present"])
+        if not accounted or not results_accounted:
             raise ValueError("Recorded model tools do not match executed tools and results")
         if expected != context["calls"] or expected != integrity["qwen_template"]["calls"]:
             raise ValueError("SFT targets differ from context or template audit coverage")
@@ -55,6 +56,7 @@ def audit(args, folder):
              "source_commit": args.source_commit, "generator_decisions": expected,
              "sft_eligible_generator_decisions": indexed["sft_eligible_generator_decisions"],
              "interrupted_replies_excluded_from_sft": indexed["interrupted_replies_excluded_from_sft"],
+             "native_unknown_tool_outcomes": len(tools.get("native_unknown_tool_outcomes", [])),
              "fits_64k": context["fits_64k"], "fits_native_context": context["fits_native_context"],
              "fidelity_verified": False})
     except Exception as error:

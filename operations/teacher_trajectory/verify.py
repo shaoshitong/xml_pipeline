@@ -10,7 +10,7 @@ import threading
 import time
 
 from export_sft import encode_completion, materialize
-from interruption import interrupted_replies, write_annotations
+from interruption import interrupted_replies, unknown_tool_outcomes, write_annotations
 from gateway import parse_reply
 from store import Store, canonical
 
@@ -174,13 +174,18 @@ def verify(root, episode=None, qwen_template=None):
         proofs = interrupted_replies(root, store, ident, model_calls - actual)
         interrupted = {t for proof in proofs for t in proof["tool_ids"]}
         accounted = model_calls == actual | interrupted
-        if accounted and actual == returned:
-            write_annotations(root, proofs)
+        unknown = unknown_tool_outcomes(root, store, ident, actual - returned)
+        unknown_ids = {t for proof in unknown for t in proof["tool_ids"]}
+        results_accounted = actual == returned | unknown_ids
+        if accounted and results_accounted:
+            write_annotations(root, proofs + unknown)
         execution[ident] = {"model_tool_ids": len(model_calls), "executed_tool_ids": len(actual),
                             "returned_tool_ids": len(returned), "model_and_execution_match": model_calls == actual,
                             "all_model_tools_accounted": accounted,
                             "interrupted_replies": proofs,
-                            "all_execution_results_present": actual == returned}
+                            "native_unknown_tool_outcomes": unknown,
+                            "all_execution_results_present": actual == returned,
+                            "all_execution_results_accounted": results_accounted}
     counts["object_count"], raw_bytes, packed_bytes = store.db.execute(
         "select count(*),sum(bytes),sum(stored_bytes) from objects").fetchone()
     result = {"at": time.time(), "counts": dict(counts), "tool_execution": execution,
