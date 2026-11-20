@@ -26,6 +26,10 @@ class MissingCandidateError(RuntimeError):
     pass
 
 
+class InvalidReviewError(RuntimeError):
+    pass
+
+
 def isolated_turn(command, endpoint, auth_file, logs, timeout, sampling=None):
     """Keep host inference/control ports outside the model's network namespace."""
     headers = json.loads(auth_file.read_text())["headers"] if auth_file else {}
@@ -128,6 +132,8 @@ def run_turn(args, role, number, session):
                    "repeating the inventory. Preserve any work already saved.\n")
     elif continuing:
         prompt += "\nContinue this interrupted stage using this session's own saved work.\n"
+        if role == "reviewer":
+            prompt += "Reuse your existing image observations. Return the required review JSON directly; do not create a plan, update tasks, or try to save a review file.\n"
     if args.resume_note:
         prompt += "\nHost runtime recovery note: " + args.resume_note + "\n"
     if role == "generator" and args.single_self_review:
@@ -208,6 +214,8 @@ def run_turn(args, role, number, session):
     print(json.dumps(status), flush=True)
     if validation_error == "missing_candidate_xml":
         raise MissingCandidateError(f"DSH generator round {number} returned without XML; inspect {logs}")
+    if validation_error == "invalid_reviewer_json":
+        raise InvalidReviewError(f"DSH reviewer round {number} returned invalid JSON; inspect {logs}")
     if exit_code or final is None or validation_error:
         raise RuntimeError(f"DSH {role} round {number} failed; inspect {logs}")
     return sid, final
@@ -236,25 +244,25 @@ def review_payload(event):
     return review
 
 
-def generate(args, number, session):
-    """Optionally continue the same DSH session after an artifact-free answer."""
+def complete_turn(args, role, number, session):
+    """Optionally resume an incomplete output in its own saved DSH session."""
     if not args.completion_retries:
-        return run_turn(args, "generator", number, session)
+        return run_turn(args, role, number, session)
     deadline = time.monotonic() + args.turn_timeout
     for attempt in range(args.completion_retries + 1):
         options = argparse.Namespace(**vars(args))
         options.turn_timeout = max(1, int(deadline - time.monotonic()))
         options.resume = args.resume or attempt > 0
         try:
-            return run_turn(options, "generator", number, session)
-        except MissingCandidateError:
-            checkpoint = args.out / "generator" / f"round{number}"
+            return run_turn(options, role, number, session)
+        except (MissingCandidateError, InvalidReviewError):
+            checkpoint = args.out / role / f"round{number}"
             status = json.loads((checkpoint / "status.json").read_text())
             if attempt == args.completion_retries:
                 raise
             with (checkpoint / "recovery.jsonl").open("a") as log:
                 log.write(json.dumps({"attempt": attempt + 1, "session_id": status["session_id"],
-                                      "reason": "missing_candidate_xml"}) + "\n")
+                                      "reason": status["validation_error"]}) + "\n")
 
 
 def main():
@@ -319,7 +327,7 @@ def main():
          "reference_sha256": sha256(args.reference.read_bytes()).hexdigest()})
     generator, reviewer = args.generator_session_id, None
     for n in range(1, args.rounds + 1):
-        generator, _ = generate(args, n, generator)
+        generator, _ = complete_turn(args, "generator", n, generator)
         xml = case / f"round{n}.drawio"
         preview = case / f"round{n}.png"
         subprocess.run([str(args.renderer_python), str(HERE / "render.py"), str(xml),
@@ -329,7 +337,7 @@ def main():
              "timestamp": time.time()})
         if n < args.rounds:
             digest = sha256(xml.read_bytes()).hexdigest()
-            reviewer, event = run_turn(args, "reviewer", n, reviewer)
+            reviewer, event = complete_turn(args, "reviewer", n, reviewer)
             save(case / f"review{n}.json", review_payload(event))
             if sha256(xml.read_bytes()).hexdigest() != digest:
                 raise RuntimeError("Reviewer modified the frozen candidate")

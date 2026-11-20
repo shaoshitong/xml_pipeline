@@ -79,6 +79,8 @@ def build_patch(
     if model == "Qwen/Qwen3.8-27B":
         route["compat"]["chatTemplateKwargs"]["reasoning_effort"] = qwen38_effort
     patch = [{"id": name, "disabled": True} for name in DISABLED]
+    if role == "reviewer":
+        patch.append({"id": "tool-todo", "disabled": True})
     patch.extend([
         {"id": "llm-pi-ai", "disabled": False,
          "config": {"providers": {provider: route}}},
