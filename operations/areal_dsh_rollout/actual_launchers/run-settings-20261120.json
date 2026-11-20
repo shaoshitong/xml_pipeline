@@ -39,22 +39,33 @@
       "reuse_saved_review": true
     },
     {
-      "name": "native-xhigh-budget-recovery",
-      "source": "2db2b87b532f6cdba1c3673d9595608e417d977e",
-      "launcher_commit": "6d51e7019b446f580ecf5262799b91990d4a26c1",
+      "name": "native-xhigh-runtime-feedback-recovery",
+      "source": "32152b5a671f2dcb72477d09a33179fde94f5da0",
+      "launcher_commit": "c47415661517ce6c75a1bd7368ebfef43f41773f",
       "entry": "native_recovery_services.py",
       "context": 262144,
       "effort": "xhigh",
       "gpu": 4,
       "reviewer_gpu": 6,
       "reviewer_port": 32415,
-      "run": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-budget-2db2b87-r5",
-      "resume_from": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-recovery-f1f746d-r4/phase1/evaluation",
+      "run": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-runtime-32152b5-r6",
+      "resume_from": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-budget-2db2b87-r5/phase1/evaluation",
       "compaction_headroom_tokens": 8192,
       "summary_max_tokens": 65536,
       "prior_message_trigger": 65536,
       "message_trigger": 122880,
-      "resume_workflow": "Inspect and execute the model own existing generation script before more image measurement."
+      "resume_workflow": "Inspect and execute the model own existing generation script before more image measurement.",
+      "prior_budget_condition": {
+        "source": "2db2b87b532f6cdba1c3673d9595608e417d977e",
+        "launcher_commit": "6d51e7019b446f580ecf5262799b91990d4a26c1",
+        "run": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-budget-2db2b87-r5",
+        "resume_from": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-recovery-f1f746d-r4/phase1/evaluation"
+      },
+      "host_compile_diagnostic": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-script-diagnostic/execution.json",
+      "diagnostic_script_sha256": "4866bbed3a441e5fdff31f8dab813a5c3bd2c144a150ee395cd211632cdf83d6",
+      "host_changed_model_code": false,
+      "clear_diagnostic_before_reviewer": true,
+      "assistance": "Host executed an unchanged own-model script in a separate workspace and returned its raw TypeError; no visual or gold corrections."
     }
   ]
 }
