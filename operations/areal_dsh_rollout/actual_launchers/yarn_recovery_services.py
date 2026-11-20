@@ -18,12 +18,12 @@ out = Path(sys.argv[2]) if len(sys.argv) > 2 else root / 'runs/qwen38-yarn-recov
 out.mkdir()
 env = environment(root)
 inventory = gpu_inventory()
-assert all(row['memory_used_mib'] < 1024 for row in inventory if row['index'] in (5, 6))
+reuse_review = len(sys.argv) > 4 and sys.argv[4] == 'reuse-review'
+assert all(row['memory_used_mib'] < 1024 for row in inventory if row['index'] in ({5} if reuse_review else {5, 6}))
 contract = {'source_commit': commit, 'gpu_inventory_before': inventory,
     'resumed_from': sys.argv[3] if len(sys.argv) > 3 else str(root / 'runs/qwen38-yarn-review-resume-fc8756d-r5/phase2/evaluation'),
     'generator_gpu': 5, 'reviewer_gpu': 6, 'training': False, 'gold_feedback': False,
     'reuse_completed_generator': True, 'reuse_reviewer_session': True, 'native_goal': False}
-reuse_review = len(sys.argv) > 4 and sys.argv[4] == 'reuse-review'
 contract['reuse_saved_review_response'] = reuse_review
 services = []
 try:
