@@ -48,6 +48,7 @@ def evaluate(args, name, port, context, env):
     out.mkdir()
     options = argparse.Namespace(root=args.root, port=port, context_window=context,
         sampling_preset="qwen38", preserve_thinking=True, turn_timeout=args.turn_timeout,
+        qwen38_effort=getattr(args, "qwen38_effort", "xhigh"),
         python_runtime_root=args.python_runtime_root)
     prior, start = None, 1
     if args.resume_from:
@@ -83,6 +84,7 @@ def main():
     parser.add_argument("--python-runtime-root", type=Path, required=True)
     parser.add_argument("--turn-timeout", type=int, default=1350)
     parser.add_argument("--resume-from", type=Path)
+    parser.add_argument("--qwen38-effort", choices=("xhigh", "medium", "low"), default="xhigh")
     args = parser.parse_args()
     args.root = args.root.resolve()
     args.out.mkdir(parents=True)
@@ -95,6 +97,7 @@ def main():
         "reviewer_frozen": True, "reviewer_gpu": 6, "native_goal": False,
         "artifact_completion_gate": "candidate XML required before stage success",
         "preserve_thinking": True, "temperature": 1.0, "max_output": OUTPUT,
+        "model_template_reasoning_effort": args.qwen38_effort,
         "stage_limit_seconds": args.turn_timeout, "rounds": 2, "reviews": 1,
         "resumed_from": str(args.resume_from) if args.resume_from else None,
         "training": False, "gold_feedback": False, "full_skill": True,

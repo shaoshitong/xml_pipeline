@@ -110,6 +110,7 @@ def run_turn(args, role, number, session):
                    context_window=context_window, max_tokens=max_tokens, reasoning_effort=effort)
     if model.startswith("Qwen/"):
         profile["preserve_thinking"] = args.preserve_thinking and role == "generator"
+        profile["qwen38_effort"] = args.qwen38_effort
     patch.write_text(builder(**profile))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)
@@ -253,6 +254,7 @@ def main():
     parser.add_argument("--resume-note", default="")
     parser.add_argument("--single-self-review", action="store_true")
     parser.add_argument("--preserve-thinking", action="store_true")
+    parser.add_argument("--qwen38-effort", choices=("xhigh", "medium", "low"), default="xhigh")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
     parser.add_argument("--reasoning-effort", choices=("off", "low", "high", "max"), default="high")
@@ -277,6 +279,7 @@ def main():
          "reasoning_effort": args.reasoning_effort,
          "single_self_review": args.single_self_review,
          "preserve_thinking": args.preserve_thinking,
+         "qwen38_effort": args.qwen38_effort,
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
          "fresh_context_from_own_candidate": args.seeded,

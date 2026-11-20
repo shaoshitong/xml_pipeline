@@ -35,6 +35,7 @@ def build_patch(
     max_tokens: int = 8192,
     reasoning_effort: str = "high",
     preserve_thinking: bool = False,
+    qwen38_effort: str = "xhigh",
 ) -> list[dict]:
     """Use with an empty DSH_HOME, never an account or gold-MCP profile.
 
@@ -76,7 +77,7 @@ def build_patch(
         }],
     }
     if model == "Qwen/Qwen3.8-27B":
-        route["compat"]["chatTemplateKwargs"]["reasoning_effort"] = "xhigh"
+        route["compat"]["chatTemplateKwargs"]["reasoning_effort"] = qwen38_effort
     patch = [{"id": name, "disabled": True} for name in DISABLED]
     patch.extend([
         {"id": "llm-pi-ai", "disabled": False,
