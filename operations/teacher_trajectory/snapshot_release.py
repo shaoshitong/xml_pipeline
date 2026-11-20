@@ -14,7 +14,7 @@ import subprocess
 import sys
 import time
 
-from export_sft import export
+from refresh_index import refresh
 from verify import open_archive, verify
 
 
@@ -155,7 +155,7 @@ def build(args):
          "node_version": subprocess.check_output([str(args.runtime / "node/bin/node"), "--version"], text=True).strip(),
          "dsh_version": json.loads(assets[-1].read_text())["version"], "runtime_asset_pins": asset_pins,
          "pins_scope": "Installed controller Python distributions; no wheels, model weights or credentials"})
-    counts = export(open_archive(run), run / "sft-all-decisions.jsonl")
+    counts = refresh(run, args.output / "audits", run / "sft-all-decisions.jsonl", args.source_commit)["counts"]
     files = []
     for path in args.output.rglob("*"):
         if path.is_file() and "objects" not in path.relative_to(args.output).parts:
