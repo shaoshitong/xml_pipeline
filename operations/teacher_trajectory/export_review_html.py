@@ -4,12 +4,13 @@ import argparse
 import base64
 import gzip
 from hashlib import sha256
+from html import escape
 import json
 from pathlib import Path
 import time
 
 from interruption import annotation
-from review_server import read_events
+from review_server import read_events, tool_events
 from store import canonical
 from verify import open_archive
 
@@ -118,7 +119,7 @@ def export(root, manifest_path, output):
             for key in ("request_ref", "response_ref"):
                 if row[key]:
                     bundle.include(row[key])
-            row.update(annotation(store, row))
+            row.update(annotation(store, {**row, "call_id": row["id"]}))
             if row["role"] != "generator" or row["status"] != 200 or row["error"]:
                 row["supervision_eligible"] = False
             calls.append(row)
@@ -155,13 +156,65 @@ def export(root, manifest_path, output):
     return result
 
 
+def export_static(root, manifest_path, output):
+    manifest = json.loads(manifest_path.read_text())
+    store = open_archive(root)
+    pieces, calls = [], 0
+    def block(title, value):
+        text = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, indent=2)
+        return '<details><summary>' + escape(title) + '</summary><pre>' + escape(text) + '</pre></details>'
+    for number, case in enumerate(manifest['cases'], 1):
+        folder = root / 'episodes' / case['id']
+        pieces.append('<section id="c-' + case['id'] + '"><h2>' + str(number) + ' · ' + escape(case['paper']) + '</h2>')
+        pieces.append('<p>' + str(case['generator_decisions']) + ' 次生成决策 · <a href="' + escape(case['arxiv_url'], quote=True) + '">论文来源</a></p><div class="images">')
+        for name, label in [('reference.png', '原图'), ('round1.png', '第一轮实际渲染'), ('round2.png', '第二轮实际渲染')]:
+            raw = (folder / 'case' / name).read_bytes()
+            if sha256(raw).hexdigest() != case['files'][name]['sha256']:
+                raise ValueError('Selected image changed')
+            pieces.append('<figure><figcaption>' + label + '</figcaption><img src="data:image/png;base64,' + base64.b64encode(raw).decode() + '"></figure>')
+        pieces.append('</div>' + block('独立 DeepSeek Reviewer 的完整反馈', case['review']))
+        events = tool_events(folder)
+        rows = store.db.execute('select id,role,stage,request,response,status,error,cost_upper from calls where episode=? order by id', (case['id'],)).fetchall()
+        for ident, role, stage, request, response, status, error, cost in rows:
+            calls += 1
+            reply = store.get(response) if response else {}
+            choices = reply.get('choices', [])
+            message = choices[0]['message'] if choices else {}
+            mark = annotation(store, {'call_id': ident, 'request_ref': request, 'response_ref': response})
+            eligibility = 'Reviewer 观察，不作为监督目标' if role == 'reviewer' else '还原质量未认证'
+            if not mark['supervision_eligible']:
+                eligibility = '超时后未执行，原文保留，不作监督目标'
+            if status != 200 or error:
+                eligibility = '请求失败或中断，原始错误保留'
+            title = '#' + str(ident) + ' · ' + role + ' · 第 ' + str(stage) + ' 轮 · HTTP ' + str(status)
+            pieces.append('<details class="call"><summary>' + escape(title) + '</summary><p class="muted">' + escape(eligibility) + '</p>')
+            pieces.append(block('模型思考：reasoning_content（完整原文）', message.get('reasoning_content') or '此请求未返回 reasoning_content。'))
+            pieces.append(block('模型文本答复：content（完整原文）', message.get('content') or '此请求无文本答复。'))
+            tools = [{'model_call': call, 'executed_events': events.get(call['id'], [])} for call in message.get('tool_calls', [])]
+            pieces.append(block('工具请求与实际执行、返回（完整记录）', tools))
+            pieces.append(block('调用元数据与来源', {'id': ident, 'role': role, 'stage': stage, 'status': status, 'error': error, 'cost_estimate_cny': cost, 'request_ref': request, 'response_ref': response, 'usage': reply.get('usage'), 'execution_annotation': mark}))
+            pieces.append('</details>')
+        pieces.append('</section>')
+    nav = ' · '.join('<a href="#c-' + c['id'] + '">' + str(i) + ' · ' + escape(c['paper']) + '</a>' for i, c in enumerate(manifest['cases'], 1))
+    head = '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>五条真实 DeepSeek 轨迹（独立阅读版）</title><style>body{font:15px/1.65 system-ui;color:#203447;background:#f5f7fa;max-width:1480px;margin:auto;padding:24px}h1{font-size:26px}section{margin:28px 0;padding:20px;background:white;border:1px solid #dae2e8;border-radius:12px}.images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}figure{margin:0}figcaption{font-weight:600}img{width:100%;height:340px;object-fit:contain}details{border:1px solid #dbe3e9;border-radius:7px;margin:9px 0;padding:10px}summary{cursor:pointer;font-weight:600}.call{background:#f9fbfd}.muted{font-size:12px;color:#617386}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace;max-height:70vh;overflow:auto;background:#f1f5f8;padding:12px}a{color:#14618b}@media(max-width:800px){body{padding:12px}.images{grid-template-columns:1fr}img{height:auto;max-height:650px}}</style><h1>五条真实 DeepSeek / DSH 轨迹</h1><p><b>DeepSeek 生成 + 独立 DeepSeek 会话审图；未训练，未提供金标 XML 或 MCP 对比反馈。</b></p><p>从当时 99 条已完成、已审计案例中固定随机抽样（seed 20261120）。完整性通过不等于画面完全还原。本文件内嵌原图、两轮实际渲染，以及每次调用的全部模型思考、文字答复和工具执行/返回；不补写推理或执行。展开各条记录查看，页面无需 JavaScript、服务器或 localhost。</p><p class="muted">本阅读版不重复内嵌每一步的完整输入历史与所有观察裁剪图；这些内容保存在另一份完整版和远端原始档案中。原始 SSE 与运行日志仍在远端保留。</p><nav>'''
+    output.write_text(head + nav + '</nav>' + ''.join(pieces) + '</html>')
+    result = {'at': time.time(), 'html': str(output), 'bytes': output.stat().st_size,
+              'sha256': sha256(output.read_bytes()).hexdigest(), 'cases': len(manifest['cases']),
+              'calls': calls, 'external_requests_required': False, 'javascript_required': False,
+              'all_reply_reasoning_text_and_tools_included': True, 'full_inputs_in_separate_complete_html': True}
+    output.with_suffix('.json').write_text(json.dumps(result, indent=2) + '\n')
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--static", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(export(args.root, args.manifest, args.output)))
+    writer = export_static if args.static else export
+    print(json.dumps(writer(args.root, args.manifest, args.output)))
 
 
 if __name__ == "__main__":
