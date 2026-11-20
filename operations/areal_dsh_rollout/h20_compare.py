@@ -47,9 +47,25 @@ def evaluate(args, name, port, context, env):
     out = args.out / name
     out.mkdir()
     options = argparse.Namespace(root=args.root, port=port, context_window=context,
-        sampling_preset="qwen38", preserve_thinking=True, python_runtime_root=args.python_runtime_root)
-    for phase in (1, 2):
-        if code := run_phase(options, phase, out, 32435, env):
+        sampling_preset="qwen38", preserve_thinking=True, turn_timeout=args.turn_timeout,
+        python_runtime_root=args.python_runtime_root)
+    prior, start = None, 1
+    if args.resume_from:
+        previous = args.resume_from / name
+        result_path = previous / "result.json"
+        previous_result = json.loads(result_path.read_text()) if result_path.exists() else {}
+        if previous_result.get("exit") == 0:
+            result = {**previous_result, "reused_completed_run": str(previous)}
+            save(out / "result.json", result)
+            return result
+        phase1 = previous / "phase1/phase-result.json"
+        start = 2 if phase1.exists() and json.loads(phase1.read_text())["exit"] == 0 else 1
+        prior = previous / f"phase{start}/evaluation"
+        if not (prior / "episode").exists():
+            prior = previous / "phase1/evaluation"
+    for phase in range(start, 3):
+        if code := run_phase(options, phase, out, 32435, env,
+                             resume_from=prior if phase == start else None):
             result = {"exit": code, "completed_phase": phase - 1, "failed_phase": phase}
             break
     else:
@@ -65,6 +81,8 @@ def main():
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--python-runtime-root", type=Path, required=True)
+    parser.add_argument("--turn-timeout", type=int, default=1350)
+    parser.add_argument("--resume-from", type=Path)
     args = parser.parse_args()
     args.root = args.root.resolve()
     args.out.mkdir(parents=True)
@@ -77,7 +95,8 @@ def main():
         "reviewer_frozen": True, "reviewer_gpu": 6, "native_goal": False,
         "artifact_completion_gate": "candidate XML required before stage success",
         "preserve_thinking": True, "temperature": 1.0, "max_output": OUTPUT,
-        "stage_limit_seconds": 1350, "rounds": 2, "reviews": 1,
+        "stage_limit_seconds": args.turn_timeout, "rounds": 2, "reviews": 1,
+        "resumed_from": str(args.resume_from) if args.resume_from else None,
         "training": False, "gold_feedback": False, "full_skill": True,
         "reference_sha256": sha256((args.root / "inputs/022/reference.png").read_bytes()).hexdigest(),
         "variants": {"native": {"context": 262144, "yarn": False, "gpus": [4], "tp": 1},
@@ -99,7 +118,8 @@ def main():
             contract[name] = verify_server(port, context, args.out / name / "backend.json")
             save(args.out / "control-contract.json", contract)
             print(json.dumps({"ready": name, "pid": process.pid}), flush=True)
-        probe(args, env)
+        if not args.resume_from:
+            probe(args, env)
         with ThreadPoolExecutor(max_workers=2) as pool:
             futures = {name: pool.submit(evaluate, args, name, port, context, env)
                        for name, port, context in (("native", 32414, 262144), ("yarn", 32424, CONTEXT))}

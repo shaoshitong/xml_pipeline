@@ -51,16 +51,17 @@ def environment(root):
     return env
 
 
-def run_phase(args, phase, out, reviewer_port, env):
+def run_phase(args, phase, out, reviewer_port, env, *, resume_from=None):
     target = out / f"phase{phase}"
     target.mkdir()
     evaluation = target / "evaluation"
     context = getattr(args, "context_window", CONTEXT)
     preset = getattr(args, "sampling_preset", "precise-coding")
+    turn_timeout = getattr(args, "turn_timeout", 1350)
     options = argparse.Namespace(root=args.root, runtime=args.root / "runtime",
         model="Qwen/Qwen3.8-27B", reviewer_url=f"http://127.0.0.1:{reviewer_port}/v1",
         rounds=phase, skill_mode="full", sampling_preset=preset, context_window=context,
-        max_tokens=OUTPUT, reasoning_effort="high", turn_timeout=1350, single_self_review=True)
+        max_tokens=OUTPUT, reasoning_effort="high", turn_timeout=turn_timeout, single_self_review=True)
     episode = default_episode(options)
     episode[0] = str(args.root / "envs/serving/bin/python")
     episode += ["--python-runtime-root", str(args.python_runtime_root)]
@@ -75,9 +76,10 @@ def run_phase(args, phase, out, reviewer_port, env):
         "--model", options.model, "--reviewer-url", options.reviewer_url, "--rounds", str(phase),
         "--context-window", str(context), "--max-tokens", str(OUTPUT), "--reasoning-effort", "high",
         "--skill-mode", "full", "--sampling-preset", preset, "--single-self-review",
-        "--turn-timeout", "1350", "--timeout", "1500", "--recovery-policy", ""]
-    if phase == 2:
-        command += ["--resume-from", str(out / "phase1/evaluation")]
+        "--turn-timeout", str(turn_timeout), "--timeout", str(max(1500, phase * turn_timeout + 120)),
+        "--recovery-policy", ""]
+    if resume_from or phase == 2:
+        command += ["--resume-from", str(resume_from or out / "phase1/evaluation")]
     phase_env = dict(env, CUDA_VISIBLE_DEVICES="", AREAL_EXTERNAL_TASK_TOKEN=secrets.token_urlsafe(32),
                      ROLLOUT_API_WIRE_AUDIT=str(target / "api-wire.jsonl"))
     with (target / "evaluation.log").open("wb") as log:
