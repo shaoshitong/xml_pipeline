@@ -119,6 +119,8 @@ def run_turn(args, role, number, session):
     if model.startswith("Qwen/"):
         profile["preserve_thinking"] = args.preserve_thinking and role == "generator"
         profile["qwen38_effort"] = args.qwen38_effort
+        if role == "generator" and model == "Qwen/Qwen3.8-27B":
+            profile["stream_idle_timeout_ms"] = args.turn_timeout * 1000
     patch.write_text(builder(**profile))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)

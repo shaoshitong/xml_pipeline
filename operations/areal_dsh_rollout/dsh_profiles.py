@@ -36,6 +36,7 @@ def build_patch(
     reasoning_effort: str = "high",
     preserve_thinking: bool = False,
     qwen38_effort: str = "xhigh",
+    stream_idle_timeout_ms: int | None = None,
 ) -> list[dict]:
     """Use with an empty DSH_HOME, never an account or gold-MCP profile.
 
@@ -78,6 +79,8 @@ def build_patch(
     }
     if model == "Qwen/Qwen3.8-27B":
         route["compat"]["chatTemplateKwargs"]["reasoning_effort"] = qwen38_effort
+    if stream_idle_timeout_ms is not None:
+        route["streamIdleTimeoutMs"] = stream_idle_timeout_ms
     patch = [{"id": name, "disabled": True} for name in DISABLED]
     if role == "reviewer":
         patch.append({"id": "tool-todo", "disabled": True})
