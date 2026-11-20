@@ -80,7 +80,11 @@ def run_turn(args, role, number, session):
     if continuing:
         state_file = checkpoint / "status.json"
         state = json.loads(state_file.read_text()) if state_file.exists() else {}
-        previous = root / state.get("log_dir", checkpoint.name) / "events.jsonl"
+        previous_logs = root / state.get("log_dir", checkpoint.name)
+        turn_status = previous_logs / "turn-status.json"
+        if state_file.exists() and not turn_status.exists():
+            shutil.copy2(state_file, turn_status)
+        previous = previous_logs / "events.jsonl"
         events = read_events(previous) if previous.exists() else []
         session = state.get("session_id") or next(
             (e["sessionId"] for e in events if e.get("type") == "session"), session)
@@ -195,6 +199,7 @@ def run_turn(args, role, number, session):
               "log_dir": logs.name,
               "seconds": round(time.monotonic() - started, 2),
               "tool_calls": sum(e.get("type") == "tool_call" for e in events)}
+    save(logs / "turn-status.json", status)
     save(logs / "status.json", status)
     if logs != checkpoint:
         save(checkpoint / "status.json", status)

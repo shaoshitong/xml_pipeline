@@ -1,6 +1,7 @@
 """Account for provider replies completed after their DSH turn timed out."""
 
 import json
+from hashlib import sha256
 from pathlib import Path
 
 
@@ -21,6 +22,8 @@ def interrupted_replies(root, store, episode, missing):
         origin = None
         if status is None:
             status, origin = deferred_request_timeout(root, store, episode, record, records)
+        if status is None:
+            status, origin = logged_timeout(root, store, episode, record, records)
         if status is None or consumed_later(store, records, number, tools):
             continue
         proofs.append({'call_id': number, 'request_ref': request, 'response_ref': response,
@@ -31,7 +34,48 @@ def interrupted_replies(root, store, episode, missing):
                        'consumed_by_later_generator_requests': False})
         if origin is not None:
             proofs[-1]['request_origin'] = origin
+            if origin['reason'] == 'timeout_status_preserved_in_collector_stdout':
+                proofs[-1]['reason'] = 'reply_not_consumed_by_timed_out_turn'
+                proofs[-1]['timeout_written_at'] = None
     return proofs
+
+
+def logged_timeout(root, store, episode, record, records):
+    """Recover overwritten status evidence from the actual collector stdout."""
+    messages = store.get(record[4])['messages']
+    resumed = resumed_turn_request(store, records, record, messages)
+    if resumed is None:
+        return None, None
+    folder = Path(root) / 'episodes' / episode / 'generator' / f'round{record[1]}'
+    events = [json.loads(line) for line in (folder / 'events.jsonl').read_text().splitlines()
+              if line.startswith('{') and line.endswith('}')]
+    session = next((e['sessionId'] for e in events if e.get('type') == 'session'), None)
+    calls = sum(e.get('type') == 'tool_call' for e in events)
+    if session is None or any(e.get('type') == 'final' for e in events):
+        return None, None
+    for path in sorted(Path(root).parent.glob('main*.log')):
+        for number, line in enumerate(path.read_text().splitlines(), 1):
+            try:
+                state = json.loads(line)
+            except ValueError:
+                continue
+            if not isinstance(state, dict) or not state.get('timed_out'):
+                continue
+            if (state.get('role'), state.get('round'), state.get('session_id'), state.get('log_dir'),
+                state.get('exit'), state.get('completed'), state.get('tool_calls')) != (
+                    'generator', record[1], session, folder.name, 124, False, calls):
+                continue
+            return path, {'reason': 'timeout_status_preserved_in_collector_stdout',
+                          'line': number, 'line_sha256': sha256(line.encode()).hexdigest(),
+                          'status': state, 'continuation_call_id': resumed[0],
+                          'continuation_request_ref': resumed[4], 'pending_request_ref': record[4],
+                          'exact_pending_prefix_retained': True,
+                          'new_timeout_recovery_prompt_appended': True}
+    return None, None
+
+
+def timeout_paths(folder, stage):
+    return list(folder.glob(f'round{stage}*/turn-status.json')) + list(folder.glob(f'round{stage}*/status.json'))
 
 
 def stage_prompt(message, stage):
@@ -48,7 +92,7 @@ def deferred_request_timeout(root, store, episode, record, records):
     number, stage, started, ended, request, _ = record
     messages = store.get(request)['messages']
     folder = Path(root) / 'episodes' / episode / 'generator'
-    for path in folder.glob(f'round{stage}*/status.json'):
+    for path in timeout_paths(folder, stage):
         state = json.loads(path.read_text())
         cutoff = path.stat().st_mtime
         if not state.get('timed_out') or not cutoff < started < ended:
@@ -94,7 +138,7 @@ def resumed_turn_request(store, records, record, messages):
 
 def timeout_status(root, episode, stage, started, ended):
     folder = Path(root) / 'episodes' / episode / 'generator'
-    for path in folder.glob(f'round{stage}*/status.json'):
+    for path in timeout_paths(folder, stage):
         state = json.loads(path.read_text())
         cutoff = path.stat().st_mtime
         if state.get('timed_out') and cutoff - state['seconds'] - 5 <= started <= cutoff < ended:
