@@ -19,16 +19,18 @@ out.mkdir()
 env = environment(root)
 inventory = gpu_inventory()
 reuse_review = len(sys.argv) > 4 and sys.argv[4] == 'reuse-review'
-assert all(row['memory_used_mib'] < 1024 for row in inventory if row['index'] in ({5} if reuse_review else {5, 6}))
+medium = len(sys.argv) > 5 and sys.argv[5] == 'medium'
+gpu, port, context, fraction = (7, 32444, 262144, .85) if medium else (5, 32424, 1048576, .94)
+assert all(row['memory_used_mib'] < 1024 for row in inventory if row['index'] in ({gpu} if reuse_review else {gpu, 6}))
 contract = {'source_commit': commit, 'gpu_inventory_before': inventory,
     'resumed_from': sys.argv[3] if len(sys.argv) > 3 else str(root / 'runs/qwen38-yarn-review-resume-fc8756d-r5/phase2/evaluation'),
-    'generator_gpu': 5, 'reviewer_gpu': 6, 'training': False, 'gold_feedback': False,
+    'generator_gpu': gpu, 'reviewer_gpu': 6, 'training': False, 'gold_feedback': False,
     'reuse_completed_generator': True, 'reuse_reviewer_session': True, 'native_goal': False}
 contract['reuse_saved_review_response'] = reuse_review
 services = []
 try:
     specifications = (
-        ('generator', 'generator', 'Qwen3.8-27B', '5', 32424, 1048576, .94, True),
+        ('generator', 'generator', 'Qwen3.8-27B', str(gpu), port, context, fraction, not medium),
         ('reviewer', 'reviewer', 'Qwen3.5-4B', '6', 32435, 65536, .40, False))
     for name, role, model, devices, port, context, fraction, yarn in specifications[:1] if reuse_review else specifications:
         process, log = start_server(root, out / (name + '-server'), role, model,
@@ -40,9 +42,10 @@ try:
         contract[name + '_pid'] = process.pid
         (out / 'contract.json').write_text(json.dumps(contract, indent=2))
         print(json.dumps({'ready': name, 'pid': process.pid}), flush=True)
-    args = SimpleNamespace(root=root, port=32424, context_window=1048576,
+    args = SimpleNamespace(root=root, port=port, context_window=context,
         sampling_preset='qwen38', preserve_thinking=True, turn_timeout=21600,
-        completion_retries=3, python_runtime_root=Path('/DATA/disk1/zbw_tmp4/rdm-sets/envs/rdm'))
+        completion_retries=3, qwen38_effort='medium' if medium else 'xhigh',
+        python_runtime_root=Path('/DATA/disk1/zbw_tmp4/rdm-sets/envs/rdm'))
     code = run_phase(args, 2, out, 32435, env, resume_from=Path(contract['resumed_from']))
     (out / 'result.json').write_text(json.dumps({'exit': code, 'completed_phase': 2 if code == 0 else 1}))
 finally:
