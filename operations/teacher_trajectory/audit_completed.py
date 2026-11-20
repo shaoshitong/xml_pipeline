@@ -28,6 +28,16 @@ def collector_alive(receipt):
 def audit(args, folder):
     target = args.out / folder.name
     target.mkdir(exist_ok=True)
+    failed = target / "failed.json"
+    if failed.exists():
+        previous = json.loads(failed.read_text())["source_commit"]
+        if previous != args.source_commit:
+            history = target / "history" / previous
+            history.mkdir(parents=True, exist_ok=True)
+            for name in ("integrity.json", "integrity.log", "context.json", "context.log", "failed.json"):
+                path = target / name
+                if path.exists():
+                    path.replace(history / name)
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OPENBLAS_NUM_THREADS="1",
                OMP_NUM_THREADS="1", MKL_NUM_THREADS="1", TOKENIZERS_PARALLELISM="false")
     command = [sys.executable, str(Path(__file__).with_name("verify.py")),
@@ -59,6 +69,7 @@ def audit(args, folder):
              "native_unknown_tool_outcomes": len(tools.get("native_unknown_tool_outcomes", [])),
              "fits_64k": context["fits_64k"], "fits_native_context": context["fits_native_context"],
              "fidelity_verified": False})
+        failed.unlink(missing_ok=True)
     except Exception as error:
         save(target / "failed.json", {"at": time.time(), "episode": folder.name,
              "error_type": type(error).__name__, "error": str(error), "source_commit": args.source_commit})
@@ -77,7 +88,9 @@ def main():
     while True:
         completed = sorted(p.parent for p in (args.root / "episodes").glob("*/completed.json"))
         pending = [p for p in completed if not (args.out / p.name / "passed.json").exists()
-                   and not (args.out / p.name / "failed.json").exists()]
+                   and (not (args.out / p.name / "failed.json").exists()
+                        or json.loads((args.out / p.name / "failed.json").read_text())["source_commit"]
+                        != args.source_commit)]
         with ThreadPoolExecutor(max_workers=args.workers) as pool:
             list(pool.map(lambda folder: audit(args, folder), pending))
         passed = [json.loads(p.read_text()) for p in args.out.glob("*/passed.json")]
