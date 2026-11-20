@@ -1,0 +1,60 @@
+{
+  "reference_sha256": "337a70f8a807cd8eaa005da54294da2436e58f3154c92eb1acc4095b69500573",
+  "generator": "Qwen/Qwen3.8-27B",
+  "reviewer": "Qwen/Qwen3.5-4B",
+  "reviewer_frozen": true,
+  "rounds": 2,
+  "reviews": 1,
+  "full_skill": true,
+  "native_goal": false,
+  "gold_feedback": false,
+  "training": false,
+  "generator_max_output": 131072,
+  "temperature": 1.0,
+  "preserve_thinking": true,
+  "variants": [
+    {
+      "name": "static-yarn-xhigh",
+      "source": "621ff21dde88136305815c9681cce9c26abccfea",
+      "launcher_commit": "ebbf76914a50512a0ad4e9ecfa602261f6163ea6",
+      "entry": "yarn_recovery_services.py",
+      "context": 1048576,
+      "effort": "xhigh",
+      "gpu": 5,
+      "run": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-yarn-recovery-621ff21-r8",
+      "resume_from": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-yarn-recovery-f1f746d-r7/phase2/evaluation",
+      "reuse_saved_review": true,
+      "review_status_default": "FIX when an existing issue list omits status; issues unchanged"
+    },
+    {
+      "name": "native-medium",
+      "source": "621ff21dde88136305815c9681cce9c26abccfea",
+      "launcher_commit": "c0339dacc8e9d4af5c4f15d9fe0be51a728409e8",
+      "entry": "yarn_recovery_services.py",
+      "context": 262144,
+      "effort": "medium",
+      "gpu": 7,
+      "run": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-medium-recovery-621ff21-r2",
+      "resume_from": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-medium-c983558/medium-native/phase2/evaluation",
+      "reuse_saved_review": true
+    },
+    {
+      "name": "native-xhigh-budget-recovery",
+      "source": "2db2b87b532f6cdba1c3673d9595608e417d977e",
+      "launcher_commit": "6d51e7019b446f580ecf5262799b91990d4a26c1",
+      "entry": "native_recovery_services.py",
+      "context": 262144,
+      "effort": "xhigh",
+      "gpu": 4,
+      "reviewer_gpu": 6,
+      "reviewer_port": 32415,
+      "run": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-budget-2db2b87-r5",
+      "resume_from": "/DATA/disk1/zbw_tmp4/drawio-agent-qwen38/runs/qwen38-native-recovery-f1f746d-r4/phase1/evaluation",
+      "compaction_headroom_tokens": 8192,
+      "summary_max_tokens": 65536,
+      "prior_message_trigger": 65536,
+      "message_trigger": 122880,
+      "resume_workflow": "Inspect and execute the model own existing generation script before more image measurement."
+    }
+  ]
+}
