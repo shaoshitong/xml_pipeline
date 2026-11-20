@@ -199,8 +199,8 @@ def episode(args, record, store, provider, runtime, resources):
                 for role in ("generator", "reviewer")}
     config = SimpleNamespace(
         out=folder, runtime=runtime, render_runtime=resources,
-        renderer_python=Path("/home/shaoshitong/anaconda3/bin/python"),
-        python_runtime_root=Path("/home/shaoshitong/anaconda3"),
+        renderer_python=Path(getattr(args, "renderer_python", "/home/shaoshitong/anaconda3/bin/python")),
+        python_runtime_root=Path(getattr(args, "python_runtime_root", "/home/shaoshitong/anaconda3")),
         generator_model="deepseek-flash", reviewer_model="deepseek-flash",
         generator_url=f"http://127.0.0.1:{services['generator'].server_port}/v1",
         reviewer_url=f"http://127.0.0.1:{services['reviewer'].server_port}/v1",
@@ -210,7 +210,7 @@ def episode(args, record, store, provider, runtime, resources):
         rounds=2, single_self_review=True, reasoning_effort="max", context_window=1048576,
         max_tokens=131072, sampling_preset="model", reviewer_sampling_preset="model",
         seed=None, turn_timeout=1350,
-        extra_runtime_mounts=[args.dataset / "conversion/runtime/dsh"])
+        extra_runtime_mounts=getattr(args, "extra_runtime_mounts", [args.dataset / "conversion/runtime/dsh"]))
     protocol = {"source": record, "generator": "deepseek-flash", "reasoning_effort": "max",
                 "reviewer": "independent DeepSeek DSH session, no parameter updates",
                 "reviewer_context": 1048576, "reviewer_max_output": 32768,
