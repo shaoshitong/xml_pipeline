@@ -9,6 +9,7 @@ from pathlib import Path
 SAMPLING = {"temperature": 0.6, "top_p": 0.95, "top_k": 20, "min_p": 0.0,
             "presence_penalty": 0.0, "repetition_penalty": 1.0}
 INSTRUCT_SAMPLING = dict(SAMPLING, temperature=0.7, top_p=0.8, presence_penalty=1.5)
+QWEN38_SAMPLING = dict(SAMPLING, temperature=1.0)
 
 
 def create_overlay(model, output, mode="precise-coding"):
@@ -23,7 +24,7 @@ def create_overlay(model, output, mode="precise-coding"):
         token = text_config.get(key, config.get(key))
         if key not in generation and token is not None:
             generation[key] = token
-    sampling = INSTRUCT_SAMPLING if mode == "instruct" else SAMPLING
+    sampling = {"instruct": INSTRUCT_SAMPLING, "qwen38": QWEN38_SAMPLING}.get(mode, SAMPLING)
     generation.update(sampling, do_sample=True)
     output.mkdir(parents=True, exist_ok=False)
     for path in model.iterdir():
@@ -44,7 +45,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--mode", choices=("precise-coding", "instruct"), default="precise-coding")
+    parser.add_argument("--mode", choices=("precise-coding", "instruct", "qwen38"), default="precise-coding")
     args = parser.parse_args()
     print(json.dumps(create_overlay(args.model, args.output, args.mode), ensure_ascii=False, indent=2))
 

@@ -55,13 +55,17 @@ def run_phase(args, phase, out, reviewer_port, env):
     target = out / f"phase{phase}"
     target.mkdir()
     evaluation = target / "evaluation"
+    context = getattr(args, "context_window", CONTEXT)
+    preset = getattr(args, "sampling_preset", "precise-coding")
     options = argparse.Namespace(root=args.root, runtime=args.root / "runtime",
         model="Qwen/Qwen3.8-27B", reviewer_url=f"http://127.0.0.1:{reviewer_port}/v1",
-        rounds=phase, skill_mode="full", sampling_preset="precise-coding", context_window=CONTEXT,
+        rounds=phase, skill_mode="full", sampling_preset=preset, context_window=context,
         max_tokens=OUTPUT, reasoning_effort="high", turn_timeout=1350, single_self_review=True)
     episode = default_episode(options)
     episode[0] = str(args.root / "envs/serving/bin/python")
     episode += ["--python-runtime-root", str(args.python_runtime_root)]
+    if getattr(args, "preserve_thinking", False):
+        episode.append("--preserve-thinking")
     command_file = target / "episode-template.json"
     save(command_file, episode)
     command = [str(args.root / "controller/env/bin/python"), str(HERE / "external_api_workflow.py"),
@@ -69,8 +73,8 @@ def run_phase(args, phase, out, reviewer_port, env):
         "--reference", str(args.root / "inputs/022/reference.png"), "--out", str(evaluation),
         "--episode-command", str(command_file), "--api-url", f"http://127.0.0.1:{args.port}/v1",
         "--model", options.model, "--reviewer-url", options.reviewer_url, "--rounds", str(phase),
-        "--context-window", str(CONTEXT), "--max-tokens", str(OUTPUT), "--reasoning-effort", "high",
-        "--skill-mode", "full", "--sampling-preset", "precise-coding", "--single-self-review",
+        "--context-window", str(context), "--max-tokens", str(OUTPUT), "--reasoning-effort", "high",
+        "--skill-mode", "full", "--sampling-preset", preset, "--single-self-review",
         "--turn-timeout", "1350", "--timeout", "1500", "--recovery-policy", ""]
     if phase == 2:
         command += ["--resume-from", str(out / "phase1/evaluation")]
@@ -82,6 +86,30 @@ def run_phase(args, phase, out, reviewer_port, env):
                                        "full_episode": phase == 2, "training": False})
     print(json.dumps({"phase": phase, "exit": result.returncode}), flush=True)
     return result.returncode
+
+
+def start_server(root, folder, role, model, devices, port, context, fraction, env,
+                 *, yarn=False, sampling="precise-coding"):
+    folder.mkdir()
+    serving = folder / "serving"
+    create_overlay(root / "models" / model, serving, sampling)
+    if yarn:
+        serving = long_context_overlay(serving, folder / "long-context")
+    command = [str(root / "envs/serving/bin/python"), "-m", "sglang.launch_server",
+        "--model-path", str(serving), "--served-model-name", "Qwen/" + model,
+        "--host", "127.0.0.1", "--port", str(port), "--tp", str(len(devices.split(","))),
+        "--dtype", "bfloat16", "--context-length", str(context), "--max-total-tokens", str(context),
+        "--max-running-requests", "1", "--cuda-graph-max-bs", "1",
+        "--mem-fraction-static", str(fraction), "--max-mamba-cache-size", "16",
+        "--sampling-defaults", "model", "--reasoning-parser", "qwen3",
+        "--tool-call-parser", "qwen3_coder", "--preferred-sampling-params",
+        json.dumps({"min_p": 0.0, "presence_penalty": 0.0 if role == "generator" else 1.5,
+                    "repetition_penalty": 1.0})]
+    log = (folder / "server.log").open("wb")
+    process = subprocess.Popen(command, stdout=log, stderr=log, start_new_session=True,
+        env=dict(env, CUDA_VISIBLE_DEVICES=devices, SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN="1",
+                 DSH_QWEN38_PARSER_COMPAT="1" if role == "generator" else "0"))
+    return process, log
 
 
 def main():
@@ -121,27 +149,10 @@ def main():
             ("generator", "Qwen3.8-27B", "4,5", args.port, CONTEXT, 0.85),
             ("reviewer", "Qwen3.5-4B", "6", args.port + 1, 65536, 0.40)):
             folder = args.out / role
-            folder.mkdir()
-            serving = folder / "serving"
-            create_overlay(args.root / "models" / model, serving,
-                           "precise-coding" if role == "generator" else "instruct")
-            if role == "generator":
-                serving = long_context_overlay(serving, folder / "long-context")
-            command = [str(args.root / "envs/serving/bin/python"), "-m", "sglang.launch_server",
-                "--model-path", str(serving), "--served-model-name", "Qwen/" + model,
-                "--host", "127.0.0.1", "--port", str(port), "--tp", str(len(devices.split(","))),
-                "--dtype", "bfloat16", "--context-length", str(context), "--max-total-tokens", str(context),
-                "--max-running-requests", "1", "--cuda-graph-max-bs", "1",
-                "--mem-fraction-static", str(fraction), "--max-mamba-cache-size", "16",
-                "--sampling-defaults", "model", "--reasoning-parser", "qwen3",
-                "--tool-call-parser", "qwen3_coder", "--preferred-sampling-params",
-                json.dumps({"min_p": 0.0, "presence_penalty": 0.0 if role == "generator" else 1.5,
-                            "repetition_penalty": 1.0})]
-            log = (folder / "server.log").open("wb")
+            process, log = start_server(args.root, folder, role, model, devices, port, context,
+                fraction, env, yarn=role == "generator",
+                sampling="precise-coding" if role == "generator" else "instruct")
             logs.append(log)
-            process = subprocess.Popen(command, stdout=log, stderr=log, start_new_session=True,
-                env=dict(env, CUDA_VISIBLE_DEVICES=devices, SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN="1",
-                         DSH_QWEN38_PARSER_COMPAT="1" if role == "generator" else "0"))
             processes.append(process)
             ready(process, port, timeout=900)
             contract[role + "_backend"] = verify_server(port, context, folder / "backend.json")

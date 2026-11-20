@@ -34,6 +34,7 @@ def build_patch(
     context_window: int = 32768,
     max_tokens: int = 8192,
     reasoning_effort: str = "high",
+    preserve_thinking: bool = False,
 ) -> list[dict]:
     """Use with an empty DSH_HOME, never an account or gold-MCP profile.
 
@@ -59,7 +60,7 @@ def build_patch(
             "thinkingFormat": "chat-template",
             "chatTemplateKwargs": {
                 "enable_thinking": {"$var": "thinking.enabled"},
-                "preserve_thinking": False,
+                "preserve_thinking": preserve_thinking,
             },
             "maxTokensField": "max_tokens",
             "supportsDeveloperRole": False,

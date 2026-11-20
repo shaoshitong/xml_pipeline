@@ -162,7 +162,8 @@ class Relay(BaseHTTPRequestHandler):
                             pixels = base64.b64decode(url.split(",", 1)[1])
                             images.append({"bytes": len(pixels), "sha256": sha256(pixels).hexdigest()})
                 record = {key: data[key] for key in ("model", "max_tokens", "thinking",
-                          "reasoning_effort", "temperature", "presence_penalty") if key in data}
+                          "reasoning_effort", "temperature", "presence_penalty", "top_p", "top_k",
+                          "min_p", "repetition_penalty", "chat_template_kwargs") if key in data}
                 record.update(phase="request", time=request_time, image_inputs=images,
                               tool_names=[tool.get("function", {}).get("name") for tool in data.get("tools", [])],
                               upstream=getattr(upstream, "_tunnel_host", None) or upstream.host)

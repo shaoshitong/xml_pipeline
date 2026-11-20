@@ -16,7 +16,7 @@ import time
 from dsh_profiles import profile_yaml
 from prompts import generation_prompt, review_prompt
 from ablate_skill import prompt_for_mode
-from setup_sampling import INSTRUCT_SAMPLING, SAMPLING
+from setup_sampling import INSTRUCT_SAMPLING, SAMPLING, QWEN38_SAMPLING
 
 
 HERE = Path(__file__).resolve().parent
@@ -83,6 +83,8 @@ def run_turn(args, role, number, session):
         session = state.get("session_id") or next(
             (e["sessionId"] for e in events if e.get("type") == "session"), session)
         final = saved_final(state, events, role)
+        if role == "generator" and not (args.out / "case" / f"round{number}.drawio").is_file():
+            final = None
         if final is not None:
             save(state_file, state)
             return session, final
@@ -104,9 +106,11 @@ def run_turn(args, role, number, session):
         effort = "off"
         context_window = min(context_window, 65536)
         max_tokens = min(max_tokens, 32768)
-    patch.write_text(builder(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
-                             context_window=context_window, max_tokens=max_tokens,
-                             reasoning_effort=effort))
+    profile = dict(base_url="http://127.0.0.1:30101/v1", model=model, role=role,
+                   context_window=context_window, max_tokens=max_tokens, reasoning_effort=effort)
+    if model.startswith("Qwen/"):
+        profile["preserve_thinking"] = args.preserve_thinking and role == "generator"
+    patch.write_text(builder(**profile))
     prompt = generation_prompt(number, args.rounds) if role == "generator" else review_prompt(number)
     prompt = prompt_for_mode(args.skill_mode, role, number, args.rounds, prompt)
     if role == "generator" and number == 1 and args.seeded:
@@ -166,7 +170,7 @@ def run_turn(args, role, number, session):
     auth_file = args.generator_auth_file if role == "generator" else None
     preset = getattr(args, "reviewer_sampling_preset", None) if role == "reviewer" else None
     preset = preset or args.sampling_preset
-    sampling = dict({"model": {}, "instruct": INSTRUCT_SAMPLING,
+    sampling = dict({"model": {}, "instruct": INSTRUCT_SAMPLING, "qwen38": QWEN38_SAMPLING,
                      "precise-coding": SAMPLING}[preset])
     if args.seed is not None:
         sampling["seed"] = args.seed
@@ -183,6 +187,9 @@ def run_turn(args, role, number, session):
             review_payload(final)
         except ValueError:
             validation_error = "invalid_reviewer_json"
+    if role == "generator" and exit_code == 0 and final is not None:
+        if not (case / f"round{number}.drawio").is_file():
+            validation_error = "missing_candidate_xml"
     sid = next((e["sessionId"] for e in events if e.get("type") == "session"), session)
     status = {"role": role, "round": number, "exit": exit_code, "timed_out": timed_out,
               "completed": exit_code == 0 and final is not None and validation_error is None,
@@ -239,12 +246,13 @@ def main():
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--seeded", action="store_true")
     parser.add_argument("--skill-mode", choices=("full", "no-skill", "minimal"), default="full")
-    parser.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding"),
+    parser.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding", "qwen38"),
                         default="model", help="Explicit wire parameters; model preserves legacy behavior")
     parser.add_argument("--seed", type=int)
     parser.add_argument("--reviewer-sampling-preset", choices=("model", "instruct", "precise-coding"))
     parser.add_argument("--resume-note", default="")
     parser.add_argument("--single-self-review", action="store_true")
+    parser.add_argument("--preserve-thinking", action="store_true")
     parser.add_argument("--context-window", default=65536, type=int)
     parser.add_argument("--max-tokens", default=32768, type=int)
     parser.add_argument("--reasoning-effort", choices=("off", "low", "high", "max"), default="high")
@@ -268,6 +276,7 @@ def main():
          "context_window": args.context_window, "max_tokens": args.max_tokens,
          "reasoning_effort": args.reasoning_effort,
          "single_self_review": args.single_self_review,
+         "preserve_thinking": args.preserve_thinking,
          "continued_generator_session": args.generator_session_id,
          "runtime_recovery_note": args.resume_note,
          "fresh_context_from_own_candidate": args.seeded,

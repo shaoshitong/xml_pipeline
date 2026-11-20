@@ -145,7 +145,7 @@ def add_evaluation_arguments(evaluation):
     evaluation.add_argument("--host-evaluation", type=Path)
     evaluation.add_argument("--rounds", type=int, default=4)
     evaluation.add_argument("--skill-mode", choices=("full", "no-skill", "minimal"), default="full")
-    evaluation.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding"), default="model")
+    evaluation.add_argument("--sampling-preset", choices=("model", "instruct", "precise-coding", "qwen38"), default="model")
     evaluation.add_argument("--single-self-review", action="store_true")
     evaluation.add_argument("--recovery-policy", default=RECOVERY_POLICY)
     evaluation.add_argument("--context-window", type=int, default=1048576)
