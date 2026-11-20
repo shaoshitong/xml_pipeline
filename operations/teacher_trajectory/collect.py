@@ -144,7 +144,8 @@ def generation_retry_reason(folder, state):
     if state.get("completed") and not (folder / "case" / f"round{state['round']}.drawio").is_file():
         return "artifact"
     log = folder / "generator" / state.get("log_dir", "") / "stderr.log"
-    if log.is_file() and log.read_text().startswith("dsh: SERVER: 502 "):
+    if log.is_file() and log.read_text().startswith((
+            "dsh: SERVER: 502 ", "dsh: TRANSPORT: Stream ended without finish_reason")):
         return "gateway"
     return None
 
