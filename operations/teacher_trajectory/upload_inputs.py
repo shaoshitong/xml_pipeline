@@ -21,7 +21,8 @@ def signature(item):
 def publish(args):
     token = sys.stdin.readline().strip()
     assert token.startswith("hf_")
-    configure_http_backend(partial(UploadSession, args.proxy, bool(args.proxy), {},
+    progress = {"accepted_storage_bytes": 0, "accepted_storage_parts": 0}
+    configure_http_backend(partial(UploadSession, args.proxy, bool(args.proxy), progress,
                                    threading.Lock(), args.audit / "network-state.json"))
     api = HfApi(token=token)
     assert api.whoami()["name"] == args.repo_id.split("/")[0]
