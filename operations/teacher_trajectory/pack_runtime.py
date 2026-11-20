@@ -13,9 +13,8 @@ from packaging.requirements import Requirement
 
 
 def dependency_pins():
-    distributions = metadata.packages_distributions()
-    roots = ("PIL", "playwright", "numpy", "cv2", "fitz", "matplotlib", "scipy", "fontTools", "yaml", "zstandard")
-    pending = {name for module in roots for name in distributions.get(module, [])}
+    pending = {"pillow", "playwright", "numpy", "opencv-python", "matplotlib", "scipy",
+               "fonttools", "pyyaml", "zstandard", "requests", "jinja2", "transformers"}
     pins = {}
     while pending:
         name = pending.pop()
@@ -28,6 +27,9 @@ def dependency_pins():
             requirement = Requirement(text)
             if requirement.marker is None or requirement.marker.evaluate({"extra": ""}):
                 pending.add(requirement.name)
+    # OpenCV 4.12 requires NumPy 2; keep the renderer's NumPy 1.26 environment.
+    pins["opencv-python"] = "4.11.0.86"
+    pins["kiwisolver"] = "1.4.5"  # First release with Python 3.12 wheels.
     return [name + "==" + version for name, version in sorted(pins.items())]
 
 
