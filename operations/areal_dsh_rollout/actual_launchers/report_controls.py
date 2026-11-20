@@ -25,5 +25,6 @@ for specification in manifest['runs']:
     runs.append(run)
 output = Path(manifest['output'])
 output.parent.mkdir(parents=True, exist_ok=True)
-output.write_text(make_html(reference, runs), encoding='utf-8')
+html = make_html(reference, runs).replace('Reviewer JSON \u539f\u6587', 'Generator \u6536\u5230\u7684 Reviewer JSON')
+output.write_text(html, encoding='utf-8')
 print(json.dumps({'output': str(output), 'runs': len(runs), 'bytes': output.stat().st_size}))
