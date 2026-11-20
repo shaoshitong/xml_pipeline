@@ -23,11 +23,14 @@ contract = {'source_commit': commit, 'gpu_inventory_before': inventory,
     'resumed_from': sys.argv[3] if len(sys.argv) > 3 else str(root / 'runs/qwen38-yarn-review-resume-fc8756d-r5/phase2/evaluation'),
     'generator_gpu': 5, 'reviewer_gpu': 6, 'training': False, 'gold_feedback': False,
     'reuse_completed_generator': True, 'reuse_reviewer_session': True, 'native_goal': False}
+reuse_review = len(sys.argv) > 4 and sys.argv[4] == 'reuse-review'
+contract['reuse_saved_review_response'] = reuse_review
 services = []
 try:
-    for name, role, model, devices, port, context, fraction, yarn in (
+    specifications = (
         ('generator', 'generator', 'Qwen3.8-27B', '5', 32424, 1048576, .94, True),
-        ('reviewer', 'reviewer', 'Qwen3.5-4B', '6', 32435, 65536, .40, False)):
+        ('reviewer', 'reviewer', 'Qwen3.5-4B', '6', 32435, 65536, .40, False))
+    for name, role, model, devices, port, context, fraction, yarn in specifications[:1] if reuse_review else specifications:
         process, log = start_server(root, out / (name + '-server'), role, model,
             devices, port, context, fraction, env, yarn=yarn,
             sampling='qwen38' if role == 'generator' else 'instruct')
