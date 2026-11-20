@@ -112,13 +112,17 @@ def deduplicate_attachments(store, folder):
 
 def run_generation(config, number, session):
     previous = config.resume_note
-    remaining = {"timeout": 1, "gateway": 1}
+    remaining = {"timeout": 1, "gateway": 1, "artifact": 1}
     notes = {"timeout": "The previous turn reached its wall-clock limit.",
-             "gateway": "The previous turn was interrupted by a gateway connection failure."}
+             "gateway": "The previous turn was interrupted by a gateway connection failure.",
+             "artifact": f"The previous turn ended without creating the required round{number}.drawio file."}
     try:
         while True:
             try:
-                return run_turn(config, "generator", number, session)
+                result = run_turn(config, "generator", number, session)
+                if not (config.out / "case" / f"round{number}.drawio").is_file():
+                    raise RuntimeError(f"Missing generator artifact round{number}.drawio")
+                return result
             except RuntimeError:
                 path = config.out / "generator" / f"round{number}" / "status.json"
                 state = json.loads(path.read_text()) if path.exists() else {}
@@ -137,6 +141,8 @@ def run_generation(config, number, session):
 def generation_retry_reason(folder, state):
     if state.get("timed_out"):
         return "timeout"
+    if state.get("completed") and not (folder / "case" / f"round{state['round']}.drawio").is_file():
+        return "artifact"
     log = folder / "generator" / state.get("log_dir", "") / "stderr.log"
     if log.is_file() and log.read_text().startswith("dsh: SERVER: 502 "):
         return "gateway"
@@ -211,6 +217,7 @@ def episode(args, record, store, provider, runtime, resources):
                 "generator_context": 1048576, "max_output": 131072,
                 "stage_timeout_seconds": 1350, "generator_timeout_continuations_per_attempt": 1,
                 "generator_gateway_continuations_per_attempt": 1,
+                "generator_missing_artifact_continuations_per_attempt": 1,
                 "gold_available": False, "gold_feedback": False, "mcp": False,
                 "external_areal_string_export": False,
                 "lossless_wire_capture": True, "source_commit": args.source_commit,

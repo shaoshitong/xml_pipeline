@@ -59,7 +59,9 @@ def read_events(path):
             if line.startswith("{") and line.endswith("}")]
 
 
-def saved_final(state, events, role):
+def saved_final(state, events, role, artifact=None):
+    if artifact is not None and not artifact.is_file():
+        return None
     final = next((event for event in reversed(events) if event.get("type") == "final"), None)
     if final is not None and role == "reviewer" and state.get("exit") == 0:
         try:
@@ -82,7 +84,8 @@ def run_turn(args, role, number, session):
         events = read_events(previous) if previous.exists() else []
         session = state.get("session_id") or next(
             (e["sessionId"] for e in events if e.get("type") == "session"), session)
-        final = saved_final(state, events, role)
+        artifact = args.out / "case" / f"round{number}.drawio" if role == "generator" else None
+        final = saved_final(state, events, role, artifact)
         if final is not None:
             save(state_file, state)
             return session, final
