@@ -16,6 +16,17 @@ def save(path, value):
     path.write_text(json.dumps(value, indent=2) + "\n")
 
 
+def seal(public, audit):
+    files = [{"file": str(path.relative_to(public)), "bytes": path.stat().st_size,
+              "sha256": sha256(path.read_bytes()).hexdigest()} for path in sorted(public.rglob("*"))
+             if path.is_file() and path.name != "SHA256SUMS"]
+    checksum = public / "SHA256SUMS"
+    checksum.write_text("".join(row["sha256"] + "  " + row["file"] + "\n" for row in files))
+    files.append({"file": checksum.name, "bytes": checksum.stat().st_size,
+                  "sha256": sha256(checksum.read_bytes()).hexdigest()})
+    save(audit / "public-files.json", files)
+
+
 def gold_index(dataset, teacher, output):
     cache = teacher / "reference-inputs-20261121/private-audit/exclusions.json"
     gold = json.loads(cache.read_text())
@@ -137,10 +148,7 @@ def prepare(args):
                "gold_xml_included": False, "full_source_pdfs_included": False, "transcripts_included": False,
                "model_calls": 0, "source": "Existing cached arXiv framework/architecture/pipeline figures with verified paper provenance and TeX figure links"}
     save(public / "exclusion-summary.json", summary)
-    files = [{"file": str(path.relative_to(public)), "bytes": path.stat().st_size,
-              "sha256": sha256(path.read_bytes()).hexdigest()} for path in sorted(public.rglob("*")) if path.is_file()]
-    assert len(files) == len(result) + 2
-    save(audit / "public-files.json", files)
+    seal(public, audit)
     print(json.dumps(summary), flush=True)
 
 
@@ -152,7 +160,12 @@ def main():
     parser.add_argument("--scan-limit", type=int, default=12000)
     parser.add_argument("--selection", action="append", type=Path)
     parser.add_argument("--visual-review", action="append", type=Path, default=[])
-    prepare(parser.parse_args())
+    parser.add_argument("--seal-existing", action="store_true", help="Add checksums to an existing prepared package")
+    args = parser.parse_args()
+    if args.seal_existing:
+        seal(args.out / "public", args.out / "private-audit")
+    else:
+        prepare(args)
 
 
 if __name__ == "__main__":
