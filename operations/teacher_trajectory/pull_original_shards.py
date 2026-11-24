@@ -1,6 +1,7 @@
 """Pull private HKUST PNG shards and expose only checksum-verified directories."""
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from hashlib import sha256
 import json
 from pathlib import Path, PurePosixPath
@@ -51,43 +52,61 @@ def pull(args):
     ssh = shlex.split(args.ssh)
     known = {p.name: verify(p) for p in sorted(ready.glob("shard-*"))}
     checksum = set()
-    while True:
-        try:
-            progress = json.loads(subprocess.check_output(
-                [*ssh, args.host, "cat " + shlex.quote(str(args.source / "progress.json"))],
-                timeout=20))
-            for name in progress["ready_shards"]:
-                if name in known:
-                    continue
-                if not SHARD.fullmatch(name):
+
+    def download(name):
+        extra = ["--checksum"] if name in checksum else []
+        subprocess.run(
+            ["rsync", "-a", "--partial", *extra, "-e", args.ssh,
+             f"{args.host}:{args.source / name}", str(incoming) + "/"],
+            check=True, timeout=1800)
+        receipt = verify(incoming / name)
+        (incoming / name).rename(ready / name)
+        return receipt
+
+    def write_progress(progress):
+        complete = progress["phase"] == "complete" and set(known) == set(progress["ready_shards"])
+        images = sum(item["images"] for item in known.values())
+        if complete and images != progress["screen_counts"]["accepted"]:
+            raise ValueError("Verified image count disagrees with source screening count")
+        report = {"source_phase": "complete" if complete else "transferring",
+                  "local_ready_shards": sorted(known),
+                  "images": images,
+                  "png_bytes": sum(item["png_bytes"] for item in known.values()),
+                  "source_ready_shards": len(progress["ready_shards"]),
+                  "source_screen_counts": progress["screen_counts"],
+                  "source_shortlist_processed": progress["shortlist_processed"]}
+        pending = args.destination / "progress.tmp"
+        pending.write_text(json.dumps(report, indent=2) + "\n")
+        pending.replace(args.destination / "progress.json")
+        return complete
+
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        while True:
+            try:
+                progress = json.loads(subprocess.check_output(
+                    [*ssh, args.host, "cat " + shlex.quote(str(args.source / "progress.json"))],
+                    timeout=30))
+                names = [name for name in progress["ready_shards"] if name not in known]
+                if any(not SHARD.fullmatch(name) for name in names):
                     raise ValueError("Unexpected shard name")
-                extra = ["--checksum"] if name in checksum else []
-                subprocess.run(
-                    ["rsync", "-a", "--partial", *extra, "-e", args.ssh,
-                     f"{args.host}:{args.source / name}", str(incoming) + "/"],
-                    check=True, timeout=300)
-                try:
-                    verified = verify(incoming / name)
-                except (OSError, ValueError):
-                    checksum.add(name)
-                    raise
-                (incoming / name).rename(ready / name)
-                known[name] = verified
-                print(json.dumps({"ready": str(ready / name), **verified}), flush=True)
-            report = {"source_phase": progress["phase"], "local_ready_shards": list(known),
-                      "images": sum(item["images"] for item in known.values()),
-                      "png_bytes": sum(item["png_bytes"] for item in known.values()),
-                      "source_screen_counts": progress["screen_counts"],
-                      "source_shortlist_processed": progress["shortlist_processed"]}
-            pending = args.destination / "progress.tmp"
-            pending.write_text(json.dumps(report, indent=2) + "\n")
-            pending.replace(args.destination / "progress.json")
-            if progress["phase"] == "complete" and len(known) == len(progress["ready_shards"]):
-                print(json.dumps(report), flush=True)
-                return
-        except (subprocess.SubprocessError, OSError, ValueError) as exc:
-            print(f"Retrying private transfer: {exc}", flush=True)
-        time.sleep(5)
+                if write_progress(progress):
+                    return
+                transfers = {pool.submit(download, name): name for name in names}
+                for future in as_completed(transfers):
+                    name = transfers[future]
+                    try:
+                        known[name] = future.result()
+                    except (subprocess.SubprocessError, OSError, ValueError) as exc:
+                        if isinstance(exc, ValueError):
+                            checksum.add(name)
+                        print(f"Retrying {name}: {exc}", flush=True)
+                        continue
+                    print(json.dumps({"ready": str(ready / name), **known[name]}), flush=True)
+                    if write_progress(progress):
+                        return
+            except (subprocess.SubprocessError, OSError, ValueError) as exc:
+                print(f"Retrying private transfer: {exc}", flush=True)
+            time.sleep(5)
 
 
 def main():
@@ -96,6 +115,7 @@ def main():
     parser.add_argument("--host", required=True)
     parser.add_argument("--source", type=PurePosixPath, required=True)
     parser.add_argument("--destination", type=Path, required=True)
+    parser.add_argument("--workers", type=int, default=1)
     pull(parser.parse_args())
 
 
