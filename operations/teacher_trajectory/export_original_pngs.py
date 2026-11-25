@@ -160,7 +160,7 @@ def provenance(paper_dir):
         return None, {}
 
 
-def screen(path, dedup, fingerprint):
+def screen(path, dedup, fingerprint, minimum_size=None):
     try:
         raw = path.read_bytes()
         digest = sha256(raw).hexdigest()
@@ -169,6 +169,8 @@ def screen(path, dedup, fingerprint):
         with Image.open(BytesIO(raw)) as source:
             if source.format != "PNG":
                 return "not_png", None
+            if minimum_size and any(size < limit for size, limit in zip(sorted(source.size), minimum_size)):
+                return "below_minimum_dimensions", None
             image = source.convert("RGB")
             if any(str(k).casefold() in {"mxfile", "mxgraphmodel", "drawio"} for k in source.info):
                 return "embedded_xml_found", None
@@ -194,7 +196,7 @@ def screen(path, dedup, fingerprint):
     return "accepted", (row, raw)
 
 
-def export(out, shard_size, fingerprint):
+def export(out, shard_size, fingerprint, *, target=None, minimum_size=None):
     if not (out / "plan.json").is_file():
         freeze(out)
     plan = json.loads((out / "plan.json").read_text())
@@ -211,8 +213,12 @@ def export(out, shard_size, fingerprint):
     inputs = (out / "shortlist.txt").read_text().splitlines()
     stage, entries, data_bytes = None, [], 0
     status = {"phase": "screening", **plan}
+    index = consumed
     for index, source in enumerate(inputs[consumed:], consumed + 1):
-        result, item = screen(Path(source), dedup, fingerprint)
+        if target is not None and counts["accepted"] >= target:
+            index -= 1
+            break
+        result, item = screen(Path(source), dedup, fingerprint, minimum_size)
         counts[result] += 1
         if item:
             if stage is None:
@@ -222,7 +228,8 @@ def export(out, shard_size, fingerprint):
             (stage / row["file"]).write_bytes(raw)
             entries.append(row)
             data_bytes += len(raw)
-        if stage and (len(entries) == shard_size or index == len(inputs)):
+        reached_target = target is not None and counts["accepted"] >= target
+        if stage and (len(entries) == shard_size or index == len(inputs) or reached_target):
             shard = out / f"shard-{len(batches) + 1:05d}"
             manifest = stage / "manifest.jsonl"
             manifest.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in entries))
@@ -238,7 +245,7 @@ def export(out, shard_size, fingerprint):
         if index % 128 == 0 or index == len(inputs):
             write_json(out / "progress.json", {**status, "shortlist_processed": index,
                 "screen_counts": dict(counts), "ready_shards": batches, "committed_png_bytes": total_bytes})
-    write_json(out / "progress.json", {**status, "phase": "complete", "shortlist_processed": len(inputs),
+    write_json(out / "progress.json", {**status, "phase": "complete", "shortlist_processed": index,
         "screen_counts": dict(counts), "ready_shards": batches, "committed_png_bytes": total_bytes, "finished_at": time.time()})
 
 
