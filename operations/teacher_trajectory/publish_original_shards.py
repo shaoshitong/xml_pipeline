@@ -91,6 +91,16 @@ def finish(api, root, source, previous):
     return True
 
 
+def retry_reason(error):
+    cause = (error.__cause__ or error) if isinstance(error, RuntimeError) else error
+    if isinstance(cause, HfHubHTTPError):
+        status = cause.response.status_code
+        return f"HTTP {status}" if status in {408, 409, 429, 500, 502, 503, 504} else None
+    if isinstance(cause, (exceptions.ConnectionError, exceptions.Timeout)):
+        return type(cause).__name__
+    return None
+
+
 def run(root, api):
     if api.whoami()["name"] != "sst12345" or not api.dataset_info(REPO, revision=BRANCH).private:
         raise ValueError("Unexpected HF account or repository visibility")
@@ -105,13 +115,11 @@ def run(root, api):
             source = json.loads(progress.read_text()) if progress.exists() else {}
             if source.get("source_phase") == "complete" and finish(api, root, source, previous):
                 return
-        except HfHubHTTPError as exc:
-            status = exc.response.status_code
-            if status not in {408, 409, 429, 500, 502, 503, 504}:
+        except (RuntimeError, exceptions.RequestException) as exc:
+            reason = retry_reason(exc)
+            if reason is None:
                 raise
-            print(f"Retrying HF request after HTTP {status}", flush=True)
-        except (exceptions.ConnectionError, exceptions.Timeout) as exc:
-            print(f"Retrying HF request after {type(exc).__name__}", flush=True)
+            print(f"Retrying HF request after {reason}", flush=True)
         time.sleep(6)
 
 
@@ -122,7 +130,13 @@ def main():
     token = sys.stdin.read().strip()
     if not re.fullmatch(r"hf_[A-Za-z0-9]+", token):
         parser.error("Supply the temporary HF token on stdin")
-    run(args.staging, HfApi(token=token))
+    try:
+        run(args.staging, HfApi(token=token))
+    except (RuntimeError, exceptions.RequestException) as exc:
+        # Upload exceptions can embed a signed object-storage URL.
+        cause = (exc.__cause__ or exc) if isinstance(exc, RuntimeError) else exc
+        status = f" (HTTP {cause.response.status_code})" if isinstance(cause, HfHubHTTPError) else ""
+        raise SystemExit(f"HF publication stopped: {type(cause).__name__}{status}") from None
 
 
 if __name__ == "__main__":
