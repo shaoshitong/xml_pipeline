@@ -14,7 +14,8 @@ from export_original_pngs import DATABASE, FINGERPRINT, GOLD, export, release_ba
 
 OBVIOUS_RESULTS = re.compile(
     r"(?:^|[_. -])tab(?:le)?(?:[0-9]|[_. -]|$)|accuracy[_-]?curve|loss[_-]?curve|"
-    r"scatter.?plot|box.?plot|bar.?chart|line.?plot|histogram|confusion.?matrix|"
+    r"scatter.?plot|box.?plot|violin.?plot|density.?plot|bar.?chart|line.?plot|"
+    r"(?:^|[_. -])plots?(?:[0-9]|[_. -]|$)|histogram|confusion.?matrix|"
     r"combined[_-]?agg|ablation|benchmark[_-]?results",
     re.I,
 )
